@@ -1,0 +1,31 @@
+warning: source ..\..\..\common\inc\nvShaderUtils.h is not a readable file or directory... skipping.
+warning: source ..\..\..\common\inc\rendercheck_gl.h is not a readable file or directory... skipping.
+error: F:/Moje dokumenty/particles/render_particles.cpp:12:10: fatal error: 'GL/glew.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particleSystem.h:18:10: fatal error: 'helper_functions.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particles.cpp:24:10: fatal error: 'GL/glew.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particles_kernel.cuh:23:10: fatal error: 'vector_types.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particles_kernel_impl.cuh:22:10: fatal error: 'helper_math.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particleSystem_cuda.cu:18:10: fatal error: 'GL/freeglut.h' file not found [clang]
+F:/Moje dokumenty/particles/particleSystem.cpp:33: warning: documented symbol `ParticleSystem' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:78: warning: documented symbol `~ParticleSystem' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:85: warning: documented symbol `uint createVBO' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:123: warning: documented symbol `void _initialize' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:205: warning: documented symbol `void _finalize' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:238: warning: documented symbol `void update' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:306: warning: documented symbol `void dumpGrid' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:331: warning: documented symbol `void dumpParticles' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:346: warning: documented symbol `float * getArray' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:374: warning: documented symbol `void setArray' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:406: warning: documented symbol `void initGrid' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:436: warning: documented symbol `void reset' was not declared or defined.
+F:/Moje dokumenty/particles/particleSystem.cpp:485: warning: no matching file member found for 
+void addSphere(int start, float *pos, float *vel, int r, float spacing)
+Possible candidates:
+ 'void addSphere()' at line 324 of fileF:/Moje dokumenty/particles/particles.cpp
+
+error: F:/Moje dokumenty/particles/particles.cpp:24:10: fatal error: 'GL/glew.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particleSystem.h:18:10: fatal error: 'helper_functions.h' file not found [clang]
+error: F:/Moje dokumenty/particles/render_particles.cpp:12:10: fatal error: 'GL/glew.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particles_kernel.cuh:23:10: fatal error: 'vector_types.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particles_kernel_impl.cuh:22:10: fatal error: 'helper_math.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particleSystem_cuda.cu:18:10: fatal error: 'GL/freeglut.h' file not found [clang]

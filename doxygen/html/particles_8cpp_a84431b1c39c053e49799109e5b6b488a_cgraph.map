@@ -1,0 +1,4 @@
+<map id="initParticleSystem" name="initParticleSystem">
+<area shape="rect" id="node2" href="$class_particle_renderer.html#a1f559344f52caaac2e594c6c7e2bdc7c" title="ParticleRenderer::setColor\lBuffer" alt="" coords="188,5,363,47"/>
+<area shape="rect" id="node3" href="$class_particle_renderer.html#a4b35ff5056857d7c988e69b3b4030d58" title="ParticleRenderer::setParticle\lRadius" alt="" coords="181,71,369,112"/>
+</map>
