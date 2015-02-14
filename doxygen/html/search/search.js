@@ -10,12 +10,13 @@ var indexSectionsWithContent =
   0: "_abcdfghiklmnoprstuvwx~",
   1: "ips",
   2: "prs",
-  3: "_acdfiklmoprstux~",
+  3: "_acdfgiklmoprstux~",
   4: "abcdfghiklmnoprstvw",
   5: "u",
-  6: "d",
-  7: "mp",
-  8: "_acfgmnpstu"
+  6: "dp",
+  7: "_cmpv",
+  8: "_acdfgmnpstu",
+  9: "c"
 };
 
 var indexSectionNames =
@@ -28,7 +29,8 @@ var indexSectionNames =
   5: "typedefs",
   6: "enums",
   7: "enumvalues",
-  8: "defines"
+  8: "defines",
+  9: "pages"
 };
 
 function convertToId(search)

@@ -19,6 +19,17 @@
     - replaced sort function with latest radix sort, now disables v-sync.
     - added support for automated testing and comparison to a reference value.
 */
+/** \mainpage Cząstki
+ * \section Opis_Ogólny Opis Ogólny
+ * - Najpierw wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.
+ * Prędkość to poprzednia prędkość, grawitacja i lepkość.
+ * - Potem cząstki dzielone są na komurki według ich położenia.
+ * - Dla każdej cząstki wyliczana jest siła jaka na nią zadziała.
+ * Składa się ona ze zderzeń ze wszystkimi cząstkami w zasięgu,
+ * muszą one być w tej samej komurce, albo w sąsiedniej.
+ * - Prędkość jest wyliczana z poprzedniej prękości i siły.
+ */
+
 
 // OpenGL Graphics includes
 #include <GL/glew.h>

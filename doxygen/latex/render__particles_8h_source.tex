@@ -1,0 +1,82 @@
+\hypertarget{render__particles_8h_source}{\section{render\-\_\-particles.\-h}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright 1993-2012 NVIDIA Corporation.  All rights reserved.}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ * Please refer to the NVIDIA end user license agreement (EULA) associated}
+00005 \textcolor{comment}{ * with this source code for terms and conditions that govern your use of}
+00006 \textcolor{comment}{ * this software. Any use, reproduction, disclosure, or distribution of}
+00007 \textcolor{comment}{ * this software and related documentation outside the terms of the EULA}
+00008 \textcolor{comment}{ * is strictly prohibited.}
+00009 \textcolor{comment}{ *}
+00010 \textcolor{comment}{ */}
+00011 
+00012 \textcolor{preprocessor}{#}\textcolor{preprocessor}{ifndef} \textcolor{preprocessor}{\_\_RENDER\_PARTICLES\_\_}
+00013 \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{\_\_RENDER\_PARTICLES\_\_}
+00014 
+\hypertarget{render__particles_8h_source_l00015}{}\hyperlink{class_particle_renderer}{00015} \textcolor{keyword}{class} \hyperlink{class_particle_renderer}{ParticleRenderer}
+00016 \{
+00017     \textcolor{keyword}{public}:
+00018         \hyperlink{class_particle_renderer_a1718484686c2e6db488cc88c433d03cc}{ParticleRenderer}();
+00019         ~\hyperlink{class_particle_renderer_a281be31ad850fead012460fb6675db98}{ParticleRenderer}();
+00020 
+00021         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_adb3204e8af23a65b05b1aca7f43f0430}{setPositions}(\textcolor{keywordtype}{float} *pos, \textcolor{keywordtype}{int} numParticles);
+00022         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{setVertexBuffer}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vbo, \textcolor{keywordtype}{int} numParticles);
+\hypertarget{render__particles_8h_source_l00023}{}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{00023}         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{setColorBuffer}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vbo)
+00024         \{
+00025             m\_colorVBO = vbo;
+00026         \}
+00027 
+\hypertarget{render__particles_8h_source_l00028}{}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{00028}         \textcolor{keyword}{enum} \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{DisplayMode}
+00029         \{
+\hypertarget{render__particles_8h_source_l00030}{}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe}{00030}             \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe}{PARTICLE\_POINTS},
+\hypertarget{render__particles_8h_source_l00031}{}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111}{00031}             \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111}{PARTICLE\_SPHERES},
+\hypertarget{render__particles_8h_source_l00032}{}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc}{00032}             \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc}{PARTICLE\_NUM\_MODES}
+00033         \};
+00034 
+00035         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{display}(\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{DisplayMode} mode = \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe}{PARTICLE\_POINTS});
+00036         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_a0e0a5d323acf55087911ea77a2a3eafa}{displayGrid}();
+00037 
+\hypertarget{render__particles_8h_source_l00038}{}\hyperlink{class_particle_renderer_a68df35cdf53ad987aa6d8360b3531627}{00038}         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_a68df35cdf53ad987aa6d8360b3531627}{setPointSize}(\textcolor{keywordtype}{float} size)
+00039         \{
+00040             \hyperlink{class_particle_renderer_a1ca13e546c937cb546c0da19fa853b34}{m\_pointSize} = size;
+00041         \}
+\hypertarget{render__particles_8h_source_l00042}{}\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{00042}         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{setParticleRadius}(\textcolor{keywordtype}{float} r)
+00043         \{
+00044             \hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{m\_particleRadius} = r;
+00045         \}
+\hypertarget{render__particles_8h_source_l00046}{}\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{00046}         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{setFOV}(\textcolor{keywordtype}{float} fov)
+00047         \{
+00048             \hyperlink{class_particle_renderer_a0aed003bd557a3c32ca7d2ca89fc59f7}{m\_fov} = fov;
+00049         \}
+\hypertarget{render__particles_8h_source_l00050}{}\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{00050}         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{setWindowSize}(\textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h)
+00051         \{
+00052             \hyperlink{class_particle_renderer_aa71b7eba5d5665a086b7ba80adddf19b}{m\_window\_w} = w;
+00053             \hyperlink{class_particle_renderer_af34b1e93f6a7f22774a6473c52027d77}{m\_window\_h} = h;
+00054         \}
+00055 
+00056     \textcolor{keyword}{protected}: \textcolor{comment}{// methods}
+00057         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_ac75c7f73a0014333305b174b8863a46b}{\_initGL}();
+00058         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}();
+00059         \hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{GLuint} \hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{\_compileProgram}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{vsource}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *
+      \hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{fsource});
+00060 
+00061     \textcolor{keyword}{protected}: \textcolor{comment}{// data}
+\hypertarget{render__particles_8h_source_l00062}{}\hyperlink{class_particle_renderer_a1d74720edb5c3a13edcdd176ac0d84c7}{00062}         \textcolor{keywordtype}{float} *\hyperlink{class_particle_renderer_a1d74720edb5c3a13edcdd176ac0d84c7}{m\_pos};
+\hypertarget{render__particles_8h_source_l00063}{}\hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{00063}         \textcolor{keywordtype}{int} \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles};
+00064 
+\hypertarget{render__particles_8h_source_l00065}{}\hyperlink{class_particle_renderer_a1ca13e546c937cb546c0da19fa853b34}{00065}         \textcolor{keywordtype}{float} \hyperlink{class_particle_renderer_a1ca13e546c937cb546c0da19fa853b34}{m\_pointSize};
+\hypertarget{render__particles_8h_source_l00066}{}\hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{00066}         \textcolor{keywordtype}{float} \hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{m\_particleRadius};
+\hypertarget{render__particles_8h_source_l00067}{}\hyperlink{class_particle_renderer_a0aed003bd557a3c32ca7d2ca89fc59f7}{00067}         \textcolor{keywordtype}{float} \hyperlink{class_particle_renderer_a0aed003bd557a3c32ca7d2ca89fc59f7}{m\_fov};
+\hypertarget{render__particles_8h_source_l00068}{}\hyperlink{class_particle_renderer_aa71b7eba5d5665a086b7ba80adddf19b}{00068}         \textcolor{keywordtype}{int} \hyperlink{class_particle_renderer_aa71b7eba5d5665a086b7ba80adddf19b}{m\_window\_w}, \hyperlink{class_particle_renderer_af34b1e93f6a7f22774a6473c52027d77}{m\_window\_h};
+00069 
+\hypertarget{render__particles_8h_source_l00070}{}\hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{00070}         \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{GLuint} \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program};
+00071 
+\hypertarget{render__particles_8h_source_l00072}{}\hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{00072}         \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{GLuint} \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{m\_vbo};
+\hypertarget{render__particles_8h_source_l00073}{}\hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{00073}         \hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{GLuint} \hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{m\_colorVBO};
+00074 \};
+00075 
+00076 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif} \textcolor{comment}{//\_\_ RENDER\_PARTICLES\_\_}
+\end{DoxyCode}

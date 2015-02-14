@@ -1,10 +1,20 @@
 <map id="main" name="main">
 <area shape="rect" id="node2" href="$particles_8cpp.html#a4b66d5e31b5dc18b314c8a68163263bd" title="cleanup" alt="" coords="124,5,191,32"/>
 <area shape="rect" id="node3" href="$particles_8cpp.html#a4e20ffdf94c8d60a5c32ecde149c8554" title="cudaGLInit" alt="" coords="115,56,199,83"/>
-<area shape="rect" id="node4" href="$particles_8cpp.html#ad205012a960928f6fb61ea4f51a95e9f" title="cudaInit" alt="" coords="124,107,191,133"/>
+<area shape="rect" id="node4" href="$particle_system_8cuh.html#ad205012a960928f6fb61ea4f51a95e9f" title="cudaInit" alt="" coords="124,107,191,133"/>
 <area shape="rect" id="node5" href="$particles_8cpp.html#a0365f63f071ee9e32dddb2ff65c7628d" title="initGL" alt="" coords="129,157,185,184"/>
 <area shape="rect" id="node6" href="$particles_8cpp.html#a4f6bd2fa19ee682aad97e42cc236a861" title="initMenus" alt="" coords="118,208,197,235"/>
 <area shape="rect" id="node7" href="$particles_8cpp.html#adf670f569f3be8036b915a6245caf9da" title="initParams" alt="" coords="115,259,199,285"/>
 <area shape="rect" id="node8" href="$particles_8cpp.html#acd4773d821b4657197abdd8058000f56" title="runBenchmark" alt="" coords="104,309,211,336"/>
-<area shape="rect" id="node9" href="$particles_8cpp.html#afed059fa8ae6691333d263c5c88281f6" title="copyArrayFromDevice" alt="" coords="259,309,408,336"/>
+<area shape="rect" id="node9" href="$class_particle_system.html#a166fd86f020b6024d7d42723762d7cb2" title="ParticleSystem::update" alt="" coords="289,233,447,260"/>
+<area shape="rect" id="node17" href="$class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0" title="ParticleSystem::getNumParticles" alt="" coords="261,284,475,311"/>
+<area shape="rect" id="node18" href="$particle_system_8cuh.html#a54716407dbd516db34f42b2faf7f91a3" title="copyArrayFromDevice" alt="" coords="293,335,443,361"/>
+<area shape="rect" id="node19" href="$class_particle_system.html#a2c8214a5bcd9d9c24d16e1f0063c06d6" title="ParticleSystem::getCudaPosVBO" alt="" coords="259,385,477,412"/>
+<area shape="rect" id="node10" href="$particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642" title="mapGLBufferObject" alt="" coords="551,81,686,108"/>
+<area shape="rect" id="node11" href="$particle_system_8cuh.html#a34e9db8b801cd537e5ae5a4a886e020c" title="integrateSystem" alt="" coords="560,132,677,159"/>
+<area shape="rect" id="node12" href="$particle_system_8cuh.html#ae0a4037d25e768622443077546399cf2" title="calcHash" alt="" coords="581,183,657,209"/>
+<area shape="rect" id="node13" href="$particle_system_8cuh.html#ac71da7e4672a2732a098ba933a799257" title="sortParticles" alt="" coords="571,233,666,260"/>
+<area shape="rect" id="node14" href="$particle_system_8cuh.html#ac72ccd068434c46c2f901c751d53be1d" title="reorderDataAndFindCellStart" alt="" coords="525,284,712,311"/>
+<area shape="rect" id="node15" href="$particle_system_8cuh.html#a917d67e2ed45ea11da51ac5d7004ddfd" title="collide" alt="" coords="589,335,648,361"/>
+<area shape="rect" id="node16" href="$particle_system_8cuh.html#a98c3325419b7528d34a51ca7972d7095" title="unmapGLBufferObject" alt="" coords="544,385,693,412"/>
 </map>

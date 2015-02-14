@@ -50,6 +50,8 @@ var particles_8cpp =
     [ "displayEnabled", "particles_8cpp.html#a14095d7bf2ff02e5172105454df40b9a", null ],
     [ "displayMode", "particles_8cpp.html#afd1b0caccb0d688ceb91c2547b9da1d9", null ],
     [ "displaySliders", "particles_8cpp.html#ac345a677e529047cf89d33fc26f10fe7", null ],
+    [ "fpsCount", "particles_8cpp.html#a004233346f53b4fe7aa6110a48841ddb", null ],
+    [ "fpsLimit", "particles_8cpp.html#af88c1871ff4d704e3761b1947142cf5c", null ],
     [ "frameCheckNumber", "particles_8cpp.html#a50f26bf26e6413a34dc36fc12c9bbc83", null ],
     [ "frameCount", "particles_8cpp.html#a9c1866deb3068a1a8d475fbecc6a78d8", null ],
     [ "g_refFile", "particles_8cpp.html#ab5af5d243ea25a0fa19984c0f69af840", null ],

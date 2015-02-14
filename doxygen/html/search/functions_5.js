@@ -1,13 +1,15 @@
 var searchData=
 [
-  ['idivup',['iDivUp',['../particle_system__cuda_8cu.html#aa5accec7fb28381615c8cb68522c9eb3',1,'particleSystem_cuda.cu']]],
-  ['idle',['idle',['../particles_8cpp.html#a01131b63acf241e9db91704d89ce15d2',1,'particles.cpp']]],
-  ['initgl',['initGL',['../particles_8cpp.html#a0365f63f071ee9e32dddb2ff65c7628d',1,'particles.cpp']]],
-  ['initmenus',['initMenus',['../particles_8cpp.html#a4f6bd2fa19ee682aad97e42cc236a861',1,'particles.cpp']]],
-  ['initparams',['initParams',['../particles_8cpp.html#adf670f569f3be8036b915a6245caf9da',1,'particles.cpp']]],
-  ['initparticlesystem',['initParticleSystem',['../particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a',1,'particles.cpp']]],
-  ['integrate_5ffunctor',['integrate_functor',['../structintegrate__functor.html#a48672ec5b0d573248285cd0820b707c7',1,'integrate_functor']]],
-  ['integratesystem',['integrateSystem',['../particle_system_8cuh.html#a34e9db8b801cd537e5ae5a4a886e020c',1,'integrateSystem(float *pos, float *vel, float deltaTime, uint numParticles):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a34e9db8b801cd537e5ae5a4a886e020c',1,'integrateSystem(float *pos, float *vel, float deltaTime, uint numParticles):&#160;particleSystem_cuda.cu']]],
-  ['ixform',['ixform',['../particles_8cpp.html#aa22b13a9b9cf40b19f9c1c09603862c8',1,'particles.cpp']]],
-  ['ixformpoint',['ixformPoint',['../particles_8cpp.html#a9b3bc33348ec5b4dbb049f91362459b8',1,'particles.cpp']]]
+  ['getarray',['getArray',['../class_particle_system.html#a8bdfaa6198651ef0ceb8be489ecd78e3',1,'ParticleSystem']]],
+  ['getcellsize',['getCellSize',['../class_particle_system.html#a608bcb87f3d30fbfeae810da28ae1052',1,'ParticleSystem']]],
+  ['getcolliderpos',['getColliderPos',['../class_particle_system.html#a3c8578d474f5a6f14d903a242aec96ec',1,'ParticleSystem']]],
+  ['getcolliderradius',['getColliderRadius',['../class_particle_system.html#a56f07dfab9d5cbf510c6e0a28e816038',1,'ParticleSystem']]],
+  ['getcolorbuffer',['getColorBuffer',['../class_particle_system.html#a5d300a37ebf1a2fb8575f82ced6a208f',1,'ParticleSystem']]],
+  ['getcudacolorvbo',['getCudaColorVBO',['../class_particle_system.html#af89375a9131276f941dccefa7840adda',1,'ParticleSystem']]],
+  ['getcudaposvbo',['getCudaPosVBO',['../class_particle_system.html#a2c8214a5bcd9d9c24d16e1f0063c06d6',1,'ParticleSystem']]],
+  ['getcurrentreadbuffer',['getCurrentReadBuffer',['../class_particle_system.html#ae9f149d6b7c3b148fc397473c7c3c2e2',1,'ParticleSystem']]],
+  ['getgridsize',['getGridSize',['../class_particle_system.html#af94ba180bcb348afcfd81bb699d6aab0',1,'ParticleSystem']]],
+  ['getnumparticles',['getNumParticles',['../class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0',1,'ParticleSystem']]],
+  ['getparticleradius',['getParticleRadius',['../class_particle_system.html#abdb59a91d8483017ad71455bb2958993',1,'ParticleSystem']]],
+  ['getworldorigin',['getWorldOrigin',['../class_particle_system.html#a19d9bb799a5b5704d8fd6a286f6be20d',1,'ParticleSystem']]]
 ];

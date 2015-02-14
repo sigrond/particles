@@ -1,12 +1,8 @@
 <map id="frand" name="frand">
-<area shape="rect" id="node2" href="$class_particle_system.html#ac42e85dcd8118a958489dd2ab0085e3f" title="ParticleSystem::addSphere" alt="" coords="104,56,285,83"/>
-<area shape="rect" id="node9" href="$class_particle_system.html#aeb3f6062c7dcb31347cbedc068e22cb4" title="ParticleSystem::initGrid" alt="" coords="115,107,275,133"/>
-<area shape="rect" id="node10" href="$class_particle_system.html#af0b8f9e6fdfa4c81e171cd39862cd3c2" title="ParticleSystem::reset" alt="" coords="333,132,481,159"/>
-<area shape="rect" id="node3" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="addSphere" alt="" coords="365,31,449,57"/>
-<area shape="rect" id="node6" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="key" alt="" coords="529,81,572,108"/>
-<area shape="rect" id="node4" href="$particles_8cpp.html#a01131b63acf241e9db91704d89ce15d2" title="idle" alt="" coords="640,5,683,32"/>
-<area shape="rect" id="node5" href="$particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="927,81,977,108"/>
-<area shape="rect" id="node7" href="$particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="620,107,703,133"/>
-<area shape="rect" id="node8" href="$particles_8cpp.html#a4f6bd2fa19ee682aad97e42cc236a861" title="initMenus" alt="" coords="775,107,854,133"/>
-<area shape="rect" id="node11" href="$particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initParticleSystem" alt="" coords="751,157,879,184"/>
+<area shape="rect" id="node2" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="addSphere" alt="" coords="136,31,220,57"/>
+<area shape="rect" id="node6" href="$class_particle_system.html#a519070812dd9eb349f270c793c5f64b6" title="ParticleSystem::reset" alt="" coords="104,81,252,108"/>
+<area shape="rect" id="node3" href="$particles_8cpp.html#a01131b63acf241e9db91704d89ce15d2" title="idle" alt="" coords="343,5,385,32"/>
+<area shape="rect" id="node4" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="key" alt="" coords="343,56,385,83"/>
+<area shape="rect" id="node5" href="$particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="476,56,559,83"/>
+<area shape="rect" id="node7" href="$particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initParticleSystem" alt="" coords="300,107,428,133"/>
 </map>

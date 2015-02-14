@@ -1,26 +1,29 @@
 var NAVTREE =
 [
   [ "particles_vs2008", "index.html", [
-    [ "Data Structures", null, [
-      [ "Data Structures", "annotated.html", "annotated" ],
-      [ "Data Structure Index", "classes.html", null ],
-      [ "Data Fields", "functions.html", [
+    [ "Cząstki", "index.html", [
+      [ "Opis Ogólny", "index.html#Opis_Ogólny", null ]
+    ] ],
+    [ "Klasy", null, [
+      [ "Lista klas", "annotated.html", "annotated" ],
+      [ "Indeks klas", "classes.html", null ],
+      [ "Składowe klas", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Enumerations", "functions_enum.html", null ],
-        [ "Enumerator", "functions_eval.html", null ]
+        [ "Funkcje", "functions_func.html", null ],
+        [ "Zmienne", "functions_vars.html", null ],
+        [ "Wyliczenia", "functions_enum.html", null ],
+        [ "Wartości wyliczeń", "functions_eval.html", null ]
       ] ]
     ] ],
-    [ "Files", null, [
-      [ "File List", "files.html", "files" ],
-      [ "Globals", "globals.html", [
+    [ "Pliki", null, [
+      [ "Lista plików", "files.html", "files" ],
+      [ "Składowe plików", "globals.html", [
         [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+        [ "Funkcje", "globals_func.html", null ],
+        [ "Zmienne", "globals_vars.html", null ],
+        [ "Definicje typów", "globals_type.html", null ],
+        [ "Wartości wyliczeń", "globals_eval.html", null ],
+        [ "Definicje", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -28,7 +31,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"annotated.html",
+"particles__kernel_8cuh.html#a384444f066551f04f65ff94b99aa7091"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

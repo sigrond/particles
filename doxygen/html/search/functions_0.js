@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['_5fcompileprogram',['_compileProgram',['../class_particle_renderer.html#ab84c57e4571c9ae342ef7f11dbd63484',1,'ParticleRenderer']]],
-  ['_5fdrawpoints',['_drawPoints',['../class_particle_renderer.html#a90b5f9555e009355529bbf4ac7a5cdd2',1,'ParticleRenderer']]],
-  ['_5finitgl',['_initGL',['../class_particle_renderer.html#a98ccf62681190a6550f67f404a3741b3',1,'ParticleRenderer']]]
+  ['_5fcompileprogram',['_compileProgram',['../class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b',1,'ParticleRenderer']]],
+  ['_5fdrawpoints',['_drawPoints',['../class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6',1,'ParticleRenderer']]],
+  ['_5ffinalize',['_finalize',['../class_particle_system.html#a5d6a52db7d1277c8fe734ecceb69e5c6',1,'ParticleSystem']]],
+  ['_5finitgl',['_initGL',['../class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b',1,'ParticleRenderer']]],
+  ['_5finitialize',['_initialize',['../class_particle_system.html#a484988642e046424d32a13709204e8de',1,'ParticleSystem']]]
 ];

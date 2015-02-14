@@ -1,0 +1,72 @@
+\hypertarget{particle_system_8cuh_source}{\section{particle\-System.\-cuh}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright 1993-2012 NVIDIA Corporation.  All rights reserved.}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ * Please refer to the NVIDIA end user license agreement (EULA) associated}
+00005 \textcolor{comment}{ * with this source code for terms and conditions that govern your use of}
+00006 \textcolor{comment}{ * this software. Any use, reproduction, disclosure, or distribution of}
+00007 \textcolor{comment}{ * this software and related documentation outside the terms of the EULA}
+00008 \textcolor{comment}{ * is strictly prohibited.}
+00009 \textcolor{comment}{ *}
+00010 \textcolor{comment}{ */}
+00011 
+00012 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"}
+00013 \{
+00014     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{cudaInit}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv);
+00015 
+00016     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}(\textcolor{keywordtype}{void} **devPtr, \textcolor{keywordtype}{int} size);
+00017     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\textcolor{keywordtype}{void} *devPtr);
+00018 
+00019     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_af59f4c114812beed29874c0a1a31519d}{threadSync}();
+00020 
+00021     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{copyArrayFromDevice}(\textcolor{keywordtype}{void} *host, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *device, \textcolor{keyword}{struct} 
+      cudaGraphicsResource **cuda\_vbo\_resource, \textcolor{keywordtype}{int} size);
+00022     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_ac4d4ecd921dbed6c2deef639ca295374}{copyArrayToDevice}(\textcolor{keywordtype}{void} *device, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *host, \textcolor{keywordtype}{int} offset, \textcolor{keywordtype}{int} size);
+00023     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}{registerGLBufferObject}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} vbo, \textcolor{keyword}{struct} cudaGraphicsResource **
+      cuda\_vbo\_resource);
+00024     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a9afef8c00ca779aae2d7484b45bce34c}{unregisterGLBufferObject}(\textcolor{keyword}{struct} cudaGraphicsResource *
+      cuda\_vbo\_resource);
+00025     \textcolor{keywordtype}{void} *\hyperlink{particle_system_8cuh_aa491077afd740a269815eb9ce81c8642}{mapGLBufferObject}(\textcolor{keyword}{struct} cudaGraphicsResource **cuda\_vbo\_resource);
+00026     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a98c3325419b7528d34a51ca7972d7095}{unmapGLBufferObject}(\textcolor{keyword}{struct} cudaGraphicsResource *cuda\_vbo\_resource);
+00027 
+00028 
+00029     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a342176dbaba2668312c45e1a1423fc4e}{setParameters}(\hyperlink{struct_sim_params}{SimParams} *hostParams);
+00030 
+00031     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a34e9db8b801cd537e5ae5a4a886e020c}{integrateSystem}(\textcolor{keywordtype}{float} *pos,
+00032                          \textcolor{keywordtype}{float} *vel,
+00033                          \textcolor{keywordtype}{float} deltaTime,
+00034                          \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} numParticles);
+00035 
+00036     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_ae0a4037d25e768622443077546399cf2}{calcHash}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}  *gridParticleHash,
+00037                   \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}  *gridParticleIndex,
+00038                   \textcolor{keywordtype}{float} *pos,
+00039                   \textcolor{keywordtype}{int}    numParticles);
+00040 
+00041     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_ac72ccd068434c46c2f901c751d53be1d}{reorderDataAndFindCellStart}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}  *cellStart,
+00042                                      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}  *cellEnd,
+00043                                      \textcolor{keywordtype}{float} *sortedPos,
+00044                                      \textcolor{keywordtype}{float} *sortedVel,
+00045                                      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}  *gridParticleHash,
+00046                                      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}  *gridParticleIndex,
+00047                                      \textcolor{keywordtype}{float} *oldPos,
+00048                                      \textcolor{keywordtype}{float} *oldVel,
+00049                                      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}   numParticles,
+00050                                      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}   numCells);
+00051 
+00052     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a917d67e2ed45ea11da51ac5d7004ddfd}{collide}(\textcolor{keywordtype}{float} *newVel,
+00053                  \textcolor{keywordtype}{float} *sortedPos,
+00054                  \textcolor{keywordtype}{float} *sortedVel,
+00055                  \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}  *gridParticleIndex,
+00056                  \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}  *cellStart,
+00057                  \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}  *cellEnd,
+00058                  \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}   numParticles,
+00059                  \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}   numCells);
+00060 
+00061     \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_ac71da7e4672a2732a098ba933a799257}{sortParticles}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} *dGridParticleHash, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} *dGridParticleIndex, 
+      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} numParticles);
+00062 
+00063 \}
+\end{DoxyCode}

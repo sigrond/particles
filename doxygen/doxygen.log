@@ -1,31 +1,44 @@
+warning: The selected output language "polish" has not been updated
+since release 1.8.2.  As a result some sentences may appear in English.
+
 warning: source ..\..\..\common\inc\nvShaderUtils.h is not a readable file or directory... skipping.
 warning: source ..\..\..\common\inc\rendercheck_gl.h is not a readable file or directory... skipping.
-error: F:/Moje dokumenty/particles/render_particles.cpp:12:10: fatal error: 'GL/glew.h' file not found [clang]
-error: F:/Moje dokumenty/particles/particleSystem.h:18:10: fatal error: 'helper_functions.h' file not found [clang]
-error: F:/Moje dokumenty/particles/particles.cpp:24:10: fatal error: 'GL/glew.h' file not found [clang]
-error: F:/Moje dokumenty/particles/particles_kernel.cuh:23:10: fatal error: 'vector_types.h' file not found [clang]
-error: F:/Moje dokumenty/particles/particles_kernel_impl.cuh:22:10: fatal error: 'helper_math.h' file not found [clang]
-error: F:/Moje dokumenty/particles/particleSystem_cuda.cu:18:10: fatal error: 'GL/freeglut.h' file not found [clang]
-F:/Moje dokumenty/particles/particleSystem.cpp:33: warning: documented symbol `ParticleSystem' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:78: warning: documented symbol `~ParticleSystem' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:85: warning: documented symbol `uint createVBO' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:123: warning: documented symbol `void _initialize' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:205: warning: documented symbol `void _finalize' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:238: warning: documented symbol `void update' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:306: warning: documented symbol `void dumpGrid' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:331: warning: documented symbol `void dumpParticles' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:346: warning: documented symbol `float * getArray' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:374: warning: documented symbol `void setArray' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:406: warning: documented symbol `void initGrid' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:436: warning: documented symbol `void reset' was not declared or defined.
-F:/Moje dokumenty/particles/particleSystem.cpp:485: warning: no matching file member found for 
-void addSphere(int start, float *pos, float *vel, int r, float spacing)
-Possible candidates:
- 'void addSphere()' at line 324 of fileF:/Moje dokumenty/particles/particles.cpp
-
-error: F:/Moje dokumenty/particles/particles.cpp:24:10: fatal error: 'GL/glew.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particles.cpp:35:10: fatal error: 'GL/glew.h' file not found [clang]
 error: F:/Moje dokumenty/particles/particleSystem.h:18:10: fatal error: 'helper_functions.h' file not found [clang]
 error: F:/Moje dokumenty/particles/render_particles.cpp:12:10: fatal error: 'GL/glew.h' file not found [clang]
-error: F:/Moje dokumenty/particles/particles_kernel.cuh:23:10: fatal error: 'vector_types.h' file not found [clang]
 error: F:/Moje dokumenty/particles/particles_kernel_impl.cuh:22:10: fatal error: 'helper_math.h' file not found [clang]
 error: F:/Moje dokumenty/particles/particleSystem_cuda.cu:18:10: fatal error: 'GL/freeglut.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particles.cpp:35:10: fatal error: 'GL/glew.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particleSystem.h:18:10: fatal error: 'helper_functions.h' file not found [clang]
+error: F:/Moje dokumenty/particles/render_particles.cpp:12:10: fatal error: 'GL/glew.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particles_kernel_impl.cuh:22:10: fatal error: 'helper_math.h' file not found [clang]
+error: F:/Moje dokumenty/particles/particleSystem_cuda.cu:18:10: fatal error: 'GL/freeglut.h' file not found [clang]
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:178: warning: argument 'uint' of command @param is not found in the argument list of calcHashD(uint *gridParticleHash, uint *gridParticleIndex, float4 *pos, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:178: warning: The following parameters of calcHashD(uint *gridParticleHash, uint *gridParticleIndex, float4 *pos, uint numParticles) are not documented:
+  parameter 'numParticles'
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:406: warning: argument 'float4' of command @param is not found in the argument list of collideD(float4 *newVel, float4 *oldPos, float4 *oldVel, uint *gridParticleIndex, uint *cellStart, uint *cellEnd, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:406: warning: argument 'float4' of command @param is not found in the argument list of collideD(float4 *newVel, float4 *oldPos, float4 *oldVel, uint *gridParticleIndex, uint *cellStart, uint *cellEnd, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:406: warning: argument 'uint' of command @param is not found in the argument list of collideD(float4 *newVel, float4 *oldPos, float4 *oldVel, uint *gridParticleIndex, uint *cellStart, uint *cellEnd, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:406: warning: argument 'uint' of command @param is not found in the argument list of collideD(float4 *newVel, float4 *oldPos, float4 *oldVel, uint *gridParticleIndex, uint *cellStart, uint *cellEnd, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:406: warning: The following parameters of collideD(float4 *newVel, float4 *oldPos, float4 *oldVel, uint *gridParticleIndex, uint *cellStart, uint *cellEnd, uint numParticles) are not documented:
+  parameter 'oldPos'
+  parameter 'oldVel'
+  parameter 'gridParticleIndex'
+  parameter 'cellStart'
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:210: warning: argument 'uint' of command @param is not found in the argument list of reorderDataAndFindCellStartD(uint *cellStart, uint *cellEnd, float4 *sortedPos, float4 *sortedVel, uint *gridParticleHash, uint *gridParticleIndex, float4 *oldPos, float4 *oldVel, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:210: warning: argument 'float4' of command @param is not found in the argument list of reorderDataAndFindCellStartD(uint *cellStart, uint *cellEnd, float4 *sortedPos, float4 *sortedVel, uint *gridParticleHash, uint *gridParticleIndex, float4 *oldPos, float4 *oldVel, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:210: warning: argument 'float4' of command @param is not found in the argument list of reorderDataAndFindCellStartD(uint *cellStart, uint *cellEnd, float4 *sortedPos, float4 *sortedVel, uint *gridParticleHash, uint *gridParticleIndex, float4 *oldPos, float4 *oldVel, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:210: warning: argument 'uint' of command @param is not found in the argument list of reorderDataAndFindCellStartD(uint *cellStart, uint *cellEnd, float4 *sortedPos, float4 *sortedVel, uint *gridParticleHash, uint *gridParticleIndex, float4 *oldPos, float4 *oldVel, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:210: warning: argument 'uint' of command @param is not found in the argument list of reorderDataAndFindCellStartD(uint *cellStart, uint *cellEnd, float4 *sortedPos, float4 *sortedVel, uint *gridParticleHash, uint *gridParticleIndex, float4 *oldPos, float4 *oldVel, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:210: warning: argument 'float4' of command @param is not found in the argument list of reorderDataAndFindCellStartD(uint *cellStart, uint *cellEnd, float4 *sortedPos, float4 *sortedVel, uint *gridParticleHash, uint *gridParticleIndex, float4 *oldPos, float4 *oldVel, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:210: warning: argument 'float4' of command @param is not found in the argument list of reorderDataAndFindCellStartD(uint *cellStart, uint *cellEnd, float4 *sortedPos, float4 *sortedVel, uint *gridParticleHash, uint *gridParticleIndex, float4 *oldPos, float4 *oldVel, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:210: warning: argument 'uint' of command @param is not found in the argument list of reorderDataAndFindCellStartD(uint *cellStart, uint *cellEnd, float4 *sortedPos, float4 *sortedVel, uint *gridParticleHash, uint *gridParticleIndex, float4 *oldPos, float4 *oldVel, uint numParticles)
+F:/Moje dokumenty/particles/particles_kernel_impl.cuh:210: warning: The following parameters of reorderDataAndFindCellStartD(uint *cellStart, uint *cellEnd, float4 *sortedPos, float4 *sortedVel, uint *gridParticleHash, uint *gridParticleIndex, float4 *oldPos, float4 *oldVel, uint numParticles) are not documented:
+  parameter 'cellEnd'
+  parameter 'sortedPos'
+  parameter 'sortedVel'
+  parameter 'gridParticleHash'
+  parameter 'gridParticleIndex'
+  parameter 'oldPos'
+  parameter 'oldVel'
+  parameter 'numParticles'

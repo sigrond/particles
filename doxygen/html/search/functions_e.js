@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['unmapglbufferobject',['unmapGLBufferObject',['../particle_system_8cuh.html#a98c3325419b7528d34a51ca7972d7095',1,'unmapGLBufferObject(struct cudaGraphicsResource *cuda_vbo_resource):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a98c3325419b7528d34a51ca7972d7095',1,'unmapGLBufferObject(struct cudaGraphicsResource *cuda_vbo_resource):&#160;particleSystem_cuda.cu']]],
-  ['unregisterglbufferobject',['unregisterGLBufferObject',['../particle_system_8cuh.html#a9afef8c00ca779aae2d7484b45bce34c',1,'unregisterGLBufferObject(struct cudaGraphicsResource *cuda_vbo_resource):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a9afef8c00ca779aae2d7484b45bce34c',1,'unregisterGLBufferObject(struct cudaGraphicsResource *cuda_vbo_resource):&#160;particleSystem_cuda.cu']]]
+  ['threadsync',['threadSync',['../particle_system_8cuh.html#af59f4c114812beed29874c0a1a31519d',1,'threadSync():&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#af59f4c114812beed29874c0a1a31519d',1,'threadSync():&#160;particleSystem_cuda.cu']]]
 ];

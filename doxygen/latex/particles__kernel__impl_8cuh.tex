@@ -1,0 +1,544 @@
+\hypertarget{particles__kernel__impl_8cuh}{\section{Dokumentacja pliku particles\-\_\-kernel\-\_\-impl.\-cuh}
+\label{particles__kernel__impl_8cuh}\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include $<$float.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}helper\-\_\-math.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}math\-\_\-constants.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}particles\-\_\-kernel.\-cuh\char`\"{}}\\*
+Wykres zależności załączania dla particles\-\_\-kernel\-\_\-impl.\-cuh\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles__kernel__impl_8cuh__incl}
+\end{center}
+\end{figure}
+Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{particles__kernel__impl_8cuh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structintegrate__functor}{integrate\-\_\-functor}
+\begin{DoxyCompactList}\small\item\em ta struktura inicjowana jest z krokiem delta\-\_\-time dla danych opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w G\-P\-U) jako para (tuple) float4 położenia i prędkości \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{particles__kernel__impl_8cuh_a5de512cb982bf8e9102c9e80ae68a7f2}{\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-H\-\_\-}
+\end{DoxyCompactItemize}
+\subsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-device\-\_\-\-\_\- int3 \hyperlink{particles__kernel__impl_8cuh_a63d62750e6cbb8781c5ff252fc13c1fd}{calc\-Grid\-Pos} (float3 p)
+\begin{DoxyCompactList}\small\item\em calculate position in uniform grid \end{DoxyCompactList}\item 
+\-\_\-\-\_\-device\-\_\-\-\_\- \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles__kernel__impl_8cuh_ad20ac253847311c176aacf9a224e14e5}{calc\-Grid\-Hash} (int3 grid\-Pos)
+\begin{DoxyCompactList}\small\item\em calculate address in grid from position (clamping to edges) \end{DoxyCompactList}\item 
+\-\_\-\-\_\-global\-\_\-\-\_\- void \hyperlink{particles__kernel__impl_8cuh_a4c688195fb1c2963cbdcaf62c737b9d7}{calc\-Hash\-D} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Hash, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Index, float4 $\ast$pos, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles})
+\begin{DoxyCompactList}\small\item\em calculate grid hash value for each particle \end{DoxyCompactList}\item 
+\-\_\-\-\_\-global\-\_\-\-\_\- void \hyperlink{particles__kernel__impl_8cuh_abe84636059af3ed58ef603665395e6f4}{reorder\-Data\-And\-Find\-Cell\-Start\-D} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-Start, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-End, float4 $\ast$sorted\-Pos, float4 $\ast$sorted\-Vel, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Hash, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Index, float4 $\ast$old\-Pos, float4 $\ast$old\-Vel, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles})
+\begin{DoxyCompactList}\small\item\em rearrange particle data into sorted order, and find the start of each cell in the sorted hash array \end{DoxyCompactList}\item 
+\-\_\-\-\_\-device\-\_\-\-\_\- float3 \hyperlink{particles__kernel__impl_8cuh_a1d93cb067b16b4a472e9c1a08d9d8e68}{collide\-Spheres} (float3 pos\-A, float3 pos\-B, float3 vel\-A, float3 vel\-B, float radius\-A, float radius\-B, float attraction)
+\begin{DoxyCompactList}\small\item\em collide two spheres using D\-E\-M method \end{DoxyCompactList}\item 
+\-\_\-\-\_\-device\-\_\-\-\_\- float3 \hyperlink{particles__kernel__impl_8cuh_a8e623e11d4ac873cfbe9d7c916326363}{collide\-Cell} (int3 grid\-Pos, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index, float3 pos, float3 vel, float4 $\ast$old\-Pos, float4 $\ast$old\-Vel, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-Start, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-End)
+\begin{DoxyCompactList}\small\item\em collide a particle against all other particles in a given cell \end{DoxyCompactList}\item 
+\-\_\-\-\_\-global\-\_\-\-\_\- void \hyperlink{particles__kernel__impl_8cuh_a9056c5c0f33cbc0acb1c2b12e1a2a530}{collide\-D} (float4 $\ast$new\-Vel, float4 $\ast$old\-Pos, float4 $\ast$old\-Vel, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Index, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-Start, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-End, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles})
+\begin{DoxyCompactList}\small\item\em wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Zmienne}
+\begin{DoxyCompactItemize}
+\item 
+\-\_\-\-\_\-constant\-\_\-\-\_\- \hyperlink{struct_sim_params}{Sim\-Params} \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}
+\end{DoxyCompactItemize}
+
+
+\subsection{Dokumentacja definicji}
+\hypertarget{particles__kernel__impl_8cuh_a5de512cb982bf8e9102c9e80ae68a7f2}{\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}!\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-H\-\_\-@{\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-H\-\_\-}}
+\index{\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-H\-\_\-@{\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-H\-\_\-}!particles_kernel_impl.cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+\subsubsection[{\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-H\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S\-\_\-\-K\-E\-R\-N\-E\-L\-\_\-\-H\-\_\-}}\label{particles__kernel__impl_8cuh_a5de512cb982bf8e9102c9e80ae68a7f2}
+
+
+Definicja w linii \hyperlink{particles__kernel__impl_8cuh_source_l00017}{17} pliku \hyperlink{particles__kernel__impl_8cuh_source}{particles\-\_\-kernel\-\_\-impl.\-cuh}.
+
+
+
+\subsection{Dokumentacja funkcji}
+\hypertarget{particles__kernel__impl_8cuh_ad20ac253847311c176aacf9a224e14e5}{\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}!calc\-Grid\-Hash@{calc\-Grid\-Hash}}
+\index{calc\-Grid\-Hash@{calc\-Grid\-Hash}!particles_kernel_impl.cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+\subsubsection[{calc\-Grid\-Hash}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-device\-\_\-\-\_\- {\bf uint} calc\-Grid\-Hash (
+\begin{DoxyParamCaption}
+\item[{int3}]{grid\-Pos}
+\end{DoxyParamCaption}
+)}}\label{particles__kernel__impl_8cuh_ad20ac253847311c176aacf9a224e14e5}
+
+
+calculate address in grid from position (clamping to edges) 
+
+
+\begin{DoxyParams}{Parametry}
+{\em grid\-Pos} & int3 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\bfseries device} uint 
+\end{DoxyReturn}
+
+
+Definicja w linii \hyperlink{particles__kernel__impl_8cuh_source_l00169}{169} pliku \hyperlink{particles__kernel__impl_8cuh_source}{particles\-\_\-kernel\-\_\-impl.\-cuh}.
+
+
+\begin{DoxyCode}
+00170 \{
+00171     gridPos.x = gridPos.x & (\hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize}.x-1);  \textcolor{comment}{// wrap grid, assumes size is power of 2}
+00172     gridPos.y = gridPos.y & (\hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize}.y-1);
+00173     gridPos.z = gridPos.z & (\hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize}.z-1);
+00174     \textcolor{keywordflow}{return} \_\_umul24(\_\_umul24(gridPos.z, \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize}.y), \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.
+      \hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize}.x) + \_\_umul24(gridPos.y, \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize}.x) + gridPos.x;
+00175 \}
+\end{DoxyCode}
+\hypertarget{particles__kernel__impl_8cuh_a63d62750e6cbb8781c5ff252fc13c1fd}{\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}!calc\-Grid\-Pos@{calc\-Grid\-Pos}}
+\index{calc\-Grid\-Pos@{calc\-Grid\-Pos}!particles_kernel_impl.cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+\subsubsection[{calc\-Grid\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-device\-\_\-\-\_\- int3 calc\-Grid\-Pos (
+\begin{DoxyParamCaption}
+\item[{float3}]{p}
+\end{DoxyParamCaption}
+)}}\label{particles__kernel__impl_8cuh_a63d62750e6cbb8781c5ff252fc13c1fd}
+
+
+calculate position in uniform grid 
+
+
+\begin{DoxyParams}{Parametry}
+{\em p} & float3 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\bfseries device} int3 
+\end{DoxyReturn}
+
+
+Definicja w linii \hyperlink{particles__kernel__impl_8cuh_source_l00153}{153} pliku \hyperlink{particles__kernel__impl_8cuh_source}{particles\-\_\-kernel\-\_\-impl.\-cuh}.
+
+
+\begin{DoxyCode}
+00154 \{
+00155     int3 gridPos;
+00156     gridPos.x = floor((p.x - \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a1ed7465773f15f2874650f19cec3d0a9}{worldOrigin}.x) / \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.
+      \hyperlink{struct_sim_params_ad5d71ad4ba6acc829a35f47b3da3e169}{cellSize}.x);
+00157     gridPos.y = floor((p.y - \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a1ed7465773f15f2874650f19cec3d0a9}{worldOrigin}.y) / \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.
+      \hyperlink{struct_sim_params_ad5d71ad4ba6acc829a35f47b3da3e169}{cellSize}.y);
+00158     gridPos.z = floor((p.z - \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a1ed7465773f15f2874650f19cec3d0a9}{worldOrigin}.z) / \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.
+      \hyperlink{struct_sim_params_ad5d71ad4ba6acc829a35f47b3da3e169}{cellSize}.z);
+00159     \textcolor{keywordflow}{return} gridPos;
+00160 \}
+\end{DoxyCode}
+\hypertarget{particles__kernel__impl_8cuh_a4c688195fb1c2963cbdcaf62c737b9d7}{\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}!calc\-Hash\-D@{calc\-Hash\-D}}
+\index{calc\-Hash\-D@{calc\-Hash\-D}!particles_kernel_impl.cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+\subsubsection[{calc\-Hash\-D}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-global\-\_\-\-\_\- void calc\-Hash\-D (
+\begin{DoxyParamCaption}
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Hash, }
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Index, }
+\item[{float4 $\ast$}]{pos, }
+\item[{{\bf uint}}]{num\-Particles}
+\end{DoxyParamCaption}
+)}}\label{particles__kernel__impl_8cuh_a4c688195fb1c2963cbdcaf62c737b9d7}
+
+
+calculate grid hash value for each particle 
+
+
+\begin{DoxyParams}{Parametry}
+{\em grid\-Particle\-Hash} & uint$\ast$ output \\
+\hline
+{\em $\ast$grid\-Particle\-Index} & uint output \\
+\hline
+{\em $\ast$pos} & float4 input\-: positions \\
+\hline
+{\em uint} & num\-Particles \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\bfseries global} void 
+\end{DoxyReturn}
+
+
+Definicja w linii \hyperlink{particles__kernel__impl_8cuh_source_l00188}{188} pliku \hyperlink{particles__kernel__impl_8cuh_source}{particles\-\_\-kernel\-\_\-impl.\-cuh}.
+
+
+\begin{DoxyCode}
+00192 \{
+00193     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index = \_\_umul24(blockIdx.x, blockDim.x) + threadIdx.x;
+00194 
+00195     \textcolor{keywordflow}{if} (index >= \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}) \textcolor{keywordflow}{return};
+00196 
+00197     \textcolor{keyword}{volatile} float4 p = pos[index];
+00198 
+00199     \textcolor{comment}{// get address in grid}
+00200     int3 gridPos = \hyperlink{particles__kernel__impl_8cuh_a63d62750e6cbb8781c5ff252fc13c1fd}{calcGridPos}(make\_float3(p.x, p.y, p.z));
+00201     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} hash = \hyperlink{particles__kernel__impl_8cuh_ad20ac253847311c176aacf9a224e14e5}{calcGridHash}(gridPos);
+00202 
+00203     \textcolor{comment}{// store grid hash and particle index}
+00204     gridParticleHash[index] = hash;
+00205     gridParticleIndex[index] = index;
+00206 \}
+\end{DoxyCode}
+\hypertarget{particles__kernel__impl_8cuh_a8e623e11d4ac873cfbe9d7c916326363}{\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}!collide\-Cell@{collide\-Cell}}
+\index{collide\-Cell@{collide\-Cell}!particles_kernel_impl.cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+\subsubsection[{collide\-Cell}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-device\-\_\-\-\_\- float3 collide\-Cell (
+\begin{DoxyParamCaption}
+\item[{int3}]{grid\-Pos, }
+\item[{{\bf uint}}]{index, }
+\item[{float3}]{pos, }
+\item[{float3}]{vel, }
+\item[{float4 $\ast$}]{old\-Pos, }
+\item[{float4 $\ast$}]{old\-Vel, }
+\item[{{\bf uint} $\ast$}]{cell\-Start, }
+\item[{{\bf uint} $\ast$}]{cell\-End}
+\end{DoxyParamCaption}
+)}}\label{particles__kernel__impl_8cuh_a8e623e11d4ac873cfbe9d7c916326363}
+
+
+collide a particle against all other particles in a given cell 
+
+
+\begin{DoxyParams}{Parametry}
+{\em grid\-Pos} & int3 \\
+\hline
+{\em index} & uint \\
+\hline
+{\em pos} & float3 \\
+\hline
+{\em vel} & float3 \\
+\hline
+{\em old\-Pos} & float4$\ast$ \\
+\hline
+{\em old\-Vel} & float4$\ast$ \\
+\hline
+{\em cell\-Start} & uint$\ast$ \\
+\hline
+{\em cell\-End} & uint$\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\bfseries device} float3 
+\end{DoxyReturn}
+
+
+Definicja w linii \hyperlink{particles__kernel__impl_8cuh_source_l00368}{368} pliku \hyperlink{particles__kernel__impl_8cuh_source}{particles\-\_\-kernel\-\_\-impl.\-cuh}.
+
+
+\begin{DoxyCode}
+00376 \{
+00377     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} gridHash = \hyperlink{particles__kernel__impl_8cuh_ad20ac253847311c176aacf9a224e14e5}{calcGridHash}(gridPos);
+00378 
+00379     \textcolor{comment}{// get start of bucket for this cell}
+00380     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} startIndex = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(cellStart, gridHash);
+00381 
+00382     float3 force = make\_float3(0.0f);
+00383 
+00384     \textcolor{keywordflow}{if} (startIndex != 0xffffffff)          \textcolor{comment}{// cell is not empty}
+00385     \{
+00386         \textcolor{comment}{// iterate over particles in this cell}
+00387         \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} endIndex = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(cellEnd, gridHash);
+00388 
+00389         \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j=startIndex; j<endIndex; j++)
+00390         \{
+00391             \textcolor{keywordflow}{if} (j != index)                \textcolor{comment}{// check not colliding with self}
+00392             \{
+00393                 float3 pos2 = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldPos, j));
+00394                 float3 vel2 = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldVel, j));
+00395 
+00396                 \textcolor{comment}{// collide two spheres}
+00397                 force += \hyperlink{particles__kernel__impl_8cuh_a1d93cb067b16b4a472e9c1a08d9d8e68}{collideSpheres}(pos, pos2, vel, vel2, 
+      \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}, \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}, 
+      \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_acf7442ae8a49237861944271cb630d01}{attraction});
+00398             \}
+00399         \}
+00400     \}
+00401 
+00402     \textcolor{keywordflow}{return} force;
+00403 \}
+\end{DoxyCode}
+\hypertarget{particles__kernel__impl_8cuh_a9056c5c0f33cbc0acb1c2b12e1a2a530}{\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}!collide\-D@{collide\-D}}
+\index{collide\-D@{collide\-D}!particles_kernel_impl.cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+\subsubsection[{collide\-D}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-global\-\_\-\-\_\- void collide\-D (
+\begin{DoxyParamCaption}
+\item[{float4 $\ast$}]{new\-Vel, }
+\item[{float4 $\ast$}]{old\-Pos, }
+\item[{float4 $\ast$}]{old\-Vel, }
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Index, }
+\item[{{\bf uint} $\ast$}]{cell\-Start, }
+\item[{{\bf uint} $\ast$}]{cell\-End, }
+\item[{{\bf uint}}]{num\-Particles}
+\end{DoxyParamCaption}
+)}}\label{particles__kernel__impl_8cuh_a9056c5c0f33cbc0acb1c2b12e1a2a530}
+
+
+wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu 
+
+
+\begin{DoxyParams}{Parametry}
+{\em new\-Vel} & float4$\ast$ output\-: new velocit \\
+\hline
+{\em float4} & $\ast$old\-Pos input\-: sorted positions \\
+\hline
+{\em float4} & $\ast$old\-Vel input\-: sorted velocities \\
+\hline
+{\em uint} & $\ast$grid\-Particle\-Index input\-: sorted particle indices \\
+\hline
+{\em uint} & $\ast$cell\-Start \\
+\hline
+{\em cell\-End} & uint$\ast$ \\
+\hline
+{\em num\-Particles} & uint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\bfseries global} void 
+\end{DoxyReturn}
+
+
+Definicja w linii \hyperlink{particles__kernel__impl_8cuh_source_l00419}{419} pliku \hyperlink{particles__kernel__impl_8cuh_source}{particles\-\_\-kernel\-\_\-impl.\-cuh}.
+
+
+\begin{DoxyCode}
+00426 \{
+00427     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index = \_\_mul24(blockIdx.x,blockDim.x) + threadIdx.x;
+00428 
+00429     \textcolor{keywordflow}{if} (index >= \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}) \textcolor{keywordflow}{return};
+00430 
+00431     \textcolor{comment}{// read particle data from sorted arrays}
+00432     float3 pos = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldPos, index));
+00433     float3 vel = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldVel, index));
+00434 
+00435     \textcolor{comment}{// get address in grid}
+00436     int3 gridPos = \hyperlink{particles__kernel__impl_8cuh_a63d62750e6cbb8781c5ff252fc13c1fd}{calcGridPos}(pos);
+00437 
+00438     \textcolor{comment}{// examine neighbouring cells}
+00439     float3 force = make\_float3(0.0f);
+00440 
+00441     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} z=-1; z<=1; z++)
+00442     \{
+00443         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y=-1; y<=1; y++)
+00444         \{
+00445             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x=-1; x<=1; x++)
+00446             \{
+00447                 int3 neighbourPos = gridPos + make\_int3(x, y, z);
+00448                 force += \hyperlink{particles__kernel__impl_8cuh_a8e623e11d4ac873cfbe9d7c916326363}{collideCell}(neighbourPos, index, pos, vel, oldPos, oldVel, cellStart, 
+      cellEnd);
+00449             \}
+00450         \}
+00451     \}
+00452 
+00453     \textcolor{comment}{// collide with cursor sphere}
+00454     force += \hyperlink{particles__kernel__impl_8cuh_a1d93cb067b16b4a472e9c1a08d9d8e68}{collideSpheres}(pos, \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_aa27be265020f137f0a9cfbc3f1d2d9f8}{colliderPos}, vel, make\_float3(0.0f, 
+      0.0f, 0.0f), \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}, \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.
+      \hyperlink{struct_sim_params_a06ca2162f6f0aec08343db6ed8cd4478}{colliderRadius}, 0.0f);
+00455 
+00456     \textcolor{comment}{// write new velocity back to original unsorted location}
+00457     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} originalIndex = gridParticleIndex[index];
+00458     newVel[originalIndex] = make\_float4(vel + force, 0.0f);
+00459 \}
+\end{DoxyCode}
+\hypertarget{particles__kernel__impl_8cuh_a1d93cb067b16b4a472e9c1a08d9d8e68}{\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}!collide\-Spheres@{collide\-Spheres}}
+\index{collide\-Spheres@{collide\-Spheres}!particles_kernel_impl.cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+\subsubsection[{collide\-Spheres}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-device\-\_\-\-\_\- float3 collide\-Spheres (
+\begin{DoxyParamCaption}
+\item[{float3}]{pos\-A, }
+\item[{float3}]{pos\-B, }
+\item[{float3}]{vel\-A, }
+\item[{float3}]{vel\-B, }
+\item[{float}]{radius\-A, }
+\item[{float}]{radius\-B, }
+\item[{float}]{attraction}
+\end{DoxyParamCaption}
+)}}\label{particles__kernel__impl_8cuh_a1d93cb067b16b4a472e9c1a08d9d8e68}
+
+
+collide two spheres using D\-E\-M method 
+
+
+\begin{DoxyParams}{Parametry}
+{\em pos\-A} & float3 \\
+\hline
+{\em pos\-B} & float3 \\
+\hline
+{\em vel\-A} & float3 \\
+\hline
+{\em vel\-B} & float3 \\
+\hline
+{\em radius\-A} & float \\
+\hline
+{\em radius\-B} & float \\
+\hline
+{\em attraction} & float \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\bfseries device} float3 
+\end{DoxyReturn}
+
+
+Definicja w linii \hyperlink{particles__kernel__impl_8cuh_source_l00307}{307} pliku \hyperlink{particles__kernel__impl_8cuh_source}{particles\-\_\-kernel\-\_\-impl.\-cuh}.
+
+
+\begin{DoxyCode}
+00311 \{
+00312     \textcolor{comment}{// calculate relative position}
+00313     float3 relPos = posB - posA;
+00314 
+00315     \textcolor{keywordtype}{float} dist = length(relPos);
+00316     \textcolor{keywordtype}{float} collideDist = radiusA + radiusB;\textcolor{comment}{//zasieg dzialania sil}
+00317 
+00318     float3 force = make\_float3(0.0f);
+00319 
+00320     \textcolor{keywordflow}{if} (dist < collideDist)
+00321     \{
+00322         float3 norm = relPos / dist;
+00323 
+00324         \textcolor{comment}{// relative velocity}
+00325         \textcolor{comment}{//float3 relVel = velB - velA;}
+00326 
+00327         \textcolor{comment}{// relative tangential velocity}
+00328         \textcolor{comment}{//float3 tanVel = relVel - (dot(relVel, norm) * norm);}
+00329 
+00330         \textcolor{comment}{// spring force}
+00331         \textcolor{comment}{//force = -params.spring*(collideDist - dist) * norm;}
+00332         \textcolor{comment}{// dashpot (damping) force}
+00333         \textcolor{comment}{//force += params.damping*relVel;}
+00334         \textcolor{comment}{// tangential shear force}
+00335         \textcolor{comment}{//force += params.shear*tanVel;}
+00336         \textcolor{comment}{// attraction}
+00337         \textcolor{comment}{//force += attraction*relPos;}
+00338                 \textcolor{keywordtype}{float} epsi=0.1f;
+00339                 \textcolor{keywordtype}{float} D2=0.00001f;
+00340                 float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;
+00341                 float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;
+00342                 force= epsi*(F1+F2);
+00344 \textcolor{comment}{/*      tu wpisywac rownania na sily dla czastek bedacywch w zasiegu    */}
+00346     \}
+00347 
+00348     \textcolor{keywordflow}{return} force;
+00349 \}
+\end{DoxyCode}
+\hypertarget{particles__kernel__impl_8cuh_abe84636059af3ed58ef603665395e6f4}{\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}!reorder\-Data\-And\-Find\-Cell\-Start\-D@{reorder\-Data\-And\-Find\-Cell\-Start\-D}}
+\index{reorder\-Data\-And\-Find\-Cell\-Start\-D@{reorder\-Data\-And\-Find\-Cell\-Start\-D}!particles_kernel_impl.cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+\subsubsection[{reorder\-Data\-And\-Find\-Cell\-Start\-D}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-global\-\_\-\-\_\- void reorder\-Data\-And\-Find\-Cell\-Start\-D (
+\begin{DoxyParamCaption}
+\item[{{\bf uint} $\ast$}]{cell\-Start, }
+\item[{{\bf uint} $\ast$}]{cell\-End, }
+\item[{float4 $\ast$}]{sorted\-Pos, }
+\item[{float4 $\ast$}]{sorted\-Vel, }
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Hash, }
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Index, }
+\item[{float4 $\ast$}]{old\-Pos, }
+\item[{float4 $\ast$}]{old\-Vel, }
+\item[{{\bf uint}}]{num\-Particles}
+\end{DoxyParamCaption}
+)}}\label{particles__kernel__impl_8cuh_abe84636059af3ed58ef603665395e6f4}
+
+
+rearrange particle data into sorted order, and find the start of each cell in the sorted hash array 
+
+
+\begin{DoxyParams}{Parametry}
+{\em cell\-Start} & uint$\ast$ output\-: cell start index \\
+\hline
+{\em uint} & $\ast$cell\-End output\-: cell end index \\
+\hline
+{\em float4} & $\ast$sorted\-Pos output\-: sorted positions \\
+\hline
+{\em float4} & $\ast$sorted\-Vel output\-: sorted velocities \\
+\hline
+{\em uint} & $\ast$grid\-Particle\-Hash input\-: sorted grid hashes \\
+\hline
+{\em uint} & $\ast$grid\-Particle\-Index input\-: sorted particle indices \\
+\hline
+{\em float4} & $\ast$old\-Pos input\-: sorted position array \\
+\hline
+{\em float4} & $\ast$old\-Vel input\-: sorted velocity array \\
+\hline
+{\em uint} & num\-Particles \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+{\bfseries global} void 
+\end{DoxyReturn}
+
+
+Definicja w linii \hyperlink{particles__kernel__impl_8cuh_source_l00226}{226} pliku \hyperlink{particles__kernel__impl_8cuh_source}{particles\-\_\-kernel\-\_\-impl.\-cuh}.
+
+
+\begin{DoxyCode}
+00235 \{
+00236     \textcolor{keyword}{extern} \_\_shared\_\_ \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} sharedHash[];    \textcolor{comment}{// blockSize + 1 elements}
+00237     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index = \_\_umul24(blockIdx.x,blockDim.x) + threadIdx.x;
+00238 
+00239     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} hash;
+00240 
+00241     \textcolor{comment}{// handle case when no. of particles not multiple of block size}
+00242     \textcolor{keywordflow}{if} (index < \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles})
+00243     \{
+00244         hash = gridParticleHash[index];
+00245 
+00246         \textcolor{comment}{// Load hash data into shared memory so that we can look}
+00247         \textcolor{comment}{// at neighboring particle's hash value without loading}
+00248         \textcolor{comment}{// two hash values per thread}
+00249         sharedHash[threadIdx.x+1] = hash;
+00250 
+00251         \textcolor{keywordflow}{if} (index > 0 && threadIdx.x == 0)
+00252         \{
+00253             \textcolor{comment}{// first thread in block must load neighbor particle hash}
+00254             sharedHash[0] = gridParticleHash[index-1];
+00255         \}
+00256     \}
+00257 
+00258     \_\_syncthreads();
+00259 
+00260     \textcolor{keywordflow}{if} (index < \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles})
+00261     \{
+00262         \textcolor{comment}{// If this particle has a different cell index to the previous}
+00263         \textcolor{comment}{// particle then it must be the first particle in the cell,}
+00264         \textcolor{comment}{// so store the index of this particle in the cell.}
+00265         \textcolor{comment}{// As it isn't the first particle, it must also be the cell end of}
+00266         \textcolor{comment}{// the previous particle's cell}
+00267 
+00268         \textcolor{keywordflow}{if} (index == 0 || hash != sharedHash[threadIdx.x])
+00269         \{
+00270             cellStart[hash] = index;
+00271 
+00272             \textcolor{keywordflow}{if} (index > 0)
+00273                 cellEnd[sharedHash[threadIdx.x]] = index;
+00274         \}
+00275 
+00276         \textcolor{keywordflow}{if} (index == \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles} - 1)
+00277         \{
+00278             cellEnd[hash] = index + 1;
+00279         \}
+00280 
+00281         \textcolor{comment}{// Now use the sorted index to reorder the pos and vel data}
+00282         \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} sortedIndex = gridParticleIndex[index];
+00283         float4 pos = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldPos, sortedIndex);       \textcolor{comment}{// macro does either global read or texture
+       fetch}
+00284         float4 vel = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldVel, sortedIndex);       \textcolor{comment}{// see particles\_kernel.cuh}
+00285 
+00286         sortedPos[index] = pos;
+00287         sortedVel[index] = vel;
+00288     \}
+00289 
+00290 
+00291 \}
+\end{DoxyCode}
+
+
+\subsection{Dokumentacja zmiennych}
+\hypertarget{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{\index{particles\-\_\-kernel\-\_\-impl.\-cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}!params@{params}}
+\index{params@{params}!particles_kernel_impl.cuh@{particles\-\_\-kernel\-\_\-impl.\-cuh}}
+\subsubsection[{params}]{\setlength{\rightskip}{0pt plus 5cm}\-\_\-\-\_\-constant\-\_\-\-\_\- {\bf Sim\-Params} params}}\label{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}
+
+
+Definicja w linii \hyperlink{particles__kernel__impl_8cuh_source_l00037}{37} pliku \hyperlink{particles__kernel__impl_8cuh_source}{particles\-\_\-kernel\-\_\-impl.\-cuh}.
+
