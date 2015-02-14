@@ -342,10 +342,14 @@ float3 collideSpheres(float3 posA, float3 posB,
         // attraction
         //force += attraction*relPos;
 		float epsi=0.1f;
-		float D2=0.00001f;
-		float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;
-		float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;
-		force= epsi*(F1+F2);
+		//float D2=0.00001f;//sigma kwadrat
+		float sigma=0.001f;
+		//float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;
+		//float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;
+		float sd=sigma/dist;
+		sd*=sd*sd*sd*sd*sd;
+		//force= epsi*(F1+F2)/dist;
+		force=12.0f*epsi/dist*sd*(sd-0.5f)*norm;
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////
@@ -457,7 +461,7 @@ void collideD(float4 *newVel,               /* output: new velocit*/
     }
 
     // collide with cursor sphere
-    force += collideSpheres(pos, params.colliderPos, vel, make_float3(0.0f, 0.0f, 0.0f), params.particleRadius, params.colliderRadius, 0.0f);
+    //force += collideSpheres(pos, params.colliderPos, vel, make_float3(0.0f, 0.0f, 0.0f), params.particleRadius, params.colliderRadius, 0.0f);
 
     // write new velocity back to original unsorted location
     uint originalIndex = gridParticleIndex[index];

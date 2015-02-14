@@ -28,6 +28,12 @@
  * Składa się ona ze zderzeń ze wszystkimi cząstkami w zasięgu,
  * muszą one być w tej samej komurce, albo w sąsiedniej.
  * - Prędkość jest wyliczana z poprzedniej prękości i siły.
+ * \intersection
+ http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html
+ http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf
+ http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html
+ http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf
+ http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions
  */
 
 
@@ -112,6 +118,7 @@ float bigRadius0=bigRadius;//poczatkowy promien duzej kuli
 float kurczenie=0.01;//A r=r0-A*sqrt(t)
 #define A kurczenie
 unsigned long long int licznik=0;
+long long double time_past=0;
 
 ParticleSystem *psystem = 0;
 
@@ -261,7 +268,9 @@ void display()
         psystem->setCollideAttraction(collideAttraction);
 
 		licznik++;
-		bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
+		time_past+=timestep;
+		//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
+		bigRadius=bigRadius0-A*sqrt(time_past);
 		psystem->setBigRadius(bigRadius);
 
         psystem->update(timestep);
@@ -301,7 +310,7 @@ void display()
     float3 p = psystem->getColliderPos();
     glTranslatef(p.x, p.y, p.z);
     glColor3f(1.0, 0.0, 0.0);
-    glutSolidSphere(psystem->getColliderRadius(), 20, 10);
+    //glutSolidSphere(psystem->getColliderRadius(), 20, 10);
     glPopMatrix();
 
     if (renderer && displayEnabled)
