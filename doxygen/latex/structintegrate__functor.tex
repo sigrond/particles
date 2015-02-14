@@ -151,38 +151,44 @@ Odwołania w \hyperlink{particles__kernel__impl_8cuh_source_l00051}{integrate\-\
 00109 \textcolor{preprocessor}{}                \textcolor{keywordtype}{float} xk=pos.x*pos.x;
 00110                 \textcolor{keywordtype}{float} yk=pos.y*pos.y;
 00111                 \textcolor{keywordtype}{float} zk=pos.z*pos.z;
-00112                 \textcolor{keywordtype}{float} r=\hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_af41979948fdd8f76fe28ce2b43eb24cd}{bigradius};\textcolor{comment}{//- params.particleRadius;}
-00113                 \textcolor{keywordflow}{if}(xk+yk+zk > r*r + FLT\_EPSILON )
-00114                 \{
-00115                         r-=\hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*4;
-00116                         \textcolor{comment}{/*vel.x*=params.boundaryDamping;}
-00117 \textcolor{comment}{                        vel.y*=params.boundaryDamping;}
-00118 \textcolor{comment}{                        vel.z*=params.boundaryDamping;*/}
-00119                         vel.x=0.0f;
-00120                         vel.y=0.0f;
-00121                         vel.z=0.0f;
-00122                         \textcolor{keywordtype}{float} theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));
-00123                         \textcolor{keywordtype}{float} fi=atan(pos.y/pos.x);
-00124                         pos.z=r*sin(theta);
-00125                         \textcolor{keywordtype}{float} rr=r*cos(theta);
-00126                         pos.x=rr*cos(fi);
-00127                         pos.y=rr*sin(fi);
-00128                 \}
-00129 \textcolor{preprocessor}{#endif}
-00130 \textcolor{preprocessor}{}
-00131 \textcolor{comment}{//dolna plaszczyzna}
-00132 \textcolor{preprocessor}{#if 0}
-00133 \textcolor{preprocessor}{}        \textcolor{keywordflow}{if} (pos.y < -1.0f + \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius})
-00134         \{
-00135             pos.y = -1.0f + \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius};
-00136             vel.y *= \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a4da0c7593d6569e48ee50e7d0c7576f9}{boundaryDamping};
-00137         \}
-00138 \textcolor{preprocessor}{#endif}
-00139 \textcolor{preprocessor}{}
-00140         \textcolor{comment}{// store new position and velocity}
-00141         thrust::get<0>(t) = make\_float4(pos, posData.w);
-00142         thrust::get<1>(t) = make\_float4(vel, velData.w);
-00143     \}
+00112                 \textcolor{keywordtype}{float} r0k=xk+yk+zk;
+00113                 \textcolor{keywordtype}{float} r=\hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_af41979948fdd8f76fe28ce2b43eb24cd}{bigradius};\textcolor{comment}{//- params.particleRadius;}
+00114                 \textcolor{keywordflow}{if}(r0k > r*r + FLT\_EPSILON )
+00115                 \{
+00116                         r-=\hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*4;
+00117                         \textcolor{comment}{/*vel.x*=params.boundaryDamping;}
+00118 \textcolor{comment}{                        vel.y*=params.boundaryDamping;}
+00119 \textcolor{comment}{                        vel.z*=params.boundaryDamping;*/}
+00120                         vel.x=0.0f;
+00121                         vel.y=0.0f;
+00122                         vel.z=0.0f;
+00123                         \textcolor{comment}{/*float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));}
+00124 \textcolor{comment}{                        float fi=atan(pos.y/pos.x);}
+00125 \textcolor{comment}{                        pos.z=r*sin(theta);}
+00126 \textcolor{comment}{                        float rr=r*cos(theta);}
+00127 \textcolor{comment}{                        pos.x=rr*cos(fi);}
+00128 \textcolor{comment}{                        pos.y=rr*sin(fi);*/}
+00129                         \textcolor{keywordtype}{float} r0=sqrt(r0k);
+00130                         \textcolor{keywordtype}{float} tmp=r/r0;
+00131                         pos.x*=tmp;
+00132                         pos.y*=tmp;
+00133                         pos.z*=tmp;
+00134                 \}
+00135 \textcolor{preprocessor}{#endif}
+00136 \textcolor{preprocessor}{}
+00137 \textcolor{comment}{//dolna plaszczyzna}
+00138 \textcolor{preprocessor}{#if 0}
+00139 \textcolor{preprocessor}{}        \textcolor{keywordflow}{if} (pos.y < -1.0f + \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius})
+00140         \{
+00141             pos.y = -1.0f + \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius};
+00142             vel.y *= \hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{params}.\hyperlink{struct_sim_params_a4da0c7593d6569e48ee50e7d0c7576f9}{boundaryDamping};
+00143         \}
+00144 \textcolor{preprocessor}{#endif}
+00145 \textcolor{preprocessor}{}
+00146         \textcolor{comment}{// store new position and velocity}
+00147         thrust::get<0>(t) = make\_float4(pos, posData.w);
+00148         thrust::get<1>(t) = make\_float4(vel, velData.w);
+00149     \}
 \end{DoxyCode}
 
 

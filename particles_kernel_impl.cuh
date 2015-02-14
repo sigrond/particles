@@ -109,8 +109,9 @@ struct integrate_functor
 		float xk=pos.x*pos.x;
 		float yk=pos.y*pos.y;
 		float zk=pos.z*pos.z;
+		float r0k=xk+yk+zk;
 		float r=params.bigradius;//- params.particleRadius;
-		if(xk+yk+zk > r*r + FLT_EPSILON )
+		if(r0k > r*r + FLT_EPSILON )
 		{
 			r-=params.particleRadius*4;
 			/*vel.x*=params.boundaryDamping;
@@ -119,12 +120,17 @@ struct integrate_functor
 			vel.x=0.0f;
 			vel.y=0.0f;
 			vel.z=0.0f;
-			float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));
+			/*float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));
 			float fi=atan(pos.y/pos.x);
 			pos.z=r*sin(theta);
 			float rr=r*cos(theta);
 			pos.x=rr*cos(fi);
-			pos.y=rr*sin(fi);
+			pos.y=rr*sin(fi);*/
+			float r0=sqrt(r0k);
+			float tmp=r/r0;
+			pos.x*=tmp;
+			pos.y*=tmp;
+			pos.z*=tmp;
 		}
 #endif
 
