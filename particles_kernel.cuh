@@ -33,6 +33,8 @@ struct SimParams
     float globalDamping;
     float particleRadius;
 
+	float particleMass;
+
     uint3 gridSize;
     uint numCells;
     float3 worldOrigin;
@@ -48,6 +50,8 @@ struct SimParams
     float boundaryDamping;
 
 	float bigradius;
+	bool boundaries;
+	float epsi;
 };
 
 #endif

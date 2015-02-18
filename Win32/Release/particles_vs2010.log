@@ -1,15 +1,15 @@
-﻿Build started 2015-02-16 11:22:18.
+﻿Build started 2015-02-17 22:24:01.
      1>Project "C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles\particles_vs2010.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Win32/Release/particles.lastbuildstate".
        CudaClean:
-         cmd.exe /C "C:\Users\Daniel\AppData\Local\Temp\ac32c650b0ee4e7ba71b2b5ce8bd3dcd.cmd"
+         cmd.exe /C "C:\Users\Daniel\AppData\Local\Temp\5cced4389d0140f3b1944253736a978e.cmd"
          "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\nvcc.exe" -ccbin "C:\Program Files\Microsoft Visual Studio 10.0\VC\bin"  -I"./" -I"../../common/inc" -I"./" -I"../../common/inc" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include"     --keep-dir "Release" -maxrregcount=0  --machine 32 --compile     -DWIN32 -DWIN32 -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MT  " -o "Win32/Release/particleSystem_cuda.cu.obj" "C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles\particleSystem_cuda.cu" -clean
          
          C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\nvcc.exe" -ccbin "C:\Program Files\Microsoft Visual Studio 10.0\VC\bin"  -I"./" -I"../../common/inc" -I"./" -I"../../common/inc" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include"     --keep-dir "Release" -maxrregcount=0  --machine 32 --compile     -DWIN32 -DWIN32 -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MT  " -o "Win32/Release/particleSystem_cuda.cu.obj" "C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles\particleSystem_cuda.cu" -clean 
          Deleting file "Win32/Release/particleSystem_cuda.cu.deps".
        InitializeBuildStatus:
-         Touching "Win32/Release/particles.unsuccessfulbuild".
+         Creating "Win32/Release/particles.unsuccessfulbuild" because "AlwaysCreate" was specified.
        AddCudaCompileDeps:
          C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /DWIN32 /D_MBCS /I./ /I../../common/inc /I./ /I../../common/inc /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include" /I. /FIcuda_runtime.h /c "C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles\particleSystem_cuda.cu" 
        AddCudaCompilePropsDeps:
@@ -114,34 +114,35 @@
          Found "CommandLineTemplate".
        CudaBuild:
          Compiling CUDA source file particleSystem_cuda.cu...
-         cmd.exe /C "C:\Users\Daniel\AppData\Local\Temp\1138fa110930410bb9a882519237499c.cmd"
+         cmd.exe /C "C:\Users\Daniel\AppData\Local\Temp\1572026387eb4fb39bb1392082f27a8c.cmd"
          "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" -gencode=arch=compute_20,code=\"sm_20,compute_20\" -gencode=arch=compute_30,code=\"sm_30,compute_30\" -gencode=arch=compute_35,code=\"sm_35,compute_35\" --use-local-env --cl-version 2010 -ccbin "C:\Program Files\Microsoft Visual Studio 10.0\VC\bin"  -I"./" -I"../../common/inc" -I"./" -I"../../common/inc" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include"     --keep-dir "Release" -maxrregcount=0  --machine 32 --compile     -DWIN32 -DWIN32 -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MT  " -o "Win32/Release/particleSystem_cuda.cu.obj" "C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles\particleSystem_cuda.cu"
          
          C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" -gencode=arch=compute_20,code=\"sm_20,compute_20\" -gencode=arch=compute_30,code=\"sm_30,compute_30\" -gencode=arch=compute_35,code=\"sm_35,compute_35\" --use-local-env --cl-version 2010 -ccbin "C:\Program Files\Microsoft Visual Studio 10.0\VC\bin"  -I"./" -I"../../common/inc" -I"./" -I"../../common/inc" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include"     --keep-dir "Release" -maxrregcount=0  --machine 32 --compile     -DWIN32 -DWIN32 -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MT  " -o "Win32/Release/particleSystem_cuda.cu.obj" "C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles\particleSystem_cuda.cu" 
          particleSystem_cuda.cu
          particleSystem_cuda.cu
-         tmpxft_0000089c_00000000-11_particleSystem_cuda.compute_10.cudafe1.gpu
-         tmpxft_0000089c_00000000-17_particleSystem_cuda.compute_10.cudafe2.gpu
+         tmpxft_000007f8_00000000-11_particleSystem_cuda.compute_10.cudafe1.gpu
+         tmpxft_000007f8_00000000-17_particleSystem_cuda.compute_10.cudafe2.gpu
          particleSystem_cuda.cu
-         tmpxft_0000089c_00000000-8_particleSystem_cuda.compute_20.cudafe1.gpu
-         tmpxft_0000089c_00000000-21_particleSystem_cuda.compute_20.cudafe2.gpu
+         tmpxft_000007f8_00000000-8_particleSystem_cuda.compute_20.cudafe1.gpu
+         tmpxft_000007f8_00000000-21_particleSystem_cuda.compute_20.cudafe2.gpu
          particleSystem_cuda.cu
-         tmpxft_0000089c_00000000-5_particleSystem_cuda.compute_30.cudafe1.gpu
-         tmpxft_0000089c_00000000-25_particleSystem_cuda.compute_30.cudafe2.gpu
-         tmpxft_0000089c_00000000-2_particleSystem_cuda.compute_35.cudafe1.gpu
-         tmpxft_0000089c_00000000-28_particleSystem_cuda.compute_35.cudafe2.gpu
-         particleSystem_cuda.cu
-         particleSystem_cuda.cu
+         tmpxft_000007f8_00000000-5_particleSystem_cuda.compute_30.cudafe1.gpu
+         tmpxft_000007f8_00000000-25_particleSystem_cuda.compute_30.cudafe2.gpu
+         tmpxft_000007f8_00000000-2_particleSystem_cuda.compute_35.cudafe1.gpu
+         tmpxft_000007f8_00000000-28_particleSystem_cuda.compute_35.cudafe2.gpu
          particleSystem_cuda.cu
          particleSystem_cuda.cu
-         tmpxft_0000089c_00000000-11_particleSystem_cuda.compute_10.cudafe1.cpp
-         tmpxft_0000089c_00000000-39_particleSystem_cuda.compute_10.ii
+         particleSystem_cuda.cu
+         particleSystem_cuda.cu
+         tmpxft_000007f8_00000000-11_particleSystem_cuda.compute_10.cudafe1.cpp
+         tmpxft_000007f8_00000000-39_particleSystem_cuda.compute_10.ii
        CudaBuild:
          Skipping CUDA source file particles_kernel.cuh (excluded from build).
        ClCompile:
          C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I./ /I../../common/inc /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _MBCS /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32/Release/" /Fd"Win32/Release/vc100.pdb" /Gd /TP /analyze- /errorReport:prompt particles.cpp particleSystem.cpp render_particles.cpp shaders.cpp
          particles.cpp
-     1>particles.cpp(258): warning C4244: '=' : conversion from 'long double' to 'float', possible loss of data
+     1>particles.cpp(266): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>particles.cpp(268): warning C4244: '=' : conversion from 'long double' to 'float', possible loss of data
          particleSystem.cpp
          render_particles.cpp
          shaders.cpp
@@ -166,4 +167,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:02:05.42
+Time Elapsed 00:02:02.05

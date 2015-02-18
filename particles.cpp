@@ -54,7 +54,7 @@
 #define THRESHOLD         0.30f
 
 #define GRID_SIZE       64
-#define NUM_PARTICLES   4096
+#define NUM_PARTICLES   512
 
 const uint width = 640, height = 480;
 
@@ -66,12 +66,13 @@ float camera_rot[]   = {0, 0, 0};
 float camera_trans_lag[] = {0, 0, -3};
 float camera_rot_lag[] = {0, 0, 0};
 const float inertia = 0.1f;
+float zoom=1.0f;
 ParticleRenderer::DisplayMode displayMode = ParticleRenderer::PARTICLE_SPHERES;
 
 int mode = 0;
 bool displayEnabled = true;
 bool bPause = false;
-bool displaySliders = false;
+bool displaySliders = true;
 bool wireframe = false;
 bool demoMode = false;
 int idleCounter = 0;
@@ -85,11 +86,16 @@ uint3 gridSize;
 int numIterations = 0; // run until exit
 
 // simulation parameters
-float timestep = 0.01f;//0.5f;
-float damping = 1.0f;
+float timestep = 0.0f;//0.5f;
+float damping = 0.9f;//0.08f;//global damping
 float gravity = 0.0f;//0.0003f;
 int iterations = 1;
 int ballr = 10;
+
+float boundaryDamping= 1.0f;
+float particleMass=0.001f;
+bool boundaries=true;
+float epsi=0.1f;
 
 float collideSpring = 0.5f;;
 float collideDamping = 0.02f;;
@@ -101,7 +107,7 @@ float bigRadius0=bigRadius;//poczatkowy promien duzej kuli
 float kurczenie=0.1f;//A r=r0-A*sqrt(t)
 #define A kurczenie
 unsigned long long int licznik=0;
-long double time_past=0;
+long double time_past=0.0;
 
 ParticleSystem *psystem = 0;
 
@@ -190,6 +196,12 @@ void runBenchmark(int iterations, char *exec_path)
 
     for (int i = 0; i < iterations; ++i)
     {
+		time_past+=timestep;
+		if(bigRadius>psystem->getParticleRadius()*pow(psystem->getNumParticles(),0.3f)*1.35f)
+		{
+			bigRadius=bigRadius0-A*sqrt(time_past);
+			psystem->setBigRadius(bigRadius);
+		}
         psystem->update(timestep);
     }
 
@@ -250,20 +262,26 @@ void display()
         psystem->setCollideDamping(collideDamping);
         psystem->setCollideShear(collideShear);
         psystem->setCollideAttraction(collideAttraction);
+		psystem->setBoundaryDamping(-boundaryDamping);
+		psystem->setParticleMass(particleMass);
+		psystem->setEpsi(epsi);
 
+		//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
 		licznik++;
 		time_past+=timestep;
-		//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
-		if(bigRadius>0.1f)
-		bigRadius=bigRadius0-A*sqrt(time_past);
-
-		psystem->setBigRadius(bigRadius);
+		if(bigRadius>psystem->getParticleRadius()*pow(psystem->getNumParticles(),0.3f)*1.35f)
+		{
+			bigRadius=bigRadius0-A*sqrt(time_past);
+			psystem->setBigRadius(bigRadius);
+		}
+		//else
+		//	psystem->setBigRadius(bigRadius0);
 
         psystem->update(timestep);
 
         if (renderer)
         {
-            renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles());
+            renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles(), zoom);
         }
     }
 
@@ -284,17 +302,25 @@ void display()
     glRotatef(camera_rot_lag[0], 1.0, 0.0, 0.0);
     glRotatef(camera_rot_lag[1], 0.0, 1.0, 0.0);
 
+	glScalef(zoom, zoom, zoom);
+
     glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
+
+	//glScalef(zoom, zoom, zoom);
 
     // cube -> sphere
     glColor3f(1.0, 1.0, 1.0);
     //glutWireCube(2.0);
+	if(boundaries)
 	glutWireSphere(bigRadius, 20, 10);
+
+	//glScalef(zoom, zoom, zoom);
 
     // collider
     glPushMatrix();
     float3 p = psystem->getColliderPos();
     glTranslatef(p.x, p.y, p.z);
+	//glScalef(zoom, zoom, zoom);
     //glColor3f(1.0, 0.0, 0.0);
     //glutSolidSphere(psystem->getColliderRadius(), 20, 10);
     glPopMatrix();
@@ -364,8 +390,21 @@ void reshape(int w, int h)
 void mouse(int button, int state, int x, int y)
 {
     int mods;
-
-    if (state == GLUT_DOWN)
+	if(button==3)
+	{
+		if(state==GLUT_DOWN)
+		{
+			zoom*=1.1f;
+		}
+	}
+	else if(button==4)
+	{
+		if(state==GLUT_DOWN)
+		{
+			zoom*=0.9f;
+		}
+	}
+    else if (state == GLUT_DOWN)
     {
         buttonState |= 1<<button;
     }
@@ -449,7 +488,7 @@ void motion(int x, int y)
     switch (mode)
     {
         case M_VIEW:
-            if (buttonState == 3)
+			if (buttonState == 3)
             {
                 // left+middle = zoom
                 camera_trans[2] += (dy / 100.0f) * 0.5f * fabs(camera_trans[2]);
@@ -516,6 +555,15 @@ void key(unsigned char key, int /*x*/, int /*y*/)
 {
     switch (key)
     {
+		case '0':
+			time_past=0.0;
+			bigRadius=bigRadius0;
+			break;
+		case 'b':
+			boundaries=!boundaries;
+			psystem->setBoundaries(boundaries);
+			break;
+
         case ' ':
             bPause = !bPause;
             break;
@@ -525,7 +573,7 @@ void key(unsigned char key, int /*x*/, int /*y*/)
 
             if (renderer)
             {
-                renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles());
+                renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles(), zoom);
             }
 
             break;
@@ -661,15 +709,18 @@ void initParams()
 
         // create a new parameter list
         params = new ParamListGL("misc");
-        params->AddParam(new Param<float>("time step", timestep, 0.0f, 1.0f, 0.01f, &timestep));
-        params->AddParam(new Param<float>("damping"  , damping , 0.0f, 1.0f, 0.001f, &damping));
-        params->AddParam(new Param<float>("gravity"  , gravity , 0.0f, 0.001f, 0.0001f, &gravity));
+        params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.05f, 0.001f, &timestep));
+        params->AddParam(new Param<float>("global damping"  , damping , 0.0f, 1.0f, 0.001f, &damping));
+        params->AddParam(new Param<float>("gravity"  , gravity , 0.0f, 1.0f, 0.001f, &gravity));
         params->AddParam(new Param<int> ("ball radius", ballr , 1, 20, 1, &ballr));
+		params->AddParam(new Param<float>("boundary damping"  , boundaryDamping , 0.0f, 2.0f, 0.001f, &boundaryDamping));
+		params->AddParam(new Param<float>("particle mass"  , particleMass , 0.001f, 2.0f, 0.001f, &particleMass));
+		params->AddParam(new Param<float>("epsilon"  , epsi , 0.0f, 1.0f, 0.0001f, &epsi));
 
-        params->AddParam(new Param<float>("collide spring" , collideSpring , 0.0f, 1.0f, 0.001f, &collideSpring));
-        params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));
-        params->AddParam(new Param<float>("collide shear"  , collideShear  , 0.0f, 0.1f, 0.001f, &collideShear));
-        params->AddParam(new Param<float>("collide attract", collideAttraction, 0.0f, 0.1f, 0.001f, &collideAttraction));
+        //params->AddParam(new Param<float>("collide spring" , collideSpring , 0.0f, 1.0f, 0.001f, &collideSpring));
+        //params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));
+        //params->AddParam(new Param<float>("collide shear"  , collideShear  , 0.0f, 0.1f, 0.001f, &collideShear));
+        //params->AddParam(new Param<float>("collide attract", collideAttraction, 0.0f, 0.1f, 0.001f, &collideAttraction));
     }
 }
 
@@ -690,6 +741,8 @@ void initMenus()
     glutAddMenuEntry("Toggle animation [ ]", ' ');
     glutAddMenuEntry("Step animation [ret]", 13);
     glutAddMenuEntry("Toggle sliders [h]", 'h');
+	glutAddMenuEntry("Reset time [0]", '0');
+	glutAddMenuEntry("Boundaries on/off [b]", 'b');
     glutAddMenuEntry("Quit (esc)", '\033');
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }

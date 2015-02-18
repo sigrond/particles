@@ -101,27 +101,42 @@ struct integrate_functor
 		float zk=pos.z*pos.z;
 		float r0k=xk+yk+zk;
 		float r=params.bigradius;//- params.particleRadius;
-		if(r0k > r*r + FLT_EPSILON )
+		float r0=sqrt(r0k);
+		if(params.boundaries && r0>r-params.particleRadius && r0<r+params.particleRadius)
+		{
+			/*if(r0>r+params.particleRadius)
+			{
+				float tmp=(r+params.particleRadius/2)/r0;
+				pos.x*=tmp;
+				pos.y*=tmp;
+				pos.z*=tmp;
+			}*/
+			float3 relPos = pos;
+			float dist = length(relPos);
+			float3 norm = relPos / dist;
+			vel+=norm*params.boundaryDamping*sin((r0-r)/r0*3.1415f)*deltaTime/params.particleMass;
+		}
+		/*if(r0k > r*r + FLT_EPSILON )
 		{
 			r-=params.particleRadius*4;
-			/*vel.x*=params.boundaryDamping;
-			vel.y*=params.boundaryDamping;
-			vel.z*=params.boundaryDamping;*/
+			//vel.x*=params.boundaryDamping;
+			//vel.y*=params.boundaryDamping;
+			//vel.z*=params.boundaryDamping;
 			vel.x=0.0f;
 			vel.y=0.0f;
 			vel.z=0.0f;
-			/*float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));
-			float fi=atan(pos.y/pos.x);
-			pos.z=r*sin(theta);
-			float rr=r*cos(theta);
-			pos.x=rr*cos(fi);
-			pos.y=rr*sin(fi);*/
+			//float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));
+			//float fi=atan(pos.y/pos.x);
+			//pos.z=r*sin(theta);
+			//float rr=r*cos(theta);
+			//pos.x=rr*cos(fi);
+			//pos.y=rr*sin(fi);
 			float r0=sqrt(r0k);
 			float tmp=r/r0;
 			pos.x*=tmp;
 			pos.y*=tmp;
 			pos.z*=tmp;
-		}
+		}*/
 #endif
 
 //dolna plaszczyzna
@@ -288,12 +303,13 @@ float3 collideSpheres(float3 posA, float3 posB,
 		float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;
 		float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;
 		force= epsi*(F1+F2);*/
-		float epsi=0.1f;
+		//float epsi=0.1f;
 		//float D2=0.00001f;//sigma kwadrat
-		float sigma=0.001f;
+		//float sigma=0.001f;//sigma*2^1/6=r
+		float sigma=params.particleRadius/(1.12246204f*4);
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
-		force=12.0f*epsi/dist*sd*(sd-0.5f)*norm;
+		force=48.0f*params.epsi/dist*sd*(sd-0.5f*sigma/dist)*norm;
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////
@@ -351,7 +367,8 @@ void collideD(float4 *newVel,               // output: new velocity
               uint   *gridParticleIndex,    // input: sorted particle indices
               uint   *cellStart,
               uint   *cellEnd,
-              uint    numParticles)
+              uint    numParticles,
+			  float deltaTime)
 {
     uint index = __mul24(blockIdx.x,blockDim.x) + threadIdx.x;
 
@@ -384,7 +401,7 @@ void collideD(float4 *newVel,               // output: new velocity
 
     // write new velocity back to original unsorted location
     uint originalIndex = gridParticleIndex[index];
-    newVel[originalIndex] = make_float4(vel + force, 0.0f);
+    newVel[originalIndex] = make_float4(vel + force*deltaTime/params.particleMass, 0.0f);
 }
 
 #endif

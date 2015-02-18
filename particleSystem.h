@@ -85,6 +85,19 @@ class ParticleSystem
             m_params.gravity = make_float3(0.0f, x, 0.0f);
         }
 
+		void setBoundaryDamping(float x)// ustawienie wsp napiêcia powierzchniowego
+        {
+            m_params.boundaryDamping = x;
+        }
+		void setParticleMass(float x)
+		{
+			m_params.particleMass=x;
+		}
+		void setEpsi(float x)
+		{
+			m_params.epsi=x;
+		}
+
         void setCollideSpring(float x)
         {
             m_params.spring = x;
@@ -105,6 +118,11 @@ class ParticleSystem
 		void setBigRadius(float x)//ustawienie promienia duzej kuli
 		{
 			m_params.bigradius=x;
+		}
+
+		void setBoundaries(bool x)//ograniczenia zewnêtrzne
+		{
+			m_params.boundaries=x;
 		}
 
         void setColliderPos(float3 x)

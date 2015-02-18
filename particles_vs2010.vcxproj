@@ -232,7 +232,9 @@
   <ItemGroup>
     <None Include="particleSystem.cuh" />
     <None Include="particles_kernel.cuh" />
-    <None Include="particles_kernel_impl.cuh" />
+    <None Include="particles_kernel_impl.cuh">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="particles.rc" />

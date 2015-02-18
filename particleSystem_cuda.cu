@@ -9,6 +9,8 @@
  *
  */
 
+
+
 // This file contains C wrappers around the some of the CUDA API and the
 // kernel functions so that they can be called from "particleSystem.cpp"
 
@@ -223,7 +225,8 @@ extern "C"
                  uint  *cellStart,
                  uint  *cellEnd,
                  uint   numParticles,
-                 uint   numCells)
+                 uint   numCells,
+				 float deltaTime)
     {
 #if USE_TEX
         checkCudaErrors(cudaBindTexture(0, oldPosTex, sortedPos, numParticles*sizeof(float4)));
@@ -246,7 +249,8 @@ extern "C"
                                               gridParticleIndex,
                                               cellStart,
                                               cellEnd,
-                                              numParticles);
+                                              numParticles,
+											  deltaTime);
 
         // check if kernel invocation generated an error
         getLastCudaError("Kernel execution failed");
@@ -268,3 +272,6 @@ extern "C"
     }
 
 }   // extern "C"
+
+
+

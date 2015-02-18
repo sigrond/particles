@@ -52,9 +52,11 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.numCells = m_numGridCells;
     m_params.numBodies = m_numParticles;
 
-    m_params.particleRadius = 1.0f / 64.0f;//32.0f / 64.0f;
+    m_params.particleRadius = 1.0f / 32.0f;//32.0f / 64.0f;
     m_params.colliderPos = make_float3(-1.2f, -0.8f, 0.8f);
     m_params.colliderRadius = 0.2f;
+
+	m_params.particleMass=1.0f;
 
     m_params.worldOrigin = make_float3(-1.0f, -1.0f, -1.0f);
     //    m_params.cellSize = make_float3(worldSize.x / m_gridSize.x, worldSize.y / m_gridSize.y, worldSize.z / m_gridSize.z);
@@ -62,15 +64,17 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.cellSize = make_float3(cellSize, cellSize, cellSize);
 
     m_params.spring = 0.5f;
-    m_params.damping = 0.02f;
+    m_params.damping = 0.1f;
     m_params.shear = 0.1f;
     m_params.attraction = 0.1f;
-    m_params.boundaryDamping = -0.1f;
+    m_params.boundaryDamping = -1.0f;
 
     m_params.gravity = make_float3(0.0f, -0.0003f, 0.0f);
     m_params.globalDamping = 1.0f;
 
 	m_params.bigradius=2.0f;//docelowo zmieny rozmiar zewnetrznej kuli
+	m_params.boundaries=true;
+	m_params.epsi=0.1f;
 
     _initialize(numParticles);
 }
@@ -293,7 +297,8 @@ ParticleSystem::update(float deltaTime)
         m_dCellStart,
         m_dCellEnd,
         m_numParticles,
-        m_numGridCells);
+        m_numGridCells,
+		deltaTime);
 
     // note: do unmap at end here to avoid unnecessary graphics/CUDA context switch
     if (m_bUseOpenGL)
