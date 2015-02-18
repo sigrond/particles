@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 #v4.0:v100
 Release|x64|C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles\|
+=======
+#v4.0:v100
+Release|x64|C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\5_Simulations\particles\|
+>>>>>>> 864a84b5da9af8f1bfd5730b9aea43949ed8f182

@@ -26,7 +26,11 @@ ParticleRenderer::ParticleRenderer()
     : m_pos(0),
       m_numParticles(0),
       m_pointSize(1.0f),
+<<<<<<< HEAD
       m_particleRadius(1.0f/32.0f),
+=======
+      m_particleRadius(0.125f * 0.5f),
+>>>>>>> 864a84b5da9af8f1bfd5730b9aea43949ed8f182
       m_program(0),
       m_vbo(0),
       m_colorVBO(0)
@@ -45,11 +49,18 @@ void ParticleRenderer::setPositions(float *pos, int numParticles)
     m_numParticles = numParticles;
 }
 
+<<<<<<< HEAD
 void ParticleRenderer::setVertexBuffer(unsigned int vbo, int numParticles, float zoom)
 {
     m_vbo = vbo;
     m_numParticles = numParticles;
 	this->zoom=zoom;
+=======
+void ParticleRenderer::setVertexBuffer(unsigned int vbo, int numParticles)
+{
+    m_vbo = vbo;
+    m_numParticles = numParticles;
+>>>>>>> 864a84b5da9af8f1bfd5730b9aea43949ed8f182
 }
 
 void ParticleRenderer::_drawPoints()
@@ -108,7 +119,11 @@ void ParticleRenderer::display(DisplayMode mode /* = PARTICLE_POINTS */)
             glEnable(GL_DEPTH_TEST);
 
             glUseProgram(m_program);
+<<<<<<< HEAD
             glUniform1f(glGetUniformLocation(m_program, "pointScale"), zoom*m_window_h / tanf(m_fov*0.5f*(float)M_PI/180.0f));
+=======
+            glUniform1f(glGetUniformLocation(m_program, "pointScale"), m_window_h / tanf(m_fov*0.5f*(float)M_PI/180.0f));
+>>>>>>> 864a84b5da9af8f1bfd5730b9aea43949ed8f182
             glUniform1f(glGetUniformLocation(m_program, "pointRadius"), m_particleRadius);
 
             glColor3f(1, 1, 1);

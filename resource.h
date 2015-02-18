@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by particles.rc
@@ -12,3 +13,19 @@
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
+=======
+//{{NO_DEPENDENCIES}}
+// Microsoft Visual C++ generated include file.
+// Used by particles.rc
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_NEXT_RESOURCE_VALUE        101
+#define _APS_NEXT_COMMAND_VALUE         40001
+#define _APS_NEXT_CONTROL_VALUE         1001
+#define _APS_NEXT_SYMED_VALUE           101
+#endif
+#endif
+>>>>>>> 864a84b5da9af8f1bfd5730b9aea43949ed8f182

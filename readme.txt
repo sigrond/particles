@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 Sample: Particles
 Minimum spec: GeForce 8
 
 This sample uses CUDA to simulate and visualize a large set of particles and their physical interaction.  Adding "-particles=<N>" to the command line will allow users to set # of particles for simulation.  This example implements a uniform grid data structure using either atomic operations or a fast radix sort from the Thrust library
 
 Key concepts:
+=======
+Sample: Particles
+Minimum spec: GeForce 8
+
+This sample uses CUDA to simulate and visualize a large set of particles and their physical interaction.  Adding "-particles=<N>" to the command line will allow users to set # of particles for simulation.  This example implements a uniform grid data structure using either atomic operations or a fast radix sort from the Thrust library
+
+Key concepts:
+>>>>>>> 864a84b5da9af8f1bfd5730b9aea43949ed8f182

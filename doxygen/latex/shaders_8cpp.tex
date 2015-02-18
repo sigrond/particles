@@ -1,0 +1,90 @@
+\hypertarget{shaders_8cpp}{\section{Dokumentacja pliku shaders.\-cpp}
+\label{shaders_8cpp}\index{shaders.\-cpp@{shaders.\-cpp}}
+}
+\subsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{shaders_8cpp_ab06e1eb2e9bf38e0d452b1f796aed208}{S\-T\-R\-I\-N\-G\-I\-F\-Y}(\hyperlink{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{A})~\#\hyperlink{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{A}
+\end{DoxyCompactItemize}
+\subsection*{Zmienne}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{shaders_8cpp_aea8e0959f6b7eabf6156f801e179da60}{vertex\-Shader}
+\item 
+const char $\ast$ \hyperlink{shaders_8cpp_abad1d2b70401d6f3a4f61a462369373d}{sphere\-Pixel\-Shader}
+\end{DoxyCompactItemize}
+
+
+\subsection{Dokumentacja definicji}
+\hypertarget{shaders_8cpp_ab06e1eb2e9bf38e0d452b1f796aed208}{\index{shaders.\-cpp@{shaders.\-cpp}!S\-T\-R\-I\-N\-G\-I\-F\-Y@{S\-T\-R\-I\-N\-G\-I\-F\-Y}}
+\index{S\-T\-R\-I\-N\-G\-I\-F\-Y@{S\-T\-R\-I\-N\-G\-I\-F\-Y}!shaders.cpp@{shaders.\-cpp}}
+\subsubsection[{S\-T\-R\-I\-N\-G\-I\-F\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-R\-I\-N\-G\-I\-F\-Y(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf A}}
+\end{DoxyParamCaption}
+)~\#{\bf A}}}\label{shaders_8cpp_ab06e1eb2e9bf38e0d452b1f796aed208}
+
+
+Definicja w linii \hyperlink{shaders_8cpp_source_l00012}{12} pliku \hyperlink{shaders_8cpp_source}{shaders.\-cpp}.
+
+
+
+\subsection{Dokumentacja zmiennych}
+\hypertarget{shaders_8cpp_abad1d2b70401d6f3a4f61a462369373d}{\index{shaders.\-cpp@{shaders.\-cpp}!sphere\-Pixel\-Shader@{sphere\-Pixel\-Shader}}
+\index{sphere\-Pixel\-Shader@{sphere\-Pixel\-Shader}!shaders.cpp@{shaders.\-cpp}}
+\subsubsection[{sphere\-Pixel\-Shader}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ sphere\-Pixel\-Shader}}\label{shaders_8cpp_abad1d2b70401d6f3a4f61a462369373d}
+{\bfseries Wartość początkowa\-:}
+\begin{DoxyCode}
+= \hyperlink{shaders_8cpp_ab06e1eb2e9bf38e0d452b1f796aed208}{STRINGIFY}(
+                                    \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}()
+\{
+    \textcolor{keyword}{const} vec3 lightDir = vec3(0.577, 0.577, 0.577);
+
+    
+    vec3 N;
+    N.xy = gl\_TexCoord[0].xy*vec2(2.0, -2.0) + vec2(-1.0, 1.0);
+    \textcolor{keywordtype}{float} mag = dot(N.xy, N.xy);
+
+    \textcolor{keywordflow}{if} (mag > 1.0) discard;   
+
+    N.z = sqrt(1.0-mag);
+
+    
+    \textcolor{keywordtype}{float} diffuse = max(0.0, dot(lightDir, N));
+
+    gl\_FragColor = gl\_Color * diffuse;
+\}
+                                )
+\end{DoxyCode}
+
+
+Definicja w linii \hyperlink{shaders_8cpp_source_l00035}{35} pliku \hyperlink{shaders_8cpp_source}{shaders.\-cpp}.
+
+\hypertarget{shaders_8cpp_aea8e0959f6b7eabf6156f801e179da60}{\index{shaders.\-cpp@{shaders.\-cpp}!vertex\-Shader@{vertex\-Shader}}
+\index{vertex\-Shader@{vertex\-Shader}!shaders.cpp@{shaders.\-cpp}}
+\subsubsection[{vertex\-Shader}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ vertex\-Shader}}\label{shaders_8cpp_aea8e0959f6b7eabf6156f801e179da60}
+{\bfseries Wartość początkowa\-:}
+\begin{DoxyCode}
+= \hyperlink{shaders_8cpp_ab06e1eb2e9bf38e0d452b1f796aed208}{STRINGIFY}(
+                               uniform \textcolor{keywordtype}{float} pointRadius;  
+                               uniform \textcolor{keywordtype}{float} pointScale;   
+                               uniform \textcolor{keywordtype}{float} densityScale;
+                               uniform \textcolor{keywordtype}{float} densityOffset;
+                               \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}()
+\{
+    
+    vec3 posEye = vec3(gl\_ModelViewMatrix * vec4(gl\_Vertex.xyz, 1.0));
+    \textcolor{keywordtype}{float} dist = length(posEye);
+    gl\_PointSize = pointRadius * (pointScale / dist);
+
+    gl\_TexCoord[0] = gl\_MultiTexCoord0;
+    gl\_Position = gl\_ModelViewProjectionMatrix * vec4(gl\_Vertex.xyz, 1.0);
+
+    gl\_FrontColor = gl\_Color;
+\}
+                           )
+\end{DoxyCode}
+
+
+Definicja w linii \hyperlink{shaders_8cpp_source_l00015}{15} pliku \hyperlink{shaders_8cpp_source}{shaders.\-cpp}.
+

@@ -19,7 +19,11 @@ class ParticleRenderer
         ~ParticleRenderer();
 
         void setPositions(float *pos, int numParticles);
+<<<<<<< HEAD
         void setVertexBuffer(unsigned int vbo, int numParticles, float zoom);
+=======
+        void setVertexBuffer(unsigned int vbo, int numParticles);
+>>>>>>> 864a84b5da9af8f1bfd5730b9aea43949ed8f182
         void setColorBuffer(unsigned int vbo)
         {
             m_colorVBO = vbo;
@@ -66,7 +70,10 @@ class ParticleRenderer
         float m_particleRadius;
         float m_fov;
         int m_window_w, m_window_h;
+<<<<<<< HEAD
 		float zoom;
+=======
+>>>>>>> 864a84b5da9af8f1bfd5730b9aea43949ed8f182
 
         GLuint m_program;
 
