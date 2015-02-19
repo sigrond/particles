@@ -446,6 +446,8 @@ ParticleSystem::reset(ParticleConfig config)
         case CONFIG_RANDOM:
             {
                 int p = 0, v = 0;
+				float tmprad=m_params.bigradius/2;
+				//printf("%f\n",tmprad);
 
                 for (uint i=0; i < m_numParticles; i++)
                 {
@@ -453,10 +455,10 @@ ParticleSystem::reset(ParticleConfig config)
                     //point[0] = frand();
                     //point[1] = frand();
                     //point[2] = frand();
-					point[0]=2.0f*frand()-1.0f;//frand -> (0.0f,1.0f) 1.0f - promien kuli
-					float my=sqrt(1-point[0]*point[0]);
+					point[0]=m_params.bigradius*frand()-tmprad;//frand -> (0.0f,1.0f) 1.0f - promien kuli
+					float my=sqrt(tmprad*tmprad-point[0]*point[0]);
 					point[1]=rand() /( float ) RAND_MAX *( 2*my ) - my;
-					float mz=sqrt(1-point[0]*point[0]-point[1]*point[1]);
+					float mz=sqrt(tmprad*tmprad-point[0]*point[0]-point[1]*point[1]);
 					point[2]=rand() /( float ) RAND_MAX *( 2*mz ) - mz;
 
                     m_hPos[p++] = 2 * (point[0] - 0.0f);

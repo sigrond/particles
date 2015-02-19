@@ -9,6 +9,7 @@
  *
  */
 
+
 #ifndef PARTICLES_KERNEL_H
 #define PARTICLES_KERNEL_H
 
@@ -22,6 +23,7 @@
 
 #include "vector_types.h"
 typedef unsigned int uint;
+
 
 // simulation parameters
 struct SimParams

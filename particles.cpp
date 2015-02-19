@@ -87,7 +87,7 @@ int numIterations = 0; // run until exit
 
 // simulation parameters
 float timestep = 0.0f;//0.5f;
-float damping = 0.9f;//0.08f;//global damping
+float damping = 0.95f;//0.08f;//global damping
 float gravity = 0.0f;//0.0003f;
 int iterations = 1;
 int ballr = 10;
@@ -95,7 +95,7 @@ int ballr = 10;
 float boundaryDamping= 1.0f;
 float particleMass=0.001f;
 bool boundaries=true;
-float epsi=0.1f;
+float epsi=0.01f;
 
 float collideSpring = 0.5f;;
 float collideDamping = 0.02f;;
@@ -138,6 +138,7 @@ extern "C" void copyArrayFromDevice(void *host, const void *device, unsigned int
 void initParticleSystem(int numParticles, uint3 gridSize, bool bUseOpenGL)
 {
     psystem = new ParticleSystem(numParticles, gridSize, bUseOpenGL);
+	psystem->setBigRadius(bigRadius0);
     //psystem->reset(ParticleSystem::CONFIG_GRID);
 	psystem->reset(ParticleSystem::CONFIG_RANDOM);
 
@@ -188,20 +189,37 @@ void initGL(int *argc, char **argv)
     glutReportErrors();
 }
 
+void parowanieKropliWCzasie()
+{
+	//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
+	licznik++;
+	time_past+=timestep;
+	if(bigRadius>psystem->getParticleRadius()*pow(psystem->getNumParticles(),0.3f)*1.35f)
+	{
+		bigRadius=bigRadius0-A*sqrt(time_past);
+		psystem->setBigRadius(bigRadius);
+	}
+	else if(boundaries)
+	{
+		boundaries=false;
+		timestep=0.0001f;
+	}
+}
+
 void runBenchmark(int iterations, char *exec_path)
 {
     printf("Run %u particles simulation for %d iterations...\n\n", numParticles, iterations);
     cudaDeviceSynchronize();
     sdkStartTimer(&timer);
+    psystem->setDamping(damping);
+    psystem->setGravity(-gravity);
+	psystem->setBoundaryDamping(-boundaryDamping);
+	psystem->setParticleMass(particleMass);
+	psystem->setEpsi(epsi);
 
     for (int i = 0; i < iterations; ++i)
     {
-		time_past+=timestep;
-		if(bigRadius>psystem->getParticleRadius()*pow(psystem->getNumParticles(),0.3f)*1.35f)
-		{
-			bigRadius=bigRadius0-A*sqrt(time_past);
-			psystem->setBigRadius(bigRadius);
-		}
+		parowanieKropliWCzasie();
         psystem->update(timestep);
     }
 
@@ -238,7 +256,7 @@ void computeFPS()
     {
         char fps[256];
         float ifps = 1.f / (sdkGetAverageTimerValue(&timer) / 1000.f);
-        sprintf(fps, "CUDA Particles (%d particles): %3.1f fps", numParticles, ifps);
+        sprintf(fps, "CUDA Particles (%d particles): %3.1f fps, r:%f, R:%f, i:%llu, T:%Lf", numParticles, ifps, psystem->getParticleRadius(), bigRadius, licznik, time_past);
 
         glutSetWindowTitle(fps);
         fpsCount = 0;
@@ -266,16 +284,7 @@ void display()
 		psystem->setParticleMass(particleMass);
 		psystem->setEpsi(epsi);
 
-		//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
-		licznik++;
-		time_past+=timestep;
-		if(bigRadius>psystem->getParticleRadius()*pow(psystem->getNumParticles(),0.3f)*1.35f)
-		{
-			bigRadius=bigRadius0-A*sqrt(time_past);
-			psystem->setBigRadius(bigRadius);
-		}
-		//else
-		//	psystem->setBigRadius(bigRadius0);
+		parowanieKropliWCzasie();
 
         psystem->update(timestep);
 
@@ -709,7 +718,7 @@ void initParams()
 
         // create a new parameter list
         params = new ParamListGL("misc");
-        params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.05f, 0.001f, &timestep));
+        params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.05f, 0.0001f, &timestep));
         params->AddParam(new Param<float>("global damping"  , damping , 0.0f, 1.0f, 0.001f, &damping));
         params->AddParam(new Param<float>("gravity"  , gravity , 0.0f, 1.0f, 0.001f, &gravity));
         params->AddParam(new Param<int> ("ball radius", ballr , 1, 20, 1, &ballr));
@@ -761,6 +770,14 @@ main(int argc, char **argv)
 
     if (argc > 1)
     {
+		
+
+		if (checkCmdLineFlag(argc, (const char **) argv, "bigRadius0"))
+        {
+            bigRadius0 = getCmdLineArgumentFloat(argc, (const char **)argv, "bigRadius0");
+			bigRadius=bigRadius0;
+        }
+
         if (checkCmdLineFlag(argc, (const char **) argv, "n"))
         {
             numParticles = getCmdLineArgumentInt(argc, (const char **)argv, "n");
@@ -776,6 +793,53 @@ main(int argc, char **argv)
             getCmdLineArgumentString(argc, (const char **)argv, "file", &g_refFile);
             fpsLimit = frameCheckNumber;
             numIterations = 1;
+        }
+
+		if (checkCmdLineFlag(argc, (const char **) argv, "timestep"))
+        {
+            timestep = getCmdLineArgumentFloat(argc, (const char **) argv, "timestep");
+        }
+		if (checkCmdLineFlag(argc, (const char **) argv, "epsi"))
+        {
+            epsi = getCmdLineArgumentFloat(argc, (const char **) argv, "epsi");
+        }
+		if (checkCmdLineFlag(argc, (const char **) argv, "damping"))
+        {
+            damping = getCmdLineArgumentFloat(argc, (const char **) argv, "damping");
+        }
+		if (checkCmdLineFlag(argc, (const char **) argv, "boundaryDamping"))
+        {
+            boundaryDamping = getCmdLineArgumentFloat(argc, (const char **) argv, "boundaryDamping");
+        }
+		if (checkCmdLineFlag(argc, (const char **) argv, "particleMass"))
+        {
+            particleMass = getCmdLineArgumentFloat(argc, (const char **) argv, "particleMass");
+        }
+		if (checkCmdLineFlag(argc, (const char **) argv, "gravity"))
+        {
+            gravity = getCmdLineArgumentFloat(argc, (const char **) argv, "gravity");
+        }
+		if (checkCmdLineFlag(argc, (const char **) argv, "help"))
+        {
+            printf("cmd line\n");
+            printf("particles -nazwaParametru=liczba\n");
+            printf("np:\n");
+            printf("particles -bigRadius0=0.1 \n");
+            printf("bigRadius0 -pocz¹tkowy promieñ kropli\n");
+            printf("n -iloœæ cz¹stek\n");
+            printf("grid -rozmiar gridu\n");
+            printf("file -nazwa pliku do porównania z wynikiem\n");
+            printf("timestep -krok czasu\n");
+            printf("benchmark -obliczenia bez GUI, pokazuje wydajnoœæ\n");
+            printf("i -iloœæ kroków\n");
+            printf("device -wybór GPU\n");
+            printf("epsi -epsilon w sile lenarda jonesa\n");
+            printf("damping -lepkoœæ\n");
+            printf("boundaryDamping -napiêcie powierchniowe\n");
+            printf("particleMass -masa cz¹stki\n");
+            printf("gravity -grawitacja\n");
+            printf("help\n");
+
         }
     }
 
