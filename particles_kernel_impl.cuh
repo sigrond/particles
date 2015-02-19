@@ -325,14 +325,10 @@ float3 collideSpheres(float3 posA, float3 posB,
 
     if (dist < collideDist)
     {
-        float3 norm = relPos / dist;
-
-        // relative velocity
+        /*// relative velocity
         //float3 relVel = velB - velA;
-
         // relative tangential velocity
         //float3 tanVel = relVel - (dot(relVel, norm) * norm);
-
         // spring force
         //force = -params.spring*(collideDist - dist) * norm;
         // dashpot (damping) force
@@ -341,14 +337,19 @@ float3 collideSpheres(float3 posA, float3 posB,
         //force += params.shear*tanVel;
         // attraction
         //force += attraction*relPos;
-		float epsi=0.1f;
 		//float D2=0.00001f;//sigma kwadrat
-		float sigma=0.001f;
 		//float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;
 		//float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;
+		//force= epsi*(F1+F2)/dist;*/
+        if(dist<radiusA + radiusB)
+        {
+
+        }
+        float3 norm = relPos / dist;
+		float epsi=0.1f;
+		float sigma=0.001f;
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
-		//force= epsi*(F1+F2)/dist;
 		force=12.0f*epsi/dist*sd*(sd-0.5f)*norm;
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/

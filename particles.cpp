@@ -118,7 +118,7 @@ float bigRadius0=bigRadius;//poczatkowy promien duzej kuli
 float kurczenie=0.01;//A r=r0-A*sqrt(t)
 #define A kurczenie
 unsigned long long int licznik=0;
-long long double time_past=0;
+long double time_past=0;
 
 ParticleSystem *psystem = 0;
 
@@ -309,7 +309,7 @@ void display()
     glPushMatrix();
     float3 p = psystem->getColliderPos();
     glTranslatef(p.x, p.y, p.z);
-    glColor3f(1.0, 0.0, 0.0);
+    //glColor3f(1.0, 0.0, 0.0);
     //glutSolidSphere(psystem->getColliderRadius(), 20, 10);
     glPopMatrix();
 
