@@ -20,6 +20,12 @@
     - added support for automated testing and comparison to a reference value.
 */
 
+/** \file particles.cpp
+ * \brief Główny plik projektu.
+ * Zawiera main i funkcje sterujące całym programem.
+ */
+
+
 /** \mainpage Cząstki
  * \section Opis_Ogólny Opis Ogólny
  * - Najpierw wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.
@@ -85,6 +91,9 @@ float camera_rot[]   = {0, 0, 0};
 float camera_trans_lag[] = {0, 0, -3};
 float camera_rot_lag[] = {0, 0, 0};
 const float inertia = 0.1f;
+/** \var zoom
+ * \brief powiększenie
+ */
 float zoom=1.0f;
 ParticleRenderer::DisplayMode displayMode = ParticleRenderer::PARTICLE_SPHERES;
 
@@ -105,15 +114,30 @@ uint3 gridSize;
 int numIterations = 0; // run until exit
 
 // simulation parameters
+/** \var timestep
+ * \brief krok czasu
+ */
 float timestep = 0.0f;//0.5f;
+/** \var damping
+ * \brief lepkość
+ */
 float damping = 0.95f;//0.08f;//global damping
 float gravity = 0.0f;//0.0003f;
 int iterations = 1;
 int ballr = 10;
 
+/** \var boundaryDamping
+ * \brief współczynnik oddziaływania z brzegami
+ */
 float boundaryDamping= 1.0f;
+/** \var particleMass
+ * \brief masa cząstki
+ */
 float particleMass=0.001f;
 bool boundaries=true;
+/** \var epsi
+ * \brief epsilon do siły lenarda jonesa
+ */
 float epsi=0.01f;
 
 float collideSpring = 0.5f;;
@@ -121,11 +145,24 @@ float collideDamping = 0.02f;;
 float collideShear = 0.1f;
 float collideAttraction = 0.1f;
 
+/** \var bigRadius
+ * \brief promien duzej kuli
+ */
 float bigRadius=2.0f;//promien duzej kuli
 float bigRadius0=bigRadius;//poczatkowy promien duzej kuli
+/** \var kurczenie
+ * A r=r0-A*sqrt(t)
+ * \brief parametr równania na parowanie kropli
+ */
 float kurczenie=0.1f;//A r=r0-A*sqrt(t)
 #define A kurczenie
+/** \var licznik
+ * \brief ilość kroków od początku symulacji
+ */
 unsigned long long int licznik=0;
+/** \var time_past
+ * \brief czas który upłynoł
+ */
 long double time_past=0.0;
 
 ParticleSystem *psystem = 0;
@@ -156,6 +193,13 @@ extern "C" void cudaGLInit(int argc, char **argv);
 extern "C" void copyArrayFromDevice(void *host, const void *device, unsigned int vbo, int size);
 
 // initialize particle system
+/** \brief initialize particle system
+ * ustawienia początkowe i utworzenie obiektu systemu cząstek
+ * \param numParticles int ilość cząstek
+ * \param gridSize uint3 wymiary gridu
+ * \param bUseOpenGL bool czy jest GUI
+ * \return void
+ */
 void initParticleSystem(int numParticles, uint3 gridSize, bool bUseOpenGL)
 {
     psystem = new ParticleSystem(numParticles, gridSize, bUseOpenGL);
@@ -179,6 +223,11 @@ void cleanup()
 }
 
 // initialize OpenGL
+/** \brief initialize OpenGL
+ * \param argc int*
+ * \param argv char**
+ * \return void
+ */
 void initGL(int *argc, char **argv)
 {
     glutInit(argc, argv);
@@ -210,6 +259,9 @@ void initGL(int *argc, char **argv)
     glutReportErrors();
 }
 
+/** \brief sterowanie parowaniem kropli
+ * \return void
+ */
 void parowanieKropliWCzasie()
 {
 	//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
@@ -227,6 +279,11 @@ void parowanieKropliWCzasie()
 	}
 }
 
+/** \brief uruchomienie symulacji bez GUI z zapisem wyniku
+ * \param iterations int ilość przebiegów do wykonania
+ * \param exec_path char* ścieżka do aktualnego katalogu
+ * \return void
+ */
 void runBenchmark(int iterations, char *exec_path)
 {
     printf("Run %u particles simulation for %d iterations...\n\n", numParticles, iterations);
@@ -299,6 +356,9 @@ void runBenchmark(int iterations, char *exec_path)
     }
 }
 
+/** \brief liczenie i wypisnie danych na pasku
+ * \return void
+ */
 void computeFPS()
 {
     frameCount++;
@@ -318,6 +378,9 @@ void computeFPS()
     }
 }
 
+/** \brief funkcja odpowiadająca za symulację z włączonym GUI
+ * \return void
+ */
 void display()
 {
     sdkStartTimer(&timer);
@@ -414,6 +477,9 @@ inline float frand()
     return rand() / (float) RAND_MAX;
 }
 
+/** \brief wstawianie kuli cząstek na życzenie
+ * \return void
+ */
 void addSphere()
 {
     // inject a sphere of particles
@@ -448,6 +514,13 @@ void reshape(int w, int h)
     }
 }
 
+/** \brief obsługa zdarzeń myszy
+ * \param button int
+ * \param state int
+ * \param x int
+ * \param y int
+ * \return void
+ */
 void mouse(int button, int state, int x, int y)
 {
     int mods;
@@ -504,6 +577,12 @@ void mouse(int button, int state, int x, int y)
 }
 
 // transfrom vector by matrix
+/** \brief transfrom vector by matrix
+ * \param v float*
+ * \param r float*
+ * \param m GLfloat*
+ * \return void
+ */
 void xform(float *v, float *r, GLfloat *m)
 {
     r[0] = v[0]*m[0] + v[1]*m[4] + v[2]*m[8] + m[12];
@@ -512,6 +591,12 @@ void xform(float *v, float *r, GLfloat *m)
 }
 
 // transform vector by transpose of matrix
+/** \brief transform vector by transpose of matrix
+ * \param v float*
+ * \param r float*
+ * \param m GLfloat*
+ * \return void
+ */
 void ixform(float *v, float *r, GLfloat *m)
 {
     r[0] = v[0]*m[0] + v[1]*m[1] + v[2]*m[2];
@@ -612,6 +697,12 @@ void motion(int x, int y)
 }
 
 // commented out to remove unused parameter warnings in Linux
+/** \brief obsługa zdarzeń klawiszy i opcji z menu
+ * \param key unsigned char
+ * \param x int
+ * \param y int
+ * \return void
+ */
 void key(unsigned char key, int /*x*/, int /*y*/)
 {
     switch (key)

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['damping',['damping',['../struct_sim_params.html#abf1644c671e60ebaf873d9167e755328',1,'SimParams::damping()'],['../particles_8cpp.html#a99d817470e9063f458d39529c7c1724b',1,'damping():&#160;particles.cpp']]],
+  ['damping',['damping',['../struct_sim_params.html#abf1644c671e60ebaf873d9167e755328',1,'SimParams::damping()'],['../particles_8cpp.html#a5d7c41f4909ad7714235c2d8fdf9d935',1,'damping():&#160;particles.cpp']]],
   ['debug_5fgrid',['DEBUG_GRID',['../particle_system_8h.html#ae8e259f1517dc644367009cfc06caebe',1,'particleSystem.h']]],
   ['deltatime',['deltaTime',['../structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754',1,'integrate_functor']]],
   ['democounter',['demoCounter',['../particles_8cpp.html#a969b56707854449ae3fb4847b563191f',1,'particles.cpp']]],

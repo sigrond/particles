@@ -1,7 +1,7 @@
 <map id="mainMenu" name="mainMenu">
-<area shape="rect" id="node2" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="key" alt="" coords="136,281,179,307"/>
+<area shape="rect" id="node2" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="obsługa zdarzeń klawiszy i opcji z menu " alt="" coords="136,281,179,307"/>
 <area shape="rect" id="node3" href="$class_particle_system.html#af2f16676fe8a0523cfb867a9a856970c" title="ParticleSystem::addSphere" alt="" coords="492,19,673,46"/>
-<area shape="rect" id="node8" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="addSphere" alt="" coords="292,70,376,97"/>
+<area shape="rect" id="node8" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="wstawianie kuli cząstek na życzenie " alt="" coords="292,70,376,97"/>
 <area shape="rect" id="node10" href="$class_particle_system.html#abdb59a91d8483017ad71455bb2958993" title="ParticleSystem::getParticle\lRadius" alt="" coords="492,121,673,163"/>
 <area shape="rect" id="node11" href="$class_particle_system.html#a722bdb7cc940f052400a69fe9569a49e" title="ParticleSystem::dumpGrid" alt="" coords="247,171,421,198"/>
 <area shape="rect" id="node13" href="$class_particle_system.html#a9025f319e07c58c6ece1cd2a620ce33a" title="ParticleSystem::dumpParticles" alt="" coords="233,222,435,249"/>

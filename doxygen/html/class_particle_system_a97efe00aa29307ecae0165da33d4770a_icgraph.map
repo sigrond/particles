@@ -1,7 +1,7 @@
 <map id="ParticleSystem::setBigRadius" name="ParticleSystem::setBigRadius">
-<area shape="rect" id="node2" href="$particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initParticleSystem" alt="" coords="269,5,397,32"/>
-<area shape="rect" id="node3" href="$particles_8cpp.html#ad38a0dbec46194a94a86cfa6416ce48f" title="parowanieKropliWCzasie" alt="" coords="249,56,416,83"/>
-<area shape="rect" id="node4" href="$particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="display" alt="" coords="486,31,549,57"/>
-<area shape="rect" id="node5" href="$particles_8cpp.html#acd4773d821b4657197abdd8058000f56" title="runBenchmark" alt="" coords="464,81,571,108"/>
+<area shape="rect" id="node2" href="$particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initialize particle system ustawienia początkowe i utworzenie obiektu systemu cząstek ..." alt="" coords="269,5,397,32"/>
+<area shape="rect" id="node3" href="$particles_8cpp.html#ad38a0dbec46194a94a86cfa6416ce48f" title="sterowanie parowaniem kropli " alt="" coords="249,56,416,83"/>
+<area shape="rect" id="node4" href="$particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="486,31,549,57"/>
+<area shape="rect" id="node5" href="$particles_8cpp.html#acd4773d821b4657197abdd8058000f56" title="uruchomienie symulacji bez GUI z zapisem wyniku " alt="" coords="464,81,571,108"/>
 <area shape="rect" id="node6" href="$particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="619,81,669,108"/>
 </map>

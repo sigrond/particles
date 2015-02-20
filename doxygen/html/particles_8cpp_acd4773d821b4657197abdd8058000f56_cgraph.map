@@ -2,7 +2,7 @@
 <area shape="rect" id="node2" href="$particle_system_8cuh.html#a54716407dbd516db34f42b2faf7f91a3" title="copyArrayFromDevice" alt="" coords="195,5,344,32"/>
 <area shape="rect" id="node3" href="$class_particle_system.html#a2c8214a5bcd9d9c24d16e1f0063c06d6" title="ParticleSystem::getCudaPosVBO" alt="" coords="160,56,379,83"/>
 <area shape="rect" id="node4" href="$class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0" title="ParticleSystem::getNumParticles" alt="" coords="427,103,641,129"/>
-<area shape="rect" id="node5" href="$particles_8cpp.html#ad38a0dbec46194a94a86cfa6416ce48f" title="parowanieKropliWCzasie" alt="" coords="186,157,353,184"/>
+<area shape="rect" id="node5" href="$particles_8cpp.html#ad38a0dbec46194a94a86cfa6416ce48f" title="sterowanie parowaniem kropli " alt="" coords="186,157,353,184"/>
 <area shape="rect" id="node8" href="$class_particle_system.html#a1b17ae9291cf9974f63219cc9eac6ec6" title="ParticleSystem::setBoundary\lDamping" alt="" coords="173,209,365,250"/>
 <area shape="rect" id="node9" href="$class_particle_system.html#aa26996b9ca13499b13f944f3aaeae10c" title="ParticleSystem::setDamping" alt="" coords="175,275,363,301"/>
 <area shape="rect" id="node10" href="$class_particle_system.html#a6290c054a797ec9fa691179ffb4631f7" title="ParticleSystem::setEpsi" alt="" coords="188,325,351,352"/>

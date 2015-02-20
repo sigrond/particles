@@ -1,9 +1,9 @@
 <map id="display" name="display">
-<area shape="rect" id="node2" href="$particles_8cpp.html#a6fed970e4454f0b672cd023315b9e343" title="computeFPS" alt="" coords="173,63,272,90"/>
+<area shape="rect" id="node2" href="$particles_8cpp.html#a6fed970e4454f0b672cd023315b9e343" title="liczenie i wypisnie danych na pasku " alt="" coords="173,63,272,90"/>
 <area shape="rect" id="node4" href="$class_particle_renderer.html#a80b2f52dc28bb3abbde021f7fe96f8ff" title="ParticleRenderer::display" alt="" coords="139,13,306,39"/>
 <area shape="rect" id="node6" href="$class_particle_system.html#ae9f149d6b7c3b148fc397473c7c3c2e2" title="ParticleSystem::getCurrent\lReadBuffer" alt="" coords="133,115,312,156"/>
 <area shape="rect" id="node7" href="$class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0" title="ParticleSystem::getNumParticles" alt="" coords="377,231,592,258"/>
-<area shape="rect" id="node8" href="$particles_8cpp.html#ad38a0dbec46194a94a86cfa6416ce48f" title="parowanieKropliWCzasie" alt="" coords="139,181,306,207"/>
+<area shape="rect" id="node8" href="$particles_8cpp.html#ad38a0dbec46194a94a86cfa6416ce48f" title="sterowanie parowaniem kropli " alt="" coords="139,181,306,207"/>
 <area shape="rect" id="node10" href="$class_particle_system.html#a1b17ae9291cf9974f63219cc9eac6ec6" title="ParticleSystem::setBoundary\lDamping" alt="" coords="127,283,319,324"/>
 <area shape="rect" id="node11" href="$class_particle_system.html#aef02d293e3dc61c50fa6d085aa0b03de" title="ParticleSystem::setCollide\lAttraction" alt="" coords="135,348,311,389"/>
 <area shape="rect" id="node12" href="$class_particle_system.html#a8f8d21c7079c3a0e66558b9ec5bef597" title="ParticleSystem::setCollide\lDamping" alt="" coords="135,413,311,455"/>

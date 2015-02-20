@@ -1,5 +1,5 @@
 <map id="addSphere" name="addSphere">
 <area shape="rect" id="node2" href="$particles_8cpp.html#a01131b63acf241e9db91704d89ce15d2" title="idle" alt="" coords="137,5,180,32"/>
-<area shape="rect" id="node3" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="key" alt="" coords="137,56,180,83"/>
+<area shape="rect" id="node3" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="obsługa zdarzeń klawiszy i opcji z menu " alt="" coords="137,56,180,83"/>
 <area shape="rect" id="node4" href="$particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="228,56,311,83"/>
 </map>
