@@ -20,6 +20,25 @@
     - added support for automated testing and comparison to a reference value.
 */
 
+/** \mainpage Cząstki
+ * \section Opis_Ogólny Opis Ogólny
+ * - Najpierw wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.
+ * Prędkość to poprzednia prędkość, grawitacja i lepkość.
+ * - Potem cząstki dzielone są na komurki według ich położenia.
+ * - Dla każdej cząstki wyliczana jest siła jaka na nią zadziała.
+ * Składa się ona ze zderzeń ze wszystkimi cząstkami w zasięgu,
+ * muszą one być w tej samej komurce, albo w sąsiedniej.
+ * - Prędkość jest wyliczana z poprzedniej prękości i siły.
+ * \section linki_do_fizyki Linki do fizyki
+ http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html
+ http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf
+ http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html
+ http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf
+ http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions
+ * \section Repozytorium Repozytorium
+ https://github.com/sigrond/particles/tree/spica
+ */
+
 // OpenGL Graphics includes
 #include <GL/glew.h>
 #if defined (_WIN32)
@@ -224,7 +243,7 @@ void runBenchmark(int iterations, char *exec_path)
 	if(save)
 	{
 		f=fopen(save,"wb");
-		//fprintf(f,"%d",psystem->getNumParticles());//ilo�� cz�stek
+		//fprintf(f,"%d",psystem->getNumParticles());//iloœæ cz¹stek
 		fwrite((void*)&numParticles,sizeof(int),1,f);
 	}
 
@@ -803,7 +822,7 @@ main(int argc, char **argv)
 
     if (argc > 1)
     {
-		
+
 
 		if (checkCmdLineFlag(argc, (const char **) argv, "bigRadius0"))
         {
@@ -869,18 +888,18 @@ main(int argc, char **argv)
             printf("particles -nazwaParametru=liczba\n");
             printf("np:\n");
             printf("particles -bigRadius0=0.1 \n");
-            printf("bigRadius0 -pocz�tkowy promie� kropli\n");
-            printf("n -ilo�� cz�stek\n");
+            printf("bigRadius0 -pocz¹tkowy promieñ kropli\n");
+            printf("n -iloœæ cz¹stek\n");
             printf("grid -rozmiar gridu\n");
-            printf("file -nazwa pliku do por�wnania z wynikiem\n");
+            printf("file -nazwa pliku do porównania z wynikiem\n");
             printf("timestep -krok czasu\n");
-            printf("benchmark -obliczenia bez GUI, pokazuje wydajno��\n");
-            printf("i -ilo�� krok�w\n");
-            printf("device -wyb�r GPU\n");
+            printf("benchmark -obliczenia bez GUI, pokazuje wydajnoœæ\n");
+            printf("i -iloœæ kroków\n");
+            printf("device -wybór GPU\n");
             printf("epsi -epsilon w sile lenarda jonesa\n");
-            printf("damping -lepko��\n");
-            printf("boundaryDamping -napi�cie powierchniowe\n");
-            printf("particleMass -masa cz�stki\n");
+            printf("damping -lepkoœæ\n");
+            printf("boundaryDamping -napiêcie powierchniowe\n");
+            printf("particleMass -masa cz¹stki\n");
             printf("gravity -grawitacja\n");
 			printf("save -zapis do pliku\n");
             printf("help\n");

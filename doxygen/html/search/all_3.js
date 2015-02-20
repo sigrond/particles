@@ -30,5 +30,6 @@ var searchData=
   ['createvbo',['createVBO',['../class_particle_system.html#a399eb5cb9c422fd3370899e4d8a5d62e',1,'ParticleSystem']]],
   ['cudaglinit',['cudaGLInit',['../particles_8cpp.html#a4e20ffdf94c8d60a5c32ecde149c8554',1,'cudaGLInit(int argc, char **argv):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a4e20ffdf94c8d60a5c32ecde149c8554',1,'cudaGLInit(int argc, char **argv):&#160;particleSystem_cuda.cu']]],
   ['cudainit',['cudaInit',['../particles_8cpp.html#ad205012a960928f6fb61ea4f51a95e9f',1,'cudaInit(int argc, char **argv):&#160;particleSystem_cuda.cu'],['../particle_system_8cuh.html#ad205012a960928f6fb61ea4f51a95e9f',1,'cudaInit(int argc, char **argv):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#ad205012a960928f6fb61ea4f51a95e9f',1,'cudaInit(int argc, char **argv):&#160;particleSystem_cuda.cu']]],
-  ['cudart_5fpi_5ff',['CUDART_PI_F',['../particle_system_8cpp.html#a0af3123952dff68caffd7e1357abe1b7',1,'particleSystem.cpp']]]
+  ['cudart_5fpi_5ff',['CUDART_PI_F',['../particle_system_8cpp.html#a0af3123952dff68caffd7e1357abe1b7',1,'particleSystem.cpp']]],
+  ['cząstki',['Cząstki',['../index.html',1,'']]]
 ];

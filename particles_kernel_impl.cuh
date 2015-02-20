@@ -36,7 +36,12 @@ texture<uint, 1, cudaReadModeElementType> cellEndTex;
 // simulation parameters in constant memory
 __constant__ SimParams params;
 
-
+/** \struct integrate_functor
+ * \brief ta struktura inicjowana jest z krokiem delta_time dla danych
+ * opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU)
+ * jako para (tuple) float4 położenia i prędkości
+ *
+ */
 struct integrate_functor
 {
     float deltaTime;
@@ -44,6 +49,10 @@ struct integrate_functor
     __host__ __device__
     integrate_functor(float delta_time) : deltaTime(delta_time) {}
 
+    /** \brief nowe położenie
+     * \param t para położenia i prędkości
+     * wylicza nowe położenie i sprawdza czy położenie nie jest za brzegiem
+     */
     template <typename Tuple>
     __device__
     void operator()(Tuple t)
@@ -95,6 +104,7 @@ struct integrate_functor
 #endif
 
 		//odbijanie sie od kuli
+		/**< odbijanie sie od kuli */
 #if 1
 		float xk=pos.x*pos.x;
 		float yk=pos.y*pos.y;
@@ -138,7 +148,7 @@ struct integrate_functor
 			pos.z*=tmp;
 		}*/
 #endif
-		
+
 //dolna plaszczyzna
 #if 1
         if (pos.y < -params.bigradius + params.particleRadius)
@@ -155,6 +165,12 @@ struct integrate_functor
 };
 
 // calculate position in uniform grid
+/** \brief calculate position in uniform grid
+ *
+ * \param p float3
+ * \return __device__ int3
+ *
+ */
 __device__ int3 calcGridPos(float3 p)
 {
     int3 gridPos;
@@ -165,6 +181,12 @@ __device__ int3 calcGridPos(float3 p)
 }
 
 // calculate address in grid from position (clamping to edges)
+/** \brief calculate address in grid from position (clamping to edges)
+ *
+ * \param gridPos int3
+ * \return __device__ uint
+ *
+ */
 __device__ uint calcGridHash(int3 gridPos)
 {
     gridPos.x = gridPos.x & (params.gridSize.x-1);  // wrap grid, assumes size is power of 2
@@ -174,6 +196,15 @@ __device__ uint calcGridHash(int3 gridPos)
 }
 
 // calculate grid hash value for each particle
+/** \brief calculate grid hash value for each particle
+ *
+ * \param gridParticleHash uint* output
+ * \param *gridParticleIndex uint output
+ * \param *pos float4 input: positions
+ * \param  uint    numParticles
+ * \return __global__ void
+ *
+ */
 __global__
 void calcHashD(uint   *gridParticleHash,  // output
                uint   *gridParticleIndex, // output
@@ -197,6 +228,21 @@ void calcHashD(uint   *gridParticleHash,  // output
 
 // rearrange particle data into sorted order, and find the start of each cell
 // in the sorted hash array
+/** \brief rearrange particle data into sorted order, and find the start of each cell in the sorted hash array
+ *
+ * \param cellStart uint* output: cell start index
+ * \param uint   *cellEnd output: cell end index
+ * \param float4 *sortedPos output: sorted positions
+ * \param float4 *sortedVel output: sorted velocities
+ * \param uint   *gridParticleHash input: sorted grid hashes
+ * \param uint   *gridParticleIndex input: sorted particle indices
+ * \param float4 *oldPos input: sorted position array
+ * \param float4 *oldVel input: sorted velocity array
+ * \param uint    numParticles
+ * \return __global__ void
+ *
+ *
+ */
 __global__
 void reorderDataAndFindCellStartD(uint   *cellStart,        // output: cell start index
                                   uint   *cellEnd,          // output: cell end index
@@ -266,6 +312,18 @@ void reorderDataAndFindCellStartD(uint   *cellStart,        // output: cell star
 }
 
 // collide two spheres using DEM method
+/** \brief collide two spheres using DEM method
+ *
+ * \param posA float3
+ * \param posB float3
+ * \param velA float3
+ * \param velB float3
+ * \param radiusA float
+ * \param radiusB float
+ * \param attraction float
+ * \return __device__ float3
+ *
+ */
 __device__
 float3 collideSpheres(float3 posA, float3 posB,
                       float3 velA, float3 velB,
@@ -306,7 +364,7 @@ float3 collideSpheres(float3 posA, float3 posB,
 		//float epsi=0.1f;
 		//float D2=0.00001f;//sigma kwadrat
 		//float sigma=0.001f;//sigma*2^1/6=r
-		float sigma=2*params.particleRadius/(1.12246204f); //tu te� jest dobrze tak jak LJ ka�e :-)
+		float sigma=2*params.particleRadius/(1.12246204f); //tu te¿ jest dobrze tak jak LJ ka¿e :-)
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
 		force=-48.0f*params.epsi/dist*sd*(sd-0.5f)*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
@@ -321,6 +379,19 @@ float3 collideSpheres(float3 posA, float3 posB,
 
 
 // collide a particle against all other particles in a given cell
+/** \brief collide a particle against all other particles in a given cell
+ *
+ * \param gridPos int3
+ * \param index uint
+ * \param pos float3
+ * \param vel float3
+ * \param oldPos float4*
+ * \param oldVel float4*
+ * \param cellStart uint*
+ * \param cellEnd uint*
+ * \return __device__ float3
+ *
+ */
 __device__
 float3 collideCell(int3    gridPos,
                    uint    index,
@@ -359,7 +430,18 @@ float3 collideCell(int3    gridPos,
     return force;
 }
 
-
+/** \brief wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu
+ *
+ * \param newVel float4* output: new velocit
+ * \param float4 *oldPos input: sorted positions
+ * \param float4 *oldVel input: sorted velocities
+ * \param uint   *gridParticleIndex input: sorted particle indices
+ * \param uint   *cellStart
+ * \param cellEnd uint*
+ * \param numParticles uint
+ * \return __global__ void
+ *
+ */
 __global__
 void collideD(float4 *newVel,               // output: new velocity
               float4 *oldPos,               // input: sorted positions
