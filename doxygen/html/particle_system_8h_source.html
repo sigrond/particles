@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>particles_vs2008: Plik 藕r贸d艂owy particleSystem.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">particles_vs2008
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;g艂贸wna</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plik贸w</span></a></li>
+      <li><a href="globals.html"><span>Sk艂adowe&#160;plik贸w</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('particle_system_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klasy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Zmienne</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definicje typ贸w</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Wyliczenia</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Warto艣ci wylicze艅</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Definicje</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">particleSystem.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="particle_system_8h.html">Id藕 do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 1993-2012 NVIDIA Corporation.  All rights reserved.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Please refer to the NVIDIA end user license agreement (EULA) associated</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * with this source code for terms and conditions that govern your use of</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * this software. Any use, reproduction, disclosure, or distribution of</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * this software and related documentation outside the terms of the EULA</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * is strictly prohibited.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">__PARTICLESYSTEM_H__</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">__PARTICLESYSTEM_H__</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="particle_system_8h.html#ae8e259f1517dc644367009cfc06caebe">   15</a></span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">DEBUG_GRID</span> 0</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="particle_system_8h.html#a55968a72af09a67a7420f59ee7435ea3">   16</a></span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">DO_TIMING</span> 0</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">helper_functions</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="particles__kernel_8cuh.html">&quot;particles_kernel.cuh&quot;</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&quot;vector_functions.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Particle system class</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_particle_system.html">   23</a></span>&#160;<span class="keyword">class</span> <a class="code" href="class_particle_system.html">ParticleSystem</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_particle_system.html#a8a2be3e93616aa694801369c8b8d12cb">ParticleSystem</a>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> numParticles, uint3 gridSize, <span class="keywordtype">bool</span> bUseOpenGL);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        ~<a class="code" href="class_particle_system.html#a6bc725349a763b9d6817950cde16a93f">ParticleSystem</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1">   29</a></span>&#160;        <span class="keyword">enum</span> <a class="code" href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1">ParticleConfig</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee">   31</a></span>&#160;            <a class="code" href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee">CONFIG_RANDOM</a>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47">   32</a></span>&#160;            <a class="code" href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47">CONFIG_GRID</a>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1a602c3604196d8513e85acf6fd039391e">   33</a></span>&#160;            <a class="code" href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1a602c3604196d8513e85acf6fd039391e">_NUM_CONFIGS</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        };</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3">   36</a></span>&#160;        <span class="keyword">enum</span> <a class="code" href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3">ParticleArray</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299">   38</a></span>&#160;            <a class="code" href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299">POSITION</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d">   39</a></span>&#160;            <a class="code" href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d">VELOCITY</a>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        };</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a166fd86f020b6024d7d42723762d7cb2">update</a>(<span class="keywordtype">float</span> deltaTime);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a519070812dd9eb349f270c793c5f64b6">reset</a>(<a class="code" href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1">ParticleConfig</a> config);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_system.html#a8bdfaa6198651ef0ceb8be489ecd78e3">getArray</a>(<a class="code" href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3">ParticleArray</a> array);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span>   <a class="code" href="class_particle_system.html#aa792a66680e800832059854aab0d594d">setArray</a>(<a class="code" href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3">ParticleArray</a> array, <span class="keyword">const</span> <span class="keywordtype">float</span> *data, <span class="keywordtype">int</span> start, <span class="keywordtype">int</span> count);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0">   48</a></span>&#160;        <span class="keywordtype">int</span>    <a class="code" href="class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0">getNumParticles</a>() <span class="keyword">const</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_particle_system.html#a23d238efa80a647d4b6cde034f486a91">m_numParticles</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_particle_system.html#ae9f149d6b7c3b148fc397473c7c3c2e2">   53</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_particle_system.html#ae9f149d6b7c3b148fc397473c7c3c2e2">getCurrentReadBuffer</a>() <span class="keyword">const</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_particle_system.html#a31f9cccdf5dbae6f72867665bd8761e3">m_posVbo</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_particle_system.html#a5d300a37ebf1a2fb8575f82ced6a208f">   57</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_particle_system.html#a5d300a37ebf1a2fb8575f82ced6a208f">getColorBuffer</a>()       <span class="keyword">const</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_particle_system.html#a96b05c719006c9e3eaed759f54a49c7f">m_colorVBO</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_particle_system.html#a2c8214a5bcd9d9c24d16e1f0063c06d6">   62</a></span>&#160;        <span class="keywordtype">void</span> *<a class="code" href="class_particle_system.html#a2c8214a5bcd9d9c24d16e1f0063c06d6">getCudaPosVBO</a>()              <span class="keyword">const</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">return</span> (<span class="keywordtype">void</span> *)<a class="code" href="class_particle_system.html#aba18245745f621d90186862f1a559d9e">m_cudaPosVBO</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_particle_system.html#af89375a9131276f941dccefa7840adda">   66</a></span>&#160;        <span class="keywordtype">void</span> *<a class="code" href="class_particle_system.html#af89375a9131276f941dccefa7840adda">getCudaColorVBO</a>()            <span class="keyword">const</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span> (<span class="keywordtype">void</span> *)<a class="code" href="class_particle_system.html#a39d210b57da5f7f4a2c23f4fc0b43ea1">m_cudaColorVBO</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a722bdb7cc940f052400a69fe9569a49e">dumpGrid</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a9025f319e07c58c6ece1cd2a620ce33a">dumpParticles</a>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> start, <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> count);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_particle_system.html#a11f55976f6ef34dceea208fbe06694cd">   74</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a11f55976f6ef34dceea208fbe06694cd">setIterations</a>(<span class="keywordtype">int</span> i)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="class_particle_system.html#a7b4b053433c052518b8ecce1b02000f5">m_solverIterations</a> = i;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_particle_system.html#aa26996b9ca13499b13f944f3aaeae10c">   79</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#aa26996b9ca13499b13f944f3aaeae10c">setDamping</a>(<span class="keywordtype">float</span> x)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            m_params.globalDamping = x;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_particle_system.html#a755f64f917389ef41df81b663d1f5bd2">   83</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a755f64f917389ef41df81b663d1f5bd2">setGravity</a>(<span class="keywordtype">float</span> x)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            m_params.gravity = make_float3(0.0f, x, 0.0f);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_particle_system.html#a1b17ae9291cf9974f63219cc9eac6ec6">   88</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a1b17ae9291cf9974f63219cc9eac6ec6">setBoundaryDamping</a>(<span class="keywordtype">float</span> x)<span class="comment">// ustawienie wsp napi阠ia powierzchniowego</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            m_params.boundaryDamping = x;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_particle_system.html#a92e1db62e4025fab4996ce9a3ca5882f">   92</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a92e1db62e4025fab4996ce9a3ca5882f">setParticleMass</a>(<span class="keywordtype">float</span> x)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        m_params.particleMass=x;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                }</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_particle_system.html#a6290c054a797ec9fa691179ffb4631f7">   96</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a6290c054a797ec9fa691179ffb4631f7">setEpsi</a>(<span class="keywordtype">float</span> x)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        m_params.epsi=x;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_particle_system.html#a7ed53fca9ef126898d29314478ec8fd4">  101</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a7ed53fca9ef126898d29314478ec8fd4">setCollideSpring</a>(<span class="keywordtype">float</span> x)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            m_params.spring = x;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="class_particle_system.html#a8f8d21c7079c3a0e66558b9ec5bef597">  105</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a8f8d21c7079c3a0e66558b9ec5bef597">setCollideDamping</a>(<span class="keywordtype">float</span> x)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            m_params.damping = x;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="class_particle_system.html#aea667093542a1bdad65bdcb427e5625f">  109</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#aea667093542a1bdad65bdcb427e5625f">setCollideShear</a>(<span class="keywordtype">float</span> x)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            m_params.shear = x;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_particle_system.html#aef02d293e3dc61c50fa6d085aa0b03de">  113</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#aef02d293e3dc61c50fa6d085aa0b03de">setCollideAttraction</a>(<span class="keywordtype">float</span> x)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            m_params.attraction = x;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="class_particle_system.html#a97efe00aa29307ecae0165da33d4770a">  118</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a97efe00aa29307ecae0165da33d4770a">setBigRadius</a>(<span class="keywordtype">float</span> x)<span class="comment">//ustawienie promienia duzej kuli</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                        m_params.bigradius=x;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="class_particle_system.html#a99bbe16b8e181415c2aa71c11edace98">  123</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a99bbe16b8e181415c2aa71c11edace98">setBoundaries</a>(<span class="keywordtype">bool</span> x)<span class="comment">//ograniczenia zewn阾rzne</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                        m_params.boundaries=x;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="class_particle_system.html#a9c49794585cad649de400dc7375d7801">  128</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a9c49794585cad649de400dc7375d7801">setColliderPos</a>(float3 x)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            m_params.colliderPos = x;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="class_particle_system.html#abdb59a91d8483017ad71455bb2958993">  133</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_particle_system.html#abdb59a91d8483017ad71455bb2958993">getParticleRadius</a>()</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">return</span> m_params.particleRadius;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="class_particle_system.html#a3c8578d474f5a6f14d903a242aec96ec">  137</a></span>&#160;        <a class="code" href="class_particle_system.html#a3c8578d474f5a6f14d903a242aec96ec">float3</a> <a class="code" href="class_particle_system.html#a3c8578d474f5a6f14d903a242aec96ec">getColliderPos</a>()</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">return</span> m_params.colliderPos;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        }</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="class_particle_system.html#a56f07dfab9d5cbf510c6e0a28e816038">  141</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_particle_system.html#a56f07dfab9d5cbf510c6e0a28e816038">getColliderRadius</a>()</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordflow">return</span> m_params.colliderRadius;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        }</div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="class_particle_system.html#af94ba180bcb348afcfd81bb699d6aab0">  145</a></span>&#160;        <a class="code" href="class_particle_system.html#af94ba180bcb348afcfd81bb699d6aab0">uint3</a> <a class="code" href="class_particle_system.html#af94ba180bcb348afcfd81bb699d6aab0">getGridSize</a>()</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">return</span> m_params.gridSize;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="class_particle_system.html#a19d9bb799a5b5704d8fd6a286f6be20d">  149</a></span>&#160;        <a class="code" href="class_particle_system.html#a19d9bb799a5b5704d8fd6a286f6be20d">float3</a> <a class="code" href="class_particle_system.html#a19d9bb799a5b5704d8fd6a286f6be20d">getWorldOrigin</a>()</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">return</span> m_params.worldOrigin;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="class_particle_system.html#a608bcb87f3d30fbfeae810da28ae1052">  153</a></span>&#160;        <a class="code" href="class_particle_system.html#a608bcb87f3d30fbfeae810da28ae1052">float3</a> <a class="code" href="class_particle_system.html#a608bcb87f3d30fbfeae810da28ae1052">getCellSize</a>()</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">return</span> m_params.cellSize;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#af2f16676fe8a0523cfb867a9a856970c">addSphere</a>(<span class="keywordtype">int</span> index, <span class="keywordtype">float</span> *pos, <span class="keywordtype">float</span> *vel, <span class="keywordtype">int</span> r, <span class="keywordtype">float</span> spacing);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keyword">protected</span>: <span class="comment">// methods</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="class_particle_system.html#a9028ec8023c61773dd4a668c3ad8cc26">  161</a></span>&#160;        <a class="code" href="class_particle_system.html#a9028ec8023c61773dd4a668c3ad8cc26">ParticleSystem</a>() {}</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_particle_system.html#a399eb5cb9c422fd3370899e4d8a5d62e">createVBO</a>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> size);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a484988642e046424d32a13709204e8de">_initialize</a>(<span class="keywordtype">int</span> numParticles);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a5d6a52db7d1277c8fe734ecceb69e5c6">_finalize</a>();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_system.html#a2e08c4e354b0de5e2dc468a0fb457dfe">initGrid</a>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *size, <span class="keywordtype">float</span> spacing, <span class="keywordtype">float</span> jitter, <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> numParticles);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keyword">protected</span>: <span class="comment">// data</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="class_particle_system.html#a5d99413ffc0791e6aa9f02308caf7f1e">  170</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_particle_system.html#a21bbfba9d8701a70bc6fddbf4fc3f5bd">m_bInitialized</a>, <a class="code" href="class_particle_system.html#a5d99413ffc0791e6aa9f02308caf7f1e">m_bUseOpenGL</a>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="class_particle_system.html#a23d238efa80a647d4b6cde034f486a91">  171</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_particle_system.html#a23d238efa80a647d4b6cde034f486a91">m_numParticles</a>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="comment">// CPU data</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="class_particle_system.html#ab9d75471d2eaaeb8fa98d2f3f47d9c25">  174</a></span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_system.html#ab9d75471d2eaaeb8fa98d2f3f47d9c25">m_hPos</a>;              <span class="comment">// particle positions</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="class_particle_system.html#a20560c896ee8a8bbc827a8e5902da7e2">  175</a></span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_system.html#a20560c896ee8a8bbc827a8e5902da7e2">m_hVel</a>;              <span class="comment">// particle velocities</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="class_particle_system.html#a4280ede7d75e44c8c0d4edfa5ee7dd02">  177</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>  *<a class="code" href="class_particle_system.html#a4280ede7d75e44c8c0d4edfa5ee7dd02">m_hParticleHash</a>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="class_particle_system.html#a8412ecd991c14d906fcebba42bdeffd3">  178</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>  *<a class="code" href="class_particle_system.html#a8412ecd991c14d906fcebba42bdeffd3">m_hCellStart</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="class_particle_system.html#a8d8ad2d142f3a5b83f2c10a46f5d7a8b">  179</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>  *<a class="code" href="class_particle_system.html#a8d8ad2d142f3a5b83f2c10a46f5d7a8b">m_hCellEnd</a>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="comment">// GPU data</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="class_particle_system.html#afff6217d2726217dff77c81ef3c23bfa">  182</a></span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_system.html#afff6217d2726217dff77c81ef3c23bfa">m_dPos</a>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="class_particle_system.html#a5efd31a2fdba8d98b105f4e546964cb5">  183</a></span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_system.html#a5efd31a2fdba8d98b105f4e546964cb5">m_dVel</a>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="class_particle_system.html#ab60e8b5a312b2f400b10dfba5153fc3c">  185</a></span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_system.html#ab60e8b5a312b2f400b10dfba5153fc3c">m_dSortedPos</a>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="class_particle_system.html#a69122523117954fb5defb8b38e0f46f3">  186</a></span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_system.html#a69122523117954fb5defb8b38e0f46f3">m_dSortedVel</a>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="comment">// grid data for sorting method</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="class_particle_system.html#ab44080655971a5501eaee6ad7355a139">  189</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>  *<a class="code" href="class_particle_system.html#ab44080655971a5501eaee6ad7355a139">m_dGridParticleHash</a>; <span class="comment">// grid hash value for each particle</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="class_particle_system.html#a1a67fc1e3ffd4e64f55a2a315c49c74c">  190</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>  *<a class="code" href="class_particle_system.html#a1a67fc1e3ffd4e64f55a2a315c49c74c">m_dGridParticleIndex</a>;<span class="comment">// particle index for each particle</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="class_particle_system.html#a137909a8b34f7a42e50cd0fcc86bb784">  191</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>  *<a class="code" href="class_particle_system.html#a137909a8b34f7a42e50cd0fcc86bb784">m_dCellStart</a>;        <span class="comment">// index of start of each cell in sorted list</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="class_particle_system.html#a3a0b9c760c2bfcf811d54b8194ebea01">  192</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>  *<a class="code" href="class_particle_system.html#a3a0b9c760c2bfcf811d54b8194ebea01">m_dCellEnd</a>;          <span class="comment">// index of end of cell</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="class_particle_system.html#a2a0452a32993337176d88fa2fbe63020">  194</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>   <a class="code" href="class_particle_system.html#a2a0452a32993337176d88fa2fbe63020">m_gridSortBits</a>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="class_particle_system.html#a31f9cccdf5dbae6f72867665bd8761e3">  196</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>   <a class="code" href="class_particle_system.html#a31f9cccdf5dbae6f72867665bd8761e3">m_posVbo</a>;            <span class="comment">// vertex buffer object for particle positions</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="class_particle_system.html#a96b05c719006c9e3eaed759f54a49c7f">  197</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>   <a class="code" href="class_particle_system.html#a96b05c719006c9e3eaed759f54a49c7f">m_colorVBO</a>;          <span class="comment">// vertex buffer object for colors</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="class_particle_system.html#aba18245745f621d90186862f1a559d9e">  199</a></span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_system.html#aba18245745f621d90186862f1a559d9e">m_cudaPosVBO</a>;        <span class="comment">// these are the CUDA deviceMem Pos</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="class_particle_system.html#a39d210b57da5f7f4a2c23f4fc0b43ea1">  200</a></span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_system.html#a39d210b57da5f7f4a2c23f4fc0b43ea1">m_cudaColorVBO</a>;      <span class="comment">// these are the CUDA deviceMem Color</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="class_particle_system.html#a9c5de70c1705672e5722ad30dee1b14b">  202</a></span>&#160;        <span class="keyword">struct</span> cudaGraphicsResource *<a class="code" href="class_particle_system.html#a9c5de70c1705672e5722ad30dee1b14b">m_cuda_posvbo_resource</a>; <span class="comment">// handles OpenGL-CUDA exchange</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="class_particle_system.html#a140043869727535abc08609b835b98fc">  203</a></span>&#160;        <span class="keyword">struct</span> cudaGraphicsResource *<a class="code" href="class_particle_system.html#a140043869727535abc08609b835b98fc">m_cuda_colorvbo_resource</a>; <span class="comment">// handles OpenGL-CUDA exchange</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="comment">// params</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="class_particle_system.html#ab765472aed6a1b5f0d2f98a3a906c417">  206</a></span>&#160;        <a class="code" href="struct_sim_params.html">SimParams</a> <a class="code" href="class_particle_system.html#ab765472aed6a1b5f0d2f98a3a906c417">m_params</a>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="class_particle_system.html#ad555b31501a258d776e8c72c96178aa0">  207</a></span>&#160;        <a class="code" href="class_particle_system.html#ad555b31501a258d776e8c72c96178aa0">uint3</a> <a class="code" href="class_particle_system.html#ad555b31501a258d776e8c72c96178aa0">m_gridSize</a>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="class_particle_system.html#aa1ef17d723af5d7a4685e8fd57e9ca89">  208</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_particle_system.html#aa1ef17d723af5d7a4685e8fd57e9ca89">m_numGridCells</a>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="class_particle_system.html#af01e546384ef27bb1894a37f2a02e967">  210</a></span>&#160;        <a class="code" href="class_particle_system.html#af01e546384ef27bb1894a37f2a02e967">StopWatchInterface</a> *<a class="code" href="class_particle_system.html#af01e546384ef27bb1894a37f2a02e967">m_timer</a>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="class_particle_system.html#a7b4b053433c052518b8ecce1b02000f5">  212</a></span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="class_particle_system.html#a7b4b053433c052518b8ecce1b02000f5">m_solverIterations</a>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;};</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">// __PARTICLESYSTEM_H__</span></div>
+<div class="ttc" id="class_particle_system_html_ae9f149d6b7c3b148fc397473c7c3c2e2"><div class="ttname"><a href="class_particle_system.html#ae9f149d6b7c3b148fc397473c7c3c2e2">ParticleSystem::getCurrentReadBuffer</a></div><div class="ttdeci">unsigned int getCurrentReadBuffer() const </div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00053">particleSystem.h:53</a></div></div>
+<div class="ttc" id="class_particle_system_html_a5d300a37ebf1a2fb8575f82ced6a208f"><div class="ttname"><a href="class_particle_system.html#a5d300a37ebf1a2fb8575f82ced6a208f">ParticleSystem::getColorBuffer</a></div><div class="ttdeci">unsigned int getColorBuffer() const </div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00057">particleSystem.h:57</a></div></div>
+<div class="ttc" id="class_particle_system_html_a11f55976f6ef34dceea208fbe06694cd"><div class="ttname"><a href="class_particle_system.html#a11f55976f6ef34dceea208fbe06694cd">ParticleSystem::setIterations</a></div><div class="ttdeci">void setIterations(int i)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00074">particleSystem.h:74</a></div></div>
+<div class="ttc" id="class_particle_system_html_a9c49794585cad649de400dc7375d7801"><div class="ttname"><a href="class_particle_system.html#a9c49794585cad649de400dc7375d7801">ParticleSystem::setColliderPos</a></div><div class="ttdeci">void setColliderPos(float3 x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00128">particleSystem.h:128</a></div></div>
+<div class="ttc" id="class_particle_system_html_a1dca3996c8068602412ef9f7826605d1a602c3604196d8513e85acf6fd039391e"><div class="ttname"><a href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1a602c3604196d8513e85acf6fd039391e">ParticleSystem::_NUM_CONFIGS</a></div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00033">particleSystem.h:33</a></div></div>
+<div class="ttc" id="class_particle_system_html_aa792a66680e800832059854aab0d594d"><div class="ttname"><a href="class_particle_system.html#aa792a66680e800832059854aab0d594d">ParticleSystem::setArray</a></div><div class="ttdeci">void setArray(ParticleArray array, const float *data, int start, int count)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00379">particleSystem.cpp:379</a></div></div>
+<div class="ttc" id="class_particle_system_html_ab60e8b5a312b2f400b10dfba5153fc3c"><div class="ttname"><a href="class_particle_system.html#ab60e8b5a312b2f400b10dfba5153fc3c">ParticleSystem::m_dSortedPos</a></div><div class="ttdeci">float * m_dSortedPos</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00185">particleSystem.h:185</a></div></div>
+<div class="ttc" id="class_particle_system_html_aba18245745f621d90186862f1a559d9e"><div class="ttname"><a href="class_particle_system.html#aba18245745f621d90186862f1a559d9e">ParticleSystem::m_cudaPosVBO</a></div><div class="ttdeci">float * m_cudaPosVBO</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00199">particleSystem.h:199</a></div></div>
+<div class="ttc" id="class_particle_system_html_a519070812dd9eb349f270c793c5f64b6"><div class="ttname"><a href="class_particle_system.html#a519070812dd9eb349f270c793c5f64b6">ParticleSystem::reset</a></div><div class="ttdeci">void reset(ParticleConfig config)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00441">particleSystem.cpp:441</a></div></div>
+<div class="ttc" id="class_particle_system_html_aa1ef17d723af5d7a4685e8fd57e9ca89"><div class="ttname"><a href="class_particle_system.html#aa1ef17d723af5d7a4685e8fd57e9ca89">ParticleSystem::m_numGridCells</a></div><div class="ttdeci">uint m_numGridCells</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00208">particleSystem.h:208</a></div></div>
+<div class="ttc" id="class_particle_system_html_a97efe00aa29307ecae0165da33d4770a"><div class="ttname"><a href="class_particle_system.html#a97efe00aa29307ecae0165da33d4770a">ParticleSystem::setBigRadius</a></div><div class="ttdeci">void setBigRadius(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00118">particleSystem.h:118</a></div></div>
+<div class="ttc" id="class_particle_system_html_a7ed53fca9ef126898d29314478ec8fd4"><div class="ttname"><a href="class_particle_system.html#a7ed53fca9ef126898d29314478ec8fd4">ParticleSystem::setCollideSpring</a></div><div class="ttdeci">void setCollideSpring(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00101">particleSystem.h:101</a></div></div>
+<div class="ttc" id="class_particle_system_html_a3c8578d474f5a6f14d903a242aec96ec"><div class="ttname"><a href="class_particle_system.html#a3c8578d474f5a6f14d903a242aec96ec">ParticleSystem::getColliderPos</a></div><div class="ttdeci">float3 getColliderPos()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00137">particleSystem.h:137</a></div></div>
+<div class="ttc" id="class_particle_system_html_af94ba180bcb348afcfd81bb699d6aab0"><div class="ttname"><a href="class_particle_system.html#af94ba180bcb348afcfd81bb699d6aab0">ParticleSystem::getGridSize</a></div><div class="ttdeci">uint3 getGridSize()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00145">particleSystem.h:145</a></div></div>
+<div class="ttc" id="class_particle_system_html_a1dca3996c8068602412ef9f7826605d1"><div class="ttname"><a href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1">ParticleSystem::ParticleConfig</a></div><div class="ttdeci">ParticleConfig</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00029">particleSystem.h:29</a></div></div>
+<div class="ttc" id="class_particle_system_html_a6290c054a797ec9fa691179ffb4631f7"><div class="ttname"><a href="class_particle_system.html#a6290c054a797ec9fa691179ffb4631f7">ParticleSystem::setEpsi</a></div><div class="ttdeci">void setEpsi(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00096">particleSystem.h:96</a></div></div>
+<div class="ttc" id="class_particle_system_html_a8d8ad2d142f3a5b83f2c10a46f5d7a8b"><div class="ttname"><a href="class_particle_system.html#a8d8ad2d142f3a5b83f2c10a46f5d7a8b">ParticleSystem::m_hCellEnd</a></div><div class="ttdeci">uint * m_hCellEnd</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00179">particleSystem.h:179</a></div></div>
+<div class="ttc" id="class_particle_system_html_a99bbe16b8e181415c2aa71c11edace98"><div class="ttname"><a href="class_particle_system.html#a99bbe16b8e181415c2aa71c11edace98">ParticleSystem::setBoundaries</a></div><div class="ttdeci">void setBoundaries(bool x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00123">particleSystem.h:123</a></div></div>
+<div class="ttc" id="class_particle_system_html_a166fd86f020b6024d7d42723762d7cb2"><div class="ttname"><a href="class_particle_system.html#a166fd86f020b6024d7d42723762d7cb2">ParticleSystem::update</a></div><div class="ttdeci">void update(float deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00242">particleSystem.cpp:242</a></div></div>
+<div class="ttc" id="class_particle_system_html_a92e1db62e4025fab4996ce9a3ca5882f"><div class="ttname"><a href="class_particle_system.html#a92e1db62e4025fab4996ce9a3ca5882f">ParticleSystem::setParticleMass</a></div><div class="ttdeci">void setParticleMass(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00092">particleSystem.h:92</a></div></div>
+<div class="ttc" id="class_particle_system_html_a5d99413ffc0791e6aa9f02308caf7f1e"><div class="ttname"><a href="class_particle_system.html#a5d99413ffc0791e6aa9f02308caf7f1e">ParticleSystem::m_bUseOpenGL</a></div><div class="ttdeci">bool m_bUseOpenGL</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00170">particleSystem.h:170</a></div></div>
+<div class="ttc" id="class_particle_system_html_a8bdfaa6198651ef0ceb8be489ecd78e3"><div class="ttname"><a href="class_particle_system.html#a8bdfaa6198651ef0ceb8be489ecd78e3">ParticleSystem::getArray</a></div><div class="ttdeci">float * getArray(ParticleArray array)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00351">particleSystem.cpp:351</a></div></div>
+<div class="ttc" id="class_particle_system_html_a399eb5cb9c422fd3370899e4d8a5d62e"><div class="ttname"><a href="class_particle_system.html#a399eb5cb9c422fd3370899e4d8a5d62e">ParticleSystem::createVBO</a></div><div class="ttdeci">uint createVBO(uint size)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00089">particleSystem.cpp:89</a></div></div>
+<div class="ttc" id="class_particle_system_html_a5efd31a2fdba8d98b105f4e546964cb5"><div class="ttname"><a href="class_particle_system.html#a5efd31a2fdba8d98b105f4e546964cb5">ParticleSystem::m_dVel</a></div><div class="ttdeci">float * m_dVel</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00183">particleSystem.h:183</a></div></div>
+<div class="ttc" id="class_particle_system_html_a20560c896ee8a8bbc827a8e5902da7e2"><div class="ttname"><a href="class_particle_system.html#a20560c896ee8a8bbc827a8e5902da7e2">ParticleSystem::m_hVel</a></div><div class="ttdeci">float * m_hVel</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00175">particleSystem.h:175</a></div></div>
+<div class="ttc" id="class_particle_system_html_a96b05c719006c9e3eaed759f54a49c7f"><div class="ttname"><a href="class_particle_system.html#a96b05c719006c9e3eaed759f54a49c7f">ParticleSystem::m_colorVBO</a></div><div class="ttdeci">uint m_colorVBO</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00197">particleSystem.h:197</a></div></div>
+<div class="ttc" id="class_particle_system_html_a722bdb7cc940f052400a69fe9569a49e"><div class="ttname"><a href="class_particle_system.html#a722bdb7cc940f052400a69fe9569a49e">ParticleSystem::dumpGrid</a></div><div class="ttdeci">void dumpGrid()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00311">particleSystem.cpp:311</a></div></div>
+<div class="ttc" id="class_particle_system_html"><div class="ttname"><a href="class_particle_system.html">ParticleSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00023">particleSystem.h:23</a></div></div>
+<div class="ttc" id="class_particle_system_html_afff6217d2726217dff77c81ef3c23bfa"><div class="ttname"><a href="class_particle_system.html#afff6217d2726217dff77c81ef3c23bfa">ParticleSystem::m_dPos</a></div><div class="ttdeci">float * m_dPos</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00182">particleSystem.h:182</a></div></div>
+<div class="ttc" id="class_particle_system_html_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee"><div class="ttname"><a href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee">ParticleSystem::CONFIG_RANDOM</a></div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00031">particleSystem.h:31</a></div></div>
+<div class="ttc" id="class_particle_system_html_a4280ede7d75e44c8c0d4edfa5ee7dd02"><div class="ttname"><a href="class_particle_system.html#a4280ede7d75e44c8c0d4edfa5ee7dd02">ParticleSystem::m_hParticleHash</a></div><div class="ttdeci">uint * m_hParticleHash</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00177">particleSystem.h:177</a></div></div>
+<div class="ttc" id="class_particle_system_html_a39d210b57da5f7f4a2c23f4fc0b43ea1"><div class="ttname"><a href="class_particle_system.html#a39d210b57da5f7f4a2c23f4fc0b43ea1">ParticleSystem::m_cudaColorVBO</a></div><div class="ttdeci">float * m_cudaColorVBO</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00200">particleSystem.h:200</a></div></div>
+<div class="ttc" id="class_particle_system_html_a484988642e046424d32a13709204e8de"><div class="ttname"><a href="class_particle_system.html#a484988642e046424d32a13709204e8de">ParticleSystem::_initialize</a></div><div class="ttdeci">void _initialize(int numParticles)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00127">particleSystem.cpp:127</a></div></div>
+<div class="ttc" id="class_particle_system_html_a8412ecd991c14d906fcebba42bdeffd3"><div class="ttname"><a href="class_particle_system.html#a8412ecd991c14d906fcebba42bdeffd3">ParticleSystem::m_hCellStart</a></div><div class="ttdeci">uint * m_hCellStart</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00178">particleSystem.h:178</a></div></div>
+<div class="ttc" id="class_particle_system_html_af01e546384ef27bb1894a37f2a02e967"><div class="ttname"><a href="class_particle_system.html#af01e546384ef27bb1894a37f2a02e967">ParticleSystem::m_timer</a></div><div class="ttdeci">StopWatchInterface * m_timer</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00210">particleSystem.h:210</a></div></div>
+<div class="ttc" id="class_particle_system_html_a7b4b053433c052518b8ecce1b02000f5"><div class="ttname"><a href="class_particle_system.html#a7b4b053433c052518b8ecce1b02000f5">ParticleSystem::m_solverIterations</a></div><div class="ttdeci">uint m_solverIterations</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00212">particleSystem.h:212</a></div></div>
+<div class="ttc" id="class_particle_system_html_a5d6a52db7d1277c8fe734ecceb69e5c6"><div class="ttname"><a href="class_particle_system.html#a5d6a52db7d1277c8fe734ecceb69e5c6">ParticleSystem::_finalize</a></div><div class="ttdeci">void _finalize()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00209">particleSystem.cpp:209</a></div></div>
+<div class="ttc" id="class_particle_system_html_a69122523117954fb5defb8b38e0f46f3"><div class="ttname"><a href="class_particle_system.html#a69122523117954fb5defb8b38e0f46f3">ParticleSystem::m_dSortedVel</a></div><div class="ttdeci">float * m_dSortedVel</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00186">particleSystem.h:186</a></div></div>
+<div class="ttc" id="class_particle_system_html_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d"><div class="ttname"><a href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d">ParticleSystem::VELOCITY</a></div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00039">particleSystem.h:39</a></div></div>
+<div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00025">particles_kernel.cuh:25</a></div></div>
+<div class="ttc" id="class_particle_system_html_ab9d75471d2eaaeb8fa98d2f3f47d9c25"><div class="ttname"><a href="class_particle_system.html#ab9d75471d2eaaeb8fa98d2f3f47d9c25">ParticleSystem::m_hPos</a></div><div class="ttdeci">float * m_hPos</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00174">particleSystem.h:174</a></div></div>
+<div class="ttc" id="class_particle_system_html_a1a67fc1e3ffd4e64f55a2a315c49c74c"><div class="ttname"><a href="class_particle_system.html#a1a67fc1e3ffd4e64f55a2a315c49c74c">ParticleSystem::m_dGridParticleIndex</a></div><div class="ttdeci">uint * m_dGridParticleIndex</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00190">particleSystem.h:190</a></div></div>
+<div class="ttc" id="class_particle_system_html_a19d9bb799a5b5704d8fd6a286f6be20d"><div class="ttname"><a href="class_particle_system.html#a19d9bb799a5b5704d8fd6a286f6be20d">ParticleSystem::getWorldOrigin</a></div><div class="ttdeci">float3 getWorldOrigin()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00149">particleSystem.h:149</a></div></div>
+<div class="ttc" id="class_particle_system_html_a608bcb87f3d30fbfeae810da28ae1052"><div class="ttname"><a href="class_particle_system.html#a608bcb87f3d30fbfeae810da28ae1052">ParticleSystem::getCellSize</a></div><div class="ttdeci">float3 getCellSize()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00153">particleSystem.h:153</a></div></div>
+<div class="ttc" id="class_particle_system_html_a8f8d21c7079c3a0e66558b9ec5bef597"><div class="ttname"><a href="class_particle_system.html#a8f8d21c7079c3a0e66558b9ec5bef597">ParticleSystem::setCollideDamping</a></div><div class="ttdeci">void setCollideDamping(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00105">particleSystem.h:105</a></div></div>
+<div class="ttc" id="class_particle_system_html_aef02d293e3dc61c50fa6d085aa0b03de"><div class="ttname"><a href="class_particle_system.html#aef02d293e3dc61c50fa6d085aa0b03de">ParticleSystem::setCollideAttraction</a></div><div class="ttdeci">void setCollideAttraction(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00113">particleSystem.h:113</a></div></div>
+<div class="ttc" id="class_particle_system_html_a6bc725349a763b9d6817950cde16a93f"><div class="ttname"><a href="class_particle_system.html#a6bc725349a763b9d6817950cde16a93f">ParticleSystem::~ParticleSystem</a></div><div class="ttdeci">~ParticleSystem()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00082">particleSystem.cpp:82</a></div></div>
+<div class="ttc" id="class_particle_system_html_a8a2be3e93616aa694801369c8b8d12cb"><div class="ttname"><a href="class_particle_system.html#a8a2be3e93616aa694801369c8b8d12cb">ParticleSystem::ParticleSystem</a></div><div class="ttdeci">ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenGL)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00033">particleSystem.cpp:33</a></div></div>
+<div class="ttc" id="class_particle_system_html_a6f89e8d4c3e3e328088b7d652cee84b0"><div class="ttname"><a href="class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0">ParticleSystem::getNumParticles</a></div><div class="ttdeci">int getNumParticles() const </div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00048">particleSystem.h:48</a></div></div>
+<div class="ttc" id="class_particle_system_html_a140043869727535abc08609b835b98fc"><div class="ttname"><a href="class_particle_system.html#a140043869727535abc08609b835b98fc">ParticleSystem::m_cuda_colorvbo_resource</a></div><div class="ttdeci">struct cudaGraphicsResource * m_cuda_colorvbo_resource</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00203">particleSystem.h:203</a></div></div>
+<div class="ttc" id="class_particle_system_html_a755f64f917389ef41df81b663d1f5bd2"><div class="ttname"><a href="class_particle_system.html#a755f64f917389ef41df81b663d1f5bd2">ParticleSystem::setGravity</a></div><div class="ttdeci">void setGravity(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00083">particleSystem.h:83</a></div></div>
+<div class="ttc" id="struct_sim_params_html"><div class="ttname"><a href="struct_sim_params.html">SimParams</a></div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00029">particles_kernel.cuh:29</a></div></div>
+<div class="ttc" id="class_particle_system_html_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299"><div class="ttname"><a href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299">ParticleSystem::POSITION</a></div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00038">particleSystem.h:38</a></div></div>
+<div class="ttc" id="class_particle_system_html_a23d238efa80a647d4b6cde034f486a91"><div class="ttname"><a href="class_particle_system.html#a23d238efa80a647d4b6cde034f486a91">ParticleSystem::m_numParticles</a></div><div class="ttdeci">uint m_numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00171">particleSystem.h:171</a></div></div>
+<div class="ttc" id="class_particle_system_html_af2f16676fe8a0523cfb867a9a856970c"><div class="ttname"><a href="class_particle_system.html#af2f16676fe8a0523cfb867a9a856970c">ParticleSystem::addSphere</a></div><div class="ttdeci">void addSphere(int index, float *pos, float *vel, int r, float spacing)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00492">particleSystem.cpp:492</a></div></div>
+<div class="ttc" id="class_particle_system_html_ab765472aed6a1b5f0d2f98a3a906c417"><div class="ttname"><a href="class_particle_system.html#ab765472aed6a1b5f0d2f98a3a906c417">ParticleSystem::m_params</a></div><div class="ttdeci">SimParams m_params</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00206">particleSystem.h:206</a></div></div>
+<div class="ttc" id="class_particle_system_html_a21bbfba9d8701a70bc6fddbf4fc3f5bd"><div class="ttname"><a href="class_particle_system.html#a21bbfba9d8701a70bc6fddbf4fc3f5bd">ParticleSystem::m_bInitialized</a></div><div class="ttdeci">bool m_bInitialized</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00170">particleSystem.h:170</a></div></div>
+<div class="ttc" id="class_particle_system_html_a332fbe57a36aaea5c18b4ea4fba6bbb3"><div class="ttname"><a href="class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3">ParticleSystem::ParticleArray</a></div><div class="ttdeci">ParticleArray</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00036">particleSystem.h:36</a></div></div>
+<div class="ttc" id="class_particle_system_html_a2c8214a5bcd9d9c24d16e1f0063c06d6"><div class="ttname"><a href="class_particle_system.html#a2c8214a5bcd9d9c24d16e1f0063c06d6">ParticleSystem::getCudaPosVBO</a></div><div class="ttdeci">void * getCudaPosVBO() const </div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00062">particleSystem.h:62</a></div></div>
+<div class="ttc" id="class_particle_system_html_a31f9cccdf5dbae6f72867665bd8761e3"><div class="ttname"><a href="class_particle_system.html#a31f9cccdf5dbae6f72867665bd8761e3">ParticleSystem::m_posVbo</a></div><div class="ttdeci">uint m_posVbo</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00196">particleSystem.h:196</a></div></div>
+<div class="ttc" id="class_particle_system_html_af89375a9131276f941dccefa7840adda"><div class="ttname"><a href="class_particle_system.html#af89375a9131276f941dccefa7840adda">ParticleSystem::getCudaColorVBO</a></div><div class="ttdeci">void * getCudaColorVBO() const </div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00066">particleSystem.h:66</a></div></div>
+<div class="ttc" id="class_particle_system_html_ad555b31501a258d776e8c72c96178aa0"><div class="ttname"><a href="class_particle_system.html#ad555b31501a258d776e8c72c96178aa0">ParticleSystem::m_gridSize</a></div><div class="ttdeci">uint3 m_gridSize</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00207">particleSystem.h:207</a></div></div>
+<div class="ttc" id="class_particle_system_html_aea667093542a1bdad65bdcb427e5625f"><div class="ttname"><a href="class_particle_system.html#aea667093542a1bdad65bdcb427e5625f">ParticleSystem::setCollideShear</a></div><div class="ttdeci">void setCollideShear(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00109">particleSystem.h:109</a></div></div>
+<div class="ttc" id="class_particle_system_html_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47"><div class="ttname"><a href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47">ParticleSystem::CONFIG_GRID</a></div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00032">particleSystem.h:32</a></div></div>
+<div class="ttc" id="class_particle_system_html_aa26996b9ca13499b13f944f3aaeae10c"><div class="ttname"><a href="class_particle_system.html#aa26996b9ca13499b13f944f3aaeae10c">ParticleSystem::setDamping</a></div><div class="ttdeci">void setDamping(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00079">particleSystem.h:79</a></div></div>
+<div class="ttc" id="class_particle_system_html_a1b17ae9291cf9974f63219cc9eac6ec6"><div class="ttname"><a href="class_particle_system.html#a1b17ae9291cf9974f63219cc9eac6ec6">ParticleSystem::setBoundaryDamping</a></div><div class="ttdeci">void setBoundaryDamping(float x)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00088">particleSystem.h:88</a></div></div>
+<div class="ttc" id="class_particle_system_html_a2e08c4e354b0de5e2dc468a0fb457dfe"><div class="ttname"><a href="class_particle_system.html#a2e08c4e354b0de5e2dc468a0fb457dfe">ParticleSystem::initGrid</a></div><div class="ttdeci">void initGrid(uint *size, float spacing, float jitter, uint numParticles)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00411">particleSystem.cpp:411</a></div></div>
+<div class="ttc" id="class_particle_system_html_a9028ec8023c61773dd4a668c3ad8cc26"><div class="ttname"><a href="class_particle_system.html#a9028ec8023c61773dd4a668c3ad8cc26">ParticleSystem::ParticleSystem</a></div><div class="ttdeci">ParticleSystem()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00161">particleSystem.h:161</a></div></div>
+<div class="ttc" id="class_particle_system_html_a3a0b9c760c2bfcf811d54b8194ebea01"><div class="ttname"><a href="class_particle_system.html#a3a0b9c760c2bfcf811d54b8194ebea01">ParticleSystem::m_dCellEnd</a></div><div class="ttdeci">uint * m_dCellEnd</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00192">particleSystem.h:192</a></div></div>
+<div class="ttc" id="class_particle_system_html_abdb59a91d8483017ad71455bb2958993"><div class="ttname"><a href="class_particle_system.html#abdb59a91d8483017ad71455bb2958993">ParticleSystem::getParticleRadius</a></div><div class="ttdeci">float getParticleRadius()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00133">particleSystem.h:133</a></div></div>
+<div class="ttc" id="class_particle_system_html_ab44080655971a5501eaee6ad7355a139"><div class="ttname"><a href="class_particle_system.html#ab44080655971a5501eaee6ad7355a139">ParticleSystem::m_dGridParticleHash</a></div><div class="ttdeci">uint * m_dGridParticleHash</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00189">particleSystem.h:189</a></div></div>
+<div class="ttc" id="class_particle_system_html_a137909a8b34f7a42e50cd0fcc86bb784"><div class="ttname"><a href="class_particle_system.html#a137909a8b34f7a42e50cd0fcc86bb784">ParticleSystem::m_dCellStart</a></div><div class="ttdeci">uint * m_dCellStart</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00191">particleSystem.h:191</a></div></div>
+<div class="ttc" id="class_particle_system_html_a9025f319e07c58c6ece1cd2a620ce33a"><div class="ttname"><a href="class_particle_system.html#a9025f319e07c58c6ece1cd2a620ce33a">ParticleSystem::dumpParticles</a></div><div class="ttdeci">void dumpParticles(uint start, uint count)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00336">particleSystem.cpp:336</a></div></div>
+<div class="ttc" id="class_particle_system_html_a2a0452a32993337176d88fa2fbe63020"><div class="ttname"><a href="class_particle_system.html#a2a0452a32993337176d88fa2fbe63020">ParticleSystem::m_gridSortBits</a></div><div class="ttdeci">uint m_gridSortBits</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00194">particleSystem.h:194</a></div></div>
+<div class="ttc" id="class_particle_system_html_a9c5de70c1705672e5722ad30dee1b14b"><div class="ttname"><a href="class_particle_system.html#a9c5de70c1705672e5722ad30dee1b14b">ParticleSystem::m_cuda_posvbo_resource</a></div><div class="ttdeci">struct cudaGraphicsResource * m_cuda_posvbo_resource</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00202">particleSystem.h:202</a></div></div>
+<div class="ttc" id="class_particle_system_html_a56f07dfab9d5cbf510c6e0a28e816038"><div class="ttname"><a href="class_particle_system.html#a56f07dfab9d5cbf510c6e0a28e816038">ParticleSystem::getColliderRadius</a></div><div class="ttdeci">float getColliderRadius()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00141">particleSystem.h:141</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="particle_system_8h.html">particleSystem.h</a></li>
+    <li class="footer">Wygenerowano Pt, 20 lut 2015 15:47:31 dla particles_vs2008 programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>
