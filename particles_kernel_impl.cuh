@@ -100,9 +100,9 @@ struct integrate_functor
 		float yk=pos.y*pos.y;
 		float zk=pos.z*pos.z;
 		float r0k=xk+yk+zk;
-		float r=params.bigradius;//- params.particleRadius;
+		float R=params.bigradius;//- params.particleRadius;
 		float r0=sqrt(r0k);
-		if(params.boundaries && r0>r-params.particleRadius && r0<r+params.particleRadius)
+		if(params.boundaries && r0>R-params.particleRadius && r0<R+params.particleRadius)
 		{
 			/*if(r0>r+params.particleRadius)
 			{
@@ -114,7 +114,7 @@ struct integrate_functor
 			float3 relPos = pos;
 			float dist = length(relPos);
 			float3 norm = relPos / dist;
-			vel+=norm*params.boundaryDamping*sin((r0-r)/r0*3.1415f)*deltaTime/params.particleMass;
+			vel+=-params.boundaryDamping*(abs(r0-R)-(params.particleRadius))*norm*deltaTime/params.particleMass;
 		}
 		/*if(r0k > r*r + FLT_EPSILON )
 		{
@@ -138,13 +138,13 @@ struct integrate_functor
 			pos.z*=tmp;
 		}*/
 #endif
-
+		
 //dolna plaszczyzna
-#if 0
-        if (pos.y < -1.0f + params.particleRadius)
+#if 1
+        if (pos.y < -params.bigradius + params.particleRadius)
         {
-            pos.y = -1.0f + params.particleRadius;
-            vel.y *= params.boundaryDamping;
+            pos.y = -params.bigradius + params.particleRadius;
+            vel.y *= params.boundaryDamping/2;
         }
 #endif
 
@@ -276,7 +276,7 @@ float3 collideSpheres(float3 posA, float3 posB,
     float3 relPos = posB - posA;
 
     float dist = length(relPos);
-    float collideDist = (radiusA + radiusB)*4;//zasieg dzialania sil
+    float collideDist = (radiusA + radiusB)*1.25f;//zasieg dzialania sil
 
     float3 force = make_float3(0.0f);
 

@@ -128,6 +128,8 @@ unsigned int frameCount = 0;
 unsigned int g_TotalErrors = 0;
 char        *g_refFile = NULL;
 
+char* save=NULL;
+
 const char *sSDKsample = "CUDA Particles Simulation";
 
 extern "C" void cudaInit(int argc, char **argv);
@@ -194,7 +196,7 @@ void parowanieKropliWCzasie()
 	//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
 	licznik++;
 	time_past+=timestep;
-	if(bigRadius>psystem->getParticleRadius()*pow(psystem->getNumParticles(),0.3f)*1.35f)
+	if(bigRadius>psystem->getParticleRadius()*pow(psystem->getNumParticles(),0.3f))
 	{
 		bigRadius=bigRadius0-A*sqrt(time_past);
 		psystem->setBigRadius(bigRadius);
@@ -217,11 +219,41 @@ void runBenchmark(int iterations, char *exec_path)
 	psystem->setParticleMass(particleMass);
 	psystem->setEpsi(epsi);
 
+	float *hPos=NULL;
+	FILE* f=NULL;
+	if(save)
+	{
+		f=fopen(save,"wb");
+		//fprintf(f,"%d",psystem->getNumParticles());//iloœæ cz¹stek
+		fwrite((void*)&numParticles,sizeof(int),1,f);
+	}
+
+
+	checkCudaErrors(cudaMallocHost(&hPos,sizeof(float)*4*numParticles));
     for (int i = 0; i < iterations; ++i)
     {
 		parowanieKropliWCzasie();
         psystem->update(timestep);
+		if(save && f && i%10==0)
+		{
+			checkCudaErrors(hPos,psystem->getCudaPosVBO(),sizeof(float)*4*numParticles,cudaMemcpyDeviceToHost);
+			fwrite((void*)&time_past,sizeof(long double),1,f);
+			fwrite((void*)hPos,sizeof(float),4*numParticles,f);
+
+		}
     }
+	//cudaDeviceSynchronize();
+	//copyArrayFromDevice(hPos, psystem->getCudaPosVBO(),0, sizeof(float)*4*psystem->getNumParticles());
+	fprintf(f,"%Lf",time_past);//czas klatki
+	//fwrite((void *)hPos,sizeof(float),4*psystem->getNumParticles(),f);
+	//free(hPos);
+	checkCudaErrors(cudaFreeHost(hPos));
+	hPos=NULL;
+
+	if(save && f)
+	{
+		fclose(f);
+	}
 
     cudaDeviceSynchronize();
     sdkStopTimer(&timer);
@@ -718,7 +750,7 @@ void initParams()
 
         // create a new parameter list
         params = new ParamListGL("misc");
-        params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.05f, 0.0001f, &timestep));
+        params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.002f, 0.00001f, &timestep));
         params->AddParam(new Param<float>("global damping"  , damping , 0.0f, 1.0f, 0.001f, &damping));
         params->AddParam(new Param<float>("gravity"  , gravity , 0.0f, 1.0f, 0.001f, &gravity));
         params->AddParam(new Param<int> ("ball radius", ballr , 1, 20, 1, &ballr));
@@ -795,6 +827,11 @@ main(int argc, char **argv)
             numIterations = 1;
         }
 
+		if (checkCmdLineFlag(argc, (const char **)argv, "save"))
+        {
+            getCmdLineArgumentString(argc, (const char **)argv, "save", &save);
+        }
+
 		if (checkCmdLineFlag(argc, (const char **) argv, "timestep"))
         {
             timestep = getCmdLineArgumentFloat(argc, (const char **) argv, "timestep");
@@ -838,6 +875,7 @@ main(int argc, char **argv)
             printf("boundaryDamping -napiêcie powierchniowe\n");
             printf("particleMass -masa cz¹stki\n");
             printf("gravity -grawitacja\n");
+			printf("save -zapis do pliku\n");
             printf("help\n");
 
         }
@@ -881,7 +919,7 @@ main(int argc, char **argv)
         initMenus();
     }
 
-    if (benchmark || g_refFile)
+    if (benchmark || g_refFile || save)
     {
         if (numIterations <= 0)
         {
