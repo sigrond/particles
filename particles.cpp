@@ -236,7 +236,8 @@ void runBenchmark(int iterations, char *exec_path)
         psystem->update(timestep);
 		if(save && f && i%10==0)
 		{
-			checkCudaErrors(hPos,psystem->getCudaPosVBO(),sizeof(float)*4*numParticles,cudaMemcpyDeviceToHost);
+
+			checkCudaErrors(cudaMemcpy((void*)hPos,psystem->getCudaPosVBO(),sizeof(float)*4*numParticles,cudaMemcpyDeviceToHost));
 			fwrite((void*)&time_past,sizeof(long double),1,f);
 			fwrite((void*)hPos,sizeof(float),4*numParticles,f);
 
@@ -733,7 +734,7 @@ void idle(void)
 
 void initParams()
 {
-    if (g_refFile)
+    if (g_refFile || save)
     {
         timestep = 0.0f;
         damping = 0.0f;
@@ -830,6 +831,12 @@ main(int argc, char **argv)
 		if (checkCmdLineFlag(argc, (const char **)argv, "save"))
         {
             getCmdLineArgumentString(argc, (const char **)argv, "save", &save);
+			fpsLimit = frameCheckNumber;
+            numIterations = 1;
+			if(!g_refFile)
+			{
+				g_refFile=save;
+			}
         }
 
 		if (checkCmdLineFlag(argc, (const char **) argv, "timestep"))
@@ -891,7 +898,7 @@ main(int argc, char **argv)
     {
         numIterations = getCmdLineArgumentInt(argc, (const char **) argv, "i");
     }
-    if (g_refFile)
+    if (g_refFile || save)
     {
         cudaInit(argc, argv);
     }
