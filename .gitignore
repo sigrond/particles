@@ -110,3 +110,6 @@ ipch/particles_vs2010-6f936b98/5fdcd102.ipch
 ipch/particles_vs2010-6f936b98/5fdcd102.ipch
 particles_vs2008.sln
 *.layout
+test2.bin
+data/test1.bin
+*.bin
