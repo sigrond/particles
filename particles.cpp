@@ -305,6 +305,7 @@ void runBenchmark(int iterations, char *exec_path)
 		fwrite((void*)&numParticles,sizeof(int),1,f);
 	}
 
+	//printf("timestep: %f\n",timestep);
 
 	checkCudaErrors(cudaMallocHost(&hPos,sizeof(float)*4*numParticles));
     for (int i = 0; i < iterations; ++i)
@@ -856,9 +857,9 @@ void initParams()
 {
     if (g_refFile || save)
     {
-        timestep = 0.0f;
-        damping = 0.0f;
-        gravity = 0.0f;
+        //timestep = 0.0f;
+        //damping = 0.0f;
+        //gravity = 0.0f;
         ballr = 1;
         collideSpring = 0.0f;
         collideDamping = 0.0f;
@@ -962,6 +963,7 @@ main(int argc, char **argv)
 		if (checkCmdLineFlag(argc, (const char **) argv, "timestep"))
         {
             timestep = getCmdLineArgumentFloat(argc, (const char **) argv, "timestep");
+			//printf("flag timestep set to: %f\n",timestep);
         }
 		if (checkCmdLineFlag(argc, (const char **) argv, "epsi"))
         {
@@ -1038,6 +1040,8 @@ main(int argc, char **argv)
         cudaGLInit(argc, argv);
     }
 
+	//printf("timestep: %f\n",timestep);
+
     initParticleSystem(numParticles, gridSize, g_refFile==NULL);
     initParams();
 
@@ -1052,6 +1056,8 @@ main(int argc, char **argv)
         {
             numIterations = 300;
         }
+
+		//printf("timestep: %f\n",timestep);
 
         runBenchmark(numIterations, argv[0]);
     }
