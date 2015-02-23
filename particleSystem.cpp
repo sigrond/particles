@@ -52,7 +52,10 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.numCells = m_numGridCells;
     m_params.numBodies = m_numParticles;
 
-    m_params.particleRadius = 1.0f / 32.0f;//32.0f / 64.0f;
+	/**
+	* promieñ w mikronach
+	*/
+    m_params.particleRadius = 0.225f;//1.0f / 32.0f;//32.0f / 64.0f;
     m_params.colliderPos = make_float3(-1.2f, -0.8f, 0.8f);
     m_params.colliderRadius = 0.2f;
 
@@ -72,7 +75,8 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.gravity = make_float3(0.0f, -0.0003f, 0.0f);
     m_params.globalDamping = 1.0f;
 
-	m_params.bigradius=2.0f;//docelowo zmieny rozmiar zewnetrznej kuli
+	m_params.bigradius=10.0f;//docelowo zmieny rozmiar zewnetrznej kuli
+	m_params.bigradius0=10.0f;
 	m_params.boundaries=true;
 	m_params.epsi=0.1f;
 
@@ -446,7 +450,8 @@ ParticleSystem::reset(ParticleConfig config)
         case CONFIG_RANDOM:
             {
                 int p = 0, v = 0;
-				float tmprad=m_params.bigradius/2;
+				float tmpbrad=m_params.bigradius-m_params.particleRadius;
+				float tmprad=tmpbrad/2;
 				//printf("%f\n",tmprad);
 
                 for (uint i=0; i < m_numParticles; i++)
@@ -455,7 +460,7 @@ ParticleSystem::reset(ParticleConfig config)
                     //point[0] = frand();
                     //point[1] = frand();
                     //point[2] = frand();
-					point[0]=m_params.bigradius*frand()-tmprad;//frand -> (0.0f,1.0f) 1.0f - promien kuli
+					point[0]=tmpbrad*frand()-tmprad;//frand -> (0.0f,1.0f) 1.0f - promien kuli
 					float my=sqrt(tmprad*tmprad-point[0]*point[0]);
 					point[1]=rand() /( float ) RAND_MAX *( 2*my ) - my;
 					float mz=sqrt(tmprad*tmprad-point[0]*point[0]-point[1]*point[1]);

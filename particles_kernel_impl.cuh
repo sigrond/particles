@@ -150,11 +150,12 @@ struct integrate_functor
 #endif
 
 //dolna plaszczyzna
+
 #if 1
-        if (pos.y < -params.bigradius + params.particleRadius)
+		if (pos.y < -2.0f*params.bigradius0 + params.particleRadius)
         {
-            pos.y = -params.bigradius + params.particleRadius;
-            vel.y *= params.boundaryDamping/2;
+            pos.y = -2.0f*params.bigradius0 + params.particleRadius;
+            vel.y = 0;
         }
 #endif
 

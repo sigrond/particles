@@ -121,7 +121,7 @@ float timestep = 0.0f;//0.5f;
 /** \var damping
  * \brief lepkość
  */
-float damping = 0.95f;//0.08f;//global damping
+float damping = 0.99f;//0.08f;//global damping
 float gravity = 0.0f;//0.0003f;
 int iterations = 1;
 int ballr = 10;
@@ -146,9 +146,9 @@ float collideShear = 0.1f;
 float collideAttraction = 0.1f;
 
 /** \var bigRadius
- * \brief promien duzej kuli
+ * \brief promien duzej kuli w mikronach
  */
-float bigRadius=2.0f;//promien duzej kuli
+float bigRadius=10.0f;//promien duzej kuli
 float bigRadius0=bigRadius;//poczatkowy promien duzej kuli
 /** \var kurczenie
  * A r=r0-A*sqrt(t)
@@ -204,6 +204,7 @@ void initParticleSystem(int numParticles, uint3 gridSize, bool bUseOpenGL)
 {
     psystem = new ParticleSystem(numParticles, gridSize, bUseOpenGL);
 	psystem->setBigRadius(bigRadius0);
+	psystem->setBigRadius0(bigRadius0);
     //psystem->reset(ParticleSystem::CONFIG_GRID);
 	psystem->reset(ParticleSystem::CONFIG_RANDOM);
 
@@ -438,12 +439,21 @@ void display()
 	if(boundaries)
 	glutWireSphere(bigRadius, 20, 10);
 
+
 	//glScalef(zoom, zoom, zoom);
 
     // collider
     glPushMatrix();
-    float3 p = psystem->getColliderPos();
-    glTranslatef(p.x, p.y, p.z);
+
+	/*glBegin(GL_QUADS);
+		glVertex4f(-1, -1, 0, 0);
+		glVertex4f(-1, 1, 0, 0);
+		glVertex4f(1, 1, 0, 0);
+		glVertex4f(1, -1, 0, 0);
+	glEnd();
+	glColor3f(1.0, 0.0, 0.0);*/
+    //float3 p = psystem->getColliderPos();
+    //glTranslatef(p.x, p.y, p.z);
 	//glScalef(zoom, zoom, zoom);
     //glColor3f(1.0, 0.0, 0.0);
     //glutSolidSphere(psystem->getColliderRadius(), 20, 10);
@@ -862,12 +872,12 @@ void initParams()
         // create a new parameter list
         params = new ParamListGL("misc");
         params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.002f, 0.00001f, &timestep));
-        params->AddParam(new Param<float>("global damping"  , damping , 0.0f, 1.0f, 0.001f, &damping));
-        params->AddParam(new Param<float>("gravity"  , gravity , 0.0f, 1.0f, 0.001f, &gravity));
-        params->AddParam(new Param<int> ("ball radius", ballr , 1, 20, 1, &ballr));
-		params->AddParam(new Param<float>("boundary damping"  , boundaryDamping , 0.0f, 2.0f, 0.001f, &boundaryDamping));
+        params->AddParam(new Param<float>("liquid viscosity"  , damping , 0.0f, 1.0f, 0.001f, &damping));
+        params->AddParam(new Param<float>("effective gravity"  , gravity , 0.0f, 1.0f, 0.001f, &gravity));
+        params->AddParam(new Param<float> ("A", A , 0.0f, 1.0f, 0.0001, &A));
+		params->AddParam(new Param<float>("surface tension"  , boundaryDamping , 0.0f, 2.0f, 0.001f, &boundaryDamping));
 		params->AddParam(new Param<float>("particle mass"  , particleMass , 0.001f, 2.0f, 0.001f, &particleMass));
-		params->AddParam(new Param<float>("epsilon"  , epsi , 0.0f, 1.0f, 0.0001f, &epsi));
+		params->AddParam(new Param<float>("epsilon"  , epsi , 0.0f, 1.0f, 0.00001f, &epsi));
 
         //params->AddParam(new Param<float>("collide spring" , collideSpring , 0.0f, 1.0f, 0.001f, &collideSpring));
         //params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));

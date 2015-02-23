@@ -119,6 +119,10 @@ class ParticleSystem
 		{
 			m_params.bigradius=x;
 		}
+		void setBigRadius0(float x)//ustawienie promienia duzej kuli
+		{
+			m_params.bigradius0=x;
+		}
 
 		void setBoundaries(bool x)//ograniczenia zewnêtrzne
 		{

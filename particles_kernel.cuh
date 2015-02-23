@@ -52,6 +52,7 @@ struct SimParams
     float boundaryDamping;
 
 	float bigradius;
+	float bigradius0;
 	bool boundaries;
 	float epsi;
 };
