@@ -79,6 +79,9 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 	m_params.bigradius0=10.0f;
 	m_params.boundaries=true;
 	m_params.epsi=0.1f;
+	m_params.brown=0.00001f;
+
+	m_params.particleTypesNum=1;
 
     _initialize(numParticles);
 }
@@ -470,9 +473,9 @@ ParticleSystem::reset(ParticleConfig config)
                     m_hPos[p++] = 2 * (point[1] - 0.0f);
                     m_hPos[p++] = 2 * (point[2] - 0.0f);
                     m_hPos[p++] = 1.0f; // radius
-                    m_hVel[v++] = 0.0f;
-                    m_hVel[v++] = 0.0f;
-                    m_hVel[v++] = 0.0f;
+					m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;
+                    m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
+                    m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
                     m_hVel[v++] = 0.0f;
                 }
             }
@@ -530,3 +533,38 @@ ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacin
     setArray(POSITION, m_hPos, start, index);
     setArray(VELOCITY, m_hVel, start, index);
 }
+
+class ParticleSystem::particleType
+{
+	public:
+		enum types
+		{
+			TypeOne=1,
+			TypeTwo=2,
+			Default
+		};
+		types type;
+		float mass;
+		float radius;
+		particleType(float x)
+		{
+			if(x==1.0f)
+			{
+				type=TypeOne;
+				mass=0.001f;
+				radius=0.225f;
+			}
+			else /*if(x==2.0f)*/
+			{
+				type=TypeTwo;
+				mass=0.00001f;
+				radius=0.0225f;
+			}
+			/*else
+			{
+				type=Default;
+			}*/
+		};
+};
+
+

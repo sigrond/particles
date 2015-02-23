@@ -139,6 +139,11 @@ bool boundaries=true;
  * \brief epsilon do siły lenarda jonesa
  */
 float epsi=0.01f;
+/** \todo załączyć bibliotekę curand i pożądnie zaimplementować ruchy browna
+*/
+float brown=0.0f;
+
+int particleTypesNum=1;
 
 float collideSpring = 0.5f;;
 float collideDamping = 0.02f;;
@@ -295,6 +300,7 @@ void runBenchmark(int iterations, char *exec_path)
 	psystem->setBoundaryDamping(-boundaryDamping);
 	psystem->setParticleMass(particleMass);
 	psystem->setEpsi(epsi);
+	psystem->setBrown(brown);
 
 	float *hPos=NULL;
 	FILE* f=NULL;
@@ -400,6 +406,7 @@ void display()
 		psystem->setBoundaryDamping(-boundaryDamping);
 		psystem->setParticleMass(particleMass);
 		psystem->setEpsi(epsi);
+		psystem->setBrown(brown);
 
 		parowanieKropliWCzasie();
 
@@ -447,10 +454,10 @@ void display()
     glPushMatrix();
 
 	/*glBegin(GL_QUADS);
-		glVertex4f(-1, -1, 0, 0);
-		glVertex4f(-1, 1, 0, 0);
-		glVertex4f(1, 1, 0, 0);
-		glVertex4f(1, -1, 0, 0);
+		glVertex4f(-1, 0, -1, 0);
+		glVertex4f(-1, 0, 1, 0);
+		glVertex4f(1, 0, 1, 0);
+		glVertex4f(1, 0, -1, 0);
 	glEnd();
 	glColor3f(1.0, 0.0, 0.0);*/
     //float3 p = psystem->getColliderPos();
@@ -873,12 +880,13 @@ void initParams()
         // create a new parameter list
         params = new ParamListGL("misc");
         params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.002f, 0.00001f, &timestep));
-        params->AddParam(new Param<float>("liquid viscosity"  , damping , 0.0f, 1.0f, 0.001f, &damping));
-        params->AddParam(new Param<float>("effective gravity"  , gravity , 0.0f, 1.0f, 0.001f, &gravity));
-        params->AddParam(new Param<float> ("A", A , 0.0f, 1.0f, 0.0001, &A));
-		params->AddParam(new Param<float>("surface tension"  , boundaryDamping , 0.0f, 2.0f, 0.001f, &boundaryDamping));
-		params->AddParam(new Param<float>("particle mass"  , particleMass , 0.001f, 2.0f, 0.001f, &particleMass));
+        params->AddParam(new Param<float>("liquid viscosity"  , damping , 0.0f, 1.0f, 0.00001f, &damping));
+        params->AddParam(new Param<float>("effective gravity"  , gravity , 0.0f, 1.0f, 0.00001f, &gravity));
+        //params->AddParam(new Param<float> ("A", A , 0.0f, 1.0f, 0.0001, &A));
+		params->AddParam(new Param<float>("surface tension"  , boundaryDamping , 0.0f, 2.0f, 0.00001f, &boundaryDamping));
+		params->AddParam(new Param<float>("particle mass"  , particleMass , 0.001f, 2.0f, 0.00001f, &particleMass));
 		params->AddParam(new Param<float>("epsilon"  , epsi , 0.0f, 1.0f, 0.00001f, &epsi));
+		params->AddParam(new Param<float>("brown"  , brown , 0.0f, 1.0f, 0.00001f, &brown));
 
         //params->AddParam(new Param<float>("collide spring" , collideSpring , 0.0f, 1.0f, 0.001f, &collideSpring));
         //params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));
@@ -937,6 +945,11 @@ main(int argc, char **argv)
             numParticles = getCmdLineArgumentInt(argc, (const char **)argv, "n");
         }
 
+		if (checkCmdLineFlag(argc, (const char **) argv, "particleTypesNum"))
+        {
+            particleTypesNum = getCmdLineArgumentInt(argc, (const char **)argv, "particleTypesNum");
+        }
+
         if (checkCmdLineFlag(argc, (const char **) argv, "grid"))
         {
             gridDim = getCmdLineArgumentInt(argc, (const char **) argv, "grid");
@@ -985,6 +998,14 @@ main(int argc, char **argv)
         {
             gravity = getCmdLineArgumentFloat(argc, (const char **) argv, "gravity");
         }
+		if (checkCmdLineFlag(argc, (const char **) argv, "A"))
+        {
+            A = getCmdLineArgumentFloat(argc, (const char **) argv, "A");
+        }
+		if (checkCmdLineFlag(argc, (const char **) argv, "brown"))
+        {
+            brown = getCmdLineArgumentFloat(argc, (const char **) argv, "brown");
+        }
 		if (checkCmdLineFlag(argc, (const char **) argv, "help"))
         {
             printf("cmd line\n");
@@ -1005,6 +1026,9 @@ main(int argc, char **argv)
             printf("particleMass -masa cz¹stki\n");
             printf("gravity -grawitacja\n");
 			printf("save -zapis do pliku\n");
+			printf("A -stała parowania kropli\n");
+			printf("particleTypesNum -ilość rodzjów cząstek\n");
+			printf("brown -mnożnik róchów browna\n");
             printf("help\n");
 
         }

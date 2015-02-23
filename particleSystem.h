@@ -123,10 +123,19 @@ class ParticleSystem
 		{
 			m_params.bigradius0=x;
 		}
+		void setBrown(float x)
+		{
+			m_params.brown=x;
+		}
 
 		void setBoundaries(bool x)//ograniczenia zewnêtrzne
 		{
 			m_params.boundaries=x;
+		}
+
+		void setParticleTypesNum(int x)//ograniczenia zewnêtrzne
+		{
+			m_params.particleTypesNum=x;
 		}
 
         void setColliderPos(float3 x)
@@ -160,6 +169,8 @@ class ParticleSystem
         }
 
         void addSphere(int index, float *pos, float *vel, int r, float spacing);
+
+		class particleType;
 
     protected: // methods
         ParticleSystem() {}

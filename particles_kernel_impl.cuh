@@ -63,9 +63,14 @@ struct integrate_functor
         float3 vel = make_float3(velData.x, velData.y, velData.z);
 
         vel += params.gravity * deltaTime;
+		//vel.x-=(0.1f+vel.x+vel.y*2.0f+vel.z*4.5f+pos.y+pos.z)/(100.0f)*params.brown;
+		//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;
+		//vel.z-=(0.1f+vel.x*1.5f+vel.y*5.0f+vel.z+pos.x+pos.y)/(100.0f)*params.brown;
         vel *= params.globalDamping;
+		//vel += params.gravity * deltaTime;
 
         // new position = old position + velocity * deltaTime
+
         pos += vel * deltaTime;
 
         // set this to zero to disable collisions with cube sides
@@ -484,7 +489,7 @@ void collideD(float4 *newVel,               // output: new velocity
 
     // write new velocity back to original unsorted location
     uint originalIndex = gridParticleIndex[index];
-    newVel[originalIndex] = make_float4(vel + force*deltaTime/params.particleMass, 0.0f);
+    newVel[originalIndex] = make_float4(vel + force*(deltaTime/params.particleMass), 0.0f);
 }
 
 #endif

@@ -55,6 +55,9 @@ struct SimParams
 	float bigradius0;
 	bool boundaries;
 	float epsi;
+	float brown;
+
+	int particleTypesNum;
 };
 
 #endif
