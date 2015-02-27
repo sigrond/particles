@@ -22,6 +22,7 @@
 #include "helper_math.h"
 #include "math_constants.h"
 #include "particles_kernel.cuh"
+#include <curand_kernel.h>/**< biblioteka zawierająca funkcje generujące liczby pseudolosowe i quasi-losowe na karcie */
 
 #if USE_TEX
 // textures for particle position and velocity
@@ -63,9 +64,17 @@ struct integrate_functor
         float3 vel = make_float3(velData.x, velData.y, velData.z);
 
         vel += params.gravity * deltaTime;
+
+        unsigned int seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x);
+        curandState s;
+        curand_init(seed,0,0,&s);
+        vel.x+=(curand_uniform(&s)*2.0f-1.0f)*params.brown;
+        vel.y+=(curand_uniform(&s)*2.0f-1.0f)*params.brown;
+        vel.z+=(curand_uniform(&s)*2.0f-1.0f)*params.brown;
 		//vel.x-=(0.1f+vel.x+vel.y*2.0f+vel.z*4.5f+pos.y+pos.z)/(100.0f)*params.brown;
 		//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;
 		//vel.z-=(0.1f+vel.x*1.5f+vel.y*5.0f+vel.z+pos.x+pos.y)/(100.0f)*params.brown;
+
         vel *= params.globalDamping;
 		//vel += params.gravity * deltaTime;
 
