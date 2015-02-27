@@ -373,7 +373,7 @@ float3 collideSpheres(float3 posA, float3 posB,
 		float sigma=2*params.particleRadius/(1.12246204f); //tu te¿ jest dobrze tak jak LJ ka¿e :-)
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
-		force=-48.0f*params.epsi/dist*sd*(sd-0.5f)*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
+		force=-(48.0f*params.epsi/dist*sd*(sd-0.5f)+attraction/(dist*dist))*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////

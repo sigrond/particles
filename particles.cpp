@@ -891,7 +891,7 @@ void initParams()
         //params->AddParam(new Param<float>("collide spring" , collideSpring , 0.0f, 1.0f, 0.001f, &collideSpring));
         //params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));
         //params->AddParam(new Param<float>("collide shear"  , collideShear  , 0.0f, 0.1f, 0.001f, &collideShear));
-        //params->AddParam(new Param<float>("collide attract", collideAttraction, 0.0f, 0.1f, 0.001f, &collideAttraction));
+        params->AddParam(new Param<float>("collide attract", collideAttraction, 0.0f, 0.1f, 0.001f, &collideAttraction));
     }
 }
 
@@ -1012,23 +1012,23 @@ main(int argc, char **argv)
             printf("particles -nazwaParametru=liczba\n");
             printf("np:\n");
             printf("particles -bigRadius0=0.1 \n");
-            printf("bigRadius0 -pocz¹tkowy promieñ kropli\n");
-            printf("n -iloœæ cz¹stek\n");
+            printf("bigRadius0 -początkowy promień kropli\n");
+            printf("n -liczba cząstek\n");
             printf("grid -rozmiar gridu\n");
             printf("file -nazwa pliku do porównania z wynikiem\n");
             printf("timestep -krok czasu\n");
             printf("benchmark -obliczenia bez GUI, pokazuje wydajnoœæ\n");
-            printf("i -iloœæ kroków\n");
+            printf("i -liczba kroków\n");
             printf("device -wybór GPU\n");
-            printf("epsi -epsilon w sile lenarda jonesa\n");
-            printf("damping -lepkoœæ\n");
-            printf("boundaryDamping -napiêcie powierchniowe\n");
-            printf("particleMass -masa cz¹stki\n");
+            printf("epsi -epsilon w sile Lenarda-Jonesa\n");
+            printf("damping -lepkość\n");
+            printf("boundaryDamping -napięcie powierchniowe\n");
+            printf("particleMass -masa cząstki\n");
             printf("gravity -grawitacja\n");
 			printf("save -zapis do pliku\n");
 			printf("A -stała parowania kropli\n");
 			printf("particleTypesNum -ilość rodzjów cząstek\n");
-			printf("brown -mnożnik róchów browna\n");
+			printf("brown -mnożnik róchów Browna\n");
             printf("help\n");
 
         }
