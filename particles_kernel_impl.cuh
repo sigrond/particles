@@ -65,11 +65,14 @@ struct integrate_functor
 
         vel += params.gravity * deltaTime;
 
-        unsigned int seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x);
+        unsigned int seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x)+(unsigned int)floor((pos.x+pos.y+pos.z)*10000000);
         curandState s;
         curand_init(seed,0,0,&s);
+		skipahead((unsigned long long int)floor(vel.z*10000000),&s);
         vel.x+=(curand_uniform(&s)*2.0f-1.0f)*params.brown;
+		skipahead((unsigned long long int)floor(vel.y*10000000),&s);
         vel.y+=(curand_uniform(&s)*2.0f-1.0f)*params.brown;
+		skipahead((unsigned long long int)floor(vel.x*10000000),&s);
         vel.z+=(curand_uniform(&s)*2.0f-1.0f)*params.brown;
 		//vel.x-=(0.1f+vel.x+vel.y*2.0f+vel.z*4.5f+pos.y+pos.z)/(100.0f)*params.brown;
 		//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;
