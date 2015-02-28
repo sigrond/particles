@@ -1,5 +1,6 @@
 var class_particle_system =
 [
+    [ "particleType", "class_particle_system_1_1particle_type.html", "class_particle_system_1_1particle_type" ],
     [ "ParticleArray", "class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3", [
       [ "POSITION", "class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299", null ],
       [ "VELOCITY", "class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d", null ]
@@ -34,8 +35,10 @@ var class_particle_system =
     [ "reset", "class_particle_system.html#a519070812dd9eb349f270c793c5f64b6", null ],
     [ "setArray", "class_particle_system.html#aa792a66680e800832059854aab0d594d", null ],
     [ "setBigRadius", "class_particle_system.html#a97efe00aa29307ecae0165da33d4770a", null ],
+    [ "setBigRadius0", "class_particle_system.html#a55005091f11f7e9734c6b3fd2f1a5b1c", null ],
     [ "setBoundaries", "class_particle_system.html#a99bbe16b8e181415c2aa71c11edace98", null ],
     [ "setBoundaryDamping", "class_particle_system.html#a1b17ae9291cf9974f63219cc9eac6ec6", null ],
+    [ "setBrown", "class_particle_system.html#a01a5d2e20d18dcd29fa7f8f9bc5f75e9", null ],
     [ "setCollideAttraction", "class_particle_system.html#aef02d293e3dc61c50fa6d085aa0b03de", null ],
     [ "setCollideDamping", "class_particle_system.html#a8f8d21c7079c3a0e66558b9ec5bef597", null ],
     [ "setColliderPos", "class_particle_system.html#a9c49794585cad649de400dc7375d7801", null ],
@@ -46,6 +49,7 @@ var class_particle_system =
     [ "setGravity", "class_particle_system.html#a755f64f917389ef41df81b663d1f5bd2", null ],
     [ "setIterations", "class_particle_system.html#a11f55976f6ef34dceea208fbe06694cd", null ],
     [ "setParticleMass", "class_particle_system.html#a92e1db62e4025fab4996ce9a3ca5882f", null ],
+    [ "setParticleTypesNum", "class_particle_system.html#ac82e5fa73b2b91dfa44db14daa37b389", null ],
     [ "update", "class_particle_system.html#a166fd86f020b6024d7d42723762d7cb2", null ],
     [ "m_bInitialized", "class_particle_system.html#a21bbfba9d8701a70bc6fddbf4fc3f5bd", null ],
     [ "m_bUseOpenGL", "class_particle_system.html#a5d99413ffc0791e6aa9f02308caf7f1e", null ],
