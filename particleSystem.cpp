@@ -80,6 +80,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 	m_params.boundaries=true;
 	m_params.epsi=0.1f;
 	m_params.brown=0.00001f;
+	m_params.brownQuality=10;
 
 	m_params.particleTypesNum=1;
 
@@ -475,7 +476,7 @@ ParticleSystem::reset(ParticleConfig config)
                     /** \brief równomierne losowanie położeń metodą Monte Carlo
                      * \param point[0]*point[0]+point[1]*point[1]+point[2]*point[2]<=tmpbrad*tmpbrad x^2+y^2+z^2<=R^2
                      */
-					if(point[0]*point[0]+point[1]*point[1]+point[2]*point[2]<=tmpbrad*tmpbrad)
+					if((point[0]*point[0]+point[1]*point[1]+point[2]*point[2])<(tmprad*tmprad))
                     {
                         i++;
                         m_hPos[p++] = 2 * (point[0] - 0.0f);

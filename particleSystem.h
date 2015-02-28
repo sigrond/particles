@@ -127,6 +127,10 @@ class ParticleSystem
 		{
 			m_params.brown=x;
 		}
+		void setBrownQuality(unsigned long long int x)
+		{
+			m_params.brownQuality=x;
+		}
 
 		void setBoundaries(bool x)//ograniczenia zewnêtrzne
 		{

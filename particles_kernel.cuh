@@ -58,6 +58,7 @@ struct SimParams
 	float brown;
 
 	int particleTypesNum;
+	unsigned long long int brownQuality;
 };
 
 #endif

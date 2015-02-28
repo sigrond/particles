@@ -143,6 +143,7 @@ float epsi=0.01f;
  * \brief nasilenie ruchów browna
  */
 float brown=0.0f;
+unsigned long long int brownQuality=10;
 
 int particleTypesNum=1;
 
@@ -213,6 +214,7 @@ void initParticleSystem(int numParticles, uint3 gridSize, bool bUseOpenGL)
 	psystem->setBigRadius0(bigRadius0);
     //psystem->reset(ParticleSystem::CONFIG_GRID);
 	psystem->reset(ParticleSystem::CONFIG_RANDOM);
+	psystem->setBrownQuality(brownQuality);
 
     if (bUseOpenGL)
     {
@@ -1007,6 +1009,10 @@ main(int argc, char **argv)
         {
             brown = getCmdLineArgumentFloat(argc, (const char **) argv, "brown");
         }
+		if (checkCmdLineFlag(argc, (const char **) argv, "brownQuality"))
+		{
+			brownQuality = getCmdLineArgumentInt(argc, (const char **) argv, "brownQuality");
+		}
 		if (checkCmdLineFlag(argc, (const char **) argv, "help"))
         {
             printf("cmd line\n");
@@ -1029,6 +1035,7 @@ main(int argc, char **argv)
 			printf("save -zapis do pliku\n");
 			printf("A -stała parowania kropli\n");
 			printf("particleTypesNum -ilość rodzjów cząstek\n");
+			printf("brownQuality -liczba naturalna\n");
 			printf("brown -mnożnik róchów Browna\n");
             printf("help\n");
 
