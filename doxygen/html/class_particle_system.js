@@ -39,6 +39,7 @@ var class_particle_system =
     [ "setBoundaries", "class_particle_system.html#a99bbe16b8e181415c2aa71c11edace98", null ],
     [ "setBoundaryDamping", "class_particle_system.html#a1b17ae9291cf9974f63219cc9eac6ec6", null ],
     [ "setBrown", "class_particle_system.html#a01a5d2e20d18dcd29fa7f8f9bc5f75e9", null ],
+    [ "setBrownQuality", "class_particle_system.html#a0b8c24c273a5a89ba27c7b6c949d2ce1", null ],
     [ "setCollideAttraction", "class_particle_system.html#aef02d293e3dc61c50fa6d085aa0b03de", null ],
     [ "setCollideDamping", "class_particle_system.html#a8f8d21c7079c3a0e66558b9ec5bef597", null ],
     [ "setColliderPos", "class_particle_system.html#a9c49794585cad649de400dc7375d7801", null ],

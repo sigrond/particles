@@ -7,5 +7,6 @@ var searchData=
   ['boundarydamping',['boundaryDamping',['../struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9',1,'SimParams::boundaryDamping()'],['../particles_8cpp.html#ae359dad516b085afdcedb66ec2a049db',1,'boundaryDamping():&#160;particles.cpp']]],
   ['bpause',['bPause',['../particles_8cpp.html#a094a344391aa86a98299bac3deb91ce6',1,'particles.cpp']]],
   ['brown',['brown',['../struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee',1,'SimParams::brown()'],['../particles_8cpp.html#a6f7e9ca1d5ce4c84b69d7793f4de8e23',1,'brown():&#160;particles.cpp']]],
+  ['brownquality',['brownQuality',['../struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff',1,'SimParams::brownQuality()'],['../particles_8cpp.html#a6bc4c07ce22fba8e87b38b2ba310faca',1,'brownQuality():&#160;particles.cpp']]],
   ['buttonstate',['buttonState',['../particles_8cpp.html#a5002611f83f5a861df12917dd5651db8',1,'particles.cpp']]]
 ];

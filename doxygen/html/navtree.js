@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "particles", "index.html", [
+  [ "Particles", "index.html", [
     [ "Cząstki", "index.html", [
       [ "Opis Ogólny", "index.html#Opis_Ogólny", null ],
       [ "Linki do fizyki", "index.html#linki_do_fizyki", null ],
@@ -34,7 +34,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"particles_8cpp.html#abd87357eda7bf4b5fc32058a0cccd57b"
+"particles_8cpp.html#ab5af5d243ea25a0fa19984c0f69af840"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

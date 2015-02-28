@@ -39,6 +39,7 @@ var particles_8cpp =
     [ "boundaryDamping", "particles_8cpp.html#ae359dad516b085afdcedb66ec2a049db", null ],
     [ "bPause", "particles_8cpp.html#a094a344391aa86a98299bac3deb91ce6", null ],
     [ "brown", "particles_8cpp.html#a6f7e9ca1d5ce4c84b69d7793f4de8e23", null ],
+    [ "brownQuality", "particles_8cpp.html#a6bc4c07ce22fba8e87b38b2ba310faca", null ],
     [ "buttonState", "particles_8cpp.html#a5002611f83f5a861df12917dd5651db8", null ],
     [ "camera_rot", "particles_8cpp.html#a9fcb578cacbd3a3b1ab593fc123cffb5", null ],
     [ "camera_rot_lag", "particles_8cpp.html#a2993bf9f16707b5c3ff46e0b751f0373", null ],
