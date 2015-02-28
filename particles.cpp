@@ -1008,10 +1008,11 @@ main(int argc, char **argv)
 		if (checkCmdLineFlag(argc, (const char **) argv, "brown"))
         {
             brown = getCmdLineArgumentFloat(argc, (const char **) argv, "brown");
+			//printf("brown: %f",brown);
         }
-		if (checkCmdLineFlag(argc, (const char **) argv, "brownQuality"))
+		if (checkCmdLineFlag(argc, (const char **) argv, "bQuality"))
 		{
-			brownQuality = getCmdLineArgumentInt(argc, (const char **) argv, "brownQuality");
+			brownQuality = getCmdLineArgumentInt(argc, (const char **) argv, "bQuality");
 		}
 		if (checkCmdLineFlag(argc, (const char **) argv, "help"))
         {
@@ -1035,7 +1036,7 @@ main(int argc, char **argv)
 			printf("save -zapis do pliku\n");
 			printf("A -stała parowania kropli\n");
 			printf("particleTypesNum -ilość rodzjów cząstek\n");
-			printf("brownQuality -liczba naturalna\n");
+			printf("bQuality -liczba naturalna\n");
 			printf("brown -mnożnik róchów Browna\n");
             printf("help\n");
 
