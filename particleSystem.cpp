@@ -53,7 +53,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.numBodies = m_numParticles;
 
 	/**
-	* promie� w mikronach
+	* promieñ w mikronach
 	*/
     m_params.particleRadius = 0.225f;//1.0f / 32.0f;//32.0f / 64.0f;
     m_params.colliderPos = make_float3(-1.2f, -0.8f, 0.8f);
@@ -457,17 +457,29 @@ ParticleSystem::reset(ParticleConfig config)
 				float tmprad=tmpbrad/2;
 				//printf("%f\n",tmprad);
 
-                for (uint i=0; i < m_numParticles; i++)
+                for (uint i=0; i < m_numParticles; /*i++*/)
                 {
                     float point[3];
                     //point[0] = frand();
                     //point[1] = frand();
                     //point[2] = frand();
-					point[0]=tmpbrad*frand()-tmprad;//frand -> (0.0f,1.0f) 1.0f - promien kuli
+					/*point[0]=tmpbrad*frand()-tmprad;//frand -> (0.0f,1.0f) 1.0f - promien kuli
 					float my=sqrt(tmprad*tmprad-point[0]*point[0]);
 					point[1]=rand() /( float ) RAND_MAX *( 2*my ) - my;
 					float mz=sqrt(tmprad*tmprad-point[0]*point[0]-point[1]*point[1]);
-					point[2]=rand() /( float ) RAND_MAX *( 2*mz ) - mz;
+					point[2]=rand() /( float ) RAND_MAX *( 2*mz ) - mz;*/
+
+					point[0]=tmpbrad*frand()-tmprad;
+					point[1]=tmpbrad*frand()-tmprad;
+					point[2]=tmpbrad*frand()-tmprad;
+                    /** \brief równomierne losowanie położeń metodą Monte Carlo
+                     * \param point[0]*point[0]+point[1]*point[1]+point[2]*point[2]<=tmpbrad*tmpbrad x^2+y^2+z^2<=R^2
+                     */
+					if(point[0]*point[0]+point[1]*point[1]+point[2]*point[2]<=tmpbrad*tmpbrad)
+                    {
+                        i++;
+                    }
+
 
                     m_hPos[p++] = 2 * (point[0] - 0.0f);
                     m_hPos[p++] = 2 * (point[1] - 0.0f);
