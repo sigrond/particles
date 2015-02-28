@@ -19,6 +19,9 @@ var searchData=
   ['particlesystem_2ecuh',['particleSystem.cuh',['../particle_system_8cuh.html',1,'']]],
   ['particlesystem_2eh',['particleSystem.h',['../particle_system_8h.html',1,'']]],
   ['particlesystem_5fcuda_2ecu',['particleSystem_cuda.cu',['../particle_system__cuda_8cu.html',1,'']]],
+  ['particletype',['particleType',['../class_particle_system_1_1particle_type.html#a12bff78b90f86f1d8b3f26958aef6152',1,'ParticleSystem::particleType']]],
+  ['particletype',['particleType',['../class_particle_system_1_1particle_type.html',1,'ParticleSystem']]],
+  ['particletypesnum',['particleTypesNum',['../struct_sim_params.html#adc3e5f65a1a0ef7c944007ac99eb8034',1,'SimParams::particleTypesNum()'],['../particles_8cpp.html#abebcf16aa212d26e4fb1335a433f0b5c',1,'particleTypesNum():&#160;particles.cpp']]],
   ['position',['POSITION',['../class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299',1,'ParticleSystem']]],
   ['psystem',['psystem',['../particles_8cpp.html#a6fa81770b30ecffc7110864e64fe4fc5',1,'particles.cpp']]]
 ];

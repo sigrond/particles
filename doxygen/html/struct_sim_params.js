@@ -2,8 +2,10 @@ var struct_sim_params =
 [
     [ "attraction", "struct_sim_params.html#acf7442ae8a49237861944271cb630d01", null ],
     [ "bigradius", "struct_sim_params.html#af41979948fdd8f76fe28ce2b43eb24cd", null ],
+    [ "bigradius0", "struct_sim_params.html#a5809a1ec819f5a99e350ed28b01834fc", null ],
     [ "boundaries", "struct_sim_params.html#a01507f06cc018071a0eb741438aaa09b", null ],
     [ "boundaryDamping", "struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9", null ],
+    [ "brown", "struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee", null ],
     [ "cellSize", "struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169", null ],
     [ "colliderPos", "struct_sim_params.html#aa27be265020f137f0a9cfbc3f1d2d9f8", null ],
     [ "colliderRadius", "struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478", null ],
@@ -17,6 +19,7 @@ var struct_sim_params =
     [ "numCells", "struct_sim_params.html#a9d51112b7e86d46b6f33126a67cc84b4", null ],
     [ "particleMass", "struct_sim_params.html#afab015432bd796517e5f540f6f7228e4", null ],
     [ "particleRadius", "struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af", null ],
+    [ "particleTypesNum", "struct_sim_params.html#adc3e5f65a1a0ef7c944007ac99eb8034", null ],
     [ "shear", "struct_sim_params.html#ad48210724ada15a14a649b25ad61575b", null ],
     [ "spring", "struct_sim_params.html#a301314921adc7bce20d8955cf03cdf3f", null ],
     [ "worldOrigin", "struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9", null ]

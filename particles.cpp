@@ -139,8 +139,9 @@ bool boundaries=true;
  * \brief epsilon do siły lenarda jonesa
  */
 float epsi=0.01f;
-/** \todo załączyć bibliotekę curand i pożądnie zaimplementować ruchy browna
-*/
+/** \var brown
+ * \brief nasilenie ruchów browna
+ */
 float brown=0.0f;
 
 int particleTypesNum=1;

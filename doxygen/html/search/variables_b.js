@@ -36,6 +36,7 @@ var searchData=
   ['m_5fvbo',['m_vbo',['../class_particle_renderer.html#a7549feaa0982abbc44c9fe73f2eb251f',1,'ParticleRenderer']]],
   ['m_5fwindow_5fh',['m_window_h',['../class_particle_renderer.html#af34b1e93f6a7f22774a6473c52027d77',1,'ParticleRenderer']]],
   ['m_5fwindow_5fw',['m_window_w',['../class_particle_renderer.html#aa71b7eba5d5665a086b7ba80adddf19b',1,'ParticleRenderer']]],
+  ['mass',['mass',['../class_particle_system_1_1particle_type.html#a7b31955f076be65f9bd704a23032597c',1,'ParticleSystem::particleType']]],
   ['maxparticlespercell',['maxParticlesPerCell',['../struct_sim_params.html#a557e8042b00135073cd51fabf4594142',1,'SimParams']]],
   ['mode',['mode',['../particles_8cpp.html#a1ea5d0cb93f22f7d0fdf804bd68c3326',1,'particles.cpp']]],
   ['modelview',['modelView',['../particles_8cpp.html#a4067d49c28b37c689a16350cb3ff64d7',1,'particles.cpp']]]

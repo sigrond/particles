@@ -478,17 +478,15 @@ ParticleSystem::reset(ParticleConfig config)
 					if(point[0]*point[0]+point[1]*point[1]+point[2]*point[2]<=tmpbrad*tmpbrad)
                     {
                         i++;
+                        m_hPos[p++] = 2 * (point[0] - 0.0f);
+                        m_hPos[p++] = 2 * (point[1] - 0.0f);
+                        m_hPos[p++] = 2 * (point[2] - 0.0f);
+                        m_hPos[p++] = 1.0f; // radius
+                        m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;
+                        m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
+                        m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
+                        m_hVel[v++] = 0.0f;
                     }
-
-
-                    m_hPos[p++] = 2 * (point[0] - 0.0f);
-                    m_hPos[p++] = 2 * (point[1] - 0.0f);
-                    m_hPos[p++] = 2 * (point[2] - 0.0f);
-                    m_hPos[p++] = 1.0f; // radius
-					m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;
-                    m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
-                    m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
-                    m_hVel[v++] = 0.0f;
                 }
             }
             break;
