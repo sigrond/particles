@@ -457,6 +457,7 @@ ParticleSystem::reset(ParticleConfig config)
 				float tmpbrad=m_params.bigradius-m_params.particleRadius;
 				float tmprad=tmpbrad/2;
 				//printf("%f\n",tmprad);
+				bool bo1=false;
 
                 for (uint i=0; i < m_numParticles; /*i++*/)
                 {
@@ -478,6 +479,17 @@ ParticleSystem::reset(ParticleConfig config)
                      */
 					if((point[0]*point[0]+point[1]*point[1]+point[2]*point[2])<(tmprad*tmprad))
                     {
+                        bo1=false;
+                        for(uint j=0;j<m_numParticles && j<=i;j++)
+                        {
+                            if(sqrt( (m_hPos[3*j]-point[0])*(m_hPos[3*j]-point[0])+(m_hPos[3*j+1]-point[1])*(m_hPos[3*j+1]-point[1])+(m_hPos[3*j+2]-point[2])*(m_hPos[3*j+2]-point[2]) )<2*m_params.particleRadius)
+                            {
+                                bo1=true;
+                                break;
+                            }
+                        }
+                        if(bo1)
+                            continue;
                         i++;
                         m_hPos[p++] = 2 * (point[0] - 0.0f);
                         m_hPos[p++] = 2 * (point[1] - 0.0f);
