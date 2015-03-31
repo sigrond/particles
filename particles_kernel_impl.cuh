@@ -66,15 +66,15 @@ struct integrate_functor
         vel += params.gravity * deltaTime;
 		if(params.brown!=0.0f)
         {
-			unsigned int seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x)+(unsigned int)floor((pos.x+pos.y+pos.z)*params.brownQuality);
+			unsigned int seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x)+(unsigned int)floor((vel.x+vel.y+vel.z)*params.brownQuality);
 			curandState s;
 			curand_init(seed,0,0,&s);
-			skipahead((unsigned long long int)floor(vel.z*params.brownQuality),&s);
-			vel.x+=(curand_uniform(&s)*2.0f-1.0f)*params.brown;
+			skipahead((unsigned long long int)floor(vel.z*params.brownQuality+pos.x+pos.y+pos.z),&s);
+			vel.x+=(curand_normal(&s))*params.brown;
 			skipahead((unsigned long long int)floor(vel.y*params.brownQuality),&s);
-			vel.y+=(curand_uniform(&s)*2.0f-1.0f)*params.brown;
+			vel.y+=(curand_normal(&s))*params.brown;
 			skipahead((unsigned long long int)floor(vel.x*params.brownQuality),&s);
-			vel.z+=(curand_uniform(&s)*2.0f-1.0f)*params.brown;
+			vel.z+=(curand_normal(&s))*params.brown;
 		}
 		//vel.x-=(0.1f+vel.x+vel.y*2.0f+vel.z*4.5f+pos.y+pos.z)/(100.0f)*params.brown;
 		//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;
@@ -354,7 +354,7 @@ float3 collideSpheres(float3 posA, float3 posB,
     float3 relPos = posB - posA;
 
     float dist = length(relPos);
-    float collideDist = (radiusA + radiusB)*1.25f;//zasieg dzialania sil
+    float collideDist = (radiusA + radiusB)*1.5f;//zasieg dzialania sil
 
     float3 force = make_float3(0.0f);
 

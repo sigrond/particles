@@ -889,12 +889,12 @@ void initParams()
 		params->AddParam(new Param<float>("surface tension"  , boundaryDamping , 0.0f, 2.0f, 0.00001f, &boundaryDamping));
 		params->AddParam(new Param<float>("particle mass"  , particleMass , 0.001f, 2.0f, 0.00001f, &particleMass));
 		params->AddParam(new Param<float>("epsilon"  , epsi , 0.0f, 1.0f, 0.00001f, &epsi));
-		params->AddParam(new Param<float>("brown"  , brown , 0.0f, 10.0f, 0.00001f, &brown));
+		params->AddParam(new Param<float>("brown"  , brown , 0.0f, 0.5f, 0.00001f, &brown));
 
         //params->AddParam(new Param<float>("collide spring" , collideSpring , 0.0f, 1.0f, 0.001f, &collideSpring));
         //params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));
         //params->AddParam(new Param<float>("collide shear"  , collideShear  , 0.0f, 0.1f, 0.001f, &collideShear));
-        params->AddParam(new Param<float>("collide attract", collideAttraction, 0.0f, 0.1f, 0.001f, &collideAttraction));
+        params->AddParam(new Param<float>("Coulomb repulsion", collideAttraction, 0.0f, 0.01f, 0.00001f, &collideAttraction));
     }
 }
 

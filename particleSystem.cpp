@@ -63,7 +63,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 
     m_params.worldOrigin = make_float3(-1.0f, -1.0f, -1.0f);
     //    m_params.cellSize = make_float3(worldSize.x / m_gridSize.x, worldSize.y / m_gridSize.y, worldSize.z / m_gridSize.z);
-    float cellSize = m_params.particleRadius * 8.0f;  // cell size equal to particle diameter
+    float cellSize = m_params.particleRadius * 3.0f;  // cell size equal to particle diameter
     m_params.cellSize = make_float3(cellSize, cellSize, cellSize);
 
     m_params.spring = 0.5f;
@@ -483,9 +483,12 @@ ParticleSystem::reset(ParticleConfig config)
                         m_hPos[p++] = 2 * (point[1] - 0.0f);
                         m_hPos[p++] = 2 * (point[2] - 0.0f);
                         m_hPos[p++] = 1.0f; // radius
-                        m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;
+                        /*m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;
                         m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
-                        m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
+                        m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;*/
+						m_hVel[v++] = 0.0f;
+						m_hVel[v++] = 0.0f;
+						m_hVel[v++] = 0.0f;
                         m_hVel[v++] = 0.0f;
                     }
                 }

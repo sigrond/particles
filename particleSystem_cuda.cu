@@ -243,6 +243,7 @@ extern "C"
 /*	wywolanie watkow zderzen	*/
 ///////////////////////////////////////////////////////////////////////////
         // execute the kernel
+
         collideD<<< numBlocks, numThreads >>>((float4 *)newVel,
                                               (float4 *)sortedPos,
                                               (float4 *)sortedVel,
