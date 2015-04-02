@@ -479,17 +479,19 @@ ParticleSystem::reset(ParticleConfig config)
                      */
 					if((point[0]*point[0]+point[1]*point[1]+point[2]*point[2])<(tmprad*tmprad))
                     {
-                        bo1=false;
-                        for(uint j=0;j<m_numParticles && j<=i;j++)
+                        bo1=true;
+                        for(uint j=0;j<m_numParticles && j<i;j++)
                         {
-                            if(sqrt( (m_hPos[3*j]-point[0])*(m_hPos[3*j]-point[0])+(m_hPos[3*j+1]-point[1])*(m_hPos[3*j+1]-point[1])+(m_hPos[3*j+2]-point[2])*(m_hPos[3*j+2]-point[2]) )<2*m_params.particleRadius)
+							int j4=4*j;
+                            if( ( (m_hPos[j4]-point[0]*2)*(m_hPos[j4]-point[0]*2)+(m_hPos[j4+1]-point[1]*2)*(m_hPos[j4+1]-point[1]*2)+(m_hPos[j4+2]-point[2]*2)*(m_hPos[j4+2]-point[2]*2) )<4.0f*m_params.particleRadius*m_params.particleRadius)
                             {
-                                bo1=true;
+								//printf("%d %d %f %f %f\n",i ,j ,point[0],point[1],point[2]);
+                                bo1=false;
                                 break;
                             }
                         }
                         if(bo1)
-                            continue;
+						{
                         i++;
                         m_hPos[p++] = 2 * (point[0] - 0.0f);
                         m_hPos[p++] = 2 * (point[1] - 0.0f);
@@ -502,8 +504,16 @@ ParticleSystem::reset(ParticleConfig config)
 						m_hVel[v++] = 0.0f;
 						m_hVel[v++] = 0.0f;
                         m_hVel[v++] = 0.0f;
+						}
                     }
                 }
+				/*for(int i=0;i<m_numParticles;i++)
+				{
+					printf("i: %d\n",i);
+					for(int j=0;j<4;j++)
+						printf("%f ",m_hPos[i*4+j]);
+					printf("\n");
+				}*/
             }
             break;
 
