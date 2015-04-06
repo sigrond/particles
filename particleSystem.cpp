@@ -30,6 +30,8 @@
 #define CUDART_PI_F         3.141592654f
 #endif
 
+extern bool multiColor;
+
 ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenGL) :
     m_bInitialized(false),
     m_bUseOpenGL(bUseOpenGL),
@@ -188,6 +190,8 @@ ParticleSystem::_initialize(int numParticles)
         for (uint i=0; i<m_numParticles; i++)
         {
             float t = i / (float) m_numParticles;
+			if(multiColor)
+			{
 #if 0
             *ptr++ = rand() / (float) RAND_MAX;
             *ptr++ = rand() / (float) RAND_MAX;
@@ -196,6 +200,13 @@ ParticleSystem::_initialize(int numParticles)
             colorRamp(t, ptr);
             ptr+=3;
 #endif
+			}
+			else
+			{
+				*ptr++ = 0;
+				*ptr++ = 1;
+				*ptr++ = 0;
+			}
             *ptr++ = 1.0f;
         }
 

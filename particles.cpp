@@ -172,6 +172,8 @@ unsigned long long int licznik=0;
  */
 long double time_past=0.0;
 
+extern bool multiColor=false;
+
 ParticleSystem *psystem = 0;
 
 // fps
@@ -1038,6 +1040,7 @@ main(int argc, char **argv)
 			printf("particleTypesNum -ilość rodzjów cząstek\n");
 			printf("bQuality -liczba naturalna\n");
 			printf("brown -mnożnik róchów Browna\n");
+			printf("multiColor -losowe kolory kulek\n");
             printf("help\n");
 
         }
@@ -1048,6 +1051,7 @@ main(int argc, char **argv)
     printf("particles: %d\n", numParticles);
 
     bool benchmark = checkCmdLineFlag(argc, (const char **) argv, "benchmark") != 0;
+	multiColor = checkCmdLineFlag(argc, (const char **) argv, "multiColor") != 0;
 
     if (checkCmdLineFlag(argc, (const char **) argv, "i"))
     {
