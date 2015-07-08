@@ -8,6 +8,11 @@
  * is strictly prohibited.
  *
  */
+ /** \file particleSystem.cpp
+  * \brief Definicje (implementacje) metod klasy ParticleSystem
+  * oraz funkcji pomocniczych
+  */
+
 
 #include "particleSystem.h"
 #include "particleSystem.cuh"

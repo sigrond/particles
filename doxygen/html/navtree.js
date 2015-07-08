@@ -4,7 +4,12 @@ var NAVTREE =
     [ "Cząstki", "index.html", [
       [ "Opis Ogólny", "index.html#Opis_Ogólny", null ],
       [ "Linki do fizyki", "index.html#linki_do_fizyki", null ],
-      [ "Repozytorium", "index.html#Repozytorium", null ]
+      [ "Repozytorium", "index.html#Repozytorium", null ],
+      [ "READMEs", "index.html#READMEs", [
+        [ "Parametry Uruchamiania", "index.html#parametry_uruchamiania", null ],
+        [ "Oryginalny Readme", "index.html#oryginalny_readme", null ],
+        [ "Koncepcja symulowania różnych cząstek", "index.html#koncepcja_symulowania_roznych_czastek", null ]
+      ] ]
     ] ],
     [ "Klasy", null, [
       [ "Lista klas", "annotated.html", "annotated" ],
@@ -34,7 +39,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"particles_8cpp.html#ab5af5d243ea25a0fa19984c0f69af840"
+"particles_8cpp.html#aa5924a75cb4cd299c96829772cc2f3cd"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

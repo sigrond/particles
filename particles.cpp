@@ -43,6 +43,13 @@
  http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions
  * \section Repozytorium Repozytorium
  https://github.com/sigrond/particles/tree/spica
+ * \section READMEs READMEs
+ * \subsection parametry_uruchamiania Parametry Uruchamiania
+ * \verbinclude readme2.txt
+ * \subsection oryginalny_readme Oryginalny Readme
+ * \verbinclude readme1.txt
+ * \subsection koncepcja_symulowania_roznych_czastek Koncepcja symulowania różnych cząstek
+ * \verbinclude readme3.txt
  */
 
 // OpenGL Graphics includes

@@ -8,6 +8,10 @@
  * is strictly prohibited.
  *
  */
+ /** \file particleSystem.cuh
+  * \brief Same deklaracje funkcji.
+  *
+  */
 
 extern "C"
 {

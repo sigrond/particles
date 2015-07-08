@@ -8,6 +8,10 @@
  * is strictly prohibited.
  *
  */
+  /** \file particleSystem.h
+  * \brief Definicja klasy ParticleSystem i czÄ™Å›ci jej prostych metod.
+  *
+  */
 
 #ifndef __PARTICLESYSTEM_H__
 #define __PARTICLESYSTEM_H__
@@ -85,7 +89,7 @@ class ParticleSystem
             m_params.gravity = make_float3(0.0f, x, 0.0f);
         }
 
-		void setBoundaryDamping(float x)// ustawienie wsp napiêcia powierzchniowego
+		void setBoundaryDamping(float x)// ustawienie wsp napiÃªcia powierzchniowego
         {
             m_params.boundaryDamping = x;
         }
@@ -132,12 +136,12 @@ class ParticleSystem
 			m_params.brownQuality=x;
 		}
 
-		void setBoundaries(bool x)//ograniczenia zewnêtrzne
+		void setBoundaries(bool x)//ograniczenia zewnÃªtrzne
 		{
 			m_params.boundaries=x;
 		}
 
-		void setParticleTypesNum(int x)//ograniczenia zewnêtrzne
+		void setParticleTypesNum(int x)//ograniczenia zewnÃªtrzne
 		{
 			m_params.particleTypesNum=x;
 		}

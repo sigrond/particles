@@ -134,8 +134,12 @@ var NAVTREEINDEX0 =
 "index.html":[],
 "index.html":[0],
 "index.html#Opis_Ogólny":[0,0],
+"index.html#READMEs":[0,3],
 "index.html#Repozytorium":[0,2],
+"index.html#koncepcja_symulowania_roznych_czastek":[0,3,2],
 "index.html#linki_do_fizyki":[0,1],
+"index.html#oryginalny_readme":[0,3,1],
+"index.html#parametry_uruchamiania":[0,3,0],
 "pages.html":[],
 "particle_system_8cpp.html":[2,0,3],
 "particle_system_8cpp.html#a0af3123952dff68caffd7e1357abe1b7":[2,0,3,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX0 =
 "particles_8cpp.html#a9b3bc33348ec5b4dbb049f91362459b8":[2,0,0,21],
 "particles_8cpp.html#a9c1866deb3068a1a8d475fbecc6a78d8":[2,0,0,59],
 "particles_8cpp.html#a9fcb578cacbd3a3b1ab593fc123cffb5":[2,0,0,41],
-"particles_8cpp.html#aa22b13a9b9cf40b19f9c1c09603862c8":[2,0,0,20],
-"particles_8cpp.html#aa5924a75cb4cd299c96829772cc2f3cd":[2,0,0,83],
-"particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c":[2,0,0,64],
-"particles_8cpp.html#aa9253cb34e1b40809228671a8921144d":[2,0,0,70],
-"particles_8cpp.html#ab3d416d86e212881d0e37a4bc52e138e":[2,0,0,82]
+"particles_8cpp.html#aa22b13a9b9cf40b19f9c1c09603862c8":[2,0,0,20]
 };

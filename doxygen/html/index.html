@@ -113,12 +113,113 @@ Linki do fizyki</h1>
 <h1><a class="anchor" id="Repozytorium"></a>
 Repozytorium</h1>
 <p><a href="https://github.com/sigrond/particles/tree/spica">https://github.com/sigrond/particles/tree/spica</a> </p>
-</div></div><!-- contents -->
+<h1><a class="anchor" id="READMEs"></a>
+READMEs</h1>
+<h2><a class="anchor" id="parametry_uruchamiania"></a>
+Parametry Uruchamiania</h2>
+<pre class="fragment">cmd line
+particles -nazwaParametru=liczba
+
+np:
+particles -bigRadius0=0.1 
+bigRadius0 -pocz¹tkowy promieñ kropli
+n -iloœæ cz¹stek
+grid -rozmiar gridu
+file -nazwa pliku do porównania z wynikiem
+timestep -krok czasu
+benchmark -obliczenia bez GUI, pokazuje wydajnoœæ
+i -iloœæ kroków
+device -wybór GPU
+epsi -epsilon w sile lenarda jonesa
+damping -lepkoœæ
+boundaryDamping -napiêcie powierchniowe
+particleMass -masa cz¹stki
+gravity -grawitacja
+help
+</pre> <h2><a class="anchor" id="oryginalny_readme"></a>
+Oryginalny Readme</h2>
+<pre class="fragment">Sample: Particles
+Minimum spec: GeForce 8
+
+This sample uses CUDA to simulate and visualize a large set of particles and their physical interaction.  Adding "-particles=&lt;N&gt;" to the command line will allow users to set # of particles for simulation.  This example implements a uniform grid data structure using either atomic operations or a fast radix sort from the Thrust library
+
+Key concepts:
+</pre> <h2><a class="anchor" id="koncepcja_symulowania_roznych_czastek"></a>
+Koncepcja symulowania rÃ³Å¼nych czÄ…stek</h2>
+<pre class="fragment">	Autor: Tomasz Jakubczyk
+Plan dodania obs³ugi wielu rodzajów cz¹stek na raz
+
+
+	Koncepcja:
+
+¯eby oszczêdzaæ wyko¿ystywan¹ pamiêæ karty graficznej zauwa¿am, ¿e ca³e float4 jest ³adowane do pamieci.
+4 pozycja zawsze zawiera 1, które jest potrzebne do transformacji GL w postaci znormalizowanej.
+Oryginalnie kopiowana jest ca³a tablica float4 do karty graficznej mimo, ¿e co 4 float jest tam zbêdny,
+jest to spowodowane tym, ¿e kod kopiowania miêdzy pamiêciami jest prostszy i nie trzeba wykonywaæ dodatkowych
+operacji zsuwania i rozsuwania pamiêci.
+W efekcie w pamiêci karty sê niewyko¿ystywane pozycje zawieraj¹ce 1.
+Chcê to wyko¿ystaæ;
+ponumerujê rodzaje cz¹stek i przed skopiowaniem do karty bêdê przypisyw³ na 4 pozycjê ka¿dej cz¹stce
+numer jej rodzaju, a przy wczytywaniu do g³ównej pamiêci RAM dla GL'a bêdê te numery zapisywa³
+do osobnej tablicy i przed wykonywaniem przekszta³ceñ GL 4 pozycje zape³nie 1.
+
+
+	Modyfikacje funkcji:
+
+Plik particles_kernel_impl.cuh
+
+operator() integrate_functor
+Informacja o rodzaju cz¹stki mo¿e byæ przechowywana w float4 posData
+w metodzie bêdzie trzeba uwzglêdniæ, ¿e cz¹stki maj¹ ró¿ne promienie (params.particleRadius).
+
+collideSpheres
+Argumenty funkcji float3 nale¿y zamieniæ na float4 poniewa¿ w tej funkcji obliczane s¹ si³y dzia³aj¹ce
+na cz¹stki podczas zderzenia.
+
+collideCell
+Argument pos funkcji zmieniæ z float3 na float4.
+Potrzebne s¹ informacje o rodzaju obu cz¹stek i nale¿y je uwzglêdniæ; szczególnie ró¿ne promienie.
+Odpowiednio zmodyfikowaæ wywo³anie collideSpheres.
+
+collideD
+Odpowiednio zmodyfikowaæ wywo³anie collideCell.
+Uwzglêdniæ masê cz¹stki zale¿n¹ od jej rodzaju przy wyliczaniu nowej prêdkoœci.
+
+particles_kernel.cuh
+
+SimParams
+Zmieniæ parametry cz¹stek float (particleRadius, particleMass) na tablice float i odwo³ywaæ siê do nich
+przez numer typu cz¹stki.
+
+particleSystem.cpp
+
+Chyba gdzieœ w tym pliku trzeba zadbaæ o zamiany 1 z numerem typu cz¹stki.
+
+ParticleSystem::ParticleSystem
+Ustaliæ parametry cz¹stek dla ró¿nych typów.
+Dobrze by by³o wczeœniej mieæ vector z parametrami typów cz¹stek.
+
+ParticleSystem::initGrid, ParticleSystem::reset
+Losowaæ typ cz¹stki z dostêpnych.
+Powinna tu wkroczyæ tablica z przypisanymi typami do cz¹stek.
+
+ParticleSystem::particleType
+Ustaliæ, czy to dobry pomys³ i zintegrowaæ z reszt¹.
+
+ParticleSystem::update
+Tu jest po³¹czenie sterowania CUDA i GL.
+Nale¿y zadbaæ, ¿eby prze³¹czanie 1 do normalizacji z numerem typu cz¹stki przebiega³o w w³aœciwej kolejnoœci.
+
+particles.cpp
+
+Zadbaæ o ustalenie na pocz¹tku symulacji ile bêdzie typów cz¹stek i jakie one bêd¹.
+
+</pre> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Wygenerowano So, 28 lut 2015 19:24:58 dla Particles programem
+    <li class="footer">Wygenerowano Åšr, 8 lip 2015 12:23:36 dla Particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

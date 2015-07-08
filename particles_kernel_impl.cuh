@@ -12,6 +12,11 @@
 /*
  * CUDA particle system kernel code.
  */
+ /** \file particles_kernel_impl.cuh
+  * \brief Implementacje (definicje) funkcji odpowiadających za fizykę.
+  *
+  */
+
 
 #ifndef _PARTICLES_KERNEL_H_
 #define _PARTICLES_KERNEL_H_
@@ -63,8 +68,8 @@ struct integrate_functor
         float3 pos = make_float3(posData.x, posData.y, posData.z);
         float3 vel = make_float3(velData.x, velData.y, velData.z);
 
-        vel += params.gravity * deltaTime;
-		if(params.brown!=0.0f)
+        vel += params.gravity * deltaTime;/**< grawitacja */
+		if(params.brown!=0.0f)/**< ruchy Browna */
         {
 			unsigned int seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x)+(unsigned int)floor((vel.x+vel.y+vel.z)*params.brownQuality);
 			curandState s;
@@ -80,12 +85,12 @@ struct integrate_functor
 		//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;
 		//vel.z-=(0.1f+vel.x*1.5f+vel.y*5.0f+vel.z+pos.x+pos.y)/(100.0f)*params.brown;
 
-        vel *= params.globalDamping;
+        vel *= params.globalDamping;/**< lepkosc */
 		//vel += params.gravity * deltaTime;
 
         // new position = old position + velocity * deltaTime
 
-        pos += vel * deltaTime;
+        pos += vel * deltaTime;/**< przemieszczenie */
 
         // set this to zero to disable collisions with cube sides
 #if 0
@@ -123,7 +128,7 @@ struct integrate_functor
 #endif
 
 		//odbijanie sie od kuli
-		/**< odbijanie sie od kuli */
+		/**< odbijanie sie od kuli vel napiecie powierzchniowe */
 #if 1
 		float xk=pos.x*pos.x;
 		float yk=pos.y*pos.y;
@@ -171,7 +176,7 @@ struct integrate_functor
 //dolna plaszczyzna
 
 #if 1
-		if (pos.y < -2.0f*params.bigradius0 + params.particleRadius)
+		if (pos.y < -2.0f*params.bigradius0 + params.particleRadius)/**< blat */
         {
             pos.y = -2.0f*params.bigradius0 + params.particleRadius;
             vel.y = 0;

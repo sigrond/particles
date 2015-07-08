@@ -147,6 +147,7 @@
 		<Unit filename="particleSystem.cpp" />
 		<Unit filename="particleSystem.cuh" />
 		<Unit filename="particleSystem.h" />
+		<Unit filename="particleSystem_cuda.cu" />
 		<Unit filename="particles.cpp" />
 		<Unit filename="particles.rc">
 			<Option compilerVar="WINDRES" />

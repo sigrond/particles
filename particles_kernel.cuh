@@ -8,6 +8,10 @@
  * is strictly prohibited.
  *
  */
+  /** \file particles_kernel.cuh
+  * \brief Definicja struktury przechowuj¹cej parametry symulacji.
+  *
+  */
 
 
 #ifndef PARTICLES_KERNEL_H

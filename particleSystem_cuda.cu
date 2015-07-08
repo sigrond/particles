@@ -8,6 +8,10 @@
  * is strictly prohibited.
  *
  */
+  /** \file particleSystem_cuda.cu
+  * \brief Definicje (implementacje) funkcji odpowiedzialnych za przebieg symulacji.
+  *
+  */
 
 
 
