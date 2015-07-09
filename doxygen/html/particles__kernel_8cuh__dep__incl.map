@@ -1,4 +1,18 @@
 <map id="particles_kernel.cuh" name="particles_kernel.cuh">
+<<<<<<< HEAD
+<area shape="rect" id="node2" href="$particle_system_8h.html" title="Definicja klasy ParticleSystem i części jej prostych metod. " alt="" coords="48,80,168,107"/>
+<area shape="rect" id="node4" href="$particle_system_8cpp.html" title="Definicje (implementacje) metod klasy ParticleSystem oraz funkcji pomocniczych. " alt="" coords="126,155,261,181"/>
+<area shape="rect" id="node5" href="$particles__kernel__impl_8cuh.html" title="Implementacje (definicje) funkcji odpowiadających za fizykę. " alt="" coords="269,80,438,107"/>
+<area shape="rect" id="node3" href="$particles_8cpp.html" title="Główny plik projektu. Zawiera main i funkcje sterujące całym programem. " alt="" coords="5,155,101,181"/>
+<area shape="rect" id="node6" href="$particle_system__cuda_8cu.html" title="Definicje (implementacje) funkcji odpowiedzialnych za przebieg symulacji. " alt="" coords="285,155,448,181"/>
+=======
+<area shape="rect" id="node2" href="$particle_system_8h.html" title="particleSystem.h" alt="" coords="48,80,168,107"/>
+<area shape="rect" id="node4" href="$particle_system_8cpp.html" title="particleSystem.cpp" alt="" coords="126,155,261,181"/>
+<area shape="rect" id="node5" href="$particles__kernel__impl_8cuh.html" title="particles_kernel_impl.cuh" alt="" coords="269,80,438,107"/>
+<area shape="rect" id="node3" href="$particles_8cpp.html" title="particles.cpp" alt="" coords="5,155,101,181"/>
+<area shape="rect" id="node6" href="$particle_system__cuda_8cu.html" title="particleSystem_cuda.cu" alt="" coords="285,155,448,181"/>
+>>>>>>> master
+</map>
 <area shape="rect" id="node2" href="$particle_system_8h.html" title="particleSystem.h" alt="" coords="48,80,168,107"/>
 <area shape="rect" id="node4" href="$particle_system_8cpp.html" title="particleSystem.cpp" alt="" coords="126,155,261,181"/>
 <area shape="rect" id="node5" href="$particles__kernel__impl_8cuh.html" title="particles_kernel_impl.cuh" alt="" coords="269,80,438,107"/>

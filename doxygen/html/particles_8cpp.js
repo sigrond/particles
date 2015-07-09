@@ -27,6 +27,101 @@ var particles_8cpp =
     [ "mainMenu", "particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6", null ],
     [ "motion", "particles_8cpp.html#a45a7d7c86c97ca6a2d4d32ce2d263f67", null ],
     [ "mouse", "particles_8cpp.html#ac76a5d78172a826cd6ee9512b89a86c0", null ],
+<<<<<<< HEAD
+    [ "parowanieKropliWCzasie", "particles_8cpp.html#ad38a0dbec46194a94a86cfa6416ce48f", null ],
+=======
+>>>>>>> master
+    [ "reshape", "particles_8cpp.html#acc1ffe65e6869931318610cae7210078", null ],
+    [ "runBenchmark", "particles_8cpp.html#acd4773d821b4657197abdd8058000f56", null ],
+    [ "special", "particles_8cpp.html#ab838340d9e4833a685975205d9c8196a", null ],
+    [ "xform", "particles_8cpp.html#ad95532e0e925e7584a930b366a613261", null ],
+    [ "ballr", "particles_8cpp.html#a46d030c711d3073320681aafbb4c490b", null ],
+<<<<<<< HEAD
+    [ "bigRadius", "particles_8cpp.html#ae17f6f64c66e0edf9e6dd3b69013134b", null ],
+    [ "bigRadius0", "particles_8cpp.html#a4a96f891fd0d5a545a3769b21aa9b427", null ],
+    [ "boundaries", "particles_8cpp.html#a1be8f275c7aef85bb203888b58ab44b7", null ],
+    [ "boundaryDamping", "particles_8cpp.html#ae359dad516b085afdcedb66ec2a049db", null ],
+    [ "bPause", "particles_8cpp.html#a094a344391aa86a98299bac3deb91ce6", null ],
+    [ "brown", "particles_8cpp.html#a6f7e9ca1d5ce4c84b69d7793f4de8e23", null ],
+    [ "brownQuality", "particles_8cpp.html#a6bc4c07ce22fba8e87b38b2ba310faca", null ],
+=======
+    [ "bigRadius", "particles_8cpp.html#a51621f2b4c348891b353493c8b06c93b", null ],
+    [ "bigRadius0", "particles_8cpp.html#a4a96f891fd0d5a545a3769b21aa9b427", null ],
+    [ "bPause", "particles_8cpp.html#a094a344391aa86a98299bac3deb91ce6", null ],
+>>>>>>> master
+    [ "buttonState", "particles_8cpp.html#a5002611f83f5a861df12917dd5651db8", null ],
+    [ "camera_rot", "particles_8cpp.html#a9fcb578cacbd3a3b1ab593fc123cffb5", null ],
+    [ "camera_rot_lag", "particles_8cpp.html#a2993bf9f16707b5c3ff46e0b751f0373", null ],
+    [ "camera_trans", "particles_8cpp.html#affab132fdfca08b149d2f866fd486ed4", null ],
+    [ "camera_trans_lag", "particles_8cpp.html#a1475a0a4a9c24a5035d91125e5992afe", null ],
+    [ "collideAttraction", "particles_8cpp.html#a58a3407fb69d0b188eb74b37b078629b", null ],
+    [ "collideDamping", "particles_8cpp.html#adb598dfbf6a6ca7395c9ff264a5312e0", null ],
+    [ "collideShear", "particles_8cpp.html#a5bc1804bc03a9aa78be10ae1b3b8f48b", null ],
+    [ "collideSpring", "particles_8cpp.html#a3d02873abdeffa306da3e5580d94cd0e", null ],
+<<<<<<< HEAD
+    [ "damping", "particles_8cpp.html#a5d7c41f4909ad7714235c2d8fdf9d935", null ],
+=======
+    [ "damping", "particles_8cpp.html#a99d817470e9063f458d39529c7c1724b", null ],
+>>>>>>> master
+    [ "demoCounter", "particles_8cpp.html#a969b56707854449ae3fb4847b563191f", null ],
+    [ "demoMode", "particles_8cpp.html#a9349b8b38abdf797b46a9e80020286e7", null ],
+    [ "displayEnabled", "particles_8cpp.html#a14095d7bf2ff02e5172105454df40b9a", null ],
+    [ "displayMode", "particles_8cpp.html#afd1b0caccb0d688ceb91c2547b9da1d9", null ],
+    [ "displaySliders", "particles_8cpp.html#ac345a677e529047cf89d33fc26f10fe7", null ],
+<<<<<<< HEAD
+    [ "epsi", "particles_8cpp.html#a6a4c0e7f9e1e7ee07eb355dca3d8834a", null ],
+=======
+>>>>>>> master
+    [ "fpsCount", "particles_8cpp.html#a004233346f53b4fe7aa6110a48841ddb", null ],
+    [ "fpsLimit", "particles_8cpp.html#af88c1871ff4d704e3761b1947142cf5c", null ],
+    [ "frameCheckNumber", "particles_8cpp.html#a50f26bf26e6413a34dc36fc12c9bbc83", null ],
+    [ "frameCount", "particles_8cpp.html#a9c1866deb3068a1a8d475fbecc6a78d8", null ],
+    [ "g_refFile", "particles_8cpp.html#ab5af5d243ea25a0fa19984c0f69af840", null ],
+    [ "g_TotalErrors", "particles_8cpp.html#abd87357eda7bf4b5fc32058a0cccd57b", null ],
+    [ "gravity", "particles_8cpp.html#a31924e6c9b17aad7f861e818b8be5d8f", null ],
+    [ "gridSize", "particles_8cpp.html#aefe301f4cc6d6838e3627b5970e855a9", null ],
+    [ "height", "particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c", null ],
+    [ "idleCounter", "particles_8cpp.html#a0c97fe3f7367dfa94ab0d5976ed785a8", null ],
+    [ "idleDelay", "particles_8cpp.html#a31c6de3ed73dffc9492d9bca475d8525", null ],
+    [ "inertia", "particles_8cpp.html#a639b27811b99d2487d6d94dd3c3b2a81", null ],
+    [ "iterations", "particles_8cpp.html#a1d10e252e778731e59f0f71afd7e727e", null ],
+<<<<<<< HEAD
+    [ "kurczenie", "particles_8cpp.html#aef1c45e211a1a94be1e6d80b4493c802", null ],
+    [ "licznik", "particles_8cpp.html#aa9253cb34e1b40809228671a8921144d", null ],
+=======
+    [ "kurczenie", "particles_8cpp.html#a581b24e790d1d71d4c940671987201f6", null ],
+    [ "licznik", "particles_8cpp.html#ae6faf33ad73ff5d0248af8f9477ca201", null ],
+>>>>>>> master
+    [ "mode", "particles_8cpp.html#a1ea5d0cb93f22f7d0fdf804bd68c3326", null ],
+    [ "modelView", "particles_8cpp.html#a4067d49c28b37c689a16350cb3ff64d7", null ],
+    [ "numIterations", "particles_8cpp.html#ad026ebba8c4123cf7b82751c88761f31", null ],
+    [ "numParticles", "particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596", null ],
+    [ "ox", "particles_8cpp.html#afef635ed3c73fc60d8faf6dd610c4298", null ],
+    [ "oy", "particles_8cpp.html#a791e26888be6777cd5c5d0c736a06821", null ],
+    [ "params", "particles_8cpp.html#ace10f2fb51e03e3be1ccf7837c9c5c68", null ],
+<<<<<<< HEAD
+    [ "particleMass", "particles_8cpp.html#a1181da8b1b5d355e3388181470ecf70f", null ],
+    [ "particleTypesNum", "particles_8cpp.html#abebcf16aa212d26e4fb1335a433f0b5c", null ],
+    [ "psystem", "particles_8cpp.html#a6fa81770b30ecffc7110864e64fe4fc5", null ],
+    [ "renderer", "particles_8cpp.html#a748beea58f866663fc6894969b21d061", null ],
+    [ "save", "particles_8cpp.html#ab3d416d86e212881d0e37a4bc52e138e", null ],
+    [ "sSDKsample", "particles_8cpp.html#aa5924a75cb4cd299c96829772cc2f3cd", null ],
+    [ "time_past", "particles_8cpp.html#ad6a23ec608122a4f7c824f903730f206", null ],
+    [ "timer", "particles_8cpp.html#a9884ad791a680ef446785acf94b63956", null ],
+    [ "timestep", "particles_8cpp.html#a30721fccdcf1a48ddb65267d3a5a9d29", null ],
+    [ "width", "particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d", null ],
+    [ "wireframe", "particles_8cpp.html#ac8b496246e368aadf73694ce0d5b8a06", null ],
+    [ "zoom", "particles_8cpp.html#a3658355a3876ac7e7d318316fc9b0d21", null ]
+=======
+    [ "psystem", "particles_8cpp.html#a6fa81770b30ecffc7110864e64fe4fc5", null ],
+    [ "renderer", "particles_8cpp.html#a748beea58f866663fc6894969b21d061", null ],
+    [ "sSDKsample", "particles_8cpp.html#aa5924a75cb4cd299c96829772cc2f3cd", null ],
+    [ "timer", "particles_8cpp.html#a9884ad791a680ef446785acf94b63956", null ],
+    [ "timestep", "particles_8cpp.html#ab9edcc09985767509bf717e25ac80ab7", null ],
+    [ "width", "particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d", null ],
+    [ "wireframe", "particles_8cpp.html#ac8b496246e368aadf73694ce0d5b8a06", null ]
+>>>>>>> master
+];
     [ "reshape", "particles_8cpp.html#acc1ffe65e6869931318610cae7210078", null ],
     [ "runBenchmark", "particles_8cpp.html#acd4773d821b4657197abdd8058000f56", null ],
     [ "special", "particles_8cpp.html#ab838340d9e4833a685975205d9c8196a", null ],

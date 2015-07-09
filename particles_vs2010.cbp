@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="particles_vs2010" />
+		<Option pch_mode="2" />
+		<Option compiler="copy_of_gnu_gcc_compiler_for_proi" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option output="particles_vs2010" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="copy_of_gnu_gcc_compiler_for_proi" />
+				<Compiler>
+					<Add option="/DWIN32" />
+					<Add option="/D_MBCS" />
+					<Add directory="$(DXSDK_DIR)/include" />
+					<Add directory="$(IncludePath)" />
+					<Add directory="./" />
+					<Add directory="../../common/inc" />
+					<Add directory="$(CudaToolkitIncludeDir)" />
+				</Compiler>
+				<Linker>
+					<Add option="/debug" />
+					<Add library="cudart.lib" />
+					<Add library="freeglut.lib" />
+					<Add library="glew32.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+					<Add directory="$(CudaToolkitLibDir)" />
+					<Add directory="../../common/lib/Win32" />
+				</Linker>
+			</Target>
+			<Target title="Debug x64">
+				<Option output="particles_vs2010" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="copy_of_gnu_gcc_compiler_for_proi" />
+				<Compiler>
+					<Add option="/DWIN32" />
+					<Add option="/D_MBCS" />
+					<Add directory="$(DXSDK_DIR)/include" />
+					<Add directory="$(IncludePath)" />
+					<Add directory="./" />
+					<Add directory="../../common/inc" />
+					<Add directory="$(CudaToolkitIncludeDir)" />
+				</Compiler>
+				<Linker>
+					<Add option="/debug" />
+					<Add library="cudart.lib" />
+					<Add library="freeglut.lib" />
+					<Add library="glew64.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+					<Add directory="$(CudaToolkitLibDir)" />
+					<Add directory="../../common/lib/Win32" />
+				</Linker>
+			</Target>
+			<Target title="Release x64">
+				<Option output="particles_vs2010" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="copy_of_gnu_gcc_compiler_for_proi" />
+				<Compiler>
+					<Add option="/DWIN32" />
+					<Add option="/D_MBCS" />
+					<Add directory="$(DXSDK_DIR)/include" />
+					<Add directory="$(IncludePath)" />
+					<Add directory="./" />
+					<Add directory="../../common/inc" />
+					<Add directory="$(CudaToolkitIncludeDir)" />
+				</Compiler>
+				<Linker>
+					<Add library="cudart.lib" />
+					<Add library="freeglut.lib" />
+					<Add library="glew64.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+					<Add directory="$(CudaToolkitLibDir)" />
+					<Add directory="../../common/lib/Win32" />
+				</Linker>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="particles_vs2010" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="copy_of_gnu_gcc_compiler_for_proi" />
+				<Compiler>
+					<Add option="/DWIN32" />
+					<Add option="/D_MBCS" />
+					<Add directory="$(DXSDK_DIR)/include" />
+					<Add directory="$(IncludePath)" />
+					<Add directory="./" />
+					<Add directory="../../common/inc" />
+					<Add directory="$(CudaToolkitIncludeDir)" />
+				</Compiler>
+				<Linker>
+					<Add library="cudart.lib" />
+					<Add library="freeglut.lib" />
+					<Add library="glew32.lib" />
+					<Add library="kernel32.lib" />
+					<Add library="user32.lib" />
+					<Add library="gdi32.lib" />
+					<Add library="winspool.lib" />
+					<Add library="comdlg32.lib" />
+					<Add library="advapi32.lib" />
+					<Add library="shell32.lib" />
+					<Add library="ole32.lib" />
+					<Add library="oleaut32.lib" />
+					<Add library="uuid.lib" />
+					<Add library="odbc32.lib" />
+					<Add library="odbccp32.lib" />
+					<Add directory="$(CudaToolkitLibDir)" />
+					<Add directory="../../common/lib/Win32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="../../common/inc/param.h" />
+		<Unit filename="../../common/inc/paramgl.h" />
+		<Unit filename="../../common/inc/rendercheck_gl.h" />
+		<Unit filename="particleSystem.cpp" />
+		<Unit filename="particleSystem.cuh" />
+		<Unit filename="particleSystem.h" />
+		<Unit filename="particleSystem_cuda.cu" />
+		<Unit filename="particles.cpp" />
+		<Unit filename="particles.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="particles_kernel.cuh" />
+		<Unit filename="particles_kernel_impl.cuh" />
+		<Unit filename="render_particles.cpp" />
+		<Unit filename="render_particles.h" />
+		<Unit filename="resource.h" />
+		<Unit filename="shaders.cpp" />
+		<Unit filename="shaders.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

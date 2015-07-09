@@ -17,7 +17,11 @@ var class_particle_renderer =
     [ "setParticleRadius", "class_particle_renderer.html#aff09822b565b6953fc83c88bda7fa378", null ],
     [ "setPointSize", "class_particle_renderer.html#a68df35cdf53ad987aa6d8360b3531627", null ],
     [ "setPositions", "class_particle_renderer.html#adb3204e8af23a65b05b1aca7f43f0430", null ],
+<<<<<<< HEAD
+    [ "setVertexBuffer", "class_particle_renderer.html#a396f73f6c16f24f34368557bfd5557e6", null ],
+=======
     [ "setVertexBuffer", "class_particle_renderer.html#a9c0d44ba7666ab432004a5df4cbb2b59", null ],
+>>>>>>> master
     [ "setWindowSize", "class_particle_renderer.html#ad84b464475e5ebd42cfed6e2e91e7247", null ],
     [ "m_colorVBO", "class_particle_renderer.html#a7dcaa73a41c598207974432206b423b5", null ],
     [ "m_fov", "class_particle_renderer.html#a0aed003bd557a3c32ca7d2ca89fc59f7", null ],
@@ -28,5 +32,10 @@ var class_particle_renderer =
     [ "m_program", "class_particle_renderer.html#ab8f0dd1a6e0f4401012bd46ae8940648", null ],
     [ "m_vbo", "class_particle_renderer.html#a7549feaa0982abbc44c9fe73f2eb251f", null ],
     [ "m_window_h", "class_particle_renderer.html#af34b1e93f6a7f22774a6473c52027d77", null ],
+<<<<<<< HEAD
+    [ "m_window_w", "class_particle_renderer.html#aa71b7eba5d5665a086b7ba80adddf19b", null ],
+    [ "zoom", "class_particle_renderer.html#a065df5c32be72505267048490bd0b3cf", null ]
+=======
     [ "m_window_w", "class_particle_renderer.html#aa71b7eba5d5665a086b7ba80adddf19b", null ]
+>>>>>>> master
 ];

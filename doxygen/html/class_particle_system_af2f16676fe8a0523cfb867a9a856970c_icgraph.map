@@ -1,4 +1,14 @@
 <map id="ParticleSystem::addSphere" name="ParticleSystem::addSphere">
+<<<<<<< HEAD
+<area shape="rect" id="node2" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="wstawianie kuli cząstek na życzenie " alt="" coords="235,5,319,32"/>
+<area shape="rect" id="node4" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="obsługa zdarzeń klawiszy i opcji z menu " alt="" coords="367,56,409,83"/>
+=======
+<area shape="rect" id="node2" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="addSphere" alt="" coords="235,5,319,32"/>
+<area shape="rect" id="node4" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="key" alt="" coords="367,56,409,83"/>
+>>>>>>> master
+<area shape="rect" id="node3" href="$particles_8cpp.html#a01131b63acf241e9db91704d89ce15d2" title="idle" alt="" coords="367,5,409,32"/>
+<area shape="rect" id="node5" href="$particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="457,56,540,83"/>
+</map>
 <area shape="rect" id="node2" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="addSphere" alt="" coords="235,5,319,32"/>
 <area shape="rect" id="node4" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="key" alt="" coords="367,56,409,83"/>
 <area shape="rect" id="node3" href="$particles_8cpp.html#a01131b63acf241e9db91704d89ce15d2" title="idle" alt="" coords="367,5,409,32"/>

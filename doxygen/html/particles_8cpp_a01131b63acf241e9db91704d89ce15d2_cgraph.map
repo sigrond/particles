@@ -1,4 +1,17 @@
 <map id="idle" name="idle">
+<<<<<<< HEAD
+<area shape="rect" id="node2" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="wstawianie kuli cząstek na życzenie " alt="" coords="96,107,180,133"/>
+=======
+<area shape="rect" id="node2" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="addSphere" alt="" coords="96,107,180,133"/>
+>>>>>>> master
+<area shape="rect" id="node3" href="$class_particle_system.html#af2f16676fe8a0523cfb867a9a856970c" title="ParticleSystem::addSphere" alt="" coords="228,56,409,83"/>
+<area shape="rect" id="node8" href="$particle_system_8cpp.html#a5459f6b6b39f9a6b80de7f17c3777ee2" title="frand" alt="" coords="293,107,344,133"/>
+<area shape="rect" id="node9" href="$class_particle_system.html#abdb59a91d8483017ad71455bb2958993" title="ParticleSystem::getParticle\lRadius" alt="" coords="228,158,409,199"/>
+<area shape="rect" id="node4" href="$class_particle_system.html#aa792a66680e800832059854aab0d594d" title="ParticleSystem::setArray" alt="" coords="457,56,625,83"/>
+<area shape="rect" id="node5" href="$particle_system_8cuh.html#a9afef8c00ca779aae2d7484b45bce34c" title="unregisterGLBufferObject" alt="" coords="673,5,840,32"/>
+<area shape="rect" id="node6" href="$particle_system_8cuh.html#a4386a84282ceeaba09939817aa2a9c24" title="registerGLBufferObject" alt="" coords="680,56,833,83"/>
+<area shape="rect" id="node7" href="$particle_system_8cuh.html#ac4d4ecd921dbed6c2deef639ca295374" title="copyArrayToDevice" alt="" coords="690,107,823,133"/>
+</map>
 <area shape="rect" id="node2" href="$particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="addSphere" alt="" coords="96,107,180,133"/>
 <area shape="rect" id="node3" href="$class_particle_system.html#af2f16676fe8a0523cfb867a9a856970c" title="ParticleSystem::addSphere" alt="" coords="228,56,409,83"/>
 <area shape="rect" id="node8" href="$particle_system_8cpp.html#a5459f6b6b39f9a6b80de7f17c3777ee2" title="frand" alt="" coords="293,107,344,133"/>

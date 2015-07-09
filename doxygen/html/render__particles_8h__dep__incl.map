@@ -1,4 +1,11 @@
 <map id="render_particles.h" name="render_particles.h">
+<<<<<<< HEAD
+<area shape="rect" id="node2" href="$particles_8cpp.html" title="Główny plik projektu. Zawiera main i funkcje sterujące całym programem. " alt="" coords="5,80,101,107"/>
+=======
+<area shape="rect" id="node2" href="$particles_8cpp.html" title="particles.cpp" alt="" coords="5,80,101,107"/>
+>>>>>>> master
+<area shape="rect" id="node3" href="$render__particles_8cpp.html" title="render_particles.cpp" alt="" coords="125,80,264,107"/>
+</map>
 <area shape="rect" id="node2" href="$particles_8cpp.html" title="particles.cpp" alt="" coords="5,80,101,107"/>
 <area shape="rect" id="node3" href="$render__particles_8cpp.html" title="render_particles.cpp" alt="" coords="125,80,264,107"/>
 </map>
