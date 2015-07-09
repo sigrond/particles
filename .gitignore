@@ -119,4 +119,5 @@ data/test1.bin
 *.map
 *.cbp
 *.scope_file_list
+*.cscope_file_list
 UpgradeLog.htm
