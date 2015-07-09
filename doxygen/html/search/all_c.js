@@ -1,6 +1,5 @@
 var searchData=
 [
-<<<<<<< HEAD
   ['m_5fbinitialized',['m_bInitialized',['../class_particle_system.html#a21bbfba9d8701a70bc6fddbf4fc3f5bd',1,'ParticleSystem']]],
   ['m_5fbuseopengl',['m_bUseOpenGL',['../class_particle_system.html#a5d99413ffc0791e6aa9f02308caf7f1e',1,'ParticleSystem']]],
   ['m_5fcolorvbo',['m_colorVBO',['../class_particle_system.html#a96b05c719006c9e3eaed759f54a49c7f',1,'ParticleSystem::m_colorVBO()'],['../class_particle_renderer.html#a7dcaa73a41c598207974432206b423b5',1,'ParticleRenderer::m_colorVBO()']]],
@@ -24,7 +23,7 @@ var searchData=
   ['m_5fhparticlehash',['m_hParticleHash',['../class_particle_system.html#a4280ede7d75e44c8c0d4edfa5ee7dd02',1,'ParticleSystem']]],
   ['m_5fhpos',['m_hPos',['../class_particle_system.html#ab9d75471d2eaaeb8fa98d2f3f47d9c25',1,'ParticleSystem']]],
   ['m_5fhvel',['m_hVel',['../class_particle_system.html#a20560c896ee8a8bbc827a8e5902da7e2',1,'ParticleSystem']]],
-  ['m_5fmove',['M_MOVE',['../particles_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057',1,'particles.cpp']]],
+  ['m_5fmove',['M_MOVE',['../particles_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7aae60dc34a626f6e7347c4777b964ad17',1,'particles.cpp']]],
   ['m_5fnumgridcells',['m_numGridCells',['../class_particle_system.html#aa1ef17d723af5d7a4685e8fd57e9ca89',1,'ParticleSystem']]],
   ['m_5fnumparticles',['m_numParticles',['../class_particle_system.html#a23d238efa80a647d4b6cde034f486a91',1,'ParticleSystem::m_numParticles()'],['../class_particle_renderer.html#af885fdb5e6da925209dfd960f66b5fd8',1,'ParticleRenderer::m_numParticles()']]],
   ['m_5fparams',['m_params',['../class_particle_system.html#ab765472aed6a1b5f0d2f98a3a906c417',1,'ParticleSystem']]],
@@ -37,30 +36,18 @@ var searchData=
   ['m_5fsolveriterations',['m_solverIterations',['../class_particle_system.html#a7b4b053433c052518b8ecce1b02000f5',1,'ParticleSystem']]],
   ['m_5ftimer',['m_timer',['../class_particle_system.html#af01e546384ef27bb1894a37f2a02e967',1,'ParticleSystem']]],
   ['m_5fvbo',['m_vbo',['../class_particle_renderer.html#a7549feaa0982abbc44c9fe73f2eb251f',1,'ParticleRenderer']]],
-  ['m_5fview',['M_VIEW',['../particles_8cpp.html#a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a',1,'particles.cpp']]],
+  ['m_5fview',['M_VIEW',['../particles_8cpp.html#adf764cbdea00d65edcd07bb9953ad2b7ade44743b6c1a876f93f925d86d0be85d',1,'particles.cpp']]],
   ['m_5fwindow_5fh',['m_window_h',['../class_particle_renderer.html#af34b1e93f6a7f22774a6473c52027d77',1,'ParticleRenderer']]],
   ['m_5fwindow_5fw',['m_window_w',['../class_particle_renderer.html#aa71b7eba5d5665a086b7ba80adddf19b',1,'ParticleRenderer']]],
   ['main',['main',['../particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'particles.cpp']]],
   ['mainmenu',['mainMenu',['../particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6',1,'particles.cpp']]],
-  ['mapglbufferobject',['mapGLBufferObject',['../particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642',1,'mapGLBufferObject(struct cudaGraphicsResource **cuda_vbo_resource):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#aa491077afd740a269815eb9ce81c8642',1,'mapGLBufferObject(struct cudaGraphicsResource **cuda_vbo_resource):&#160;particleSystem_cuda.cu']]],
+  ['mapglbufferobject',['mapGLBufferObject',['../particle_system_8cuh.html#a825f54e0994ae1bc8d2b6085bb01179c',1,'mapGLBufferObject(struct cudaGraphicsResource **cuda_vbo_resource):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#aa491077afd740a269815eb9ce81c8642',1,'mapGLBufferObject(struct cudaGraphicsResource **cuda_vbo_resource):&#160;particleSystem_cuda.cu']]],
   ['mass',['mass',['../class_particle_system_1_1particle_type.html#a7b31955f076be65f9bd704a23032597c',1,'ParticleSystem::particleType']]],
-  ['max_5fepsilon_5ferror',['MAX_EPSILON_ERROR',['../particles_8cpp.html#a9608807ab27261888018dac76a7f4acd',1,'particles.cpp']]],
+  ['max_5fepsilon_5ferror',['MAX_EPSILON_ERROR',['../particles_8cpp.html#a9608807ab27261888018dac76a7f4acd',1,'MAX_EPSILON_ERROR():&#160;particles.cpp'],['../particles_8cpp.html#a9608807ab27261888018dac76a7f4acd',1,'MAX_EPSILON_ERROR():&#160;particles.cpp']]],
   ['maxparticlespercell',['maxParticlesPerCell',['../struct_sim_params.html#a557e8042b00135073cd51fabf4594142',1,'SimParams']]],
   ['mode',['mode',['../particles_8cpp.html#a1ea5d0cb93f22f7d0fdf804bd68c3326',1,'particles.cpp']]],
-  ['modelview',['modelView',['../particles_8cpp.html#a4067d49c28b37c689a16350cb3ff64d7',1,'particles.cpp']]],
+  ['modelview',['modelView',['../particles_8cpp.html#af00335bc2331e0a52baeadfdb479c89e',1,'particles.cpp']]],
   ['motion',['motion',['../particles_8cpp.html#a45a7d7c86c97ca6a2d4d32ce2d263f67',1,'particles.cpp']]],
-  ['mouse',['mouse',['../particles_8cpp.html#ac76a5d78172a826cd6ee9512b89a86c0',1,'particles.cpp']]]
-=======
-  ['num_5fparticles',['NUM_PARTICLES',['../particles_8cpp.html#a75cbc112dce4b21c13fe7bb671accab1',1,'particles.cpp']]],
-  ['numbodies',['numBodies',['../struct_sim_params.html#adb68e9ee2422208807756b367efdf842',1,'SimParams']]],
-  ['numcells',['numCells',['../struct_sim_params.html#a9d51112b7e86d46b6f33126a67cc84b4',1,'SimParams']]],
-  ['numiterations',['numIterations',['../particles_8cpp.html#ad026ebba8c4123cf7b82751c88761f31',1,'particles.cpp']]],
-  ['numparticles',['numParticles',['../particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596',1,'particles.cpp']]]
->>>>>>> master
-];
-  ['num_5fparticles',['NUM_PARTICLES',['../particles_8cpp.html#a75cbc112dce4b21c13fe7bb671accab1',1,'particles.cpp']]],
-  ['numbodies',['numBodies',['../struct_sim_params.html#adb68e9ee2422208807756b367efdf842',1,'SimParams']]],
-  ['numcells',['numCells',['../struct_sim_params.html#a9d51112b7e86d46b6f33126a67cc84b4',1,'SimParams']]],
-  ['numiterations',['numIterations',['../particles_8cpp.html#ad026ebba8c4123cf7b82751c88761f31',1,'particles.cpp']]],
-  ['numparticles',['numParticles',['../particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596',1,'particles.cpp']]]
+  ['mouse',['mouse',['../particles_8cpp.html#ac76a5d78172a826cd6ee9512b89a86c0',1,'particles.cpp']]],
+  ['multicolor',['multiColor',['../particles_8cpp.html#a54f61e4f37db321d451436bf2201b8cb',1,'multiColor():&#160;particles.cpp'],['../particle_system_8cpp.html#a54f61e4f37db321d451436bf2201b8cb',1,'multiColor():&#160;particleSystem.cpp']]]
 ];

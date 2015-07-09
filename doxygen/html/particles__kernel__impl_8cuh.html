@@ -4,11 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<<<<<<< HEAD
-<title>Particles: Dokumentacja pliku particles_kernel_impl.cuh</title>
-=======
-<title>particles_vs2008: Dokumentacja pliku particles_kernel_impl.cuh</title>
->>>>>>> master
+<title>particles: Dokumentacja pliku particles_kernel_impl.cuh</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,14 +28,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-<<<<<<< HEAD
   <td id="projectlogo"><img alt="Logo" src="particles.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Particles
-=======
-  <td style="padding-left: 0.5em;">
-   <div id="projectname">particles_vs2008
->>>>>>> master
+   <div id="projectname">particles
    </div>
   </td>
  </tr>
@@ -119,47 +110,29 @@ $(document).ready(function(){initNavTree('particles__kernel__impl_8cuh.html','')
 <div class="title">Dokumentacja pliku particles_kernel_impl.cuh</div>  </div>
 </div><!--header-->
 <div class="contents">
-<<<<<<< HEAD
 
 <p>Implementacje (definicje) funkcji odpowiadających za fizykę.  
 <a href="#details">Więcej...</a></p>
-=======
->>>>>>> master
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
 <code>#include &lt;math.h&gt;</code><br/>
 <code>#include &lt;float.h&gt;</code><br/>
 <code>#include &quot;helper_math.h&quot;</code><br/>
 <code>#include &quot;math_constants.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>&quot;</code><br/>
-<<<<<<< HEAD
 <code>#include &lt;curand_kernel.h&gt;</code><br/>
-=======
->>>>>>> master
 </div><div class="textblock"><div class="dynheader">
 Wykres zależności załączania dla particles_kernel_impl.cuh:</div>
 <div class="dyncontent">
 <div class="center"><img src="particles__kernel__impl_8cuh__incl.png" border="0" usemap="#particles__kernel__impl_8cuh" alt=""/></div>
 <map name="particles__kernel__impl_8cuh" id="particles__kernel__impl_8cuh">
-<<<<<<< HEAD
-<area shape="rect" id="node7" href="particles__kernel_8cuh.html" title="Definicja struktury przechowuj�cej parametry symulacji. " alt="" coords="540,80,679,107"/>
-</map>
-=======
-<area shape="rect" id="node7" href="particles__kernel_8cuh.html" title="particles_kernel.cuh" alt="" coords="540,80,679,107"/>
-</map>
->>>>>>> master
+<area shape="rect" id="node7" href="particles__kernel_8cuh.html" title="Definicja struktury przechowuj�cej parametry symulacji. " alt="" coords="540,80,679,107"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik:</div>
 <div class="dyncontent">
 <div class="center"><img src="particles__kernel__impl_8cuh__dep__incl.png" border="0" usemap="#particles__kernel__impl_8cuhdep" alt=""/></div>
 <map name="particles__kernel__impl_8cuhdep" id="particles__kernel__impl_8cuhdep">
-<<<<<<< HEAD
-<area shape="rect" id="node2" href="particle_system__cuda_8cu.html" title="Definicje (implementacje) funkcji odpowiedzialnych za przebieg symulacji. " alt="" coords="9,80,171,107"/>
-</map>
-=======
-<area shape="rect" id="node2" href="particle_system__cuda_8cu.html" title="particleSystem_cuda.cu" alt="" coords="9,80,171,107"/>
-</map>
->>>>>>> master
+<area shape="rect" id="node2" href="particle_system__cuda_8cu.html" title="Definicje (implementacje) funkcji odpowiedzialnych za przebieg symulacji. " alt="" coords="9,80,171,107"/></map>
 </div>
 </div>
 <p><a href="particles__kernel__impl_8cuh_source.html">Idź do kodu źródłowego tego pliku.</a></p>
@@ -195,30 +168,20 @@ Funkcje</h2></td></tr>
 <tr class="memitem:a8e623e11d4ac873cfbe9d7c916326363"><td class="memItemLeft" align="right" valign="top">__device__ float3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363">collideCell</a> (int3 gridPos, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index, float3 pos, float3 vel, float4 *oldPos, float4 *oldVel, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellStart, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellEnd)</td></tr>
 <tr class="memdesc:a8e623e11d4ac873cfbe9d7c916326363"><td class="mdescLeft">&#160;</td><td class="mdescRight">collide a particle against all other particles in a given cell  <a href="#a8e623e11d4ac873cfbe9d7c916326363">Więcej...</a><br/></td></tr>
 <tr class="separator:a8e623e11d4ac873cfbe9d7c916326363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<<<<<<< HEAD
 <tr class="memitem:a295ed0293da0aab40ac5d904c319abdf"><td class="memItemLeft" align="right" valign="top">__global__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a295ed0293da0aab40ac5d904c319abdf">collideD</a> (float4 *newVel, float4 *oldPos, float4 *oldVel, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *gridParticleIndex, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellStart, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellEnd, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>, float deltaTime)</td></tr>
 <tr class="memdesc:a295ed0293da0aab40ac5d904c319abdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu  <a href="#a295ed0293da0aab40ac5d904c319abdf">Więcej...</a><br/></td></tr>
 <tr class="separator:a295ed0293da0aab40ac5d904c319abdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-=======
-<tr class="memitem:a9056c5c0f33cbc0acb1c2b12e1a2a530"><td class="memItemLeft" align="right" valign="top">__global__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a9056c5c0f33cbc0acb1c2b12e1a2a530">collideD</a> (float4 *newVel, float4 *oldPos, float4 *oldVel, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *gridParticleIndex, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellStart, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellEnd, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</td></tr>
-<tr class="memdesc:a9056c5c0f33cbc0acb1c2b12e1a2a530"><td class="mdescLeft">&#160;</td><td class="mdescRight">wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu  <a href="#a9056c5c0f33cbc0acb1c2b12e1a2a530">Więcej...</a><br/></td></tr>
-<tr class="separator:a9056c5c0f33cbc0acb1c2b12e1a2a530"><td class="memSeparator" colspan="2">&#160;</td></tr>
->>>>>>> master
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Zmienne</h2></td></tr>
 <tr class="memitem:a8db8938e28edd17862daf58651051bdc"><td class="memItemLeft" align="right" valign="top">__constant__ <a class="el" href="struct_sim_params.html">SimParams</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></td></tr>
 <tr class="separator:a8db8938e28edd17862daf58651051bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<<<<<<< HEAD
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Implementacje (definicje) funkcji odpowiadających za fizykę. </p>
 
 <p>Definicja w pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 </div><h2 class="groupheader">Dokumentacja definicji</h2>
-=======
-<h2 class="groupheader">Dokumentacja definicji</h2>
->>>>>>> master
 <a class="anchor" id="a5de512cb982bf8e9102c9e80ae68a7f2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -228,14 +191,9 @@ Zmienne</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<<<<<<< HEAD
 <p>biblioteka zawierająca funkcje generujące liczby pseudolosowe i quasi-losowe na karcie </p>
 
 <p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00022">22</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-=======
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00017">17</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
->>>>>>> master
 
 </div>
 </div>
@@ -263,7 +221,6 @@ Zmienne</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd><b>device</b> uint </dd></dl>
 
-<<<<<<< HEAD
 <p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00215">215</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 <div class="fragment"><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;{</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    gridPos.x = gridPos.x &amp; (<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.x-1);  <span class="comment">// wrap grid, assumes size is power of 2</span></div>
@@ -272,18 +229,7 @@ Zmienne</h2></td></tr>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">return</span> __umul24(__umul24(gridPos.z, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.y), <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.x) + __umul24(gridPos.y, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.x) + gridPos.x;</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00043">particles_kernel_impl.cuh:43</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a4cfb18ff777876da3ad69aae6e023949"><div class="ttname"><a href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">SimParams::gridSize</a></div><div class="ttdeci">uint3 gridSize</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00044">particles_kernel.cuh:44</a></div></div>
-=======
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00175">175</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    gridPos.x = gridPos.x &amp; (<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.x-1);  <span class="comment">// wrap grid, assumes size is power of 2</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    gridPos.y = gridPos.y &amp; (<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.y-1);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    gridPos.z = gridPos.z &amp; (<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.z-1);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">return</span> __umul24(__umul24(gridPos.z, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.y), <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.x) + __umul24(gridPos.y, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.x) + gridPos.x;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00037">particles_kernel_impl.cuh:37</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a4cfb18ff777876da3ad69aae6e023949"><div class="ttname"><a href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">SimParams::gridSize</a></div><div class="ttdeci">uint3 gridSize</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00036">particles_kernel.cuh:36</a></div></div>
->>>>>>> master
+<div class="ttc" id="struct_sim_params_html_a4cfb18ff777876da3ad69aae6e023949"><div class="ttname"><a href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">SimParams::gridSize</a></div><div class="ttdeci">uint3 gridSize</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00043">particles_kernel.cuh:43</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -310,7 +256,6 @@ Zmienne</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd><b>device</b> int3 </dd></dl>
 
-<<<<<<< HEAD
 <p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00199">199</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 <div class="fragment"><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;{</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    int3 gridPos;</div>
@@ -320,21 +265,8 @@ Zmienne</h2></td></tr>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">return</span> gridPos;</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00043">particles_kernel_impl.cuh:43</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a1ed7465773f15f2874650f19cec3d0a9"><div class="ttname"><a href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">SimParams::worldOrigin</a></div><div class="ttdeci">float3 worldOrigin</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00046">particles_kernel.cuh:46</a></div></div>
-<div class="ttc" id="struct_sim_params_html_ad5d71ad4ba6acc829a35f47b3da3e169"><div class="ttname"><a href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">SimParams::cellSize</a></div><div class="ttdeci">float3 cellSize</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00047">particles_kernel.cuh:47</a></div></div>
-=======
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00159">159</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    int3 gridPos;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    gridPos.x = floor((p.x - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">worldOrigin</a>.x) / <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">cellSize</a>.x);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    gridPos.y = floor((p.y - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">worldOrigin</a>.y) / <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">cellSize</a>.y);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    gridPos.z = floor((p.z - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">worldOrigin</a>.z) / <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">cellSize</a>.z);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">return</span> gridPos;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00037">particles_kernel_impl.cuh:37</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a1ed7465773f15f2874650f19cec3d0a9"><div class="ttname"><a href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">SimParams::worldOrigin</a></div><div class="ttdeci">float3 worldOrigin</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00038">particles_kernel.cuh:38</a></div></div>
-<div class="ttc" id="struct_sim_params_html_ad5d71ad4ba6acc829a35f47b3da3e169"><div class="ttname"><a href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">SimParams::cellSize</a></div><div class="ttdeci">float3 cellSize</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00039">particles_kernel.cuh:39</a></div></div>
->>>>>>> master
+<div class="ttc" id="struct_sim_params_html_a1ed7465773f15f2874650f19cec3d0a9"><div class="ttname"><a href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">SimParams::worldOrigin</a></div><div class="ttdeci">float3 worldOrigin</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00045">particles_kernel.cuh:45</a></div></div>
+<div class="ttc" id="struct_sim_params_html_ad5d71ad4ba6acc829a35f47b3da3e169"><div class="ttname"><a href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">SimParams::cellSize</a></div><div class="ttdeci">float3 cellSize</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00046">particles_kernel.cuh:46</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -386,7 +318,6 @@ Zmienne</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd><b>global</b> void </dd></dl>
 
-<<<<<<< HEAD
 <p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00234">234</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 <div class="fragment"><div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;{</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index = __umul24(blockIdx.x, blockDim.x) + threadIdx.x;</div>
@@ -403,32 +334,10 @@ Zmienne</h2></td></tr>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    gridParticleHash[index] = hash;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    gridParticleIndex[index] = index;</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
-<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00119">particles.cpp:119</a></div></div>
+<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00120">particles.cpp:120</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00029">particles_kernel.cuh:29</a></div></div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_ad20ac253847311c176aacf9a224e14e5"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a></div><div class="ttdeci">__device__ uint calcGridHash(int3 gridPos)</div><div class="ttdoc">calculate address in grid from position (clamping to edges) </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00215">particles_kernel_impl.cuh:215</a></div></div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a63d62750e6cbb8781c5ff252fc13c1fd"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a></div><div class="ttdeci">__device__ int3 calcGridPos(float3 p)</div><div class="ttdoc">calculate position in uniform grid </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00199">particles_kernel_impl.cuh:199</a></div></div>
-=======
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00194">194</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;{</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index = __umul24(blockIdx.x, blockDim.x) + threadIdx.x;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">if</span> (index &gt;= <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">volatile</span> float4 p = pos[index];</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="comment">// get address in grid</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    int3 gridPos = <a class="code" href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a>(make_float3(p.x, p.y, p.z));</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> hash = <a class="code" href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a>(gridPos);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="comment">// store grid hash and particle index</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    gridParticleHash[index] = hash;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    gridParticleIndex[index] = index;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
-<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00094">particles.cpp:94</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00024">particles_kernel.cuh:24</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_ad20ac253847311c176aacf9a224e14e5"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a></div><div class="ttdeci">__device__ uint calcGridHash(int3 gridPos)</div><div class="ttdoc">calculate address in grid from position (clamping to edges) </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00175">particles_kernel_impl.cuh:175</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a63d62750e6cbb8781c5ff252fc13c1fd"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a></div><div class="ttdeci">__device__ int3 calcGridPos(float3 p)</div><div class="ttdoc">calculate position in uniform grid </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00159">particles_kernel_impl.cuh:159</a></div></div>
->>>>>>> master
 </div><!-- fragment -->
 </div>
 </div>
@@ -508,7 +417,6 @@ Zmienne</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd><b>device</b> float3 </dd></dl>
 
-<<<<<<< HEAD
 <p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00421">421</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 <div class="fragment"><div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;{</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> gridHash = <a class="code" href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a>(gridPos);</div>
@@ -541,56 +449,14 @@ Zmienne</h2></td></tr>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00043">particles_kernel_impl.cuh:43</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00029">particles_kernel.cuh:29</a></div></div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_ad20ac253847311c176aacf9a224e14e5"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a></div><div class="ttdeci">__device__ uint calcGridHash(int3 gridPos)</div><div class="ttdoc">calculate address in grid from position (clamping to edges) </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00215">particles_kernel_impl.cuh:215</a></div></div>
-<div class="ttc" id="struct_sim_params_html_acf7442ae8a49237861944271cb630d01"><div class="ttname"><a href="struct_sim_params.html#acf7442ae8a49237861944271cb630d01">SimParams::attraction</a></div><div class="ttdeci">float attraction</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00055">particles_kernel.cuh:55</a></div></div>
+<div class="ttc" id="struct_sim_params_html_acf7442ae8a49237861944271cb630d01"><div class="ttname"><a href="struct_sim_params.html#acf7442ae8a49237861944271cb630d01">SimParams::attraction</a></div><div class="ttdeci">float attraction</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00054">particles_kernel.cuh:54</a></div></div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a1d93cb067b16b4a472e9c1a08d9d8e68"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a></div><div class="ttdeci">__device__ float3 collideSpheres(float3 posA, float3 posB, float3 velA, float3 velB, float radiusA, float radiusB, float attraction)</div><div class="ttdoc">collide two spheres using DEM method </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00353">particles_kernel_impl.cuh:353</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a12269d678a65f18889c2a7e98c756457"><div class="ttname"><a href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a></div><div class="ttdeci">#define FETCH(t, i)</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00025">particles_kernel.cuh:25</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a7e131c24e1020c44173deb0f57a8c4af"><div class="ttname"><a href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">SimParams::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00040">particles_kernel.cuh:40</a></div></div>
+<div class="ttc" id="struct_sim_params_html_a7e131c24e1020c44173deb0f57a8c4af"><div class="ttname"><a href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">SimParams::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00039">particles_kernel.cuh:39</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a295ed0293da0aab40ac5d904c319abdf"></a>
-=======
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00374">374</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;{</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> gridHash = <a class="code" href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a>(gridPos);</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="comment">// get start of bucket for this cell</span></div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> startIndex = <a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(cellStart, gridHash);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    float3 force = make_float3(0.0f);</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">if</span> (startIndex != 0xffffffff)          <span class="comment">// cell is not empty</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    {</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="comment">// iterate over particles in this cell</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> endIndex = <a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(cellEnd, gridHash);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j=startIndex; j&lt;endIndex; j++)</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            <span class="keywordflow">if</span> (j != index)                <span class="comment">// check not colliding with self</span></div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            {</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                float3 pos2 = make_float3(<a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldPos, j));</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                float3 vel2 = make_float3(<a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldVel, j));</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                <span class="comment">// collide two spheres</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                force += <a class="code" href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a>(pos, pos2, vel, vel2, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">particleRadius</a>, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">particleRadius</a>, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#acf7442ae8a49237861944271cb630d01">attraction</a>);</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            }</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        }</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <span class="keywordflow">return</span> force;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;}</div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00037">particles_kernel_impl.cuh:37</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00024">particles_kernel.cuh:24</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_ad20ac253847311c176aacf9a224e14e5"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a></div><div class="ttdeci">__device__ uint calcGridHash(int3 gridPos)</div><div class="ttdoc">calculate address in grid from position (clamping to edges) </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00175">particles_kernel_impl.cuh:175</a></div></div>
-<div class="ttc" id="struct_sim_params_html_acf7442ae8a49237861944271cb630d01"><div class="ttname"><a href="struct_sim_params.html#acf7442ae8a49237861944271cb630d01">SimParams::attraction</a></div><div class="ttdeci">float attraction</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00047">particles_kernel.cuh:47</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a1d93cb067b16b4a472e9c1a08d9d8e68"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a></div><div class="ttdeci">__device__ float3 collideSpheres(float3 posA, float3 posB, float3 velA, float3 velB, float radiusA, float radiusB, float attraction)</div><div class="ttdoc">collide two spheres using DEM method </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00313">particles_kernel_impl.cuh:313</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a12269d678a65f18889c2a7e98c756457"><div class="ttname"><a href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a></div><div class="ttdeci">#define FETCH(t, i)</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00020">particles_kernel.cuh:20</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a7e131c24e1020c44173deb0f57a8c4af"><div class="ttname"><a href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">SimParams::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00034">particles_kernel.cuh:34</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a9056c5c0f33cbc0acb1c2b12e1a2a530"></a>
->>>>>>> master
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -634,7 +500,6 @@ Zmienne</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-<<<<<<< HEAD
           <td class="paramname"><em>numParticles</em>, </td>
         </tr>
         <tr>
@@ -642,9 +507,6 @@ Zmienne</h2></td></tr>
           <td></td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>deltaTime</em>&#160;</td>
-=======
-          <td class="paramname"><em>numParticles</em>&#160;</td>
->>>>>>> master
         </tr>
         <tr>
           <td></td>
@@ -669,7 +531,6 @@ Zmienne</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd><b>global</b> void </dd></dl>
 
-<<<<<<< HEAD
 <p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00471">471</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 <div class="fragment"><div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;{</div>
 <div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index = __mul24(blockIdx.x,blockDim.x) + threadIdx.x;</div>
@@ -705,60 +566,13 @@ Zmienne</h2></td></tr>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> originalIndex = gridParticleIndex[index];</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    newVel[originalIndex] = make_float4(vel + force*(deltaTime/<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#afab015432bd796517e5f540f6f7228e4">particleMass</a>), 0.0f);</div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;}</div>
-<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00119">particles.cpp:119</a></div></div>
+<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00120">particles.cpp:120</a></div></div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00043">particles_kernel_impl.cuh:43</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00029">particles_kernel.cuh:29</a></div></div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a63d62750e6cbb8781c5ff252fc13c1fd"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a></div><div class="ttdeci">__device__ int3 calcGridPos(float3 p)</div><div class="ttdoc">calculate position in uniform grid </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00199">particles_kernel_impl.cuh:199</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a12269d678a65f18889c2a7e98c756457"><div class="ttname"><a href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a></div><div class="ttdeci">#define FETCH(t, i)</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00025">particles_kernel.cuh:25</a></div></div>
-<div class="ttc" id="struct_sim_params_html_afab015432bd796517e5f540f6f7228e4"><div class="ttname"><a href="struct_sim_params.html#afab015432bd796517e5f540f6f7228e4">SimParams::particleMass</a></div><div class="ttdeci">float particleMass</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00042">particles_kernel.cuh:42</a></div></div>
+<div class="ttc" id="struct_sim_params_html_afab015432bd796517e5f540f6f7228e4"><div class="ttname"><a href="struct_sim_params.html#afab015432bd796517e5f540f6f7228e4">SimParams::particleMass</a></div><div class="ttdeci">float particleMass</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00041">particles_kernel.cuh:41</a></div></div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a8e623e11d4ac873cfbe9d7c916326363"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363">collideCell</a></div><div class="ttdeci">__device__ float3 collideCell(int3 gridPos, uint index, float3 pos, float3 vel, float4 *oldPos, float4 *oldVel, uint *cellStart, uint *cellEnd)</div><div class="ttdoc">collide a particle against all other particles in a given cell </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00421">particles_kernel_impl.cuh:421</a></div></div>
-=======
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00425">425</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;{</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index = __mul24(blockIdx.x,blockDim.x) + threadIdx.x;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">if</span> (index &gt;= <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="comment">// read particle data from sorted arrays</span></div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    float3 pos = make_float3(<a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldPos, index));</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    float3 vel = make_float3(<a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldVel, index));</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="comment">// get address in grid</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    int3 gridPos = <a class="code" href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a>(pos);</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="comment">// examine neighbouring cells</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    float3 force = make_float3(0.0f);</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> z=-1; z&lt;=1; z++)</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y=-1; y&lt;=1; y++)</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        {</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x=-1; x&lt;=1; x++)</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            {</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                int3 neighbourPos = gridPos + make_int3(x, y, z);</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                force += <a class="code" href="particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363">collideCell</a>(neighbourPos, index, pos, vel, oldPos, oldVel, cellStart, cellEnd);</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            }</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        }</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    }</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="comment">// collide with cursor sphere</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    force += <a class="code" href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a>(pos, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa27be265020f137f0a9cfbc3f1d2d9f8">colliderPos</a>, vel, make_float3(0.0f, 0.0f, 0.0f), <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">particleRadius</a>, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478">colliderRadius</a>, 0.0f);</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="comment">// write new velocity back to original unsorted location</span></div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> originalIndex = gridParticleIndex[index];</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    newVel[originalIndex] = make_float4(vel + force, 0.0f);</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;}</div>
-<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00094">particles.cpp:94</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00037">particles_kernel_impl.cuh:37</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00024">particles_kernel.cuh:24</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a06ca2162f6f0aec08343db6ed8cd4478"><div class="ttname"><a href="struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478">SimParams::colliderRadius</a></div><div class="ttdeci">float colliderRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00030">particles_kernel.cuh:30</a></div></div>
-<div class="ttc" id="struct_sim_params_html_aa27be265020f137f0a9cfbc3f1d2d9f8"><div class="ttname"><a href="struct_sim_params.html#aa27be265020f137f0a9cfbc3f1d2d9f8">SimParams::colliderPos</a></div><div class="ttdeci">float3 colliderPos</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00029">particles_kernel.cuh:29</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a1d93cb067b16b4a472e9c1a08d9d8e68"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a></div><div class="ttdeci">__device__ float3 collideSpheres(float3 posA, float3 posB, float3 velA, float3 velB, float radiusA, float radiusB, float attraction)</div><div class="ttdoc">collide two spheres using DEM method </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00313">particles_kernel_impl.cuh:313</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a63d62750e6cbb8781c5ff252fc13c1fd"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a></div><div class="ttdeci">__device__ int3 calcGridPos(float3 p)</div><div class="ttdoc">calculate position in uniform grid </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00159">particles_kernel_impl.cuh:159</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a12269d678a65f18889c2a7e98c756457"><div class="ttname"><a href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a></div><div class="ttdeci">#define FETCH(t, i)</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00020">particles_kernel.cuh:20</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a7e131c24e1020c44173deb0f57a8c4af"><div class="ttname"><a href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">SimParams::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00034">particles_kernel.cuh:34</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8e623e11d4ac873cfbe9d7c916326363"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363">collideCell</a></div><div class="ttdeci">__device__ float3 collideCell(int3 gridPos, uint index, float3 pos, float3 vel, float4 *oldPos, float4 *oldVel, uint *cellStart, uint *cellEnd)</div><div class="ttdoc">collide a particle against all other particles in a given cell </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00374">particles_kernel_impl.cuh:374</a></div></div>
->>>>>>> master
 </div><!-- fragment -->
 </div>
 </div>
@@ -831,7 +645,6 @@ Zmienne</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd><b>device</b> float3 </dd></dl>
 
-<<<<<<< HEAD
 <p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00353">353</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 <div class="fragment"><div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;{</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="comment">// calculate relative position</span></div>
@@ -878,48 +691,8 @@ Zmienne</h2></td></tr>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="keywordflow">return</span> force;</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;}</div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00043">particles_kernel_impl.cuh:43</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a760551182a6dff0b67f3048daa2620fb"><div class="ttname"><a href="struct_sim_params.html#a760551182a6dff0b67f3048daa2620fb">SimParams::epsi</a></div><div class="ttdeci">float epsi</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00061">particles_kernel.cuh:61</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a7e131c24e1020c44173deb0f57a8c4af"><div class="ttname"><a href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">SimParams::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00040">particles_kernel.cuh:40</a></div></div>
-=======
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00313">313</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;{</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="comment">// calculate relative position</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    float3 relPos = posB - posA;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordtype">float</span> dist = length(relPos);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordtype">float</span> collideDist = (radiusA + radiusB)*4;<span class="comment">//zasieg dzialania sil</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    float3 force = make_float3(0.0f);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">if</span> (dist &lt; collideDist)</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        float3 norm = relPos / dist;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <span class="comment">// relative velocity</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="comment">//float3 relVel = velB - velA;</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="comment">// relative tangential velocity</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="comment">//float3 tanVel = relVel - (dot(relVel, norm) * norm);</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="comment">// spring force</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="comment">//force = -params.spring*(collideDist - dist) * norm;</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <span class="comment">// dashpot (damping) force</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="comment">//force += params.damping*relVel;</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="comment">// tangential shear force</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="comment">//force += params.shear*tanVel;</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="comment">// attraction</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="comment">//force += attraction*relPos;</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                <span class="keywordtype">float</span> epsi=0.1f;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                <span class="keywordtype">float</span> D2=0.00001f;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                force= epsi*(F1+F2);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">/*      tu wpisywac rownania na sily dla czastek bedacywch w zasiegu    */</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordflow">return</span> force;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;}</div>
->>>>>>> master
+<div class="ttc" id="struct_sim_params_html_a760551182a6dff0b67f3048daa2620fb"><div class="ttname"><a href="struct_sim_params.html#a760551182a6dff0b67f3048daa2620fb">SimParams::epsi</a></div><div class="ttdeci">float epsi</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00060">particles_kernel.cuh:60</a></div></div>
+<div class="ttc" id="struct_sim_params_html_a7e131c24e1020c44173deb0f57a8c4af"><div class="ttname"><a href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">SimParams::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00039">particles_kernel.cuh:39</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1006,7 +779,6 @@ Zmienne</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd><b>global</b> void </dd></dl>
 
-<<<<<<< HEAD
 <p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00272">272</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 <div class="fragment"><div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;{</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keyword">extern</span> __shared__ <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> sharedHash[];    <span class="comment">// blockSize + 1 elements</span></div>
@@ -1065,72 +837,9 @@ Zmienne</h2></td></tr>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div>
-<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00119">particles.cpp:119</a></div></div>
+<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00120">particles.cpp:120</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00029">particles_kernel.cuh:29</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a12269d678a65f18889c2a7e98c756457"><div class="ttname"><a href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a></div><div class="ttdeci">#define FETCH(t, i)</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00025">particles_kernel.cuh:25</a></div></div>
-=======
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00232">232</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;{</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keyword">extern</span> __shared__ <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> sharedHash[];    <span class="comment">// blockSize + 1 elements</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index = __umul24(blockIdx.x,blockDim.x) + threadIdx.x;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> hash;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">// handle case when no. of particles not multiple of block size</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">if</span> (index &lt; <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    {</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        hash = gridParticleHash[index];</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="comment">// Load hash data into shared memory so that we can look</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="comment">// at neighboring particle&#39;s hash value without loading</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="comment">// two hash values per thread</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        sharedHash[threadIdx.x+1] = hash;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">if</span> (index &gt; 0 &amp;&amp; threadIdx.x == 0)</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="comment">// first thread in block must load neighbor particle hash</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            sharedHash[0] = gridParticleHash[index-1];</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    __syncthreads();</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">if</span> (index &lt; <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="comment">// If this particle has a different cell index to the previous</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="comment">// particle then it must be the first particle in the cell,</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="comment">// so store the index of this particle in the cell.</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="comment">// As it isn&#39;t the first particle, it must also be the cell end of</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="comment">// the previous particle&#39;s cell</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">if</span> (index == 0 || hash != sharedHash[threadIdx.x])</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            cellStart[hash] = index;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">if</span> (index &gt; 0)</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                cellEnd[sharedHash[threadIdx.x]] = index;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keywordflow">if</span> (index == <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a> - 1)</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            cellEnd[hash] = index + 1;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <span class="comment">// Now use the sorted index to reorder the pos and vel data</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> sortedIndex = gridParticleIndex[index];</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        float4 pos = <a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldPos, sortedIndex);       <span class="comment">// macro does either global read or texture fetch</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        float4 vel = <a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldVel, sortedIndex);       <span class="comment">// see particles_kernel.cuh</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        sortedPos[index] = pos;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        sortedVel[index] = vel;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
-<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00094">particles.cpp:94</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00024">particles_kernel.cuh:24</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a12269d678a65f18889c2a7e98c756457"><div class="ttname"><a href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a></div><div class="ttdeci">#define FETCH(t, i)</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00020">particles_kernel.cuh:20</a></div></div>
->>>>>>> master
 </div><!-- fragment -->
 </div>
 </div>
@@ -1145,11 +854,7 @@ Zmienne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<<<<<<< HEAD
 <p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00043">43</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-=======
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00037">37</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
->>>>>>> master
 
 </div>
 </div>
@@ -1159,857 +864,7 @@ Zmienne</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="particles__kernel__impl_8cuh.html">particles_kernel_impl.cuh</a></li>
-<<<<<<< HEAD
-    <li class="footer">Wygenerowano Śr, 8 lip 2015 12:23:34 dla Particles programem
-=======
-    <li class="footer">Wygenerowano So, 14 lut 2015 16:32:24 dla particles_vs2008 programem
->>>>>>> master
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
-  </ul>
-</div>
-</body>
-</html>
-<title>particles_vs2008: Dokumentacja pliku particles_kernel_impl.cuh</title>
-<link href="tabs.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-  $(document).ready(initResizable);
-  $(window).load(resizeHeight);
-</script>
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/search.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
-</script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
-<div id="titlearea">
-<table cellspacing="0" cellpadding="0">
- <tbody>
- <tr style="height: 56px;">
-  <td style="padding-left: 0.5em;">
-   <div id="projectname">particles_vs2008
-   </div>
-  </td>
- </tr>
- </tbody>
-</table>
-</div>
-<!-- end header part -->
-<!-- Wygenerowano przez Doxygen 1.8.6 -->
-<script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
-</script>
-  <div id="navrow1" class="tabs">
-    <ul class="tablist">
-      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
-      <li><a href="annotated.html"><span>Klasy</span></a></li>
-      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
-      <li>
-        <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
-          </span>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
-      <li><a href="globals.html"><span>Składowe&#160;plików</span></a></li>
-    </ul>
-  </div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){initNavTree('particles__kernel__impl_8cuh.html','');});
-</script>
-<div id="doc-content">
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klasy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Zmienne</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Wyliczenia</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Wartości wyliczeń</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Definicje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Strony</a></div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
-<div class="header">
-  <div class="summary">
-<a href="#nested-classes">Komponenty</a> &#124;
-<a href="#define-members">Definicje</a> &#124;
-<a href="#func-members">Funkcje</a> &#124;
-<a href="#var-members">Zmienne</a>  </div>
-  <div class="headertitle">
-<div class="title">Dokumentacja pliku particles_kernel_impl.cuh</div>  </div>
-</div><!--header-->
-<div class="contents">
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
-<code>#include &lt;math.h&gt;</code><br/>
-<code>#include &lt;float.h&gt;</code><br/>
-<code>#include &quot;helper_math.h&quot;</code><br/>
-<code>#include &quot;math_constants.h&quot;</code><br/>
-<code>#include &quot;<a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Wykres zależności załączania dla particles_kernel_impl.cuh:</div>
-<div class="dyncontent">
-<div class="center"><img src="particles__kernel__impl_8cuh__incl.png" border="0" usemap="#particles__kernel__impl_8cuh" alt=""/></div>
-<map name="particles__kernel__impl_8cuh" id="particles__kernel__impl_8cuh">
-<area shape="rect" id="node7" href="particles__kernel_8cuh.html" title="particles_kernel.cuh" alt="" coords="540,80,679,107"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik:</div>
-<div class="dyncontent">
-<div class="center"><img src="particles__kernel__impl_8cuh__dep__incl.png" border="0" usemap="#particles__kernel__impl_8cuhdep" alt=""/></div>
-<map name="particles__kernel__impl_8cuhdep" id="particles__kernel__impl_8cuhdep">
-<area shape="rect" id="node2" href="particle_system__cuda_8cu.html" title="particleSystem_cuda.cu" alt="" coords="9,80,171,107"/>
-</map>
-</div>
-</div>
-<p><a href="particles__kernel__impl_8cuh_source.html">Idź do kodu źródłowego tego pliku.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Komponenty</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structintegrate__functor.html">integrate_functor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ta struktura inicjowana jest z krokiem delta_time dla danych opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU) jako para (tuple) float4 położenia i prędkości  <a href="structintegrate__functor.html#details">Więcej...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Definicje</h2></td></tr>
-<tr class="memitem:a5de512cb982bf8e9102c9e80ae68a7f2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a5de512cb982bf8e9102c9e80ae68a7f2">_PARTICLES_KERNEL_H_</a></td></tr>
-<tr class="separator:a5de512cb982bf8e9102c9e80ae68a7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Funkcje</h2></td></tr>
-<tr class="memitem:a63d62750e6cbb8781c5ff252fc13c1fd"><td class="memItemLeft" align="right" valign="top">__device__ int3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a> (float3 p)</td></tr>
-<tr class="memdesc:a63d62750e6cbb8781c5ff252fc13c1fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate position in uniform grid  <a href="#a63d62750e6cbb8781c5ff252fc13c1fd">Więcej...</a><br/></td></tr>
-<tr class="separator:a63d62750e6cbb8781c5ff252fc13c1fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad20ac253847311c176aacf9a224e14e5"><td class="memItemLeft" align="right" valign="top">__device__ <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a> (int3 gridPos)</td></tr>
-<tr class="memdesc:ad20ac253847311c176aacf9a224e14e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate address in grid from position (clamping to edges)  <a href="#ad20ac253847311c176aacf9a224e14e5">Więcej...</a><br/></td></tr>
-<tr class="separator:ad20ac253847311c176aacf9a224e14e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c688195fb1c2963cbdcaf62c737b9d7"><td class="memItemLeft" align="right" valign="top">__global__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a4c688195fb1c2963cbdcaf62c737b9d7">calcHashD</a> (<a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *gridParticleHash, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *gridParticleIndex, float4 *pos, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</td></tr>
-<tr class="memdesc:a4c688195fb1c2963cbdcaf62c737b9d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate grid hash value for each particle  <a href="#a4c688195fb1c2963cbdcaf62c737b9d7">Więcej...</a><br/></td></tr>
-<tr class="separator:a4c688195fb1c2963cbdcaf62c737b9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe84636059af3ed58ef603665395e6f4"><td class="memItemLeft" align="right" valign="top">__global__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#abe84636059af3ed58ef603665395e6f4">reorderDataAndFindCellStartD</a> (<a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellStart, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellEnd, float4 *sortedPos, float4 *sortedVel, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *gridParticleHash, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *gridParticleIndex, float4 *oldPos, float4 *oldVel, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</td></tr>
-<tr class="memdesc:abe84636059af3ed58ef603665395e6f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">rearrange particle data into sorted order, and find the start of each cell in the sorted hash array  <a href="#abe84636059af3ed58ef603665395e6f4">Więcej...</a><br/></td></tr>
-<tr class="separator:abe84636059af3ed58ef603665395e6f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d93cb067b16b4a472e9c1a08d9d8e68"><td class="memItemLeft" align="right" valign="top">__device__ float3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a> (float3 posA, float3 posB, float3 velA, float3 velB, float radiusA, float radiusB, float attraction)</td></tr>
-<tr class="memdesc:a1d93cb067b16b4a472e9c1a08d9d8e68"><td class="mdescLeft">&#160;</td><td class="mdescRight">collide two spheres using DEM method  <a href="#a1d93cb067b16b4a472e9c1a08d9d8e68">Więcej...</a><br/></td></tr>
-<tr class="separator:a1d93cb067b16b4a472e9c1a08d9d8e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e623e11d4ac873cfbe9d7c916326363"><td class="memItemLeft" align="right" valign="top">__device__ float3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363">collideCell</a> (int3 gridPos, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index, float3 pos, float3 vel, float4 *oldPos, float4 *oldVel, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellStart, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellEnd)</td></tr>
-<tr class="memdesc:a8e623e11d4ac873cfbe9d7c916326363"><td class="mdescLeft">&#160;</td><td class="mdescRight">collide a particle against all other particles in a given cell  <a href="#a8e623e11d4ac873cfbe9d7c916326363">Więcej...</a><br/></td></tr>
-<tr class="separator:a8e623e11d4ac873cfbe9d7c916326363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9056c5c0f33cbc0acb1c2b12e1a2a530"><td class="memItemLeft" align="right" valign="top">__global__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a9056c5c0f33cbc0acb1c2b12e1a2a530">collideD</a> (float4 *newVel, float4 *oldPos, float4 *oldVel, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *gridParticleIndex, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellStart, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *cellEnd, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</td></tr>
-<tr class="memdesc:a9056c5c0f33cbc0acb1c2b12e1a2a530"><td class="mdescLeft">&#160;</td><td class="mdescRight">wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu  <a href="#a9056c5c0f33cbc0acb1c2b12e1a2a530">Więcej...</a><br/></td></tr>
-<tr class="separator:a9056c5c0f33cbc0acb1c2b12e1a2a530"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Zmienne</h2></td></tr>
-<tr class="memitem:a8db8938e28edd17862daf58651051bdc"><td class="memItemLeft" align="right" valign="top">__constant__ <a class="el" href="struct_sim_params.html">SimParams</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></td></tr>
-<tr class="separator:a8db8938e28edd17862daf58651051bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<h2 class="groupheader">Dokumentacja definicji</h2>
-<a class="anchor" id="a5de512cb982bf8e9102c9e80ae68a7f2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _PARTICLES_KERNEL_H_</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00017">17</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Dokumentacja funkcji</h2>
-<a class="anchor" id="ad20ac253847311c176aacf9a224e14e5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__device__ <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> calcGridHash </td>
-          <td>(</td>
-          <td class="paramtype">int3&#160;</td>
-          <td class="paramname"><em>gridPos</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>calculate address in grid from position (clamping to edges) </p>
-<dl class="params"><dt>Parametry</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">gridPos</td><td>int3 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Zwraca</dt><dd><b>device</b> uint </dd></dl>
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00175">175</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    gridPos.x = gridPos.x &amp; (<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.x-1);  <span class="comment">// wrap grid, assumes size is power of 2</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    gridPos.y = gridPos.y &amp; (<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.y-1);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    gridPos.z = gridPos.z &amp; (<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.z-1);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">return</span> __umul24(__umul24(gridPos.z, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.y), <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.x) + __umul24(gridPos.y, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a>.x) + gridPos.x;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00037">particles_kernel_impl.cuh:37</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a4cfb18ff777876da3ad69aae6e023949"><div class="ttname"><a href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">SimParams::gridSize</a></div><div class="ttdeci">uint3 gridSize</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00036">particles_kernel.cuh:36</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a63d62750e6cbb8781c5ff252fc13c1fd"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__device__ int3 calcGridPos </td>
-          <td>(</td>
-          <td class="paramtype">float3&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>calculate position in uniform grid </p>
-<dl class="params"><dt>Parametry</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p</td><td>float3 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Zwraca</dt><dd><b>device</b> int3 </dd></dl>
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00159">159</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    int3 gridPos;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    gridPos.x = floor((p.x - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">worldOrigin</a>.x) / <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">cellSize</a>.x);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    gridPos.y = floor((p.y - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">worldOrigin</a>.y) / <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">cellSize</a>.y);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    gridPos.z = floor((p.z - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">worldOrigin</a>.z) / <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">cellSize</a>.z);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">return</span> gridPos;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00037">particles_kernel_impl.cuh:37</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a1ed7465773f15f2874650f19cec3d0a9"><div class="ttname"><a href="struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9">SimParams::worldOrigin</a></div><div class="ttdeci">float3 worldOrigin</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00038">particles_kernel.cuh:38</a></div></div>
-<div class="ttc" id="struct_sim_params_html_ad5d71ad4ba6acc829a35f47b3da3e169"><div class="ttname"><a href="struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169">SimParams::cellSize</a></div><div class="ttdeci">float3 cellSize</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00039">particles_kernel.cuh:39</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a4c688195fb1c2963cbdcaf62c737b9d7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__global__ void calcHashD </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>gridParticleHash</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>gridParticleIndex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>pos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>numParticles</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>calculate grid hash value for each particle </p>
-<dl class="params"><dt>Parametry</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">gridParticleHash</td><td>uint* output </td></tr>
-    <tr><td class="paramname">*gridParticleIndex</td><td>uint output </td></tr>
-    <tr><td class="paramname">*pos</td><td>float4 input: positions </td></tr>
-    <tr><td class="paramname">uint</td><td>numParticles </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Zwraca</dt><dd><b>global</b> void </dd></dl>
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00194">194</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;{</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index = __umul24(blockIdx.x, blockDim.x) + threadIdx.x;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">if</span> (index &gt;= <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">volatile</span> float4 p = pos[index];</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="comment">// get address in grid</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    int3 gridPos = <a class="code" href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a>(make_float3(p.x, p.y, p.z));</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> hash = <a class="code" href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a>(gridPos);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="comment">// store grid hash and particle index</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    gridParticleHash[index] = hash;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    gridParticleIndex[index] = index;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
-<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00094">particles.cpp:94</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00024">particles_kernel.cuh:24</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_ad20ac253847311c176aacf9a224e14e5"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a></div><div class="ttdeci">__device__ uint calcGridHash(int3 gridPos)</div><div class="ttdoc">calculate address in grid from position (clamping to edges) </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00175">particles_kernel_impl.cuh:175</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a63d62750e6cbb8781c5ff252fc13c1fd"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a></div><div class="ttdeci">__device__ int3 calcGridPos(float3 p)</div><div class="ttdoc">calculate position in uniform grid </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00159">particles_kernel_impl.cuh:159</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a8e623e11d4ac873cfbe9d7c916326363"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__device__ float3 collideCell </td>
-          <td>(</td>
-          <td class="paramtype">int3&#160;</td>
-          <td class="paramname"><em>gridPos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float3&#160;</td>
-          <td class="paramname"><em>pos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float3&#160;</td>
-          <td class="paramname"><em>vel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>oldPos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>oldVel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>cellStart</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>cellEnd</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>collide a particle against all other particles in a given cell </p>
-<dl class="params"><dt>Parametry</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">gridPos</td><td>int3 </td></tr>
-    <tr><td class="paramname">index</td><td>uint </td></tr>
-    <tr><td class="paramname">pos</td><td>float3 </td></tr>
-    <tr><td class="paramname">vel</td><td>float3 </td></tr>
-    <tr><td class="paramname">oldPos</td><td>float4* </td></tr>
-    <tr><td class="paramname">oldVel</td><td>float4* </td></tr>
-    <tr><td class="paramname">cellStart</td><td>uint* </td></tr>
-    <tr><td class="paramname">cellEnd</td><td>uint* </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Zwraca</dt><dd><b>device</b> float3 </dd></dl>
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00374">374</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;{</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> gridHash = <a class="code" href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a>(gridPos);</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="comment">// get start of bucket for this cell</span></div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> startIndex = <a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(cellStart, gridHash);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    float3 force = make_float3(0.0f);</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">if</span> (startIndex != 0xffffffff)          <span class="comment">// cell is not empty</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    {</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="comment">// iterate over particles in this cell</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> endIndex = <a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(cellEnd, gridHash);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> j=startIndex; j&lt;endIndex; j++)</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            <span class="keywordflow">if</span> (j != index)                <span class="comment">// check not colliding with self</span></div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            {</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                float3 pos2 = make_float3(<a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldPos, j));</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                float3 vel2 = make_float3(<a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldVel, j));</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                <span class="comment">// collide two spheres</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                force += <a class="code" href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a>(pos, pos2, vel, vel2, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">particleRadius</a>, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">particleRadius</a>, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#acf7442ae8a49237861944271cb630d01">attraction</a>);</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            }</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        }</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <span class="keywordflow">return</span> force;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;}</div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00037">particles_kernel_impl.cuh:37</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00024">particles_kernel.cuh:24</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_ad20ac253847311c176aacf9a224e14e5"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5">calcGridHash</a></div><div class="ttdeci">__device__ uint calcGridHash(int3 gridPos)</div><div class="ttdoc">calculate address in grid from position (clamping to edges) </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00175">particles_kernel_impl.cuh:175</a></div></div>
-<div class="ttc" id="struct_sim_params_html_acf7442ae8a49237861944271cb630d01"><div class="ttname"><a href="struct_sim_params.html#acf7442ae8a49237861944271cb630d01">SimParams::attraction</a></div><div class="ttdeci">float attraction</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00047">particles_kernel.cuh:47</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a1d93cb067b16b4a472e9c1a08d9d8e68"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a></div><div class="ttdeci">__device__ float3 collideSpheres(float3 posA, float3 posB, float3 velA, float3 velB, float radiusA, float radiusB, float attraction)</div><div class="ttdoc">collide two spheres using DEM method </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00313">particles_kernel_impl.cuh:313</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a12269d678a65f18889c2a7e98c756457"><div class="ttname"><a href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a></div><div class="ttdeci">#define FETCH(t, i)</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00020">particles_kernel.cuh:20</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a7e131c24e1020c44173deb0f57a8c4af"><div class="ttname"><a href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">SimParams::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00034">particles_kernel.cuh:34</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a9056c5c0f33cbc0acb1c2b12e1a2a530"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__global__ void collideD </td>
-          <td>(</td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>newVel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>oldPos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>oldVel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>gridParticleIndex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>cellStart</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>cellEnd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>numParticles</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu </p>
-<dl class="params"><dt>Parametry</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">newVel</td><td>float4* output: new velocit </td></tr>
-    <tr><td class="paramname">float4</td><td>*oldPos input: sorted positions </td></tr>
-    <tr><td class="paramname">float4</td><td>*oldVel input: sorted velocities </td></tr>
-    <tr><td class="paramname">uint</td><td>*gridParticleIndex input: sorted particle indices </td></tr>
-    <tr><td class="paramname">uint</td><td>*cellStart </td></tr>
-    <tr><td class="paramname">cellEnd</td><td>uint* </td></tr>
-    <tr><td class="paramname">numParticles</td><td>uint </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Zwraca</dt><dd><b>global</b> void </dd></dl>
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00425">425</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;{</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index = __mul24(blockIdx.x,blockDim.x) + threadIdx.x;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">if</span> (index &gt;= <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="comment">// read particle data from sorted arrays</span></div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    float3 pos = make_float3(<a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldPos, index));</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    float3 vel = make_float3(<a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldVel, index));</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="comment">// get address in grid</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    int3 gridPos = <a class="code" href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a>(pos);</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="comment">// examine neighbouring cells</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    float3 force = make_float3(0.0f);</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> z=-1; z&lt;=1; z++)</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y=-1; y&lt;=1; y++)</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        {</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x=-1; x&lt;=1; x++)</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            {</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                int3 neighbourPos = gridPos + make_int3(x, y, z);</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                force += <a class="code" href="particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363">collideCell</a>(neighbourPos, index, pos, vel, oldPos, oldVel, cellStart, cellEnd);</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            }</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        }</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    }</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="comment">// collide with cursor sphere</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    force += <a class="code" href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a>(pos, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa27be265020f137f0a9cfbc3f1d2d9f8">colliderPos</a>, vel, make_float3(0.0f, 0.0f, 0.0f), <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">particleRadius</a>, <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478">colliderRadius</a>, 0.0f);</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="comment">// write new velocity back to original unsorted location</span></div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> originalIndex = gridParticleIndex[index];</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    newVel[originalIndex] = make_float4(vel + force, 0.0f);</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;}</div>
-<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00094">particles.cpp:94</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8db8938e28edd17862daf58651051bdc"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a></div><div class="ttdeci">__constant__ SimParams params</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00037">particles_kernel_impl.cuh:37</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00024">particles_kernel.cuh:24</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a06ca2162f6f0aec08343db6ed8cd4478"><div class="ttname"><a href="struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478">SimParams::colliderRadius</a></div><div class="ttdeci">float colliderRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00030">particles_kernel.cuh:30</a></div></div>
-<div class="ttc" id="struct_sim_params_html_aa27be265020f137f0a9cfbc3f1d2d9f8"><div class="ttname"><a href="struct_sim_params.html#aa27be265020f137f0a9cfbc3f1d2d9f8">SimParams::colliderPos</a></div><div class="ttdeci">float3 colliderPos</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00029">particles_kernel.cuh:29</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a1d93cb067b16b4a472e9c1a08d9d8e68"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68">collideSpheres</a></div><div class="ttdeci">__device__ float3 collideSpheres(float3 posA, float3 posB, float3 velA, float3 velB, float radiusA, float radiusB, float attraction)</div><div class="ttdoc">collide two spheres using DEM method </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00313">particles_kernel_impl.cuh:313</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a63d62750e6cbb8781c5ff252fc13c1fd"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd">calcGridPos</a></div><div class="ttdeci">__device__ int3 calcGridPos(float3 p)</div><div class="ttdoc">calculate position in uniform grid </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00159">particles_kernel_impl.cuh:159</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a12269d678a65f18889c2a7e98c756457"><div class="ttname"><a href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a></div><div class="ttdeci">#define FETCH(t, i)</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00020">particles_kernel.cuh:20</a></div></div>
-<div class="ttc" id="struct_sim_params_html_a7e131c24e1020c44173deb0f57a8c4af"><div class="ttname"><a href="struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af">SimParams::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00034">particles_kernel.cuh:34</a></div></div>
-<div class="ttc" id="particles__kernel__impl_8cuh_html_a8e623e11d4ac873cfbe9d7c916326363"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363">collideCell</a></div><div class="ttdeci">__device__ float3 collideCell(int3 gridPos, uint index, float3 pos, float3 vel, float4 *oldPos, float4 *oldVel, uint *cellStart, uint *cellEnd)</div><div class="ttdoc">collide a particle against all other particles in a given cell </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00374">particles_kernel_impl.cuh:374</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a1d93cb067b16b4a472e9c1a08d9d8e68"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__device__ float3 collideSpheres </td>
-          <td>(</td>
-          <td class="paramtype">float3&#160;</td>
-          <td class="paramname"><em>posA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float3&#160;</td>
-          <td class="paramname"><em>posB</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float3&#160;</td>
-          <td class="paramname"><em>velA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float3&#160;</td>
-          <td class="paramname"><em>velB</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>radiusA</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>radiusB</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>attraction</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>collide two spheres using DEM method </p>
-<dl class="params"><dt>Parametry</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">posA</td><td>float3 </td></tr>
-    <tr><td class="paramname">posB</td><td>float3 </td></tr>
-    <tr><td class="paramname">velA</td><td>float3 </td></tr>
-    <tr><td class="paramname">velB</td><td>float3 </td></tr>
-    <tr><td class="paramname">radiusA</td><td>float </td></tr>
-    <tr><td class="paramname">radiusB</td><td>float </td></tr>
-    <tr><td class="paramname">attraction</td><td>float </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Zwraca</dt><dd><b>device</b> float3 </dd></dl>
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00313">313</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;{</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="comment">// calculate relative position</span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    float3 relPos = posB - posA;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordtype">float</span> dist = length(relPos);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordtype">float</span> collideDist = (radiusA + radiusB)*4;<span class="comment">//zasieg dzialania sil</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    float3 force = make_float3(0.0f);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">if</span> (dist &lt; collideDist)</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        float3 norm = relPos / dist;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <span class="comment">// relative velocity</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="comment">//float3 relVel = velB - velA;</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="comment">// relative tangential velocity</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="comment">//float3 tanVel = relVel - (dot(relVel, norm) * norm);</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="comment">// spring force</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="comment">//force = -params.spring*(collideDist - dist) * norm;</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <span class="comment">// dashpot (damping) force</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="comment">//force += params.damping*relVel;</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="comment">// tangential shear force</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="comment">//force += params.shear*tanVel;</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="comment">// attraction</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="comment">//force += attraction*relPos;</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                <span class="keywordtype">float</span> epsi=0.1f;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                <span class="keywordtype">float</span> D2=0.00001f;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                force= epsi*(F1+F2);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">/*      tu wpisywac rownania na sily dla czastek bedacywch w zasiegu    */</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    }</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordflow">return</span> force;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="abe84636059af3ed58ef603665395e6f4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__global__ void reorderDataAndFindCellStartD </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>cellStart</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>cellEnd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>sortedPos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>sortedVel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>gridParticleHash</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *&#160;</td>
-          <td class="paramname"><em>gridParticleIndex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>oldPos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float4 *&#160;</td>
-          <td class="paramname"><em>oldVel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td>
-          <td class="paramname"><em>numParticles</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>rearrange particle data into sorted order, and find the start of each cell in the sorted hash array </p>
-<dl class="params"><dt>Parametry</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cellStart</td><td>uint* output: cell start index </td></tr>
-    <tr><td class="paramname">uint</td><td>*cellEnd output: cell end index </td></tr>
-    <tr><td class="paramname">float4</td><td>*sortedPos output: sorted positions </td></tr>
-    <tr><td class="paramname">float4</td><td>*sortedVel output: sorted velocities </td></tr>
-    <tr><td class="paramname">uint</td><td>*gridParticleHash input: sorted grid hashes </td></tr>
-    <tr><td class="paramname">uint</td><td>*gridParticleIndex input: sorted particle indices </td></tr>
-    <tr><td class="paramname">float4</td><td>*oldPos input: sorted position array </td></tr>
-    <tr><td class="paramname">float4</td><td>*oldVel input: sorted velocity array </td></tr>
-    <tr><td class="paramname">uint</td><td>numParticles </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Zwraca</dt><dd><b>global</b> void </dd></dl>
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00232">232</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-<div class="fragment"><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;{</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keyword">extern</span> __shared__ <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> sharedHash[];    <span class="comment">// blockSize + 1 elements</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> index = __umul24(blockIdx.x,blockDim.x) + threadIdx.x;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> hash;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">// handle case when no. of particles not multiple of block size</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">if</span> (index &lt; <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    {</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        hash = gridParticleHash[index];</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="comment">// Load hash data into shared memory so that we can look</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="comment">// at neighboring particle&#39;s hash value without loading</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="comment">// two hash values per thread</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        sharedHash[threadIdx.x+1] = hash;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">if</span> (index &gt; 0 &amp;&amp; threadIdx.x == 0)</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="comment">// first thread in block must load neighbor particle hash</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            sharedHash[0] = gridParticleHash[index-1];</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    __syncthreads();</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">if</span> (index &lt; <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="comment">// If this particle has a different cell index to the previous</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="comment">// particle then it must be the first particle in the cell,</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="comment">// so store the index of this particle in the cell.</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="comment">// As it isn&#39;t the first particle, it must also be the cell end of</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="comment">// the previous particle&#39;s cell</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">if</span> (index == 0 || hash != sharedHash[threadIdx.x])</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            cellStart[hash] = index;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">if</span> (index &gt; 0)</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                cellEnd[sharedHash[threadIdx.x]] = index;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keywordflow">if</span> (index == <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a> - 1)</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            cellEnd[hash] = index + 1;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <span class="comment">// Now use the sorted index to reorder the pos and vel data</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> sortedIndex = gridParticleIndex[index];</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        float4 pos = <a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldPos, sortedIndex);       <span class="comment">// macro does either global read or texture fetch</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        float4 vel = <a class="code" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(oldVel, sortedIndex);       <span class="comment">// see particles_kernel.cuh</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        sortedPos[index] = pos;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        sortedVel[index] = vel;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
-<div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00094">particles.cpp:94</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00024">particles_kernel.cuh:24</a></div></div>
-<div class="ttc" id="particles__kernel_8cuh_html_a12269d678a65f18889c2a7e98c756457"><div class="ttname"><a href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a></div><div class="ttdeci">#define FETCH(t, i)</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00020">particles_kernel.cuh:20</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Dokumentacja zmiennych</h2>
-<a class="anchor" id="a8db8938e28edd17862daf58651051bdc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">__constant__ <a class="el" href="struct_sim_params.html">SimParams</a> params</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00037">37</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
-</div><!-- doc-content -->
-<!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="particles__kernel__impl_8cuh.html">particles_kernel_impl.cuh</a></li>
-    <li class="footer">Wygenerowano So, 14 lut 2015 16:32:24 dla particles_vs2008 programem
+    <li class="footer">Wygenerowano Cz, 9 lip 2015 18:39:21 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -8,14 +8,11 @@
  * is strictly prohibited.
  *
  */
-<<<<<<< HEAD
  /** \file particleSystem.cpp
   * \brief Definicje (implementacje) metod klasy ParticleSystem
   * oraz funkcji pomocniczych
   */
 
-=======
->>>>>>> master
 
 #include "particleSystem.h"
 #include "particleSystem.cuh"
@@ -38,11 +35,8 @@
 #define CUDART_PI_F         3.141592654f
 #endif
 
-<<<<<<< HEAD
 extern bool multiColor;
 
-=======
->>>>>>> master
 ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenGL) :
     m_bInitialized(false),
     m_bUseOpenGL(bUseOpenGL),
@@ -65,7 +59,6 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.numCells = m_numGridCells;
     m_params.numBodies = m_numParticles;
 
-<<<<<<< HEAD
 	/**
 	* promieñ w mikronach
 	*/
@@ -85,27 +78,10 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.shear = 0.1f;
     m_params.attraction = 0.1f;
     m_params.boundaryDamping = -1.0f;
-=======
-    m_params.particleRadius = 1.0f / 64.0f;//32.0f / 64.0f;
-    m_params.colliderPos = make_float3(-1.2f, -0.8f, 0.8f);
-    m_params.colliderRadius = 0.2f;
-
-    m_params.worldOrigin = make_float3(-1.0f, -1.0f, -1.0f);
-    //    m_params.cellSize = make_float3(worldSize.x / m_gridSize.x, worldSize.y / m_gridSize.y, worldSize.z / m_gridSize.z);
-    float cellSize = m_params.particleRadius * 2.0f;  // cell size equal to particle diameter
-    m_params.cellSize = make_float3(cellSize, cellSize, cellSize);
-
-    m_params.spring = 0.5f;
-    m_params.damping = 0.02f;
-    m_params.shear = 0.1f;
-    m_params.attraction = 0.1f;
-    m_params.boundaryDamping = -0.1f;
->>>>>>> master
 
     m_params.gravity = make_float3(0.0f, -0.0003f, 0.0f);
     m_params.globalDamping = 1.0f;
 
-<<<<<<< HEAD
 	m_params.bigradius=10.0f;//docelowo zmieny rozmiar zewnetrznej kuli
 	m_params.bigradius0=10.0f;
 	m_params.boundaries=true;
@@ -114,9 +90,6 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 	m_params.brownQuality=10;
 
 	m_params.particleTypesNum=1;
-=======
-	m_params.bigradius=2.0f;//docelowo zmieny rozmiar zewnetrznej kuli
->>>>>>> master
 
     _initialize(numParticles);
 }
@@ -222,11 +195,8 @@ ParticleSystem::_initialize(int numParticles)
         for (uint i=0; i<m_numParticles; i++)
         {
             float t = i / (float) m_numParticles;
-<<<<<<< HEAD
 			if(multiColor)
 			{
-=======
->>>>>>> master
 #if 0
             *ptr++ = rand() / (float) RAND_MAX;
             *ptr++ = rand() / (float) RAND_MAX;
@@ -235,7 +205,6 @@ ParticleSystem::_initialize(int numParticles)
             colorRamp(t, ptr);
             ptr+=3;
 #endif
-<<<<<<< HEAD
 			}
 			else
 			{
@@ -243,8 +212,6 @@ ParticleSystem::_initialize(int numParticles)
 				*ptr++ = 1;
 				*ptr++ = 0;
 			}
-=======
->>>>>>> master
             *ptr++ = 1.0f;
         }
 
@@ -354,12 +321,8 @@ ParticleSystem::update(float deltaTime)
         m_dCellStart,
         m_dCellEnd,
         m_numParticles,
-<<<<<<< HEAD
         m_numGridCells,
 		deltaTime);
-=======
-        m_numGridCells);
->>>>>>> master
 
     // note: do unmap at end here to avoid unnecessary graphics/CUDA context switch
     if (m_bUseOpenGL)
@@ -507,23 +470,18 @@ ParticleSystem::reset(ParticleConfig config)
         case CONFIG_RANDOM:
             {
                 int p = 0, v = 0;
-<<<<<<< HEAD
 				float tmpbrad=m_params.bigradius-m_params.particleRadius;
 				float tmprad=tmpbrad/2;
 				//printf("%f\n",tmprad);
 				bool bo1=false;
 
                 for (uint i=0; i < m_numParticles; /*i++*/)
-=======
-
-                for (uint i=0; i < m_numParticles; i++)
->>>>>>> master
                 {
                     float point[3];
                     //point[0] = frand();
                     //point[1] = frand();
                     //point[2] = frand();
-<<<<<<< HEAD
+
 					/*point[0]=tmpbrad*frand()-tmprad;//frand -> (0.0f,1.0f) 1.0f - promien kuli
 					float my=sqrt(tmprad*tmprad-point[0]*point[0]);
 					point[1]=rand() /( float ) RAND_MAX *( 2*my ) - my;
@@ -573,23 +531,6 @@ ParticleSystem::reset(ParticleConfig config)
 						printf("%f ",m_hPos[i*4+j]);
 					printf("\n");
 				}*/
-=======
-					point[0]=2.0f*frand()-1.0f;//frand -> (0.0f,1.0f) 1.0f - promien kuli
-					float my=sqrt(1-point[0]*point[0]);
-					point[1]=rand() /( float ) RAND_MAX *( 2*my ) - my;
-					float mz=sqrt(1-point[0]*point[0]-point[1]*point[1]);
-					point[2]=rand() /( float ) RAND_MAX *( 2*mz ) - mz;
-
-                    m_hPos[p++] = 2 * (point[0] - 0.0f);
-                    m_hPos[p++] = 2 * (point[1] - 0.0f);
-                    m_hPos[p++] = 2 * (point[2] - 0.0f);
-                    m_hPos[p++] = 1.0f; // radius
-                    m_hVel[v++] = 0.0f;
-                    m_hVel[v++] = 0.0f;
-                    m_hVel[v++] = 0.0f;
-                    m_hVel[v++] = 0.0f;
-                }
->>>>>>> master
             }
             break;
 
@@ -645,7 +586,6 @@ ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacin
     setArray(POSITION, m_hPos, start, index);
     setArray(VELOCITY, m_hVel, start, index);
 }
-<<<<<<< HEAD
 
 class ParticleSystem::particleType
 {
@@ -681,8 +621,6 @@ class ParticleSystem::particleType
 };
 
 
-=======
->>>>>>> master
 
 #include "particleSystem.h"
 #include "particleSystem.cuh"
