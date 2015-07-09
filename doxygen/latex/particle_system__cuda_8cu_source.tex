@@ -1,0 +1,276 @@
+\hypertarget{particle_system__cuda_8cu_source}{\section{particle\-System\-\_\-cuda.\-cu}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright 1993-2012 NVIDIA Corporation.  All rights reserved.}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ * Please refer to the NVIDIA end user license agreement (EULA) associated}
+00005 \textcolor{comment}{ * with this source code for terms and conditions that govern your use of}
+00006 \textcolor{comment}{ * this software. Any use, reproduction, disclosure, or distribution of}
+00007 \textcolor{comment}{ * this software and related documentation outside the terms of the EULA}
+00008 \textcolor{comment}{ * is strictly prohibited.}
+00009 \textcolor{comment}{ *}
+00010 \textcolor{comment}{ */}
+00011 
+00012 \textcolor{comment}{// This file contains C wrappers around the some of the CUDA API and the}
+00013 \textcolor{comment}{// kernel functions so that they can be called from "particleSystem.cpp"}
+00014 
+00015 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \textcolor{preprocessor}{defined}\textcolor{preprocessor}{(}\textcolor{preprocessor}{\_\_APPLE\_\_}\textcolor{preprocessor}{)} \textcolor{preprocessor}{||} \textcolor{preprocessor}{defined}\textcolor{preprocessor}{(}\textcolor{preprocessor}{MACOSX}\textcolor{preprocessor}{)}
+00016 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GLUT}\textcolor{preprocessor}{/}\textcolor{preprocessor}{glut}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00017 \textcolor{preprocessor}{#}\textcolor{preprocessor}{else}
+00018 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GL}\textcolor{preprocessor}{/}\textcolor{preprocessor}{freeglut}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00019 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+00020 
+00021 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cstdlib}\textcolor{preprocessor}{>}
+00022 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cstdio}\textcolor{preprocessor}{>}
+00023 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{string}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00024 
+00025 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cuda\_runtime}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00026 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cuda\_gl\_interop}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00027 
+00028 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{helper\_cuda}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00029 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{helper\_cuda\_gl}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00030 
+00031 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{helper\_functions}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00032 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"thrust/device\_ptr.h"}
+00033 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"thrust/for\_each.h"}
+00034 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"thrust/iterator/zip\_iterator.h"}
+00035 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"thrust/sort.h"}
+00036 
+00037 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \hyperlink{particles__kernel__impl_8cuh}{"particles\_kernel\_impl.cuh"}                               \textcolor{comment}{//w tym
+       pliku sa impementacje obliczen}
+00038 
+00039 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"}
+00040 \{
+00041 
+\hypertarget{particle_system__cuda_8cu_source_l00042}{}\hyperlink{particle_system__cuda_8cu_ad205012a960928f6fb61ea4f51a95e9f}{00042}     \textcolor{keywordtype}{void} cudaInit(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)
+00043     \{
+00044         \textcolor{keywordtype}{int} devID;
+00045 
+00046         \textcolor{comment}{// use command-line specified CUDA device, otherwise use device with highest Gflops/s}
+00047         devID = findCudaDevice(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv);
+00048 
+00049         \textcolor{keywordflow}{if} (devID < 0)
+00050         \{
+00051             printf(\textcolor{stringliteral}{"No CUDA Capable devices found, exiting...\(\backslash\)n"});
+00052             exit(EXIT\_SUCCESS);
+00053         \}
+00054     \}
+00055 
+\hypertarget{particle_system__cuda_8cu_source_l00056}{}\hyperlink{particle_system__cuda_8cu_a4e20ffdf94c8d60a5c32ecde149c8554}{00056}     \textcolor{keywordtype}{void} cudaGLInit(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)
+00057     \{
+00058         \textcolor{comment}{// use command-line specified CUDA device, otherwise use device with highest Gflops/s}
+00059         findCudaGLDevice(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv);
+00060     \}
+00061 
+\hypertarget{particle_system__cuda_8cu_source_l00062}{}\hyperlink{particle_system__cuda_8cu_a781553d31085a23b6d0be9d19982759a}{00062}     \textcolor{keywordtype}{void} allocateArray(\textcolor{keywordtype}{void} **devPtr, size\_t size)
+00063     \{
+00064         checkCudaErrors(cudaMalloc(devPtr, size));
+00065     \}
+00066 
+\hypertarget{particle_system__cuda_8cu_source_l00067}{}\hyperlink{particle_system__cuda_8cu_a2946519c8d9c4f8ebf552bf044821ea9}{00067}     \textcolor{keywordtype}{void} freeArray(\textcolor{keywordtype}{void} *devPtr)
+00068     \{
+00069         checkCudaErrors(cudaFree(devPtr));
+00070     \}
+00071 
+\hypertarget{particle_system__cuda_8cu_source_l00072}{}\hyperlink{particle_system__cuda_8cu_af59f4c114812beed29874c0a1a31519d}{00072}     \textcolor{keywordtype}{void} threadSync()
+00073     \{
+00074         checkCudaErrors(cudaDeviceSynchronize());
+00075     \}
+00076 
+\hypertarget{particle_system__cuda_8cu_source_l00077}{}\hyperlink{particle_system__cuda_8cu_ac4d4ecd921dbed6c2deef639ca295374}{00077}     \textcolor{keywordtype}{void} copyArrayToDevice(\textcolor{keywordtype}{void} *device, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *host, \textcolor{keywordtype}{int} offset, \textcolor{keywordtype}{int} size)
+00078     \{
+00079         checkCudaErrors(cudaMemcpy((\textcolor{keywordtype}{char} *) device + offset, host, size, cudaMemcpyHostToDevice));
+00080     \}
+00081 
+\hypertarget{particle_system__cuda_8cu_source_l00082}{}\hyperlink{particle_system__cuda_8cu_a4386a84282ceeaba09939817aa2a9c24}{00082}     \textcolor{keywordtype}{void} registerGLBufferObject(uint vbo, \textcolor{keyword}{struct} cudaGraphicsResource **cuda\_vbo\_resource)
+00083     \{
+00084         checkCudaErrors(cudaGraphicsGLRegisterBuffer(cuda\_vbo\_resource, vbo,
+00085                                                      cudaGraphicsMapFlagsNone));
+00086     \}
+00087 
+\hypertarget{particle_system__cuda_8cu_source_l00088}{}\hyperlink{particle_system__cuda_8cu_a9afef8c00ca779aae2d7484b45bce34c}{00088}     \textcolor{keywordtype}{void} unregisterGLBufferObject(\textcolor{keyword}{struct} cudaGraphicsResource *cuda\_vbo\_resource)
+00089     \{
+00090         checkCudaErrors(cudaGraphicsUnregisterResource(cuda\_vbo\_resource));
+00091     \}
+00092 
+\hypertarget{particle_system__cuda_8cu_source_l00093}{}\hyperlink{particle_system__cuda_8cu_aa491077afd740a269815eb9ce81c8642}{00093}     \textcolor{keywordtype}{void} *mapGLBufferObject(\textcolor{keyword}{struct} cudaGraphicsResource **cuda\_vbo\_resource)
+00094     \{
+00095         \textcolor{keywordtype}{void} *ptr;
+00096         checkCudaErrors(cudaGraphicsMapResources(1, cuda\_vbo\_resource, 0));
+00097         size\_t num\_bytes;
+00098         checkCudaErrors(cudaGraphicsResourceGetMappedPointer((\textcolor{keywordtype}{void} **)&ptr, &num\_bytes,
+00099                                                              *cuda\_vbo\_resource));
+00100         \textcolor{keywordflow}{return} ptr;
+00101     \}
+00102 
+\hypertarget{particle_system__cuda_8cu_source_l00103}{}\hyperlink{particle_system__cuda_8cu_a98c3325419b7528d34a51ca7972d7095}{00103}     \textcolor{keywordtype}{void} unmapGLBufferObject(\textcolor{keyword}{struct} cudaGraphicsResource *cuda\_vbo\_resource)
+00104     \{
+00105         checkCudaErrors(cudaGraphicsUnmapResources(1, &cuda\_vbo\_resource, 0));
+00106     \}
+00107 
+\hypertarget{particle_system__cuda_8cu_source_l00108}{}\hyperlink{particle_system__cuda_8cu_a54716407dbd516db34f42b2faf7f91a3}{00108}     \textcolor{keywordtype}{void} copyArrayFromDevice(\textcolor{keywordtype}{void} *host, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *device,
+00109                              \textcolor{keyword}{struct} cudaGraphicsResource **cuda\_vbo\_resource, \textcolor{keywordtype}{int} size)
+00110     \{
+00111         \textcolor{keywordflow}{if} (cuda\_vbo\_resource)
+00112         \{
+00113             device = mapGLBufferObject(cuda\_vbo\_resource);
+00114         \}
+00115 
+00116         checkCudaErrors(cudaMemcpy(host, device, size, cudaMemcpyDeviceToHost));
+00117 
+00118         \textcolor{keywordflow}{if} (cuda\_vbo\_resource)
+00119         \{
+00120             unmapGLBufferObject(*cuda\_vbo\_resource);
+00121         \}
+00122     \}
+00123 
+\hypertarget{particle_system__cuda_8cu_source_l00124}{}\hyperlink{particle_system__cuda_8cu_a342176dbaba2668312c45e1a1423fc4e}{00124}     \textcolor{keywordtype}{void} setParameters(SimParams *hostParams)
+00125     \{
+00126         \textcolor{comment}{// copy parameters to constant memory}
+00127         checkCudaErrors(cudaMemcpyToSymbol(params, hostParams, \textcolor{keyword}{sizeof}(SimParams)));
+00128     \}
+00129 
+00130     \textcolor{comment}{//Round a / b to nearest higher integer value}
+\hypertarget{particle_system__cuda_8cu_source_l00131}{}\hyperlink{particle_system__cuda_8cu_aa5accec7fb28381615c8cb68522c9eb3}{00131}     uint iDivUp(uint a, uint b)
+00132     \{
+00133         \textcolor{keywordflow}{return} (a % b != 0) ? (a / b + 1) : (a / b);
+00134     \}
+00135 
+00136     \textcolor{comment}{// compute grid and thread block size for a given number of elements}
+\hypertarget{particle_system__cuda_8cu_source_l00137}{}\hyperlink{particle_system__cuda_8cu_a78e8aa50e0629b57cff219a2fa753ed0}{00137}     \textcolor{keywordtype}{void} computeGridSize(uint n, uint blockSize, uint &numBlocks, uint &numThreads)
+00138     \{
+00139         numThreads = min(blockSize, n);
+00140         numBlocks = iDivUp(n, numThreads);
+00141     \}
+00142 
+\hypertarget{particle_system__cuda_8cu_source_l00143}{}\hyperlink{particle_system__cuda_8cu_a34e9db8b801cd537e5ae5a4a886e020c}{00143}     \textcolor{keywordtype}{void} integrateSystem(\textcolor{keywordtype}{float} *pos,
+00144                          \textcolor{keywordtype}{float} *vel,
+00145                          \textcolor{keywordtype}{float} deltaTime,
+00146                          uint numParticles)
+00147     \{
+00148         thrust::device\_ptr<float4> d\_pos4((float4 *)pos);
+00149         thrust::device\_ptr<float4> d\_vel4((float4 *)vel);
+00150 
+00151         thrust::for\_each(
+00152             thrust::make\_zip\_iterator(thrust::make\_tuple(d\_pos4, d\_vel4)),
+00153             thrust::make\_zip\_iterator(thrust::make\_tuple(d\_pos4+numParticles, d\_vel4+numParticles)),
+00154             integrate\_functor(deltaTime));
+00155     \}
+00156 
+\hypertarget{particle_system__cuda_8cu_source_l00157}{}\hyperlink{particle_system__cuda_8cu_ae0a4037d25e768622443077546399cf2}{00157}     \textcolor{keywordtype}{void} calcHash(uint  *gridParticleHash,
+00158                   uint  *gridParticleIndex,
+00159                   \textcolor{keywordtype}{float} *pos,
+00160                   \textcolor{keywordtype}{int}    numParticles)
+00161     \{
+00162         uint numThreads, numBlocks;
+00163         computeGridSize(numParticles, 256, numBlocks, numThreads);
+00164 
+00165 \textcolor{comment}{///////////////////////////////////////////////////////////////////////////}
+00166 \textcolor{comment}{/*      wywolanie watkow        */}
+00167 \textcolor{comment}{///////////////////////////////////////////////////////////////////////////}
+00168         \textcolor{comment}{// execute the kernel}
+00169         calcHashD<<< numBlocks, numThreads >>>(gridParticleHash,
+00170                                                gridParticleIndex,
+00171                                                (float4 *) pos,
+00172                                                numParticles);
+00173 
+00174         \textcolor{comment}{// check if kernel invocation generated an error}
+00175         getLastCudaError(\textcolor{stringliteral}{"Kernel execution failed"});
+00176     \}
+00177 
+\hypertarget{particle_system__cuda_8cu_source_l00178}{}\hyperlink{particle_system__cuda_8cu_ac72ccd068434c46c2f901c751d53be1d}{00178}     \textcolor{keywordtype}{void} reorderDataAndFindCellStart(uint  *cellStart,
+00179                                      uint  *cellEnd,
+00180                                      \textcolor{keywordtype}{float} *sortedPos,
+00181                                      \textcolor{keywordtype}{float} *sortedVel,
+00182                                      uint  *gridParticleHash,
+00183                                      uint  *gridParticleIndex,
+00184                                      \textcolor{keywordtype}{float} *oldPos,
+00185                                      \textcolor{keywordtype}{float} *oldVel,
+00186                                      uint   numParticles,
+00187                                      uint   numCells)
+00188     \{
+00189         uint numThreads, numBlocks;
+00190         computeGridSize(numParticles, 256, numBlocks, numThreads);
+00191 
+00192         \textcolor{comment}{// set all cells to empty}
+00193         checkCudaErrors(cudaMemset(cellStart, 0xffffffff, numCells*\textcolor{keyword}{sizeof}(uint)));
+00194 
+00195 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \hyperlink{particles__kernel_8cuh_a0ab211ca35e2616c721fcf2dd4f99c83}{USE\_TEX}
+00196         checkCudaErrors(cudaBindTexture(0, oldPosTex, oldPos, numParticles*\textcolor{keyword}{sizeof}(float4)));
+00197         checkCudaErrors(cudaBindTexture(0, oldVelTex, oldVel, numParticles*\textcolor{keyword}{sizeof}(float4)));
+00198 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+00199 
+00200         uint smemSize = \textcolor{keyword}{sizeof}(uint)*(numThreads+1);
+00201         reorderDataAndFindCellStartD<<< numBlocks, numThreads, smemSize>>>(
+00202             cellStart,
+00203             cellEnd,
+00204             (float4 *) sortedPos,
+00205             (float4 *) sortedVel,
+00206             gridParticleHash,
+00207             gridParticleIndex,
+00208             (float4 *) oldPos,
+00209             (float4 *) oldVel,
+00210             numParticles);
+00211         getLastCudaError(\textcolor{stringliteral}{"Kernel execution failed: reorderDataAndFindCellStartD"});
+00212 
+00213 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \hyperlink{particles__kernel_8cuh_a0ab211ca35e2616c721fcf2dd4f99c83}{USE\_TEX}
+00214         checkCudaErrors(cudaUnbindTexture(oldPosTex));
+00215         checkCudaErrors(cudaUnbindTexture(oldVelTex));
+00216 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+00217     \}
+00218 
+\hypertarget{particle_system__cuda_8cu_source_l00219}{}\hyperlink{particle_system__cuda_8cu_a917d67e2ed45ea11da51ac5d7004ddfd}{00219}     \textcolor{keywordtype}{void} collide(\textcolor{keywordtype}{float} *newVel,
+00220                  \textcolor{keywordtype}{float} *sortedPos,
+00221                  \textcolor{keywordtype}{float} *sortedVel,
+00222                  uint  *gridParticleIndex,
+00223                  uint  *cellStart,
+00224                  uint  *cellEnd,
+00225                  uint   numParticles,
+00226                  uint   numCells)
+00227     \{
+00228 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \hyperlink{particles__kernel_8cuh_a0ab211ca35e2616c721fcf2dd4f99c83}{USE\_TEX}
+00229         checkCudaErrors(cudaBindTexture(0, oldPosTex, sortedPos, numParticles*\textcolor{keyword}{sizeof}(float4)));
+00230         checkCudaErrors(cudaBindTexture(0, oldVelTex, sortedVel, numParticles*\textcolor{keyword}{sizeof}(float4)));
+00231         checkCudaErrors(cudaBindTexture(0, cellStartTex, cellStart, numCells*\textcolor{keyword}{sizeof}(uint)));
+00232         checkCudaErrors(cudaBindTexture(0, cellEndTex, cellEnd, numCells*\textcolor{keyword}{sizeof}(uint)));
+00233 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+00234 
+00235         \textcolor{comment}{// thread per particle}
+00236         uint numThreads, numBlocks;
+00237         computeGridSize(numParticles, 64, numBlocks, numThreads);
+00238 
+00239 \textcolor{comment}{///////////////////////////////////////////////////////////////////////////}
+00240 \textcolor{comment}{/*      wywolanie watkow zderzen        */}
+00241 \textcolor{comment}{///////////////////////////////////////////////////////////////////////////}
+00242         \textcolor{comment}{// execute the kernel}
+00243         collideD<<< numBlocks, numThreads >>>((float4 *)newVel,
+00244                                               (float4 *)sortedPos,
+00245                                               (float4 *)sortedVel,
+00246                                               gridParticleIndex,
+00247                                               cellStart,
+00248                                               cellEnd,
+00249                                               numParticles);
+00250 
+00251         \textcolor{comment}{// check if kernel invocation generated an error}
+00252         getLastCudaError(\textcolor{stringliteral}{"Kernel execution failed"});
+00253 
+00254 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \hyperlink{particles__kernel_8cuh_a0ab211ca35e2616c721fcf2dd4f99c83}{USE\_TEX}
+00255         checkCudaErrors(cudaUnbindTexture(oldPosTex));
+00256         checkCudaErrors(cudaUnbindTexture(oldVelTex));
+00257         checkCudaErrors(cudaUnbindTexture(cellStartTex));
+00258         checkCudaErrors(cudaUnbindTexture(cellEndTex));
+00259 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+00260     \}
+00261 
+00262 
+\hypertarget{particle_system__cuda_8cu_source_l00263}{}\hyperlink{particle_system__cuda_8cu_ac71da7e4672a2732a098ba933a799257}{00263}     \textcolor{keywordtype}{void} sortParticles(uint *dGridParticleHash, uint *dGridParticleIndex, uint numParticles)
+00264     \{
+00265         thrust::sort\_by\_key(thrust::device\_ptr<uint>(dGridParticleHash),
+00266                             thrust::device\_ptr<uint>(dGridParticleHash + numParticles),
+00267                             thrust::device\_ptr<uint>(dGridParticleIndex));
+00268     \}
+00269 
+00270 \}   \textcolor{comment}{// extern "C"}
+\end{DoxyCode}

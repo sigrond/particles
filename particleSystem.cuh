@@ -8,10 +8,13 @@
  * is strictly prohibited.
  *
  */
+<<<<<<< HEAD
  /** \file particleSystem.cuh
   * \brief Same deklaracje funkcji.
   *
   */
+=======
+>>>>>>> master
 
 extern "C"
 {
@@ -60,8 +63,12 @@ extern "C"
                  uint  *cellStart,
                  uint  *cellEnd,
                  uint   numParticles,
+<<<<<<< HEAD
                  uint   numCells,
 				 float deltaTime);
+=======
+                 uint   numCells);
+>>>>>>> master
 
     void sortParticles(uint *dGridParticleHash, uint *dGridParticleIndex, uint numParticles);
 

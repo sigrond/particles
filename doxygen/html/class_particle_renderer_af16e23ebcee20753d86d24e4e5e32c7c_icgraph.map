@@ -1,3 +1,7 @@
 <map id="ParticleRenderer::setColorBuffer" name="ParticleRenderer::setColorBuffer">
+<<<<<<< HEAD
 <area shape="rect" id="node2" href="$particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initialize particle system ustawienia początkowe i utworzenie obiektu systemu cząstek ..." alt="" coords="228,13,356,39"/>
+=======
+<area shape="rect" id="node2" href="$particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initParticleSystem" alt="" coords="228,13,356,39"/>
+>>>>>>> master
 </map>

@@ -10,10 +10,17 @@ var searchData=
   ['camera_5ftrans_5flag',['camera_trans_lag',['../particles_8cpp.html#a1475a0a4a9c24a5035d91125e5992afe',1,'particles.cpp']]],
   ['cellsize',['cellSize',['../struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169',1,'SimParams']]],
   ['cleanup',['cleanup',['../particles_8cpp.html#a4b66d5e31b5dc18b314c8a68163263bd',1,'particles.cpp']]],
+<<<<<<< HEAD
   ['collide',['collide',['../particle_system_8cuh.html#ad9d704d76ddff93e75ca7d39f57bbced',1,'collide(float *newVel, float *sortedPos, float *sortedVel, uint *gridParticleIndex, uint *cellStart, uint *cellEnd, uint numParticles, uint numCells, float deltaTime):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#ad9d704d76ddff93e75ca7d39f57bbced',1,'collide(float *newVel, float *sortedPos, float *sortedVel, uint *gridParticleIndex, uint *cellStart, uint *cellEnd, uint numParticles, uint numCells, float deltaTime):&#160;particleSystem_cuda.cu']]],
   ['collideattraction',['collideAttraction',['../particles_8cpp.html#a58a3407fb69d0b188eb74b37b078629b',1,'particles.cpp']]],
   ['collidecell',['collideCell',['../particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363',1,'particles_kernel_impl.cuh']]],
   ['collided',['collideD',['../particles__kernel__impl_8cuh.html#a295ed0293da0aab40ac5d904c319abdf',1,'particles_kernel_impl.cuh']]],
+=======
+  ['collide',['collide',['../particle_system_8cuh.html#a917d67e2ed45ea11da51ac5d7004ddfd',1,'collide(float *newVel, float *sortedPos, float *sortedVel, uint *gridParticleIndex, uint *cellStart, uint *cellEnd, uint numParticles, uint numCells):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a917d67e2ed45ea11da51ac5d7004ddfd',1,'collide(float *newVel, float *sortedPos, float *sortedVel, uint *gridParticleIndex, uint *cellStart, uint *cellEnd, uint numParticles, uint numCells):&#160;particleSystem_cuda.cu']]],
+  ['collideattraction',['collideAttraction',['../particles_8cpp.html#a58a3407fb69d0b188eb74b37b078629b',1,'particles.cpp']]],
+  ['collidecell',['collideCell',['../particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363',1,'particles_kernel_impl.cuh']]],
+  ['collided',['collideD',['../particles__kernel__impl_8cuh.html#a9056c5c0f33cbc0acb1c2b12e1a2a530',1,'particles_kernel_impl.cuh']]],
+>>>>>>> master
   ['collidedamping',['collideDamping',['../particles_8cpp.html#adb598dfbf6a6ca7395c9ff264a5312e0',1,'particles.cpp']]],
   ['colliderpos',['colliderPos',['../struct_sim_params.html#aa27be265020f137f0a9cfbc3f1d2d9f8',1,'SimParams']]],
   ['colliderradius',['colliderRadius',['../struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478',1,'SimParams']]],

@@ -32,7 +32,11 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
+<<<<<<< HEAD
 PROJECT_NAME           = Particles
+=======
+PROJECT_NAME           = particles_vs2008
+>>>>>>> master
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -51,7 +55,11 @@ PROJECT_BRIEF          =
 # and the maximum width should not exceed 200 pixels. Doxygen will copy the logo
 # to the output directory.
 
+<<<<<<< HEAD
 PROJECT_LOGO           = "F:/Moje dokumenty/particles/particles.png"
+=======
+PROJECT_LOGO           = 
+>>>>>>> master
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -754,8 +762,12 @@ INPUT                  = ../ \
                          ../particleSystem_cuda.cu \
                          ../ \
                          ../particleSystem.h \
+<<<<<<< HEAD
                          ../particleSystem.h \
                          ../
+=======
+                         ../particleSystem.h
+>>>>>>> master
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -826,7 +838,11 @@ EXCLUDE_SYMBOLS        =
 # that contain example code fragments that are included (see the \include
 # command).
 
+<<<<<<< HEAD
 EXAMPLE_PATH           = ../
+=======
+EXAMPLE_PATH           = 
+>>>>>>> master
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
@@ -1574,7 +1590,11 @@ EXTRA_SEARCH_MAPPINGS  =
 # If the GENERATE_LATEX tag is set to YES doxygen will generate LaTeX output.
 # The default value is: YES.
 
+<<<<<<< HEAD
 GENERATE_LATEX         = NO
+=======
+GENERATE_LATEX         = YES
+>>>>>>> master
 
 # The LATEX_OUTPUT tag is used to specify where the LaTeX docs will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of

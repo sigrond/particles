@@ -81,7 +81,10 @@
     <OutDir>../../bin/win32/$(Configuration)/</OutDir>
     <IntDir>$(Platform)/$(Configuration)/</IntDir>
     <IncludePath>$(DXSDK_DIR)\include;$(IncludePath)</IncludePath>
+<<<<<<< HEAD
     <LinkIncremental>false</LinkIncremental>
+=======
+>>>>>>> master
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>../../bin/win64/$(Configuration)/</OutDir>
@@ -232,9 +235,13 @@
   <ItemGroup>
     <None Include="particleSystem.cuh" />
     <None Include="particles_kernel.cuh" />
+<<<<<<< HEAD
     <None Include="particles_kernel_impl.cuh">
       <FileType>Document</FileType>
     </None>
+=======
+    <None Include="particles_kernel_impl.cuh" />
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="particles.rc" />

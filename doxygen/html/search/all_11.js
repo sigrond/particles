@@ -1,5 +1,6 @@
 var searchData=
 [
+<<<<<<< HEAD
   ['save',['save',['../particles_8cpp.html#ab3d416d86e212881d0e37a4bc52e138e',1,'particles.cpp']]],
   ['setarray',['setArray',['../class_particle_system.html#aa792a66680e800832059854aab0d594d',1,'ParticleSystem']]],
   ['setbigradius',['setBigRadius',['../class_particle_system.html#a97efe00aa29307ecae0165da33d4770a',1,'ParticleSystem']]],
@@ -37,4 +38,10 @@ var searchData=
   ['spring',['spring',['../struct_sim_params.html#a301314921adc7bce20d8955cf03cdf3f',1,'SimParams']]],
   ['ssdksample',['sSDKsample',['../particles_8cpp.html#aa5924a75cb4cd299c96829772cc2f3cd',1,'particles.cpp']]],
   ['stringify',['STRINGIFY',['../shaders_8cpp.html#ab06e1eb2e9bf38e0d452b1f796aed208',1,'shaders.cpp']]]
+=======
+  ['threadsync',['threadSync',['../particle_system_8cuh.html#af59f4c114812beed29874c0a1a31519d',1,'threadSync():&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#af59f4c114812beed29874c0a1a31519d',1,'threadSync():&#160;particleSystem_cuda.cu']]],
+  ['threshold',['THRESHOLD',['../particles_8cpp.html#a4679d8ea8690999a6c6c7c0cb245c879',1,'particles.cpp']]],
+  ['timer',['timer',['../particles_8cpp.html#a9884ad791a680ef446785acf94b63956',1,'particles.cpp']]],
+  ['timestep',['timestep',['../particles_8cpp.html#ab9edcc09985767509bf717e25ac80ab7',1,'particles.cpp']]]
+>>>>>>> master
 ];

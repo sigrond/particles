@@ -1,5 +1,6 @@
 var NAVTREE =
 [
+<<<<<<< HEAD
   [ "Particles", "index.html", [
     [ "Cząstki", "index.html", [
       [ "Opis Ogólny", "index.html#Opis_Ogólny", null ],
@@ -10,6 +11,11 @@ var NAVTREE =
         [ "Oryginalny Readme", "index.html#oryginalny_readme", null ],
         [ "Koncepcja symulowania różnych cząstek", "index.html#koncepcja_symulowania_roznych_czastek", null ]
       ] ]
+=======
+  [ "particles_vs2008", "index.html", [
+    [ "Cząstki", "index.html", [
+      [ "Opis Ogólny", "index.html#Opis_Ogólny", null ]
+>>>>>>> master
     ] ],
     [ "Klasy", null, [
       [ "Lista klas", "annotated.html", "annotated" ],
@@ -39,7 +45,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
+<<<<<<< HEAD
 "particles_8cpp.html#aa5924a75cb4cd299c96829772cc2f3cd"
+=======
+"particles__kernel_8cuh.html#a384444f066551f04f65ff94b99aa7091"
+>>>>>>> master
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

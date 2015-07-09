@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+<<<<<<< HEAD
 "particles_8cpp.html#aa5924a75cb4cd299c96829772cc2f3cd":[2,0,0,83],
 "particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c":[2,0,0,64],
 "particles_8cpp.html#aa9253cb34e1b40809228671a8921144d":[2,0,0,70],
@@ -35,17 +36,26 @@ var NAVTREEINDEX1 =
 "particles__kernel_8cuh.html":[2,0,1],
 "particles__kernel_8cuh.html#a0ab211ca35e2616c721fcf2dd4f99c83":[2,0,1,3],
 "particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457":[2,0,1,1],
+=======
+>>>>>>> master
 "particles__kernel_8cuh.html#a384444f066551f04f65ff94b99aa7091":[2,0,1,2],
 "particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14":[2,0,1,4],
 "particles__kernel_8cuh_source.html":[2,0,1],
 "particles__kernel__impl_8cuh.html":[2,0,2],
 "particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68":[2,0,2,7],
+<<<<<<< HEAD
 "particles__kernel__impl_8cuh.html#a295ed0293da0aab40ac5d904c319abdf":[2,0,2,6],
+=======
+>>>>>>> master
 "particles__kernel__impl_8cuh.html#a4c688195fb1c2963cbdcaf62c737b9d7":[2,0,2,4],
 "particles__kernel__impl_8cuh.html#a5de512cb982bf8e9102c9e80ae68a7f2":[2,0,2,1],
 "particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd":[2,0,2,3],
 "particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc":[2,0,2,9],
 "particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363":[2,0,2,5],
+<<<<<<< HEAD
+=======
+"particles__kernel__impl_8cuh.html#a9056c5c0f33cbc0acb1c2b12e1a2a530":[2,0,2,6],
+>>>>>>> master
 "particles__kernel__impl_8cuh.html#abe84636059af3ed58ef603665395e6f4":[2,0,2,8],
 "particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5":[2,0,2,2],
 "particles__kernel__impl_8cuh_source.html":[2,0,2],
@@ -66,6 +76,7 @@ var NAVTREEINDEX1 =
 "shaders_8h.html#aea8e0959f6b7eabf6156f801e179da60":[2,0,11,1],
 "shaders_8h_source.html":[2,0,11],
 "struct_sim_params.html":[1,0,3],
+<<<<<<< HEAD
 "struct_sim_params.html#a01507f06cc018071a0eb741438aaa09b":[1,0,3,3],
 "struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478":[1,0,3,9],
 "struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9":[1,0,3,23],
@@ -90,6 +101,25 @@ var NAVTREEINDEX1 =
 "struct_sim_params.html#ae7508eba5dd90859215b59d19e001bb9":[1,0,3,13],
 "struct_sim_params.html#af41979948fdd8f76fe28ce2b43eb24cd":[1,0,3,1],
 "struct_sim_params.html#afab015432bd796517e5f540f6f7228e4":[1,0,3,18],
+=======
+"struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478":[1,0,3,5],
+"struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9":[1,0,3,16],
+"struct_sim_params.html#a301314921adc7bce20d8955cf03cdf3f":[1,0,3,15],
+"struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949":[1,0,3,9],
+"struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9":[1,0,3,2],
+"struct_sim_params.html#a557e8042b00135073cd51fabf4594142":[1,0,3,10],
+"struct_sim_params.html#a7058bad8c867d9d42d8c9d842638ebea":[1,0,3,7],
+"struct_sim_params.html#a7e131c24e1020c44173deb0f57a8c4af":[1,0,3,13],
+"struct_sim_params.html#a9d51112b7e86d46b6f33126a67cc84b4":[1,0,3,12],
+"struct_sim_params.html#aa27be265020f137f0a9cfbc3f1d2d9f8":[1,0,3,4],
+"struct_sim_params.html#abf1644c671e60ebaf873d9167e755328":[1,0,3,6],
+"struct_sim_params.html#acf7442ae8a49237861944271cb630d01":[1,0,3,0],
+"struct_sim_params.html#ad48210724ada15a14a649b25ad61575b":[1,0,3,14],
+"struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169":[1,0,3,3],
+"struct_sim_params.html#adb68e9ee2422208807756b367efdf842":[1,0,3,11],
+"struct_sim_params.html#ae7508eba5dd90859215b59d19e001bb9":[1,0,3,8],
+"struct_sim_params.html#af41979948fdd8f76fe28ce2b43eb24cd":[1,0,3,1],
+>>>>>>> master
 "structintegrate__functor.html":[1,0,0],
 "structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754":[1,0,0,2],
 "structintegrate__functor.html#a13075d4c547ba22c37137ff2b874ae45":[1,0,0,0],

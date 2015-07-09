@@ -1,3 +1,7 @@
 <map id="particleSystem.h" name="particleSystem.h">
+<<<<<<< HEAD
 <area shape="rect" id="node3" href="$particles__kernel_8cuh.html" title="Definicja struktury przechowuj¹cej parametry symulacji. " alt="" coords="157,80,295,107"/>
+=======
+<area shape="rect" id="node3" href="$particles__kernel_8cuh.html" title="particles_kernel.cuh" alt="" coords="157,80,295,107"/>
+>>>>>>> master
 </map>

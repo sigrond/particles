@@ -7,6 +7,7 @@
 
 var indexSectionsWithContent =
 {
+<<<<<<< HEAD
   0: "_abcdefghiklmnoprstuvwxz~",
   1: "ips",
   2: "prs",
@@ -15,6 +16,16 @@ var indexSectionsWithContent =
   5: "u",
   6: "dpt",
   7: "_cdmptv",
+=======
+  0: "_abcdfghiklmnoprstuvwx~",
+  1: "ips",
+  2: "prs",
+  3: "_acdfgiklmoprstux~",
+  4: "abcdfghiklmnoprstvw",
+  5: "u",
+  6: "dp",
+  7: "_cmpv",
+>>>>>>> master
   8: "_acdfgmnpstu",
   9: "c"
 };

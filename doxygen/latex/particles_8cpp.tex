@@ -1,0 +1,2059 @@
+\hypertarget{particles_8cpp}{\section{Dokumentacja pliku particles.\-cpp}
+\label{particles_8cpp}\index{particles.\-cpp@{particles.\-cpp}}
+}
+{\ttfamily \#include $<$G\-L/glew.\-h$>$}\\*
+{\ttfamily \#include $<$G\-L/freeglut.\-h$>$}\\*
+{\ttfamily \#include $<$cuda\-\_\-runtime.\-h$>$}\\*
+{\ttfamily \#include $<$helper\-\_\-functions.\-h$>$}\\*
+{\ttfamily \#include $<$helper\-\_\-cuda.\-h$>$}\\*
+{\ttfamily \#include $<$helper\-\_\-cuda\-\_\-gl.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$cstdlib$>$}\\*
+{\ttfamily \#include $<$cstdio$>$}\\*
+{\ttfamily \#include $<$algorithm$>$}\\*
+{\ttfamily \#include $<$float.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}particle\-System.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}render\-\_\-particles.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}paramgl.\-h\char`\"{}}\\*
+Wykres zależności załączania dla particles.\-cpp\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{particles_8cpp_a9608807ab27261888018dac76a7f4acd}{M\-A\-X\-\_\-\-E\-P\-S\-I\-L\-O\-N\-\_\-\-E\-R\-R\-O\-R}~5.\-00f
+\item 
+\#define \hyperlink{particles_8cpp_a4679d8ea8690999a6c6c7c0cb245c879}{T\-H\-R\-E\-S\-H\-O\-L\-D}~0.\-30f
+\item 
+\#define \hyperlink{particles_8cpp_a08246606c233e7785a497c09672f366f}{G\-R\-I\-D\-\_\-\-S\-I\-Z\-E}~64
+\item 
+\#define \hyperlink{particles_8cpp_a75cbc112dce4b21c13fe7bb671accab1}{N\-U\-M\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S}~4096
+\item 
+\#define \hyperlink{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{A}~\hyperlink{particles_8cpp_a581b24e790d1d71d4c940671987201f6}{kurczenie}
+\end{DoxyCompactItemize}
+\subsection*{Wyliczenia}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\-\_\-\-V\-I\-E\-W} = 0, 
+\hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\-\_\-\-M\-O\-V\-E}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{particles_8cpp_ad205012a960928f6fb61ea4f51a95e9f}{cuda\-Init} (int argc, char $\ast$$\ast$argv)
+\item 
+void \hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{cuda\-G\-L\-Init} (int argc, char $\ast$$\ast$argv)
+\item 
+void \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copy\-Array\-From\-Device} (void $\ast$host, const void $\ast$device, unsigned int vbo, int size)
+\item 
+void \hyperlink{particles_8cpp_a84431b1c39c053e49799109e5b6b488a}{init\-Particle\-System} (int \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles}, uint3 \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{grid\-Size}, bool b\-Use\-Open\-G\-L)
+\item 
+void \hyperlink{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}{cleanup} ()
+\item 
+void \hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{init\-G\-L} (int $\ast$argc, char $\ast$$\ast$argv)
+\item 
+void \hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{run\-Benchmark} (int \hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{iterations}, char $\ast$exec\-\_\-path)
+\item 
+void \hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{compute\-F\-P\-S} ()
+\item 
+void \hyperlink{particles_8cpp_a1e5b20fed15743656bb6d2e6a6ea6269}{display} ()
+\item 
+float \hyperlink{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand} ()
+\item 
+void \hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{add\-Sphere} ()
+\item 
+void \hyperlink{particles_8cpp_acc1ffe65e6869931318610cae7210078}{reshape} (int w, int h)
+\item 
+void \hyperlink{particles_8cpp_ac76a5d78172a826cd6ee9512b89a86c0}{mouse} (int button, int state, int x, int y)
+\item 
+void \hyperlink{particles_8cpp_ad95532e0e925e7584a930b366a613261}{xform} (float $\ast$v, float $\ast$r, G\-Lfloat $\ast$m)
+\item 
+void \hyperlink{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{ixform} (float $\ast$v, float $\ast$r, G\-Lfloat $\ast$m)
+\item 
+void \hyperlink{particles_8cpp_a9b3bc33348ec5b4dbb049f91362459b8}{ixform\-Point} (float $\ast$v, float $\ast$r, G\-Lfloat $\ast$m)
+\item 
+void \hyperlink{particles_8cpp_a45a7d7c86c97ca6a2d4d32ce2d263f67}{motion} (int x, int y)
+\item 
+void \hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{key} (unsigned char key, int, int)
+\item 
+void \hyperlink{particles_8cpp_ab838340d9e4833a685975205d9c8196a}{special} (int k, int x, int y)
+\item 
+void \hyperlink{particles_8cpp_a01131b63acf241e9db91704d89ce15d2}{idle} (void)
+\item 
+void \hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{init\-Params} ()
+\item 
+void \hyperlink{particles_8cpp_ac623a05dc7ab8844bdf40dc55c124fc6}{main\-Menu} (int i)
+\item 
+void \hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{init\-Menus} ()
+\item 
+int \hyperlink{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Zmienne}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a215ce3b0108691bf1f304ea0f709f67d}{width} = 640
+\item 
+const \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_aa90d4ba1278109bf241d6e43db40f80c}{height} = 480
+\item 
+int \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox}
+\item 
+int \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy}
+\item 
+int \hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{button\-State} = 0
+\item 
+float \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\-\_\-trans} \mbox{[}$\,$\mbox{]} = \{0, 0, -\/3\}
+\item 
+float \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\-\_\-rot} \mbox{[}$\,$\mbox{]} = \{0, 0, 0\}
+\item 
+float \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\-\_\-trans\-\_\-lag} \mbox{[}$\,$\mbox{]} = \{0, 0, -\/3\}
+\item 
+float \hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\-\_\-rot\-\_\-lag} \mbox{[}$\,$\mbox{]} = \{0, 0, 0\}
+\item 
+const float \hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{inertia} = 0.\-1f
+\item 
+\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{Particle\-Renderer\-::\-Display\-Mode} \hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{display\-Mode} = \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111}{Particle\-Renderer\-::\-P\-A\-R\-T\-I\-C\-L\-E\-\_\-\-S\-P\-H\-E\-R\-E\-S}
+\item 
+int \hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode} = 0
+\item 
+bool \hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{display\-Enabled} = true
+\item 
+bool \hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{b\-Pause} = false
+\item 
+bool \hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{display\-Sliders} = false
+\item 
+bool \hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{wireframe} = false
+\item 
+bool \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demo\-Mode} = false
+\item 
+int \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idle\-Counter} = 0
+\item 
+int \hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{demo\-Counter} = 0
+\item 
+const int \hyperlink{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}{idle\-Delay} = 2000
+\item 
+\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles} = 0
+\item 
+uint3 \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{grid\-Size}
+\item 
+int \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{num\-Iterations} = 0
+\item 
+float \hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep} = 1.\-0f
+\item 
+float \hyperlink{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{damping} = 1.\-0f
+\item 
+float \hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity} = 0.\-0f
+\item 
+int \hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{iterations} = 1
+\item 
+int \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} = 10
+\item 
+float \hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collide\-Spring} = 0.\-5f
+\item 
+float \hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collide\-Damping} = 0.\-02f
+\item 
+float \hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collide\-Shear} = 0.\-1f
+\item 
+float \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collide\-Attraction} = 0.\-1f
+\item 
+float \hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{big\-Radius} =2.\-0f
+\item 
+float \hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{big\-Radius0} =\hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{big\-Radius}
+\item 
+float \hyperlink{particles_8cpp_a581b24e790d1d71d4c940671987201f6}{kurczenie} =0.\-01
+\item 
+unsigned long long int \hyperlink{particles_8cpp_ae6faf33ad73ff5d0248af8f9477ca201}{licznik} =0
+\item 
+\hyperlink{class_particle_system}{Particle\-System} $\ast$ \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem} = 0
+\item 
+static int \hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fps\-Count} = 0
+\item 
+static int \hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{fps\-Limit} = 1
+\item 
+Stop\-Watch\-Interface $\ast$ \hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer} = N\-U\-L\-L
+\item 
+\hyperlink{class_particle_renderer}{Particle\-Renderer} $\ast$ \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer} = 0
+\item 
+float \hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{model\-View} \mbox{[}16\mbox{]}
+\item 
+Param\-List\-G\-L $\ast$ \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}
+\item 
+const int \hyperlink{particles_8cpp_a50f26bf26e6413a34dc36fc12c9bbc83}{frame\-Check\-Number} = 4
+\item 
+unsigned int \hyperlink{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}{frame\-Count} = 0
+\item 
+unsigned int \hyperlink{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{g\-\_\-\-Total\-Errors} = 0
+\item 
+char $\ast$ \hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\-\_\-ref\-File} = N\-U\-L\-L
+\item 
+const char $\ast$ \hyperlink{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}{s\-S\-D\-Ksample} = \char`\"{}C\-U\-D\-A Particles Simulation\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Dokumentacja definicji}
+\hypertarget{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{\index{particles.\-cpp@{particles.\-cpp}!A@{A}}
+\index{A@{A}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{A}]{\setlength{\rightskip}{0pt plus 5cm}\#define A~{\bf kurczenie}}}\label{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00113}{113} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_a08246606c233e7785a497c09672f366f}{\index{particles.\-cpp@{particles.\-cpp}!G\-R\-I\-D\-\_\-\-S\-I\-Z\-E@{G\-R\-I\-D\-\_\-\-S\-I\-Z\-E}}
+\index{G\-R\-I\-D\-\_\-\-S\-I\-Z\-E@{G\-R\-I\-D\-\_\-\-S\-I\-Z\-E}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{G\-R\-I\-D\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\-R\-I\-D\-\_\-\-S\-I\-Z\-E~64}}\label{particles_8cpp_a08246606c233e7785a497c09672f366f}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00067}{67} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_a9608807ab27261888018dac76a7f4acd}{\index{particles.\-cpp@{particles.\-cpp}!M\-A\-X\-\_\-\-E\-P\-S\-I\-L\-O\-N\-\_\-\-E\-R\-R\-O\-R@{M\-A\-X\-\_\-\-E\-P\-S\-I\-L\-O\-N\-\_\-\-E\-R\-R\-O\-R}}
+\index{M\-A\-X\-\_\-\-E\-P\-S\-I\-L\-O\-N\-\_\-\-E\-R\-R\-O\-R@{M\-A\-X\-\_\-\-E\-P\-S\-I\-L\-O\-N\-\_\-\-E\-R\-R\-O\-R}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{M\-A\-X\-\_\-\-E\-P\-S\-I\-L\-O\-N\-\_\-\-E\-R\-R\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-E\-P\-S\-I\-L\-O\-N\-\_\-\-E\-R\-R\-O\-R~5.\-00f}}\label{particles_8cpp_a9608807ab27261888018dac76a7f4acd}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00064}{64} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_a75cbc112dce4b21c13fe7bb671accab1}{\index{particles.\-cpp@{particles.\-cpp}!N\-U\-M\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S@{N\-U\-M\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S}}
+\index{N\-U\-M\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S@{N\-U\-M\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{N\-U\-M\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-U\-M\-\_\-\-P\-A\-R\-T\-I\-C\-L\-E\-S~4096}}\label{particles_8cpp_a75cbc112dce4b21c13fe7bb671accab1}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00068}{68} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_a4679d8ea8690999a6c6c7c0cb245c879}{\index{particles.\-cpp@{particles.\-cpp}!T\-H\-R\-E\-S\-H\-O\-L\-D@{T\-H\-R\-E\-S\-H\-O\-L\-D}}
+\index{T\-H\-R\-E\-S\-H\-O\-L\-D@{T\-H\-R\-E\-S\-H\-O\-L\-D}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{T\-H\-R\-E\-S\-H\-O\-L\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-H\-R\-E\-S\-H\-O\-L\-D~0.\-30f}}\label{particles_8cpp_a4679d8ea8690999a6c6c7c0cb245c879}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00065}{65} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+\subsection{Dokumentacja typów wyliczanych}
+\hypertarget{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55b}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55b}
+\begin{Desc}
+\item[Wartości wyliczeń]\par
+\begin{description}
+\index{M\-\_\-\-V\-I\-E\-W@{M\-\_\-\-V\-I\-E\-W}!particles.\-cpp@{particles.\-cpp}}\index{particles.\-cpp@{particles.\-cpp}!M\-\_\-\-V\-I\-E\-W@{M\-\_\-\-V\-I\-E\-W}}\item[{\em 
+\hypertarget{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\-\_\-\-V\-I\-E\-W}\label{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}
+}]\index{M\-\_\-\-M\-O\-V\-E@{M\-\_\-\-M\-O\-V\-E}!particles.\-cpp@{particles.\-cpp}}\index{particles.\-cpp@{particles.\-cpp}!M\-\_\-\-M\-O\-V\-E@{M\-\_\-\-M\-O\-V\-E}}\item[{\em 
+\hypertarget{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\-\_\-\-M\-O\-V\-E}\label{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}
+}]\end{description}
+\end{Desc}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00092}{92} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+\begin{DoxyCode}
+00092 \{ \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\_VIEW} = 0, \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\_MOVE} \};
+\end{DoxyCode}
+
+
+\subsection{Dokumentacja funkcji}
+\hypertarget{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{\index{particles.\-cpp@{particles.\-cpp}!add\-Sphere@{add\-Sphere}}
+\index{add\-Sphere@{add\-Sphere}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{add\-Sphere}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Sphere (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00335}{335} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particle_system_8cpp_source_l00485}{Particle\-System\-::add\-Sphere()}, \hyperlink{particles_8cpp_source_l00103}{ballr}, \hyperlink{particle_system_8cpp_source_l00400}{frand()}, \hyperlink{particle_system_8h_source_l00115}{Particle\-System\-::get\-Particle\-Radius()} i \hyperlink{particles_8cpp_source_l00116}{psystem}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00627}{idle()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+
+
+\begin{DoxyCode}
+00336 \{
+00337     \textcolor{comment}{// inject a sphere of particles}
+00338     \textcolor{keywordtype}{float} pr = \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}();
+00339     \textcolor{keywordtype}{float} tr = pr+(pr*2.0f)*\hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr};
+00340     \textcolor{keywordtype}{float} pos[4], vel[4];
+00341     pos[0] = -1.0f + tr + \hyperlink{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*(2.0f - tr*2.0f);
+00342     pos[1] = 1.0f - tr;
+00343     pos[2] = -1.0f + tr + \hyperlink{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*(2.0f - tr*2.0f);
+00344     pos[3] = 0.0f;
+00345     \textcolor{comment}{//vel[0] = vel[1] = vel[2] = vel[3] = 0.0f;}
+00346         vel[0]=\hyperlink{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()/100.0f;
+00347         vel[1]=\hyperlink{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()/100.0f;
+00348         vel[2]=\hyperlink{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()/100.0f;
+00349         vel[3]=\hyperlink{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()/100.0f;
+00350     \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{addSphere}(0, pos, vel, \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr}, pr*2.0f);
+00351 \}
+\end{DoxyCode}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}{\index{particles.\-cpp@{particles.\-cpp}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{cleanup}]{\setlength{\rightskip}{0pt plus 5cm}void cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00157}{157} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+
+\begin{DoxyCode}
+00158 \{
+00159     sdkDeleteTimer(&\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer});
+00160 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{\index{particles.\-cpp@{particles.\-cpp}!compute\-F\-P\-S@{compute\-F\-P\-S}}
+\index{compute\-F\-P\-S@{compute\-F\-P\-S}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{compute\-F\-P\-S}]{\setlength{\rightskip}{0pt plus 5cm}void compute\-F\-P\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00229}{229} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00119}{fps\-Count}, \hyperlink{particles_8cpp_source_l00120}{fps\-Limit}, \hyperlink{particles_8cpp_source_l00131}{frame\-Count} i \hyperlink{particles_8cpp_source_l00094}{num\-Particles}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+
+
+\begin{DoxyCode}
+00230 \{
+00231     \hyperlink{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}{frameCount}++;
+00232     \hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount}++;
+00233 
+00234     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount} == \hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{fpsLimit})
+00235     \{
+00236         \textcolor{keywordtype}{char} fps[256];
+00237         \textcolor{keywordtype}{float} ifps = 1.f / (sdkGetAverageTimerValue(&\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer}) / 1000.f);
+00238         sprintf(fps, \textcolor{stringliteral}{"CUDA Particles (%d particles): %3.1f fps"}, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, ifps);
+00239 
+00240         glutSetWindowTitle(fps);
+00241         \hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount} = 0;
+00242 
+00243         \hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{fpsLimit} = (int)MAX(ifps, 1.f);
+00244         sdkResetTimer(&\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer});
+00245     \}
+00246 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{particles_8cpp_a6fed970e4454f0b672cd023315b9e343_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{\index{particles.\-cpp@{particles.\-cpp}!copy\-Array\-From\-Device@{copy\-Array\-From\-Device}}
+\index{copy\-Array\-From\-Device@{copy\-Array\-From\-Device}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{copy\-Array\-From\-Device}]{\setlength{\rightskip}{0pt plus 5cm}void copy\-Array\-From\-Device (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{host, }
+\item[{const void $\ast$}]{device, }
+\item[{unsigned int}]{vbo, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}
+\hypertarget{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{\index{particles.\-cpp@{particles.\-cpp}!cuda\-G\-L\-Init@{cuda\-G\-L\-Init}}
+\index{cuda\-G\-L\-Init@{cuda\-G\-L\-Init}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{cuda\-G\-L\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void cuda\-G\-L\-Init (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00056}{56} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+
+\begin{DoxyCode}
+00057     \{
+00058         \textcolor{comment}{// use command-line specified CUDA device, otherwise use device with highest Gflops/s}
+00059         findCudaGLDevice(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv);
+00060     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_ad205012a960928f6fb61ea4f51a95e9f}{\index{particles.\-cpp@{particles.\-cpp}!cuda\-Init@{cuda\-Init}}
+\index{cuda\-Init@{cuda\-Init}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{cuda\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void cuda\-Init (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_ad205012a960928f6fb61ea4f51a95e9f}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00042}{42} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+\begin{DoxyCode}
+00043     \{
+00044         \textcolor{keywordtype}{int} devID;
+00045 
+00046         \textcolor{comment}{// use command-line specified CUDA device, otherwise use device with highest Gflops/s}
+00047         devID = findCudaDevice(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv);
+00048 
+00049         \textcolor{keywordflow}{if} (devID < 0)
+00050         \{
+00051             printf(\textcolor{stringliteral}{"No CUDA Capable devices found, exiting...\(\backslash\)n"});
+00052             exit(EXIT\_SUCCESS);
+00053         \}
+00054     \}
+\end{DoxyCode}
+\hypertarget{particles_8cpp_a1e5b20fed15743656bb6d2e6a6ea6269}{\index{particles.\-cpp@{particles.\-cpp}!display@{display}}
+\index{display@{display}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{display}]{\setlength{\rightskip}{0pt plus 5cm}void display (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a1e5b20fed15743656bb6d2e6a6ea6269}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00248}{248} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00110}{big\-Radius}, \hyperlink{particles_8cpp_source_l00111}{big\-Radius0}, \hyperlink{particles_8cpp_source_l00084}{b\-Pause}, \hyperlink{particles_8cpp_source_l00076}{camera\-\_\-rot}, \hyperlink{particles_8cpp_source_l00078}{camera\-\_\-rot\-\_\-lag}, \hyperlink{particles_8cpp_source_l00075}{camera\-\_\-trans}, \hyperlink{particles_8cpp_source_l00077}{camera\-\_\-trans\-\_\-lag}, \hyperlink{particles_8cpp_source_l00108}{collide\-Attraction}, \hyperlink{particles_8cpp_source_l00106}{collide\-Damping}, \hyperlink{particles_8cpp_source_l00107}{collide\-Shear}, \hyperlink{particles_8cpp_source_l00105}{collide\-Spring}, \hyperlink{particles_8cpp_source_l00229}{compute\-F\-P\-S()}, \hyperlink{particles_8cpp_source_l00100}{damping}, \hyperlink{render__particles_8cpp_source_l00091}{Particle\-Renderer\-::display()}, \hyperlink{particles_8cpp_source_l00083}{display\-Enabled}, \hyperlink{particles_8cpp_source_l00080}{display\-Mode}, \hyperlink{particles_8cpp_source_l00085}{display\-Sliders}, \hyperlink{particle_system_8h_source_l00053}{Particle\-System\-::get\-Current\-Read\-Buffer()}, \hyperlink{particle_system_8h_source_l00048}{Particle\-System\-::get\-Num\-Particles()}, \hyperlink{particles_8cpp_source_l00101}{gravity}, \hyperlink{particles_8cpp_source_l00079}{inertia}, \hyperlink{particles_8cpp_source_l00102}{iterations}, \hyperlink{particles_8cpp_source_l00114}{licznik}, \hyperlink{particles_8cpp_source_l00116}{psystem}, \hyperlink{particles_8cpp_source_l00123}{renderer}, \hyperlink{particle_system_8h_source_l00105}{Particle\-System\-::set\-Big\-Radius()}, \hyperlink{particle_system_8h_source_l00100}{Particle\-System\-::set\-Collide\-Attraction()}, \hyperlink{particle_system_8h_source_l00092}{Particle\-System\-::set\-Collide\-Damping()}, \hyperlink{particle_system_8h_source_l00096}{Particle\-System\-::set\-Collide\-Shear()}, \hyperlink{particle_system_8h_source_l00088}{Particle\-System\-::set\-Collide\-Spring()}, \hyperlink{particle_system_8h_source_l00079}{Particle\-System\-::set\-Damping()}, \hyperlink{particle_system_8h_source_l00083}{Particle\-System\-::set\-Gravity()}, \hyperlink{particle_system_8h_source_l00074}{Particle\-System\-::set\-Iterations()}, \hyperlink{render__particles_8cpp_source_l00048}{Particle\-Renderer\-::set\-Vertex\-Buffer()}, \hyperlink{particles_8cpp_source_l00099}{timestep} i \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()}.
+
+
+\begin{DoxyCode}
+00249 \{
+00250     sdkStartTimer(&\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer});
+00251 
+00252     \textcolor{comment}{// update the simulation}
+00253     \textcolor{keywordflow}{if} (!\hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause})
+00254     \{
+00255         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}{setIterations}(\hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{iterations});
+00256         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{setDamping}(\hyperlink{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{damping});
+00257         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{setGravity}(-\hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity});
+00258         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{setCollideSpring}(\hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring});
+00259         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{setCollideDamping}(\hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping});
+00260         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{setCollideShear}(\hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear});
+00261         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{setCollideAttraction}(
+      \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction});
+00262 
+00263                 \hyperlink{particles_8cpp_ae6faf33ad73ff5d0248af8f9477ca201}{licznik}++;
+00264                 \hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{bigRadius}=\hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{bigRadius0}-\hyperlink{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{A}*sqrt(\hyperlink{particles_8cpp_ae6faf33ad73ff5d0248af8f9477ca201}{licznik}*
+      \hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep});\textcolor{comment}{//r=r0-A*sqrt(t)}
+00265                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{setBigRadius}(\hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{bigRadius});
+00266 
+00267         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{update}(\hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep});
+00268 
+00269         \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer})
+00270         \{
+00271             \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}->\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{setVertexBuffer}(\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->
+      \hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{getCurrentReadBuffer}(), \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}());
+00272         \}
+00273     \}
+00274 
+00275     \textcolor{comment}{// render}
+00276     glClear(GL\_COLOR\_BUFFER\_BIT | GL\_DEPTH\_BUFFER\_BIT);
+00277 
+00278     \textcolor{comment}{// view transform}
+00279     glMatrixMode(GL\_MODELVIEW);
+00280     glLoadIdentity();
+00281 
+00282     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} c = 0; c < 3; ++c)
+00283     \{
+00284         \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[c] += (\hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[c] - 
+      \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[c]) * \hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{inertia};
+00285         \hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[c] += (\hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[c] - 
+      \hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[c]) * \hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{inertia};
+00286     \}
+00287 
+00288     glTranslatef(\hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[0], \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[1], 
+      \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[2]);
+00289     glRotatef(\hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[0], 1.0, 0.0, 0.0);
+00290     glRotatef(\hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[1], 0.0, 1.0, 0.0);
+00291 
+00292     glGetFloatv(GL\_MODELVIEW\_MATRIX, \hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{modelView});
+00293 
+00294     \textcolor{comment}{// cube -> sphere}
+00295     glColor3f(1.0, 1.0, 1.0);
+00296     \textcolor{comment}{//glutWireCube(2.0);}
+00297         glutWireSphere(\hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{bigRadius}, 20, 10);
+00298 
+00299     \textcolor{comment}{// collider}
+00300     glPushMatrix();
+00301     float3 p = \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a3c8578d474f5a6f14d903a242aec96ec}{getColliderPos}();
+00302     glTranslatef(p.x, p.y, p.z);
+00303     glColor3f(1.0, 0.0, 0.0);
+00304     glutSolidSphere(\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a56f07dfab9d5cbf510c6e0a28e816038}{getColliderRadius}(), 20, 10);
+00305     glPopMatrix();
+00306 
+00307     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer} && \hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled})
+00308     \{
+00309         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}->\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{display}(\hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode});
+00310     \}
+00311 
+00312     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
+00313     \{
+00314         glDisable(GL\_DEPTH\_TEST);
+00315         glBlendFunc(GL\_ONE\_MINUS\_DST\_COLOR, GL\_ZERO); \textcolor{comment}{// invert color}
+00316         glEnable(GL\_BLEND);
+00317         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->Render(0, 0);
+00318         glDisable(GL\_BLEND);
+00319         glEnable(GL\_DEPTH\_TEST);
+00320     \}
+00321 
+00322     sdkStopTimer(&\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer});
+00323 
+00324     glutSwapBuffers();
+00325     glutReportErrors();
+00326 
+00327     \hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{computeFPS}();
+00328 \}
+\end{DoxyCode}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles_8cpp_a1e5b20fed15743656bb6d2e6a6ea6269_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{\index{particles.\-cpp@{particles.\-cpp}!frand@{frand}}
+\index{frand@{frand}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{frand}]{\setlength{\rightskip}{0pt plus 5cm}float frand (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00330}{330} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+\begin{DoxyCode}
+00331 \{
+00332     \textcolor{keywordflow}{return} rand() / (float) RAND\_MAX;
+00333 \}
+\end{DoxyCode}
+\hypertarget{particles_8cpp_a01131b63acf241e9db91704d89ce15d2}{\index{particles.\-cpp@{particles.\-cpp}!idle@{idle}}
+\index{idle@{idle}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{idle}]{\setlength{\rightskip}{0pt plus 5cm}void idle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a01131b63acf241e9db91704d89ce15d2}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00627}{627} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00335}{add\-Sphere()}, \hyperlink{particles_8cpp_source_l00103}{ballr}, \hyperlink{particles_8cpp_source_l00076}{camera\-\_\-rot}, \hyperlink{particles_8cpp_source_l00089}{demo\-Counter}, \hyperlink{particles_8cpp_source_l00087}{demo\-Mode}, \hyperlink{particles_8cpp_source_l00088}{idle\-Counter} i \hyperlink{particles_8cpp_source_l00090}{idle\-Delay}.
+
+
+\begin{DoxyCode}
+00628 \{
+00629     \textcolor{keywordflow}{if} ((\hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter}++ > \hyperlink{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}{idleDelay}) && (\hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode}==\textcolor{keyword}{false}))
+00630     \{
+00631         \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{true};
+00632         printf(\textcolor{stringliteral}{"Entering demo mode\(\backslash\)n"});
+00633     \}
+00634 
+00635     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode})
+00636     \{
+00637         \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[1] += 0.1f;
+00638 
+00639         \textcolor{keywordflow}{if} (\textcolor{keyword}{false} && \hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{demoCounter}++ > 1000)
+00640         \{
+00641             \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} = 10 + (rand() % 10);
+00642             \hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{addSphere}();
+00643             \hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{demoCounter} = 0;
+00644         \}
+00645     \}
+00646 
+00647     glutPostRedisplay();
+00648 \}
+\end{DoxyCode}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles_8cpp_a01131b63acf241e9db91704d89ce15d2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{\index{particles.\-cpp@{particles.\-cpp}!init\-G\-L@{init\-G\-L}}
+\index{init\-G\-L@{init\-G\-L}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{init\-G\-L}]{\setlength{\rightskip}{0pt plus 5cm}void init\-G\-L (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00163}{163} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+
+\begin{DoxyCode}
+00164 \{
+00165     glutInit(argc, argv);
+00166     glutInitDisplayMode(GLUT\_RGB | GLUT\_DEPTH | GLUT\_DOUBLE);
+00167     glutInitWindowSize(\hyperlink{particles_8cpp_a215ce3b0108691bf1f304ea0f709f67d}{width}, \hyperlink{particles_8cpp_aa90d4ba1278109bf241d6e43db40f80c}{height});
+00168     glutCreateWindow(\textcolor{stringliteral}{"CUDA Particles"});
+00169 
+00170     glewInit();
+00171 
+00172     \textcolor{keywordflow}{if} (!glewIsSupported(\textcolor{stringliteral}{"GL\_VERSION\_2\_0 GL\_VERSION\_1\_5 GL\_ARB\_multitexture GL\_ARB\_vertex\_buffer\_object"}))
+00173     \{
+00174         fprintf(stderr, \textcolor{stringliteral}{"Required OpenGL extensions missing."});
+00175         exit(EXIT\_FAILURE);
+00176     \}
+00177 
+00178 \textcolor{preprocessor}{#if defined (\_WIN32)}
+00179 \textcolor{preprocessor}{}
+00180     \textcolor{keywordflow}{if} (wglewIsSupported(\textcolor{stringliteral}{"WGL\_EXT\_swap\_control"}))
+00181     \{
+00182         \textcolor{comment}{// disable vertical sync}
+00183         wglSwapIntervalEXT(0);
+00184     \}
+00185 
+00186 \textcolor{preprocessor}{#endif}
+00187 \textcolor{preprocessor}{}
+00188     glEnable(GL\_DEPTH\_TEST);
+00189     glClearColor(0.25, 0.25, 0.25, 1.0);
+00190 
+00191     glutReportErrors();
+00192 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{\index{particles.\-cpp@{particles.\-cpp}!init\-Menus@{init\-Menus}}
+\index{init\-Menus@{init\-Menus}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{init\-Menus}]{\setlength{\rightskip}{0pt plus 5cm}void init\-Menus (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00686}{686} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+
+\begin{DoxyCode}
+00687 \{
+00688     glutCreateMenu(\hyperlink{particles_8cpp_ac623a05dc7ab8844bdf40dc55c124fc6}{mainMenu});
+00689     glutAddMenuEntry(\textcolor{stringliteral}{"Reset block [1]"}, \textcolor{charliteral}{'1'});
+00690     glutAddMenuEntry(\textcolor{stringliteral}{"Reset random [2]"}, \textcolor{charliteral}{'2'});
+00691     glutAddMenuEntry(\textcolor{stringliteral}{"Add sphere [3]"}, \textcolor{charliteral}{'3'});
+00692     glutAddMenuEntry(\textcolor{stringliteral}{"View mode [v]"}, \textcolor{charliteral}{'v'});
+00693     glutAddMenuEntry(\textcolor{stringliteral}{"Move cursor mode [m]"}, \textcolor{charliteral}{'m'});
+00694     glutAddMenuEntry(\textcolor{stringliteral}{"Toggle point rendering [p]"}, \textcolor{charliteral}{'p'});
+00695     glutAddMenuEntry(\textcolor{stringliteral}{"Toggle animation [ ]"}, \textcolor{charliteral}{' '});
+00696     glutAddMenuEntry(\textcolor{stringliteral}{"Step animation [ret]"}, 13);
+00697     glutAddMenuEntry(\textcolor{stringliteral}{"Toggle sliders [h]"}, \textcolor{charliteral}{'h'});
+00698     glutAddMenuEntry(\textcolor{stringliteral}{"Quit (esc)"}, \textcolor{charliteral}{'\(\backslash\)033'});
+00699     glutAttachMenu(GLUT\_RIGHT\_BUTTON);
+00700 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{\index{particles.\-cpp@{particles.\-cpp}!init\-Params@{init\-Params}}
+\index{init\-Params@{init\-Params}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{init\-Params}]{\setlength{\rightskip}{0pt plus 5cm}void init\-Params (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_adf670f569f3be8036b915a6245caf9da}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00650}{650} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00103}{ballr}, \hyperlink{particles_8cpp_source_l00108}{collide\-Attraction}, \hyperlink{particles_8cpp_source_l00106}{collide\-Damping}, \hyperlink{particles_8cpp_source_l00107}{collide\-Shear}, \hyperlink{particles_8cpp_source_l00105}{collide\-Spring}, \hyperlink{particles_8cpp_source_l00100}{damping}, \hyperlink{particles_8cpp_source_l00133}{g\-\_\-ref\-File}, \hyperlink{particles_8cpp_source_l00101}{gravity} i \hyperlink{particles_8cpp_source_l00099}{timestep}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+
+\begin{DoxyCode}
+00651 \{
+00652     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
+00653     \{
+00654         \hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep} = 0.0f;
+00655         \hyperlink{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{damping} = 0.0f;
+00656         \hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity} = 0.0f;
+00657         \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} = 1;
+00658         \hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring} = 0.0f;
+00659         \hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping} = 0.0f;
+00660         \hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear} = 0.0f;
+00661         \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction} = 0.0f;
+00662 
+00663     \}
+00664     \textcolor{keywordflow}{else}
+00665     \{
+00666 
+00667         \textcolor{comment}{// create a new parameter list}
+00668         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params} = \textcolor{keyword}{new} ParamListGL(\textcolor{stringliteral}{"misc"});
+00669         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->AddParam(\textcolor{keyword}{new} Param<float>(\textcolor{stringliteral}{"time step"}, \hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep}, 0.0f, 1.0f, 0.01f, &
+      \hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep}));
+00670         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->AddParam(\textcolor{keyword}{new} Param<float>(\textcolor{stringliteral}{"damping"}  , \hyperlink{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{damping} , 0.0f, 1.0f, 0.001f, &
+      \hyperlink{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{damping}));
+00671         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->AddParam(\textcolor{keyword}{new} Param<float>(\textcolor{stringliteral}{"gravity"}  , \hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity} , 0.0f, 0.001f, 0.0001f, &
+      \hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity}));
+00672         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->AddParam(\textcolor{keyword}{new} Param<int> (\textcolor{stringliteral}{"ball radius"}, \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} , 1, 20, 1, &
+      \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr}));
+00673 
+00674         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->AddParam(\textcolor{keyword}{new} Param<float>(\textcolor{stringliteral}{"collide spring"} , \hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring} , 0.0f, 1.0f,
+       0.001f, &\hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring}));
+00675         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->AddParam(\textcolor{keyword}{new} Param<float>(\textcolor{stringliteral}{"collide damping"}, 
+      \hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping}, 0.0f, 0.1f, 0.001f, &\hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping}));
+00676         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->AddParam(\textcolor{keyword}{new} Param<float>(\textcolor{stringliteral}{"collide shear"}  , \hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear}  , 0.0f, 0.1f, 
+      0.001f, &\hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear}));
+00677         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->AddParam(\textcolor{keyword}{new} Param<float>(\textcolor{stringliteral}{"collide attract"}, 
+      \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction}, 0.0f, 0.1f, 0.001f, &\hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction}));
+00678     \}
+00679 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{particles_8cpp_adf670f569f3be8036b915a6245caf9da_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_a84431b1c39c053e49799109e5b6b488a}{\index{particles.\-cpp@{particles.\-cpp}!init\-Particle\-System@{init\-Particle\-System}}
+\index{init\-Particle\-System@{init\-Particle\-System}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{init\-Particle\-System}]{\setlength{\rightskip}{0pt plus 5cm}void init\-Particle\-System (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-Particles, }
+\item[{uint3}]{grid\-Size, }
+\item[{bool}]{b\-Use\-Open\-G\-L}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a84431b1c39c053e49799109e5b6b488a}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00142}{142} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particle_system_8h_source_l00032}{Particle\-System\-::\-C\-O\-N\-F\-I\-G\-\_\-\-G\-R\-I\-D}, \hyperlink{particle_system_8h_source_l00057}{Particle\-System\-::get\-Color\-Buffer()}, \hyperlink{particle_system_8h_source_l00115}{Particle\-System\-::get\-Particle\-Radius()}, \hyperlink{particles_8cpp_source_l00116}{psystem}, \hyperlink{particles_8cpp_source_l00123}{renderer}, \hyperlink{particle_system_8cpp_source_l00436}{Particle\-System\-::reset()}, \hyperlink{render__particles_8h_source_l00023}{Particle\-Renderer\-::set\-Color\-Buffer()} i \hyperlink{render__particles_8h_source_l00042}{Particle\-Renderer\-::set\-Particle\-Radius()}.
+
+
+\begin{DoxyCode}
+00143 \{
+00144     \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem} = \textcolor{keyword}{new} \hyperlink{class_particle_system}{ParticleSystem}(\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, 
+      \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}, bUseOpenGL);
+00145     \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{reset}(\hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{ParticleSystem::CONFIG\_GRID});
+00146 
+00147     \textcolor{keywordflow}{if} (bUseOpenGL)
+00148     \{
+00149         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer} = \textcolor{keyword}{new} \hyperlink{class_particle_renderer}{ParticleRenderer};
+00150         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}->\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{setParticleRadius}(\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->
+      \hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}());
+00151         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}->\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{setColorBuffer}(\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->
+      \hyperlink{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{getColorBuffer}());
+00152     \}
+00153 
+00154     sdkCreateTimer(&\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer});
+00155 \}
+\end{DoxyCode}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles_8cpp_a84431b1c39c053e49799109e5b6b488a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{\index{particles.\-cpp@{particles.\-cpp}!ixform@{ixform}}
+\index{ixform@{ixform}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{ixform}]{\setlength{\rightskip}{0pt plus 5cm}void ixform (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{v, }
+\item[{float $\ast$}]{r, }
+\item[{G\-Lfloat $\ast$}]{m}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00420}{420} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+\begin{DoxyCode}
+00421 \{
+00422     r[0] = v[0]*m[0] + v[1]*m[1] + v[2]*m[2];
+00423     r[1] = v[0]*m[4] + v[1]*m[5] + v[2]*m[6];
+00424     r[2] = v[0]*m[8] + v[1]*m[9] + v[2]*m[10];
+00425 \}
+\end{DoxyCode}
+\hypertarget{particles_8cpp_a9b3bc33348ec5b4dbb049f91362459b8}{\index{particles.\-cpp@{particles.\-cpp}!ixform\-Point@{ixform\-Point}}
+\index{ixform\-Point@{ixform\-Point}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{ixform\-Point}]{\setlength{\rightskip}{0pt plus 5cm}void ixform\-Point (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{v, }
+\item[{float $\ast$}]{r, }
+\item[{G\-Lfloat $\ast$}]{m}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a9b3bc33348ec5b4dbb049f91362459b8}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00427}{427} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+\begin{DoxyCode}
+00428 \{
+00429     \textcolor{keywordtype}{float} x[4];
+00430     x[0] = v[0] - m[12];
+00431     x[1] = v[1] - m[13];
+00432     x[2] = v[2] - m[14];
+00433     x[3] = 1.0f;
+00434     \hyperlink{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{ixform}(x, r, m);
+00435 \}
+\end{DoxyCode}
+\hypertarget{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{\index{particles.\-cpp@{particles.\-cpp}!key@{key}}
+\index{key@{key}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{key}]{\setlength{\rightskip}{0pt plus 5cm}void key (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{key, }
+\item[{int}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00520}{520} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particle_system_8cpp_source_l00485}{Particle\-System\-::add\-Sphere()}, \hyperlink{particles_8cpp_source_l00335}{add\-Sphere()}, \hyperlink{particles_8cpp_source_l00103}{ballr}, \hyperlink{particles_8cpp_source_l00084}{b\-Pause}, \hyperlink{particle_system_8h_source_l00032}{Particle\-System\-::\-C\-O\-N\-F\-I\-G\-\_\-\-G\-R\-I\-D}, \hyperlink{particle_system_8h_source_l00031}{Particle\-System\-::\-C\-O\-N\-F\-I\-G\-\_\-\-R\-A\-N\-D\-O\-M}, \hyperlink{particles_8cpp_source_l00087}{demo\-Mode}, \hyperlink{particles_8cpp_source_l00083}{display\-Enabled}, \hyperlink{particles_8cpp_source_l00080}{display\-Mode}, \hyperlink{particles_8cpp_source_l00085}{display\-Sliders}, \hyperlink{particle_system_8cpp_source_l00306}{Particle\-System\-::dump\-Grid()}, \hyperlink{particle_system_8cpp_source_l00331}{Particle\-System\-::dump\-Particles()}, \hyperlink{particle_system_8h_source_l00053}{Particle\-System\-::get\-Current\-Read\-Buffer()}, \hyperlink{particle_system_8h_source_l00048}{Particle\-System\-::get\-Num\-Particles()}, \hyperlink{particle_system_8h_source_l00115}{Particle\-System\-::get\-Particle\-Radius()}, \hyperlink{particles_8cpp_source_l00088}{idle\-Counter}, \hyperlink{particles_8cpp_source_l00092}{M\-\_\-\-M\-O\-V\-E}, \hyperlink{particles_8cpp_source_l00092}{M\-\_\-\-V\-I\-E\-W}, \hyperlink{particles_8cpp_source_l00082}{mode}, \hyperlink{particles_8cpp_source_l00094}{num\-Particles}, \hyperlink{render__particles_8h_source_l00032}{Particle\-Renderer\-::\-P\-A\-R\-T\-I\-C\-L\-E\-\_\-\-N\-U\-M\-\_\-\-M\-O\-D\-E\-S}, \hyperlink{particles_8cpp_source_l00116}{psystem}, \hyperlink{particles_8cpp_source_l00123}{renderer}, \hyperlink{particle_system_8cpp_source_l00436}{Particle\-System\-::reset()}, \hyperlink{render__particles_8cpp_source_l00048}{Particle\-Renderer\-::set\-Vertex\-Buffer()}, \hyperlink{particles_8cpp_source_l00099}{timestep}, \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()} i \hyperlink{particles_8cpp_source_l00086}{wireframe}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00681}{main\-Menu()}.
+
+
+\begin{DoxyCode}
+00521 \{
+00522     \textcolor{keywordflow}{switch} (\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{key})
+00523     \{
+00524         \textcolor{keywordflow}{case} \textcolor{charliteral}{' '}:
+00525             \hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause} = !\hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause};
+00526             \textcolor{keywordflow}{break};
+00527 
+00528         \textcolor{keywordflow}{case} 13:
+00529             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{update}(\hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep});
+00530 
+00531             \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer})
+00532             \{
+00533                 \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}->\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{setVertexBuffer}(\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->
+      \hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{getCurrentReadBuffer}(), \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}());
+00534             \}
+00535 
+00536             \textcolor{keywordflow}{break};
+00537 
+00538         \textcolor{keywordflow}{case} \textcolor{charliteral}{'\(\backslash\)033'}:
+00539         \textcolor{keywordflow}{case} \textcolor{charliteral}{'q'}:
+00540             exit(EXIT\_SUCCESS);
+00541             \textcolor{keywordflow}{break};
+00542 
+00543         \textcolor{keywordflow}{case} \textcolor{charliteral}{'v'}:
+00544             \hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode} = \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\_VIEW};
+00545             \textcolor{keywordflow}{break};
+00546 
+00547         \textcolor{keywordflow}{case} \textcolor{charliteral}{'m'}:
+00548             \hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode} = \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\_MOVE};
+00549             \textcolor{keywordflow}{break};
+00550 
+00551         \textcolor{keywordflow}{case} \textcolor{charliteral}{'p'}:
+00552             \hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode} = (\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{ParticleRenderer::DisplayMode})
+00553                           ((\hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode} + 1) % 
+      \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc}{ParticleRenderer::PARTICLE\_NUM\_MODES});
+00554             \textcolor{keywordflow}{break};
+00555 
+00556         \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'}:
+00557             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}{dumpGrid}();
+00558             \textcolor{keywordflow}{break};
+00559 
+00560         \textcolor{keywordflow}{case} \textcolor{charliteral}{'u'}:
+00561             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{dumpParticles}(0, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}-1);
+00562             \textcolor{keywordflow}{break};
+00563 
+00564         \textcolor{keywordflow}{case} \textcolor{charliteral}{'r'}:
+00565             \hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled} = !\hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled};
+00566             \textcolor{keywordflow}{break};
+00567 
+00568         \textcolor{keywordflow}{case} \textcolor{charliteral}{'1'}:
+00569             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{reset}(\hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{ParticleSystem::CONFIG\_GRID});
+00570             \textcolor{keywordflow}{break};
+00571 
+00572         \textcolor{keywordflow}{case} \textcolor{charliteral}{'2'}:
+00573             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{reset}(\hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{ParticleSystem::CONFIG\_RANDOM});
+00574             \textcolor{keywordflow}{break};
+00575 
+00576         \textcolor{keywordflow}{case} \textcolor{charliteral}{'3'}:
+00577             \hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{addSphere}();
+00578             \textcolor{keywordflow}{break};
+00579 
+00580         \textcolor{keywordflow}{case} \textcolor{charliteral}{'4'}:
+00581             \{
+00582                 \textcolor{comment}{// shoot ball from camera}
+00583                 \textcolor{keywordtype}{float} pr = \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}();
+00584                 \textcolor{keywordtype}{float} vel[4], velw[4], pos[4], posw[4];
+00585                 vel[0] = 0.0f;
+00586                 vel[1] = 0.0f;
+00587                 vel[2] = -0.05f;
+00588                 vel[3] = 0.0f;
+00589                 \hyperlink{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{ixform}(vel, velw, \hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{modelView});
+00590 
+00591                 pos[0] = 0.0f;
+00592                 pos[1] = 0.0f;
+00593                 pos[2] = -2.5f;
+00594                 pos[3] = 1.0;
+00595                 \hyperlink{particles_8cpp_a9b3bc33348ec5b4dbb049f91362459b8}{ixformPoint}(pos, posw, \hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{modelView});
+00596                 posw[3] = 0.0f;
+00597 
+00598                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{addSphere}(0, posw, velw, \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr}, pr*2.0f);
+00599             \}
+00600             \textcolor{keywordflow}{break};
+00601 
+00602         \textcolor{keywordflow}{case} \textcolor{charliteral}{'w'}:
+00603             \hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{wireframe} = !\hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{wireframe};
+00604             \textcolor{keywordflow}{break};
+00605 
+00606         \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:
+00607             \hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders} = !\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders};
+00608             \textcolor{keywordflow}{break};
+00609     \}
+00610 
+00611     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
+00612     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
+00613     glutPostRedisplay();
+00614 \}
+\end{DoxyCode}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{\index{particles.\-cpp@{particles.\-cpp}!main@{main}}
+\index{main@{main}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00706}{706} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00157}{cleanup()}, \hyperlink{particle_system__cuda_8cu_source_l00056}{cuda\-G\-L\-Init()}, \hyperlink{particle_system__cuda_8cu_source_l00042}{cuda\-Init()}, \hyperlink{particles_8cpp_source_l00133}{g\-\_\-ref\-File}, \hyperlink{particles_8cpp_source_l00132}{g\-\_\-\-Total\-Errors}, \hyperlink{particles_8cpp_source_l00163}{init\-G\-L()}, \hyperlink{particles_8cpp_source_l00686}{init\-Menus()}, \hyperlink{particles_8cpp_source_l00650}{init\-Params()}, \hyperlink{particles_8cpp_source_l00096}{num\-Iterations}, \hyperlink{particles_8cpp_source_l00094}{num\-Particles}, \hyperlink{particles_8cpp_source_l00116}{psystem}, \hyperlink{particles_8cpp_source_l00194}{run\-Benchmark()} i \hyperlink{particles_8cpp_source_l00135}{s\-S\-D\-Ksample}.
+
+
+\begin{DoxyCode}
+00707 \{
+00708     printf(\textcolor{stringliteral}{"%s Starting...\(\backslash\)n\(\backslash\)n"}, \hyperlink{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}{sSDKsample});
+00709 
+00710     \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles} = \hyperlink{particles_8cpp_a75cbc112dce4b21c13fe7bb671accab1}{NUM\_PARTICLES};
+00711     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} gridDim = \hyperlink{particles_8cpp_a08246606c233e7785a497c09672f366f}{GRID\_SIZE};
+00712     \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = 0;
+00713 
+00714     \textcolor{keywordflow}{if} (argc > 1)
+00715     \{
+00716         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"n"}))
+00717         \{
+00718             \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles} = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"n"});
+00719         \}
+00720 
+00721         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"grid"}))
+00722         \{
+00723             gridDim = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"grid"});
+00724         \}
+00725 
+00726         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"file"}))
+00727         \{
+00728             getCmdLineArgumentString(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"file"}, &
+      \hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile});
+00729             \hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{fpsLimit} = \hyperlink{particles_8cpp_a50f26bf26e6413a34dc36fc12c9bbc83}{frameCheckNumber};
+00730             \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = 1;
+00731         \}
+00732     \}
+00733 
+00734     \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}.x = \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}.y = \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}.z = gridDim;
+00735     printf(\textcolor{stringliteral}{"grid: %d x %d x %d = %d cells\(\backslash\)n"}, \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}.x, \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}.y, 
+      \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}.z, \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}.x*\hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}.y*\hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}.z);
+00736     printf(\textcolor{stringliteral}{"particles: %d\(\backslash\)n"}, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles});
+00737 
+00738     \textcolor{keywordtype}{bool} benchmark = checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"benchmark"}) != 0;
+00739 
+00740     \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"i"}))
+00741     \{
+00742         \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"i"});
+00743     \}
+00744     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
+00745     \{
+00746         \hyperlink{particles_8cpp_ad205012a960928f6fb61ea4f51a95e9f}{cudaInit}(argc, argv);
+00747     \}
+00748     \textcolor{keywordflow}{else}
+00749     \{
+00750         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"device"}))
+00751         \{
+00752             printf(\textcolor{stringliteral}{"[%s]\(\backslash\)n"}, argv[0]);
+00753             printf(\textcolor{stringliteral}{"   Does not explicitly support -device=n in OpenGL mode\(\backslash\)n"});
+00754             printf(\textcolor{stringliteral}{"   To use -device=n, the sample must be running w/o OpenGL\(\backslash\)n\(\backslash\)n"});
+00755             printf(\textcolor{stringliteral}{" > %s -device=n -file=<*.bin>\(\backslash\)n"}, argv[0]);
+00756             printf(\textcolor{stringliteral}{"exiting...\(\backslash\)n"});
+00757             exit(EXIT\_SUCCESS);
+00758         \}
+00759 
+00760         \hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{initGL}(&argc, argv);
+00761         \hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{cudaGLInit}(argc, argv);
+00762     \}
+00763 
+00764     \hyperlink{particles_8cpp_a84431b1c39c053e49799109e5b6b488a}{initParticleSystem}(\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}, 
+      \hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile}==NULL);
+00765     \hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{initParams}();
+00766 
+00767     \textcolor{keywordflow}{if} (!\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
+00768     \{
+00769         \hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{initMenus}();
+00770     \}
+00771 
+00772     \textcolor{keywordflow}{if} (benchmark || \hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
+00773     \{
+00774         \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} <= 0)
+00775         \{
+00776             \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = 300;
+00777         \}
+00778 
+00779         \hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{runBenchmark}(\hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations}, argv[0]);
+00780     \}
+00781     \textcolor{keywordflow}{else}
+00782     \{
+00783         glutDisplayFunc(\hyperlink{particles_8cpp_a1e5b20fed15743656bb6d2e6a6ea6269}{display});
+00784         glutReshapeFunc(\hyperlink{particles_8cpp_acc1ffe65e6869931318610cae7210078}{reshape});
+00785         glutMouseFunc(\hyperlink{particles_8cpp_ac76a5d78172a826cd6ee9512b89a86c0}{mouse});
+00786         glutMotionFunc(\hyperlink{particles_8cpp_a45a7d7c86c97ca6a2d4d32ce2d263f67}{motion});
+00787         glutKeyboardFunc(\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{key});
+00788         glutSpecialFunc(\hyperlink{particles_8cpp_ab838340d9e4833a685975205d9c8196a}{special});
+00789         glutIdleFunc(\hyperlink{particles_8cpp_a01131b63acf241e9db91704d89ce15d2}{idle});
+00790 
+00791         atexit(\hyperlink{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}{cleanup});
+00792 
+00793         glutMainLoop();
+00794     \}
+00795 
+00796     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem})
+00797     \{
+00798         \textcolor{keyword}{delete} \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem};
+00799     \}
+00800 
+00801     cudaDeviceReset();
+00802     exit(\hyperlink{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{g\_TotalErrors} > 0 ? EXIT\_FAILURE : EXIT\_SUCCESS);
+00803 \}
+\end{DoxyCode}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_ac623a05dc7ab8844bdf40dc55c124fc6}{\index{particles.\-cpp@{particles.\-cpp}!main\-Menu@{main\-Menu}}
+\index{main\-Menu@{main\-Menu}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{main\-Menu}]{\setlength{\rightskip}{0pt plus 5cm}void main\-Menu (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_ac623a05dc7ab8844bdf40dc55c124fc6}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00681}{681} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00520}{key()}.
+
+
+\begin{DoxyCode}
+00682 \{
+00683     \hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{key}((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}) i, 0, 0);
+00684 \}
+\end{DoxyCode}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles_8cpp_ac623a05dc7ab8844bdf40dc55c124fc6_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_a45a7d7c86c97ca6a2d4d32ce2d263f67}{\index{particles.\-cpp@{particles.\-cpp}!motion@{motion}}
+\index{motion@{motion}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{motion}]{\setlength{\rightskip}{0pt plus 5cm}void motion (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_a45a7d7c86c97ca6a2d4d32ce2d263f67}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00437}{437} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00074}{button\-State}, \hyperlink{particles_8cpp_source_l00076}{camera\-\_\-rot}, \hyperlink{particles_8cpp_source_l00075}{camera\-\_\-trans}, \hyperlink{particles_8cpp_source_l00087}{demo\-Mode}, \hyperlink{particles_8cpp_source_l00085}{display\-Sliders}, \hyperlink{particles_8cpp_source_l00088}{idle\-Counter}, \hyperlink{particles_8cpp_source_l00092}{M\-\_\-\-M\-O\-V\-E}, \hyperlink{particles_8cpp_source_l00092}{M\-\_\-\-V\-I\-E\-W}, \hyperlink{particles_8cpp_source_l00082}{mode}, \hyperlink{particles_8cpp_source_l00073}{ox} i \hyperlink{particles_8cpp_source_l00073}{oy}.
+
+
+\begin{DoxyCode}
+00438 \{
+00439     \textcolor{keywordtype}{float} dx, dy;
+00440     dx = (float)(x - \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox});
+00441     dy = (float)(y - \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy});
+00442 
+00443     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
+00444     \{
+00445         \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->Motion(x, y))
+00446         \{
+00447             \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox} = x;
+00448             \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy} = y;
+00449             glutPostRedisplay();
+00450             \textcolor{keywordflow}{return};
+00451         \}
+00452     \}
+00453 
+00454     \textcolor{keywordflow}{switch} (\hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode})
+00455     \{
+00456         \textcolor{keywordflow}{case} \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\_VIEW}:
+00457             \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} == 3)
+00458             \{
+00459                 \textcolor{comment}{// left+middle = zoom}
+00460                 \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[2] += (dy / 100.0f) * 0.5f * fabs(
+      \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[2]);
+00461             \}
+00462             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} & 2)
+00463             \{
+00464                 \textcolor{comment}{// middle = translate}
+00465                 \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[0] += dx / 100.0f;
+00466                 \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[1] -= dy / 100.0f;
+00467             \}
+00468             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} & 1)
+00469             \{
+00470                 \textcolor{comment}{// left = rotate}
+00471                 \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[0] += dy / 5.0f;
+00472                 \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[1] += dx / 5.0f;
+00473             \}
+00474 
+00475             \textcolor{keywordflow}{break};
+00476 
+00477         \textcolor{keywordflow}{case} \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\_MOVE}:
+00478             \{
+00479                 \textcolor{keywordtype}{float} translateSpeed = 0.003f;
+00480                 float3 p = \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a3c8578d474f5a6f14d903a242aec96ec}{getColliderPos}();
+00481 
+00482                 \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState}==1)
+00483                 \{
+00484                     \textcolor{keywordtype}{float} v[3], r[3];
+00485                     v[0] = dx*translateSpeed;
+00486                     v[1] = -dy*translateSpeed;
+00487                     v[2] = 0.0f;
+00488                     \hyperlink{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{ixform}(v, r, \hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{modelView});
+00489                     p.x += r[0];
+00490                     p.y += r[1];
+00491                     p.z += r[2];
+00492                 \}
+00493                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState}==2)
+00494                 \{
+00495                     \textcolor{keywordtype}{float} v[3], r[3];
+00496                     v[0] = 0.0f;
+00497                     v[1] = 0.0f;
+00498                     v[2] = dy*translateSpeed;
+00499                     \hyperlink{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{ixform}(v, r, \hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{modelView});
+00500                     p.x += r[0];
+00501                     p.y += r[1];
+00502                     p.z += r[2];
+00503                 \}
+00504 
+00505                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a9c49794585cad649de400dc7375d7801}{setColliderPos}(p);
+00506             \}
+00507             \textcolor{keywordflow}{break};
+00508     \}
+00509 
+00510     \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox} = x;
+00511     \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy} = y;
+00512 
+00513     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
+00514     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
+00515 
+00516     glutPostRedisplay();
+00517 \}
+\end{DoxyCode}
+\hypertarget{particles_8cpp_ac76a5d78172a826cd6ee9512b89a86c0}{\index{particles.\-cpp@{particles.\-cpp}!mouse@{mouse}}
+\index{mouse@{mouse}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{mouse}]{\setlength{\rightskip}{0pt plus 5cm}void mouse (
+\begin{DoxyParamCaption}
+\item[{int}]{button, }
+\item[{int}]{state, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_ac76a5d78172a826cd6ee9512b89a86c0}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00369}{369} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00087}{demo\-Mode}, \hyperlink{particles_8cpp_source_l00085}{display\-Sliders}, \hyperlink{particles_8cpp_source_l00088}{idle\-Counter}, \hyperlink{particles_8cpp_source_l00073}{ox} i \hyperlink{particles_8cpp_source_l00073}{oy}.
+
+
+\begin{DoxyCode}
+00370 \{
+00371     \textcolor{keywordtype}{int} mods;
+00372 
+00373     \textcolor{keywordflow}{if} (state == GLUT\_DOWN)
+00374     \{
+00375         \hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} |= 1<<button;
+00376     \}
+00377     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == GLUT\_UP)
+00378     \{
+00379         \hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} = 0;
+00380     \}
+00381 
+00382     mods = glutGetModifiers();
+00383 
+00384     \textcolor{keywordflow}{if} (mods & GLUT\_ACTIVE\_SHIFT)
+00385     \{
+00386         \hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} = 2;
+00387     \}
+00388     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mods & GLUT\_ACTIVE\_CTRL)
+00389     \{
+00390         \hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} = 3;
+00391     \}
+00392 
+00393     \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox} = x;
+00394     \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy} = y;
+00395 
+00396     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
+00397     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
+00398 
+00399     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
+00400     \{
+00401         \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->Mouse(x, y, button, state))
+00402         \{
+00403             glutPostRedisplay();
+00404             \textcolor{keywordflow}{return};
+00405         \}
+00406     \}
+00407 
+00408     glutPostRedisplay();
+00409 \}
+\end{DoxyCode}
+\hypertarget{particles_8cpp_acc1ffe65e6869931318610cae7210078}{\index{particles.\-cpp@{particles.\-cpp}!reshape@{reshape}}
+\index{reshape@{reshape}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{reshape}]{\setlength{\rightskip}{0pt plus 5cm}void reshape (
+\begin{DoxyParamCaption}
+\item[{int}]{w, }
+\item[{int}]{h}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_acc1ffe65e6869931318610cae7210078}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00353}{353} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00123}{renderer}, \hyperlink{render__particles_8h_source_l00046}{Particle\-Renderer\-::set\-F\-O\-V()} i \hyperlink{render__particles_8h_source_l00050}{Particle\-Renderer\-::set\-Window\-Size()}.
+
+
+\begin{DoxyCode}
+00354 \{
+00355     glMatrixMode(GL\_PROJECTION);
+00356     glLoadIdentity();
+00357     gluPerspective(60.0, (\textcolor{keywordtype}{float}) w / (\textcolor{keywordtype}{float}) h, 0.1, 100.0);
+00358 
+00359     glMatrixMode(GL\_MODELVIEW);
+00360     glViewport(0, 0, w, h);
+00361 
+00362     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer})
+00363     \{
+00364         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}->\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{setWindowSize}(w, h);
+00365         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}->\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{setFOV}(60.0);
+00366     \}
+00367 \}
+\end{DoxyCode}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{particles_8cpp_acc1ffe65e6869931318610cae7210078_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_acd4773d821b4657197abdd8058000f56}{\index{particles.\-cpp@{particles.\-cpp}!run\-Benchmark@{run\-Benchmark}}
+\index{run\-Benchmark@{run\-Benchmark}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{run\-Benchmark}]{\setlength{\rightskip}{0pt plus 5cm}void run\-Benchmark (
+\begin{DoxyParamCaption}
+\item[{int}]{iterations, }
+\item[{char $\ast$}]{exec\-\_\-path}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_acd4773d821b4657197abdd8058000f56}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00194}{194} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00108}{copy\-Array\-From\-Device()}, \hyperlink{particles_8cpp_source_l00133}{g\-\_\-ref\-File}, \hyperlink{particle_system_8h_source_l00062}{Particle\-System\-::get\-Cuda\-Pos\-V\-B\-O()}, \hyperlink{particle_system_8h_source_l00048}{Particle\-System\-::get\-Num\-Particles()}, \hyperlink{particles_8cpp_source_l00094}{num\-Particles}, \hyperlink{particles_8cpp_source_l00116}{psystem}, \hyperlink{particles_8cpp_source_l00099}{timestep} i \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+
+\begin{DoxyCode}
+00195 \{
+00196     printf(\textcolor{stringliteral}{"Run %u particles simulation for %d iterations...\(\backslash\)n\(\backslash\)n"}, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, 
+      \hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{iterations});
+00197     cudaDeviceSynchronize();
+00198     sdkStartTimer(&\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer});
+00199 
+00200     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{iterations}; ++i)
+00201     \{
+00202         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{update}(\hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep});
+00203     \}
+00204 
+00205     cudaDeviceSynchronize();
+00206     sdkStopTimer(&\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer});
+00207     \textcolor{keywordtype}{float} fAvgSeconds = ((float)1.0e-3 * (\textcolor{keywordtype}{float})sdkGetTimerValue(&\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer})/(float)iterations);
+00208 
+00209     printf(\textcolor{stringliteral}{"particles, Throughput = %.4f KParticles/s, Time = %.5f s, Size = %u particles, NumDevsUsed =
+       %u, Workgroup = %u\(\backslash\)n"},
+00210            (1.0e-3 * \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles})/fAvgSeconds, fAvgSeconds, 
+      \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, 1, 0);
+00211 
+00212     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
+00213     \{
+00214         printf(\textcolor{stringliteral}{"\(\backslash\)nChecking result...\(\backslash\)n\(\backslash\)n"});
+00215         \textcolor{keywordtype}{float} *hPos = (\textcolor{keywordtype}{float} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->
+      \hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}());
+00216         \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(hPos, \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->
+      \hyperlink{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{getCudaPosVBO}(),
+00217                             0, \textcolor{keyword}{sizeof}(float)*4*\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}());
+00218 
+00219         sdkDumpBin((\textcolor{keywordtype}{void} *)hPos, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}(), \textcolor{stringliteral}{"
+      particles.bin"});
+00220 
+00221         \textcolor{keywordflow}{if} (!sdkCompareBin2BinFloat(\textcolor{stringliteral}{"particles.bin"}, \hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile}, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*
+      \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}->\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}(),
+00222                                     \hyperlink{particles_8cpp_a9608807ab27261888018dac76a7f4acd}{MAX\_EPSILON\_ERROR}, 
+      \hyperlink{particles_8cpp_a4679d8ea8690999a6c6c7c0cb245c879}{THRESHOLD}, exec\_path))
+00223         \{
+00224             \hyperlink{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{g\_TotalErrors}++;
+00225         \}
+00226     \}
+00227 \}
+\end{DoxyCode}
+
+
+Oto graf wywołań dla tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particles_8cpp_acd4773d821b4657197abdd8058000f56_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{particles_8cpp_acd4773d821b4657197abdd8058000f56_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particles_8cpp_ab838340d9e4833a685975205d9c8196a}{\index{particles.\-cpp@{particles.\-cpp}!special@{special}}
+\index{special@{special}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{special}]{\setlength{\rightskip}{0pt plus 5cm}void special (
+\begin{DoxyParamCaption}
+\item[{int}]{k, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_ab838340d9e4833a685975205d9c8196a}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00616}{616} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołuje się do \hyperlink{particles_8cpp_source_l00087}{demo\-Mode}, \hyperlink{particles_8cpp_source_l00085}{display\-Sliders} i \hyperlink{particles_8cpp_source_l00088}{idle\-Counter}.
+
+
+\begin{DoxyCode}
+00617 \{
+00618     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
+00619     \{
+00620         \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}->Special(k, x, y);
+00621     \}
+00622 
+00623     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
+00624     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
+00625 \}
+\end{DoxyCode}
+\hypertarget{particles_8cpp_ad95532e0e925e7584a930b366a613261}{\index{particles.\-cpp@{particles.\-cpp}!xform@{xform}}
+\index{xform@{xform}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{xform}]{\setlength{\rightskip}{0pt plus 5cm}void xform (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{v, }
+\item[{float $\ast$}]{r, }
+\item[{G\-Lfloat $\ast$}]{m}
+\end{DoxyParamCaption}
+)}}\label{particles_8cpp_ad95532e0e925e7584a930b366a613261}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00412}{412} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+\begin{DoxyCode}
+00413 \{
+00414     r[0] = v[0]*m[0] + v[1]*m[4] + v[2]*m[8] + m[12];
+00415     r[1] = v[0]*m[1] + v[1]*m[5] + v[2]*m[9] + m[13];
+00416     r[2] = v[0]*m[2] + v[1]*m[6] + v[2]*m[10] + m[14];
+00417 \}
+\end{DoxyCode}
+
+
+\subsection{Dokumentacja zmiennych}
+\hypertarget{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{\index{particles.\-cpp@{particles.\-cpp}!ballr@{ballr}}
+\index{ballr@{ballr}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{ballr}]{\setlength{\rightskip}{0pt plus 5cm}int ballr = 10}}\label{particles_8cpp_a46d030c711d3073320681aafbb4c490b}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00103}{103} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00335}{add\-Sphere()}, \hyperlink{particles_8cpp_source_l00627}{idle()}, \hyperlink{particles_8cpp_source_l00650}{init\-Params()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+
+\hypertarget{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{\index{particles.\-cpp@{particles.\-cpp}!big\-Radius@{big\-Radius}}
+\index{big\-Radius@{big\-Radius}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{big\-Radius}]{\setlength{\rightskip}{0pt plus 5cm}float big\-Radius =2.\-0f}}\label{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00110}{110} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+
+\hypertarget{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{\index{particles.\-cpp@{particles.\-cpp}!big\-Radius0@{big\-Radius0}}
+\index{big\-Radius0@{big\-Radius0}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{big\-Radius0}]{\setlength{\rightskip}{0pt plus 5cm}float big\-Radius0 ={\bf big\-Radius}}}\label{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00111}{111} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+
+\hypertarget{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{\index{particles.\-cpp@{particles.\-cpp}!b\-Pause@{b\-Pause}}
+\index{b\-Pause@{b\-Pause}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{b\-Pause}]{\setlength{\rightskip}{0pt plus 5cm}bool b\-Pause = false}}\label{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00084}{84} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+
+\hypertarget{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{\index{particles.\-cpp@{particles.\-cpp}!button\-State@{button\-State}}
+\index{button\-State@{button\-State}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{button\-State}]{\setlength{\rightskip}{0pt plus 5cm}int button\-State = 0}}\label{particles_8cpp_a5002611f83f5a861df12917dd5651db8}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00074}{74} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00437}{motion()}.
+
+\hypertarget{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{\index{particles.\-cpp@{particles.\-cpp}!camera\-\_\-rot@{camera\-\_\-rot}}
+\index{camera\-\_\-rot@{camera\-\_\-rot}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{camera\-\_\-rot}]{\setlength{\rightskip}{0pt plus 5cm}float camera\-\_\-rot\mbox{[}$\,$\mbox{]} = \{0, 0, 0\}}}\label{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00076}{76} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}, \hyperlink{particles_8cpp_source_l00627}{idle()} i \hyperlink{particles_8cpp_source_l00437}{motion()}.
+
+\hypertarget{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{\index{particles.\-cpp@{particles.\-cpp}!camera\-\_\-rot\-\_\-lag@{camera\-\_\-rot\-\_\-lag}}
+\index{camera\-\_\-rot\-\_\-lag@{camera\-\_\-rot\-\_\-lag}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{camera\-\_\-rot\-\_\-lag}]{\setlength{\rightskip}{0pt plus 5cm}float camera\-\_\-rot\-\_\-lag\mbox{[}$\,$\mbox{]} = \{0, 0, 0\}}}\label{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00078}{78} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+
+\hypertarget{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{\index{particles.\-cpp@{particles.\-cpp}!camera\-\_\-trans@{camera\-\_\-trans}}
+\index{camera\-\_\-trans@{camera\-\_\-trans}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{camera\-\_\-trans}]{\setlength{\rightskip}{0pt plus 5cm}float camera\-\_\-trans\mbox{[}$\,$\mbox{]} = \{0, 0, -\/3\}}}\label{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00075}{75} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00437}{motion()}.
+
+\hypertarget{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{\index{particles.\-cpp@{particles.\-cpp}!camera\-\_\-trans\-\_\-lag@{camera\-\_\-trans\-\_\-lag}}
+\index{camera\-\_\-trans\-\_\-lag@{camera\-\_\-trans\-\_\-lag}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{camera\-\_\-trans\-\_\-lag}]{\setlength{\rightskip}{0pt plus 5cm}float camera\-\_\-trans\-\_\-lag\mbox{[}$\,$\mbox{]} = \{0, 0, -\/3\}}}\label{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00077}{77} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+
+\hypertarget{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{\index{particles.\-cpp@{particles.\-cpp}!collide\-Attraction@{collide\-Attraction}}
+\index{collide\-Attraction@{collide\-Attraction}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{collide\-Attraction}]{\setlength{\rightskip}{0pt plus 5cm}float collide\-Attraction = 0.\-1f}}\label{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00108}{108} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00650}{init\-Params()}.
+
+\hypertarget{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{\index{particles.\-cpp@{particles.\-cpp}!collide\-Damping@{collide\-Damping}}
+\index{collide\-Damping@{collide\-Damping}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{collide\-Damping}]{\setlength{\rightskip}{0pt plus 5cm}float collide\-Damping = 0.\-02f}}\label{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00106}{106} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00650}{init\-Params()}.
+
+\hypertarget{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{\index{particles.\-cpp@{particles.\-cpp}!collide\-Shear@{collide\-Shear}}
+\index{collide\-Shear@{collide\-Shear}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{collide\-Shear}]{\setlength{\rightskip}{0pt plus 5cm}float collide\-Shear = 0.\-1f}}\label{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00107}{107} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00650}{init\-Params()}.
+
+\hypertarget{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{\index{particles.\-cpp@{particles.\-cpp}!collide\-Spring@{collide\-Spring}}
+\index{collide\-Spring@{collide\-Spring}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{collide\-Spring}]{\setlength{\rightskip}{0pt plus 5cm}float collide\-Spring = 0.\-5f}}\label{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00105}{105} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00650}{init\-Params()}.
+
+\hypertarget{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{\index{particles.\-cpp@{particles.\-cpp}!damping@{damping}}
+\index{damping@{damping}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{damping}]{\setlength{\rightskip}{0pt plus 5cm}float damping = 1.\-0f}}\label{particles_8cpp_a99d817470e9063f458d39529c7c1724b}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00100}{100} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00650}{init\-Params()}.
+
+\hypertarget{particles_8cpp_a969b56707854449ae3fb4847b563191f}{\index{particles.\-cpp@{particles.\-cpp}!demo\-Counter@{demo\-Counter}}
+\index{demo\-Counter@{demo\-Counter}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{demo\-Counter}]{\setlength{\rightskip}{0pt plus 5cm}int demo\-Counter = 0}}\label{particles_8cpp_a969b56707854449ae3fb4847b563191f}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00089}{89} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00627}{idle()}.
+
+\hypertarget{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{\index{particles.\-cpp@{particles.\-cpp}!demo\-Mode@{demo\-Mode}}
+\index{demo\-Mode@{demo\-Mode}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{demo\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}bool demo\-Mode = false}}\label{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00087}{87} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00627}{idle()}, \hyperlink{particles_8cpp_source_l00520}{key()}, \hyperlink{particles_8cpp_source_l00437}{motion()}, \hyperlink{particles_8cpp_source_l00369}{mouse()} i \hyperlink{particles_8cpp_source_l00616}{special()}.
+
+\hypertarget{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{\index{particles.\-cpp@{particles.\-cpp}!display\-Enabled@{display\-Enabled}}
+\index{display\-Enabled@{display\-Enabled}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{display\-Enabled}]{\setlength{\rightskip}{0pt plus 5cm}bool display\-Enabled = true}}\label{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00083}{83} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+
+\hypertarget{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{\index{particles.\-cpp@{particles.\-cpp}!display\-Mode@{display\-Mode}}
+\index{display\-Mode@{display\-Mode}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{display\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-Renderer\-::\-Display\-Mode} display\-Mode = {\bf Particle\-Renderer\-::\-P\-A\-R\-T\-I\-C\-L\-E\-\_\-\-S\-P\-H\-E\-R\-E\-S}}}\label{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00080}{80} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+
+\hypertarget{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{\index{particles.\-cpp@{particles.\-cpp}!display\-Sliders@{display\-Sliders}}
+\index{display\-Sliders@{display\-Sliders}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{display\-Sliders}]{\setlength{\rightskip}{0pt plus 5cm}bool display\-Sliders = false}}\label{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00085}{85} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}, \hyperlink{particles_8cpp_source_l00520}{key()}, \hyperlink{particles_8cpp_source_l00437}{motion()}, \hyperlink{particles_8cpp_source_l00369}{mouse()} i \hyperlink{particles_8cpp_source_l00616}{special()}.
+
+\hypertarget{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{\index{particles.\-cpp@{particles.\-cpp}!fps\-Count@{fps\-Count}}
+\index{fps\-Count@{fps\-Count}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{fps\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int fps\-Count = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00119}{119} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00229}{compute\-F\-P\-S()}.
+
+\hypertarget{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{\index{particles.\-cpp@{particles.\-cpp}!fps\-Limit@{fps\-Limit}}
+\index{fps\-Limit@{fps\-Limit}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{fps\-Limit}]{\setlength{\rightskip}{0pt plus 5cm}int fps\-Limit = 1\hspace{0.3cm}{\ttfamily [static]}}}\label{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00120}{120} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00229}{compute\-F\-P\-S()}.
+
+\hypertarget{particles_8cpp_a50f26bf26e6413a34dc36fc12c9bbc83}{\index{particles.\-cpp@{particles.\-cpp}!frame\-Check\-Number@{frame\-Check\-Number}}
+\index{frame\-Check\-Number@{frame\-Check\-Number}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{frame\-Check\-Number}]{\setlength{\rightskip}{0pt plus 5cm}const int frame\-Check\-Number = 4}}\label{particles_8cpp_a50f26bf26e6413a34dc36fc12c9bbc83}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00130}{130} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}{\index{particles.\-cpp@{particles.\-cpp}!frame\-Count@{frame\-Count}}
+\index{frame\-Count@{frame\-Count}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{frame\-Count}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int frame\-Count = 0}}\label{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00131}{131} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00229}{compute\-F\-P\-S()}.
+
+\hypertarget{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{\index{particles.\-cpp@{particles.\-cpp}!g\-\_\-ref\-File@{g\-\_\-ref\-File}}
+\index{g\-\_\-ref\-File@{g\-\_\-ref\-File}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{g\-\_\-ref\-File}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ g\-\_\-ref\-File = N\-U\-L\-L}}\label{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00133}{133} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00650}{init\-Params()}, \hyperlink{particles_8cpp_source_l00706}{main()} i \hyperlink{particles_8cpp_source_l00194}{run\-Benchmark()}.
+
+\hypertarget{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{\index{particles.\-cpp@{particles.\-cpp}!g\-\_\-\-Total\-Errors@{g\-\_\-\-Total\-Errors}}
+\index{g\-\_\-\-Total\-Errors@{g\-\_\-\-Total\-Errors}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{g\-\_\-\-Total\-Errors}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int g\-\_\-\-Total\-Errors = 0}}\label{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00132}{132} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+\hypertarget{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{\index{particles.\-cpp@{particles.\-cpp}!gravity@{gravity}}
+\index{gravity@{gravity}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{gravity}]{\setlength{\rightskip}{0pt plus 5cm}float gravity = 0.\-0f}}\label{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00101}{101} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00650}{init\-Params()}.
+
+\hypertarget{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{\index{particles.\-cpp@{particles.\-cpp}!grid\-Size@{grid\-Size}}
+\index{grid\-Size@{grid\-Size}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{grid\-Size}]{\setlength{\rightskip}{0pt plus 5cm}uint3 grid\-Size}}\label{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00095}{95} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_aa90d4ba1278109bf241d6e43db40f80c}{\index{particles.\-cpp@{particles.\-cpp}!height@{height}}
+\index{height@{height}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{height}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint} height = 480}}\label{particles_8cpp_aa90d4ba1278109bf241d6e43db40f80c}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00070}{70} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{\index{particles.\-cpp@{particles.\-cpp}!idle\-Counter@{idle\-Counter}}
+\index{idle\-Counter@{idle\-Counter}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{idle\-Counter}]{\setlength{\rightskip}{0pt plus 5cm}int idle\-Counter = 0}}\label{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00088}{88} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00627}{idle()}, \hyperlink{particles_8cpp_source_l00520}{key()}, \hyperlink{particles_8cpp_source_l00437}{motion()}, \hyperlink{particles_8cpp_source_l00369}{mouse()} i \hyperlink{particles_8cpp_source_l00616}{special()}.
+
+\hypertarget{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}{\index{particles.\-cpp@{particles.\-cpp}!idle\-Delay@{idle\-Delay}}
+\index{idle\-Delay@{idle\-Delay}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{idle\-Delay}]{\setlength{\rightskip}{0pt plus 5cm}const int idle\-Delay = 2000}}\label{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00090}{90} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00627}{idle()}.
+
+\hypertarget{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{\index{particles.\-cpp@{particles.\-cpp}!inertia@{inertia}}
+\index{inertia@{inertia}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{inertia}]{\setlength{\rightskip}{0pt plus 5cm}const float inertia = 0.\-1f}}\label{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00079}{79} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+
+\hypertarget{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{\index{particles.\-cpp@{particles.\-cpp}!iterations@{iterations}}
+\index{iterations@{iterations}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{iterations}]{\setlength{\rightskip}{0pt plus 5cm}int iterations = 1}}\label{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00102}{102} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+
+\hypertarget{particles_8cpp_a581b24e790d1d71d4c940671987201f6}{\index{particles.\-cpp@{particles.\-cpp}!kurczenie@{kurczenie}}
+\index{kurczenie@{kurczenie}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{kurczenie}]{\setlength{\rightskip}{0pt plus 5cm}float kurczenie =0.\-01}}\label{particles_8cpp_a581b24e790d1d71d4c940671987201f6}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00112}{112} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_ae6faf33ad73ff5d0248af8f9477ca201}{\index{particles.\-cpp@{particles.\-cpp}!licznik@{licznik}}
+\index{licznik@{licznik}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{licznik}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long long int licznik =0}}\label{particles_8cpp_ae6faf33ad73ff5d0248af8f9477ca201}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00114}{114} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+
+\hypertarget{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{\index{particles.\-cpp@{particles.\-cpp}!mode@{mode}}
+\index{mode@{mode}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{mode}]{\setlength{\rightskip}{0pt plus 5cm}int mode = 0}}\label{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00082}{82} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00520}{key()} i \hyperlink{particles_8cpp_source_l00437}{motion()}.
+
+\hypertarget{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{\index{particles.\-cpp@{particles.\-cpp}!model\-View@{model\-View}}
+\index{model\-View@{model\-View}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{model\-View}]{\setlength{\rightskip}{0pt plus 5cm}float model\-View\mbox{[}16\mbox{]}}}\label{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00125}{125} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{\index{particles.\-cpp@{particles.\-cpp}!num\-Iterations@{num\-Iterations}}
+\index{num\-Iterations@{num\-Iterations}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{num\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}int num\-Iterations = 0}}\label{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00096}{96} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+\hypertarget{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{\index{particles.\-cpp@{particles.\-cpp}!num\-Particles@{num\-Particles}}
+\index{num\-Particles@{num\-Particles}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{num\-Particles}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint} num\-Particles = 0}}\label{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00094}{94} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00229}{compute\-F\-P\-S()}, \hyperlink{particles_8cpp_source_l00520}{key()}, \hyperlink{particles_8cpp_source_l00706}{main()} i \hyperlink{particles_8cpp_source_l00194}{run\-Benchmark()}.
+
+\hypertarget{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{\index{particles.\-cpp@{particles.\-cpp}!ox@{ox}}
+\index{ox@{ox}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{ox}]{\setlength{\rightskip}{0pt plus 5cm}int ox}}\label{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00073}{73} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00437}{motion()} i \hyperlink{particles_8cpp_source_l00369}{mouse()}.
+
+\hypertarget{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{\index{particles.\-cpp@{particles.\-cpp}!oy@{oy}}
+\index{oy@{oy}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{oy}]{\setlength{\rightskip}{0pt plus 5cm}int oy}}\label{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00073}{73} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00437}{motion()} i \hyperlink{particles_8cpp_source_l00369}{mouse()}.
+
+\hypertarget{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{\index{particles.\-cpp@{particles.\-cpp}!params@{params}}
+\index{params@{params}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{params}]{\setlength{\rightskip}{0pt plus 5cm}Param\-List\-G\-L$\ast$ params}}\label{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00127}{127} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{\index{particles.\-cpp@{particles.\-cpp}!psystem@{psystem}}
+\index{psystem@{psystem}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{psystem}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-System}$\ast$ psystem = 0}}\label{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00116}{116} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00335}{add\-Sphere()}, \hyperlink{particles_8cpp_source_l00248}{display()}, \hyperlink{particles_8cpp_source_l00142}{init\-Particle\-System()}, \hyperlink{particles_8cpp_source_l00520}{key()}, \hyperlink{particles_8cpp_source_l00706}{main()} i \hyperlink{particles_8cpp_source_l00194}{run\-Benchmark()}.
+
+\hypertarget{particles_8cpp_a748beea58f866663fc6894969b21d061}{\index{particles.\-cpp@{particles.\-cpp}!renderer@{renderer}}
+\index{renderer@{renderer}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{renderer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Particle\-Renderer}$\ast$ renderer = 0}}\label{particles_8cpp_a748beea58f866663fc6894969b21d061}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00123}{123} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}, \hyperlink{particles_8cpp_source_l00142}{init\-Particle\-System()}, \hyperlink{particles_8cpp_source_l00520}{key()} i \hyperlink{particles_8cpp_source_l00353}{reshape()}.
+
+\hypertarget{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}{\index{particles.\-cpp@{particles.\-cpp}!s\-S\-D\-Ksample@{s\-S\-D\-Ksample}}
+\index{s\-S\-D\-Ksample@{s\-S\-D\-Ksample}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{s\-S\-D\-Ksample}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ s\-S\-D\-Ksample = \char`\"{}C\-U\-D\-A Particles Simulation\char`\"{}}}\label{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00135}{135} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+\hypertarget{particles_8cpp_a9884ad791a680ef446785acf94b63956}{\index{particles.\-cpp@{particles.\-cpp}!timer@{timer}}
+\index{timer@{timer}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{timer}]{\setlength{\rightskip}{0pt plus 5cm}Stop\-Watch\-Interface$\ast$ timer = N\-U\-L\-L}}\label{particles_8cpp_a9884ad791a680ef446785acf94b63956}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00121}{121} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{\index{particles.\-cpp@{particles.\-cpp}!timestep@{timestep}}
+\index{timestep@{timestep}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{timestep}]{\setlength{\rightskip}{0pt plus 5cm}float timestep = 1.\-0f}}\label{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00099}{99} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}, \hyperlink{particles_8cpp_source_l00650}{init\-Params()}, \hyperlink{particles_8cpp_source_l00520}{key()} i \hyperlink{particles_8cpp_source_l00194}{run\-Benchmark()}.
+
+\hypertarget{particles_8cpp_a215ce3b0108691bf1f304ea0f709f67d}{\index{particles.\-cpp@{particles.\-cpp}!width@{width}}
+\index{width@{width}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint} width = 640}}\label{particles_8cpp_a215ce3b0108691bf1f304ea0f709f67d}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00070}{70} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+\hypertarget{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{\index{particles.\-cpp@{particles.\-cpp}!wireframe@{wireframe}}
+\index{wireframe@{wireframe}!particles.cpp@{particles.\-cpp}}
+\subsubsection[{wireframe}]{\setlength{\rightskip}{0pt plus 5cm}bool wireframe = false}}\label{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}
+
+
+Definicja w linii \hyperlink{particles_8cpp_source_l00086}{86} pliku \hyperlink{particles_8cpp_source}{particles.\-cpp}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00520}{key()}.
+
