@@ -117,3 +117,6 @@ data/test1.bin
 *.sln
 *.md5
 *.map
+*.cbp
+*.scope_file_list
+UpgradeLog.htm
