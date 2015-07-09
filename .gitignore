@@ -27,6 +27,7 @@ Thumbs.db
 *.lib
 *.sbr
 obj/
+doc/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
@@ -113,3 +114,6 @@ particles_vs2008.sln
 test2.bin
 data/test1.bin
 *.bin
+*.sln
+*.md5
+*.map

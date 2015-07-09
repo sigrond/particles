@@ -1,5 +1,0 @@
-<map id="ParticleSystem::setArray" name="ParticleSystem::setArray">
-<area shape="rect" id="node2" href="$particle_system_8cuh.html#ac4d4ecd921dbed6c2deef639ca295374" title="copyArrayToDevice" alt="" coords="238,5,371,32"/>
-<area shape="rect" id="node3" href="$particle_system_8cuh.html#a4386a84282ceeaba09939817aa2a9c24" title="registerGLBufferObject" alt="" coords="228,56,381,83"/>
-<area shape="rect" id="node4" href="$particle_system_8cuh.html#a9afef8c00ca779aae2d7484b45bce34c" title="unregisterGLBufferObject" alt="" coords="221,107,388,133"/>
-</map>

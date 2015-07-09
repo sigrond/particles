@@ -1,9 +1,0 @@
-<map id="ParticleSystem" name="ParticleSystem">
-<<<<<<< HEAD
-<area shape="rect" id="node2" href="$struct_sim_params.html" title="{SimParams\n|+ colliderPos\l+ colliderRadius\l+ gravity\l+ globalDamping\l+ particleRadius\l+ particleMass\l+ gridSize\l+ numCells\l+ worldOrigin\l+ cellSize\li 14 więcej...\l|}" alt="" coords="29,5,147,229"/>
-=======
-<area shape="rect" id="node2" href="$struct_sim_params.html" title="{SimParams\n|+ colliderPos\l+ colliderRadius\l+ gravity\l+ globalDamping\l+ particleRadius\l+ gridSize\l+ numCells\l+ worldOrigin\l+ cellSize\l+ numBodies\li 7 więcej...\l|}" alt="" coords="29,5,147,229"/>
->>>>>>> master
-</map>
-<area shape="rect" id="node2" href="$struct_sim_params.html" title="{SimParams\n|+ colliderPos\l+ colliderRadius\l+ gravity\l+ globalDamping\l+ particleRadius\l+ gridSize\l+ numCells\l+ worldOrigin\l+ cellSize\l+ numBodies\li 7 więcej...\l|}" alt="" coords="29,5,147,229"/>
-</map>

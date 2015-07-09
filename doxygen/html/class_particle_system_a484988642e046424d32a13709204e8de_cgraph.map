@@ -1,7 +1,0 @@
-<map id="ParticleSystem::_initialize" name="ParticleSystem::_initialize">
-<area shape="rect" id="node2" href="$particle_system_8cuh.html#aee51e01a5233e0fda578bd5b3bc38e8f" title="allocateArray" alt="" coords="269,5,367,32"/>
-<area shape="rect" id="node3" href="$particle_system_8cpp.html#a1ec1ae39a0b30ca8330f7839a624f302" title="colorRamp" alt="" coords="276,56,360,83"/>
-<area shape="rect" id="node5" href="$class_particle_system.html#a399eb5cb9c422fd3370899e4d8a5d62e" title="ParticleSystem::createVBO" alt="" coords="227,107,409,133"/>
-<area shape="rect" id="node6" href="$particle_system_8cuh.html#a4386a84282ceeaba09939817aa2a9c24" title="registerGLBufferObject" alt="" coords="241,157,395,184"/>
-<area shape="rect" id="node4" href="$particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575" title="lerp" alt="" coords="457,56,500,83"/>
-</map>

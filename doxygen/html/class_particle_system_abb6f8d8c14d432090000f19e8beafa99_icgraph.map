@@ -1,8 +1,0 @@
-<map id="getNumParticles" name="getNumParticles">
-<area shape="rect" id="node2" href="$particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="display" alt="" coords="273,5,335,32"/>
-<area shape="rect" id="node4" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="key" alt="" coords="172,81,215,108"/>
-<area shape="rect" id="node7" href="$particles_8cpp.html#acd4773d821b4657197abdd8058000f56" title="runBenchmark" alt="" coords="393,157,500,184"/>
-<area shape="rect" id="node3" href="$particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="548,81,599,108"/>
-<area shape="rect" id="node5" href="$particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="263,107,345,133"/>
-<area shape="rect" id="node6" href="$particles_8cpp.html#a4f6bd2fa19ee682aad97e42cc236a861" title="initMenus" alt="" coords="407,107,486,133"/>
-</map>
