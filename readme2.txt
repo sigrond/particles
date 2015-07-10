@@ -2,18 +2,18 @@ cmd line
 particles -nazwaParametru=liczba
 
 np:
-particles -bigRadius0=0.1 
-bigRadius0 -pocz¹tkowy promieñ kropli
-n -iloœæ cz¹stek
+particles -bigRadius0=0.1
+bigRadius0 -poczÄ…tkowy promieÅ„ kropli
+n -iloÅ›Ä‡ czÄ…stek
 grid -rozmiar gridu
-file -nazwa pliku do porównania z wynikiem
+file -nazwa pliku do porÃ³wnania z wynikiem
 timestep -krok czasu
-benchmark -obliczenia bez GUI, pokazuje wydajnoœæ
-i -iloœæ kroków
-device -wybór GPU
+benchmark -obliczenia bez GUI, pokazuje wydajnoÅ“Ã¦
+i -iloÅ›Ä‡ krokÃ³w
+device -wybÃ³r GPU
 epsi -epsilon w sile lenarda jonesa
-damping -lepkoœæ
-boundaryDamping -napiêcie powierchniowe
-particleMass -masa cz¹stki
+damping -lepkoÅ›Ä‡
+boundaryDamping -napiÄ™cie powierchniowe
+particleMass -masa czÄ…stki
 gravity -grawitacja
 help

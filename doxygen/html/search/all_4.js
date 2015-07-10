@@ -1,13 +1,8 @@
 var searchData=
 [
-<<<<<<< HEAD
   ['damping',['damping',['../struct_sim_params.html#abf1644c671e60ebaf873d9167e755328',1,'SimParams::damping()'],['../particles_8cpp.html#a5d7c41f4909ad7714235c2d8fdf9d935',1,'damping():&#160;particles.cpp']]],
   ['debug_5fgrid',['DEBUG_GRID',['../particle_system_8h.html#ae8e259f1517dc644367009cfc06caebe',1,'particleSystem.h']]],
   ['default',['Default',['../class_particle_system_1_1particle_type.html#a41677c7a6376be429aae198a3d6d0dcfa2a1a0e456096ddefcfd80d6dea0164f5',1,'ParticleSystem::particleType']]],
-=======
-  ['damping',['damping',['../struct_sim_params.html#abf1644c671e60ebaf873d9167e755328',1,'SimParams::damping()'],['../particles_8cpp.html#a99d817470e9063f458d39529c7c1724b',1,'damping():&#160;particles.cpp']]],
-  ['debug_5fgrid',['DEBUG_GRID',['../particle_system_8h.html#ae8e259f1517dc644367009cfc06caebe',1,'particleSystem.h']]],
->>>>>>> master
   ['deltatime',['deltaTime',['../structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754',1,'integrate_functor']]],
   ['democounter',['demoCounter',['../particles_8cpp.html#a969b56707854449ae3fb4847b563191f',1,'particles.cpp']]],
   ['demomode',['demoMode',['../particles_8cpp.html#a9349b8b38abdf797b46a9e80020286e7',1,'particles.cpp']]],

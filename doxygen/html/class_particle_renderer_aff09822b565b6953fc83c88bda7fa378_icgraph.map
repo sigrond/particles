@@ -1,7 +1,3 @@
 <map id="ParticleRenderer::setParticleRadius" name="ParticleRenderer::setParticleRadius">
-<<<<<<< HEAD
 <area shape="rect" id="node2" href="$particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initialize particle system ustawienia początkowe i utworzenie obiektu systemu cząstek ..." alt="" coords="241,13,369,39"/>
-=======
-<area shape="rect" id="node2" href="$particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initParticleSystem" alt="" coords="241,13,369,39"/>
->>>>>>> master
 </map>

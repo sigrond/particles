@@ -1,6 +1,5 @@
 var searchData=
 [
-<<<<<<< HEAD
   ['m_5fbinitialized',['m_bInitialized',['../class_particle_system.html#a21bbfba9d8701a70bc6fddbf4fc3f5bd',1,'ParticleSystem']]],
   ['m_5fbuseopengl',['m_bUseOpenGL',['../class_particle_system.html#a5d99413ffc0791e6aa9f02308caf7f1e',1,'ParticleSystem']]],
   ['m_5fcolorvbo',['m_colorVBO',['../class_particle_system.html#a96b05c719006c9e3eaed759f54a49c7f',1,'ParticleSystem::m_colorVBO()'],['../class_particle_renderer.html#a7dcaa73a41c598207974432206b423b5',1,'ParticleRenderer::m_colorVBO()']]],
@@ -49,12 +48,6 @@ var searchData=
   ['mode',['mode',['../particles_8cpp.html#a1ea5d0cb93f22f7d0fdf804bd68c3326',1,'particles.cpp']]],
   ['modelview',['modelView',['../particles_8cpp.html#a4067d49c28b37c689a16350cb3ff64d7',1,'particles.cpp']]],
   ['motion',['motion',['../particles_8cpp.html#a45a7d7c86c97ca6a2d4d32ce2d263f67',1,'particles.cpp']]],
-  ['mouse',['mouse',['../particles_8cpp.html#ac76a5d78172a826cd6ee9512b89a86c0',1,'particles.cpp']]]
-=======
-  ['num_5fparticles',['NUM_PARTICLES',['../particles_8cpp.html#a75cbc112dce4b21c13fe7bb671accab1',1,'particles.cpp']]],
-  ['numbodies',['numBodies',['../struct_sim_params.html#adb68e9ee2422208807756b367efdf842',1,'SimParams']]],
-  ['numcells',['numCells',['../struct_sim_params.html#a9d51112b7e86d46b6f33126a67cc84b4',1,'SimParams']]],
-  ['numiterations',['numIterations',['../particles_8cpp.html#ad026ebba8c4123cf7b82751c88761f31',1,'particles.cpp']]],
-  ['numparticles',['numParticles',['../particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596',1,'particles.cpp']]]
->>>>>>> master
+  ['mouse',['mouse',['../particles_8cpp.html#ac76a5d78172a826cd6ee9512b89a86c0',1,'particles.cpp']]],
+  ['multicolor',['multiColor',['../particles_8cpp.html#a54f61e4f37db321d451436bf2201b8cb',1,'multiColor():&#160;particles.cpp'],['../particle_system_8cpp.html#a54f61e4f37db321d451436bf2201b8cb',1,'multiColor():&#160;particleSystem.cpp']]]
 ];

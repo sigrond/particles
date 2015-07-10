@@ -8,14 +8,11 @@
  * is strictly prohibited.
  *
  */
-<<<<<<< HEAD
   /** \file particles_kernel.cuh
   * \brief Definicja struktury przechowuj¹cej parametry symulacji.
   *
   */
 
-=======
->>>>>>> master
 
 #ifndef PARTICLES_KERNEL_H
 #define PARTICLES_KERNEL_H
@@ -31,10 +28,6 @@
 #include "vector_types.h"
 typedef unsigned int uint;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 // simulation parameters
 struct SimParams
 {
@@ -45,11 +38,8 @@ struct SimParams
     float globalDamping;
     float particleRadius;
 
-<<<<<<< HEAD
 	float particleMass;
 
-=======
->>>>>>> master
     uint3 gridSize;
     uint numCells;
     float3 worldOrigin;
@@ -65,7 +55,6 @@ struct SimParams
     float boundaryDamping;
 
 	float bigradius;
-<<<<<<< HEAD
 	float bigradius0;
 	bool boundaries;
 	float epsi;
@@ -73,8 +62,6 @@ struct SimParams
 
 	int particleTypesNum;
 	unsigned long long int brownQuality;
-=======
->>>>>>> master
 };
 
 #endif
