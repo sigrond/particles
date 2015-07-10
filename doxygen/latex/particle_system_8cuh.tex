@@ -1,0 +1,659 @@
+\hypertarget{particle_system_8cuh}{\section{Dokumentacja pliku particle\-System.\-cuh}
+\label{particle_system_8cuh}\index{particle\-System.\-cuh@{particle\-System.\-cuh}}
+}
+Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{particle_system_8cuh__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{cuda\-Init} (int argc, char $\ast$$\ast$argv)
+\item 
+void \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocate\-Array} (void $\ast$$\ast$dev\-Ptr, int size)
+\item 
+void \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{free\-Array} (void $\ast$dev\-Ptr)
+\item 
+void \hyperlink{particle_system_8cuh_af59f4c114812beed29874c0a1a31519d}{thread\-Sync} ()
+\item 
+void \hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{copy\-Array\-From\-Device} (void $\ast$host, const void $\ast$device, struct cuda\-Graphics\-Resource $\ast$$\ast$cuda\-\_\-vbo\-\_\-resource, int size)
+\item 
+void \hyperlink{particle_system_8cuh_ac4d4ecd921dbed6c2deef639ca295374}{copy\-Array\-To\-Device} (void $\ast$device, const void $\ast$host, int offset, int size)
+\item 
+void \hyperlink{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}{register\-G\-L\-Buffer\-Object} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} vbo, struct cuda\-Graphics\-Resource $\ast$$\ast$cuda\-\_\-vbo\-\_\-resource)
+\item 
+void \hyperlink{particle_system_8cuh_a9afef8c00ca779aae2d7484b45bce34c}{unregister\-G\-L\-Buffer\-Object} (struct cuda\-Graphics\-Resource $\ast$cuda\-\_\-vbo\-\_\-resource)
+\item 
+void $\ast$ \hyperlink{particle_system_8cuh_aa491077afd740a269815eb9ce81c8642}{map\-G\-L\-Buffer\-Object} (struct cuda\-Graphics\-Resource $\ast$$\ast$cuda\-\_\-vbo\-\_\-resource)
+\item 
+void \hyperlink{particle_system_8cuh_a98c3325419b7528d34a51ca7972d7095}{unmap\-G\-L\-Buffer\-Object} (struct cuda\-Graphics\-Resource $\ast$cuda\-\_\-vbo\-\_\-resource)
+\item 
+void \hyperlink{particle_system_8cuh_a342176dbaba2668312c45e1a1423fc4e}{set\-Parameters} (\hyperlink{struct_sim_params}{Sim\-Params} $\ast$host\-Params)
+\item 
+void \hyperlink{particle_system_8cuh_a34e9db8b801cd537e5ae5a4a886e020c}{integrate\-System} (float $\ast$pos, float $\ast$vel, float delta\-Time, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles})
+\item 
+void \hyperlink{particle_system_8cuh_ae0a4037d25e768622443077546399cf2}{calc\-Hash} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Hash, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Index, float $\ast$pos, int \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles})
+\item 
+void \hyperlink{particle_system_8cuh_ac72ccd068434c46c2f901c751d53be1d}{reorder\-Data\-And\-Find\-Cell\-Start} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-Start, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-End, float $\ast$sorted\-Pos, float $\ast$sorted\-Vel, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Hash, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Index, float $\ast$old\-Pos, float $\ast$old\-Vel, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles}, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} num\-Cells)
+\item 
+void \hyperlink{particle_system_8cuh_a917d67e2ed45ea11da51ac5d7004ddfd}{collide} (float $\ast$new\-Vel, float $\ast$sorted\-Pos, float $\ast$sorted\-Vel, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$grid\-Particle\-Index, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-Start, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$cell\-End, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles}, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} num\-Cells)
+\item 
+void \hyperlink{particle_system_8cuh_ac71da7e4672a2732a098ba933a799257}{sort\-Particles} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$d\-Grid\-Particle\-Hash, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} $\ast$d\-Grid\-Particle\-Index, \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles})
+\end{DoxyCompactItemize}
+
+
+\subsection{Dokumentacja funkcji}
+\hypertarget{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!allocate\-Array@{allocate\-Array}}
+\index{allocate\-Array@{allocate\-Array}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{allocate\-Array}]{\setlength{\rightskip}{0pt plus 5cm}void allocate\-Array (
+\begin{DoxyParamCaption}
+\item[{void $\ast$$\ast$}]{dev\-Ptr, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00123}{Particle\-System\-::\-\_\-initialize()}.
+
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_ae0a4037d25e768622443077546399cf2}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!calc\-Hash@{calc\-Hash}}
+\index{calc\-Hash@{calc\-Hash}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{calc\-Hash}]{\setlength{\rightskip}{0pt plus 5cm}void calc\-Hash (
+\begin{DoxyParamCaption}
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Hash, }
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Index, }
+\item[{float $\ast$}]{pos, }
+\item[{int}]{num\-Particles}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_ae0a4037d25e768622443077546399cf2}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00157}{157} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()}.
+
+
+\begin{DoxyCode}
+00161     \{
+00162         \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} numThreads, numBlocks;
+00163         \hyperlink{particle_system__cuda_8cu_a78e8aa50e0629b57cff219a2fa753ed0}{computeGridSize}(\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, 256, numBlocks, numThreads);
+00164 
+00166 \textcolor{comment}{/*      wywolanie watkow        */}
+00168         \textcolor{comment}{// execute the kernel}
+00169         calcHashD<<< numBlocks, numThreads >>>(gridParticleHash,
+00170                                                gridParticleIndex,
+00171                                                (float4 *) pos,
+00172                                                \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles});
+00173 
+00174         \textcolor{comment}{// check if kernel invocation generated an error}
+00175         getLastCudaError(\textcolor{stringliteral}{"Kernel execution failed"});
+00176     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_ae0a4037d25e768622443077546399cf2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_a917d67e2ed45ea11da51ac5d7004ddfd}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!collide@{collide}}
+\index{collide@{collide}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{collide}]{\setlength{\rightskip}{0pt plus 5cm}void collide (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{new\-Vel, }
+\item[{float $\ast$}]{sorted\-Pos, }
+\item[{float $\ast$}]{sorted\-Vel, }
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Index, }
+\item[{{\bf uint} $\ast$}]{cell\-Start, }
+\item[{{\bf uint} $\ast$}]{cell\-End, }
+\item[{{\bf uint}}]{num\-Particles, }
+\item[{{\bf uint}}]{num\-Cells}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_a917d67e2ed45ea11da51ac5d7004ddfd}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00219}{219} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()}.
+
+
+\begin{DoxyCode}
+00227     \{
+00228 \textcolor{preprocessor}{#if USE\_TEX}
+00229 \textcolor{preprocessor}{}        checkCudaErrors(cudaBindTexture(0, oldPosTex, sortedPos, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}*\textcolor{keyword}{sizeof}(float4)));
+00230         checkCudaErrors(cudaBindTexture(0, oldVelTex, sortedVel, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}*\textcolor{keyword}{sizeof}(float4)));
+00231         checkCudaErrors(cudaBindTexture(0, cellStartTex, cellStart, numCells*\textcolor{keyword}{sizeof}(
+      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint})));
+00232         checkCudaErrors(cudaBindTexture(0, cellEndTex, cellEnd, numCells*\textcolor{keyword}{sizeof}(
+      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint})));
+00233 \textcolor{preprocessor}{#endif}
+00234 \textcolor{preprocessor}{}
+00235         \textcolor{comment}{// thread per particle}
+00236         \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} numThreads, numBlocks;
+00237         \hyperlink{particle_system__cuda_8cu_a78e8aa50e0629b57cff219a2fa753ed0}{computeGridSize}(\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, 64, numBlocks, numThreads);
+00238 
+00240 \textcolor{comment}{/*      wywolanie watkow zderzen        */}
+00242         \textcolor{comment}{// execute the kernel}
+00243         collideD<<< numBlocks, numThreads >>>((float4 *)newVel,
+00244                                               (float4 *)sortedPos,
+00245                                               (float4 *)sortedVel,
+00246                                               gridParticleIndex,
+00247                                               cellStart,
+00248                                               cellEnd,
+00249                                               \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles});
+00250 
+00251         \textcolor{comment}{// check if kernel invocation generated an error}
+00252         getLastCudaError("Kernel execution failed");
+00253 
+00254 \textcolor{preprocessor}{#if USE\_TEX}
+00255 \textcolor{preprocessor}{}        checkCudaErrors(cudaUnbindTexture(oldPosTex));
+00256         checkCudaErrors(cudaUnbindTexture(oldVelTex));
+00257         checkCudaErrors(cudaUnbindTexture(cellStartTex));
+00258         checkCudaErrors(cudaUnbindTexture(cellEndTex));
+00259 \textcolor{preprocessor}{#endif}
+00260 \textcolor{preprocessor}{}    \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_a917d67e2ed45ea11da51ac5d7004ddfd_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!copy\-Array\-From\-Device@{copy\-Array\-From\-Device}}
+\index{copy\-Array\-From\-Device@{copy\-Array\-From\-Device}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{copy\-Array\-From\-Device}]{\setlength{\rightskip}{0pt plus 5cm}void copy\-Array\-From\-Device (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{host, }
+\item[{const void $\ast$}]{device, }
+\item[{struct cuda\-Graphics\-Resource $\ast$$\ast$}]{cuda\-\_\-vbo\-\_\-resource, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00108}{108} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00306}{Particle\-System\-::dump\-Grid()}, \hyperlink{particle_system_8cpp_source_l00331}{Particle\-System\-::dump\-Particles()}, \hyperlink{particle_system_8cpp_source_l00346}{Particle\-System\-::get\-Array()} i \hyperlink{particles_8cpp_source_l00194}{run\-Benchmark()}.
+
+
+\begin{DoxyCode}
+00110     \{
+00111         \textcolor{keywordflow}{if} (cuda\_vbo\_resource)
+00112         \{
+00113             device = \hyperlink{particle_system__cuda_8cu_aa491077afd740a269815eb9ce81c8642}{mapGLBufferObject}(cuda\_vbo\_resource);
+00114         \}
+00115 
+00116         checkCudaErrors(cudaMemcpy(host, device, size, cudaMemcpyDeviceToHost));
+00117 
+00118         \textcolor{keywordflow}{if} (cuda\_vbo\_resource)
+00119         \{
+00120             \hyperlink{particle_system__cuda_8cu_a98c3325419b7528d34a51ca7972d7095}{unmapGLBufferObject}(*cuda\_vbo\_resource);
+00121         \}
+00122     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_ac4d4ecd921dbed6c2deef639ca295374}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!copy\-Array\-To\-Device@{copy\-Array\-To\-Device}}
+\index{copy\-Array\-To\-Device@{copy\-Array\-To\-Device}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{copy\-Array\-To\-Device}]{\setlength{\rightskip}{0pt plus 5cm}void copy\-Array\-To\-Device (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{device, }
+\item[{const void $\ast$}]{host, }
+\item[{int}]{offset, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_ac4d4ecd921dbed6c2deef639ca295374}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00077}{77} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00374}{Particle\-System\-::set\-Array()}.
+
+
+\begin{DoxyCode}
+00078     \{
+00079         checkCudaErrors(cudaMemcpy((\textcolor{keywordtype}{char} *) device + offset, host, size, cudaMemcpyHostToDevice));
+00080     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_ac4d4ecd921dbed6c2deef639ca295374_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!cuda\-Init@{cuda\-Init}}
+\index{cuda\-Init@{cuda\-Init}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{cuda\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void cuda\-Init (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00042}{42} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00706}{main()}.
+
+
+\begin{DoxyCode}
+00043     \{
+00044         \textcolor{keywordtype}{int} devID;
+00045 
+00046         \textcolor{comment}{// use command-line specified CUDA device, otherwise use device with highest Gflops/s}
+00047         devID = findCudaDevice(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv);
+00048 
+00049         \textcolor{keywordflow}{if} (devID < 0)
+00050         \{
+00051             printf(\textcolor{stringliteral}{"No CUDA Capable devices found, exiting...\(\backslash\)n"});
+00052             exit(EXIT\_SUCCESS);
+00053         \}
+00054     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!free\-Array@{free\-Array}}
+\index{free\-Array@{free\-Array}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{free\-Array}]{\setlength{\rightskip}{0pt plus 5cm}void free\-Array (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{dev\-Ptr}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00067}{67} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{Particle\-System\-::\-\_\-finalize()}.
+
+
+\begin{DoxyCode}
+00068     \{
+00069         checkCudaErrors(cudaFree(devPtr));
+00070     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_a34e9db8b801cd537e5ae5a4a886e020c}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!integrate\-System@{integrate\-System}}
+\index{integrate\-System@{integrate\-System}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{integrate\-System}]{\setlength{\rightskip}{0pt plus 5cm}void integrate\-System (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{pos, }
+\item[{float $\ast$}]{vel, }
+\item[{float}]{delta\-Time, }
+\item[{{\bf uint}}]{num\-Particles}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_a34e9db8b801cd537e5ae5a4a886e020c}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00143}{143} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()}.
+
+
+\begin{DoxyCode}
+00147     \{
+00148         thrust::device\_ptr<float4> d\_pos4((float4 *)pos);
+00149         thrust::device\_ptr<float4> d\_vel4((float4 *)vel);
+00150 
+00151         thrust::for\_each(
+00152             thrust::make\_zip\_iterator(thrust::make\_tuple(d\_pos4, d\_vel4)),
+00153             thrust::make\_zip\_iterator(thrust::make\_tuple(d\_pos4+\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, d\_vel4+
+      \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles})),
+00154             \hyperlink{structintegrate__functor}{integrate\_functor}(deltaTime));
+00155     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_a34e9db8b801cd537e5ae5a4a886e020c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_aa491077afd740a269815eb9ce81c8642}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!map\-G\-L\-Buffer\-Object@{map\-G\-L\-Buffer\-Object}}
+\index{map\-G\-L\-Buffer\-Object@{map\-G\-L\-Buffer\-Object}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{map\-G\-L\-Buffer\-Object}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ map\-G\-L\-Buffer\-Object (
+\begin{DoxyParamCaption}
+\item[{struct cuda\-Graphics\-Resource $\ast$$\ast$}]{cuda\-\_\-vbo\-\_\-resource}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_aa491077afd740a269815eb9ce81c8642}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00093}{93} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()}.
+
+
+\begin{DoxyCode}
+00094     \{
+00095         \textcolor{keywordtype}{void} *ptr;
+00096         checkCudaErrors(cudaGraphicsMapResources(1, cuda\_vbo\_resource, 0));
+00097         \textcolor{keywordtype}{size\_t} num\_bytes;
+00098         checkCudaErrors(cudaGraphicsResourceGetMappedPointer((\textcolor{keywordtype}{void} **)&ptr, &num\_bytes,
+00099                                                              *cuda\_vbo\_resource));
+00100         \textcolor{keywordflow}{return} ptr;
+00101     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_aa491077afd740a269815eb9ce81c8642_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!register\-G\-L\-Buffer\-Object@{register\-G\-L\-Buffer\-Object}}
+\index{register\-G\-L\-Buffer\-Object@{register\-G\-L\-Buffer\-Object}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{register\-G\-L\-Buffer\-Object}]{\setlength{\rightskip}{0pt plus 5cm}void register\-G\-L\-Buffer\-Object (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{vbo, }
+\item[{struct cuda\-Graphics\-Resource $\ast$$\ast$}]{cuda\-\_\-vbo\-\_\-resource}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00082}{82} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00123}{Particle\-System\-::\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00374}{Particle\-System\-::set\-Array()}.
+
+
+\begin{DoxyCode}
+00083     \{
+00084         checkCudaErrors(cudaGraphicsGLRegisterBuffer(cuda\_vbo\_resource, vbo,
+00085                                                      cudaGraphicsMapFlagsNone));
+00086     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_ac72ccd068434c46c2f901c751d53be1d}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!reorder\-Data\-And\-Find\-Cell\-Start@{reorder\-Data\-And\-Find\-Cell\-Start}}
+\index{reorder\-Data\-And\-Find\-Cell\-Start@{reorder\-Data\-And\-Find\-Cell\-Start}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{reorder\-Data\-And\-Find\-Cell\-Start}]{\setlength{\rightskip}{0pt plus 5cm}void reorder\-Data\-And\-Find\-Cell\-Start (
+\begin{DoxyParamCaption}
+\item[{{\bf uint} $\ast$}]{cell\-Start, }
+\item[{{\bf uint} $\ast$}]{cell\-End, }
+\item[{float $\ast$}]{sorted\-Pos, }
+\item[{float $\ast$}]{sorted\-Vel, }
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Hash, }
+\item[{{\bf uint} $\ast$}]{grid\-Particle\-Index, }
+\item[{float $\ast$}]{old\-Pos, }
+\item[{float $\ast$}]{old\-Vel, }
+\item[{{\bf uint}}]{num\-Particles, }
+\item[{{\bf uint}}]{num\-Cells}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_ac72ccd068434c46c2f901c751d53be1d}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00178}{178} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()}.
+
+
+\begin{DoxyCode}
+00188     \{
+00189         \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} numThreads, numBlocks;
+00190         \hyperlink{particle_system__cuda_8cu_a78e8aa50e0629b57cff219a2fa753ed0}{computeGridSize}(\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, 256, numBlocks, numThreads);
+00191 
+00192         \textcolor{comment}{// set all cells to empty}
+00193         checkCudaErrors(cudaMemset(cellStart, 0xffffffff, numCells*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint})));
+00194 
+00195 \textcolor{preprocessor}{#if USE\_TEX}
+00196 \textcolor{preprocessor}{}        checkCudaErrors(cudaBindTexture(0, oldPosTex, oldPos, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}*\textcolor{keyword}{sizeof}(float4)));
+00197         checkCudaErrors(cudaBindTexture(0, oldVelTex, oldVel, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}*\textcolor{keyword}{sizeof}(float4)));
+00198 \textcolor{preprocessor}{#endif}
+00199 \textcolor{preprocessor}{}
+00200         \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} smemSize = \textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint})*(numThreads+1);
+00201         reorderDataAndFindCellStartD<<< numBlocks, numThreads, smemSize>>>(
+00202             cellStart,
+00203             cellEnd,
+00204             (float4 *) sortedPos,
+00205             (float4 *) sortedVel,
+00206             gridParticleHash,
+00207             gridParticleIndex,
+00208             (float4 *) oldPos,
+00209             (float4 *) oldVel,
+00210             \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles});
+00211         getLastCudaError(\textcolor{stringliteral}{"Kernel execution failed: reorderDataAndFindCellStartD"});
+00212 
+00213 \textcolor{preprocessor}{#if USE\_TEX}
+00214 \textcolor{preprocessor}{}        checkCudaErrors(cudaUnbindTexture(oldPosTex));
+00215         checkCudaErrors(cudaUnbindTexture(oldVelTex));
+00216 \textcolor{preprocessor}{#endif}
+00217 \textcolor{preprocessor}{}    \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_ac72ccd068434c46c2f901c751d53be1d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_a342176dbaba2668312c45e1a1423fc4e}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!set\-Parameters@{set\-Parameters}}
+\index{set\-Parameters@{set\-Parameters}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{set\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Parameters (
+\begin{DoxyParamCaption}
+\item[{{\bf Sim\-Params} $\ast$}]{host\-Params}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_a342176dbaba2668312c45e1a1423fc4e}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00124}{124} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+\begin{DoxyCode}
+00125     \{
+00126         \textcolor{comment}{// copy parameters to constant memory}
+00127         checkCudaErrors(cudaMemcpyToSymbol(\hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params}, hostParams, \textcolor{keyword}{sizeof}(
+      \hyperlink{struct_sim_params}{SimParams})));
+00128     \}
+\end{DoxyCode}
+\hypertarget{particle_system_8cuh_ac71da7e4672a2732a098ba933a799257}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!sort\-Particles@{sort\-Particles}}
+\index{sort\-Particles@{sort\-Particles}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{sort\-Particles}]{\setlength{\rightskip}{0pt plus 5cm}void sort\-Particles (
+\begin{DoxyParamCaption}
+\item[{{\bf uint} $\ast$}]{d\-Grid\-Particle\-Hash, }
+\item[{{\bf uint} $\ast$}]{d\-Grid\-Particle\-Index, }
+\item[{{\bf uint}}]{num\-Particles}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_ac71da7e4672a2732a098ba933a799257}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00263}{263} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()}.
+
+
+\begin{DoxyCode}
+00264     \{
+00265         thrust::sort\_by\_key(thrust::device\_ptr<uint>(dGridParticleHash),
+00266                             thrust::device\_ptr<uint>(dGridParticleHash + 
+      \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}),
+00267                             thrust::device\_ptr<uint>(dGridParticleIndex));
+00268     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_ac71da7e4672a2732a098ba933a799257_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_af59f4c114812beed29874c0a1a31519d}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!thread\-Sync@{thread\-Sync}}
+\index{thread\-Sync@{thread\-Sync}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{thread\-Sync}]{\setlength{\rightskip}{0pt plus 5cm}void thread\-Sync (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_af59f4c114812beed29874c0a1a31519d}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00072}{72} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+\begin{DoxyCode}
+00073     \{
+00074         checkCudaErrors(cudaDeviceSynchronize());
+00075     \}
+\end{DoxyCode}
+\hypertarget{particle_system_8cuh_a98c3325419b7528d34a51ca7972d7095}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!unmap\-G\-L\-Buffer\-Object@{unmap\-G\-L\-Buffer\-Object}}
+\index{unmap\-G\-L\-Buffer\-Object@{unmap\-G\-L\-Buffer\-Object}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{unmap\-G\-L\-Buffer\-Object}]{\setlength{\rightskip}{0pt plus 5cm}void unmap\-G\-L\-Buffer\-Object (
+\begin{DoxyParamCaption}
+\item[{struct cuda\-Graphics\-Resource $\ast$}]{cuda\-\_\-vbo\-\_\-resource}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_a98c3325419b7528d34a51ca7972d7095}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00103}{103} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00238}{Particle\-System\-::update()}.
+
+
+\begin{DoxyCode}
+00104     \{
+00105         checkCudaErrors(cudaGraphicsUnmapResources(1, &cuda\_vbo\_resource, 0));
+00106     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_a98c3325419b7528d34a51ca7972d7095_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{particle_system_8cuh_a9afef8c00ca779aae2d7484b45bce34c}{\index{particle\-System.\-cuh@{particle\-System.\-cuh}!unregister\-G\-L\-Buffer\-Object@{unregister\-G\-L\-Buffer\-Object}}
+\index{unregister\-G\-L\-Buffer\-Object@{unregister\-G\-L\-Buffer\-Object}!particleSystem.cuh@{particle\-System.\-cuh}}
+\subsubsection[{unregister\-G\-L\-Buffer\-Object}]{\setlength{\rightskip}{0pt plus 5cm}void unregister\-G\-L\-Buffer\-Object (
+\begin{DoxyParamCaption}
+\item[{struct cuda\-Graphics\-Resource $\ast$}]{cuda\-\_\-vbo\-\_\-resource}
+\end{DoxyParamCaption}
+)}}\label{particle_system_8cuh_a9afef8c00ca779aae2d7484b45bce34c}
+
+
+Definicja w linii \hyperlink{particle_system__cuda_8cu_source_l00088}{88} pliku \hyperlink{particle_system__cuda_8cu_source}{particle\-System\-\_\-cuda.\-cu}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{Particle\-System\-::\-\_\-finalize()} i \hyperlink{particle_system_8cpp_source_l00374}{Particle\-System\-::set\-Array()}.
+
+
+\begin{DoxyCode}
+00089     \{
+00090         checkCudaErrors(cudaGraphicsUnregisterResource(cuda\_vbo\_resource));
+00091     \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{particle_system_8cuh_a9afef8c00ca779aae2d7484b45bce34c_icgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,59 @@
+\hypertarget{shaders_8cpp_source}{\section{shaders.\-cpp}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * Copyright 1993-2012 NVIDIA Corporation.  All rights reserved.}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ * Please refer to the NVIDIA end user license agreement (EULA) associated}
+00005 \textcolor{comment}{ * with this source code for terms and conditions that govern your use of}
+00006 \textcolor{comment}{ * this software. Any use, reproduction, disclosure, or distribution of}
+00007 \textcolor{comment}{ * this software and related documentation outside the terms of the EULA}
+00008 \textcolor{comment}{ * is strictly prohibited.}
+00009 \textcolor{comment}{ *}
+00010 \textcolor{comment}{ */}
+00011 
+\hypertarget{shaders_8cpp_source_l00012}{}\hyperlink{shaders_8cpp_ab06e1eb2e9bf38e0d452b1f796aed208}{00012} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{STRINGIFY}\textcolor{preprocessor}{(}\textcolor{preprocessor}{A}\textcolor{preprocessor}{)} \textcolor{preprocessor}{#}\textcolor{preprocessor}{A}
+00013 
+00014 \textcolor{comment}{// vertex shader}
+\hypertarget{shaders_8cpp_source_l00015}{}\hyperlink{shaders_8cpp_aea8e0959f6b7eabf6156f801e179da60}{00015} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\hyperlink{shaders_8cpp_aea8e0959f6b7eabf6156f801e179da60}{vertexShader} = \hyperlink{shaders_8cpp_ab06e1eb2e9bf38e0d452b1f796aed208}{STRINGIFY}(
+00016                                uniform \textcolor{keywordtype}{float} pointRadius;  \textcolor{comment}{// point size in world space}
+00017                                uniform \textcolor{keywordtype}{float} pointScale;   \textcolor{comment}{// scale to calculate size in pixels}
+00018                                uniform \textcolor{keywordtype}{float} densityScale;
+00019                                uniform \textcolor{keywordtype}{float} densityOffset;
+00020                                \textcolor{keywordtype}{void} main()
+00021 \{
+00022     \textcolor{comment}{// calculate window-space point size}
+00023     vec3 posEye = vec3(gl\_ModelViewMatrix * vec4(gl\_Vertex.xyz, 1.0));
+00024     \textcolor{keywordtype}{float} dist = length(posEye);
+00025     gl\_PointSize = pointRadius * (pointScale / dist);
+00026 
+00027     gl\_TexCoord[0] = gl\_MultiTexCoord0;
+00028     gl\_Position = gl\_ModelViewProjectionMatrix * vec4(gl\_Vertex.xyz, 1.0);
+00029 
+00030     gl\_FrontColor = gl\_Color;
+00031 \}
+00032                            );
+00033 
+00034 \textcolor{comment}{// pixel shader for rendering points as shaded spheres}
+\hypertarget{shaders_8cpp_source_l00035}{}\hyperlink{shaders_8cpp_abad1d2b70401d6f3a4f61a462369373d}{00035} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\hyperlink{shaders_8cpp_abad1d2b70401d6f3a4f61a462369373d}{spherePixelShader} = \hyperlink{shaders_8cpp_ab06e1eb2e9bf38e0d452b1f796aed208}{STRINGIFY}(
+00036                                     \textcolor{keywordtype}{void} main()
+00037 \{
+00038     \textcolor{keyword}{const} vec3 lightDir = vec3(0.577, 0.577, 0.577);
+00039 
+00040     \textcolor{comment}{// calculate normal from texture coordinates}
+00041     vec3 N;
+00042     N.xy = gl\_TexCoord[0].xy*vec2(2.0, -2.0) + vec2(-1.0, 1.0);
+00043     \textcolor{keywordtype}{float} mag = dot(N.xy, N.xy);
+00044 
+00045     \textcolor{keywordflow}{if} (mag > 1.0) discard;   \textcolor{comment}{// kill pixels outside circle}
+00046 
+00047     N.z = sqrt(1.0-mag);
+00048 
+00049     \textcolor{comment}{// calculate lighting}
+00050     \textcolor{keywordtype}{float} diffuse = max(0.0, dot(lightDir, N));
+00051 
+00052     gl\_FragColor = gl\_Color * diffuse;
+00053 \}
+00054                                 );
+\end{DoxyCode}
