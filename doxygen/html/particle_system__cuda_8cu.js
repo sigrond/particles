@@ -2,8 +2,11 @@ var particle_system__cuda_8cu =
 [
     [ "allocateArray", "particle_system__cuda_8cu.html#a781553d31085a23b6d0be9d19982759a", null ],
     [ "calcHash", "particle_system__cuda_8cu.html#ae0a4037d25e768622443077546399cf2", null ],
+<<<<<<< HEAD
     [ "collide", "particle_system__cuda_8cu.html#ad9d704d76ddff93e75ca7d39f57bbced", null ],
+=======
     [ "collide", "particle_system__cuda_8cu.html#a917d67e2ed45ea11da51ac5d7004ddfd", null ],
+>>>>>>> master
     [ "computeGridSize", "particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0", null ],
     [ "copyArrayFromDevice", "particle_system__cuda_8cu.html#a54716407dbd516db34f42b2faf7f91a3", null ],
     [ "copyArrayToDevice", "particle_system__cuda_8cu.html#ac4d4ecd921dbed6c2deef639ca295374", null ],

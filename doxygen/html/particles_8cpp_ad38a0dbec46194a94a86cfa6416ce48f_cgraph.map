@@ -1,0 +1,5 @@
+<map id="parowanieKropliWCzasie" name="parowanieKropliWCzasie">
+<area shape="rect" id="node2" href="$class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0" title="ParticleSystem::getNumParticles" alt="" coords="220,5,435,32"/>
+<area shape="rect" id="node3" href="$class_particle_system.html#abdb59a91d8483017ad71455bb2958993" title="ParticleSystem::getParticle\lRadius" alt="" coords="237,57,418,98"/>
+<area shape="rect" id="node4" href="$class_particle_system.html#a97efe00aa29307ecae0165da33d4770a" title="ParticleSystem::setBigRadius" alt="" coords="229,123,425,149"/>
+</map>

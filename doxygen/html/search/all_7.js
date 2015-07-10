@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['g_5freffile',['g_refFile',['../particles_8cpp.html#a9a1a45d93bf2d442b5050e8bf89491e1',1,'particles.cpp']]],
+<<<<<<< HEAD
+  ['g_5freffile',['g_refFile',['../particles_8cpp.html#ab5af5d243ea25a0fa19984c0f69af840',1,'particles.cpp']]],
   ['g_5ftotalerrors',['g_TotalErrors',['../particles_8cpp.html#abd87357eda7bf4b5fc32058a0cccd57b',1,'particles.cpp']]],
   ['getarray',['getArray',['../class_particle_system.html#a8bdfaa6198651ef0ceb8be489ecd78e3',1,'ParticleSystem']]],
   ['getcellsize',['getCellSize',['../class_particle_system.html#a608bcb87f3d30fbfeae810da28ae1052',1,'ParticleSystem']]],
@@ -16,6 +17,9 @@ var searchData=
   ['getworldorigin',['getWorldOrigin',['../class_particle_system.html#a19d9bb799a5b5704d8fd6a286f6be20d',1,'ParticleSystem']]],
   ['globaldamping',['globalDamping',['../struct_sim_params.html#a7058bad8c867d9d42d8c9d842638ebea',1,'SimParams']]],
   ['gravity',['gravity',['../struct_sim_params.html#ae7508eba5dd90859215b59d19e001bb9',1,'SimParams::gravity()'],['../particles_8cpp.html#a31924e6c9b17aad7f861e818b8be5d8f',1,'gravity():&#160;particles.cpp']]],
-  ['grid_5fsize',['GRID_SIZE',['../particles_8cpp.html#a08246606c233e7785a497c09672f366f',1,'GRID_SIZE():&#160;particles.cpp'],['../particles_8cpp.html#a08246606c233e7785a497c09672f366f',1,'GRID_SIZE():&#160;particles.cpp']]],
+  ['grid_5fsize',['GRID_SIZE',['../particles_8cpp.html#a08246606c233e7785a497c09672f366f',1,'particles.cpp']]],
   ['gridsize',['gridSize',['../struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949',1,'SimParams::gridSize()'],['../particles_8cpp.html#aefe301f4cc6d6838e3627b5970e855a9',1,'gridSize():&#160;particles.cpp']]]
+=======
+  ['height',['height',['../particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c',1,'particles.cpp']]]
+>>>>>>> master
 ];

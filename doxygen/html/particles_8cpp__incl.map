@@ -1,0 +1,11 @@
+<map id="particles.cpp" name="particles.cpp">
+<<<<<<< HEAD
+<area shape="rect" id="node13" href="$particle_system_8h.html" title="Definicja klasy ParticleSystem i części jej prostych metod. " alt="" coords="1124,80,1244,107"/>
+<area shape="rect" id="node17" href="$render__particles_8h.html" title="render_particles.h" alt="" coords="1268,80,1393,107"/>
+<area shape="rect" id="node14" href="$particles__kernel_8cuh.html" title="Definicja struktury przechowuj�cej parametry symulacji. " alt="" coords="1036,155,1175,181"/>
+=======
+<area shape="rect" id="node13" href="$particle_system_8h.html" title="particleSystem.h" alt="" coords="1124,80,1244,107"/>
+<area shape="rect" id="node17" href="$render__particles_8h.html" title="render_particles.h" alt="" coords="1268,80,1393,107"/>
+<area shape="rect" id="node14" href="$particles__kernel_8cuh.html" title="particles_kernel.cuh" alt="" coords="1036,155,1175,181"/>
+>>>>>>> master
+</map>

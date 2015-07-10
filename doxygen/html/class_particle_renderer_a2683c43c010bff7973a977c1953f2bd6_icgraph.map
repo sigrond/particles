@@ -1,0 +1,8 @@
+<map id="ParticleRenderer::_drawPoints" name="ParticleRenderer::_drawPoints">
+<area shape="rect" id="node2" href="$class_particle_renderer.html#a80b2f52dc28bb3abbde021f7fe96f8ff" title="ParticleRenderer::display" alt="" coords="180,13,347,39"/>
+<<<<<<< HEAD
+<area shape="rect" id="node3" href="$particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="395,13,457,39"/>
+=======
+<area shape="rect" id="node3" href="$particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="display" alt="" coords="395,13,457,39"/>
+>>>>>>> master
+</map>

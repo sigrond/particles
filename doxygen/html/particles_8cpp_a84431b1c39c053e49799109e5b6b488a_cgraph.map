@@ -1,0 +1,28 @@
+<map id="initParticleSystem" name="initParticleSystem">
+<<<<<<< HEAD
+<area shape="rect" id="node2" href="$class_particle_system.html#a5d300a37ebf1a2fb8575f82ced6a208f" title="ParticleSystem::getColor\lBuffer" alt="" coords="199,5,366,47"/>
+<area shape="rect" id="node3" href="$class_particle_system.html#abdb59a91d8483017ad71455bb2958993" title="ParticleSystem::getParticle\lRadius" alt="" coords="192,71,373,112"/>
+<area shape="rect" id="node4" href="$class_particle_system.html#a519070812dd9eb349f270c793c5f64b6" title="ParticleSystem::reset" alt="" coords="209,137,357,163"/>
+<area shape="rect" id="node10" href="$class_particle_system.html#a97efe00aa29307ecae0165da33d4770a" title="ParticleSystem::setBigRadius" alt="" coords="185,187,381,214"/>
+<area shape="rect" id="node11" href="$class_particle_system.html#a55005091f11f7e9734c6b3fd2f1a5b1c" title="ParticleSystem::setBigRadius0" alt="" coords="181,238,384,265"/>
+<area shape="rect" id="node12" href="$class_particle_system.html#a0b8c24c273a5a89ba27c7b6c949d2ce1" title="ParticleSystem::setBrown\lQuality" alt="" coords="196,289,369,331"/>
+<area shape="rect" id="node13" href="$class_particle_renderer.html#af16e23ebcee20753d86d24e4e5e32c7c" title="ParticleRenderer::setColor\lBuffer" alt="" coords="195,355,370,396"/>
+<area shape="rect" id="node14" href="$class_particle_renderer.html#aff09822b565b6953fc83c88bda7fa378" title="ParticleRenderer::setParticle\lRadius" alt="" coords="189,420,377,461"/>
+<area shape="rect" id="node5" href="$particle_system_8cpp.html#a5459f6b6b39f9a6b80de7f17c3777ee2" title="frand" alt="" coords="491,111,541,138"/>
+<area shape="rect" id="node6" href="$class_particle_system.html#aa792a66680e800832059854aab0d594d" title="ParticleSystem::setArray" alt="" coords="432,162,600,189"/>
+<area shape="rect" id="node7" href="$particle_system_8cuh.html#a9afef8c00ca779aae2d7484b45bce34c" title="unregisterGLBufferObject" alt="" coords="648,111,815,138"/>
+<area shape="rect" id="node8" href="$particle_system_8cuh.html#a4386a84282ceeaba09939817aa2a9c24" title="registerGLBufferObject" alt="" coords="655,162,808,189"/>
+<area shape="rect" id="node9" href="$particle_system_8cuh.html#ac4d4ecd921dbed6c2deef639ca295374" title="copyArrayToDevice" alt="" coords="665,213,798,239"/>
+=======
+<area shape="rect" id="node2" href="$class_particle_system.html#a5d300a37ebf1a2fb8575f82ced6a208f" title="ParticleSystem::getColor\lBuffer" alt="" coords="192,5,359,47"/>
+<area shape="rect" id="node3" href="$class_particle_system.html#abdb59a91d8483017ad71455bb2958993" title="ParticleSystem::getParticle\lRadius" alt="" coords="185,71,366,112"/>
+<area shape="rect" id="node4" href="$class_particle_system.html#a519070812dd9eb349f270c793c5f64b6" title="ParticleSystem::reset" alt="" coords="201,137,349,163"/>
+<area shape="rect" id="node10" href="$class_particle_renderer.html#af16e23ebcee20753d86d24e4e5e32c7c" title="ParticleRenderer::setColor\lBuffer" alt="" coords="188,188,363,229"/>
+<area shape="rect" id="node11" href="$class_particle_renderer.html#aff09822b565b6953fc83c88bda7fa378" title="ParticleRenderer::setParticle\lRadius" alt="" coords="181,253,369,295"/>
+<area shape="rect" id="node5" href="$particle_system_8cpp.html#a5459f6b6b39f9a6b80de7f17c3777ee2" title="frand" alt="" coords="476,111,527,138"/>
+<area shape="rect" id="node6" href="$class_particle_system.html#aa792a66680e800832059854aab0d594d" title="ParticleSystem::setArray" alt="" coords="417,162,585,189"/>
+<area shape="rect" id="node7" href="$particle_system_8cuh.html#a9afef8c00ca779aae2d7484b45bce34c" title="unregisterGLBufferObject" alt="" coords="633,111,800,138"/>
+<area shape="rect" id="node8" href="$particle_system_8cuh.html#a4386a84282ceeaba09939817aa2a9c24" title="registerGLBufferObject" alt="" coords="640,162,793,189"/>
+<area shape="rect" id="node9" href="$particle_system_8cuh.html#ac4d4ecd921dbed6c2deef639ca295374" title="copyArrayToDevice" alt="" coords="650,213,783,239"/>
+>>>>>>> master
+</map>
