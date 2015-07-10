@@ -14,6 +14,11 @@ Diagram współpracy dla Particle\-System\-:\nopagebreak
 \includegraphics[height=550pt]{class_particle_system__coll__graph}
 \end{center}
 \end{figure}
+\subsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_particle_system_1_1particle_type}{particle\-Type}
+\end{DoxyCompactItemize}
 \subsection*{Typy publiczne}
 \begin{DoxyCompactItemize}
 \item 
@@ -61,6 +66,12 @@ void \hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{set\-Da
 \item 
 void \hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{set\-Gravity} (float x)
 \item 
+void \hyperlink{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{set\-Boundary\-Damping} (float x)
+\item 
+void \hyperlink{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{set\-Particle\-Mass} (float x)
+\item 
+void \hyperlink{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{set\-Epsi} (float x)
+\item 
 void \hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{set\-Collide\-Spring} (float x)
 \item 
 void \hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{set\-Collide\-Damping} (float x)
@@ -70,6 +81,16 @@ void \hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{set\-Co
 void \hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{set\-Collide\-Attraction} (float x)
 \item 
 void \hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{set\-Big\-Radius} (float x)
+\item 
+void \hyperlink{class_particle_system_a55005091f11f7e9734c6b3fd2f1a5b1c}{set\-Big\-Radius0} (float x)
+\item 
+void \hyperlink{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{set\-Brown} (float x)
+\item 
+void \hyperlink{class_particle_system_a0b8c24c273a5a89ba27c7b6c949d2ce1}{set\-Brown\-Quality} (unsigned long long int x)
+\item 
+void \hyperlink{class_particle_system_a99bbe16b8e181415c2aa71c11edace98}{set\-Boundaries} (bool x)
+\item 
+void \hyperlink{class_particle_system_ac82e5fa73b2b91dfa44db14daa37b389}{set\-Particle\-Types\-Num} (int x)
 \item 
 void \hyperlink{class_particle_system_a9c49794585cad649de400dc7375d7801}{set\-Collider\-Pos} (float3 x)
 \item 
@@ -164,7 +185,7 @@ Stop\-Watch\-Interface $\ast$ \hyperlink{class_particle_system_af01e546384ef27bb
 \subsection{Opis szczegółowy}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00023}{23} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00027}{27} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
@@ -183,14 +204,14 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00023}{23} pliku \hyperl
 \end{Desc}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00036}{36} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00040}{40} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 \begin{DoxyCode}
-00037         \{
-00038             \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION},
-00039             \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY},
-00040         \};
+00041         \{
+00042             \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION},
+00043             \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY},
+00044         \};
 \end{DoxyCode}
 \hypertarget{class_particle_system_a1dca3996c8068602412ef9f7826605d1}{\index{Particle\-System@{Particle\-System}!Particle\-Config@{Particle\-Config}}
 \index{Particle\-Config@{Particle\-Config}!ParticleSystem@{Particle\-System}}
@@ -208,15 +229,15 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00036}{36} pliku \hyperl
 \end{Desc}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00029}{29} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00033}{33} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 \begin{DoxyCode}
-00030         \{
-00031             \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{CONFIG\_RANDOM},
-00032             \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{CONFIG\_GRID},
-00033             \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a602c3604196d8513e85acf6fd039391e}{\_NUM\_CONFIGS}
-00034         \};
+00034         \{
+00035             \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{CONFIG\_RANDOM},
+00036             \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{CONFIG\_GRID},
+00037             \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a602c3604196d8513e85acf6fd039391e}{\_NUM\_CONFIGS}
+00038         \};
 \end{DoxyCode}
 
 
@@ -230,67 +251,76 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00029}{29} pliku \hyperl
 \item[{bool}]{b\-Use\-Open\-G\-L}
 \end{DoxyParamCaption}
 )}}\label{class_particle_system_a8a2be3e93616aa694801369c8b8d12cb}
+promieñ w mikronach
 
-
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00033}{33} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
-
-
-
-Odwołuje się do \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00164}{m\-\_\-d\-Pos}, \hyperlink{particle_system_8h_source_l00165}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00176}{m\-\_\-grid\-Sort\-Bits}, \hyperlink{particle_system_8h_source_l00156}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00157}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00153}{m\-\_\-num\-Particles}, \hyperlink{particle_system_8h_source_l00194}{m\-\_\-solver\-Iterations} i \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00040}{40} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()}.
+Odwołuje się do \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00205}{m\-\_\-d\-Pos}, \hyperlink{particle_system_8h_source_l00206}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00217}{m\-\_\-grid\-Sort\-Bits}, \hyperlink{particle_system_8h_source_l00197}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00198}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00194}{m\-\_\-num\-Particles}, \hyperlink{particle_system_8h_source_l00235}{m\-\_\-solver\-Iterations} i \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()}.
+
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()}.
 
 
 \begin{DoxyCode}
-00033                                                                                  :
-00034     \hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized}(\textcolor{keyword}{false}),
-00035     \hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL}(bUseOpenGL),
-00036     \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}(\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}),
-00037     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}(0),
-00038     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}(0),
-00039     \hyperlink{class_particle_system_afff6217d2726217dff77c81ef3c23bfa}{m\_dPos}(0),
-00040     \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel}(0),
-00041     \hyperlink{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{m\_gridSize}(\hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}),
-00042     \hyperlink{class_particle_system_af01e546384ef27bb1894a37f2a02e967}{m\_timer}(NULL),
-00043     \hyperlink{class_particle_system_a7b4b053433c052518b8ecce1b02000f5}{m\_solverIterations}(1)
-00044 \{
-00045     \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells} = \hyperlink{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{m\_gridSize}.x*\hyperlink{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{m\_gridSize}.y*
+00040                                                                                  :
+00041     \hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized}(\textcolor{keyword}{false}),
+00042     \hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL}(bUseOpenGL),
+00043     \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}(\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}),
+00044     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}(0),
+00045     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}(0),
+00046     \hyperlink{class_particle_system_afff6217d2726217dff77c81ef3c23bfa}{m\_dPos}(0),
+00047     \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel}(0),
+00048     \hyperlink{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{m\_gridSize}(\hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}),
+00049     \hyperlink{class_particle_system_af01e546384ef27bb1894a37f2a02e967}{m\_timer}(NULL),
+00050     \hyperlink{class_particle_system_a7b4b053433c052518b8ecce1b02000f5}{m\_solverIterations}(1)
+00051 \{
+00052     \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells} = \hyperlink{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{m\_gridSize}.x*\hyperlink{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{m\_gridSize}.y*
       \hyperlink{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{m\_gridSize}.z;
-00046     float3 worldSize = make\_float3(2.0f, 2.0f, 2.0f);
-00047 
-00048     \hyperlink{class_particle_system_a2a0452a32993337176d88fa2fbe63020}{m\_gridSortBits} = 18;    \textcolor{comment}{// increase this for larger grids}
-00049 
-00050     \textcolor{comment}{// set simulation parameters}
-00051     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize} = \hyperlink{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{m\_gridSize};
-00052     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a9d51112b7e86d46b6f33126a67cc84b4}{numCells} = \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells};
-00053     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_adb68e9ee2422208807756b367efdf842}{numBodies} = \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles};
+00053     float3 worldSize = make\_float3(2.0f, 2.0f, 2.0f);
 00054 
-00055     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius} = 1.0f / 64.0f;\textcolor{comment}{//32.0f / 64.0f;}
-00056     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_aa27be265020f137f0a9cfbc3f1d2d9f8}{colliderPos} = make\_float3(-1.2f, -0.8f, 0.8f);
-00057     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a06ca2162f6f0aec08343db6ed8cd4478}{colliderRadius} = 0.2f;
-00058 
-00059     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a1ed7465773f15f2874650f19cec3d0a9}{worldOrigin} = make\_float3(-1.0f, -1.0f, -1.0f);
-00060     \textcolor{comment}{//    m\_params.cellSize = make\_float3(worldSize.x / m\_gridSize.x, worldSize.y / m\_gridSize.y,
+00055     \hyperlink{class_particle_system_a2a0452a32993337176d88fa2fbe63020}{m\_gridSortBits} = 18;    \textcolor{comment}{// increase this for larger grids}
+00056 
+00057     \textcolor{comment}{// set simulation parameters}
+00058     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize} = \hyperlink{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{m\_gridSize};
+00059     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a9d51112b7e86d46b6f33126a67cc84b4}{numCells} = \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells};
+00060     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_adb68e9ee2422208807756b367efdf842}{numBodies} = \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles};
+00061 
+00065     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius} = 0.225f;\textcolor{comment}{//1.0f / 32.0f;//32.0f / 64.0f;}
+00066     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_aa27be265020f137f0a9cfbc3f1d2d9f8}{colliderPos} = make\_float3(-1.2f, -0.8f, 0.8f);
+00067     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a06ca2162f6f0aec08343db6ed8cd4478}{colliderRadius} = 0.2f;
+00068 
+00069         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_afab015432bd796517e5f540f6f7228e4}{particleMass}=1.0f;
+00070 
+00071     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a1ed7465773f15f2874650f19cec3d0a9}{worldOrigin} = make\_float3(-1.0f, -1.0f, -1.0f);
+00072     \textcolor{comment}{//    m\_params.cellSize = make\_float3(worldSize.x / m\_gridSize.x, worldSize.y / m\_gridSize.y,
        worldSize.z / m\_gridSize.z);}
-00061     \textcolor{keywordtype}{float} cellSize = \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius} * 2.0f;  \textcolor{comment}{// cell size equal to particle
+00073     \textcolor{keywordtype}{float} cellSize = \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius} * 3.0f;  \textcolor{comment}{// cell size equal to particle
        diameter}
-00062     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ad5d71ad4ba6acc829a35f47b3da3e169}{cellSize} = make\_float3(cellSize, cellSize, cellSize);
-00063 
-00064     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a301314921adc7bce20d8955cf03cdf3f}{spring} = 0.5f;
-00065     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_abf1644c671e60ebaf873d9167e755328}{damping} = 0.02f;
-00066     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ad48210724ada15a14a649b25ad61575b}{shear} = 0.1f;
-00067     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_acf7442ae8a49237861944271cb630d01}{attraction} = 0.1f;
-00068     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a4da0c7593d6569e48ee50e7d0c7576f9}{boundaryDamping} = -0.1f;
-00069 
-00070     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ae7508eba5dd90859215b59d19e001bb9}{gravity} = make\_float3(0.0f, -0.0003f, 0.0f);
-00071     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7058bad8c867d9d42d8c9d842638ebea}{globalDamping} = 1.0f;
-00072 
-00073         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_af41979948fdd8f76fe28ce2b43eb24cd}{bigradius}=2.0f;\textcolor{comment}{//docelowo zmieny rozmiar zewnetrznej kuli}
-00074 
-00075     \hyperlink{class_particle_system_a484988642e046424d32a13709204e8de}{\_initialize}(\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles});
-00076 \}
+00074     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ad5d71ad4ba6acc829a35f47b3da3e169}{cellSize} = make\_float3(cellSize, cellSize, cellSize);
+00075 
+00076     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a301314921adc7bce20d8955cf03cdf3f}{spring} = 0.5f;
+00077     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_abf1644c671e60ebaf873d9167e755328}{damping} = 0.1f;
+00078     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ad48210724ada15a14a649b25ad61575b}{shear} = 0.1f;
+00079     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_acf7442ae8a49237861944271cb630d01}{attraction} = 0.1f;
+00080     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a4da0c7593d6569e48ee50e7d0c7576f9}{boundaryDamping} = -1.0f;
+00081 
+00082     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ae7508eba5dd90859215b59d19e001bb9}{gravity} = make\_float3(0.0f, -0.0003f, 0.0f);
+00083     \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7058bad8c867d9d42d8c9d842638ebea}{globalDamping} = 1.0f;
+00084 
+00085         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_af41979948fdd8f76fe28ce2b43eb24cd}{bigradius}=10.0f;\textcolor{comment}{//docelowo zmieny rozmiar zewnetrznej kuli}
+00086         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a5809a1ec819f5a99e350ed28b01834fc}{bigradius0}=10.0f;
+00087         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a01507f06cc018071a0eb741438aaa09b}{boundaries}=\textcolor{keyword}{true};
+00088         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a760551182a6dff0b67f3048daa2620fb}{epsi}=0.1f;
+00089         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a88dae34e74c9184adfa9169bad06d0ee}{brown}=0.00001f;
+00090         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a366145dd58e2e7eacebffcbe78dd89ff}{brownQuality}=10;
+00091 
+00092         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_adc3e5f65a1a0ef7c944007ac99eb8034}{particleTypesNum}=1;
+00093 
+00094     \hyperlink{class_particle_system_a484988642e046424d32a13709204e8de}{\_initialize}(\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles});
+00095 \}
 \end{DoxyCode}
 
 
@@ -323,18 +353,18 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )}}\label{class_particle_system_a6bc725349a763b9d6817950cde16a93f}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00078}{78} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00097}{97} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()} i \hyperlink{particle_system_8h_source_l00153}{m\-\_\-num\-Particles}.
+Odwołuje się do \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()} i \hyperlink{particle_system_8h_source_l00194}{m\-\_\-num\-Particles}.
 
 
 \begin{DoxyCode}
-00079 \{
-00080     \hyperlink{class_particle_system_a5d6a52db7d1277c8fe734ecceb69e5c6}{\_finalize}();
-00081     \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles} = 0;
-00082 \}
+00098 \{
+00099     \hyperlink{class_particle_system_a5d6a52db7d1277c8fe734ecceb69e5c6}{\_finalize}();
+00100     \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles} = 0;
+00101 \}
 \end{DoxyCode}
 
 
@@ -356,11 +386,11 @@ Oto graf wywołań dla tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_particle_system_a9028ec8023c61773dd4a668c3ad8cc26}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00143}{143} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00184}{184} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 \begin{DoxyCode}
-00143 \{\}
+00184 \{\}
 \end{DoxyCode}
 
 
@@ -374,47 +404,47 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00143}{143} pliku \hyper
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a5d6a52db7d1277c8fe734ecceb69e5c6}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00205}{205} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00233}{233} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00067}{free\-Array()}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00184}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00174}{m\-\_\-d\-Cell\-End}, \hyperlink{particle_system_8h_source_l00173}{m\-\_\-d\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00171}{m\-\_\-d\-Grid\-Particle\-Hash}, \hyperlink{particle_system_8h_source_l00172}{m\-\_\-d\-Grid\-Particle\-Index}, \hyperlink{particle_system_8h_source_l00167}{m\-\_\-d\-Sorted\-Pos}, \hyperlink{particle_system_8h_source_l00168}{m\-\_\-d\-Sorted\-Vel}, \hyperlink{particle_system_8h_source_l00165}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00161}{m\-\_\-h\-Cell\-End}, \hyperlink{particle_system_8h_source_l00160}{m\-\_\-h\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00156}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00157}{m\-\_\-h\-Vel} i \hyperlink{particle_system__cuda_8cu_source_l00088}{unregister\-G\-L\-Buffer\-Object()}.
+Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00073}{free\-Array()}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00225}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00215}{m\-\_\-d\-Cell\-End}, \hyperlink{particle_system_8h_source_l00214}{m\-\_\-d\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00212}{m\-\_\-d\-Grid\-Particle\-Hash}, \hyperlink{particle_system_8h_source_l00213}{m\-\_\-d\-Grid\-Particle\-Index}, \hyperlink{particle_system_8h_source_l00208}{m\-\_\-d\-Sorted\-Pos}, \hyperlink{particle_system_8h_source_l00209}{m\-\_\-d\-Sorted\-Vel}, \hyperlink{particle_system_8h_source_l00206}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00202}{m\-\_\-h\-Cell\-End}, \hyperlink{particle_system_8h_source_l00201}{m\-\_\-h\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00197}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00198}{m\-\_\-h\-Vel} i \hyperlink{particle_system__cuda_8cu_source_l00094}{unregister\-G\-L\-Buffer\-Object()}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00078}{$\sim$\-Particle\-System()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00097}{$\sim$\-Particle\-System()}.
 
 
 \begin{DoxyCode}
-00206 \{
-00207     assert(\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
-00208 
-00209     \textcolor{keyword}{delete} [] \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos};
-00210     \textcolor{keyword}{delete} [] \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel};
-00211     \textcolor{keyword}{delete} [] \hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart};
-00212     \textcolor{keyword}{delete} [] \hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd};
-00213 
-00214     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel});
-00215     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}{m\_dSortedPos});
-00216     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a69122523117954fb5defb8b38e0f46f3}{m\_dSortedVel});
-00217 
-00218     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash});
-00219     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex});
-00220     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{m\_dCellStart});
-00221     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd});
-00222 
-00223     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
-00224     \{
-00225         \hyperlink{particle_system_8cuh_a9afef8c00ca779aae2d7484b45bce34c}{unregisterGLBufferObject}(\hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
-00226         glDeleteBuffers(1, (\textcolor{keyword}{const} GLuint *)&\hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo});
-00227         glDeleteBuffers(1, (\textcolor{keyword}{const} GLuint *)&\hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO});
-00228     \}
-00229     \textcolor{keywordflow}{else}
-00230     \{
-00231         checkCudaErrors(cudaFree(\hyperlink{class_particle_system_aba18245745f621d90186862f1a559d9e}{m\_cudaPosVBO}));
-00232         checkCudaErrors(cudaFree(\hyperlink{class_particle_system_a39d210b57da5f7f4a2c23f4fc0b43ea1}{m\_cudaColorVBO}));
-00233     \}
-00234 \}
+00234 \{
+00235     assert(\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
+00236 
+00237     \textcolor{keyword}{delete} [] \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos};
+00238     \textcolor{keyword}{delete} [] \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel};
+00239     \textcolor{keyword}{delete} [] \hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart};
+00240     \textcolor{keyword}{delete} [] \hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd};
+00241 
+00242     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel});
+00243     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}{m\_dSortedPos});
+00244     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a69122523117954fb5defb8b38e0f46f3}{m\_dSortedVel});
+00245 
+00246     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash});
+00247     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex});
+00248     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{m\_dCellStart});
+00249     \hyperlink{particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9}{freeArray}(\hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd});
+00250 
+00251     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
+00252     \{
+00253         \hyperlink{particle_system_8cuh_a9afef8c00ca779aae2d7484b45bce34c}{unregisterGLBufferObject}(\hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
+00254         glDeleteBuffers(1, (\textcolor{keyword}{const} GLuint *)&\hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo});
+00255         glDeleteBuffers(1, (\textcolor{keyword}{const} GLuint *)&\hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO});
+00256     \}
+00257     \textcolor{keywordflow}{else}
+00258     \{
+00259         checkCudaErrors(cudaFree(\hyperlink{class_particle_system_aba18245745f621d90186862f1a559d9e}{m\_cudaPosVBO}));
+00260         checkCudaErrors(cudaFree(\hyperlink{class_particle_system_a39d210b57da5f7f4a2c23f4fc0b43ea1}{m\_cudaColorVBO}));
+00261     \}
+00262 \}
 \end{DoxyCode}
 
 
@@ -447,104 +477,113 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a484988642e046424d32a13709204e8de}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00123}{123} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00142}{142} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocate\-Array()}, \hyperlink{particle_system_8cpp_source_l00101}{color\-Ramp()}, \hyperlink{particle_system_8cpp_source_l00085}{create\-V\-B\-O()}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00179}{m\-\_\-color\-V\-B\-O}, \hyperlink{particle_system_8h_source_l00185}{m\-\_\-cuda\-\_\-colorvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00184}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00174}{m\-\_\-d\-Cell\-End}, \hyperlink{particle_system_8h_source_l00173}{m\-\_\-d\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00171}{m\-\_\-d\-Grid\-Particle\-Hash}, \hyperlink{particle_system_8h_source_l00172}{m\-\_\-d\-Grid\-Particle\-Index}, \hyperlink{particle_system_8h_source_l00167}{m\-\_\-d\-Sorted\-Pos}, \hyperlink{particle_system_8h_source_l00168}{m\-\_\-d\-Sorted\-Vel}, \hyperlink{particle_system_8h_source_l00165}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00161}{m\-\_\-h\-Cell\-End}, \hyperlink{particle_system_8h_source_l00160}{m\-\_\-h\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00156}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00157}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00190}{m\-\_\-num\-Grid\-Cells}, \hyperlink{particle_system_8h_source_l00153}{m\-\_\-num\-Particles}, \hyperlink{particle_system_8h_source_l00178}{m\-\_\-pos\-Vbo} i \hyperlink{particle_system__cuda_8cu_source_l00082}{register\-G\-L\-Buffer\-Object()}.
+Odwołuje się do \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocate\-Array()}, \hyperlink{particle_system_8cpp_source_l00120}{color\-Ramp()}, \hyperlink{particle_system_8cpp_source_l00104}{create\-V\-B\-O()}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00220}{m\-\_\-color\-V\-B\-O}, \hyperlink{particle_system_8h_source_l00226}{m\-\_\-cuda\-\_\-colorvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00225}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00215}{m\-\_\-d\-Cell\-End}, \hyperlink{particle_system_8h_source_l00214}{m\-\_\-d\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00212}{m\-\_\-d\-Grid\-Particle\-Hash}, \hyperlink{particle_system_8h_source_l00213}{m\-\_\-d\-Grid\-Particle\-Index}, \hyperlink{particle_system_8h_source_l00208}{m\-\_\-d\-Sorted\-Pos}, \hyperlink{particle_system_8h_source_l00209}{m\-\_\-d\-Sorted\-Vel}, \hyperlink{particle_system_8h_source_l00206}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00202}{m\-\_\-h\-Cell\-End}, \hyperlink{particle_system_8h_source_l00201}{m\-\_\-h\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00197}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00198}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00231}{m\-\_\-num\-Grid\-Cells}, \hyperlink{particle_system_8h_source_l00194}{m\-\_\-num\-Particles}, \hyperlink{particle_system_8h_source_l00219}{m\-\_\-pos\-Vbo}, \hyperlink{particle_system_8cpp_a54f61e4f37db321d451436bf2201b8cb}{multi\-Color} i \hyperlink{particle_system__cuda_8cu_source_l00088}{register\-G\-L\-Buffer\-Object()}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()}.
 
 
 \begin{DoxyCode}
-00124 \{
-00125     assert(!\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
-00126 
-00127     \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles} = \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles};
-00128 
-00129     \textcolor{comment}{// allocate host storage}
-00130     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos} = \textcolor{keyword}{new} \textcolor{keywordtype}{float}[\hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4];
-00131     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel} = \textcolor{keyword}{new} \textcolor{keywordtype}{float}[\hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4];
-00132 
-00133     memset(\hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}, 0, \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));
-00134     memset(\hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}, 0, \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));
-00135 
-00136     \hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart} = \textcolor{keyword}{new} \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}[\hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}];
-00137     memset(\hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart}, 0, \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
-00138 
-00139     \hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd} = \textcolor{keyword}{new} \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}[\hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}];
-00140     memset(\hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd}, 0, \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
-00141 
-00142     \textcolor{comment}{// allocate GPU data}
-00143     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} memSize = \textcolor{keyword}{sizeof}(float) * 4 * \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles};
-00144 
-00145     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
-00146     \{
-00147         \hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo} = \hyperlink{class_particle_system_a399eb5cb9c422fd3370899e4d8a5d62e}{createVBO}(memSize);
-00148         \hyperlink{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}{registerGLBufferObject}(\hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo}, &
-      \hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
-00149     \}
-00150     \textcolor{keywordflow}{else}
-00151     \{
-00152         checkCudaErrors(cudaMalloc((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_aba18245745f621d90186862f1a559d9e}{m\_cudaPosVBO}, memSize)) ;
-00153     \}
+00143 \{
+00144     assert(!\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
+00145 
+00146     \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles} = \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles};
+00147 
+00148     \textcolor{comment}{// allocate host storage}
+00149     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos} = \textcolor{keyword}{new} \textcolor{keywordtype}{float}[\hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4];
+00150     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel} = \textcolor{keyword}{new} \textcolor{keywordtype}{float}[\hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4];
+00151 
+00152     memset(\hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}, 0, \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));
+00153     memset(\hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}, 0, \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));
 00154 
-00155     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel}, memSize);
-00156 
-00157     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}{m\_dSortedPos}, memSize);
-00158     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a69122523117954fb5defb8b38e0f46f3}{m\_dSortedVel}, memSize);
-00159 
-00160     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash}, 
-      \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
-00161     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex}, 
-      \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
-00162 
-00163     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{m\_dCellStart}, 
-      \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
-00164     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd}, \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}*\textcolor{keyword}{sizeof}(
-      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
-00165 
-00166     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
-00167     \{
-00168         \hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO} = \hyperlink{class_particle_system_a399eb5cb9c422fd3370899e4d8a5d62e}{createVBO}(\hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));
-00169         \hyperlink{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}{registerGLBufferObject}(\hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO}, &
-      \hyperlink{class_particle_system_a140043869727535abc08609b835b98fc}{m\_cuda\_colorvbo\_resource});
-00170 
-00171         \textcolor{comment}{// fill color buffer}
-00172         glBindBufferARB(GL\_ARRAY\_BUFFER, \hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO});
-00173         \textcolor{keywordtype}{float} *data = (\textcolor{keywordtype}{float} *) glMapBufferARB(GL\_ARRAY\_BUFFER, GL\_WRITE\_ONLY);
-00174         \textcolor{keywordtype}{float} *ptr = data;
+00155     \hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart} = \textcolor{keyword}{new} \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}[\hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}];
+00156     memset(\hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart}, 0, \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
+00157 
+00158     \hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd} = \textcolor{keyword}{new} \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}[\hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}];
+00159     memset(\hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd}, 0, \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
+00160 
+00161     \textcolor{comment}{// allocate GPU data}
+00162     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} memSize = \textcolor{keyword}{sizeof}(float) * 4 * \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles};
+00163 
+00164     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
+00165     \{
+00166         \hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo} = \hyperlink{class_particle_system_a399eb5cb9c422fd3370899e4d8a5d62e}{createVBO}(memSize);
+00167         \hyperlink{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}{registerGLBufferObject}(\hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo}, &
+      \hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
+00168     \}
+00169     \textcolor{keywordflow}{else}
+00170     \{
+00171         checkCudaErrors(cudaMalloc((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_aba18245745f621d90186862f1a559d9e}{m\_cudaPosVBO}, memSize)) ;
+00172     \}
+00173 
+00174     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel}, memSize);
 00175 
-00176         \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i=0; i<\hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}; i++)
-00177         \{
-00178             \textcolor{keywordtype}{float} t = i / (float) m\_numParticles;
-00179 \textcolor{preprocessor}{#if 0}
-00180 \textcolor{preprocessor}{}            *ptr++ = rand() / (float) RAND\_MAX;
-00181             *ptr++ = rand() / (float) RAND\_MAX;
-00182             *ptr++ = rand() / (float) RAND\_MAX;
-00183 \textcolor{preprocessor}{#else}
-00184 \textcolor{preprocessor}{}            \hyperlink{particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302}{colorRamp}(t, ptr);
-00185             ptr+=3;
-00186 \textcolor{preprocessor}{#endif}
-00187 \textcolor{preprocessor}{}            *ptr++ = 1.0f;
-00188         \}
+00176     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}{m\_dSortedPos}, memSize);
+00177     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a69122523117954fb5defb8b38e0f46f3}{m\_dSortedVel}, memSize);
+00178 
+00179     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash}, 
+      \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
+00180     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex}, 
+      \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
+00181 
+00182     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{m\_dCellStart}, 
+      \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}*\textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
+00183     \hyperlink{particle_system_8cuh_aee51e01a5233e0fda578bd5b3bc38e8f}{allocateArray}((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd}, \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}*\textcolor{keyword}{sizeof}(
+      \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}));
+00184 
+00185     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
+00186     \{
+00187         \hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO} = \hyperlink{class_particle_system_a399eb5cb9c422fd3370899e4d8a5d62e}{createVBO}(\hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));
+00188         \hyperlink{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}{registerGLBufferObject}(\hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO}, &
+      \hyperlink{class_particle_system_a140043869727535abc08609b835b98fc}{m\_cuda\_colorvbo\_resource});
 00189 
-00190         glUnmapBufferARB(GL\_ARRAY\_BUFFER);
-00191     \}
-00192     \textcolor{keywordflow}{else}
-00193     \{
-00194         checkCudaErrors(cudaMalloc((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a39d210b57da5f7f4a2c23f4fc0b43ea1}{m\_cudaColorVBO}, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*
+00190         \textcolor{comment}{// fill color buffer}
+00191         glBindBufferARB(GL\_ARRAY\_BUFFER, \hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO});
+00192         \textcolor{keywordtype}{float} *data = (\textcolor{keywordtype}{float} *) glMapBufferARB(GL\_ARRAY\_BUFFER, GL\_WRITE\_ONLY);
+00193         \textcolor{keywordtype}{float} *ptr = data;
+00194 
+00195         \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i=0; i<\hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}; i++)
+00196         \{
+00197             \textcolor{keywordtype}{float} t = i / (float) m\_numParticles;
+00198                         \textcolor{keywordflow}{if}(\hyperlink{particle_system_8cpp_a54f61e4f37db321d451436bf2201b8cb}{multiColor})
+00199                         \{
+00200 \textcolor{preprocessor}{#if 0}
+00201 \textcolor{preprocessor}{}            *ptr++ = rand() / (float) RAND\_MAX;
+00202             *ptr++ = rand() / (float) RAND\_MAX;
+00203             *ptr++ = rand() / (float) RAND\_MAX;
+00204 \textcolor{preprocessor}{#else}
+00205 \textcolor{preprocessor}{}            \hyperlink{particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302}{colorRamp}(t, ptr);
+00206             ptr+=3;
+00207 \textcolor{preprocessor}{#endif}
+00208 \textcolor{preprocessor}{}                        \}
+00209                         \textcolor{keywordflow}{else}
+00210                         \{
+00211                                 *ptr++ = 0;
+00212                                 *ptr++ = 1;
+00213                                 *ptr++ = 0;
+00214                         \}
+00215             *ptr++ = 1.0f;
+00216         \}
+00217 
+00218         glUnmapBufferARB(GL\_ARRAY\_BUFFER);
+00219     \}
+00220     \textcolor{keywordflow}{else}
+00221     \{
+00222         checkCudaErrors(cudaMalloc((\textcolor{keywordtype}{void} **)&\hyperlink{class_particle_system_a39d210b57da5f7f4a2c23f4fc0b43ea1}{m\_cudaColorVBO}, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*
       \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}*4));
-00195     \}
-00196 
-00197     sdkCreateTimer(&\hyperlink{class_particle_system_af01e546384ef27bb1894a37f2a02e967}{m\_timer});
-00198 
-00199     \hyperlink{particle_system_8cuh_a342176dbaba2668312c45e1a1423fc4e}{setParameters}(&\hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params});
-00200 
-00201     \hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized} = \textcolor{keyword}{true};
-00202 \}
+00223     \}
+00224 
+00225     sdkCreateTimer(&\hyperlink{class_particle_system_af01e546384ef27bb1894a37f2a02e967}{m\_timer});
+00226 
+00227     \hyperlink{particle_system_8cuh_a342176dbaba2668312c45e1a1423fc4e}{setParameters}(&\hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params});
+00228 
+00229     \hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized} = \textcolor{keyword}{true};
+00230 \}
 \end{DoxyCode}
 
 
@@ -581,54 +620,54 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )}}\label{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00485}{485} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00552}{552} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8h_source_l00156}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00157}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00038}{P\-O\-S\-I\-T\-I\-O\-N}, \hyperlink{particle_system_8cpp_source_l00374}{set\-Array()} i \hyperlink{particle_system_8h_source_l00039}{V\-E\-L\-O\-C\-I\-T\-Y}.
+Odwołuje się do \hyperlink{particle_system_8h_source_l00197}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00198}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00042}{P\-O\-S\-I\-T\-I\-O\-N}, \hyperlink{particle_system_8cpp_source_l00403}{set\-Array()} i \hyperlink{particle_system_8h_source_l00043}{V\-E\-L\-O\-C\-I\-T\-Y}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00335}{add\-Sphere()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00514}{add\-Sphere()} i \hyperlink{particles_8cpp_source_l00737}{key()}.
 
 
 \begin{DoxyCode}
-00486 \{
-00487     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index = start;
-00488 
-00489     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} z=-r; z<=r; z++)
-00490     \{
-00491         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y=-r; y<=r; y++)
-00492         \{
-00493             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x=-r; x<=r; x++)
-00494             \{
-00495                 \textcolor{keywordtype}{float} dx = x*spacing;
-00496                 \textcolor{keywordtype}{float} dy = y*spacing;
-00497                 \textcolor{keywordtype}{float} dz = z*spacing;
-00498                 \textcolor{keywordtype}{float} l = sqrtf(dx*dx + dy*dy + dz*dz);
-00499                 \textcolor{keywordtype}{float} jitter = \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*0.01f;
-00500 
-00501                 \textcolor{keywordflow}{if} ((l <= \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*2.0f*r) && (index < 
+00553 \{
+00554     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index = start;
+00555 
+00556     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} z=-r; z<=r; z++)
+00557     \{
+00558         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y=-r; y<=r; y++)
+00559         \{
+00560             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x=-r; x<=r; x++)
+00561             \{
+00562                 \textcolor{keywordtype}{float} dx = x*spacing;
+00563                 \textcolor{keywordtype}{float} dy = y*spacing;
+00564                 \textcolor{keywordtype}{float} dz = z*spacing;
+00565                 \textcolor{keywordtype}{float} l = sqrtf(dx*dx + dy*dy + dz*dz);
+00566                 \textcolor{keywordtype}{float} jitter = \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*0.01f;
+00567 
+00568                 \textcolor{keywordflow}{if} ((l <= \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*2.0f*r) && (index < 
       \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}))
-00502                 \{
-00503                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[index*4]   = pos[0] + dx + (\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*2.0f-1.0f)*jitter;
-00504                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[index*4+1] = pos[1] + dy + (\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*2.0f-1.0f)*jitter;
-00505                     m\_hPos[index*4+2] = pos[2] + dz + (\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*2.0f-1.0f)*jitter;
-00506                     m\_hPos[index*4+3] = pos[3];
-00507 
-00508                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[index*4]   = vel[0];
-00509                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[index*4+1] = vel[1];
-00510                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[index*4+2] = vel[2];
-00511                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[index*4+3] = vel[3];
-00512                     index++;
-00513                 \}
-00514             \}
-00515         \}
-00516     \}
-00517 
-00518     \hyperlink{class_particle_system_aa792a66680e800832059854aab0d594d}{setArray}(\hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION}, \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}, start, index);
-00519     \hyperlink{class_particle_system_aa792a66680e800832059854aab0d594d}{setArray}(\hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY}, \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}, start, index);
-00520 \}
+00569                 \{
+00570                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[index*4]   = pos[0] + dx + (\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*2.0f-1.0f)*jitter;
+00571                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[index*4+1] = pos[1] + dy + (\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*2.0f-1.0f)*jitter;
+00572                     m\_hPos[index*4+2] = pos[2] + dz + (\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*2.0f-1.0f)*jitter;
+00573                     m\_hPos[index*4+3] = pos[3];
+00574 
+00575                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[index*4]   = vel[0];
+00576                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[index*4+1] = vel[1];
+00577                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[index*4+2] = vel[2];
+00578                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[index*4+3] = vel[3];
+00579                     index++;
+00580                 \}
+00581             \}
+00582         \}
+00583     \}
+00584 
+00585     \hyperlink{class_particle_system_aa792a66680e800832059854aab0d594d}{setArray}(\hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION}, \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}, start, index);
+00586     \hyperlink{class_particle_system_aa792a66680e800832059854aab0d594d}{setArray}(\hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY}, \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}, start, index);
+00587 \}
 \end{DoxyCode}
 
 
@@ -661,22 +700,22 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a399eb5cb9c422fd3370899e4d8a5d62e}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00085}{85} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00104}{104} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}.
 
 
 \begin{DoxyCode}
-00086 \{
-00087     GLuint vbo;
-00088     glGenBuffers(1, &vbo);
-00089     glBindBuffer(GL\_ARRAY\_BUFFER, vbo);
-00090     glBufferData(GL\_ARRAY\_BUFFER, size, 0, GL\_DYNAMIC\_DRAW);
-00091     glBindBuffer(GL\_ARRAY\_BUFFER, 0);
-00092     \textcolor{keywordflow}{return} vbo;
-00093 \}
+00105 \{
+00106     GLuint vbo;
+00107     glGenBuffers(1, &vbo);
+00108     glBindBuffer(GL\_ARRAY\_BUFFER, vbo);
+00109     glBufferData(GL\_ARRAY\_BUFFER, size, 0, GL\_DYNAMIC\_DRAW);
+00110     glBindBuffer(GL\_ARRAY\_BUFFER, 0);
+00111     \textcolor{keywordflow}{return} vbo;
+00112 \}
 \end{DoxyCode}
 
 
@@ -698,42 +737,42 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )}}\label{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00306}{306} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00335}{335} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00108}{copy\-Array\-From\-Device()}, \hyperlink{particle_system_8h_source_l00174}{m\-\_\-d\-Cell\-End}, \hyperlink{particle_system_8h_source_l00173}{m\-\_\-d\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00161}{m\-\_\-h\-Cell\-End}, \hyperlink{particle_system_8h_source_l00160}{m\-\_\-h\-Cell\-Start} i \hyperlink{particle_system_8h_source_l00190}{m\-\_\-num\-Grid\-Cells}.
+Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00114}{copy\-Array\-From\-Device()}, \hyperlink{particle_system_8h_source_l00215}{m\-\_\-d\-Cell\-End}, \hyperlink{particle_system_8h_source_l00214}{m\-\_\-d\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00202}{m\-\_\-h\-Cell\-End}, \hyperlink{particle_system_8h_source_l00201}{m\-\_\-h\-Cell\-Start} i \hyperlink{particle_system_8h_source_l00231}{m\-\_\-num\-Grid\-Cells}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00520}{key()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00737}{key()}.
 
 
 \begin{DoxyCode}
-00307 \{
-00308     \textcolor{comment}{// dump grid information}
-00309     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(\hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart}, 
+00336 \{
+00337     \textcolor{comment}{// dump grid information}
+00338     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(\hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart}, 
       \hyperlink{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{m\_dCellStart}, 0, \textcolor{keyword}{sizeof}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint})*\hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells});
-00310     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(\hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd}, \hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd}, 0, \textcolor{keyword}{sizeof}(
+00339     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(\hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd}, \hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd}, 0, \textcolor{keyword}{sizeof}(
       \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint})*\hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells});
-00311     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} maxCellSize = 0;
-00312 
-00313     \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i=0; i<\hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}; i++)
-00314     \{
-00315         \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart}[i] != 0xffffffff)
-00316         \{
-00317             \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} cellSize = \hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd}[i] - \hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart}[i];
-00318 
-00319             \textcolor{comment}{//            printf("cell: %d, %d particles\(\backslash\)n", i, cellSize);}
-00320             \textcolor{keywordflow}{if} (cellSize > maxCellSize)
-00321             \{
-00322                 maxCellSize = cellSize;
-00323             \}
-00324         \}
-00325     \}
-00326 
-00327     printf(\textcolor{stringliteral}{"maximum particles per cell = %d\(\backslash\)n"}, maxCellSize);
-00328 \}
+00340     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} maxCellSize = 0;
+00341 
+00342     \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i=0; i<\hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells}; i++)
+00343     \{
+00344         \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart}[i] != 0xffffffff)
+00345         \{
+00346             \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} cellSize = \hyperlink{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{m\_hCellEnd}[i] - \hyperlink{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{m\_hCellStart}[i];
+00347 
+00348             \textcolor{comment}{//            printf("cell: %d, %d particles\(\backslash\)n", i, cellSize);}
+00349             \textcolor{keywordflow}{if} (cellSize > maxCellSize)
+00350             \{
+00351                 maxCellSize = cellSize;
+00352             \}
+00353         \}
+00354     \}
+00355 
+00356     printf(\textcolor{stringliteral}{"maximum particles per cell = %d\(\backslash\)n"}, maxCellSize);
+00357 \}
 \end{DoxyCode}
 
 
@@ -767,33 +806,33 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )}}\label{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00331}{331} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00360}{360} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00108}{copy\-Array\-From\-Device()}, \hyperlink{particle_system_8h_source_l00184}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00165}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00156}{m\-\_\-h\-Pos} i \hyperlink{particle_system_8h_source_l00157}{m\-\_\-h\-Vel}.
+Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00114}{copy\-Array\-From\-Device()}, \hyperlink{particle_system_8h_source_l00225}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00206}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00197}{m\-\_\-h\-Pos} i \hyperlink{particle_system_8h_source_l00198}{m\-\_\-h\-Vel}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00520}{key()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00737}{key()}.
 
 
 \begin{DoxyCode}
-00332 \{
-00333     \textcolor{comment}{// debug}
-00334     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(\hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}, 0, &
+00361 \{
+00362     \textcolor{comment}{// debug}
+00363     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(\hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}, 0, &
       \hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource}, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*count);
-00335     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(\hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}, \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel}, 0, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*count);
-00336 
-00337     \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i=start; i<start+count; i++)
-00338     \{
-00339         \textcolor{comment}{//        printf("%d: ", i);}
-00340         printf(\textcolor{stringliteral}{"pos: (%.4f, %.4f, %.4f, %.4f)\(\backslash\)n"}, \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+0], \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+1], 
+00364     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(\hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}, \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel}, 0, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*count);
+00365 
+00366     \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i=start; i<start+count; i++)
+00367     \{
+00368         \textcolor{comment}{//        printf("%d: ", i);}
+00369         printf(\textcolor{stringliteral}{"pos: (%.4f, %.4f, %.4f, %.4f)\(\backslash\)n"}, \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+0], \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+1], 
       \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+2], \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+3]);
-00341         printf(\textcolor{stringliteral}{"vel: (%.4f, %.4f, %.4f, %.4f)\(\backslash\)n"}, \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+0], \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+1], 
+00370         printf(\textcolor{stringliteral}{"vel: (%.4f, %.4f, %.4f, %.4f)\(\backslash\)n"}, \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+0], \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+1], 
       \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+2], \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+3]);
-00342     \}
-00343 \}
+00371     \}
+00372 \}
 \end{DoxyCode}
 
 
@@ -826,40 +865,40 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )}}\label{class_particle_system_a8bdfaa6198651ef0ceb8be489ecd78e3}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00346}{346} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00375}{375} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00108}{copy\-Array\-From\-Device()}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00184}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00164}{m\-\_\-d\-Pos}, \hyperlink{particle_system_8h_source_l00165}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00156}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00157}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00153}{m\-\_\-num\-Particles}, \hyperlink{particle_system_8h_source_l00038}{P\-O\-S\-I\-T\-I\-O\-N} i \hyperlink{particle_system_8h_source_l00039}{V\-E\-L\-O\-C\-I\-T\-Y}.
+Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00114}{copy\-Array\-From\-Device()}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00225}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00205}{m\-\_\-d\-Pos}, \hyperlink{particle_system_8h_source_l00206}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00197}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00198}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00194}{m\-\_\-num\-Particles}, \hyperlink{particle_system_8h_source_l00042}{P\-O\-S\-I\-T\-I\-O\-N} i \hyperlink{particle_system_8h_source_l00043}{V\-E\-L\-O\-C\-I\-T\-Y}.
 
 
 \begin{DoxyCode}
-00347 \{
-00348     assert(\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
-00349 
-00350     \textcolor{keywordtype}{float} *hdata = 0;
-00351     \textcolor{keywordtype}{float} *ddata = 0;
-00352     \textcolor{keyword}{struct }cudaGraphicsResource *cuda\_vbo\_resource = 0;
-00353 
-00354     \textcolor{keywordflow}{switch} (array)
-00355     \{
-00356         \textcolor{keywordflow}{default}:
-00357         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION}:
-00358             hdata = \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos};
-00359             ddata = \hyperlink{class_particle_system_afff6217d2726217dff77c81ef3c23bfa}{m\_dPos};
-00360             cuda\_vbo\_resource = \hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource};
-00361             \textcolor{keywordflow}{break};
-00362 
-00363         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY}:
-00364             hdata = \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel};
-00365             ddata = \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel};
-00366             \textcolor{keywordflow}{break};
-00367     \}
-00368 
-00369     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(hdata, ddata, &cuda\_vbo\_resource, 
+00376 \{
+00377     assert(\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
+00378 
+00379     \textcolor{keywordtype}{float} *hdata = 0;
+00380     \textcolor{keywordtype}{float} *ddata = 0;
+00381     \textcolor{keyword}{struct }cudaGraphicsResource *cuda\_vbo\_resource = 0;
+00382 
+00383     \textcolor{keywordflow}{switch} (array)
+00384     \{
+00385         \textcolor{keywordflow}{default}:
+00386         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION}:
+00387             hdata = \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos};
+00388             ddata = \hyperlink{class_particle_system_afff6217d2726217dff77c81ef3c23bfa}{m\_dPos};
+00389             cuda\_vbo\_resource = \hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource};
+00390             \textcolor{keywordflow}{break};
+00391 
+00392         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY}:
+00393             hdata = \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel};
+00394             ddata = \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel};
+00395             \textcolor{keywordflow}{break};
+00396     \}
+00397 
+00398     \hyperlink{particles_8cpp_afed059fa8ae6691333d263c5c88281f6}{copyArrayFromDevice}(hdata, ddata, &cuda\_vbo\_resource, 
       \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));
-00370     \textcolor{keywordflow}{return} hdata;
-00371 \}
+00399     \textcolor{keywordflow}{return} hdata;
+00400 \}
 \end{DoxyCode}
 
 
@@ -881,13 +920,13 @@ Oto graf wywołań dla tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a608bcb87f3d30fbfeae810da28ae1052}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00135}{135} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00174}{174} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 \begin{DoxyCode}
-00136         \{
-00137             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ad5d71ad4ba6acc829a35f47b3da3e169}{cellSize};
-00138         \}
+00175         \{
+00176             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ad5d71ad4ba6acc829a35f47b3da3e169}{cellSize};
+00177         \}
 \end{DoxyCode}
 \hypertarget{class_particle_system_a3c8578d474f5a6f14d903a242aec96ec}{\index{Particle\-System@{Particle\-System}!get\-Collider\-Pos@{get\-Collider\-Pos}}
 \index{get\-Collider\-Pos@{get\-Collider\-Pos}!ParticleSystem@{Particle\-System}}
@@ -898,13 +937,13 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00135}{135} pliku \hyper
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a3c8578d474f5a6f14d903a242aec96ec}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00119}{119} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00158}{158} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 \begin{DoxyCode}
-00120         \{
-00121             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_aa27be265020f137f0a9cfbc3f1d2d9f8}{colliderPos};
-00122         \}
+00159         \{
+00160             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_aa27be265020f137f0a9cfbc3f1d2d9f8}{colliderPos};
+00161         \}
 \end{DoxyCode}
 \hypertarget{class_particle_system_a56f07dfab9d5cbf510c6e0a28e816038}{\index{Particle\-System@{Particle\-System}!get\-Collider\-Radius@{get\-Collider\-Radius}}
 \index{get\-Collider\-Radius@{get\-Collider\-Radius}!ParticleSystem@{Particle\-System}}
@@ -915,13 +954,13 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00119}{119} pliku \hyper
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a56f07dfab9d5cbf510c6e0a28e816038}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00123}{123} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00162}{162} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 \begin{DoxyCode}
-00124         \{
-00125             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a06ca2162f6f0aec08343db6ed8cd4478}{colliderRadius};
-00126         \}
+00163         \{
+00164             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a06ca2162f6f0aec08343db6ed8cd4478}{colliderRadius};
+00165         \}
 \end{DoxyCode}
 \hypertarget{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{\index{Particle\-System@{Particle\-System}!get\-Color\-Buffer@{get\-Color\-Buffer}}
 \index{get\-Color\-Buffer@{get\-Color\-Buffer}!ParticleSystem@{Particle\-System}}
@@ -932,21 +971,21 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00123}{123} pliku \hyper
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00057}{57} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00061}{61} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8h_source_l00179}{m\-\_\-color\-V\-B\-O}.
+Odwołuje się do \hyperlink{particle_system_8h_source_l00220}{m\-\_\-color\-V\-B\-O}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00142}{init\-Particle\-System()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00220}{init\-Particle\-System()}.
 
 
 \begin{DoxyCode}
-00058         \{
-00059             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO};
-00060         \}
+00062         \{
+00063             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{m\_colorVBO};
+00064         \}
 \end{DoxyCode}
 
 
@@ -968,17 +1007,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_af89375a9131276f941dccefa7840adda}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00066}{66} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00070}{70} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8h_source_l00182}{m\-\_\-cuda\-Color\-V\-B\-O}.
+Odwołuje się do \hyperlink{particle_system_8h_source_l00223}{m\-\_\-cuda\-Color\-V\-B\-O}.
 
 
 \begin{DoxyCode}
-00067         \{
-00068             \textcolor{keywordflow}{return} (\textcolor{keywordtype}{void} *)\hyperlink{class_particle_system_a39d210b57da5f7f4a2c23f4fc0b43ea1}{m\_cudaColorVBO};
-00069         \}
+00071         \{
+00072             \textcolor{keywordflow}{return} (\textcolor{keywordtype}{void} *)\hyperlink{class_particle_system_a39d210b57da5f7f4a2c23f4fc0b43ea1}{m\_cudaColorVBO};
+00073         \}
 \end{DoxyCode}
 \hypertarget{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{\index{Particle\-System@{Particle\-System}!get\-Cuda\-Pos\-V\-B\-O@{get\-Cuda\-Pos\-V\-B\-O}}
 \index{get\-Cuda\-Pos\-V\-B\-O@{get\-Cuda\-Pos\-V\-B\-O}!ParticleSystem@{Particle\-System}}
@@ -989,21 +1028,21 @@ Odwołuje się do \hyperlink{particle_system_8h_source_l00182}{m\-\_\-cuda\-Colo
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00062}{62} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00066}{66} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8h_source_l00181}{m\-\_\-cuda\-Pos\-V\-B\-O}.
+Odwołuje się do \hyperlink{particle_system_8h_source_l00222}{m\-\_\-cuda\-Pos\-V\-B\-O}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00194}{run\-Benchmark()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00306}{run\-Benchmark()}.
 
 
 \begin{DoxyCode}
-00063         \{
-00064             \textcolor{keywordflow}{return} (\textcolor{keywordtype}{void} *)\hyperlink{class_particle_system_aba18245745f621d90186862f1a559d9e}{m\_cudaPosVBO};
-00065         \}
+00067         \{
+00068             \textcolor{keywordflow}{return} (\textcolor{keywordtype}{void} *)\hyperlink{class_particle_system_aba18245745f621d90186862f1a559d9e}{m\_cudaPosVBO};
+00069         \}
 \end{DoxyCode}
 
 
@@ -1025,21 +1064,21 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00053}{53} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00057}{57} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8h_source_l00178}{m\-\_\-pos\-Vbo}.
+Odwołuje się do \hyperlink{particle_system_8h_source_l00219}{m\-\_\-pos\-Vbo}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()} i \hyperlink{particles_8cpp_source_l00737}{key()}.
 
 
 \begin{DoxyCode}
-00054         \{
-00055             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo};
-00056         \}
+00058         \{
+00059             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo};
+00060         \}
 \end{DoxyCode}
 
 
@@ -1061,13 +1100,13 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_af94ba180bcb348afcfd81bb699d6aab0}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00127}{127} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00166}{166} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 \begin{DoxyCode}
-00128         \{
-00129             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize};
-00130         \}
+00167         \{
+00168             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a4cfb18ff777876da3ad69aae6e023949}{gridSize};
+00169         \}
 \end{DoxyCode}
 \hypertarget{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{\index{Particle\-System@{Particle\-System}!get\-Num\-Particles@{get\-Num\-Particles}}
 \index{get\-Num\-Particles@{get\-Num\-Particles}!ParticleSystem@{Particle\-System}}
@@ -1078,21 +1117,21 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00127}{127} pliku \hyper
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00048}{48} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00052}{52} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8h_source_l00153}{m\-\_\-num\-Particles}.
+Odwołuje się do \hyperlink{particle_system_8h_source_l00194}{m\-\_\-num\-Particles}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}, \hyperlink{particles_8cpp_source_l00520}{key()} i \hyperlink{particles_8cpp_source_l00194}{run\-Benchmark()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()}, \hyperlink{particles_8cpp_source_l00737}{key()}, \hyperlink{particles_8cpp_source_l00284}{parowanie\-Kropli\-W\-Czasie()} i \hyperlink{particles_8cpp_source_l00306}{run\-Benchmark()}.
 
 
 \begin{DoxyCode}
-00049         \{
-00050             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles};
-00051         \}
+00053         \{
+00054             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles};
+00055         \}
 \end{DoxyCode}
 
 
@@ -1114,17 +1153,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_abdb59a91d8483017ad71455bb2958993}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00115}{115} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00154}{154} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00335}{add\-Sphere()}, \hyperlink{particles_8cpp_source_l00142}{init\-Particle\-System()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00514}{add\-Sphere()}, \hyperlink{particles_8cpp_source_l00383}{compute\-F\-P\-S()}, \hyperlink{particles_8cpp_source_l00220}{init\-Particle\-System()}, \hyperlink{particles_8cpp_source_l00737}{key()} i \hyperlink{particles_8cpp_source_l00284}{parowanie\-Kropli\-W\-Czasie()}.
 
 
 \begin{DoxyCode}
-00116         \{
-00117             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius};
-00118         \}
+00155         \{
+00156             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius};
+00157         \}
 \end{DoxyCode}
 
 
@@ -1146,13 +1185,13 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a19d9bb799a5b5704d8fd6a286f6be20d}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00131}{131} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00170}{170} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 \begin{DoxyCode}
-00132         \{
-00133             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a1ed7465773f15f2874650f19cec3d0a9}{worldOrigin};
-00134         \}
+00171         \{
+00172             \textcolor{keywordflow}{return} \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a1ed7465773f15f2874650f19cec3d0a9}{worldOrigin};
+00173         \}
 \end{DoxyCode}
 \hypertarget{class_particle_system_a2e08c4e354b0de5e2dc468a0fb457dfe}{\index{Particle\-System@{Particle\-System}!init\-Grid@{init\-Grid}}
 \index{init\-Grid@{init\-Grid}!ParticleSystem@{Particle\-System}}
@@ -1166,44 +1205,44 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00131}{131} pliku \hyper
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a2e08c4e354b0de5e2dc468a0fb457dfe}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00406}{406} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00435}{435} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8h_source_l00156}{m\-\_\-h\-Pos} i \hyperlink{particle_system_8h_source_l00157}{m\-\_\-h\-Vel}.
+Odwołuje się do \hyperlink{particle_system_8h_source_l00197}{m\-\_\-h\-Pos} i \hyperlink{particle_system_8h_source_l00198}{m\-\_\-h\-Vel}.
 
 
 \begin{DoxyCode}
-00407 \{
-00408     srand(1973);
-00409 
-00410     \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} z=0; z<size[2]; z++)
-00411     \{
-00412         \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} y=0; y<size[1]; y++)
-00413         \{
-00414             \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} x=0; x<size[0]; x++)
-00415             \{
-00416                 \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i = (z*size[1]*size[0]) + (y*size[0]) + x;
-00417 
-00418                 \textcolor{keywordflow}{if} (i < \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles})
-00419                 \{
-00420                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4] = (spacing * x) + \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.
+00436 \{
+00437     srand(1973);
+00438 
+00439     \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} z=0; z<size[2]; z++)
+00440     \{
+00441         \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} y=0; y<size[1]; y++)
+00442         \{
+00443             \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} x=0; x<size[0]; x++)
+00444             \{
+00445                 \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i = (z*size[1]*size[0]) + (y*size[0]) + x;
+00446 
+00447                 \textcolor{keywordflow}{if} (i < \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles})
+00448                 \{
+00449                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4] = (spacing * x) + \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.
       \hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius} - 1.0f + (\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*2.0f-1.0f)*jitter;
-00421                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+1] = (spacing * y) + \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.
+00450                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+1] = (spacing * y) + \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.
       \hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius} - 1.0f + (\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*2.0f-1.0f)*jitter;
-00422                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+2] = (spacing * z) + \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.
+00451                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+2] = (spacing * z) + \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.
       \hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius} - 1.0f + (\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()*2.0f-1.0f)*jitter;
-00423                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+3] = 1.0f;
-00424 
-00425                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4] = 0.0f;
-00426                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+1] = 0.0f;
-00427                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+2] = 0.0f;
-00428                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+3] = 0.0f;
-00429                 \}
-00430             \}
-00431         \}
-00432     \}
-00433 \}
+00452                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[i*4+3] = 1.0f;
+00453 
+00454                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4] = 0.0f;
+00455                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+1] = 0.0f;
+00456                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+2] = 0.0f;
+00457                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[i*4+3] = 0.0f;
+00458                 \}
+00459             \}
+00460         \}
+00461     \}
+00462 \}
 \end{DoxyCode}
 \hypertarget{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{\index{Particle\-System@{Particle\-System}!reset@{reset}}
 \index{reset@{reset}!ParticleSystem@{Particle\-System}}
@@ -1212,68 +1251,114 @@ Odwołuje się do \hyperlink{particle_system_8h_source_l00156}{m\-\_\-h\-Pos} i 
 \item[{{\bf Particle\-Config}}]{config}
 \end{DoxyParamCaption}
 )}}\label{class_particle_system_a519070812dd9eb349f270c793c5f64b6}
+równomierne losowanie położeń metodą Monte Carlo 
+\begin{DoxyParams}{Parametry}
+{\em point\mbox{[}0\mbox{]}$\ast$point\mbox{[}0\mbox{]}+point\mbox{[}1\mbox{]}$\ast$point\mbox{[}1\mbox{]}+point\mbox{[}2\mbox{]}$\ast$point\mbox{[}2\mbox{]}$<$=tmpbrad$\ast$tmpbrad} & x$^\wedge$2+y$^\wedge$2+z$^\wedge$2$<$=R$^\wedge$2\\
+\hline
+\end{DoxyParams}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00436}{436} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00465}{465} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8h_source_l00032}{C\-O\-N\-F\-I\-G\-\_\-\-G\-R\-I\-D}, \hyperlink{particle_system_8h_source_l00031}{C\-O\-N\-F\-I\-G\-\_\-\-R\-A\-N\-D\-O\-M}, \hyperlink{particle_system_8cpp_source_l00400}{frand()}, \hyperlink{particle_system_8h_source_l00156}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00157}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00153}{m\-\_\-num\-Particles}, \hyperlink{particle_system_8h_source_l00038}{P\-O\-S\-I\-T\-I\-O\-N}, \hyperlink{particle_system_8cpp_source_l00374}{set\-Array()} i \hyperlink{particle_system_8h_source_l00039}{V\-E\-L\-O\-C\-I\-T\-Y}.
+Odwołuje się do \hyperlink{particle_system_8h_source_l00036}{C\-O\-N\-F\-I\-G\-\_\-\-G\-R\-I\-D}, \hyperlink{particle_system_8h_source_l00035}{C\-O\-N\-F\-I\-G\-\_\-\-R\-A\-N\-D\-O\-M}, \hyperlink{particle_system_8cpp_source_l00429}{frand()}, \hyperlink{particle_system_8h_source_l00197}{m\-\_\-h\-Pos}, \hyperlink{particle_system_8h_source_l00198}{m\-\_\-h\-Vel}, \hyperlink{particle_system_8h_source_l00194}{m\-\_\-num\-Particles}, \hyperlink{particle_system_8h_source_l00042}{P\-O\-S\-I\-T\-I\-O\-N}, \hyperlink{particle_system_8cpp_source_l00403}{set\-Array()} i \hyperlink{particle_system_8h_source_l00043}{V\-E\-L\-O\-C\-I\-T\-Y}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00142}{init\-Particle\-System()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00220}{init\-Particle\-System()} i \hyperlink{particles_8cpp_source_l00737}{key()}.
 
 
 \begin{DoxyCode}
-00437 \{
-00438     \textcolor{keywordflow}{switch} (config)
-00439     \{
-00440         \textcolor{keywordflow}{default}:
-00441         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{CONFIG\_RANDOM}:
-00442             \{
-00443                 \textcolor{keywordtype}{int} p = 0, v = 0;
-00444 
-00445                 \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i=0; i < \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}; i++)
-00446                 \{
-00447                     \textcolor{keywordtype}{float} point[3];
-00448                     \textcolor{comment}{//point[0] = frand();}
-00449                     \textcolor{comment}{//point[1] = frand();}
-00450                     \textcolor{comment}{//point[2] = frand();}
-00451                                         point[0]=2.0f*\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()-1.0f;\textcolor{comment}{//frand -> (0.0f,1.0f) 1.0f -
+00466 \{
+00467     \textcolor{keywordflow}{switch} (config)
+00468     \{
+00469         \textcolor{keywordflow}{default}:
+00470         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{CONFIG\_RANDOM}:
+00471             \{
+00472                 \textcolor{keywordtype}{int} p = 0, v = 0;
+00473                                 \textcolor{keywordtype}{float} tmpbrad=\hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_af41979948fdd8f76fe28ce2b43eb24cd}{bigradius}-
+      \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius};
+00474                                 \textcolor{keywordtype}{float} tmprad=tmpbrad/2;
+00475                                 \textcolor{comment}{//printf("%f\(\backslash\)n",tmprad);}
+00476                                 \textcolor{keywordtype}{bool} bo1=\textcolor{keyword}{false};
+00477 
+00478                 \textcolor{keywordflow}{for} (\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} i=0; i < \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}; \textcolor{comment}{/*i++*/})
+00479                 \{
+00480                     \textcolor{keywordtype}{float} point[3];
+00481                     \textcolor{comment}{//point[0] = frand();}
+00482                     \textcolor{comment}{//point[1] = frand();}
+00483                     \textcolor{comment}{//point[2] = frand();}
+00484                                         \textcolor{comment}{/*point[0]=tmpbrad*frand()-tmprad;//frand -> (0.0f,1.0f) 1.0f -
        promien kuli}
-00452                                         \textcolor{keywordtype}{float} my=sqrt(1-point[0]*point[0]);
-00453                                         point[1]=rand() /( float ) RAND\_MAX *( 2*my ) - my;
-00454                                         \textcolor{keywordtype}{float} mz=sqrt(1-point[0]*point[0]-point[1]*point[1]);
-00455                                         point[2]=rand() /( float ) RAND\_MAX *( 2*mz ) - mz;
-00456 
-00457                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[p++] = 2 * (point[0] - 0.0f);
-00458                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[p++] = 2 * (point[1] - 0.0f);
-00459                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[p++] = 2 * (point[2] - 0.0f);
-00460                     \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[p++] = 1.0f; \textcolor{comment}{// radius}
-00461                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[v++] = 0.0f;
-00462                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[v++] = 0.0f;
-00463                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[v++] = 0.0f;
-00464                     \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[v++] = 0.0f;
-00465                 \}
-00466             \}
-00467             \textcolor{keywordflow}{break};
-00468 
-00469         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{CONFIG\_GRID}:
-00470             \{
-00471                 \textcolor{keywordtype}{float} jitter = \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*0.01f;
-00472                 \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} s = (int) ceilf(powf((\textcolor{keywordtype}{float}) \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}, 1.0f / 3.0f));
-00473                 \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}[3];
-00474                 gridSize[0] = gridSize[1] = gridSize[2] = s;
-00475                 \hyperlink{class_particle_system_a2e08c4e354b0de5e2dc468a0fb457dfe}{initGrid}(gridSize, \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*2.0f, jitter, 
+00485 \textcolor{comment}{                                        float my=sqrt(tmprad*tmprad-point[0]*point[0]);}
+00486 \textcolor{comment}{                                        point[1]=rand() /( float ) RAND\_MAX *( 2*my ) - my;}
+00487 \textcolor{comment}{                                        float mz=sqrt(tmprad*tmprad-point[0]*point[0]-point[1]*point[1]);}
+00488 \textcolor{comment}{                                        point[2]=rand() /( float ) RAND\_MAX *( 2*mz ) - mz;*/}
+00489 
+00490                                         point[0]=tmpbrad*\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()-tmprad;
+00491                                         point[1]=tmpbrad*\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()-tmprad;
+00492                                         point[2]=tmpbrad*\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()-tmprad;
+00496                                         \textcolor{keywordflow}{if}((point[0]*point[0]+point[1]*point[1]+point[2]*point[2])<(tmprad*
+      tmprad))
+00497                     \{
+00498                         bo1=\textcolor{keyword}{true};
+00499                         \textcolor{keywordflow}{for}(\hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} j=0;j<m\_numParticles && j<i;j++)
+00500                         \{
+00501                                                         \textcolor{keywordtype}{int} j4=4*j;
+00502                             \textcolor{keywordflow}{if}( ( (\hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[j4]-point[0]*2)*(\hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[j4]-point[0]*2)+(
+      \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[j4+1]-point[1]*2)*(\hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[j4+1]-point[1]*2)+(\hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[j4+2]-point[2]*2)*(
+      \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[j4+2]-point[2]*2) )<4.0f*\hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*
+      \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius})
+00503                             \{
+00504                                                                 \textcolor{comment}{//printf("%d %d %f %f %f\(\backslash\)n",i ,j
+       ,point[0],point[1],point[2]);}
+00505                                 bo1=\textcolor{keyword}{false};
+00506                                 \textcolor{keywordflow}{break};
+00507                             \}
+00508                         \}
+00509                         \textcolor{keywordflow}{if}(bo1)
+00510                                                 \{
+00511                         i++;
+00512                         \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[p++] = 2 * (point[0] - 0.0f);
+00513                         \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[p++] = 2 * (point[1] - 0.0f);
+00514                         \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[p++] = 2 * (point[2] - 0.0f);
+00515                         \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}[p++] = 1.0f; \textcolor{comment}{// radius}
+00516                         \textcolor{comment}{/*m\_hVel[v++] = (rand() /( float ) RAND\_MAX -0.5f)*m\_params.brown;}
+00517 \textcolor{comment}{                        m\_hVel[v++] = (rand() /( float ) RAND\_MAX -0.5f)*m\_params.brown;;}
+00518 \textcolor{comment}{                        m\_hVel[v++] = (rand() /( float ) RAND\_MAX -0.5f)*m\_params.brown;;*/}
+00519                                                 \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[v++] = 0.0f;
+00520                                                 \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[v++] = 0.0f;
+00521                                                 \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[v++] = 0.0f;
+00522                         \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}[v++] = 0.0f;
+00523                                                 \}
+00524                     \}
+00525                 \}
+00526                                 \textcolor{comment}{/*for(int i=0;i<m\_numParticles;i++)}
+00527 \textcolor{comment}{                                \{}
+00528 \textcolor{comment}{                                        printf("i: %d\(\backslash\)n",i);}
+00529 \textcolor{comment}{                                        for(int j=0;j<4;j++)}
+00530 \textcolor{comment}{                                                printf("%f ",m\_hPos[i*4+j]);}
+00531 \textcolor{comment}{                                        printf("\(\backslash\)n");}
+00532 \textcolor{comment}{                                \}*/}
+00533             \}
+00534             \textcolor{keywordflow}{break};
+00535 
+00536         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{CONFIG\_GRID}:
+00537             \{
+00538                 \textcolor{keywordtype}{float} jitter = \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*0.01f;
+00539                 \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} s = (int) ceilf(powf((\textcolor{keywordtype}{float}) \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles}, 1.0f / 3.0f));
+00540                 \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize}[3];
+00541                 gridSize[0] = gridSize[1] = gridSize[2] = s;
+00542                 \hyperlink{class_particle_system_a2e08c4e354b0de5e2dc468a0fb457dfe}{initGrid}(gridSize, \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7e131c24e1020c44173deb0f57a8c4af}{particleRadius}*2.0f, jitter, 
       m\_numParticles);
-00476             \}
-00477             \textcolor{keywordflow}{break};
-00478     \}
-00479 
-00480     \hyperlink{class_particle_system_aa792a66680e800832059854aab0d594d}{setArray}(\hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION}, \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}, 0, m\_numParticles);
-00481     \hyperlink{class_particle_system_aa792a66680e800832059854aab0d594d}{setArray}(\hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY}, \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}, 0, m\_numParticles);
-00482 \}
+00543             \}
+00544             \textcolor{keywordflow}{break};
+00545     \}
+00546 
+00547     \hyperlink{class_particle_system_aa792a66680e800832059854aab0d594d}{setArray}(\hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION}, \hyperlink{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{m\_hPos}, 0, m\_numParticles);
+00548     \hyperlink{class_particle_system_aa792a66680e800832059854aab0d594d}{setArray}(\hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY}, \hyperlink{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{m\_hVel}, 0, m\_numParticles);
+00549 \}
 \end{DoxyCode}
 
 
@@ -1309,45 +1394,45 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )}}\label{class_particle_system_aa792a66680e800832059854aab0d594d}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00374}{374} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00403}{403} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00077}{copy\-Array\-To\-Device()}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00184}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00165}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00178}{m\-\_\-pos\-Vbo}, \hyperlink{particle_system_8h_source_l00038}{P\-O\-S\-I\-T\-I\-O\-N}, \hyperlink{particle_system__cuda_8cu_source_l00082}{register\-G\-L\-Buffer\-Object()}, \hyperlink{particle_system__cuda_8cu_source_l00088}{unregister\-G\-L\-Buffer\-Object()} i \hyperlink{particle_system_8h_source_l00039}{V\-E\-L\-O\-C\-I\-T\-Y}.
+Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00083}{copy\-Array\-To\-Device()}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00225}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00206}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00219}{m\-\_\-pos\-Vbo}, \hyperlink{particle_system_8h_source_l00042}{P\-O\-S\-I\-T\-I\-O\-N}, \hyperlink{particle_system__cuda_8cu_source_l00088}{register\-G\-L\-Buffer\-Object()}, \hyperlink{particle_system__cuda_8cu_source_l00094}{unregister\-G\-L\-Buffer\-Object()} i \hyperlink{particle_system_8h_source_l00043}{V\-E\-L\-O\-C\-I\-T\-Y}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00485}{add\-Sphere()} i \hyperlink{particle_system_8cpp_source_l00436}{reset()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00552}{add\-Sphere()} i \hyperlink{particle_system_8cpp_source_l00465}{reset()}.
 
 
 \begin{DoxyCode}
-00375 \{
-00376     assert(\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
-00377 
-00378     \textcolor{keywordflow}{switch} (array)
-00379     \{
-00380         \textcolor{keywordflow}{default}:
-00381         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION}:
-00382             \{
-00383                 \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
-00384                 \{
-00385                     \hyperlink{particle_system_8cuh_a9afef8c00ca779aae2d7484b45bce34c}{unregisterGLBufferObject}(
+00404 \{
+00405     assert(\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
+00406 
+00407     \textcolor{keywordflow}{switch} (array)
+00408     \{
+00409         \textcolor{keywordflow}{default}:
+00410         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299}{POSITION}:
+00411             \{
+00412                 \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
+00413                 \{
+00414                     \hyperlink{particle_system_8cuh_a9afef8c00ca779aae2d7484b45bce34c}{unregisterGLBufferObject}(
       \hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
-00386                     glBindBuffer(GL\_ARRAY\_BUFFER, \hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo});
-00387                     glBufferSubData(GL\_ARRAY\_BUFFER, start*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), count*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), data);
-00388                     glBindBuffer(GL\_ARRAY\_BUFFER, 0);
-00389                     \hyperlink{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}{registerGLBufferObject}(\hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo}, &
+00415                     glBindBuffer(GL\_ARRAY\_BUFFER, \hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo});
+00416                     glBufferSubData(GL\_ARRAY\_BUFFER, start*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), count*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), data);
+00417                     glBindBuffer(GL\_ARRAY\_BUFFER, 0);
+00418                     \hyperlink{particle_system_8cuh_a4386a84282ceeaba09939817aa2a9c24}{registerGLBufferObject}(\hyperlink{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{m\_posVbo}, &
       \hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
-00390                 \}
-00391             \}
-00392             \textcolor{keywordflow}{break};
-00393 
-00394         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY}:
-00395             \hyperlink{particle_system_8cuh_ac4d4ecd921dbed6c2deef639ca295374}{copyArrayToDevice}(\hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel}, data, start*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), count*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{
+00419                 \}
+00420             \}
+00421             \textcolor{keywordflow}{break};
+00422 
+00423         \textcolor{keywordflow}{case} \hyperlink{class_particle_system_a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d}{VELOCITY}:
+00424             \hyperlink{particle_system_8cuh_ac4d4ecd921dbed6c2deef639ca295374}{copyArrayToDevice}(\hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel}, data, start*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}), count*4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{
       float}));
-00396             \textcolor{keywordflow}{break};
-00397     \}
-00398 \}
+00425             \textcolor{keywordflow}{break};
+00426     \}
+00427 \}
 \end{DoxyCode}
 
 
@@ -1380,17 +1465,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a97efe00aa29307ecae0165da33d4770a}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00105}{105} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00122}{122} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00220}{init\-Particle\-System()} i \hyperlink{particles_8cpp_source_l00284}{parowanie\-Kropli\-W\-Czasie()}.
 
 
 \begin{DoxyCode}
-00106                 \{
-00107                         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_af41979948fdd8f76fe28ce2b43eb24cd}{bigradius}=x;
-00108                 \}
+00123                 \{
+00124                         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_af41979948fdd8f76fe28ce2b43eb24cd}{bigradius}=x;
+00125                 \}
 \end{DoxyCode}
 
 
@@ -1398,7 +1483,167 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=310pt]{class_particle_system_a97efe00aa29307ecae0165da33d4770a_icgraph}
+\includegraphics[width=350pt]{class_particle_system_a97efe00aa29307ecae0165da33d4770a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_particle_system_a55005091f11f7e9734c6b3fd2f1a5b1c}{\index{Particle\-System@{Particle\-System}!set\-Big\-Radius0@{set\-Big\-Radius0}}
+\index{set\-Big\-Radius0@{set\-Big\-Radius0}!ParticleSystem@{Particle\-System}}
+\subsubsection[{set\-Big\-Radius0}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-System\-::set\-Big\-Radius0 (
+\begin{DoxyParamCaption}
+\item[{float}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a55005091f11f7e9734c6b3fd2f1a5b1c}
+
+
+Definicja w linii \hyperlink{particle_system_8h_source_l00126}{126} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00220}{init\-Particle\-System()}.
+
+
+\begin{DoxyCode}
+00127                 \{
+00128                         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a5809a1ec819f5a99e350ed28b01834fc}{bigradius0}=x;
+00129                 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_system_a55005091f11f7e9734c6b3fd2f1a5b1c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_particle_system_a99bbe16b8e181415c2aa71c11edace98}{\index{Particle\-System@{Particle\-System}!set\-Boundaries@{set\-Boundaries}}
+\index{set\-Boundaries@{set\-Boundaries}!ParticleSystem@{Particle\-System}}
+\subsubsection[{set\-Boundaries}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-System\-::set\-Boundaries (
+\begin{DoxyParamCaption}
+\item[{bool}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a99bbe16b8e181415c2aa71c11edace98}
+
+
+Definicja w linii \hyperlink{particle_system_8h_source_l00139}{139} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00737}{key()}.
+
+
+\begin{DoxyCode}
+00140                 \{
+00141                         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a01507f06cc018071a0eb741438aaa09b}{boundaries}=x;
+00142                 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_system_a99bbe16b8e181415c2aa71c11edace98_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{\index{Particle\-System@{Particle\-System}!set\-Boundary\-Damping@{set\-Boundary\-Damping}}
+\index{set\-Boundary\-Damping@{set\-Boundary\-Damping}!ParticleSystem@{Particle\-System}}
+\subsubsection[{set\-Boundary\-Damping}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-System\-::set\-Boundary\-Damping (
+\begin{DoxyParamCaption}
+\item[{float}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}
+
+
+Definicja w linii \hyperlink{particle_system_8h_source_l00092}{92} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()} i \hyperlink{particles_8cpp_source_l00306}{run\-Benchmark()}.
+
+
+\begin{DoxyCode}
+00093         \{
+00094             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a4da0c7593d6569e48ee50e7d0c7576f9}{boundaryDamping} = x;
+00095         \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{\index{Particle\-System@{Particle\-System}!set\-Brown@{set\-Brown}}
+\index{set\-Brown@{set\-Brown}!ParticleSystem@{Particle\-System}}
+\subsubsection[{set\-Brown}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-System\-::set\-Brown (
+\begin{DoxyParamCaption}
+\item[{float}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}
+
+
+Definicja w linii \hyperlink{particle_system_8h_source_l00130}{130} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()} i \hyperlink{particles_8cpp_source_l00306}{run\-Benchmark()}.
+
+
+\begin{DoxyCode}
+00131                 \{
+00132                         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a88dae34e74c9184adfa9169bad06d0ee}{brown}=x;
+00133                 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_particle_system_a0b8c24c273a5a89ba27c7b6c949d2ce1}{\index{Particle\-System@{Particle\-System}!set\-Brown\-Quality@{set\-Brown\-Quality}}
+\index{set\-Brown\-Quality@{set\-Brown\-Quality}!ParticleSystem@{Particle\-System}}
+\subsubsection[{set\-Brown\-Quality}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-System\-::set\-Brown\-Quality (
+\begin{DoxyParamCaption}
+\item[{unsigned long long int}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a0b8c24c273a5a89ba27c7b6c949d2ce1}
+
+
+Definicja w linii \hyperlink{particle_system_8h_source_l00134}{134} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00220}{init\-Particle\-System()}.
+
+
+\begin{DoxyCode}
+00135                 \{
+00136                         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a366145dd58e2e7eacebffcbe78dd89ff}{brownQuality}=x;
+00137                 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_particle_system_a0b8c24c273a5a89ba27c7b6c949d2ce1_icgraph}
 \end{center}
 \end{figure}
 
@@ -1412,17 +1657,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00100}{100} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00117}{117} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()}.
 
 
 \begin{DoxyCode}
-00101         \{
-00102             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_acf7442ae8a49237861944271cb630d01}{attraction} = x;
-00103         \}
+00118         \{
+00119             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_acf7442ae8a49237861944271cb630d01}{attraction} = x;
+00120         \}
 \end{DoxyCode}
 
 
@@ -1444,17 +1689,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00092}{92} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00109}{109} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()}.
 
 
 \begin{DoxyCode}
-00093         \{
-00094             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_abf1644c671e60ebaf873d9167e755328}{damping} = x;
-00095         \}
+00110         \{
+00111             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_abf1644c671e60ebaf873d9167e755328}{damping} = x;
+00112         \}
 \end{DoxyCode}
 
 
@@ -1476,13 +1721,13 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a9c49794585cad649de400dc7375d7801}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00110}{110} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00149}{149} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 \begin{DoxyCode}
-00111         \{
-00112             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_aa27be265020f137f0a9cfbc3f1d2d9f8}{colliderPos} = x;
-00113         \}
+00150         \{
+00151             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_aa27be265020f137f0a9cfbc3f1d2d9f8}{colliderPos} = x;
+00152         \}
 \end{DoxyCode}
 \hypertarget{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{\index{Particle\-System@{Particle\-System}!set\-Collide\-Shear@{set\-Collide\-Shear}}
 \index{set\-Collide\-Shear@{set\-Collide\-Shear}!ParticleSystem@{Particle\-System}}
@@ -1493,17 +1738,17 @@ Definicja w linii \hyperlink{particle_system_8h_source_l00110}{110} pliku \hyper
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_aea667093542a1bdad65bdcb427e5625f}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00096}{96} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00113}{113} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()}.
 
 
 \begin{DoxyCode}
-00097         \{
-00098             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ad48210724ada15a14a649b25ad61575b}{shear} = x;
-00099         \}
+00114         \{
+00115             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ad48210724ada15a14a649b25ad61575b}{shear} = x;
+00116         \}
 \end{DoxyCode}
 
 
@@ -1525,17 +1770,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00088}{88} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00105}{105} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()}.
 
 
 \begin{DoxyCode}
-00089         \{
-00090             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a301314921adc7bce20d8955cf03cdf3f}{spring} = x;
-00091         \}
+00106         \{
+00107             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a301314921adc7bce20d8955cf03cdf3f}{spring} = x;
+00108         \}
 \end{DoxyCode}
 
 
@@ -1557,17 +1802,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00079}{79} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00083}{83} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()} i \hyperlink{particles_8cpp_source_l00306}{run\-Benchmark()}.
 
 
 \begin{DoxyCode}
-00080         \{
-00081             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7058bad8c867d9d42d8c9d842638ebea}{globalDamping} = x;
-00082         \}
+00084         \{
+00085             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a7058bad8c867d9d42d8c9d842638ebea}{globalDamping} = x;
+00086         \}
 \end{DoxyCode}
 
 
@@ -1575,7 +1820,39 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=304pt]{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c_icgraph}
+\includegraphics[width=350pt]{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{\index{Particle\-System@{Particle\-System}!set\-Epsi@{set\-Epsi}}
+\index{set\-Epsi@{set\-Epsi}!ParticleSystem@{Particle\-System}}
+\subsubsection[{set\-Epsi}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-System\-::set\-Epsi (
+\begin{DoxyParamCaption}
+\item[{float}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}
+
+
+Definicja w linii \hyperlink{particle_system_8h_source_l00100}{100} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()} i \hyperlink{particles_8cpp_source_l00306}{run\-Benchmark()}.
+
+
+\begin{DoxyCode}
+00101                 \{
+00102                         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_a760551182a6dff0b67f3048daa2620fb}{epsi}=x;
+00103                 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_system_a6290c054a797ec9fa691179ffb4631f7_icgraph}
 \end{center}
 \end{figure}
 
@@ -1589,17 +1866,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00083}{83} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00087}{87} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()} i \hyperlink{particles_8cpp_source_l00306}{run\-Benchmark()}.
 
 
 \begin{DoxyCode}
-00084         \{
-00085             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ae7508eba5dd90859215b59d19e001bb9}{gravity} = make\_float3(0.0f, x, 0.0f);
-00086         \}
+00088         \{
+00089             \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_ae7508eba5dd90859215b59d19e001bb9}{gravity} = make\_float3(0.0f, x, 0.0f);
+00090         \}
 \end{DoxyCode}
 
 
@@ -1607,7 +1884,7 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=296pt]{class_particle_system_a755f64f917389ef41df81b663d1f5bd2_icgraph}
+\includegraphics[width=350pt]{class_particle_system_a755f64f917389ef41df81b663d1f5bd2_icgraph}
 \end{center}
 \end{figure}
 
@@ -1621,21 +1898,21 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00074}{74} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00078}{78} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8h_source_l00194}{m\-\_\-solver\-Iterations}.
+Odwołuje się do \hyperlink{particle_system_8h_source_l00235}{m\-\_\-solver\-Iterations}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()}.
 
 
 \begin{DoxyCode}
-00075         \{
-00076             \hyperlink{class_particle_system_a7b4b053433c052518b8ecce1b02000f5}{m\_solverIterations} = i;
-00077         \}
+00079         \{
+00080             \hyperlink{class_particle_system_a7b4b053433c052518b8ecce1b02000f5}{m\_solverIterations} = i;
+00081         \}
 \end{DoxyCode}
 
 
@@ -1648,6 +1925,55 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 \end{figure}
 
 
+\hypertarget{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{\index{Particle\-System@{Particle\-System}!set\-Particle\-Mass@{set\-Particle\-Mass}}
+\index{set\-Particle\-Mass@{set\-Particle\-Mass}!ParticleSystem@{Particle\-System}}
+\subsubsection[{set\-Particle\-Mass}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-System\-::set\-Particle\-Mass (
+\begin{DoxyParamCaption}
+\item[{float}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}
+
+
+Definicja w linii \hyperlink{particle_system_8h_source_l00096}{96} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+
+
+
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()} i \hyperlink{particles_8cpp_source_l00306}{run\-Benchmark()}.
+
+
+\begin{DoxyCode}
+00097                 \{
+00098                         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_afab015432bd796517e5f540f6f7228e4}{particleMass}=x;
+00099                 \}
+\end{DoxyCode}
+
+
+Oto graf wywoływań tej funkcji\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_particle_system_ac82e5fa73b2b91dfa44db14daa37b389}{\index{Particle\-System@{Particle\-System}!set\-Particle\-Types\-Num@{set\-Particle\-Types\-Num}}
+\index{set\-Particle\-Types\-Num@{set\-Particle\-Types\-Num}!ParticleSystem@{Particle\-System}}
+\subsubsection[{set\-Particle\-Types\-Num}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-System\-::set\-Particle\-Types\-Num (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_particle_system_ac82e5fa73b2b91dfa44db14daa37b389}
+
+
+Definicja w linii \hyperlink{particle_system_8h_source_l00144}{144} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+
+
+\begin{DoxyCode}
+00145                 \{
+00146                         \hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params}.\hyperlink{struct_sim_params_adc3e5f65a1a0ef7c944007ac99eb8034}{particleTypesNum}=x;
+00147                 \}
+\end{DoxyCode}
 \hypertarget{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{\index{Particle\-System@{Particle\-System}!update@{update}}
 \index{update@{update}!ParticleSystem@{Particle\-System}}
 \subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-System\-::update (
@@ -1657,85 +1983,86 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )}}\label{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00238}{238} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00266}{266} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00157}{calc\-Hash()}, \hyperlink{particle_system__cuda_8cu_source_l00219}{collide()}, \hyperlink{particle_system__cuda_8cu_source_l00143}{integrate\-System()}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00152}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00184}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00181}{m\-\_\-cuda\-Pos\-V\-B\-O}, \hyperlink{particle_system_8h_source_l00174}{m\-\_\-d\-Cell\-End}, \hyperlink{particle_system_8h_source_l00173}{m\-\_\-d\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00171}{m\-\_\-d\-Grid\-Particle\-Hash}, \hyperlink{particle_system_8h_source_l00172}{m\-\_\-d\-Grid\-Particle\-Index}, \hyperlink{particle_system_8h_source_l00167}{m\-\_\-d\-Sorted\-Pos}, \hyperlink{particle_system_8h_source_l00168}{m\-\_\-d\-Sorted\-Vel}, \hyperlink{particle_system_8h_source_l00165}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00190}{m\-\_\-num\-Grid\-Cells}, \hyperlink{particle_system_8h_source_l00153}{m\-\_\-num\-Particles}, \hyperlink{particle_system__cuda_8cu_source_l00093}{map\-G\-L\-Buffer\-Object()}, \hyperlink{particle_system__cuda_8cu_source_l00178}{reorder\-Data\-And\-Find\-Cell\-Start()}, \hyperlink{particle_system__cuda_8cu_source_l00263}{sort\-Particles()} i \hyperlink{particle_system__cuda_8cu_source_l00103}{unmap\-G\-L\-Buffer\-Object()}.
+Odwołuje się do \hyperlink{particle_system__cuda_8cu_source_l00163}{calc\-Hash()}, \hyperlink{particle_system__cuda_8cu_source_l00225}{collide()}, \hyperlink{particle_system__cuda_8cu_source_l00149}{integrate\-System()}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Initialized}, \hyperlink{particle_system_8h_source_l00193}{m\-\_\-b\-Use\-Open\-G\-L}, \hyperlink{particle_system_8h_source_l00225}{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}, \hyperlink{particle_system_8h_source_l00222}{m\-\_\-cuda\-Pos\-V\-B\-O}, \hyperlink{particle_system_8h_source_l00215}{m\-\_\-d\-Cell\-End}, \hyperlink{particle_system_8h_source_l00214}{m\-\_\-d\-Cell\-Start}, \hyperlink{particle_system_8h_source_l00212}{m\-\_\-d\-Grid\-Particle\-Hash}, \hyperlink{particle_system_8h_source_l00213}{m\-\_\-d\-Grid\-Particle\-Index}, \hyperlink{particle_system_8h_source_l00208}{m\-\_\-d\-Sorted\-Pos}, \hyperlink{particle_system_8h_source_l00209}{m\-\_\-d\-Sorted\-Vel}, \hyperlink{particle_system_8h_source_l00206}{m\-\_\-d\-Vel}, \hyperlink{particle_system_8h_source_l00231}{m\-\_\-num\-Grid\-Cells}, \hyperlink{particle_system_8h_source_l00194}{m\-\_\-num\-Particles}, \hyperlink{particle_system__cuda_8cu_source_l00099}{map\-G\-L\-Buffer\-Object()}, \hyperlink{particle_system__cuda_8cu_source_l00184}{reorder\-Data\-And\-Find\-Cell\-Start()}, \hyperlink{particle_system__cuda_8cu_source_l00271}{sort\-Particles()} i \hyperlink{particle_system__cuda_8cu_source_l00109}{unmap\-G\-L\-Buffer\-Object()}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}, \hyperlink{particles_8cpp_source_l00520}{key()} i \hyperlink{particles_8cpp_source_l00194}{run\-Benchmark()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()}, \hyperlink{particles_8cpp_source_l00737}{key()} i \hyperlink{particles_8cpp_source_l00306}{run\-Benchmark()}.
 
 
 \begin{DoxyCode}
-00239 \{
-00240     assert(\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
-00241 
-00242     \textcolor{keywordtype}{float} *dPos;
-00243 
-00244     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
-00245     \{
-00246         dPos = (\textcolor{keywordtype}{float} *) \hyperlink{particle_system_8cuh_aa491077afd740a269815eb9ce81c8642}{mapGLBufferObject}(&
-      \hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
-00247     \}
-00248     \textcolor{keywordflow}{else}
-00249     \{
-00250         dPos = (\textcolor{keywordtype}{float} *) \hyperlink{class_particle_system_aba18245745f621d90186862f1a559d9e}{m\_cudaPosVBO};
-00251     \}
-00252 
-00253     \textcolor{comment}{// update constants}
-00254     \hyperlink{particle_system_8cuh_a342176dbaba2668312c45e1a1423fc4e}{setParameters}(&\hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params});
-00255 
-00256     \textcolor{comment}{// integrate}
-00257     \hyperlink{particle_system_8cuh_a34e9db8b801cd537e5ae5a4a886e020c}{integrateSystem}(
-00258         dPos,
-00259         \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel},
-00260         deltaTime,
-00261         \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles});
-00262 
-00263     \textcolor{comment}{// calculate grid hash}
-00264     \hyperlink{particle_system_8cuh_ae0a4037d25e768622443077546399cf2}{calcHash}(
-00265         \hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash},
-00266         \hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex},
-00267         dPos,
-00268         \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles});
+00267 \{
+00268     assert(\hyperlink{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}{m\_bInitialized});
 00269 
-00270     \textcolor{comment}{// sort particles based on hash}
-00271     \hyperlink{particle_system_8cuh_ac71da7e4672a2732a098ba933a799257}{sortParticles}(\hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash}, 
-      \hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex}, \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles});
-00272 
-00273     \textcolor{comment}{// reorder particle arrays into sorted order and}
-00274     \textcolor{comment}{// find start and end of each cell}
-00275     \hyperlink{particle_system_8cuh_ac72ccd068434c46c2f901c751d53be1d}{reorderDataAndFindCellStart}(
-00276         \hyperlink{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{m\_dCellStart},
-00277         \hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd},
-00278         \hyperlink{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}{m\_dSortedPos},
-00279         \hyperlink{class_particle_system_a69122523117954fb5defb8b38e0f46f3}{m\_dSortedVel},
-00280         \hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash},
-00281         \hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex},
-00282         dPos,
-00283         \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel},
-00284         \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles},
-00285         \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells});
-00286 
-00287     \textcolor{comment}{// process collisions}
-00288     \hyperlink{particle_system_8cuh_a917d67e2ed45ea11da51ac5d7004ddfd}{collide}(
-00289         \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel},
-00290         \hyperlink{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}{m\_dSortedPos},
-00291         \hyperlink{class_particle_system_a69122523117954fb5defb8b38e0f46f3}{m\_dSortedVel},
-00292         \hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex},
-00293         \hyperlink{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{m\_dCellStart},
-00294         \hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd},
-00295         \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles},
-00296         \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells});
+00270     \textcolor{keywordtype}{float} *dPos;
+00271 
+00272     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
+00273     \{
+00274         dPos = (\textcolor{keywordtype}{float} *) \hyperlink{particle_system_8cuh_aa491077afd740a269815eb9ce81c8642}{mapGLBufferObject}(&
+      \hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
+00275     \}
+00276     \textcolor{keywordflow}{else}
+00277     \{
+00278         dPos = (\textcolor{keywordtype}{float} *) \hyperlink{class_particle_system_aba18245745f621d90186862f1a559d9e}{m\_cudaPosVBO};
+00279     \}
+00280 
+00281     \textcolor{comment}{// update constants}
+00282     \hyperlink{particle_system_8cuh_a342176dbaba2668312c45e1a1423fc4e}{setParameters}(&\hyperlink{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{m\_params});
+00283 
+00284     \textcolor{comment}{// integrate}
+00285     \hyperlink{particle_system_8cuh_a34e9db8b801cd537e5ae5a4a886e020c}{integrateSystem}(
+00286         dPos,
+00287         \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel},
+00288         deltaTime,
+00289         \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles});
+00290 
+00291     \textcolor{comment}{// calculate grid hash}
+00292     \hyperlink{particle_system_8cuh_ae0a4037d25e768622443077546399cf2}{calcHash}(
+00293         \hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash},
+00294         \hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex},
+00295         dPos,
+00296         \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles});
 00297 
-00298     \textcolor{comment}{// note: do unmap at end here to avoid unnecessary graphics/CUDA context switch}
-00299     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
-00300     \{
-00301         \hyperlink{particle_system_8cuh_a98c3325419b7528d34a51ca7972d7095}{unmapGLBufferObject}(\hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
-00302     \}
-00303 \}
+00298     \textcolor{comment}{// sort particles based on hash}
+00299     \hyperlink{particle_system_8cuh_ac71da7e4672a2732a098ba933a799257}{sortParticles}(\hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash}, 
+      \hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex}, \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles});
+00300 
+00301     \textcolor{comment}{// reorder particle arrays into sorted order and}
+00302     \textcolor{comment}{// find start and end of each cell}
+00303     \hyperlink{particle_system_8cuh_ac72ccd068434c46c2f901c751d53be1d}{reorderDataAndFindCellStart}(
+00304         \hyperlink{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{m\_dCellStart},
+00305         \hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd},
+00306         \hyperlink{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}{m\_dSortedPos},
+00307         \hyperlink{class_particle_system_a69122523117954fb5defb8b38e0f46f3}{m\_dSortedVel},
+00308         \hyperlink{class_particle_system_ab44080655971a5501eaee6ad7355a139}{m\_dGridParticleHash},
+00309         \hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex},
+00310         dPos,
+00311         \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel},
+00312         \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles},
+00313         \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells});
+00314 
+00315     \textcolor{comment}{// process collisions}
+00316     \hyperlink{particle_system_8cuh_ad9d704d76ddff93e75ca7d39f57bbced}{collide}(
+00317         \hyperlink{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{m\_dVel},
+00318         \hyperlink{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}{m\_dSortedPos},
+00319         \hyperlink{class_particle_system_a69122523117954fb5defb8b38e0f46f3}{m\_dSortedVel},
+00320         \hyperlink{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{m\_dGridParticleIndex},
+00321         \hyperlink{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{m\_dCellStart},
+00322         \hyperlink{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{m\_dCellEnd},
+00323         \hyperlink{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{m\_numParticles},
+00324         \hyperlink{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{m\_numGridCells},
+00325                 deltaTime);
+00326 
+00327     \textcolor{comment}{// note: do unmap at end here to avoid unnecessary graphics/CUDA context switch}
+00328     \textcolor{keywordflow}{if} (\hyperlink{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{m\_bUseOpenGL})
+00329     \{
+00330         \hyperlink{particle_system_8cuh_a98c3325419b7528d34a51ca7972d7095}{unmapGLBufferObject}(\hyperlink{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{m\_cuda\_posvbo\_resource});
+00331     \}
+00332 \}
 \end{DoxyCode}
 
 
@@ -1767,292 +2094,292 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 \subsubsection[{m\-\_\-b\-Initialized}]{\setlength{\rightskip}{0pt plus 5cm}bool Particle\-System\-::m\-\_\-b\-Initialized\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a21bbfba9d8701a70bc6fddbf4fc3f5bd}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00152}{152} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00193}{193} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00346}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()}, \hyperlink{particle_system_8cpp_source_l00374}{set\-Array()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00375}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()}, \hyperlink{particle_system_8cpp_source_l00403}{set\-Array()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}{\index{Particle\-System@{Particle\-System}!m\-\_\-b\-Use\-Open\-G\-L@{m\-\_\-b\-Use\-Open\-G\-L}}
 \index{m\-\_\-b\-Use\-Open\-G\-L@{m\-\_\-b\-Use\-Open\-G\-L}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-b\-Use\-Open\-G\-L}]{\setlength{\rightskip}{0pt plus 5cm}bool Particle\-System\-::m\-\_\-b\-Use\-Open\-G\-L\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a5d99413ffc0791e6aa9f02308caf7f1e}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00152}{152} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00193}{193} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()}, \hyperlink{particle_system_8cpp_source_l00374}{set\-Array()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()}, \hyperlink{particle_system_8cpp_source_l00403}{set\-Array()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}{\index{Particle\-System@{Particle\-System}!m\-\_\-color\-V\-B\-O@{m\-\_\-color\-V\-B\-O}}
 \index{m\-\_\-color\-V\-B\-O@{m\-\_\-color\-V\-B\-O}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-color\-V\-B\-O}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint} Particle\-System\-::m\-\_\-color\-V\-B\-O\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a96b05c719006c9e3eaed759f54a49c7f}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00179}{179} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00220}{220} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()} i \hyperlink{particle_system_8h_source_l00057}{get\-Color\-Buffer()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()} i \hyperlink{particle_system_8h_source_l00061}{get\-Color\-Buffer()}.
 
 \hypertarget{class_particle_system_a140043869727535abc08609b835b98fc}{\index{Particle\-System@{Particle\-System}!m\-\_\-cuda\-\_\-colorvbo\-\_\-resource@{m\-\_\-cuda\-\_\-colorvbo\-\_\-resource}}
 \index{m\-\_\-cuda\-\_\-colorvbo\-\_\-resource@{m\-\_\-cuda\-\_\-colorvbo\-\_\-resource}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-cuda\-\_\-colorvbo\-\_\-resource}]{\setlength{\rightskip}{0pt plus 5cm}struct cuda\-Graphics\-Resource$\ast$ Particle\-System\-::m\-\_\-cuda\-\_\-colorvbo\-\_\-resource\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a140043869727535abc08609b835b98fc}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00185}{185} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00226}{226} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}.
 
 \hypertarget{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}{\index{Particle\-System@{Particle\-System}!m\-\_\-cuda\-\_\-posvbo\-\_\-resource@{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}}
 \index{m\-\_\-cuda\-\_\-posvbo\-\_\-resource@{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-cuda\-\_\-posvbo\-\_\-resource}]{\setlength{\rightskip}{0pt plus 5cm}struct cuda\-Graphics\-Resource$\ast$ Particle\-System\-::m\-\_\-cuda\-\_\-posvbo\-\_\-resource\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a9c5de70c1705672e5722ad30dee1b14b}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00184}{184} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00225}{225} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00331}{dump\-Particles()}, \hyperlink{particle_system_8cpp_source_l00346}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00374}{set\-Array()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00360}{dump\-Particles()}, \hyperlink{particle_system_8cpp_source_l00375}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00403}{set\-Array()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_a39d210b57da5f7f4a2c23f4fc0b43ea1}{\index{Particle\-System@{Particle\-System}!m\-\_\-cuda\-Color\-V\-B\-O@{m\-\_\-cuda\-Color\-V\-B\-O}}
 \index{m\-\_\-cuda\-Color\-V\-B\-O@{m\-\_\-cuda\-Color\-V\-B\-O}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-cuda\-Color\-V\-B\-O}]{\setlength{\rightskip}{0pt plus 5cm}float$\ast$ Particle\-System\-::m\-\_\-cuda\-Color\-V\-B\-O\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a39d210b57da5f7f4a2c23f4fc0b43ea1}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00182}{182} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00223}{223} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8h_source_l00066}{get\-Cuda\-Color\-V\-B\-O()}.
+Odwołania w \hyperlink{particle_system_8h_source_l00070}{get\-Cuda\-Color\-V\-B\-O()}.
 
 \hypertarget{class_particle_system_aba18245745f621d90186862f1a559d9e}{\index{Particle\-System@{Particle\-System}!m\-\_\-cuda\-Pos\-V\-B\-O@{m\-\_\-cuda\-Pos\-V\-B\-O}}
 \index{m\-\_\-cuda\-Pos\-V\-B\-O@{m\-\_\-cuda\-Pos\-V\-B\-O}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-cuda\-Pos\-V\-B\-O}]{\setlength{\rightskip}{0pt plus 5cm}float$\ast$ Particle\-System\-::m\-\_\-cuda\-Pos\-V\-B\-O\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_aba18245745f621d90186862f1a559d9e}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00181}{181} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00222}{222} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8h_source_l00062}{get\-Cuda\-Pos\-V\-B\-O()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8h_source_l00066}{get\-Cuda\-Pos\-V\-B\-O()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}{\index{Particle\-System@{Particle\-System}!m\-\_\-d\-Cell\-End@{m\-\_\-d\-Cell\-End}}
 \index{m\-\_\-d\-Cell\-End@{m\-\_\-d\-Cell\-End}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-d\-Cell\-End}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint}$\ast$ Particle\-System\-::m\-\_\-d\-Cell\-End\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a3a0b9c760c2bfcf811d54b8194ebea01}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00174}{174} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00215}{215} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00306}{dump\-Grid()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00335}{dump\-Grid()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}{\index{Particle\-System@{Particle\-System}!m\-\_\-d\-Cell\-Start@{m\-\_\-d\-Cell\-Start}}
 \index{m\-\_\-d\-Cell\-Start@{m\-\_\-d\-Cell\-Start}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-d\-Cell\-Start}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint}$\ast$ Particle\-System\-::m\-\_\-d\-Cell\-Start\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a137909a8b34f7a42e50cd0fcc86bb784}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00173}{173} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00214}{214} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00306}{dump\-Grid()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00335}{dump\-Grid()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_ab44080655971a5501eaee6ad7355a139}{\index{Particle\-System@{Particle\-System}!m\-\_\-d\-Grid\-Particle\-Hash@{m\-\_\-d\-Grid\-Particle\-Hash}}
 \index{m\-\_\-d\-Grid\-Particle\-Hash@{m\-\_\-d\-Grid\-Particle\-Hash}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-d\-Grid\-Particle\-Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint}$\ast$ Particle\-System\-::m\-\_\-d\-Grid\-Particle\-Hash\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_ab44080655971a5501eaee6ad7355a139}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00171}{171} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00212}{212} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}{\index{Particle\-System@{Particle\-System}!m\-\_\-d\-Grid\-Particle\-Index@{m\-\_\-d\-Grid\-Particle\-Index}}
 \index{m\-\_\-d\-Grid\-Particle\-Index@{m\-\_\-d\-Grid\-Particle\-Index}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-d\-Grid\-Particle\-Index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint}$\ast$ Particle\-System\-::m\-\_\-d\-Grid\-Particle\-Index\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a1a67fc1e3ffd4e64f55a2a315c49c74c}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00172}{172} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00213}{213} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_afff6217d2726217dff77c81ef3c23bfa}{\index{Particle\-System@{Particle\-System}!m\-\_\-d\-Pos@{m\-\_\-d\-Pos}}
 \index{m\-\_\-d\-Pos@{m\-\_\-d\-Pos}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-d\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}float$\ast$ Particle\-System\-::m\-\_\-d\-Pos\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_afff6217d2726217dff77c81ef3c23bfa}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00164}{164} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00205}{205} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00346}{get\-Array()} i \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00375}{get\-Array()} i \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()}.
 
 \hypertarget{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}{\index{Particle\-System@{Particle\-System}!m\-\_\-d\-Sorted\-Pos@{m\-\_\-d\-Sorted\-Pos}}
 \index{m\-\_\-d\-Sorted\-Pos@{m\-\_\-d\-Sorted\-Pos}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-d\-Sorted\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}float$\ast$ Particle\-System\-::m\-\_\-d\-Sorted\-Pos\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_ab60e8b5a312b2f400b10dfba5153fc3c}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00167}{167} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00208}{208} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_a69122523117954fb5defb8b38e0f46f3}{\index{Particle\-System@{Particle\-System}!m\-\_\-d\-Sorted\-Vel@{m\-\_\-d\-Sorted\-Vel}}
 \index{m\-\_\-d\-Sorted\-Vel@{m\-\_\-d\-Sorted\-Vel}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-d\-Sorted\-Vel}]{\setlength{\rightskip}{0pt plus 5cm}float$\ast$ Particle\-System\-::m\-\_\-d\-Sorted\-Vel\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a69122523117954fb5defb8b38e0f46f3}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00168}{168} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00209}{209} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}{\index{Particle\-System@{Particle\-System}!m\-\_\-d\-Vel@{m\-\_\-d\-Vel}}
 \index{m\-\_\-d\-Vel@{m\-\_\-d\-Vel}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-d\-Vel}]{\setlength{\rightskip}{0pt plus 5cm}float$\ast$ Particle\-System\-::m\-\_\-d\-Vel\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a5efd31a2fdba8d98b105f4e546964cb5}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00165}{165} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00206}{206} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00331}{dump\-Particles()}, \hyperlink{particle_system_8cpp_source_l00346}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()}, \hyperlink{particle_system_8cpp_source_l00374}{set\-Array()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00360}{dump\-Particles()}, \hyperlink{particle_system_8cpp_source_l00375}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()}, \hyperlink{particle_system_8cpp_source_l00403}{set\-Array()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_ad555b31501a258d776e8c72c96178aa0}{\index{Particle\-System@{Particle\-System}!m\-\_\-grid\-Size@{m\-\_\-grid\-Size}}
 \index{m\-\_\-grid\-Size@{m\-\_\-grid\-Size}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-grid\-Size}]{\setlength{\rightskip}{0pt plus 5cm}uint3 Particle\-System\-::m\-\_\-grid\-Size\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_ad555b31501a258d776e8c72c96178aa0}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00189}{189} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00230}{230} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 \hypertarget{class_particle_system_a2a0452a32993337176d88fa2fbe63020}{\index{Particle\-System@{Particle\-System}!m\-\_\-grid\-Sort\-Bits@{m\-\_\-grid\-Sort\-Bits}}
 \index{m\-\_\-grid\-Sort\-Bits@{m\-\_\-grid\-Sort\-Bits}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-grid\-Sort\-Bits}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint} Particle\-System\-::m\-\_\-grid\-Sort\-Bits\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a2a0452a32993337176d88fa2fbe63020}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00176}{176} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00217}{217} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()}.
 
 \hypertarget{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}{\index{Particle\-System@{Particle\-System}!m\-\_\-h\-Cell\-End@{m\-\_\-h\-Cell\-End}}
 \index{m\-\_\-h\-Cell\-End@{m\-\_\-h\-Cell\-End}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-h\-Cell\-End}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint}$\ast$ Particle\-System\-::m\-\_\-h\-Cell\-End\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a8d8ad2d142f3a5b83f2c10a46f5d7a8b}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00161}{161} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00202}{202} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00306}{dump\-Grid()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00335}{dump\-Grid()}.
 
 \hypertarget{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}{\index{Particle\-System@{Particle\-System}!m\-\_\-h\-Cell\-Start@{m\-\_\-h\-Cell\-Start}}
 \index{m\-\_\-h\-Cell\-Start@{m\-\_\-h\-Cell\-Start}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-h\-Cell\-Start}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint}$\ast$ Particle\-System\-::m\-\_\-h\-Cell\-Start\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a8412ecd991c14d906fcebba42bdeffd3}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00160}{160} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00201}{201} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00306}{dump\-Grid()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()} i \hyperlink{particle_system_8cpp_source_l00335}{dump\-Grid()}.
 
 \hypertarget{class_particle_system_a4280ede7d75e44c8c0d4edfa5ee7dd02}{\index{Particle\-System@{Particle\-System}!m\-\_\-h\-Particle\-Hash@{m\-\_\-h\-Particle\-Hash}}
 \index{m\-\_\-h\-Particle\-Hash@{m\-\_\-h\-Particle\-Hash}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-h\-Particle\-Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint}$\ast$ Particle\-System\-::m\-\_\-h\-Particle\-Hash\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a4280ede7d75e44c8c0d4edfa5ee7dd02}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00159}{159} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00200}{200} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 \hypertarget{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}{\index{Particle\-System@{Particle\-System}!m\-\_\-h\-Pos@{m\-\_\-h\-Pos}}
 \index{m\-\_\-h\-Pos@{m\-\_\-h\-Pos}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-h\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}float$\ast$ Particle\-System\-::m\-\_\-h\-Pos\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_ab9d75471d2eaaeb8fa98d2f3f47d9c25}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00156}{156} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00197}{197} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00485}{add\-Sphere()}, \hyperlink{particle_system_8cpp_source_l00331}{dump\-Particles()}, \hyperlink{particle_system_8cpp_source_l00346}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00406}{init\-Grid()}, \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()} i \hyperlink{particle_system_8cpp_source_l00436}{reset()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00552}{add\-Sphere()}, \hyperlink{particle_system_8cpp_source_l00360}{dump\-Particles()}, \hyperlink{particle_system_8cpp_source_l00375}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00435}{init\-Grid()}, \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()} i \hyperlink{particle_system_8cpp_source_l00465}{reset()}.
 
 \hypertarget{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}{\index{Particle\-System@{Particle\-System}!m\-\_\-h\-Vel@{m\-\_\-h\-Vel}}
 \index{m\-\_\-h\-Vel@{m\-\_\-h\-Vel}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-h\-Vel}]{\setlength{\rightskip}{0pt plus 5cm}float$\ast$ Particle\-System\-::m\-\_\-h\-Vel\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a20560c896ee8a8bbc827a8e5902da7e2}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00157}{157} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00198}{198} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00205}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00485}{add\-Sphere()}, \hyperlink{particle_system_8cpp_source_l00331}{dump\-Particles()}, \hyperlink{particle_system_8cpp_source_l00346}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00406}{init\-Grid()}, \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()} i \hyperlink{particle_system_8cpp_source_l00436}{reset()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00233}{\-\_\-finalize()}, \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00552}{add\-Sphere()}, \hyperlink{particle_system_8cpp_source_l00360}{dump\-Particles()}, \hyperlink{particle_system_8cpp_source_l00375}{get\-Array()}, \hyperlink{particle_system_8cpp_source_l00435}{init\-Grid()}, \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()} i \hyperlink{particle_system_8cpp_source_l00465}{reset()}.
 
 \hypertarget{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}{\index{Particle\-System@{Particle\-System}!m\-\_\-num\-Grid\-Cells@{m\-\_\-num\-Grid\-Cells}}
 \index{m\-\_\-num\-Grid\-Cells@{m\-\_\-num\-Grid\-Cells}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-num\-Grid\-Cells}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint} Particle\-System\-::m\-\_\-num\-Grid\-Cells\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_aa1ef17d723af5d7a4685e8fd57e9ca89}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00190}{190} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00231}{231} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00306}{dump\-Grid()} i \hyperlink{particle_system_8cpp_source_l00238}{update()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00335}{dump\-Grid()} i \hyperlink{particle_system_8cpp_source_l00266}{update()}.
 
 \hypertarget{class_particle_system_a23d238efa80a647d4b6cde034f486a91}{\index{Particle\-System@{Particle\-System}!m\-\_\-num\-Particles@{m\-\_\-num\-Particles}}
 \index{m\-\_\-num\-Particles@{m\-\_\-num\-Particles}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-num\-Particles}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint} Particle\-System\-::m\-\_\-num\-Particles\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a23d238efa80a647d4b6cde034f486a91}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00153}{153} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00194}{194} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00346}{get\-Array()}, \hyperlink{particle_system_8h_source_l00048}{get\-Num\-Particles()}, \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()}, \hyperlink{particle_system_8cpp_source_l00436}{reset()}, \hyperlink{particle_system_8cpp_source_l00238}{update()} i \hyperlink{particle_system_8cpp_source_l00078}{$\sim$\-Particle\-System()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8cpp_source_l00375}{get\-Array()}, \hyperlink{particle_system_8h_source_l00052}{get\-Num\-Particles()}, \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()}, \hyperlink{particle_system_8cpp_source_l00465}{reset()}, \hyperlink{particle_system_8cpp_source_l00266}{update()} i \hyperlink{particle_system_8cpp_source_l00097}{$\sim$\-Particle\-System()}.
 
 \hypertarget{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}{\index{Particle\-System@{Particle\-System}!m\-\_\-params@{m\-\_\-params}}
 \index{m\-\_\-params@{m\-\_\-params}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-params}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sim\-Params} Particle\-System\-::m\-\_\-params\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_ab765472aed6a1b5f0d2f98a3a906c417}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00188}{188} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00229}{229} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 \hypertarget{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}{\index{Particle\-System@{Particle\-System}!m\-\_\-pos\-Vbo@{m\-\_\-pos\-Vbo}}
 \index{m\-\_\-pos\-Vbo@{m\-\_\-pos\-Vbo}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-pos\-Vbo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint} Particle\-System\-::m\-\_\-pos\-Vbo\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a31f9cccdf5dbae6f72867665bd8761e3}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00178}{178} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00219}{219} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00123}{\-\_\-initialize()}, \hyperlink{particle_system_8h_source_l00053}{get\-Current\-Read\-Buffer()} i \hyperlink{particle_system_8cpp_source_l00374}{set\-Array()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00142}{\-\_\-initialize()}, \hyperlink{particle_system_8h_source_l00057}{get\-Current\-Read\-Buffer()} i \hyperlink{particle_system_8cpp_source_l00403}{set\-Array()}.
 
 \hypertarget{class_particle_system_a7b4b053433c052518b8ecce1b02000f5}{\index{Particle\-System@{Particle\-System}!m\-\_\-solver\-Iterations@{m\-\_\-solver\-Iterations}}
 \index{m\-\_\-solver\-Iterations@{m\-\_\-solver\-Iterations}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-solver\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint} Particle\-System\-::m\-\_\-solver\-Iterations\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_a7b4b053433c052518b8ecce1b02000f5}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00194}{194} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00235}{235} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00033}{Particle\-System()} i \hyperlink{particle_system_8h_source_l00074}{set\-Iterations()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00040}{Particle\-System()} i \hyperlink{particle_system_8h_source_l00078}{set\-Iterations()}.
 
 \hypertarget{class_particle_system_af01e546384ef27bb1894a37f2a02e967}{\index{Particle\-System@{Particle\-System}!m\-\_\-timer@{m\-\_\-timer}}
 \index{m\-\_\-timer@{m\-\_\-timer}!ParticleSystem@{Particle\-System}}
 \subsubsection[{m\-\_\-timer}]{\setlength{\rightskip}{0pt plus 5cm}Stop\-Watch\-Interface$\ast$ Particle\-System\-::m\-\_\-timer\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_system_af01e546384ef27bb1894a37f2a02e967}
 
 
-Definicja w linii \hyperlink{particle_system_8h_source_l00192}{192} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
+Definicja w linii \hyperlink{particle_system_8h_source_l00233}{233} pliku \hyperlink{particle_system_8h_source}{particle\-System.\-h}.
 
 
 

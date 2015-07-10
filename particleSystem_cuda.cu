@@ -8,15 +8,12 @@
  * is strictly prohibited.
  *
  */
-<<<<<<< HEAD
   /** \file particleSystem_cuda.cu
   * \brief Definicje (implementacje) funkcji odpowiedzialnych za przebieg symulacji.
   *
   */
 
 
-=======
->>>>>>> master
 
 // This file contains C wrappers around the some of the CUDA API and the
 // kernel functions so that they can be called from "particleSystem.cpp"
@@ -232,12 +229,8 @@ extern "C"
                  uint  *cellStart,
                  uint  *cellEnd,
                  uint   numParticles,
-<<<<<<< HEAD
                  uint   numCells,
 				 float deltaTime)
-=======
-                 uint   numCells)
->>>>>>> master
     {
 #if USE_TEX
         checkCudaErrors(cudaBindTexture(0, oldPosTex, sortedPos, numParticles*sizeof(float4)));
@@ -254,22 +247,14 @@ extern "C"
 /*	wywolanie watkow zderzen	*/
 ///////////////////////////////////////////////////////////////////////////
         // execute the kernel
-<<<<<<< HEAD
-
-=======
->>>>>>> master
         collideD<<< numBlocks, numThreads >>>((float4 *)newVel,
                                               (float4 *)sortedPos,
                                               (float4 *)sortedVel,
                                               gridParticleIndex,
                                               cellStart,
                                               cellEnd,
-<<<<<<< HEAD
                                               numParticles,
 											  deltaTime);
-=======
-                                              numParticles);
->>>>>>> master
 
         // check if kernel invocation generated an error
         getLastCudaError("Kernel execution failed");
@@ -291,9 +276,3 @@ extern "C"
     }
 
 }   // extern "C"
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> master

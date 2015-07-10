@@ -31,7 +31,7 @@ enum \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{Displ
 \item 
 void \hyperlink{class_particle_renderer_adb3204e8af23a65b05b1aca7f43f0430}{set\-Positions} (float $\ast$pos, int \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles})
 \item 
-void \hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{set\-Vertex\-Buffer} (unsigned int vbo, int \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles})
+void \hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{set\-Vertex\-Buffer} (unsigned int vbo, int \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{num\-Particles}, float \hyperlink{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{zoom})
 \item 
 void \hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{set\-Color\-Buffer} (unsigned int vbo)
 \item 
@@ -72,6 +72,8 @@ float \hyperlink{class_particle_renderer_a0aed003bd557a3c32ca7d2ca89fc59f7}{m\-\
 int \hyperlink{class_particle_renderer_aa71b7eba5d5665a086b7ba80adddf19b}{m\-\_\-window\-\_\-w}
 \item 
 int \hyperlink{class_particle_renderer_af34b1e93f6a7f22774a6473c52027d77}{m\-\_\-window\-\_\-h}
+\item 
+float \hyperlink{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{zoom}
 \item 
 G\-Luint \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\-\_\-program}
 \item 
@@ -131,7 +133,7 @@ Definicja w linii \hyperlink{render__particles_8cpp_source_l00025}{25} pliku \hy
 
 
 
-Odwołuje się do \hyperlink{render__particles_8cpp_source_l00157}{\-\_\-init\-G\-L()}, \hyperlink{render__particles_8h_source_l00063}{m\-\_\-num\-Particles}, \hyperlink{render__particles_8h_source_l00066}{m\-\_\-particle\-Radius}, \hyperlink{render__particles_8h_source_l00065}{m\-\_\-point\-Size}, \hyperlink{render__particles_8h_source_l00062}{m\-\_\-pos} i \hyperlink{render__particles_8cpp_source_l00025}{Particle\-Renderer()}.
+Odwołuje się do \hyperlink{render__particles_8cpp_source_l00158}{\-\_\-init\-G\-L()}, \hyperlink{render__particles_8h_source_l00063}{m\-\_\-num\-Particles}, \hyperlink{render__particles_8h_source_l00066}{m\-\_\-particle\-Radius}, \hyperlink{render__particles_8h_source_l00065}{m\-\_\-point\-Size}, \hyperlink{render__particles_8h_source_l00062}{m\-\_\-pos} i \hyperlink{render__particles_8cpp_source_l00025}{Particle\-Renderer()}.
 
 
 
@@ -142,7 +144,7 @@ Odwołania w \hyperlink{render__particles_8cpp_source_l00025}{Particle\-Renderer
 00026     : \hyperlink{class_particle_renderer_a1d74720edb5c3a13edcdd176ac0d84c7}{m\_pos}(0),
 00027       \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles}(0),
 00028       \hyperlink{class_particle_renderer_a1ca13e546c937cb546c0da19fa853b34}{m\_pointSize}(1.0f),
-00029       \hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{m\_particleRadius}(0.125f * 0.5f),
+00029       \hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{m\_particleRadius}(1.0f/32.0f),
 00030       \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program}(0),
 00031       \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{m\_vbo}(0),
 00032       \hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{m\_colorVBO}(0)
@@ -206,42 +208,42 @@ Odwołuje się do \hyperlink{render__particles_8h_source_l00062}{m\-\_\-pos}.
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}
 
 
-Definicja w linii \hyperlink{render__particles_8cpp_source_l00123}{123} pliku \hyperlink{render__particles_8cpp_source}{render\-\_\-particles.\-cpp}.
+Definicja w linii \hyperlink{render__particles_8cpp_source_l00124}{124} pliku \hyperlink{render__particles_8cpp_source}{render\-\_\-particles.\-cpp}.
 
 
 \begin{DoxyCode}
-00124 \{
-00125     GLuint \hyperlink{shaders_8h_aea8e0959f6b7eabf6156f801e179da60}{vertexShader} = glCreateShader(GL\_VERTEX\_SHADER);
-00126     GLuint fragmentShader = glCreateShader(GL\_FRAGMENT\_SHADER);
-00127 
-00128     glShaderSource(vertexShader, 1, &vsource, 0);
-00129     glShaderSource(fragmentShader, 1, &fsource, 0);
-00130 
-00131     glCompileShader(vertexShader);
-00132     glCompileShader(fragmentShader);
-00133 
-00134     GLuint program = glCreateProgram();
-00135 
-00136     glAttachShader(program, vertexShader);
-00137     glAttachShader(program, fragmentShader);
-00138 
-00139     glLinkProgram(program);
-00140 
-00141     \textcolor{comment}{// check if program linked}
-00142     GLint success = 0;
-00143     glGetProgramiv(program, GL\_LINK\_STATUS, &success);
-00144 
-00145     \textcolor{keywordflow}{if} (!success)
-00146     \{
-00147         \textcolor{keywordtype}{char} temp[256];
-00148         glGetProgramInfoLog(program, 256, 0, temp);
-00149         printf(\textcolor{stringliteral}{"Failed to link program:\(\backslash\)n%s\(\backslash\)n"}, temp);
-00150         glDeleteProgram(program);
-00151         program = 0;
-00152     \}
-00153 
-00154     \textcolor{keywordflow}{return} program;
-00155 \}
+00125 \{
+00126     GLuint \hyperlink{shaders_8h_aea8e0959f6b7eabf6156f801e179da60}{vertexShader} = glCreateShader(GL\_VERTEX\_SHADER);
+00127     GLuint fragmentShader = glCreateShader(GL\_FRAGMENT\_SHADER);
+00128 
+00129     glShaderSource(vertexShader, 1, &vsource, 0);
+00130     glShaderSource(fragmentShader, 1, &fsource, 0);
+00131 
+00132     glCompileShader(vertexShader);
+00133     glCompileShader(fragmentShader);
+00134 
+00135     GLuint program = glCreateProgram();
+00136 
+00137     glAttachShader(program, vertexShader);
+00138     glAttachShader(program, fragmentShader);
+00139 
+00140     glLinkProgram(program);
+00141 
+00142     \textcolor{comment}{// check if program linked}
+00143     GLint success = 0;
+00144     glGetProgramiv(program, GL\_LINK\_STATUS, &success);
+00145 
+00146     \textcolor{keywordflow}{if} (!success)
+00147     \{
+00148         \textcolor{keywordtype}{char} temp[256];
+00149         glGetProgramInfoLog(program, 256, 0, temp);
+00150         printf(\textcolor{stringliteral}{"Failed to link program:\(\backslash\)n%s\(\backslash\)n"}, temp);
+00151         glDeleteProgram(program);
+00152         program = 0;
+00153     \}
+00154 
+00155     \textcolor{keywordflow}{return} program;
+00156 \}
 \end{DoxyCode}
 \hypertarget{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\index{Particle\-Renderer@{Particle\-Renderer}!\-\_\-draw\-Points@{\-\_\-draw\-Points}}
 \index{\-\_\-draw\-Points@{\-\_\-draw\-Points}!ParticleRenderer@{Particle\-Renderer}}
@@ -252,49 +254,49 @@ Definicja w linii \hyperlink{render__particles_8cpp_source_l00123}{123} pliku \h
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}
 
 
-Definicja w linii \hyperlink{render__particles_8cpp_source_l00054}{54} pliku \hyperlink{render__particles_8cpp_source}{render\-\_\-particles.\-cpp}.
+Definicja w linii \hyperlink{render__particles_8cpp_source_l00055}{55} pliku \hyperlink{render__particles_8cpp_source}{render\-\_\-particles.\-cpp}.
 
 
 
-Odwołania w \hyperlink{render__particles_8cpp_source_l00091}{display()}.
+Odwołania w \hyperlink{render__particles_8cpp_source_l00092}{display()}.
 
 
 \begin{DoxyCode}
-00055 \{
-00056     \textcolor{keywordflow}{if} (!\hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{m\_vbo})
-00057     \{
-00058         glBegin(GL\_POINTS);
-00059         \{
-00060             \textcolor{keywordtype}{int} k = 0;
-00061 
-00062             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles}; ++i)
-00063             \{
-00064                 glVertex3fv(&\hyperlink{class_particle_renderer_a1d74720edb5c3a13edcdd176ac0d84c7}{m\_pos}[k]);
-00065                 k += 4;
-00066             \}
-00067         \}
-00068         glEnd();
-00069     \}
-00070     \textcolor{keywordflow}{else}
-00071     \{
-00072         glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{m\_vbo});
-00073         glVertexPointer(4, GL\_FLOAT, 0, 0);
-00074         glEnableClientState(GL\_VERTEX\_ARRAY);
-00075 
-00076         \textcolor{keywordflow}{if} (\hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{m\_colorVBO})
-00077         \{
-00078             glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, \hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{m\_colorVBO});
-00079             glColorPointer(4, GL\_FLOAT, 0, 0);
-00080             glEnableClientState(GL\_COLOR\_ARRAY);
-00081         \}
-00082 
-00083         glDrawArrays(GL\_POINTS, 0, \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles});
-00084 
-00085         glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, 0);
-00086         glDisableClientState(GL\_VERTEX\_ARRAY);
-00087         glDisableClientState(GL\_COLOR\_ARRAY);
-00088     \}
-00089 \}
+00056 \{
+00057     \textcolor{keywordflow}{if} (!\hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{m\_vbo})
+00058     \{
+00059         glBegin(GL\_POINTS);
+00060         \{
+00061             \textcolor{keywordtype}{int} k = 0;
+00062 
+00063             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles}; ++i)
+00064             \{
+00065                 glVertex3fv(&\hyperlink{class_particle_renderer_a1d74720edb5c3a13edcdd176ac0d84c7}{m\_pos}[k]);
+00066                 k += 4;
+00067             \}
+00068         \}
+00069         glEnd();
+00070     \}
+00071     \textcolor{keywordflow}{else}
+00072     \{
+00073         glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{m\_vbo});
+00074         glVertexPointer(4, GL\_FLOAT, 0, 0);
+00075         glEnableClientState(GL\_VERTEX\_ARRAY);
+00076 
+00077         \textcolor{keywordflow}{if} (\hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{m\_colorVBO})
+00078         \{
+00079             glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, \hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{m\_colorVBO});
+00080             glColorPointer(4, GL\_FLOAT, 0, 0);
+00081             glEnableClientState(GL\_COLOR\_ARRAY);
+00082         \}
+00083 
+00084         glDrawArrays(GL\_POINTS, 0, \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles});
+00085 
+00086         glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, 0);
+00087         glDisableClientState(GL\_VERTEX\_ARRAY);
+00088         glDisableClientState(GL\_COLOR\_ARRAY);
+00089     \}
+00090 \}
 \end{DoxyCode}
 
 
@@ -316,7 +318,7 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_renderer_ac75c7f73a0014333305b174b8863a46b}
 
 
-Definicja w linii \hyperlink{render__particles_8cpp_source_l00157}{157} pliku \hyperlink{render__particles_8cpp_source}{render\-\_\-particles.\-cpp}.
+Definicja w linii \hyperlink{render__particles_8cpp_source_l00158}{158} pliku \hyperlink{render__particles_8cpp_source}{render\-\_\-particles.\-cpp}.
 
 
 
@@ -324,15 +326,15 @@ Odwołania w \hyperlink{render__particles_8cpp_source_l00025}{Particle\-Renderer
 
 
 \begin{DoxyCode}
-00158 \{
-00159     \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program} = \hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{\_compileProgram}(\hyperlink{shaders_8h_aea8e0959f6b7eabf6156f801e179da60}{vertexShader}, 
+00159 \{
+00160     \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program} = \hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{\_compileProgram}(\hyperlink{shaders_8h_aea8e0959f6b7eabf6156f801e179da60}{vertexShader}, 
       \hyperlink{shaders_8h_abad1d2b70401d6f3a4f61a462369373d}{spherePixelShader});
-00160 
-00161 \textcolor{preprocessor}{#if !defined(\_\_APPLE\_\_) && !defined(MACOSX)}
-00162 \textcolor{preprocessor}{}    glClampColorARB(GL\_CLAMP\_VERTEX\_COLOR\_ARB, GL\_FALSE);
-00163     glClampColorARB(GL\_CLAMP\_FRAGMENT\_COLOR\_ARB, GL\_FALSE);
-00164 \textcolor{preprocessor}{#endif}
-00165 \textcolor{preprocessor}{}\}
+00161 
+00162 \textcolor{preprocessor}{#if !defined(\_\_APPLE\_\_) && !defined(MACOSX)}
+00163 \textcolor{preprocessor}{}    glClampColorARB(GL\_CLAMP\_VERTEX\_COLOR\_ARB, GL\_FALSE);
+00164     glClampColorARB(GL\_CLAMP\_FRAGMENT\_COLOR\_ARB, GL\_FALSE);
+00165 \textcolor{preprocessor}{#endif}
+00166 \textcolor{preprocessor}{}\}
 \end{DoxyCode}
 
 
@@ -354,49 +356,49 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )}}\label{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}
 
 
-Definicja w linii \hyperlink{render__particles_8cpp_source_l00091}{91} pliku \hyperlink{render__particles_8cpp_source}{render\-\_\-particles.\-cpp}.
+Definicja w linii \hyperlink{render__particles_8cpp_source_l00092}{92} pliku \hyperlink{render__particles_8cpp_source}{render\-\_\-particles.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{render__particles_8cpp_source_l00054}{\-\_\-draw\-Points()}.
+Odwołuje się do \hyperlink{render__particles_8cpp_source_l00055}{\-\_\-draw\-Points()}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()}.
 
 
 \begin{DoxyCode}
-00092 \{
-00093     \textcolor{keywordflow}{switch} (\hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode})
-00094     \{
-00095         \textcolor{keywordflow}{case} \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe}{PARTICLE\_POINTS}:
-00096             glColor3f(1, 1, 1);
-00097             glPointSize(\hyperlink{class_particle_renderer_a1ca13e546c937cb546c0da19fa853b34}{m\_pointSize});
-00098             \hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}();
-00099             \textcolor{keywordflow}{break};
-00100 
-00101         \textcolor{keywordflow}{default}:
-00102         \textcolor{keywordflow}{case} \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111}{PARTICLE\_SPHERES}:
-00103             glEnable(GL\_POINT\_SPRITE\_ARB);
-00104             glTexEnvi(GL\_POINT\_SPRITE\_ARB, GL\_COORD\_REPLACE\_ARB, GL\_TRUE);
-00105             glEnable(GL\_VERTEX\_PROGRAM\_POINT\_SIZE\_NV);
-00106             glDepthMask(GL\_TRUE);
-00107             glEnable(GL\_DEPTH\_TEST);
-00108 
-00109             glUseProgram(\hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program});
-00110             glUniform1f(glGetUniformLocation(\hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program}, \textcolor{stringliteral}{"pointScale"}), 
-      \hyperlink{class_particle_renderer_af34b1e93f6a7f22774a6473c52027d77}{m\_window\_h} / tanf(\hyperlink{class_particle_renderer_a0aed003bd557a3c32ca7d2ca89fc59f7}{m\_fov}*0.5f*(\textcolor{keywordtype}{float})\hyperlink{render__particles_8cpp_ae71449b1cc6e6250b91f539153a7a0d3}{M\_PI}/180.0f));
-00111             glUniform1f(glGetUniformLocation(\hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program}, \textcolor{stringliteral}{"pointRadius"}), 
+00093 \{
+00094     \textcolor{keywordflow}{switch} (\hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode})
+00095     \{
+00096         \textcolor{keywordflow}{case} \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe}{PARTICLE\_POINTS}:
+00097             glColor3f(1, 1, 1);
+00098             glPointSize(\hyperlink{class_particle_renderer_a1ca13e546c937cb546c0da19fa853b34}{m\_pointSize});
+00099             \hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}();
+00100             \textcolor{keywordflow}{break};
+00101 
+00102         \textcolor{keywordflow}{default}:
+00103         \textcolor{keywordflow}{case} \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111}{PARTICLE\_SPHERES}:
+00104             glEnable(GL\_POINT\_SPRITE\_ARB);
+00105             glTexEnvi(GL\_POINT\_SPRITE\_ARB, GL\_COORD\_REPLACE\_ARB, GL\_TRUE);
+00106             glEnable(GL\_VERTEX\_PROGRAM\_POINT\_SIZE\_NV);
+00107             glDepthMask(GL\_TRUE);
+00108             glEnable(GL\_DEPTH\_TEST);
+00109 
+00110             glUseProgram(\hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program});
+00111             glUniform1f(glGetUniformLocation(\hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program}, \textcolor{stringliteral}{"pointScale"}), 
+      \hyperlink{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{zoom}*\hyperlink{class_particle_renderer_af34b1e93f6a7f22774a6473c52027d77}{m\_window\_h} / tanf(\hyperlink{class_particle_renderer_a0aed003bd557a3c32ca7d2ca89fc59f7}{m\_fov}*0.5f*(\textcolor{keywordtype}{float})\hyperlink{render__particles_8cpp_ae71449b1cc6e6250b91f539153a7a0d3}{M\_PI}/180.0f));
+00112             glUniform1f(glGetUniformLocation(\hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program}, \textcolor{stringliteral}{"pointRadius"}), 
       \hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{m\_particleRadius});
-00112 
-00113             glColor3f(1, 1, 1);
-00114             \hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}();
-00115 
-00116             glUseProgram(0);
-00117             glDisable(GL\_POINT\_SPRITE\_ARB);
-00118             \textcolor{keywordflow}{break};
-00119     \}
-00120 \}
+00113 
+00114             glColor3f(1, 1, 1);
+00115             \hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}();
+00116 
+00117             glUseProgram(0);
+00118             glDisable(GL\_POINT\_SPRITE\_ARB);
+00119             \textcolor{keywordflow}{break};
+00120     \}
+00121 \}
 \end{DoxyCode}
 
 
@@ -440,7 +442,7 @@ Definicja w linii \hyperlink{render__particles_8h_source_l00023}{23} pliku \hype
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00142}{init\-Particle\-System()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00220}{init\-Particle\-System()}.
 
 
 \begin{DoxyCode}
@@ -476,7 +478,7 @@ Odwołuje się do \hyperlink{render__particles_8h_source_l00067}{m\-\_\-fov}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00353}{reshape()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00532}{reshape()}.
 
 
 \begin{DoxyCode}
@@ -512,7 +514,7 @@ Odwołuje się do \hyperlink{render__particles_8h_source_l00066}{m\-\_\-particle
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00142}{init\-Particle\-System()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00220}{init\-Particle\-System()}.
 
 
 \begin{DoxyCode}
@@ -575,32 +577,34 @@ Odwołuje się do \hyperlink{render__particles_8h_source_l00063}{m\-\_\-num\-Par
 00045     \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles} = \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles};
 00046 \}
 \end{DoxyCode}
-\hypertarget{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{\index{Particle\-Renderer@{Particle\-Renderer}!set\-Vertex\-Buffer@{set\-Vertex\-Buffer}}
+\hypertarget{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{\index{Particle\-Renderer@{Particle\-Renderer}!set\-Vertex\-Buffer@{set\-Vertex\-Buffer}}
 \index{set\-Vertex\-Buffer@{set\-Vertex\-Buffer}!ParticleRenderer@{Particle\-Renderer}}
 \subsubsection[{set\-Vertex\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void Particle\-Renderer\-::set\-Vertex\-Buffer (
 \begin{DoxyParamCaption}
 \item[{unsigned int}]{vbo, }
-\item[{int}]{num\-Particles}
+\item[{int}]{num\-Particles, }
+\item[{float}]{zoom}
 \end{DoxyParamCaption}
-)}}\label{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}
+)}}\label{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}
 
 
 Definicja w linii \hyperlink{render__particles_8cpp_source_l00048}{48} pliku \hyperlink{render__particles_8cpp_source}{render\-\_\-particles.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{render__particles_8h_source_l00063}{m\-\_\-num\-Particles}.
+Odwołuje się do \hyperlink{render__particles_8h_source_l00063}{m\-\_\-num\-Particles} i \hyperlink{render__particles_8h_source_l00069}{zoom}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00248}{display()} i \hyperlink{particles_8cpp_source_l00520}{key()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00405}{display()} i \hyperlink{particles_8cpp_source_l00737}{key()}.
 
 
 \begin{DoxyCode}
 00049 \{
 00050     \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{m\_vbo} = vbo;
 00051     \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles} = \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles};
-00052 \}
+00052         this->\hyperlink{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{zoom}=\hyperlink{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{zoom};
+00053 \}
 \end{DoxyCode}
 
 
@@ -608,7 +612,7 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59_icgraph}
+\includegraphics[width=350pt]{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6_icgraph}
 \end{center}
 \end{figure}
 
@@ -631,7 +635,7 @@ Odwołuje się do \hyperlink{render__particles_8h_source_l00068}{m\-\_\-window\-
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00353}{reshape()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00532}{reshape()}.
 
 
 \begin{DoxyCode}
@@ -659,7 +663,7 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 \subsubsection[{m\-\_\-color\-V\-B\-O}]{\setlength{\rightskip}{0pt plus 5cm}G\-Luint Particle\-Renderer\-::m\-\_\-color\-V\-B\-O\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}
 
 
-Definicja w linii \hyperlink{render__particles_8h_source_l00073}{73} pliku \hyperlink{render__particles_8h_source}{render\-\_\-particles.\-h}.
+Definicja w linii \hyperlink{render__particles_8h_source_l00074}{74} pliku \hyperlink{render__particles_8h_source}{render\-\_\-particles.\-h}.
 
 \hypertarget{class_particle_renderer_a0aed003bd557a3c32ca7d2ca89fc59f7}{\index{Particle\-Renderer@{Particle\-Renderer}!m\-\_\-fov@{m\-\_\-fov}}
 \index{m\-\_\-fov@{m\-\_\-fov}!ParticleRenderer@{Particle\-Renderer}}
@@ -721,14 +725,14 @@ Odwołania w \hyperlink{render__particles_8cpp_source_l00025}{Particle\-Renderer
 \subsubsection[{m\-\_\-program}]{\setlength{\rightskip}{0pt plus 5cm}G\-Luint Particle\-Renderer\-::m\-\_\-program\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}
 
 
-Definicja w linii \hyperlink{render__particles_8h_source_l00070}{70} pliku \hyperlink{render__particles_8h_source}{render\-\_\-particles.\-h}.
+Definicja w linii \hyperlink{render__particles_8h_source_l00071}{71} pliku \hyperlink{render__particles_8h_source}{render\-\_\-particles.\-h}.
 
 \hypertarget{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{\index{Particle\-Renderer@{Particle\-Renderer}!m\-\_\-vbo@{m\-\_\-vbo}}
 \index{m\-\_\-vbo@{m\-\_\-vbo}!ParticleRenderer@{Particle\-Renderer}}
 \subsubsection[{m\-\_\-vbo}]{\setlength{\rightskip}{0pt plus 5cm}G\-Luint Particle\-Renderer\-::m\-\_\-vbo\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}
 
 
-Definicja w linii \hyperlink{render__particles_8h_source_l00072}{72} pliku \hyperlink{render__particles_8h_source}{render\-\_\-particles.\-h}.
+Definicja w linii \hyperlink{render__particles_8h_source_l00073}{73} pliku \hyperlink{render__particles_8h_source}{render\-\_\-particles.\-h}.
 
 \hypertarget{class_particle_renderer_af34b1e93f6a7f22774a6473c52027d77}{\index{Particle\-Renderer@{Particle\-Renderer}!m\-\_\-window\-\_\-h@{m\-\_\-window\-\_\-h}}
 \index{m\-\_\-window\-\_\-h@{m\-\_\-window\-\_\-h}!ParticleRenderer@{Particle\-Renderer}}
@@ -751,6 +755,17 @@ Definicja w linii \hyperlink{render__particles_8h_source_l00068}{68} pliku \hype
 
 
 Odwołania w \hyperlink{render__particles_8h_source_l00050}{set\-Window\-Size()}.
+
+\hypertarget{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{\index{Particle\-Renderer@{Particle\-Renderer}!zoom@{zoom}}
+\index{zoom@{zoom}!ParticleRenderer@{Particle\-Renderer}}
+\subsubsection[{zoom}]{\setlength{\rightskip}{0pt plus 5cm}float Particle\-Renderer\-::zoom\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}
+
+
+Definicja w linii \hyperlink{render__particles_8h_source_l00069}{69} pliku \hyperlink{render__particles_8h_source}{render\-\_\-particles.\-h}.
+
+
+
+Odwołania w \hyperlink{render__particles_8cpp_source_l00048}{set\-Vertex\-Buffer()}.
 
 
 

@@ -23,827 +23,1168 @@
 00019 \textcolor{comment}{    - replaced sort function with latest radix sort, now disables v-sync.}
 00020 \textcolor{comment}{    - added support for automated testing and comparison to a reference value.}
 00021 \textcolor{comment}{*/}
-00022 \textcolor{comment}{/** \(\backslash\)mainpage Cząstki}
-00023 \textcolor{comment}{ * \(\backslash\)section Opis\_Ogólny Opis Ogólny}
-00024 \textcolor{comment}{ * - Najpierw wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.}
-00025 \textcolor{comment}{ * Prędkość to poprzednia prędkość, grawitacja i lepkość.}
-00026 \textcolor{comment}{ * - Potem cząstki dzielone są na komurki według ich położenia.}
-00027 \textcolor{comment}{ * - Dla każdej cząstki wyliczana jest siła jaka na nią zadziała.}
-00028 \textcolor{comment}{ * Składa się ona ze zderzeń ze wszystkimi cząstkami w zasięgu,}
-00029 \textcolor{comment}{ * muszą one być w tej samej komurce, albo w sąsiedniej.}
-00030 \textcolor{comment}{ * - Prędkość jest wyliczana z poprzedniej prękości i siły.}
-00031 \textcolor{comment}{ */}
-00032 
-00033 
-00034 \textcolor{comment}{// OpenGL Graphics includes}
-00035 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GL}\textcolor{preprocessor}{/}\textcolor{preprocessor}{glew}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00036 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \textcolor{preprocessor}{defined} \textcolor{preprocessor}{(}\textcolor{preprocessor}{\_WIN32}\textcolor{preprocessor}{)}
-00037 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GL}\textcolor{preprocessor}{/}\textcolor{preprocessor}{wglew}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00038 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
-00039 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \textcolor{preprocessor}{defined}\textcolor{preprocessor}{(}\textcolor{preprocessor}{\_\_APPLE\_\_}\textcolor{preprocessor}{)} \textcolor{preprocessor}{||} \textcolor{preprocessor}{defined}\textcolor{preprocessor}{(}\textcolor{preprocessor}{\_\_MACOSX}\textcolor{preprocessor}{)}
-00040 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GLUT}\textcolor{preprocessor}{/}\textcolor{preprocessor}{glut}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00041 \textcolor{preprocessor}{#}\textcolor{preprocessor}{else}
-00042 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GL}\textcolor{preprocessor}{/}\textcolor{preprocessor}{freeglut}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00043 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
-00044 
-00045 \textcolor{comment}{// CUDA runtime}
-00046 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cuda\_runtime}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00047 
-00048 \textcolor{comment}{// CUDA utilities and system includes}
-00049 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{helper\_functions}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00050 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{helper\_cuda}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}    \textcolor{comment}{// includes cuda.h and cuda\_runtime\_api.h}
-00051 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{helper\_cuda\_gl}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>} \textcolor{comment}{// includes cuda\_gl\_interop.h// includes cuda\_gl\_interop.h}
-00052 
-00053 \textcolor{comment}{// Includes}
-00054 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{stdlib}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00055 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cstdlib}\textcolor{preprocessor}{>}
-00056 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cstdio}\textcolor{preprocessor}{>}
-00057 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{algorithm}\textcolor{preprocessor}{>}
-00058 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{keywordtype}{float}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00059 
-00060 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \hyperlink{particle_system_8h}{"particleSystem.h"}
-00061 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \hyperlink{render__particles_8h}{"render\_particles.h"}
-00062 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"paramgl.h"}
-00063 
-\hypertarget{particles_8cpp_source_l00064}{}\hyperlink{particles_8cpp_a9608807ab27261888018dac76a7f4acd}{00064} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{MAX\_EPSILON\_ERROR} 5.00f
-\hypertarget{particles_8cpp_source_l00065}{}\hyperlink{particles_8cpp_a4679d8ea8690999a6c6c7c0cb245c879}{00065} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{THRESHOLD}         0.30f
+00022 
+00023 \textcolor{comment}{/** \(\backslash\)file particles.cpp}
+00024 \textcolor{comment}{ * \(\backslash\)brief Główny plik projektu.}
+00025 \textcolor{comment}{ * Zawiera main i funkcje sterujące całym programem.}
+00026 \textcolor{comment}{ */}
+00027 
+00028 
+00029 \textcolor{comment}{/** \(\backslash\)mainpage Cząstki}
+00030 \textcolor{comment}{ * \(\backslash\)section Opis\_Ogólny Opis Ogólny}
+00031 \textcolor{comment}{ * - Najpierw wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.}
+00032 \textcolor{comment}{ * Prędkość to poprzednia prędkość, grawitacja i lepkość.}
+00033 \textcolor{comment}{ * - Potem cząstki dzielone są na komurki według ich położenia.}
+00034 \textcolor{comment}{ * - Dla każdej cząstki wyliczana jest siła jaka na nią zadziała.}
+00035 \textcolor{comment}{ * Składa się ona ze zderzeń ze wszystkimi cząstkami w zasięgu,}
+00036 \textcolor{comment}{ * muszą one być w tej samej komurce, albo w sąsiedniej.}
+00037 \textcolor{comment}{ * - Prędkość jest wyliczana z poprzedniej prękości i siły.}
+00038 \textcolor{comment}{ * \(\backslash\)section linki\_do\_fizyki Linki do fizyki}
+00039 \textcolor{comment}{ http://www.cchem.berkeley.edu/chem195/\_l\_j\_\_\_force\_short\_8m.html}
+00040 \textcolor{comment}{ http://phys.ubbcluj.ro/~tbeu/MD/C2\_for.pdf}
+00041 \textcolor{comment}{ http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html}
+00042 \textcolor{comment}{ http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf}
+00043 \textcolor{comment}{ http://en.wikipedia.org/wiki/Lennard-Jones\_potential#Alternative\_expressions}
+00044 \textcolor{comment}{<<<<<<< HEAD}
+00045 \textcolor{comment}{ * \(\backslash\)section Repozytorium Repozytorium}
+00046 \textcolor{comment}{ https://github.com/sigrond/particles/tree/spica}
+00047 \textcolor{comment}{ * \(\backslash\)section READMEs READMEs}
+00048 \textcolor{comment}{ * \(\backslash\)subsection parametry\_uruchamiania Parametry Uruchamiania}
+00049 \textcolor{comment}{ * \(\backslash\)verbinclude readme2.txt}
+00050 \textcolor{comment}{ * \(\backslash\)subsection oryginalny\_readme Oryginalny Readme}
+00051 \textcolor{comment}{ * \(\backslash\)verbinclude readme1.txt}
+00052 \textcolor{comment}{ * \(\backslash\)subsection koncepcja\_symulowania\_roznych\_czastek Koncepcja symulowania różnych cząstek}
+00053 \textcolor{comment}{ * \(\backslash\)verbinclude readme3.txt}
+00054 \textcolor{comment}{ */}
+00055 
+00056 \textcolor{comment}{// OpenGL Graphics includes}
+00057 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GL}\textcolor{preprocessor}{/}\textcolor{preprocessor}{glew}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00058 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \textcolor{preprocessor}{defined} \textcolor{preprocessor}{(}\textcolor{preprocessor}{\_WIN32}\textcolor{preprocessor}{)}
+00059 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GL}\textcolor{preprocessor}{/}\textcolor{preprocessor}{wglew}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00060 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+00061 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \textcolor{preprocessor}{defined}\textcolor{preprocessor}{(}\textcolor{preprocessor}{\_\_APPLE\_\_}\textcolor{preprocessor}{)} \textcolor{preprocessor}{||} \textcolor{preprocessor}{defined}\textcolor{preprocessor}{(}\textcolor{preprocessor}{\_\_MACOSX}\textcolor{preprocessor}{)}
+00062 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GLUT}\textcolor{preprocessor}{/}\textcolor{preprocessor}{glut}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00063 \textcolor{preprocessor}{#}\textcolor{preprocessor}{else}
+00064 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{GL}\textcolor{preprocessor}{/}\textcolor{preprocessor}{freeglut}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00065 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
 00066 
-\hypertarget{particles_8cpp_source_l00067}{}\hyperlink{particles_8cpp_a08246606c233e7785a497c09672f366f}{00067} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{GRID\_SIZE}       64
-\hypertarget{particles_8cpp_source_l00068}{}\hyperlink{particles_8cpp_a75cbc112dce4b21c13fe7bb671accab1}{00068} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{NUM\_PARTICLES}   4096
+00067 \textcolor{comment}{// CUDA runtime}
+00068 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cuda\_runtime}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
 00069 
-\hypertarget{particles_8cpp_source_l00070}{}\hyperlink{particles_8cpp_a215ce3b0108691bf1f304ea0f709f67d}{00070} \textcolor{keyword}{const} \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a215ce3b0108691bf1f304ea0f709f67d}{width} = 640, \hyperlink{particles_8cpp_aa90d4ba1278109bf241d6e43db40f80c}{height} = 480;
-00071 
-00072 \textcolor{comment}{// view params}
-\hypertarget{particles_8cpp_source_l00073}{}\hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{00073} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox}, \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy};
-\hypertarget{particles_8cpp_source_l00074}{}\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{00074} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} = 0;
-\hypertarget{particles_8cpp_source_l00075}{}\hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{00075} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[] = \{0, 0, -3\};
-\hypertarget{particles_8cpp_source_l00076}{}\hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{00076} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[]   = \{0, 0, 0\};
-\hypertarget{particles_8cpp_source_l00077}{}\hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{00077} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[] = \{0, 0, -3\};
-\hypertarget{particles_8cpp_source_l00078}{}\hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{00078} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[] = \{0, 0, 0\};
-\hypertarget{particles_8cpp_source_l00079}{}\hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{00079} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{inertia} = 0.1f;
-\hypertarget{particles_8cpp_source_l00080}{}\hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{00080} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{DisplayMode} \hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode} = 
-      \hyperlink{class_particle_renderer}{ParticleRenderer}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111}{::}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111}{PARTICLE\_SPHERES};
+00070 \textcolor{comment}{// CUDA utilities and system includes}
+00071 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{helper\_functions}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00072 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{helper\_cuda}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}    \textcolor{comment}{// includes cuda.h and cuda\_runtime\_api.h}
+00073 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{helper\_cuda\_gl}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>} \textcolor{comment}{// includes cuda\_gl\_interop.h// includes cuda\_gl\_interop.h}
+00074 
+00075 \textcolor{comment}{// Includes}
+00076 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{stdlib}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00077 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cstdlib}\textcolor{preprocessor}{>}
+00078 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{cstdio}\textcolor{preprocessor}{>}
+00079 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{algorithm}\textcolor{preprocessor}{>}
+00080 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{keywordtype}{float}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
 00081 
-\hypertarget{particles_8cpp_source_l00082}{}\hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{00082} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode} = 0;
-\hypertarget{particles_8cpp_source_l00083}{}\hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{00083} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled} = \textcolor{keyword}{true};
-\hypertarget{particles_8cpp_source_l00084}{}\hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{00084} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause} = \textcolor{keyword}{false};
-\hypertarget{particles_8cpp_source_l00085}{}\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{00085} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders} = \textcolor{keyword}{false};
-\hypertarget{particles_8cpp_source_l00086}{}\hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{00086} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{wireframe} = \textcolor{keyword}{false};
-\hypertarget{particles_8cpp_source_l00087}{}\hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{00087} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
-\hypertarget{particles_8cpp_source_l00088}{}\hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{00088} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
-\hypertarget{particles_8cpp_source_l00089}{}\hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{00089} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{demoCounter} = 0;
-\hypertarget{particles_8cpp_source_l00090}{}\hyperlink{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}{00090} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}{idleDelay} = 2000;
+00082 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \hyperlink{particle_system_8h}{"particleSystem.h"}
+00083 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \hyperlink{render__particles_8h}{"render\_particles.h"}
+00084 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"paramgl.h"}
+00085 
+\hypertarget{particles_8cpp_source_l00086}{}\hyperlink{particles_8cpp_a9608807ab27261888018dac76a7f4acd}{00086} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{MAX\_EPSILON\_ERROR} 5.00f
+\hypertarget{particles_8cpp_source_l00087}{}\hyperlink{particles_8cpp_a4679d8ea8690999a6c6c7c0cb245c879}{00087} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{THRESHOLD}         0.30f
+00088 
+\hypertarget{particles_8cpp_source_l00089}{}\hyperlink{particles_8cpp_a08246606c233e7785a497c09672f366f}{00089} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{GRID\_SIZE}       64
+\hypertarget{particles_8cpp_source_l00090}{}\hyperlink{particles_8cpp_a75cbc112dce4b21c13fe7bb671accab1}{00090} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{NUM\_PARTICLES}   512
 00091 
-\hypertarget{particles_8cpp_source_l00092}{}\hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{00092} \textcolor{keyword}{enum} \{ \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\_VIEW} = 0, \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\_MOVE} \};
+\hypertarget{particles_8cpp_source_l00092}{}\hyperlink{particles_8cpp_a215ce3b0108691bf1f304ea0f709f67d}{00092} \textcolor{keyword}{const} \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a215ce3b0108691bf1f304ea0f709f67d}{width} = 640, \hyperlink{particles_8cpp_aa90d4ba1278109bf241d6e43db40f80c}{height} = 480;
 00093 
-\hypertarget{particles_8cpp_source_l00094}{}\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{00094} \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles} = 0;
-\hypertarget{particles_8cpp_source_l00095}{}\hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{00095} \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{uint3} \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize};
-\hypertarget{particles_8cpp_source_l00096}{}\hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{00096} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = 0; \textcolor{comment}{// run until exit}
-00097 
-00098 \textcolor{comment}{// simulation parameters}
-\hypertarget{particles_8cpp_source_l00099}{}\hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{00099} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep} = 1.0f;\textcolor{comment}{//0.5f;}
-\hypertarget{particles_8cpp_source_l00100}{}\hyperlink{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{00100} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{damping} = 1.0f;
-\hypertarget{particles_8cpp_source_l00101}{}\hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{00101} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity} = 0.0f;\textcolor{comment}{//0.0003f;}
-\hypertarget{particles_8cpp_source_l00102}{}\hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{00102} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{iterations} = 1;
-\hypertarget{particles_8cpp_source_l00103}{}\hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{00103} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} = 10;
-00104 
-\hypertarget{particles_8cpp_source_l00105}{}\hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{00105} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring} = 0.5f;;
-\hypertarget{particles_8cpp_source_l00106}{}\hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{00106} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping} = 0.02f;;
-\hypertarget{particles_8cpp_source_l00107}{}\hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{00107} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear} = 0.1f;
-\hypertarget{particles_8cpp_source_l00108}{}\hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{00108} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction} = 0.1f;
-00109 
-\hypertarget{particles_8cpp_source_l00110}{}\hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{00110} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{bigRadius}=2.0f;\textcolor{comment}{//promien duzej kuli}
-\hypertarget{particles_8cpp_source_l00111}{}\hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{00111} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{bigRadius0}=\hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{bigRadius};\textcolor{comment}{//poczatkowy promien duzej kuli}
-\hypertarget{particles_8cpp_source_l00112}{}\hyperlink{particles_8cpp_a581b24e790d1d71d4c940671987201f6}{00112} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a581b24e790d1d71d4c940671987201f6}{kurczenie}=0.01;\textcolor{comment}{//A r=r0-A*sqrt(t)}
-\hypertarget{particles_8cpp_source_l00113}{}\hyperlink{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{00113} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{A} \textcolor{preprocessor}{kurczenie}
-\hypertarget{particles_8cpp_source_l00114}{}\hyperlink{particles_8cpp_ae6faf33ad73ff5d0248af8f9477ca201}{00114} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_ae6faf33ad73ff5d0248af8f9477ca201}{licznik}=0;
-00115 
-\hypertarget{particles_8cpp_source_l00116}{}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{00116} \hyperlink{class_particle_system}{ParticleSystem} *\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem} = 0;
+00094 \textcolor{comment}{// view params}
+\hypertarget{particles_8cpp_source_l00095}{}\hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{00095} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox}, \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy};
+\hypertarget{particles_8cpp_source_l00096}{}\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{00096} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} = 0;
+\hypertarget{particles_8cpp_source_l00097}{}\hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{00097} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[] = \{0, 0, -3\};
+\hypertarget{particles_8cpp_source_l00098}{}\hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{00098} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[]   = \{0, 0, 0\};
+\hypertarget{particles_8cpp_source_l00099}{}\hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{00099} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[] = \{0, 0, -3\};
+\hypertarget{particles_8cpp_source_l00100}{}\hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{00100} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[] = \{0, 0, 0\};
+\hypertarget{particles_8cpp_source_l00101}{}\hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{00101} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{inertia} = 0.1f;
+00102 \textcolor{comment}{/** \(\backslash\)var zoom}
+00103 \textcolor{comment}{ * \(\backslash\)brief powiększenie}
+00104 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00105}{}\hyperlink{particles_8cpp_a3658355a3876ac7e7d318316fc9b0d21}{00105} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a3658355a3876ac7e7d318316fc9b0d21}{zoom}=1.0f;
+\hypertarget{particles_8cpp_source_l00106}{}\hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{00106} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{DisplayMode} \hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode} = 
+      \hyperlink{class_particle_renderer}{ParticleRenderer}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111}{::}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111}{PARTICLE\_SPHERES};
+00107 
+\hypertarget{particles_8cpp_source_l00108}{}\hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{00108} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode} = 0;
+\hypertarget{particles_8cpp_source_l00109}{}\hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{00109} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled} = \textcolor{keyword}{true};
+\hypertarget{particles_8cpp_source_l00110}{}\hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{00110} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause} = \textcolor{keyword}{false};
+\hypertarget{particles_8cpp_source_l00111}{}\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{00111} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders} = \textcolor{keyword}{true};
+\hypertarget{particles_8cpp_source_l00112}{}\hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{00112} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{wireframe} = \textcolor{keyword}{false};
+\hypertarget{particles_8cpp_source_l00113}{}\hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{00113} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
+\hypertarget{particles_8cpp_source_l00114}{}\hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{00114} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
+\hypertarget{particles_8cpp_source_l00115}{}\hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{00115} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{demoCounter} = 0;
+\hypertarget{particles_8cpp_source_l00116}{}\hyperlink{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}{00116} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}{idleDelay} = 2000;
 00117 
-00118 \textcolor{comment}{// fps}
-\hypertarget{particles_8cpp_source_l00119}{}\hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{00119} \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount} = 0;
-\hypertarget{particles_8cpp_source_l00120}{}\hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{00120} \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{fpsLimit} = 1;
-\hypertarget{particles_8cpp_source_l00121}{}\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{00121} \hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{StopWatchInterface} *\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer} = NULL;
-00122 
-\hypertarget{particles_8cpp_source_l00123}{}\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{00123} \hyperlink{class_particle_renderer}{ParticleRenderer} *\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer} = 0;
-00124 
-\hypertarget{particles_8cpp_source_l00125}{}\hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{00125} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{modelView}[16];
-00126 
-\hypertarget{particles_8cpp_source_l00127}{}\hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{00127} \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{ParamListGL} *\hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params};
-00128 
-00129 \textcolor{comment}{// Auto-Verification Code}
-\hypertarget{particles_8cpp_source_l00130}{}\hyperlink{particles_8cpp_a50f26bf26e6413a34dc36fc12c9bbc83}{00130} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a50f26bf26e6413a34dc36fc12c9bbc83}{frameCheckNumber} = 4;
-\hypertarget{particles_8cpp_source_l00131}{}\hyperlink{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}{00131} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}{frameCount} = 0;
-\hypertarget{particles_8cpp_source_l00132}{}\hyperlink{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{00132} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{g\_TotalErrors} = 0;
-\hypertarget{particles_8cpp_source_l00133}{}\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{00133} \textcolor{keywordtype}{char}        *\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile} = NULL;
-00134 
-\hypertarget{particles_8cpp_source_l00135}{}\hyperlink{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}{00135} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\hyperlink{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}{sSDKsample} = \textcolor{stringliteral}{"CUDA Particles Simulation"};
+\hypertarget{particles_8cpp_source_l00118}{}\hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{00118} \textcolor{keyword}{enum} \{ \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\_VIEW} = 0, \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\_MOVE} \};
+00119 
+\hypertarget{particles_8cpp_source_l00120}{}\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{00120} \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles} = 0;
+\hypertarget{particles_8cpp_source_l00121}{}\hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{00121} \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{uint3} \hyperlink{particles_8cpp_aefe301f4cc6d6838e3627b5970e855a9}{gridSize};
+\hypertarget{particles_8cpp_source_l00122}{}\hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{00122} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = 0; \textcolor{comment}{// run until exit}
+00123 
+00124 \textcolor{comment}{// simulation parameters}
+00125 \textcolor{comment}{/** \(\backslash\)var timestep}
+00126 \textcolor{comment}{ * \(\backslash\)brief krok czasu}
+00127 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00128}{}\hyperlink{particles_8cpp_a30721fccdcf1a48ddb65267d3a5a9d29}{00128} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a30721fccdcf1a48ddb65267d3a5a9d29}{timestep} = 0.0f;\textcolor{comment}{//0.5f;}
+00129 \textcolor{comment}{/** \(\backslash\)var damping}
+00130 \textcolor{comment}{ * \(\backslash\)brief lepkość}
+00131 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00132}{}\hyperlink{particles_8cpp_a5d7c41f4909ad7714235c2d8fdf9d935}{00132} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a5d7c41f4909ad7714235c2d8fdf9d935}{damping} = 0.99f;\textcolor{comment}{//0.08f;//global damping}
+\hypertarget{particles_8cpp_source_l00133}{}\hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{00133} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity} = 0.0f;\textcolor{comment}{//0.0003f;}
+\hypertarget{particles_8cpp_source_l00134}{}\hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{00134} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{iterations} = 1;
+\hypertarget{particles_8cpp_source_l00135}{}\hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{00135} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} = 10;
 00136 
-00137 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{cudaInit}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv);
-00138 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{cudaGLInit}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv);
-00139 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{copyArrayFromDevice}(\textcolor{keywordtype}{void} *host, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *device, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} 
-      vbo, \textcolor{keywordtype}{int} size);
-00140 
-00141 \textcolor{comment}{// initialize particle system}
-\hypertarget{particles_8cpp_source_l00142}{}\hyperlink{particles_8cpp_a84431b1c39c053e49799109e5b6b488a}{00142} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a84431b1c39c053e49799109e5b6b488a}{initParticleSystem}(\textcolor{keywordtype}{int} numParticles, uint3 gridSize, \textcolor{keywordtype}{bool} bUseOpenGL)
-00143 \{
-00144     psystem = \textcolor{keyword}{new} ParticleSystem(numParticles, gridSize, bUseOpenGL);
-00145     \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{->}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{reset}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{(}\hyperlink{class_particle_system}{ParticleSystem}\hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{::}
-      \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{CONFIG\_GRID}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{)};
-00146 
-00147     \textcolor{keywordflow}{if} (bUseOpenGL)
-00148     \{
-00149         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer} = \textcolor{keyword}{new} \hyperlink{class_particle_renderer}{ParticleRenderer};
-00150         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{->}\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{setParticleRadius}\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{(}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}
-      \hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{->}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{(}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{)}\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{)};
-00151         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{->}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{setColorBuffer}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{(}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{->}
-      \hyperlink{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{getColorBuffer}\hyperlink{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{(}\hyperlink{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{)}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{)};
-00152     \}
-00153 
-00154     sdkCreateTimer(&timer);
-00155 \}
-00156 
-\hypertarget{particles_8cpp_source_l00157}{}\hyperlink{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}{00157} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}{cleanup}()
-00158 \{
-00159     sdkDeleteTimer(&timer);
-00160 \}
-00161 
-00162 \textcolor{comment}{// initialize OpenGL}
-\hypertarget{particles_8cpp_source_l00163}{}\hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{00163} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{initGL}(\textcolor{keywordtype}{int} *argc, \textcolor{keywordtype}{char} **argv)
-00164 \{
-00165     glutInit(argc, argv);
-00166     glutInitDisplayMode(GLUT\_RGB | GLUT\_DEPTH | GLUT\_DOUBLE);
-00167     glutInitWindowSize(width, height);
-00168     glutCreateWindow(\textcolor{stringliteral}{"CUDA Particles"});
-00169 
-00170     glewInit();
-00171 
-00172     \textcolor{keywordflow}{if} (!glewIsSupported(\textcolor{stringliteral}{"GL\_VERSION\_2\_0 GL\_VERSION\_1\_5 GL\_ARB\_multitexture
-       GL\_ARB\_vertex\_buffer\_object"}))
-00173     \{
-00174         fprintf(stderr, \textcolor{stringliteral}{"Required OpenGL extensions missing."});
-00175         exit(EXIT\_FAILURE);
-00176     \}
-00177 
-00178 #\textcolor{keywordflow}{if} defined (\_WIN32)
-00179 
-00180     \textcolor{keywordflow}{if} (wglewIsSupported(\textcolor{stringliteral}{"WGL\_EXT\_swap\_control"}))
-00181     \{
-00182         \textcolor{comment}{// disable vertical sync}
-00183         wglSwapIntervalEXT(0);
-00184     \}
-00185 
-00186 #endif
-00187 
-00188     glEnable(GL\_DEPTH\_TEST);
-00189     glClearColor(0.25, 0.25, 0.25, 1.0);
-00190 
-00191     glutReportErrors();
-00192 \}
+00137 \textcolor{comment}{/** \(\backslash\)var boundaryDamping}
+00138 \textcolor{comment}{ * \(\backslash\)brief współczynnik oddziaływania z brzegami}
+00139 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00140}{}\hyperlink{particles_8cpp_ae359dad516b085afdcedb66ec2a049db}{00140} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_ae359dad516b085afdcedb66ec2a049db}{boundaryDamping}= 1.0f;
+00141 \textcolor{comment}{/** \(\backslash\)var particleMass}
+00142 \textcolor{comment}{ * \(\backslash\)brief masa cząstki}
+00143 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00144}{}\hyperlink{particles_8cpp_a1181da8b1b5d355e3388181470ecf70f}{00144} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a1181da8b1b5d355e3388181470ecf70f}{particleMass}=0.001f;
+\hypertarget{particles_8cpp_source_l00145}{}\hyperlink{particles_8cpp_a1be8f275c7aef85bb203888b58ab44b7}{00145} \textcolor{keywordtype}{bool} \hyperlink{particles_8cpp_a1be8f275c7aef85bb203888b58ab44b7}{boundaries}=\textcolor{keyword}{true};
+00146 \textcolor{comment}{/** \(\backslash\)var epsi}
+00147 \textcolor{comment}{ * \(\backslash\)brief epsilon do siły lenarda jonesa}
+00148 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00149}{}\hyperlink{particles_8cpp_a6a4c0e7f9e1e7ee07eb355dca3d8834a}{00149} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a6a4c0e7f9e1e7ee07eb355dca3d8834a}{epsi}=0.01f;
+00150 \textcolor{comment}{/** \(\backslash\)var brown}
+00151 \textcolor{comment}{ * \(\backslash\)brief nasilenie ruchów browna}
+00152 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00153}{}\hyperlink{particles_8cpp_a6f7e9ca1d5ce4c84b69d7793f4de8e23}{00153} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a6f7e9ca1d5ce4c84b69d7793f4de8e23}{brown}=0.0f;
+\hypertarget{particles_8cpp_source_l00154}{}\hyperlink{particles_8cpp_a6bc4c07ce22fba8e87b38b2ba310faca}{00154} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a6bc4c07ce22fba8e87b38b2ba310faca}{brownQuality}=10;
+00155 
+\hypertarget{particles_8cpp_source_l00156}{}\hyperlink{particles_8cpp_abebcf16aa212d26e4fb1335a433f0b5c}{00156} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_abebcf16aa212d26e4fb1335a433f0b5c}{particleTypesNum}=1;
+00157 
+\hypertarget{particles_8cpp_source_l00158}{}\hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{00158} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring} = 0.5f;;
+\hypertarget{particles_8cpp_source_l00159}{}\hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{00159} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping} = 0.02f;;
+\hypertarget{particles_8cpp_source_l00160}{}\hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{00160} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear} = 0.1f;
+\hypertarget{particles_8cpp_source_l00161}{}\hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{00161} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction} = 0.1f;
+00162 
+00163 \textcolor{comment}{/** \(\backslash\)var bigRadius}
+00164 \textcolor{comment}{ * \(\backslash\)brief promien duzej kuli w mikronach}
+00165 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00166}{}\hyperlink{particles_8cpp_ae17f6f64c66e0edf9e6dd3b69013134b}{00166} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_ae17f6f64c66e0edf9e6dd3b69013134b}{bigRadius}=10.0f;\textcolor{comment}{//promien duzej kuli}
+\hypertarget{particles_8cpp_source_l00167}{}\hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{00167} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{bigRadius0}=\hyperlink{particles_8cpp_ae17f6f64c66e0edf9e6dd3b69013134b}{bigRadius};\textcolor{comment}{//poczatkowy promien duzej kuli}
+00168 \textcolor{comment}{/** \(\backslash\)var kurczenie}
+00169 \textcolor{comment}{ * A r=r0-A*sqrt(t)}
+00170 \textcolor{comment}{ * \(\backslash\)brief parametr równania na parowanie kropli}
+00171 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00172}{}\hyperlink{particles_8cpp_aef1c45e211a1a94be1e6d80b4493c802}{00172} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_aef1c45e211a1a94be1e6d80b4493c802}{kurczenie}=0.1f;\textcolor{comment}{//A r=r0-A*sqrt(t)}
+\hypertarget{particles_8cpp_source_l00173}{}\hyperlink{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{00173} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{A} \textcolor{preprocessor}{kurczenie}
+00174 \textcolor{comment}{/** \(\backslash\)var licznik}
+00175 \textcolor{comment}{ * \(\backslash\)brief ilość kroków od początku symulacji}
+00176 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00177}{}\hyperlink{particles_8cpp_aa9253cb34e1b40809228671a8921144d}{00177} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_aa9253cb34e1b40809228671a8921144d}{licznik}=0;
+00178 \textcolor{comment}{/** \(\backslash\)var time\_past}
+00179 \textcolor{comment}{ * \(\backslash\)brief czas który upłynoł}
+00180 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00181}{}\hyperlink{particles_8cpp_ad6a23ec608122a4f7c824f903730f206}{00181} \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} \hyperlink{particles_8cpp_ad6a23ec608122a4f7c824f903730f206}{time\_past}=0.0;
+00182 
+00183 \textcolor{keyword}{extern} \textcolor{keywordtype}{bool} \hyperlink{particle_system_8cpp_a54f61e4f37db321d451436bf2201b8cb}{multiColor}=\textcolor{keyword}{false};
+00184 
+\hypertarget{particles_8cpp_source_l00185}{}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{00185} \hyperlink{class_particle_system}{ParticleSystem} *\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem} = 0;
+00186 
+00187 \textcolor{comment}{// fps}
+\hypertarget{particles_8cpp_source_l00188}{}\hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{00188} \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount} = 0;
+\hypertarget{particles_8cpp_source_l00189}{}\hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{00189} \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{fpsLimit} = 1;
+\hypertarget{particles_8cpp_source_l00190}{}\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{00190} \hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{StopWatchInterface} *\hyperlink{particles_8cpp_a9884ad791a680ef446785acf94b63956}{timer} = NULL;
+00191 
+\hypertarget{particles_8cpp_source_l00192}{}\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{00192} \hyperlink{class_particle_renderer}{ParticleRenderer} *\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer} = 0;
 00193 
-\hypertarget{particles_8cpp_source_l00194}{}\hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{00194} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{runBenchmark}(\textcolor{keywordtype}{int} iterations, \textcolor{keywordtype}{char} *exec\_path)
-00195 \{
-00196     printf(\textcolor{stringliteral}{"Run %u particles simulation for %d iterations...\(\backslash\)n\(\backslash\)n"}, 
-      \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, iterations);
-00197     cudaDeviceSynchronize();
-00198     sdkStartTimer(&timer);
-00199 
-00200     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < iterations; ++i)
-00201     \{
-00202         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{->}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{update}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{(}\hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{)};
-00203     \}
-00204 
-00205     cudaDeviceSynchronize();
-00206     sdkStopTimer(&timer);
-00207     \textcolor{keywordtype}{float} fAvgSeconds = ((\textcolor{keywordtype}{float})1.0e-3 * (\textcolor{keywordtype}{float})sdkGetTimerValue(&timer)/(\textcolor{keywordtype}{float})iterations);
-00208 
-00209     printf(\textcolor{stringliteral}{"particles, Throughput = %.4f KParticles/s, Time = %.5f s, Size = %u particles, NumDevsUsed
-       = %u, Workgroup = %u\(\backslash\)n"},
-00210            (1.0e-3 * \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles})/fAvgSeconds, fAvgSeconds, 
-      \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, 1, 0);
+\hypertarget{particles_8cpp_source_l00194}{}\hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{00194} \textcolor{keywordtype}{float} \hyperlink{particles_8cpp_a4067d49c28b37c689a16350cb3ff64d7}{modelView}[16];
+00195 
+\hypertarget{particles_8cpp_source_l00196}{}\hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{00196} \hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{ParamListGL} *\hyperlink{particles_8cpp_ace10f2fb51e03e3be1ccf7837c9c5c68}{params};
+00197 
+00198 \textcolor{comment}{// Auto-Verification Code}
+\hypertarget{particles_8cpp_source_l00199}{}\hyperlink{particles_8cpp_a50f26bf26e6413a34dc36fc12c9bbc83}{00199} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a50f26bf26e6413a34dc36fc12c9bbc83}{frameCheckNumber} = 4;
+\hypertarget{particles_8cpp_source_l00200}{}\hyperlink{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}{00200} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}{frameCount} = 0;
+\hypertarget{particles_8cpp_source_l00201}{}\hyperlink{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{00201} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \hyperlink{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{g\_TotalErrors} = 0;
+\hypertarget{particles_8cpp_source_l00202}{}\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{00202} \textcolor{keywordtype}{char}        *\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile} = NULL;
+00203 
+\hypertarget{particles_8cpp_source_l00204}{}\hyperlink{particles_8cpp_ab3d416d86e212881d0e37a4bc52e138e}{00204} \textcolor{keywordtype}{char}* \hyperlink{particles_8cpp_ab3d416d86e212881d0e37a4bc52e138e}{save}=NULL;
+00205 
+\hypertarget{particles_8cpp_source_l00206}{}\hyperlink{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}{00206} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\hyperlink{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}{sSDKsample} = \textcolor{stringliteral}{"CUDA Particles Simulation"};
+00207 
+00208 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{cudaInit}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv);
+00209 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{cudaGLInit}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv);
+00210 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \textcolor{keywordtype}{void} \hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{copyArrayFromDevice}(\textcolor{keywordtype}{void} *host, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *device, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} 
+      vbo, \textcolor{keywordtype}{int} size);
 00211 
-00212     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
-00213     \{
-00214         printf(\textcolor{stringliteral}{"\(\backslash\)nChecking result...\(\backslash\)n\(\backslash\)n"});
-00215         \textcolor{keywordtype}{float} *hPos = (\textcolor{keywordtype}{float} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{->}
-      \hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{(}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{)});
-00216         \hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{copyArrayFromDevice}\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{(}hPos\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{,} \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{->}
-      \hyperlink{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{getCudaPosVBO}\hyperlink{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{(}\hyperlink{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{)}\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{,}
-00217                             0\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{,} \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{->}
-      \hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{(}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{)}\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{)};
-00218 
-00219         sdkDumpBin((\textcolor{keywordtype}{void} *)hPos, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*psystem->getNumParticles(), \textcolor{stringliteral}{"particles.bin"});
-00220 
-00221         \textcolor{keywordflow}{if} (!sdkCompareBin2BinFloat(\textcolor{stringliteral}{"particles.bin"}, g\_refFile, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*psystem->
-      getNumParticles(),
-00222                                     \hyperlink{particles_8cpp_a9608807ab27261888018dac76a7f4acd}{MAX\_EPSILON\_ERROR}, 
-      \hyperlink{particles_8cpp_a4679d8ea8690999a6c6c7c0cb245c879}{THRESHOLD}, exec\_path))
-00223         \{
-00224             g\_TotalErrors++;
-00225         \}
-00226     \}
-00227 \}
-00228 
-\hypertarget{particles_8cpp_source_l00229}{}\hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{00229} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{computeFPS}()
-00230 \{
-00231     \hyperlink{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}{frameCount}++;
-00232     \hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount}++;
-00233 
-00234     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount} == \hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{fpsLimit})
-00235     \{
-00236         \textcolor{keywordtype}{char} fps[256];
-00237         \textcolor{keywordtype}{float} ifps = 1.f / (sdkGetAverageTimerValue(&timer) / 1000.f);
-00238         sprintf(fps, \textcolor{stringliteral}{"CUDA Particles (%d particles): %3.1f fps"}, 
-      \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, ifps);
-00239 
-00240         glutSetWindowTitle(fps);
-00241         \hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount} = 0;
-00242 
-00243         fpsLimit = (\textcolor{keywordtype}{int})MAX(ifps, 1.f);
-00244         sdkResetTimer(&timer);
-00245     \}
-00246 \}
-00247 
-\hypertarget{particles_8cpp_source_l00248}{}\hyperlink{particles_8cpp_a1e5b20fed15743656bb6d2e6a6ea6269}{00248} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a1e5b20fed15743656bb6d2e6a6ea6269}{display}()
-00249 \{
-00250     sdkStartTimer(&timer);
-00251 
-00252     \textcolor{comment}{// update the simulation}
-00253     \textcolor{keywordflow}{if} (!\hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause})
-00254     \{
-00255         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}{->}\hyperlink{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}{setIterations}\hyperlink{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}{(}\hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{iterations}\hyperlink{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}{)};
-00256         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{->}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{setDamping}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{(}\hyperlink{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{damping}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{)};
-00257         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{->}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{setGravity}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{(}-\hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{)};
-00258         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{->}\hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{setCollideSpring}\hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{(}\hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring}
-      \hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{)};
-00259         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{->}\hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{setCollideDamping}\hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{(}
-      \hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping}\hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{)};
-00260         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{->}\hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{setCollideShear}\hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{(}\hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear}
-      \hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{)};
-00261         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{->}\hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{setCollideAttraction}\hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{(}
-      \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction}\hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{)};
-00262 
-00263                 \hyperlink{particles_8cpp_ae6faf33ad73ff5d0248af8f9477ca201}{licznik}++;
-00264                 \hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{bigRadius}=\hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{bigRadius0}-\hyperlink{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{A}*sqrt(\hyperlink{particles_8cpp_ae6faf33ad73ff5d0248af8f9477ca201}{licznik}*
-      \hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep});\textcolor{comment}{//r=r0-A*sqrt(t)}
-00265                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{->}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{setBigRadius}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{(}\hyperlink{particles_8cpp_a51621f2b4c348891b353493c8b06c93b}{bigRadius}
-      \hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{)};
-00266 
-00267         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{->}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{update}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{(}\hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{)};
-00268 
-00269         \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer})
-00270         \{
-00271             \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{->}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{setVertexBuffer}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{(}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}
-      \hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{->}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{getCurrentReadBuffer}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{(}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{)}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{,} \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{->}
-      \hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{(}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{)}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{)};
-00272         \}
-00273     \}
-00274 
-00275     \textcolor{comment}{// render}
-00276     glClear(GL\_COLOR\_BUFFER\_BIT | GL\_DEPTH\_BUFFER\_BIT);
-00277 
-00278     \textcolor{comment}{// view transform}
-00279     glMatrixMode(GL\_MODELVIEW);
-00280     glLoadIdentity();
-00281 
-00282     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} c = 0; c < 3; ++c)
-00283     \{
-00284         \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[c] += (\hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[c] - 
-      \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[c]) * \hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{inertia};
-00285         \hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[c] += (\hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[c] - 
-      \hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[c]) * \hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{inertia};
-00286     \}
-00287 
-00288     glTranslatef(camera\_trans\_lag[0], camera\_trans\_lag[1], camera\_trans\_lag[2]);
-00289     glRotatef(camera\_rot\_lag[0], 1.0, 0.0, 0.0);
-00290     glRotatef(camera\_rot\_lag[1], 0.0, 1.0, 0.0);
-00291 
-00292     glGetFloatv(GL\_MODELVIEW\_MATRIX, modelView);
-00293 
-00294     \textcolor{comment}{// cube -> sphere}
-00295     glColor3f(1.0, 1.0, 1.0);
-00296     \textcolor{comment}{//glutWireCube(2.0);}
-00297         glutWireSphere(bigRadius, 20, 10);
-00298 
-00299     \textcolor{comment}{// collider}
-00300     glPushMatrix();
-00301     float3 p = psystem->getColliderPos();
-00302     glTranslatef(p.x, p.y, p.z);
-00303     glColor3f(1.0, 0.0, 0.0);
-00304     glutSolidSphere(psystem->getColliderRadius(), 20, 10);
-00305     glPopMatrix();
-00306 
-00307     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer} && \hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled})
-00308     \{
-00309         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{->}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{display}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{(}\hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{)};
-00310     \}
-00311 
-00312     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
-00313     \{
-00314         glDisable(GL\_DEPTH\_TEST);
-00315         glBlendFunc(GL\_ONE\_MINUS\_DST\_COLOR, GL\_ZERO); \textcolor{comment}{// invert color}
-00316         glEnable(GL\_BLEND);
-00317         params->Render(0, 0);
-00318         glDisable(GL\_BLEND);
-00319         glEnable(GL\_DEPTH\_TEST);
-00320     \}
-00321 
-00322     sdkStopTimer(&timer);
-00323 
-00324     glutSwapBuffers();
-00325     glutReportErrors();
-00326 
-00327     \hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{computeFPS}\hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{(}\hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{)};
-00328 \}
-00329 
-\hypertarget{particles_8cpp_source_l00330}{}\hyperlink{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{00330} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} \hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()
-00331 \{
-00332     \textcolor{keywordflow}{return} rand() / (\textcolor{keywordtype}{float}) RAND\_MAX;
-00333 \}
-00334 
-\hypertarget{particles_8cpp_source_l00335}{}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{00335} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{addSphere}()
-00336 \{
-00337     \textcolor{comment}{// inject a sphere of particles}
-00338     \textcolor{keywordtype}{float} pr = \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{->}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{(}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{)};
-00339     \textcolor{keywordtype}{float} tr = pr+(pr*2.0f)*\hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr};
-00340     \textcolor{keywordtype}{float} pos[4], vel[4];
-00341     pos[0] = -1.0f + tr + \hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}*(2.0f - tr*2.0f);
-00342     pos[1] = 1.0f - tr;
-00343     pos[2] = -1.0f + tr + \hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}*(2.0f - tr*2.0f);
-00344     pos[3] = 0.0f;
-00345     \textcolor{comment}{//vel[0] = vel[1] = vel[2] = vel[3] = 0.0f;}
-00346         vel[0]=\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}/100.0f;
-00347         vel[1]=\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}/100.0f;
-00348         vel[2]=\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}/100.0f;
-00349         vel[3]=\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}/100.0f;
-00350     \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{->}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{addSphere}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{(}0\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} pos\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} vel\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} pr*2.0f
-      \hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{)};
-00351 \}
-00352 
-\hypertarget{particles_8cpp_source_l00353}{}\hyperlink{particles_8cpp_acc1ffe65e6869931318610cae7210078}{00353} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_acc1ffe65e6869931318610cae7210078}{reshape}(\textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h)
-00354 \{
-00355     glMatrixMode(GL\_PROJECTION);
-00356     glLoadIdentity();
-00357     gluPerspective(60.0, (\textcolor{keywordtype}{float}) w / (\textcolor{keywordtype}{float}) h, 0.1, 100.0);
-00358 
-00359     glMatrixMode(GL\_MODELVIEW);
-00360     glViewport(0, 0, w, h);
-00361 
-00362     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer})
-00363     \{
-00364         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{->}\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{setWindowSize}\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{(}w\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{,} h\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{)};
-00365         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{->}\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{setFOV}\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{(}60.0\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{)};
-00366     \}
-00367 \}
-00368 
-\hypertarget{particles_8cpp_source_l00369}{}\hyperlink{particles_8cpp_ac76a5d78172a826cd6ee9512b89a86c0}{00369} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_ac76a5d78172a826cd6ee9512b89a86c0}{mouse}(\textcolor{keywordtype}{int} button, \textcolor{keywordtype}{int} state, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y)
-00370 \{
-00371     \textcolor{keywordtype}{int} mods;
-00372 
-00373     \textcolor{keywordflow}{if} (state == GLUT\_DOWN)
-00374     \{
-00375         buttonState |= 1<<button;
-00376     \}
-00377     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == GLUT\_UP)
-00378     \{
-00379         buttonState = 0;
-00380     \}
-00381 
-00382     mods = glutGetModifiers();
-00383 
-00384     \textcolor{keywordflow}{if} (mods & GLUT\_ACTIVE\_SHIFT)
-00385     \{
-00386         buttonState = 2;
-00387     \}
-00388     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mods & GLUT\_ACTIVE\_CTRL)
-00389     \{
-00390         buttonState = 3;
-00391     \}
-00392 
-00393     \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox} = x;
-00394     \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy} = y;
-00395 
-00396     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
-00397     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
-00398 
-00399     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
-00400     \{
-00401         \textcolor{keywordflow}{if} (params->Mouse(x, y, button, state))
-00402         \{
-00403             glutPostRedisplay();
-00404             \textcolor{keywordflow}{return};
-00405         \}
-00406     \}
-00407 
-00408     glutPostRedisplay();
-00409 \}
-00410 
-00411 \textcolor{comment}{// transfrom vector by matrix}
-\hypertarget{particles_8cpp_source_l00412}{}\hyperlink{particles_8cpp_ad95532e0e925e7584a930b366a613261}{00412} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_ad95532e0e925e7584a930b366a613261}{xform}(\textcolor{keywordtype}{float} *v, \textcolor{keywordtype}{float} *r, GLfloat *m)
-00413 \{
-00414     r[0] = v[0]*m[0] + v[1]*m[4] + v[2]*m[8] + m[12];
-00415     r[1] = v[0]*m[1] + v[1]*m[5] + v[2]*m[9] + m[13];
-00416     r[2] = v[0]*m[2] + v[1]*m[6] + v[2]*m[10] + m[14];
-00417 \}
-00418 
-00419 \textcolor{comment}{// transform vector by transpose of matrix}
-\hypertarget{particles_8cpp_source_l00420}{}\hyperlink{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{00420} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{ixform}(\textcolor{keywordtype}{float} *v, \textcolor{keywordtype}{float} *r, GLfloat *m)
-00421 \{
-00422     r[0] = v[0]*m[0] + v[1]*m[1] + v[2]*m[2];
-00423     r[1] = v[0]*m[4] + v[1]*m[5] + v[2]*m[6];
-00424     r[2] = v[0]*m[8] + v[1]*m[9] + v[2]*m[10];
-00425 \}
-00426 
-\hypertarget{particles_8cpp_source_l00427}{}\hyperlink{particles_8cpp_a9b3bc33348ec5b4dbb049f91362459b8}{00427} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a9b3bc33348ec5b4dbb049f91362459b8}{ixformPoint}(\textcolor{keywordtype}{float} *v, \textcolor{keywordtype}{float} *r, GLfloat *m)
-00428 \{
-00429     \textcolor{keywordtype}{float} x[4];
-00430     x[0] = v[0] - m[12];
-00431     x[1] = v[1] - m[13];
-00432     x[2] = v[2] - m[14];
-00433     x[3] = 1.0f;
-00434     ixform(x, r, m);
-00435 \}
-00436 
-\hypertarget{particles_8cpp_source_l00437}{}\hyperlink{particles_8cpp_a45a7d7c86c97ca6a2d4d32ce2d263f67}{00437} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a45a7d7c86c97ca6a2d4d32ce2d263f67}{motion}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y)
-00438 \{
-00439     \textcolor{keywordtype}{float} dx, dy;
-00440     dx = (\textcolor{keywordtype}{float})(x - \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox});
-00441     dy = (\textcolor{keywordtype}{float})(y - \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy});
-00442 
-00443     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
-00444     \{
-00445         \textcolor{keywordflow}{if} (params->Motion(x, y))
-00446         \{
-00447             ox = x;
-00448             oy = y;
-00449             glutPostRedisplay();
-00450             \textcolor{keywordflow}{return};
-00451         \}
-00452     \}
-00453 
-00454     \textcolor{keywordflow}{switch} (\hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode})
-00455     \{
-00456         \textcolor{keywordflow}{case} \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\_VIEW}:
-00457             \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} == 3)
-00458             \{
-00459                 \textcolor{comment}{// left+middle = zoom}
-00460                 \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[2] += (dy / 100.0f) * 0.5f * fabs(
-      \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[2]);
-00461             \}
-00462             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} & 2)
-00463             \{
-00464                 \textcolor{comment}{// middle = translate}
-00465                 \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[0] += dx / 100.0f;
-00466                 \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[1] -= dy / 100.0f;
-00467             \}
-00468             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} & 1)
-00469             \{
-00470                 \textcolor{comment}{// left = rotate}
-00471                 \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[0] += dy / 5.0f;
-00472                 \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[1] += dx / 5.0f;
-00473             \}
-00474 
-00475             \textcolor{keywordflow}{break};
-00476 
-00477         \textcolor{keywordflow}{case} \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\_MOVE}:
-00478             \{
-00479                 \textcolor{keywordtype}{float} translateSpeed = 0.003f;
-00480                 float3 p = psystem->getColliderPos();
-00481 
-00482                 \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState}==1)
-00483                 \{
-00484                     \textcolor{keywordtype}{float} v[3], r[3];
-00485                     v[0] = dx*translateSpeed;
-00486                     v[1] = -dy*translateSpeed;
-00487                     v[2] = 0.0f;
-00488                     ixform(v, r, modelView);
-00489                     p.x += r[0];
-00490                     p.y += r[1];
-00491                     p.z += r[2];
-00492                 \}
-00493                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState}==2)
-00494                 \{
-00495                     \textcolor{keywordtype}{float} v[3], r[3];
-00496                     v[0] = 0.0f;
-00497                     v[1] = 0.0f;
-00498                     v[2] = dy*translateSpeed;
-00499                     ixform(v, r, modelView);
-00500                     p.x += r[0];
-00501                     p.y += r[1];
-00502                     p.z += r[2];
-00503                 \}
-00504 
-00505                 psystem->setColliderPos(p);
-00506             \}
-00507             \textcolor{keywordflow}{break};
-00508     \}
-00509 
-00510     \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox} = x;
-00511     \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy} = y;
-00512 
-00513     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
-00514     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
-00515 
-00516     glutPostRedisplay();
-00517 \}
-00518 
-00519 \textcolor{comment}{// commented out to remove unused parameter warnings in Linux}
-\hypertarget{particles_8cpp_source_l00520}{}\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{00520} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{key}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} key, \textcolor{keywordtype}{int} \textcolor{comment}{/*x*/}, \textcolor{keywordtype}{int} \textcolor{comment}{/*y*/})
-00521 \{
-00522     \textcolor{keywordflow}{switch} (key)
-00523     \{
-00524         \textcolor{keywordflow}{case} \textcolor{stringliteral}{' '}:
-00525             \hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause} = !\hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause};
-00526             \textcolor{keywordflow}{break};
-00527 
-00528         \textcolor{keywordflow}{case} 13:
-00529             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{->}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{update}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{(}\hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{)};
-00530 
-00531             \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer})
-00532             \{
-00533                 \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{->}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{setVertexBuffer}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{(}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}
-      \hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{->}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{getCurrentReadBuffer}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{(}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{)}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{,} \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{->}
-      \hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{(}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{)}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{)};
-00534             \}
-00535 
-00536             \textcolor{keywordflow}{break};
-00537 
-00538         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'\(\backslash\)033'}:
-00539         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'q'}:
-00540             exit(EXIT\_SUCCESS);
-00541             \textcolor{keywordflow}{break};
-00542 
-00543         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'v'}:
-00544             \hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode} = \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\_VIEW};
-00545             \textcolor{keywordflow}{break};
-00546 
-00547         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'m'}:
-00548             \hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode} = \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\_MOVE};
-00549             \textcolor{keywordflow}{break};
-00550 
-00551         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'p'}:
-00552             \hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode} = (\hyperlink{class_particle_renderer}{ParticleRenderer}::
-      \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{DisplayMode})
-00553                           ((\hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode} + 1) % \hyperlink{class_particle_renderer}{ParticleRenderer}
-      \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc}{::}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc}{PARTICLE\_NUM\_MODES});
-00554             \textcolor{keywordflow}{break};
-00555 
-00556         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'d'}:
-00557             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}{->}\hyperlink{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}{dumpGrid}\hyperlink{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}{(}\hyperlink{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}{)};
-00558             \textcolor{keywordflow}{break};
-00559 
-00560         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'u'}:
-00561             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{->}\hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{dumpParticles}\hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{(}0\hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{,} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}-1
-      \hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{)};
-00562             \textcolor{keywordflow}{break};
-00563 
-00564         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'r'}:
-00565             \hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled} = !\hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled};
-00566             \textcolor{keywordflow}{break};
-00567 
-00568         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'1'}:
-00569             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{->}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{reset}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{(}\hyperlink{class_particle_system}{ParticleSystem}\hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{::}
-      \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{CONFIG\_GRID}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{)};
-00570             \textcolor{keywordflow}{break};
-00571 
-00572         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'2'}:
-00573             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{->}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{reset}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{(}\hyperlink{class_particle_system}{ParticleSystem}\hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{::}
+00212 \textcolor{comment}{// initialize particle system}
+00213 \textcolor{comment}{/** \(\backslash\)brief initialize particle system}
+00214 \textcolor{comment}{ * ustawienia początkowe i utworzenie obiektu systemu cząstek}
+00215 \textcolor{comment}{ * \(\backslash\)param numParticles int ilość cząstek}
+00216 \textcolor{comment}{ * \(\backslash\)param gridSize uint3 wymiary gridu}
+00217 \textcolor{comment}{ * \(\backslash\)param bUseOpenGL bool czy jest GUI}
+00218 \textcolor{comment}{ * \(\backslash\)return void}
+00219 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00220}{}\hyperlink{particles_8cpp_a84431b1c39c053e49799109e5b6b488a}{00220} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a84431b1c39c053e49799109e5b6b488a}{initParticleSystem}(\textcolor{keywordtype}{int} numParticles, uint3 gridSize, \textcolor{keywordtype}{bool} bUseOpenGL)
+00221 \{
+00222     psystem = \textcolor{keyword}{new} ParticleSystem(numParticles, gridSize, bUseOpenGL);
+00223         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{->}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{setBigRadius}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{(}\hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{bigRadius0}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{)};
+00224         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a55005091f11f7e9734c6b3fd2f1a5b1c}{->}\hyperlink{class_particle_system_a55005091f11f7e9734c6b3fd2f1a5b1c}{setBigRadius0}\hyperlink{class_particle_system_a55005091f11f7e9734c6b3fd2f1a5b1c}{(}\hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{bigRadius0}\hyperlink{class_particle_system_a55005091f11f7e9734c6b3fd2f1a5b1c}{)};
+00225     \textcolor{comment}{//psystem->reset(ParticleSystem::CONFIG\_GRID);}
+00226         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{->}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{reset}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{(}\hyperlink{class_particle_system}{ParticleSystem}\hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{::}
       \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{CONFIG\_RANDOM}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{)};
-00574             \textcolor{keywordflow}{break};
-00575 
-00576         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'3'}:
-00577             \hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{addSphere}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{(}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{)};
-00578             \textcolor{keywordflow}{break};
-00579 
-00580         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'4'}:
-00581             \{
-00582                 \textcolor{comment}{// shoot ball from camera}
-00583                 \textcolor{keywordtype}{float} pr = \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{->}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}
-      \hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{(}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{)};
-00584                 \textcolor{keywordtype}{float} vel[4], velw[4], pos[4], posw[4];
-00585                 vel[0] = 0.0f;
-00586                 vel[1] = 0.0f;
-00587                 vel[2] = -0.05f;
-00588                 vel[3] = 0.0f;
-00589                 ixform(vel, velw, modelView);
-00590 
-00591                 pos[0] = 0.0f;
-00592                 pos[1] = 0.0f;
-00593                 pos[2] = -2.5f;
-00594                 pos[3] = 1.0;
-00595                 ixformPoint(pos, posw, modelView);
-00596                 posw[3] = 0.0f;
+00227         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a0b8c24c273a5a89ba27c7b6c949d2ce1}{->}\hyperlink{class_particle_system_a0b8c24c273a5a89ba27c7b6c949d2ce1}{setBrownQuality}\hyperlink{class_particle_system_a0b8c24c273a5a89ba27c7b6c949d2ce1}{(}\hyperlink{particles_8cpp_a6bc4c07ce22fba8e87b38b2ba310faca}{brownQuality}
+      \hyperlink{class_particle_system_a0b8c24c273a5a89ba27c7b6c949d2ce1}{)};
+00228 
+00229     \textcolor{keywordflow}{if} (bUseOpenGL)
+00230     \{
+00231         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer} = \textcolor{keyword}{new} \hyperlink{class_particle_renderer}{ParticleRenderer};
+00232         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{->}\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{setParticleRadius}\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{(}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}
+      \hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{->}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{(}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{)}\hyperlink{class_particle_renderer_aff09822b565b6953fc83c88bda7fa378}{)};
+00233         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{->}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{setColorBuffer}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{(}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{->}
+      \hyperlink{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{getColorBuffer}\hyperlink{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{(}\hyperlink{class_particle_system_a5d300a37ebf1a2fb8575f82ced6a208f}{)}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{)};
+00234     \}
+00235 
+00236     sdkCreateTimer(&timer);
+00237 \}
+00238 
+\hypertarget{particles_8cpp_source_l00239}{}\hyperlink{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}{00239} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}{cleanup}()
+00240 \{
+00241     sdkDeleteTimer(&timer);
+00242 \}
+00243 
+00244 \textcolor{comment}{// initialize OpenGL}
+00245 \textcolor{comment}{/** \(\backslash\)brief initialize OpenGL}
+00246 \textcolor{comment}{ * \(\backslash\)param argc int*}
+00247 \textcolor{comment}{ * \(\backslash\)param argv char**}
+00248 \textcolor{comment}{ * \(\backslash\)return void}
+00249 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00250}{}\hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{00250} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{initGL}(\textcolor{keywordtype}{int} *argc, \textcolor{keywordtype}{char} **argv)
+00251 \{
+00252     glutInit(argc, argv);
+00253     glutInitDisplayMode(GLUT\_RGB | GLUT\_DEPTH | GLUT\_DOUBLE);
+00254     glutInitWindowSize(width, height);
+00255     glutCreateWindow(\textcolor{stringliteral}{"CUDA Particles"});
+00256 
+00257     glewInit();
+00258 
+00259     \textcolor{keywordflow}{if} (!glewIsSupported(\textcolor{stringliteral}{"GL\_VERSION\_2\_0 GL\_VERSION\_1\_5 GL\_ARB\_multitexture
+       GL\_ARB\_vertex\_buffer\_object"}))
+00260     \{
+00261         fprintf(stderr, \textcolor{stringliteral}{"Required OpenGL extensions missing."});
+00262         exit(EXIT\_FAILURE);
+00263     \}
+00264 
+00265 #\textcolor{keywordflow}{if} defined (\_WIN32)
+00266 
+00267     \textcolor{keywordflow}{if} (wglewIsSupported(\textcolor{stringliteral}{"WGL\_EXT\_swap\_control"}))
+00268     \{
+00269         \textcolor{comment}{// disable vertical sync}
+00270         wglSwapIntervalEXT(0);
+00271     \}
+00272 
+00273 #endif
+00274 
+00275     glEnable(GL\_DEPTH\_TEST);
+00276     glClearColor(0.25, 0.25, 0.25, 1.0);
+00277 
+00278     glutReportErrors();
+00279 \}
+00280 
+00281 \textcolor{comment}{/** \(\backslash\)brief sterowanie parowaniem kropli}
+00282 \textcolor{comment}{ * \(\backslash\)return void}
+00283 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00284}{}\hyperlink{particles_8cpp_ad38a0dbec46194a94a86cfa6416ce48f}{00284} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_ad38a0dbec46194a94a86cfa6416ce48f}{parowanieKropliWCzasie}()
+00285 \{
+00286         \textcolor{comment}{//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)}
+00287         \hyperlink{particles_8cpp_aa9253cb34e1b40809228671a8921144d}{licznik}++;
+00288         \hyperlink{particles_8cpp_ad6a23ec608122a4f7c824f903730f206}{time\_past}+=\hyperlink{particles_8cpp_a30721fccdcf1a48ddb65267d3a5a9d29}{timestep};
+00289         \textcolor{keywordflow}{if}(\hyperlink{particles_8cpp_ae17f6f64c66e0edf9e6dd3b69013134b}{bigRadius}>\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{->}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}
+      \hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{(}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{)}*pow(\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{->}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{(}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{)},0.3f))
+00290         \{
+00291                 \hyperlink{particles_8cpp_ae17f6f64c66e0edf9e6dd3b69013134b}{bigRadius}=\hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{bigRadius0}-\hyperlink{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{A}*sqrt(\hyperlink{particles_8cpp_ad6a23ec608122a4f7c824f903730f206}{time\_past});
+00292                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{->}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{setBigRadius}\hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{(}\hyperlink{particles_8cpp_ae17f6f64c66e0edf9e6dd3b69013134b}{bigRadius}
+      \hyperlink{class_particle_system_a97efe00aa29307ecae0165da33d4770a}{)};
+00293         \}
+00294         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{particles_8cpp_a1be8f275c7aef85bb203888b58ab44b7}{boundaries})
+00295         \{
+00296                 \hyperlink{particles_8cpp_a1be8f275c7aef85bb203888b58ab44b7}{boundaries}=\textcolor{keyword}{false};
+00297                 \hyperlink{particles_8cpp_a30721fccdcf1a48ddb65267d3a5a9d29}{timestep}=0.0001f;
+00298         \}
+00299 \}
+00300 
+00301 \textcolor{comment}{/** \(\backslash\)brief uruchomienie symulacji bez GUI z zapisem wyniku}
+00302 \textcolor{comment}{ * \(\backslash\)param iterations int ilość przebiegów do wykonania}
+00303 \textcolor{comment}{ * \(\backslash\)param exec\_path char* ścieżka do aktualnego katalogu}
+00304 \textcolor{comment}{ * \(\backslash\)return void}
+00305 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00306}{}\hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{00306} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{runBenchmark}(\textcolor{keywordtype}{int} iterations, \textcolor{keywordtype}{char} *exec\_path)
+00307 \{
+00308     printf(\textcolor{stringliteral}{"Run %u particles simulation for %d iterations...\(\backslash\)n\(\backslash\)n"}, 
+      \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, iterations);
+00309     cudaDeviceSynchronize();
+00310     sdkStartTimer(&timer);
+00311     \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{->}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{setDamping}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{(}\hyperlink{particles_8cpp_a5d7c41f4909ad7714235c2d8fdf9d935}{damping}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{)};
+00312     \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{->}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{setGravity}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{(}-\hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{)};
+00313         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{->}\hyperlink{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{setBoundaryDamping}\hyperlink{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{(}-
+      \hyperlink{particles_8cpp_ae359dad516b085afdcedb66ec2a049db}{boundaryDamping}\hyperlink{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{)};
+00314         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{->}\hyperlink{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{setParticleMass}\hyperlink{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{(}\hyperlink{particles_8cpp_a1181da8b1b5d355e3388181470ecf70f}{particleMass}
+      \hyperlink{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{)};
+00315         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{->}\hyperlink{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{setEpsi}\hyperlink{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{(}\hyperlink{particles_8cpp_a6a4c0e7f9e1e7ee07eb355dca3d8834a}{epsi}\hyperlink{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{)};
+00316         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{->}\hyperlink{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{setBrown}\hyperlink{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{(}\hyperlink{particles_8cpp_a6f7e9ca1d5ce4c84b69d7793f4de8e23}{brown}\hyperlink{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{)};
+00317 
+00318         \textcolor{keywordtype}{float} *hPos=NULL;
+00319         FILE* f=NULL;
+00320         \textcolor{keywordflow}{if}(\hyperlink{particles_8cpp_ab3d416d86e212881d0e37a4bc52e138e}{save})
+00321         \{
+00322                 f=fopen(\hyperlink{particles_8cpp_ab3d416d86e212881d0e37a4bc52e138e}{save},\textcolor{stringliteral}{"wb"});
+00323                 \textcolor{comment}{//fprintf(f,"%d",psystem->getNumParticles());//iloœæ cz¹stek}
+00324                 fwrite((\textcolor{keywordtype}{void}*)&\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles},\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}),1,f);
+00325         \}
+00326 
+00327         \textcolor{comment}{//printf("timestep: %f\(\backslash\)n",timestep);}
+00328 
+00329         checkCudaErrors(cudaMallocHost(&hPos,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*numParticles));
+00330     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < iterations; ++i)
+00331     \{
+00332                 \hyperlink{particles_8cpp_ad38a0dbec46194a94a86cfa6416ce48f}{parowanieKropliWCzasie}\hyperlink{particles_8cpp_ad38a0dbec46194a94a86cfa6416ce48f}{(}\hyperlink{particles_8cpp_ad38a0dbec46194a94a86cfa6416ce48f}{)};
+00333         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{->}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{update}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{(}\hyperlink{particles_8cpp_a30721fccdcf1a48ddb65267d3a5a9d29}{timestep}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{)};
+00334                 \textcolor{keywordflow}{if}(\hyperlink{particles_8cpp_ab3d416d86e212881d0e37a4bc52e138e}{save} && f && i%10==0)
+00335                 \{
+00336 
+00337                         checkCudaErrors(cudaMemcpy((\textcolor{keywordtype}{void}*)hPos,psystem->getCudaPosVBO(),\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*
+      4*numParticles,cudaMemcpyDeviceToHost));
+00338                         fwrite((\textcolor{keywordtype}{void}*)&\hyperlink{particles_8cpp_ad6a23ec608122a4f7c824f903730f206}{time\_past},\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double}),1,f);
+00339                         fwrite((\textcolor{keywordtype}{void}*)hPos,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}),4*\hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles},f);
+00340 
+00341                 \}
+00342     \}
+00343         \textcolor{comment}{//cudaDeviceSynchronize();}
+00344         \textcolor{comment}{//copyArrayFromDevice(hPos, psystem->getCudaPosVBO(),0,
+       sizeof(float)*4*psystem->getNumParticles());}
+00345         fprintf(f,\textcolor{stringliteral}{"%Lf"},\hyperlink{particles_8cpp_ad6a23ec608122a4f7c824f903730f206}{time\_past});\textcolor{comment}{//czas klatki}
+00346         \textcolor{comment}{//fwrite((void *)hPos,sizeof(float),4*psystem->getNumParticles(),f);}
+00347         \textcolor{comment}{//free(hPos);}
+00348         checkCudaErrors(cudaFreeHost(hPos));
+00349         hPos=NULL;
+00350 
+00351         \textcolor{keywordflow}{if}(\hyperlink{particles_8cpp_ab3d416d86e212881d0e37a4bc52e138e}{save} && f)
+00352         \{
+00353                 fclose(f);
+00354         \}
+00355 
+00356     cudaDeviceSynchronize();
+00357     sdkStopTimer(&timer);
+00358     \textcolor{keywordtype}{float} fAvgSeconds = ((\textcolor{keywordtype}{float})1.0e-3 * (\textcolor{keywordtype}{float})sdkGetTimerValue(&timer)/(\textcolor{keywordtype}{float})iterations);
+00359 
+00360     printf(\textcolor{stringliteral}{"particles, Throughput = %.4f KParticles/s, Time = %.5f s, Size = %u particles, NumDevsUsed
+       = %u, Workgroup = %u\(\backslash\)n"},
+00361            (1.0e-3 * \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles})/fAvgSeconds, fAvgSeconds, 
+      \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, 1, 0);
+00362 
+00363     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
+00364     \{
+00365         printf(\textcolor{stringliteral}{"\(\backslash\)nChecking result...\(\backslash\)n\(\backslash\)n"});
+00366         \textcolor{keywordtype}{float} *hPos = (\textcolor{keywordtype}{float} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{->}
+      \hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{(}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{)});
+00367         \hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{copyArrayFromDevice}\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{(}hPos\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{,} \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{->}
+      \hyperlink{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{getCudaPosVBO}\hyperlink{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{(}\hyperlink{class_particle_system_a2c8214a5bcd9d9c24d16e1f0063c06d6}{)}\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{,}
+00368                             0\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{,} \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{->}
+      \hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{(}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{)}\hyperlink{particle_system_8cuh_a54716407dbd516db34f42b2faf7f91a3}{)};
+00369 
+00370         sdkDumpBin((\textcolor{keywordtype}{void} *)hPos, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*psystem->getNumParticles(), \textcolor{stringliteral}{"particles.bin"});
+00371 
+00372         \textcolor{keywordflow}{if} (!sdkCompareBin2BinFloat(\textcolor{stringliteral}{"particles.bin"}, g\_refFile, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*4*psystem->
+      getNumParticles(),
+00373                                     \hyperlink{particles_8cpp_a9608807ab27261888018dac76a7f4acd}{MAX\_EPSILON\_ERROR}, 
+      \hyperlink{particles_8cpp_a4679d8ea8690999a6c6c7c0cb245c879}{THRESHOLD}, exec\_path))
+00374         \{
+00375             g\_TotalErrors++;
+00376         \}
+00377     \}
+00378 \}
+00379 
+00380 \textcolor{comment}{/** \(\backslash\)brief liczenie i wypisnie danych na pasku}
+00381 \textcolor{comment}{ * \(\backslash\)return void}
+00382 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00383}{}\hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{00383} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{computeFPS}()
+00384 \{
+00385     \hyperlink{particles_8cpp_a9c1866deb3068a1a8d475fbecc6a78d8}{frameCount}++;
+00386     \hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount}++;
+00387 
+00388     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount} == \hyperlink{particles_8cpp_af88c1871ff4d704e3761b1947142cf5c}{fpsLimit})
+00389     \{
+00390         \textcolor{keywordtype}{char} fps[256];
+00391         \textcolor{keywordtype}{float} ifps = 1.f / (sdkGetAverageTimerValue(&timer) / 1000.f);
+00392         sprintf(fps, \textcolor{stringliteral}{"CUDA Particles (%d particles): %3.1f fps, r:%f, R:%f, i:%llu, T:%Lf"}, 
+      \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}, ifps, \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{->}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}
+      \hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{(}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{)}, \hyperlink{particles_8cpp_ae17f6f64c66e0edf9e6dd3b69013134b}{bigRadius}, \hyperlink{particles_8cpp_aa9253cb34e1b40809228671a8921144d}{licznik}, \hyperlink{particles_8cpp_ad6a23ec608122a4f7c824f903730f206}{time\_past});
+00393 
+00394         glutSetWindowTitle(fps);
+00395         \hyperlink{particles_8cpp_a004233346f53b4fe7aa6110a48841ddb}{fpsCount} = 0;
+00396 
+00397         fpsLimit = (\textcolor{keywordtype}{int})MAX(ifps, 1.f);
+00398         sdkResetTimer(&timer);
+00399     \}
+00400 \}
+00401 
+00402 \textcolor{comment}{/** \(\backslash\)brief funkcja odpowiadająca za symulację z włączonym GUI}
+00403 \textcolor{comment}{ * \(\backslash\)return void}
+00404 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00405}{}\hyperlink{particles_8cpp_a1e5b20fed15743656bb6d2e6a6ea6269}{00405} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a1e5b20fed15743656bb6d2e6a6ea6269}{display}()
+00406 \{
+00407     sdkStartTimer(&timer);
+00408 
+00409     \textcolor{comment}{// update the simulation}
+00410     \textcolor{keywordflow}{if} (!\hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause})
+00411     \{
+00412         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}{->}\hyperlink{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}{setIterations}\hyperlink{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}{(}\hyperlink{particles_8cpp_a1d10e252e778731e59f0f71afd7e727e}{iterations}\hyperlink{class_particle_system_a11f55976f6ef34dceea208fbe06694cd}{)};
+00413         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{->}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{setDamping}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{(}\hyperlink{particles_8cpp_a5d7c41f4909ad7714235c2d8fdf9d935}{damping}\hyperlink{class_particle_system_aa26996b9ca13499b13f944f3aaeae10c}{)};
+00414         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{->}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{setGravity}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{(}-\hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity}\hyperlink{class_particle_system_a755f64f917389ef41df81b663d1f5bd2}{)};
+00415         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{->}\hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{setCollideSpring}\hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{(}\hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring}
+      \hyperlink{class_particle_system_a7ed53fca9ef126898d29314478ec8fd4}{)};
+00416         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{->}\hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{setCollideDamping}\hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{(}
+      \hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping}\hyperlink{class_particle_system_a8f8d21c7079c3a0e66558b9ec5bef597}{)};
+00417         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{->}\hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{setCollideShear}\hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{(}\hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear}
+      \hyperlink{class_particle_system_aea667093542a1bdad65bdcb427e5625f}{)};
+00418         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{->}\hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{setCollideAttraction}\hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{(}
+      \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction}\hyperlink{class_particle_system_aef02d293e3dc61c50fa6d085aa0b03de}{)};
+00419                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{->}\hyperlink{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{setBoundaryDamping}\hyperlink{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{(}-
+      \hyperlink{particles_8cpp_ae359dad516b085afdcedb66ec2a049db}{boundaryDamping}\hyperlink{class_particle_system_a1b17ae9291cf9974f63219cc9eac6ec6}{)};
+00420                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{->}\hyperlink{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{setParticleMass}\hyperlink{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{(}
+      \hyperlink{particles_8cpp_a1181da8b1b5d355e3388181470ecf70f}{particleMass}\hyperlink{class_particle_system_a92e1db62e4025fab4996ce9a3ca5882f}{)};
+00421                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{->}\hyperlink{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{setEpsi}\hyperlink{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{(}\hyperlink{particles_8cpp_a6a4c0e7f9e1e7ee07eb355dca3d8834a}{epsi}\hyperlink{class_particle_system_a6290c054a797ec9fa691179ffb4631f7}{)};
+00422                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{->}\hyperlink{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{setBrown}\hyperlink{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{(}\hyperlink{particles_8cpp_a6f7e9ca1d5ce4c84b69d7793f4de8e23}{brown}\hyperlink{class_particle_system_a01a5d2e20d18dcd29fa7f8f9bc5f75e9}{)};
+00423 
+00424                 \hyperlink{particles_8cpp_ad38a0dbec46194a94a86cfa6416ce48f}{parowanieKropliWCzasie}\hyperlink{particles_8cpp_ad38a0dbec46194a94a86cfa6416ce48f}{(}\hyperlink{particles_8cpp_ad38a0dbec46194a94a86cfa6416ce48f}{)};
+00425 
+00426         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{->}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{update}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{(}\hyperlink{particles_8cpp_a30721fccdcf1a48ddb65267d3a5a9d29}{timestep}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{)};
+00427 
+00428         \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer})
+00429         \{
+00430             \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{->}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{setVertexBuffer}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{(}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}
+      \hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{->}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{getCurrentReadBuffer}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{(}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{)}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{,} \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{->}
+      \hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{(}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{)}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{,} \hyperlink{particles_8cpp_a3658355a3876ac7e7d318316fc9b0d21}{zoom}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{)};
+00431         \}
+00432     \}
+00433 
+00434     \textcolor{comment}{// render}
+00435     glClear(GL\_COLOR\_BUFFER\_BIT | GL\_DEPTH\_BUFFER\_BIT);
+00436 
+00437     \textcolor{comment}{// view transform}
+00438     glMatrixMode(GL\_MODELVIEW);
+00439     glLoadIdentity();
+00440 
+00441     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} c = 0; c < 3; ++c)
+00442     \{
+00443         \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[c] += (\hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[c] - 
+      \hyperlink{particles_8cpp_a1475a0a4a9c24a5035d91125e5992afe}{camera\_trans\_lag}[c]) * \hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{inertia};
+00444         \hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[c] += (\hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[c] - 
+      \hyperlink{particles_8cpp_a2993bf9f16707b5c3ff46e0b751f0373}{camera\_rot\_lag}[c]) * \hyperlink{particles_8cpp_a639b27811b99d2487d6d94dd3c3b2a81}{inertia};
+00445     \}
+00446 
+00447     glTranslatef(camera\_trans\_lag[0], camera\_trans\_lag[1], camera\_trans\_lag[2]);
+00448     glRotatef(camera\_rot\_lag[0], 1.0, 0.0, 0.0);
+00449     glRotatef(camera\_rot\_lag[1], 0.0, 1.0, 0.0);
+00450 
+00451         glScalef(zoom, zoom, zoom);
+00452 
+00453     glGetFloatv(GL\_MODELVIEW\_MATRIX, modelView);
+00454 
+00455         \textcolor{comment}{//glScalef(zoom, zoom, zoom);}
+00456 
+00457     \textcolor{comment}{// cube -> sphere}
+00458     glColor3f(1.0, 1.0, 1.0);
+00459     \textcolor{comment}{//glutWireCube(2.0);}
+00460         \textcolor{keywordflow}{if}(boundaries)
+00461         glutWireSphere(bigRadius, 20, 10);
+00462 
+00463 
+00464         \textcolor{comment}{//glScalef(zoom, zoom, zoom);}
+00465 
+00466     \textcolor{comment}{// collider}
+00467     glPushMatrix();
+00468 
+00469         \textcolor{comment}{/*glBegin(GL\_QUADS);}
+00470 \textcolor{comment}{                glVertex4f(-1, 0, -1, 0);}
+00471 \textcolor{comment}{                glVertex4f(-1, 0, 1, 0);}
+00472 \textcolor{comment}{                glVertex4f(1, 0, 1, 0);}
+00473 \textcolor{comment}{                glVertex4f(1, 0, -1, 0);}
+00474 \textcolor{comment}{        glEnd();}
+00475 \textcolor{comment}{        glColor3f(1.0, 0.0, 0.0);*/}
+00476     \textcolor{comment}{//float3 p = psystem->getColliderPos();}
+00477     \textcolor{comment}{//glTranslatef(p.x, p.y, p.z);}
+00478         \textcolor{comment}{//glScalef(zoom, zoom, zoom);}
+00479     \textcolor{comment}{//glColor3f(1.0, 0.0, 0.0);}
+00480     \textcolor{comment}{//glutSolidSphere(psystem->getColliderRadius(), 20, 10);}
+00481     glPopMatrix();
+00482 
+00483     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer} && \hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled})
+00484     \{
+00485         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{->}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{display}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{(}\hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{)};
+00486     \}
+00487 
+00488     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
+00489     \{
+00490         glDisable(GL\_DEPTH\_TEST);
+00491         glBlendFunc(GL\_ONE\_MINUS\_DST\_COLOR, GL\_ZERO); \textcolor{comment}{// invert color}
+00492         glEnable(GL\_BLEND);
+00493         params->Render(0, 0);
+00494         glDisable(GL\_BLEND);
+00495         glEnable(GL\_DEPTH\_TEST);
+00496     \}
+00497 
+00498     sdkStopTimer(&timer);
+00499 
+00500     glutSwapBuffers();
+00501     glutReportErrors();
+00502 
+00503     \hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{computeFPS}\hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{(}\hyperlink{particles_8cpp_a6fed970e4454f0b672cd023315b9e343}{)};
+00504 \}
+00505 
+\hypertarget{particles_8cpp_source_l00506}{}\hyperlink{particles_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{00506} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} \hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}()
+00507 \{
+00508     \textcolor{keywordflow}{return} rand() / (\textcolor{keywordtype}{float}) RAND\_MAX;
+00509 \}
+00510 
+00511 \textcolor{comment}{/** \(\backslash\)brief wstawianie kuli cząstek na życzenie}
+00512 \textcolor{comment}{ * \(\backslash\)return void}
+00513 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00514}{}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{00514} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{addSphere}()
+00515 \{
+00516     \textcolor{comment}{// inject a sphere of particles}
+00517     \textcolor{keywordtype}{float} pr = \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{->}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{(}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{)};
+00518     \textcolor{keywordtype}{float} tr = pr+(pr*2.0f)*\hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr};
+00519     \textcolor{keywordtype}{float} pos[4], vel[4];
+00520     pos[0] = -1.0f + tr + \hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}*(2.0f - tr*2.0f);
+00521     pos[1] = 1.0f - tr;
+00522     pos[2] = -1.0f + tr + \hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}*(2.0f - tr*2.0f);
+00523     pos[3] = 0.0f;
+00524     \textcolor{comment}{//vel[0] = vel[1] = vel[2] = vel[3] = 0.0f;}
+00525         vel[0]=\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}/100.0f;
+00526         vel[1]=\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}/100.0f;
+00527         vel[2]=\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}/100.0f;
+00528         vel[3]=\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{(}\hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{)}/100.0f;
+00529     \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{->}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{addSphere}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{(}0\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} pos\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} vel\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} pr*2.0f
+      \hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{)};
+00530 \}
+00531 
+\hypertarget{particles_8cpp_source_l00532}{}\hyperlink{particles_8cpp_acc1ffe65e6869931318610cae7210078}{00532} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_acc1ffe65e6869931318610cae7210078}{reshape}(\textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h)
+00533 \{
+00534     glMatrixMode(GL\_PROJECTION);
+00535     glLoadIdentity();
+00536     gluPerspective(60.0, (\textcolor{keywordtype}{float}) w / (\textcolor{keywordtype}{float}) h, 0.1, 100.0);
+00537 
+00538     glMatrixMode(GL\_MODELVIEW);
+00539     glViewport(0, 0, w, h);
+00540 
+00541     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer})
+00542     \{
+00543         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{->}\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{setWindowSize}\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{(}w\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{,} h\hyperlink{class_particle_renderer_ad84b464475e5ebd42cfed6e2e91e7247}{)};
+00544         \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{->}\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{setFOV}\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{(}60.0\hyperlink{class_particle_renderer_ad6da663d3073401a776edb8dc6cf4d5f}{)};
+00545     \}
+00546 \}
+00547 
+00548 \textcolor{comment}{/** \(\backslash\)brief obsługa zdarzeń myszy}
+00549 \textcolor{comment}{ * \(\backslash\)param button int}
+00550 \textcolor{comment}{ * \(\backslash\)param state int}
+00551 \textcolor{comment}{ * \(\backslash\)param x int}
+00552 \textcolor{comment}{ * \(\backslash\)param y int}
+00553 \textcolor{comment}{ * \(\backslash\)return void}
+00554 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00555}{}\hyperlink{particles_8cpp_ac76a5d78172a826cd6ee9512b89a86c0}{00555} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_ac76a5d78172a826cd6ee9512b89a86c0}{mouse}(\textcolor{keywordtype}{int} button, \textcolor{keywordtype}{int} state, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y)
+00556 \{
+00557     \textcolor{keywordtype}{int} mods;
+00558         \textcolor{keywordflow}{if}(button==3)
+00559         \{
+00560                 \textcolor{keywordflow}{if}(state==GLUT\_DOWN)
+00561                 \{
+00562                         zoom*=1.1f;
+00563                 \}
+00564         \}
+00565         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(button==4)
+00566         \{
+00567                 \textcolor{keywordflow}{if}(state==GLUT\_DOWN)
+00568                 \{
+00569                         zoom*=0.9f;
+00570                 \}
+00571         \}
+00572     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == GLUT\_DOWN)
+00573     \{
+00574         buttonState |= 1<<button;
+00575     \}
+00576     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state == GLUT\_UP)
+00577     \{
+00578         buttonState = 0;
+00579     \}
+00580 
+00581     mods = glutGetModifiers();
+00582 
+00583     \textcolor{keywordflow}{if} (mods & GLUT\_ACTIVE\_SHIFT)
+00584     \{
+00585         buttonState = 2;
+00586     \}
+00587     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mods & GLUT\_ACTIVE\_CTRL)
+00588     \{
+00589         buttonState = 3;
+00590     \}
+00591 
+00592     \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox} = x;
+00593     \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy} = y;
+00594 
+00595     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
+00596     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
 00597 
-00598                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{->}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{addSphere}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{(}0\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} posw\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} velw\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} 
-      \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} pr*2.0f\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{)};
-00599             \}
-00600             \textcolor{keywordflow}{break};
-00601 
-00602         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'w'}:
-00603             \hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{wireframe} = !\hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{wireframe};
-00604             \textcolor{keywordflow}{break};
-00605 
-00606         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'h'}:
-00607             \hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders} = !\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders};
-00608             \textcolor{keywordflow}{break};
-00609     \}
-00610 
-00611     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
-00612     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
-00613     glutPostRedisplay();
-00614 \}
-00615 
-\hypertarget{particles_8cpp_source_l00616}{}\hyperlink{particles_8cpp_ab838340d9e4833a685975205d9c8196a}{00616} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_ab838340d9e4833a685975205d9c8196a}{special}(\textcolor{keywordtype}{int} k, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y)
-00617 \{
-00618     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
-00619     \{
-00620         params->Special(k, x, y);
-00621     \}
-00622 
-00623     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
-00624     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
-00625 \}
-00626 
-\hypertarget{particles_8cpp_source_l00627}{}\hyperlink{particles_8cpp_a01131b63acf241e9db91704d89ce15d2}{00627} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a01131b63acf241e9db91704d89ce15d2}{idle}(\textcolor{keywordtype}{void})
-00628 \{
-00629     \textcolor{keywordflow}{if} ((\hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter}++ > \hyperlink{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}{idleDelay}) && (\hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode}==\textcolor{keyword}{false}))
-00630     \{
-00631         \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{true};
-00632         printf(\textcolor{stringliteral}{"Entering demo mode\(\backslash\)n"});
-00633     \}
-00634 
-00635     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode})
-00636     \{
-00637         \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[1] += 0.1f;
-00638 
-00639         \textcolor{keywordflow}{if} (\textcolor{keyword}{false} && \hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{demoCounter}++ > 1000)
-00640         \{
-00641             \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} = 10 + (rand() % 10);
-00642             \hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{addSphere}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{(}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{)};
-00643             \hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{demoCounter} = 0;
-00644         \}
-00645     \}
-00646 
-00647     glutPostRedisplay();
-00648 \}
-00649 
-\hypertarget{particles_8cpp_source_l00650}{}\hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{00650} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{initParams}()
-00651 \{
-00652     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
-00653     \{
-00654         \hyperlink{particles_8cpp_ab9edcc09985767509bf717e25ac80ab7}{timestep} = 0.0f;
-00655         \hyperlink{particles_8cpp_a99d817470e9063f458d39529c7c1724b}{damping} = 0.0f;
-00656         \hyperlink{particles_8cpp_a31924e6c9b17aad7f861e818b8be5d8f}{gravity} = 0.0f;
-00657         \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} = 1;
-00658         \hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring} = 0.0f;
-00659         \hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping} = 0.0f;
-00660         \hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear} = 0.0f;
-00661         \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction} = 0.0f;
-00662 
+00598     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
+00599     \{
+00600         \textcolor{keywordflow}{if} (params->Mouse(x, y, button, state))
+00601         \{
+00602             glutPostRedisplay();
+00603             \textcolor{keywordflow}{return};
+00604         \}
+00605     \}
+00606 
+00607     glutPostRedisplay();
+00608 \}
+00609 
+00610 \textcolor{comment}{// transfrom vector by matrix}
+00611 \textcolor{comment}{/** \(\backslash\)brief transfrom vector by matrix}
+00612 \textcolor{comment}{ * \(\backslash\)param v float*}
+00613 \textcolor{comment}{ * \(\backslash\)param r float*}
+00614 \textcolor{comment}{ * \(\backslash\)param m GLfloat*}
+00615 \textcolor{comment}{ * \(\backslash\)return void}
+00616 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00617}{}\hyperlink{particles_8cpp_ad95532e0e925e7584a930b366a613261}{00617} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_ad95532e0e925e7584a930b366a613261}{xform}(\textcolor{keywordtype}{float} *v, \textcolor{keywordtype}{float} *r, GLfloat *m)
+00618 \{
+00619     r[0] = v[0]*m[0] + v[1]*m[4] + v[2]*m[8] + m[12];
+00620     r[1] = v[0]*m[1] + v[1]*m[5] + v[2]*m[9] + m[13];
+00621     r[2] = v[0]*m[2] + v[1]*m[6] + v[2]*m[10] + m[14];
+00622 \}
+00623 
+00624 \textcolor{comment}{// transform vector by transpose of matrix}
+00625 \textcolor{comment}{/** \(\backslash\)brief transform vector by transpose of matrix}
+00626 \textcolor{comment}{ * \(\backslash\)param v float*}
+00627 \textcolor{comment}{ * \(\backslash\)param r float*}
+00628 \textcolor{comment}{ * \(\backslash\)param m GLfloat*}
+00629 \textcolor{comment}{ * \(\backslash\)return void}
+00630 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00631}{}\hyperlink{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{00631} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_aa22b13a9b9cf40b19f9c1c09603862c8}{ixform}(\textcolor{keywordtype}{float} *v, \textcolor{keywordtype}{float} *r, GLfloat *m)
+00632 \{
+00633     r[0] = v[0]*m[0] + v[1]*m[1] + v[2]*m[2];
+00634     r[1] = v[0]*m[4] + v[1]*m[5] + v[2]*m[6];
+00635     r[2] = v[0]*m[8] + v[1]*m[9] + v[2]*m[10];
+00636 \}
+00637 
+\hypertarget{particles_8cpp_source_l00638}{}\hyperlink{particles_8cpp_a9b3bc33348ec5b4dbb049f91362459b8}{00638} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a9b3bc33348ec5b4dbb049f91362459b8}{ixformPoint}(\textcolor{keywordtype}{float} *v, \textcolor{keywordtype}{float} *r, GLfloat *m)
+00639 \{
+00640     \textcolor{keywordtype}{float} x[4];
+00641     x[0] = v[0] - m[12];
+00642     x[1] = v[1] - m[13];
+00643     x[2] = v[2] - m[14];
+00644     x[3] = 1.0f;
+00645     ixform(x, r, m);
+00646 \}
+00647 
+\hypertarget{particles_8cpp_source_l00648}{}\hyperlink{particles_8cpp_a45a7d7c86c97ca6a2d4d32ce2d263f67}{00648} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a45a7d7c86c97ca6a2d4d32ce2d263f67}{motion}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y)
+00649 \{
+00650     \textcolor{keywordtype}{float} dx, dy;
+00651     dx = (\textcolor{keywordtype}{float})(x - \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox});
+00652     dy = (\textcolor{keywordtype}{float})(y - \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy});
+00653 
+00654     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
+00655     \{
+00656         \textcolor{keywordflow}{if} (params->Motion(x, y))
+00657         \{
+00658             ox = x;
+00659             oy = y;
+00660             glutPostRedisplay();
+00661             \textcolor{keywordflow}{return};
+00662         \}
 00663     \}
-00664     \textcolor{keywordflow}{else}
-00665     \{
-00666 
-00667         \textcolor{comment}{// create a new parameter list}
-00668         params = \textcolor{keyword}{new} ParamListGL(\textcolor{stringliteral}{"misc"});
-00669         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"time step"}, timestep, 0.0f, 1.0f, 0.01f, &timestep));
-00670         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"damping"}  , damping , 0.0f, 1.0f, 0.001f, &damping));
-00671         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"gravity"}  , gravity , 0.0f, 0.001f, 0.0001f, &gravity));
-00672         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{int}> (\textcolor{stringliteral}{"ball radius"}, ballr , 1, 20, 1, &ballr));
-00673 
-00674         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"collide spring"} , collideSpring , 0.0f, 1.0f, 0.001f, &
-      collideSpring));
-00675         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"collide damping"}, collideDamping, 0.0f, 0.1f, 0.001f, &
-      collideDamping));
-00676         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"collide shear"}  , collideShear  , 0.0f, 0.1f, 0.001f, &
-      collideShear));
-00677         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"collide attract"}, collideAttraction, 0.0f, 0.1f, 0.001f, &
-      collideAttraction));
-00678     \}
-00679 \}
-00680 
-\hypertarget{particles_8cpp_source_l00681}{}\hyperlink{particles_8cpp_ac623a05dc7ab8844bdf40dc55c124fc6}{00681} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_ac623a05dc7ab8844bdf40dc55c124fc6}{mainMenu}(\textcolor{keywordtype}{int} i)
-00682 \{
-00683     \hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{key}\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{(}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}) i\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{,} 0\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{,} 0\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{)};
-00684 \}
+00664 
+00665     \textcolor{keywordflow}{switch} (\hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode})
+00666     \{
+00667         \textcolor{keywordflow}{case} \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\_VIEW}:
+00668                         \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} == 3)
+00669             \{
+00670                 \textcolor{comment}{// left+middle = zoom}
+00671                 \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[2] += (dy / 100.0f) * 0.5f * fabs(
+      \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[2]);
+00672             \}
+00673             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} & 2)
+00674             \{
+00675                 \textcolor{comment}{// middle = translate}
+00676                 \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[0] += dx / 100.0f;
+00677                 \hyperlink{particles_8cpp_affab132fdfca08b149d2f866fd486ed4}{camera\_trans}[1] -= dy / 100.0f;
+00678             \}
+00679             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState} & 1)
+00680             \{
+00681                 \textcolor{comment}{// left = rotate}
+00682                 \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[0] += dy / 5.0f;
+00683                 \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[1] += dx / 5.0f;
+00684             \}
 00685 
-\hypertarget{particles_8cpp_source_l00686}{}\hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{00686} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{initMenus}()
-00687 \{
-00688     glutCreateMenu(mainMenu);
-00689     glutAddMenuEntry(\textcolor{stringliteral}{"Reset block [1]"}, \textcolor{stringliteral}{'1'});
-00690     glutAddMenuEntry(\textcolor{stringliteral}{"Reset random [2]"}, \textcolor{stringliteral}{'2'});
-00691     glutAddMenuEntry(\textcolor{stringliteral}{"Add sphere [3]"}, \textcolor{stringliteral}{'3'});
-00692     glutAddMenuEntry(\textcolor{stringliteral}{"View mode [v]"}, \textcolor{stringliteral}{'v'});
-00693     glutAddMenuEntry(\textcolor{stringliteral}{"Move cursor mode [m]"}, \textcolor{stringliteral}{'m'});
-00694     glutAddMenuEntry(\textcolor{stringliteral}{"Toggle point rendering [p]"}, \textcolor{stringliteral}{'p'});
-00695     glutAddMenuEntry(\textcolor{stringliteral}{"Toggle animation [ ]"}, \textcolor{stringliteral}{' '});
-00696     glutAddMenuEntry(\textcolor{stringliteral}{"Step animation [ret]"}, 13);
-00697     glutAddMenuEntry(\textcolor{stringliteral}{"Toggle sliders [h]"}, \textcolor{stringliteral}{'h'});
-00698     glutAddMenuEntry(\textcolor{stringliteral}{"Quit (esc)"}, \textcolor{stringliteral}{'\(\backslash\)033'});
-00699     glutAttachMenu(GLUT\_RIGHT\_BUTTON);
-00700 \}
-00701 
-00702 \textcolor{comment}{////////////////////////////////////////////////////////////////////////////////}
-00703 \textcolor{comment}{// Program main}
-00704 \textcolor{comment}{////////////////////////////////////////////////////////////////////////////////}
-00705 \textcolor{keywordtype}{int}
-\hypertarget{particles_8cpp_source_l00706}{}\hyperlink{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{00706} \hyperlink{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)
-00707 \{
-00708     printf(\textcolor{stringliteral}{"%s Starting...\(\backslash\)n\(\backslash\)n"}, \hyperlink{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}{sSDKsample});
-00709 
-00710     \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles} = \hyperlink{particles_8cpp_a75cbc112dce4b21c13fe7bb671accab1}{NUM\_PARTICLES};
-00711     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} gridDim = \hyperlink{particles_8cpp_a08246606c233e7785a497c09672f366f}{GRID\_SIZE};
-00712     \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = 0;
-00713 
-00714     \textcolor{keywordflow}{if} (argc > 1)
-00715     \{
-00716         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"n"}))
-00717         \{
-00718             numParticles = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"n"});
-00719         \}
+00686             \textcolor{keywordflow}{break};
+00687 
+00688         \textcolor{keywordflow}{case} \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\_MOVE}:
+00689             \{
+00690                 \textcolor{keywordtype}{float} translateSpeed = 0.003f;
+00691                 float3 p = psystem->getColliderPos();
+00692 
+00693                 \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState}==1)
+00694                 \{
+00695                     \textcolor{keywordtype}{float} v[3], r[3];
+00696                     v[0] = dx*translateSpeed;
+00697                     v[1] = -dy*translateSpeed;
+00698                     v[2] = 0.0f;
+00699                     ixform(v, r, modelView);
+00700                     p.x += r[0];
+00701                     p.y += r[1];
+00702                     p.z += r[2];
+00703                 \}
+00704                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a5002611f83f5a861df12917dd5651db8}{buttonState}==2)
+00705                 \{
+00706                     \textcolor{keywordtype}{float} v[3], r[3];
+00707                     v[0] = 0.0f;
+00708                     v[1] = 0.0f;
+00709                     v[2] = dy*translateSpeed;
+00710                     ixform(v, r, modelView);
+00711                     p.x += r[0];
+00712                     p.y += r[1];
+00713                     p.z += r[2];
+00714                 \}
+00715 
+00716                 psystem->setColliderPos(p);
+00717             \}
+00718             \textcolor{keywordflow}{break};
+00719     \}
 00720 
-00721         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"grid"}))
-00722         \{
-00723             gridDim = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"grid"});
-00724         \}
-00725 
-00726         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"file"}))
-00727         \{
-00728             getCmdLineArgumentString(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"file"}, &g\_refFile);
-00729             fpsLimit = frameCheckNumber;
-00730             numIterations = 1;
-00731         \}
-00732     \}
-00733 
-00734     gridSize.x = gridSize.y = gridSize.z = gridDim;
-00735     printf(\textcolor{stringliteral}{"grid: %d x %d x %d = %d cells\(\backslash\)n"}, gridSize.x, gridSize.y, gridSize.z, gridSize.x*gridSize.
-      y*gridSize.z);
-00736     printf(\textcolor{stringliteral}{"particles: %d\(\backslash\)n"}, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles});
-00737 
-00738     \textcolor{keywordtype}{bool} benchmark = checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"benchmark"}) != 0;
-00739 
-00740     \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"i"}))
-00741     \{
-00742         numIterations = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"i"});
-00743     \}
-00744     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
-00745     \{
-00746         \hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{cudaInit}\hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{(}argc\hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{,} argv\hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{)};
-00747     \}
-00748     \textcolor{keywordflow}{else}
-00749     \{
-00750         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"device"}))
-00751         \{
-00752             printf(\textcolor{stringliteral}{"[%s]\(\backslash\)n"}, argv[0]);
-00753             printf(\textcolor{stringliteral}{"   Does not explicitly support -device=n in OpenGL mode\(\backslash\)n"});
-00754             printf(\textcolor{stringliteral}{"   To use -device=n, the sample must be running w/o OpenGL\(\backslash\)n\(\backslash\)n"});
-00755             printf(\textcolor{stringliteral}{" > %s -device=n -file=<*.bin>\(\backslash\)n"}, argv[0]);
-00756             printf(\textcolor{stringliteral}{"exiting...\(\backslash\)n"});
-00757             exit(EXIT\_SUCCESS);
-00758         \}
-00759 
-00760         \hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{initGL}\hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{(}&argc\hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{,} argv\hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{)};
-00761         \hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{cudaGLInit}\hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{(}argc\hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{,} argv\hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{)};
-00762     \}
+00721     \hyperlink{particles_8cpp_afef635ed3c73fc60d8faf6dd610c4298}{ox} = x;
+00722     \hyperlink{particles_8cpp_a791e26888be6777cd5c5d0c736a06821}{oy} = y;
+00723 
+00724     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
+00725     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
+00726 
+00727     glutPostRedisplay();
+00728 \}
+00729 
+00730 \textcolor{comment}{// commented out to remove unused parameter warnings in Linux}
+00731 \textcolor{comment}{/** \(\backslash\)brief obsługa zdarzeń klawiszy i opcji z menu}
+00732 \textcolor{comment}{ * \(\backslash\)param key unsigned char}
+00733 \textcolor{comment}{ * \(\backslash\)param x int}
+00734 \textcolor{comment}{ * \(\backslash\)param y int}
+00735 \textcolor{comment}{ * \(\backslash\)return void}
+00736 \textcolor{comment}{ */}
+\hypertarget{particles_8cpp_source_l00737}{}\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{00737} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{key}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} key, \textcolor{keywordtype}{int} \textcolor{comment}{/*x*/}, \textcolor{keywordtype}{int} \textcolor{comment}{/*y*/})
+00738 \{
+00739     \textcolor{keywordflow}{switch} (key)
+00740     \{
+00741                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{'0'}:
+00742                         \hyperlink{particles_8cpp_ad6a23ec608122a4f7c824f903730f206}{time\_past}=0.0;
+00743                         \hyperlink{particles_8cpp_ae17f6f64c66e0edf9e6dd3b69013134b}{bigRadius}=\hyperlink{particles_8cpp_a4a96f891fd0d5a545a3769b21aa9b427}{bigRadius0};
+00744                         \textcolor{keywordflow}{break};
+00745                 \textcolor{keywordflow}{case} \textcolor{stringliteral}{'b'}:
+00746                         \hyperlink{particles_8cpp_a1be8f275c7aef85bb203888b58ab44b7}{boundaries}=!\hyperlink{particles_8cpp_a1be8f275c7aef85bb203888b58ab44b7}{boundaries};
+00747                         \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a99bbe16b8e181415c2aa71c11edace98}{->}\hyperlink{class_particle_system_a99bbe16b8e181415c2aa71c11edace98}{setBoundaries}\hyperlink{class_particle_system_a99bbe16b8e181415c2aa71c11edace98}{(}
+      \hyperlink{particles_8cpp_a1be8f275c7aef85bb203888b58ab44b7}{boundaries}\hyperlink{class_particle_system_a99bbe16b8e181415c2aa71c11edace98}{)};
+00748                         \textcolor{keywordflow}{break};
+00749 
+00750         \textcolor{keywordflow}{case} \textcolor{stringliteral}{' '}:
+00751             \hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause} = !\hyperlink{particles_8cpp_a094a344391aa86a98299bac3deb91ce6}{bPause};
+00752             \textcolor{keywordflow}{break};
+00753 
+00754         \textcolor{keywordflow}{case} 13:
+00755             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{->}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{update}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{(}\hyperlink{particles_8cpp_a30721fccdcf1a48ddb65267d3a5a9d29}{timestep}\hyperlink{class_particle_system_a166fd86f020b6024d7d42723762d7cb2}{)};
+00756 
+00757             \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer})
+00758             \{
+00759                 \hyperlink{particles_8cpp_a748beea58f866663fc6894969b21d061}{renderer}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{->}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{setVertexBuffer}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{(}\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}
+      \hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{->}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{getCurrentReadBuffer}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{(}\hyperlink{class_particle_system_ae9f149d6b7c3b148fc397473c7c3c2e2}{)}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{,} \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{->}
+      \hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{getNumParticles}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{(}\hyperlink{class_particle_system_a6f89e8d4c3e3e328088b7d652cee84b0}{)}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{,} \hyperlink{particles_8cpp_a3658355a3876ac7e7d318316fc9b0d21}{zoom}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{)};
+00760             \}
+00761 
+00762             \textcolor{keywordflow}{break};
 00763 
-00764     initParticleSystem(numParticles, gridSize, g\_refFile==NULL);
-00765     \hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{initParams}\hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{(}\hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{)};
-00766 
-00767     \textcolor{keywordflow}{if} (!\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
-00768     \{
-00769         \hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{initMenus}\hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{(}\hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{)};
-00770     \}
-00771 
-00772     \textcolor{keywordflow}{if} (benchmark || \hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
-00773     \{
-00774         \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} <= 0)
-00775         \{
-00776             \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = 300;
-00777         \}
-00778 
-00779         \hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{runBenchmark}\hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{(}\hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations}\hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{,} argv[0]\hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{)};
-00780     \}
-00781     \textcolor{keywordflow}{else}
-00782     \{
-00783         glutDisplayFunc(display);
-00784         glutReshapeFunc(reshape);
-00785         glutMouseFunc(mouse);
-00786         glutMotionFunc(motion);
-00787         glutKeyboardFunc(key);
-00788         glutSpecialFunc(special);
-00789         glutIdleFunc(idle);
-00790 
-00791         atexit(\hyperlink{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}{cleanup});
-00792 
-00793         glutMainLoop();
-00794     \}
-00795 
-00796     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem})
-00797     \{
-00798         \textcolor{keyword}{delete} \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem};
-00799     \}
-00800 
-00801     cudaDeviceReset();
-00802     exit(\hyperlink{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{g\_TotalErrors} > 0 ? EXIT\_FAILURE : EXIT\_SUCCESS);
-00803 \}
+00764         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'\(\backslash\)033'}:
+00765         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'q'}:
+00766             exit(EXIT\_SUCCESS);
+00767             \textcolor{keywordflow}{break};
+00768 
+00769         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'v'}:
+00770             \hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode} = \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55ba04727eefdf62663010249dd6d065d37a}{M\_VIEW};
+00771             \textcolor{keywordflow}{break};
+00772 
+00773         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'m'}:
+00774             \hyperlink{particles_8cpp_a1ea5d0cb93f22f7d0fdf804bd68c3326}{mode} = \hyperlink{particles_8cpp_a06fc87d81c62e9abb8790b6e5713c55babab1d9d2c1a77a18fc6ae9032fd18057}{M\_MOVE};
+00775             \textcolor{keywordflow}{break};
+00776 
+00777         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'p'}:
+00778             \hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode} = (\hyperlink{class_particle_renderer}{ParticleRenderer}::
+      \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{DisplayMode})
+00779                           ((\hyperlink{particles_8cpp_afd1b0caccb0d688ceb91c2547b9da1d9}{displayMode} + 1) % \hyperlink{class_particle_renderer}{ParticleRenderer}
+      \hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc}{::}\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc}{PARTICLE\_NUM\_MODES});
+00780             \textcolor{keywordflow}{break};
+00781 
+00782         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'d'}:
+00783             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}{->}\hyperlink{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}{dumpGrid}\hyperlink{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}{(}\hyperlink{class_particle_system_a722bdb7cc940f052400a69fe9569a49e}{)};
+00784             \textcolor{keywordflow}{break};
+00785 
+00786         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'u'}:
+00787             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{->}\hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{dumpParticles}\hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{(}0\hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{,} \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles}-1
+      \hyperlink{class_particle_system_a9025f319e07c58c6ece1cd2a620ce33a}{)};
+00788             \textcolor{keywordflow}{break};
+00789 
+00790         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'r'}:
+00791             \hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled} = !\hyperlink{particles_8cpp_a14095d7bf2ff02e5172105454df40b9a}{displayEnabled};
+00792             \textcolor{keywordflow}{break};
+00793 
+00794         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'1'}:
+00795             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{->}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{reset}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{(}\hyperlink{class_particle_system}{ParticleSystem}\hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{::}
+      \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1aa6bd9e92edfc102877bf103547397b47}{CONFIG\_GRID}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{)};
+00796             \textcolor{keywordflow}{break};
+00797 
+00798         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'2'}:
+00799             \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{->}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{reset}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{(}\hyperlink{class_particle_system}{ParticleSystem}\hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{::}
+      \hyperlink{class_particle_system_a1dca3996c8068602412ef9f7826605d1a053c69e4e6b094605ea152a644e7c9ee}{CONFIG\_RANDOM}\hyperlink{class_particle_system_a519070812dd9eb349f270c793c5f64b6}{)};
+00800             \textcolor{keywordflow}{break};
+00801 
+00802         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'3'}:
+00803             \hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{addSphere}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{(}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{)};
+00804             \textcolor{keywordflow}{break};
+00805 
+00806         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'4'}:
+00807             \{
+00808                 \textcolor{comment}{// shoot ball from camera}
+00809                 \textcolor{keywordtype}{float} pr = \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{->}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{getParticleRadius}
+      \hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{(}\hyperlink{class_particle_system_abdb59a91d8483017ad71455bb2958993}{)};
+00810                 \textcolor{keywordtype}{float} vel[4], velw[4], pos[4], posw[4];
+00811                 vel[0] = 0.0f;
+00812                 vel[1] = 0.0f;
+00813                 vel[2] = -0.05f;
+00814                 vel[3] = 0.0f;
+00815                 ixform(vel, velw, modelView);
+00816 
+00817                 pos[0] = 0.0f;
+00818                 pos[1] = 0.0f;
+00819                 pos[2] = -2.5f;
+00820                 pos[3] = 1.0;
+00821                 ixformPoint(pos, posw, modelView);
+00822                 posw[3] = 0.0f;
+00823 
+00824                 \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{->}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{addSphere}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{(}0\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} posw\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} velw\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} 
+      \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr}\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{,} pr*2.0f\hyperlink{class_particle_system_af2f16676fe8a0523cfb867a9a856970c}{)};
+00825             \}
+00826             \textcolor{keywordflow}{break};
+00827 
+00828         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'w'}:
+00829             \hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{wireframe} = !\hyperlink{particles_8cpp_ac8b496246e368aadf73694ce0d5b8a06}{wireframe};
+00830             \textcolor{keywordflow}{break};
+00831 
+00832         \textcolor{keywordflow}{case} \textcolor{stringliteral}{'h'}:
+00833             \hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders} = !\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders};
+00834             \textcolor{keywordflow}{break};
+00835     \}
+00836 
+00837     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
+00838     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
+00839     glutPostRedisplay();
+00840 \}
+00841 
+\hypertarget{particles_8cpp_source_l00842}{}\hyperlink{particles_8cpp_ab838340d9e4833a685975205d9c8196a}{00842} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_ab838340d9e4833a685975205d9c8196a}{special}(\textcolor{keywordtype}{int} k, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y)
+00843 \{
+00844     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ac345a677e529047cf89d33fc26f10fe7}{displaySliders})
+00845     \{
+00846         params->Special(k, x, y);
+00847     \}
+00848 
+00849     \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{false};
+00850     \hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter} = 0;
+00851 \}
+00852 
+\hypertarget{particles_8cpp_source_l00853}{}\hyperlink{particles_8cpp_a01131b63acf241e9db91704d89ce15d2}{00853} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a01131b63acf241e9db91704d89ce15d2}{idle}(\textcolor{keywordtype}{void})
+00854 \{
+00855     \textcolor{keywordflow}{if} ((\hyperlink{particles_8cpp_a0c97fe3f7367dfa94ab0d5976ed785a8}{idleCounter}++ > \hyperlink{particles_8cpp_a31c6de3ed73dffc9492d9bca475d8525}{idleDelay}) && (\hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode}==\textcolor{keyword}{false}))
+00856     \{
+00857         \hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode} = \textcolor{keyword}{true};
+00858         printf(\textcolor{stringliteral}{"Entering demo mode\(\backslash\)n"});
+00859     \}
+00860 
+00861     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a9349b8b38abdf797b46a9e80020286e7}{demoMode})
+00862     \{
+00863         \hyperlink{particles_8cpp_a9fcb578cacbd3a3b1ab593fc123cffb5}{camera\_rot}[1] += 0.1f;
+00864 
+00865         \textcolor{keywordflow}{if} (\textcolor{keyword}{false} && \hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{demoCounter}++ > 1000)
+00866         \{
+00867             \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} = 10 + (rand() % 10);
+00868             \hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{addSphere}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{(}\hyperlink{particles_8cpp_a9872049f02ceefff37c3bd4f0f7b1891}{)};
+00869             \hyperlink{particles_8cpp_a969b56707854449ae3fb4847b563191f}{demoCounter} = 0;
+00870         \}
+00871     \}
+00872 
+00873     glutPostRedisplay();
+00874 \}
+00875 
+\hypertarget{particles_8cpp_source_l00876}{}\hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{00876} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{initParams}()
+00877 \{
+00878     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile} || \hyperlink{particles_8cpp_ab3d416d86e212881d0e37a4bc52e138e}{save})
+00879     \{
+00880         \textcolor{comment}{//timestep = 0.0f;}
+00881         \textcolor{comment}{//damping = 0.0f;}
+00882         \textcolor{comment}{//gravity = 0.0f;}
+00883         \hyperlink{particles_8cpp_a46d030c711d3073320681aafbb4c490b}{ballr} = 1;
+00884         \hyperlink{particles_8cpp_a3d02873abdeffa306da3e5580d94cd0e}{collideSpring} = 0.0f;
+00885         \hyperlink{particles_8cpp_adb598dfbf6a6ca7395c9ff264a5312e0}{collideDamping} = 0.0f;
+00886         \hyperlink{particles_8cpp_a5bc1804bc03a9aa78be10ae1b3b8f48b}{collideShear} = 0.0f;
+00887         \hyperlink{particles_8cpp_a58a3407fb69d0b188eb74b37b078629b}{collideAttraction} = 0.0f;
+00888 
+00889     \}
+00890     \textcolor{keywordflow}{else}
+00891     \{
+00892 
+00893         \textcolor{comment}{// create a new parameter list}
+00894         params = \textcolor{keyword}{new} ParamListGL(\textcolor{stringliteral}{"misc"});
+00895         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"time step"}, timestep, 0.0f, 0.002f, 0.00001f, &timestep));
+00896         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"liquid viscosity"}  , damping , 0.0f, 1.0f, 0.00001f, &
+      damping));
+00897         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"effective gravity"}  , gravity , 0.0f, 1.0f, 0.00001f, &
+      gravity));
+00898         \textcolor{comment}{//params->AddParam(new Param<float> ("A", A , 0.0f, 1.0f, 0.0001, &A));}
+00899                 params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"surface tension"}  , boundaryDamping , 0.0f, 2.0f, 
+      0.00001f, &boundaryDamping));
+00900                 params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"particle mass"}  , particleMass , 0.001f, 2.0f, 
+      0.00001f, &particleMass));
+00901                 params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"epsilon"}  , epsi , 0.0f, 1.0f, 0.00001f, &epsi));
+00902                 params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"brown"}  , brown , 0.0f, 0.5f, 0.00001f, &brown));
+00903 
+00904         \textcolor{comment}{//params->AddParam(new Param<float>("collide spring" , collideSpring , 0.0f, 1.0f, 0.001f,
+       &collideSpring));}
+00905         \textcolor{comment}{//params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f,
+       &collideDamping));}
+00906         \textcolor{comment}{//params->AddParam(new Param<float>("collide shear"  , collideShear  , 0.0f, 0.1f, 0.001f,
+       &collideShear));}
+00907         params->AddParam(\textcolor{keyword}{new} Param<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"Coulomb repulsion"}, collideAttraction, 0.0f, 0.01f, 
+      0.00001f, &collideAttraction));
+00908     \}
+00909 \}
+00910 
+\hypertarget{particles_8cpp_source_l00911}{}\hyperlink{particles_8cpp_ac623a05dc7ab8844bdf40dc55c124fc6}{00911} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_ac623a05dc7ab8844bdf40dc55c124fc6}{mainMenu}(\textcolor{keywordtype}{int} i)
+00912 \{
+00913     \hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{key}\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{(}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}) i\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{,} 0\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{,} 0\hyperlink{particles_8cpp_a09dcf1dc0fc67f47de1a59851fd7282e}{)};
+00914 \}
+00915 
+\hypertarget{particles_8cpp_source_l00916}{}\hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{00916} \textcolor{keywordtype}{void} \hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{initMenus}()
+00917 \{
+00918     glutCreateMenu(mainMenu);
+00919     glutAddMenuEntry(\textcolor{stringliteral}{"Reset block [1]"}, \textcolor{stringliteral}{'1'});
+00920     glutAddMenuEntry(\textcolor{stringliteral}{"Reset random [2]"}, \textcolor{stringliteral}{'2'});
+00921     glutAddMenuEntry(\textcolor{stringliteral}{"Add sphere [3]"}, \textcolor{stringliteral}{'3'});
+00922     glutAddMenuEntry(\textcolor{stringliteral}{"View mode [v]"}, \textcolor{stringliteral}{'v'});
+00923     glutAddMenuEntry(\textcolor{stringliteral}{"Move cursor mode [m]"}, \textcolor{stringliteral}{'m'});
+00924     glutAddMenuEntry(\textcolor{stringliteral}{"Toggle point rendering [p]"}, \textcolor{stringliteral}{'p'});
+00925     glutAddMenuEntry(\textcolor{stringliteral}{"Toggle animation [ ]"}, \textcolor{stringliteral}{' '});
+00926     glutAddMenuEntry(\textcolor{stringliteral}{"Step animation [ret]"}, 13);
+00927     glutAddMenuEntry(\textcolor{stringliteral}{"Toggle sliders [h]"}, \textcolor{stringliteral}{'h'});
+00928         glutAddMenuEntry(\textcolor{stringliteral}{"Reset time [0]"}, \textcolor{stringliteral}{'0'});
+00929         glutAddMenuEntry(\textcolor{stringliteral}{"Boundaries on/off [b]"}, \textcolor{stringliteral}{'b'});
+00930     glutAddMenuEntry(\textcolor{stringliteral}{"Quit (esc)"}, \textcolor{stringliteral}{'\(\backslash\)033'});
+00931     glutAttachMenu(GLUT\_RIGHT\_BUTTON);
+00932 \}
+00933 
+00934 \textcolor{comment}{////////////////////////////////////////////////////////////////////////////////}
+00935 \textcolor{comment}{// Program main}
+00936 \textcolor{comment}{////////////////////////////////////////////////////////////////////////////////}
+00937 \textcolor{keywordtype}{int}
+\hypertarget{particles_8cpp_source_l00938}{}\hyperlink{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{00938} \hyperlink{particles_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)
+00939 \{
+00940     printf(\textcolor{stringliteral}{"%s Starting...\(\backslash\)n\(\backslash\)n"}, \hyperlink{particles_8cpp_aa5924a75cb4cd299c96829772cc2f3cd}{sSDKsample});
+00941 
+00942     \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles} = \hyperlink{particles_8cpp_a75cbc112dce4b21c13fe7bb671accab1}{NUM\_PARTICLES};
+00943     \hyperlink{particles__kernel_8cuh_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} gridDim = \hyperlink{particles_8cpp_a08246606c233e7785a497c09672f366f}{GRID\_SIZE};
+00944     \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = 0;
+00945 
+00946     \textcolor{keywordflow}{if} (argc > 1)
+00947     \{
+00948 
+00949 
+00950                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"bigRadius0"}))
+00951         \{
+00952             bigRadius0 = getCmdLineArgumentFloat(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"bigRadius0"});
+00953                         bigRadius=bigRadius0;
+00954         \}
+00955 
+00956         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"n"}))
+00957         \{
+00958             numParticles = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"n"});
+00959         \}
+00960 
+00961                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"particleTypesNum"}))
+00962         \{
+00963             particleTypesNum = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"particleTypesNum"});
+00964         \}
+00965 
+00966         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"grid"}))
+00967         \{
+00968             gridDim = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"grid"});
+00969         \}
+00970 
+00971         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"file"}))
+00972         \{
+00973             getCmdLineArgumentString(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"file"}, &g\_refFile);
+00974             fpsLimit = frameCheckNumber;
+00975             numIterations = 1;
+00976         \}
+00977 
+00978                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"save"}))
+00979         \{
+00980             getCmdLineArgumentString(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"save"}, &save);
+00981                         fpsLimit = frameCheckNumber;
+00982             numIterations = 1;
+00983                         \textcolor{keywordflow}{if}(!g\_refFile)
+00984                         \{
+00985                                 g\_refFile=save;
+00986                         \}
+00987         \}
+00988 
+00989                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"timestep"}))
+00990         \{
+00991             timestep = getCmdLineArgumentFloat(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"timestep"});
+00992                         \textcolor{comment}{//printf("flag timestep set to: %f\(\backslash\)n",timestep);}
+00993         \}
+00994                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"epsi"}))
+00995         \{
+00996             epsi = getCmdLineArgumentFloat(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"epsi"});
+00997         \}
+00998                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"damping"}))
+00999         \{
+01000             damping = getCmdLineArgumentFloat(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"damping"});
+01001         \}
+01002                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"boundaryDamping"}))
+01003         \{
+01004             boundaryDamping = getCmdLineArgumentFloat(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"boundaryDamping"});
+01005         \}
+01006                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"particleMass"}))
+01007         \{
+01008             particleMass = getCmdLineArgumentFloat(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"particleMass"});
+01009         \}
+01010                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"gravity"}))
+01011         \{
+01012             gravity = getCmdLineArgumentFloat(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"gravity"});
+01013         \}
+01014                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"A"}))
+01015         \{
+01016             \hyperlink{particles_8cpp_a955f504eccf76b4eb2489c0adab03121}{A} = getCmdLineArgumentFloat(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"A"});
+01017         \}
+01018                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"brown"}))
+01019         \{
+01020             brown = getCmdLineArgumentFloat(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"brown"});
+01021                         \textcolor{comment}{//printf("brown: %f",brown);}
+01022         \}
+01023                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"bQuality"}))
+01024                 \{
+01025                         brownQuality = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"bQuality"});
+01026                 \}
+01027                 \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"help"}))
+01028         \{
+01029             printf(\textcolor{stringliteral}{"cmd line\(\backslash\)n"});
+01030             printf(\textcolor{stringliteral}{"particles -nazwaParametru=liczba\(\backslash\)n"});
+01031             printf(\textcolor{stringliteral}{"np:\(\backslash\)n"});
+01032             printf(\textcolor{stringliteral}{"particles -bigRadius0=0.1 \(\backslash\)n"});
+01033             printf(\textcolor{stringliteral}{"bigRadius0 -początkowy promień kropli\(\backslash\)n"});
+01034             printf(\textcolor{stringliteral}{"n -liczba cząstek\(\backslash\)n"});
+01035             printf(\textcolor{stringliteral}{"grid -rozmiar gridu\(\backslash\)n"});
+01036             printf(\textcolor{stringliteral}{"file -nazwa pliku do porównania z wynikiem\(\backslash\)n"});
+01037             printf(\textcolor{stringliteral}{"timestep -krok czasu\(\backslash\)n"});
+01038             printf(\textcolor{stringliteral}{"benchmark -obliczenia bez GUI, pokazuje wydajnoœæ\(\backslash\)n"});
+01039             printf(\textcolor{stringliteral}{"i -liczba kroków\(\backslash\)n"});
+01040             printf(\textcolor{stringliteral}{"device -wybór GPU\(\backslash\)n"});
+01041             printf(\textcolor{stringliteral}{"epsi -epsilon w sile Lenarda-Jonesa\(\backslash\)n"});
+01042             printf(\textcolor{stringliteral}{"damping -lepkość\(\backslash\)n"});
+01043             printf(\textcolor{stringliteral}{"boundaryDamping -napięcie powierchniowe\(\backslash\)n"});
+01044             printf(\textcolor{stringliteral}{"particleMass -masa cząstki\(\backslash\)n"});
+01045             printf(\textcolor{stringliteral}{"gravity -grawitacja\(\backslash\)n"});
+01046                         printf(\textcolor{stringliteral}{"save -zapis do pliku\(\backslash\)n"});
+01047                         printf(\textcolor{stringliteral}{"A -stała parowania kropli\(\backslash\)n"});
+01048                         printf(\textcolor{stringliteral}{"particleTypesNum -ilość rodzjów cząstek\(\backslash\)n"});
+01049                         printf(\textcolor{stringliteral}{"bQuality -liczba naturalna\(\backslash\)n"});
+01050                         printf(\textcolor{stringliteral}{"brown -mnożnik róchów Browna\(\backslash\)n"});
+01051                         printf(\textcolor{stringliteral}{"multiColor -losowe kolory kulek\(\backslash\)n"});
+01052             printf(\textcolor{stringliteral}{"help\(\backslash\)n"});
+01053 
+01054         \}
+01055     \}
+01056 
+01057     gridSize.x = gridSize.y = gridSize.z = gridDim;
+01058     printf(\textcolor{stringliteral}{"grid: %d x %d x %d = %d cells\(\backslash\)n"}, gridSize.x, gridSize.y, gridSize.z, gridSize.x*gridSize.
+      y*gridSize.z);
+01059     printf(\textcolor{stringliteral}{"particles: %d\(\backslash\)n"}, \hyperlink{particles_8cpp_a05b8a90212054a3eb1a036ae0c269596}{numParticles});
+01060 
+01061     \textcolor{keywordtype}{bool} benchmark = checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"benchmark"}) != 0;
+01062         multiColor = checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"multiColor"}) != 0;
+01063 
+01064     \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"i"}))
+01065     \{
+01066         numIterations = getCmdLineArgumentInt(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **) argv, \textcolor{stringliteral}{"i"});
+01067     \}
+01068     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile} || \hyperlink{particles_8cpp_ab3d416d86e212881d0e37a4bc52e138e}{save})
+01069     \{
+01070         \hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{cudaInit}\hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{(}argc\hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{,} argv\hyperlink{particle_system_8cuh_ad205012a960928f6fb61ea4f51a95e9f}{)};
+01071     \}
+01072     \textcolor{keywordflow}{else}
+01073     \{
+01074         \textcolor{keywordflow}{if} (checkCmdLineFlag(argc, (\textcolor{keyword}{const} \textcolor{keywordtype}{char} **)argv, \textcolor{stringliteral}{"device"}))
+01075         \{
+01076             printf(\textcolor{stringliteral}{"[%s]\(\backslash\)n"}, argv[0]);
+01077             printf(\textcolor{stringliteral}{"   Does not explicitly support -device=n in OpenGL mode\(\backslash\)n"});
+01078             printf(\textcolor{stringliteral}{"   To use -device=n, the sample must be running w/o OpenGL\(\backslash\)n\(\backslash\)n"});
+01079             printf(\textcolor{stringliteral}{" > %s -device=n -file=<*.bin>\(\backslash\)n"}, argv[0]);
+01080             printf(\textcolor{stringliteral}{"exiting...\(\backslash\)n"});
+01081             exit(EXIT\_SUCCESS);
+01082         \}
+01083 
+01084         \hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{initGL}\hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{(}&argc\hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{,} argv\hyperlink{particles_8cpp_a0365f63f071ee9e32dddb2ff65c7628d}{)};
+01085         \hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{cudaGLInit}\hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{(}argc\hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{,} argv\hyperlink{particles_8cpp_a4e20ffdf94c8d60a5c32ecde149c8554}{)};
+01086     \}
+01087 
+01088         \textcolor{comment}{//printf("timestep: %f\(\backslash\)n",timestep);}
+01089 
+01090     initParticleSystem(numParticles, gridSize, g\_refFile==NULL);
+01091     \hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{initParams}\hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{(}\hyperlink{particles_8cpp_adf670f569f3be8036b915a6245caf9da}{)};
+01092 
+01093     \textcolor{keywordflow}{if} (!\hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile})
+01094     \{
+01095         \hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{initMenus}\hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{(}\hyperlink{particles_8cpp_a4f6bd2fa19ee682aad97e42cc236a861}{)};
+01096     \}
+01097 
+01098     \textcolor{keywordflow}{if} (benchmark || \hyperlink{particles_8cpp_ab5af5d243ea25a0fa19984c0f69af840}{g\_refFile} || \hyperlink{particles_8cpp_ab3d416d86e212881d0e37a4bc52e138e}{save})
+01099     \{
+01100         \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} <= 0)
+01101         \{
+01102             \hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations} = 300;
+01103         \}
+01104 
+01105                 \textcolor{comment}{//printf("timestep: %f\(\backslash\)n",timestep);}
+01106 
+01107         \hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{runBenchmark}\hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{(}\hyperlink{particles_8cpp_ad026ebba8c4123cf7b82751c88761f31}{numIterations}\hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{,} argv[0]\hyperlink{particles_8cpp_acd4773d821b4657197abdd8058000f56}{)};
+01108     \}
+01109     \textcolor{keywordflow}{else}
+01110     \{
+01111         glutDisplayFunc(display);
+01112         glutReshapeFunc(reshape);
+01113         glutMouseFunc(mouse);
+01114         glutMotionFunc(motion);
+01115         glutKeyboardFunc(key);
+01116         glutSpecialFunc(special);
+01117         glutIdleFunc(idle);
+01118 
+01119         atexit(\hyperlink{particles_8cpp_a4b66d5e31b5dc18b314c8a68163263bd}{cleanup});
+01120 
+01121         glutMainLoop();
+01122     \}
+01123 
+01124     \textcolor{keywordflow}{if} (\hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem})
+01125     \{
+01126         \textcolor{keyword}{delete} \hyperlink{particles_8cpp_a6fa81770b30ecffc7110864e64fe4fc5}{psystem};
+01127     \}
+01128 
+01129     cudaDeviceReset();
+01130     exit(\hyperlink{particles_8cpp_abd87357eda7bf4b5fc32058a0cccd57b}{g\_TotalErrors} > 0 ? EXIT\_FAILURE : EXIT\_SUCCESS);
+01131 \}
 \end{DoxyCode}

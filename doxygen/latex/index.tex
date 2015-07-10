@@ -5,4 +5,112 @@
 \item Potem cząstki dzielone są na komurki według ich położenia.
 \item Dla każdej cząstki wyliczana jest siła jaka na nią zadziała. Składa się ona ze zderzeń ze wszystkimi cząstkami w zasięgu, muszą one być w tej samej komurce, albo w sąsiedniej.
 \item Prędkość jest wyliczana z poprzedniej prękości i siły. 
-\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{index_linki_do_fizyki}{}\section{Linki do fizyki}\label{index_linki_do_fizyki}
+\href{http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html}{\tt http\-://www.\-cchem.\-berkeley.\-edu/chem195/\-\_\-l\-\_\-j\-\_\-\-\_\-\-\_\-force\-\_\-short\-\_\-8m.\-html} \href{http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf}{\tt http\-://phys.\-ubbcluj.\-ro/$\sim$tbeu/\-M\-D/\-C2\-\_\-for.\-pdf} \href{http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html}{\tt http\-://www2.\-physics.\-umd.\-edu/$\sim$alaporta/\-Lennard-\/\-Jones.\-html} \href{http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf}{\tt http\-://www.\-fis.\-agh.\-edu.\-pl/$\sim$\-Burda//\-N\-E\-W\-S/\-Informacje\%20dla\%20wszystkich/\-Cwiczenie\-A\-F\-M.\-pdf} \href{http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions}{\tt http\-://en.\-wikipedia.\-org/wiki/\-Lennard-\/\-Jones\-\_\-potential\#\-Alternative\-\_\-expressions} $<$$<$$<$$<$$<$$<$$<$ H\-E\-A\-D \hypertarget{index_Repozytorium}{}\section{Repozytorium}\label{index_Repozytorium}
+\href{https://github.com/sigrond/particles/tree/spica}{\tt https\-://github.\-com/sigrond/particles/tree/spica} \hypertarget{index_READMEs}{}\section{R\-E\-A\-D\-M\-Es}\label{index_READMEs}
+\hypertarget{index_parametry_uruchamiania}{}\subsection{Parametry Uruchamiania}\label{index_parametry_uruchamiania}
+
+\begin{DoxyVerbInclude}
+cmd line
+particles -nazwaParametru=liczba
+
+np:
+particles -bigRadius0=0.1
+bigRadius0 -początkowy promień kropli
+n -ilość cząstek
+grid -rozmiar gridu
+file -nazwa pliku do porównania z wynikiem
+timestep -krok czasu
+benchmark -obliczenia bez GUI, pokazuje wydajność
+i -ilość kroków
+device -wybór GPU
+epsi -epsilon w sile lenarda jonesa
+damping -lepkość
+boundaryDamping -napięcie powierchniowe
+particleMass -masa cząstki
+gravity -grawitacja
+help
+\end{DoxyVerbInclude}
+ \hypertarget{index_oryginalny_readme}{}\subsection{Oryginalny Readme}\label{index_oryginalny_readme}
+
+\begin{DoxyVerbInclude}
+Sample: Particles
+Minimum spec: GeForce 8
+
+This sample uses CUDA to simulate and visualize a large set of particles and their physical interaction.  Adding "-particles=<N>" to the command line will allow users to set # of particles for simulation.  This example implements a uniform grid data structure using either atomic operations or a fast radix sort from the Thrust library
+
+Key concepts:
+\end{DoxyVerbInclude}
+ \hypertarget{index_koncepcja_symulowania_roznych_czastek}{}\subsection{Koncepcja symulowania różnych cząstek}\label{index_koncepcja_symulowania_roznych_czastek}
+
+\begin{DoxyVerbInclude}
+	Autor: Tomasz Jakubczyk
+Plan dodania obsługi wielu rodzajów cząstek na raz
+
+
+	Koncepcja:
+
+Żeby oszczędzać wykożystywaną pamięć karty graficznej zauważam, że całe float4 jest ładowane do pamieci.
+4 pozycja zawsze zawiera 1, które jest potrzebne do transformacji GL w postaci znormalizowanej.
+Oryginalnie kopiowana jest cała tablica float4 do karty graficznej mimo, że co 4 float jest tam zbędny,
+jest to spowodowane tym, że kod kopiowania między pamięciami jest prostszy i nie trzeba wykonywać dodatkowych
+operacji zsuwania i rozsuwania pamięci.
+W efekcie w pamięci karty sę niewykożystywane pozycje zawierające 1.
+Chcę to wykożystać;
+ponumeruję rodzaje cząstek i przed skopiowaniem do karty będę przypisywł na 4 pozycję każdej cząstce
+numer jej rodzaju, a przy wczytywaniu do głównej pamięci RAM dla GL'a będę te numery zapisywał
+do osobnej tablicy i przed wykonywaniem przekształceń GL 4 pozycje zapełnie 1.
+
+
+	Modyfikacje funkcji:
+
+Plik particles_kernel_impl.cuh
+
+operator() integrate_functor
+Informacja o rodzaju cząstki może być przechowywana w float4 posData
+w metodzie będzie trzeba uwzględnić, że cząstki mają różne promienie (params.particleRadius).
+
+collideSpheres
+Argumenty funkcji float3 należy zamienić na float4 ponieważ w tej funkcji obliczane są siły działające
+na cząstki podczas zderzenia.
+
+collideCell
+Argument pos funkcji zmienić z float3 na float4.
+Potrzebne są informacje o rodzaju obu cząstek i należy je uwzględnić; szczególnie różne promienie.
+Odpowiednio zmodyfikować wywołanie collideSpheres.
+
+collideD
+Odpowiednio zmodyfikować wywołanie collideCell.
+Uwzględnić masę cząstki zależną od jej rodzaju przy wyliczaniu nowej prędkości.
+
+particles_kernel.cuh
+
+SimParams
+Zmienić parametry cząstek float (particleRadius, particleMass) na tablice float i odwoływać się do nich
+przez numer typu cząstki.
+
+particleSystem.cpp
+
+Chyba gdzieś w tym pliku trzeba zadbać o zamiany 1 z numerem typu cząstki.
+
+ParticleSystem::ParticleSystem
+Ustalić parametry cząstek dla różnych typów.
+Dobrze by było wcześniej mieć vector z parametrami typów cząstek.
+
+ParticleSystem::initGrid, ParticleSystem::reset
+Losować typ cząstki z dostępnych.
+Powinna tu wkroczyć tablica z przypisanymi typami do cząstek.
+
+ParticleSystem::particleType
+Ustalić, czy to dobry pomysł i zintegrować z resztą.
+
+ParticleSystem::update
+Tu jest połączenie sterowania CUDA i GL.
+Należy zadbać, żeby przełączanie 1 do normalizacji z numerem typu cząstki przebiegało w właściwej kolejności.
+
+particles.cpp
+
+Zadbać o ustalenie na początku symulacji ile będzie typów cząstek i jakie one będą.
+
+\end{DoxyVerbInclude}
+ 

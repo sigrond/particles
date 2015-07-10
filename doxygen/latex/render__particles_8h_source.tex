@@ -23,7 +23,7 @@
 00019         ~\hyperlink{class_particle_renderer_a281be31ad850fead012460fb6675db98}{ParticleRenderer}();
 00020 
 00021         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_adb3204e8af23a65b05b1aca7f43f0430}{setPositions}(\textcolor{keywordtype}{float} *pos, \textcolor{keywordtype}{int} numParticles);
-00022         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{setVertexBuffer}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vbo, \textcolor{keywordtype}{int} numParticles);
+00022         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{setVertexBuffer}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vbo, \textcolor{keywordtype}{int} numParticles, \textcolor{keywordtype}{float} zoom);
 \hypertarget{render__particles_8h_source_l00023}{}\hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{00023}         \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer_af16e23ebcee20753d86d24e4e5e32c7c}{setColorBuffer}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vbo)
 00024         \{
 00025             m\_colorVBO = vbo;
@@ -71,12 +71,13 @@
 \hypertarget{render__particles_8h_source_l00066}{}\hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{00066}         \textcolor{keywordtype}{float} \hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{m\_particleRadius};
 \hypertarget{render__particles_8h_source_l00067}{}\hyperlink{class_particle_renderer_a0aed003bd557a3c32ca7d2ca89fc59f7}{00067}         \textcolor{keywordtype}{float} \hyperlink{class_particle_renderer_a0aed003bd557a3c32ca7d2ca89fc59f7}{m\_fov};
 \hypertarget{render__particles_8h_source_l00068}{}\hyperlink{class_particle_renderer_aa71b7eba5d5665a086b7ba80adddf19b}{00068}         \textcolor{keywordtype}{int} \hyperlink{class_particle_renderer_aa71b7eba5d5665a086b7ba80adddf19b}{m\_window\_w}, \hyperlink{class_particle_renderer_af34b1e93f6a7f22774a6473c52027d77}{m\_window\_h};
-00069 
-\hypertarget{render__particles_8h_source_l00070}{}\hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{00070}         \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{GLuint} \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program};
-00071 
-\hypertarget{render__particles_8h_source_l00072}{}\hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{00072}         \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{GLuint} \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{m\_vbo};
-\hypertarget{render__particles_8h_source_l00073}{}\hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{00073}         \hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{GLuint} \hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{m\_colorVBO};
-00074 \};
-00075 
-00076 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif} \textcolor{comment}{//\_\_ RENDER\_PARTICLES\_\_}
+\hypertarget{render__particles_8h_source_l00069}{}\hyperlink{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{00069}                 \textcolor{keywordtype}{float} \hyperlink{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{zoom};
+00070 
+\hypertarget{render__particles_8h_source_l00071}{}\hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{00071}         \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{GLuint} \hyperlink{class_particle_renderer_ab8f0dd1a6e0f4401012bd46ae8940648}{m\_program};
+00072 
+\hypertarget{render__particles_8h_source_l00073}{}\hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{00073}         \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{GLuint} \hyperlink{class_particle_renderer_a7549feaa0982abbc44c9fe73f2eb251f}{m\_vbo};
+\hypertarget{render__particles_8h_source_l00074}{}\hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{00074}         \hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{GLuint} \hyperlink{class_particle_renderer_a7dcaa73a41c598207974432206b423b5}{m\_colorVBO};
+00075 \};
+00076 
+00077 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif} \textcolor{comment}{//\_\_ RENDER\_PARTICLES\_\_}
 \end{DoxyCode}

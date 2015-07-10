@@ -2,13 +2,8 @@
 <area shape="rect" id="node2" href="$class_particle_system.html#a722bdb7cc940f052400a69fe9569a49e" title="ParticleSystem::dumpGrid" alt="" coords="217,5,391,32"/>
 <area shape="rect" id="node5" href="$class_particle_system.html#a9025f319e07c58c6ece1cd2a620ce33a" title="ParticleSystem::dumpParticles" alt="" coords="203,56,405,83"/>
 <area shape="rect" id="node6" href="$class_particle_system.html#a8bdfaa6198651ef0ceb8be489ecd78e3" title="ParticleSystem::getArray" alt="" coords="220,107,388,133"/>
-<<<<<<< HEAD
 <area shape="rect" id="node7" href="$particles_8cpp.html#acd4773d821b4657197abdd8058000f56" title="uruchomienie symulacji bez GUI z zapisem wyniku " alt="" coords="251,157,357,184"/>
 <area shape="rect" id="node3" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="obsługa zdarzeń klawiszy i opcji z menu " alt="" coords="457,31,500,57"/>
-=======
-<area shape="rect" id="node7" href="$particles_8cpp.html#acd4773d821b4657197abdd8058000f56" title="runBenchmark" alt="" coords="251,157,357,184"/>
-<area shape="rect" id="node3" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="key" alt="" coords="457,31,500,57"/>
->>>>>>> master
 <area shape="rect" id="node4" href="$particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="552,31,635,57"/>
 <area shape="rect" id="node8" href="$particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="453,157,504,184"/>
 </map>

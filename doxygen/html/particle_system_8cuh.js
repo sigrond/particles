@@ -2,11 +2,7 @@ var particle_system_8cuh =
 [
     [ "allocateArray", "particle_system_8cuh.html#aee51e01a5233e0fda578bd5b3bc38e8f", null ],
     [ "calcHash", "particle_system_8cuh.html#ae0a4037d25e768622443077546399cf2", null ],
-<<<<<<< HEAD
     [ "collide", "particle_system_8cuh.html#ad9d704d76ddff93e75ca7d39f57bbced", null ],
-=======
-    [ "collide", "particle_system_8cuh.html#a917d67e2ed45ea11da51ac5d7004ddfd", null ],
->>>>>>> master
     [ "copyArrayFromDevice", "particle_system_8cuh.html#a54716407dbd516db34f42b2faf7f91a3", null ],
     [ "copyArrayToDevice", "particle_system_8cuh.html#ac4d4ecd921dbed6c2deef639ca295374", null ],
     [ "cudaInit", "particle_system_8cuh.html#ad205012a960928f6fb61ea4f51a95e9f", null ],

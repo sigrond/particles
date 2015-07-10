@@ -1,16 +1,8 @@
 <map id="ParticleSystem::getNumParticles" name="ParticleSystem::getNumParticles">
-<<<<<<< HEAD
 <area shape="rect" id="node2" href="$particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="505,69,567,96"/>
 <area shape="rect" id="node3" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="obsługa zdarzeń klawiszy i opcji z menu " alt="" coords="330,5,373,32"/>
 <area shape="rect" id="node5" href="$particles_8cpp.html#ad38a0dbec46194a94a86cfa6416ce48f" title="sterowanie parowaniem kropli " alt="" coords="268,107,435,133"/>
 <area shape="rect" id="node6" href="$particles_8cpp.html#acd4773d821b4657197abdd8058000f56" title="uruchomienie symulacji bez GUI z zapisem wyniku " alt="" coords="483,145,589,172"/>
 <area shape="rect" id="node4" href="$particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="495,5,577,32"/>
 <area shape="rect" id="node7" href="$particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="637,145,688,172"/>
-=======
-<area shape="rect" id="node2" href="$particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="display" alt="" coords="290,5,353,32"/>
-<area shape="rect" id="node3" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="key" alt="" coords="300,56,343,83"/>
-<area shape="rect" id="node5" href="$particles_8cpp.html#acd4773d821b4657197abdd8058000f56" title="runBenchmark" alt="" coords="268,107,375,133"/>
-<area shape="rect" id="node4" href="$particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="423,56,505,83"/>
-<area shape="rect" id="node6" href="$particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="439,107,489,133"/>
->>>>>>> master
 </map>

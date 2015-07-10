@@ -19,7 +19,6 @@
     - replaced sort function with latest radix sort, now disables v-sync.
     - added support for automated testing and comparison to a reference value.
 */
-<<<<<<< HEAD
 
 /** \file particles.cpp
  * \brief Główny plik projektu.
@@ -27,8 +26,6 @@
  */
 
 
-=======
->>>>>>> master
 /** \mainpage Cząstki
  * \section Opis_Ogólny Opis Ogólny
  * - Najpierw wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.
@@ -38,11 +35,7 @@
  * Składa się ona ze zderzeń ze wszystkimi cząstkami w zasięgu,
  * muszą one być w tej samej komurce, albo w sąsiedniej.
  * - Prędkość jest wyliczana z poprzedniej prękości i siły.
-<<<<<<< HEAD
  * \section linki_do_fizyki Linki do fizyki
-=======
- * \intersection
->>>>>>> master
  http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html
  http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf
  http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html
@@ -60,11 +53,6 @@
  * \verbinclude readme3.txt
  */
 
-=======
- */
-
-
->>>>>>> master
 // OpenGL Graphics includes
 #include <GL/glew.h>
 #if defined (_WIN32)
@@ -99,11 +87,7 @@
 #define THRESHOLD         0.30f
 
 #define GRID_SIZE       64
-<<<<<<< HEAD
 #define NUM_PARTICLES   512
-=======
-#define NUM_PARTICLES   4096
->>>>>>> master
 
 const uint width = 640, height = 480;
 
@@ -115,23 +99,16 @@ float camera_rot[]   = {0, 0, 0};
 float camera_trans_lag[] = {0, 0, -3};
 float camera_rot_lag[] = {0, 0, 0};
 const float inertia = 0.1f;
-<<<<<<< HEAD
 /** \var zoom
  * \brief powiększenie
  */
 float zoom=1.0f;
-=======
->>>>>>> master
 ParticleRenderer::DisplayMode displayMode = ParticleRenderer::PARTICLE_SPHERES;
 
 int mode = 0;
 bool displayEnabled = true;
 bool bPause = false;
-<<<<<<< HEAD
 bool displaySliders = true;
-=======
-bool displaySliders = false;
->>>>>>> master
 bool wireframe = false;
 bool demoMode = false;
 int idleCounter = 0;
@@ -145,7 +122,6 @@ uint3 gridSize;
 int numIterations = 0; // run until exit
 
 // simulation parameters
-<<<<<<< HEAD
 /** \var timestep
  * \brief krok czasu
  */
@@ -154,15 +130,10 @@ float timestep = 0.0f;//0.5f;
  * \brief lepkość
  */
 float damping = 0.99f;//0.08f;//global damping
-=======
-float timestep = 1.0f;//0.5f;
-float damping = 1.0f;
->>>>>>> master
 float gravity = 0.0f;//0.0003f;
 int iterations = 1;
 int ballr = 10;
 
-<<<<<<< HEAD
 /** \var boundaryDamping
  * \brief współczynnik oddziaływania z brzegami
  */
@@ -184,14 +155,11 @@ unsigned long long int brownQuality=10;
 
 int particleTypesNum=1;
 
-=======
->>>>>>> master
 float collideSpring = 0.5f;;
 float collideDamping = 0.02f;;
 float collideShear = 0.1f;
 float collideAttraction = 0.1f;
 
-<<<<<<< HEAD
 /** \var bigRadius
  * \brief promien duzej kuli w mikronach
  */
@@ -213,14 +181,6 @@ unsigned long long int licznik=0;
 long double time_past=0.0;
 
 extern bool multiColor=false;
-=======
-float bigRadius=2.0f;//promien duzej kuli
-float bigRadius0=bigRadius;//poczatkowy promien duzej kuli
-float kurczenie=0.01;//A r=r0-A*sqrt(t)
-#define A kurczenie
-unsigned long long int licznik=0;
-long double time_past=0;
->>>>>>> master
 
 ParticleSystem *psystem = 0;
 
@@ -241,11 +201,8 @@ unsigned int frameCount = 0;
 unsigned int g_TotalErrors = 0;
 char        *g_refFile = NULL;
 
-<<<<<<< HEAD
 char* save=NULL;
 
-=======
->>>>>>> master
 const char *sSDKsample = "CUDA Particles Simulation";
 
 extern "C" void cudaInit(int argc, char **argv);
@@ -253,7 +210,6 @@ extern "C" void cudaGLInit(int argc, char **argv);
 extern "C" void copyArrayFromDevice(void *host, const void *device, unsigned int vbo, int size);
 
 // initialize particle system
-<<<<<<< HEAD
 /** \brief initialize particle system
  * ustawienia początkowe i utworzenie obiektu systemu cząstek
  * \param numParticles int ilość cząstek
@@ -269,12 +225,6 @@ void initParticleSystem(int numParticles, uint3 gridSize, bool bUseOpenGL)
     //psystem->reset(ParticleSystem::CONFIG_GRID);
 	psystem->reset(ParticleSystem::CONFIG_RANDOM);
 	psystem->setBrownQuality(brownQuality);
-=======
-void initParticleSystem(int numParticles, uint3 gridSize, bool bUseOpenGL)
-{
-    psystem = new ParticleSystem(numParticles, gridSize, bUseOpenGL);
-    psystem->reset(ParticleSystem::CONFIG_GRID);
->>>>>>> master
 
     if (bUseOpenGL)
     {
@@ -292,14 +242,11 @@ void cleanup()
 }
 
 // initialize OpenGL
-<<<<<<< HEAD
 /** \brief initialize OpenGL
  * \param argc int*
  * \param argv char**
  * \return void
  */
-=======
->>>>>>> master
 void initGL(int *argc, char **argv)
 {
     glutInit(argc, argv);
@@ -331,7 +278,6 @@ void initGL(int *argc, char **argv)
     glutReportErrors();
 }
 
-<<<<<<< HEAD
 /** \brief sterowanie parowaniem kropli
  * \return void
  */
@@ -357,14 +303,11 @@ void parowanieKropliWCzasie()
  * \param exec_path char* ścieżka do aktualnego katalogu
  * \return void
  */
-=======
->>>>>>> master
 void runBenchmark(int iterations, char *exec_path)
 {
     printf("Run %u particles simulation for %d iterations...\n\n", numParticles, iterations);
     cudaDeviceSynchronize();
     sdkStartTimer(&timer);
-<<<<<<< HEAD
     psystem->setDamping(damping);
     psystem->setGravity(-gravity);
 	psystem->setBoundaryDamping(-boundaryDamping);
@@ -409,13 +352,6 @@ void runBenchmark(int iterations, char *exec_path)
 	{
 		fclose(f);
 	}
-=======
-
-    for (int i = 0; i < iterations; ++i)
-    {
-        psystem->update(timestep);
-    }
->>>>>>> master
 
     cudaDeviceSynchronize();
     sdkStopTimer(&timer);
@@ -441,12 +377,9 @@ void runBenchmark(int iterations, char *exec_path)
     }
 }
 
-<<<<<<< HEAD
 /** \brief liczenie i wypisnie danych na pasku
  * \return void
  */
-=======
->>>>>>> master
 void computeFPS()
 {
     frameCount++;
@@ -456,11 +389,7 @@ void computeFPS()
     {
         char fps[256];
         float ifps = 1.f / (sdkGetAverageTimerValue(&timer) / 1000.f);
-<<<<<<< HEAD
         sprintf(fps, "CUDA Particles (%d particles): %3.1f fps, r:%f, R:%f, i:%llu, T:%Lf", numParticles, ifps, psystem->getParticleRadius(), bigRadius, licznik, time_past);
-=======
-        sprintf(fps, "CUDA Particles (%d particles): %3.1f fps", numParticles, ifps);
->>>>>>> master
 
         glutSetWindowTitle(fps);
         fpsCount = 0;
@@ -470,12 +399,9 @@ void computeFPS()
     }
 }
 
-<<<<<<< HEAD
 /** \brief funkcja odpowiadająca za symulację z włączonym GUI
  * \return void
  */
-=======
->>>>>>> master
 void display()
 {
     sdkStartTimer(&timer);
@@ -490,31 +416,18 @@ void display()
         psystem->setCollideDamping(collideDamping);
         psystem->setCollideShear(collideShear);
         psystem->setCollideAttraction(collideAttraction);
-<<<<<<< HEAD
 		psystem->setBoundaryDamping(-boundaryDamping);
 		psystem->setParticleMass(particleMass);
 		psystem->setEpsi(epsi);
 		psystem->setBrown(brown);
 
 		parowanieKropliWCzasie();
-=======
-
-		licznik++;
-		time_past+=timestep;
-		//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
-		bigRadius=bigRadius0-A*sqrt(time_past);
-		psystem->setBigRadius(bigRadius);
->>>>>>> master
 
         psystem->update(timestep);
 
         if (renderer)
         {
-<<<<<<< HEAD
             renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles(), zoom);
-=======
-            renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles());
->>>>>>> master
         }
     }
 
@@ -535,7 +448,6 @@ void display()
     glRotatef(camera_rot_lag[0], 1.0, 0.0, 0.0);
     glRotatef(camera_rot_lag[1], 0.0, 1.0, 0.0);
 
-<<<<<<< HEAD
 	glScalef(zoom, zoom, zoom);
 
     glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
@@ -564,19 +476,6 @@ void display()
     //float3 p = psystem->getColliderPos();
     //glTranslatef(p.x, p.y, p.z);
 	//glScalef(zoom, zoom, zoom);
-=======
-    glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
-
-    // cube -> sphere
-    glColor3f(1.0, 1.0, 1.0);
-    //glutWireCube(2.0);
-	glutWireSphere(bigRadius, 20, 10);
-
-    // collider
-    glPushMatrix();
-    float3 p = psystem->getColliderPos();
-    glTranslatef(p.x, p.y, p.z);
->>>>>>> master
     //glColor3f(1.0, 0.0, 0.0);
     //glutSolidSphere(psystem->getColliderRadius(), 20, 10);
     glPopMatrix();
@@ -609,12 +508,9 @@ inline float frand()
     return rand() / (float) RAND_MAX;
 }
 
-<<<<<<< HEAD
 /** \brief wstawianie kuli cząstek na życzenie
  * \return void
  */
-=======
->>>>>>> master
 void addSphere()
 {
     // inject a sphere of particles
@@ -649,7 +545,6 @@ void reshape(int w, int h)
     }
 }
 
-<<<<<<< HEAD
 /** \brief obsługa zdarzeń myszy
  * \param button int
  * \param state int
@@ -675,13 +570,6 @@ void mouse(int button, int state, int x, int y)
 		}
 	}
     else if (state == GLUT_DOWN)
-=======
-void mouse(int button, int state, int x, int y)
-{
-    int mods;
-
-    if (state == GLUT_DOWN)
->>>>>>> master
     {
         buttonState |= 1<<button;
     }
@@ -720,15 +608,12 @@ void mouse(int button, int state, int x, int y)
 }
 
 // transfrom vector by matrix
-<<<<<<< HEAD
 /** \brief transfrom vector by matrix
  * \param v float*
  * \param r float*
  * \param m GLfloat*
  * \return void
  */
-=======
->>>>>>> master
 void xform(float *v, float *r, GLfloat *m)
 {
     r[0] = v[0]*m[0] + v[1]*m[4] + v[2]*m[8] + m[12];
@@ -737,15 +622,12 @@ void xform(float *v, float *r, GLfloat *m)
 }
 
 // transform vector by transpose of matrix
-<<<<<<< HEAD
 /** \brief transform vector by transpose of matrix
  * \param v float*
  * \param r float*
  * \param m GLfloat*
  * \return void
  */
-=======
->>>>>>> master
 void ixform(float *v, float *r, GLfloat *m)
 {
     r[0] = v[0]*m[0] + v[1]*m[1] + v[2]*m[2];
@@ -783,11 +665,7 @@ void motion(int x, int y)
     switch (mode)
     {
         case M_VIEW:
-<<<<<<< HEAD
 			if (buttonState == 3)
-=======
-            if (buttonState == 3)
->>>>>>> master
             {
                 // left+middle = zoom
                 camera_trans[2] += (dy / 100.0f) * 0.5f * fabs(camera_trans[2]);
@@ -850,20 +728,16 @@ void motion(int x, int y)
 }
 
 // commented out to remove unused parameter warnings in Linux
-<<<<<<< HEAD
 /** \brief obsługa zdarzeń klawiszy i opcji z menu
  * \param key unsigned char
  * \param x int
  * \param y int
  * \return void
  */
-=======
->>>>>>> master
 void key(unsigned char key, int /*x*/, int /*y*/)
 {
     switch (key)
     {
-<<<<<<< HEAD
 		case '0':
 			time_past=0.0;
 			bigRadius=bigRadius0;
@@ -873,8 +747,6 @@ void key(unsigned char key, int /*x*/, int /*y*/)
 			psystem->setBoundaries(boundaries);
 			break;
 
-=======
->>>>>>> master
         case ' ':
             bPause = !bPause;
             break;
@@ -884,11 +756,7 @@ void key(unsigned char key, int /*x*/, int /*y*/)
 
             if (renderer)
             {
-<<<<<<< HEAD
                 renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles(), zoom);
-=======
-                renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles());
->>>>>>> master
             }
 
             break;
@@ -1007,19 +875,11 @@ void idle(void)
 
 void initParams()
 {
-<<<<<<< HEAD
     if (g_refFile || save)
     {
         //timestep = 0.0f;
         //damping = 0.0f;
         //gravity = 0.0f;
-=======
-    if (g_refFile)
-    {
-        timestep = 0.0f;
-        damping = 0.0f;
-        gravity = 0.0f;
->>>>>>> master
         ballr = 1;
         collideSpring = 0.0f;
         collideDamping = 0.0f;
@@ -1032,7 +892,6 @@ void initParams()
 
         // create a new parameter list
         params = new ParamListGL("misc");
-<<<<<<< HEAD
         params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.002f, 0.00001f, &timestep));
         params->AddParam(new Param<float>("liquid viscosity"  , damping , 0.0f, 1.0f, 0.00001f, &damping));
         params->AddParam(new Param<float>("effective gravity"  , gravity , 0.0f, 1.0f, 0.00001f, &gravity));
@@ -1046,17 +905,6 @@ void initParams()
         //params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));
         //params->AddParam(new Param<float>("collide shear"  , collideShear  , 0.0f, 0.1f, 0.001f, &collideShear));
         params->AddParam(new Param<float>("Coulomb repulsion", collideAttraction, 0.0f, 0.01f, 0.00001f, &collideAttraction));
-=======
-        params->AddParam(new Param<float>("time step", timestep, 0.0f, 1.0f, 0.01f, &timestep));
-        params->AddParam(new Param<float>("damping"  , damping , 0.0f, 1.0f, 0.001f, &damping));
-        params->AddParam(new Param<float>("gravity"  , gravity , 0.0f, 0.001f, 0.0001f, &gravity));
-        params->AddParam(new Param<int> ("ball radius", ballr , 1, 20, 1, &ballr));
-
-        params->AddParam(new Param<float>("collide spring" , collideSpring , 0.0f, 1.0f, 0.001f, &collideSpring));
-        params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));
-        params->AddParam(new Param<float>("collide shear"  , collideShear  , 0.0f, 0.1f, 0.001f, &collideShear));
-        params->AddParam(new Param<float>("collide attract", collideAttraction, 0.0f, 0.1f, 0.001f, &collideAttraction));
->>>>>>> master
     }
 }
 
@@ -1077,11 +925,8 @@ void initMenus()
     glutAddMenuEntry("Toggle animation [ ]", ' ');
     glutAddMenuEntry("Step animation [ret]", 13);
     glutAddMenuEntry("Toggle sliders [h]", 'h');
-<<<<<<< HEAD
 	glutAddMenuEntry("Reset time [0]", '0');
 	glutAddMenuEntry("Boundaries on/off [b]", 'b');
-=======
->>>>>>> master
     glutAddMenuEntry("Quit (esc)", '\033');
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
@@ -1100,7 +945,6 @@ main(int argc, char **argv)
 
     if (argc > 1)
     {
-<<<<<<< HEAD
 
 
 		if (checkCmdLineFlag(argc, (const char **) argv, "bigRadius0"))
@@ -1109,21 +953,16 @@ main(int argc, char **argv)
 			bigRadius=bigRadius0;
         }
 
-=======
->>>>>>> master
         if (checkCmdLineFlag(argc, (const char **) argv, "n"))
         {
             numParticles = getCmdLineArgumentInt(argc, (const char **)argv, "n");
         }
 
-<<<<<<< HEAD
 		if (checkCmdLineFlag(argc, (const char **) argv, "particleTypesNum"))
         {
             particleTypesNum = getCmdLineArgumentInt(argc, (const char **)argv, "particleTypesNum");
         }
 
-=======
->>>>>>> master
         if (checkCmdLineFlag(argc, (const char **) argv, "grid"))
         {
             gridDim = getCmdLineArgumentInt(argc, (const char **) argv, "grid");
@@ -1135,7 +974,6 @@ main(int argc, char **argv)
             fpsLimit = frameCheckNumber;
             numIterations = 1;
         }
-<<<<<<< HEAD
 
 		if (checkCmdLineFlag(argc, (const char **)argv, "save"))
         {
@@ -1214,8 +1052,6 @@ main(int argc, char **argv)
             printf("help\n");
 
         }
-=======
->>>>>>> master
     }
 
     gridSize.x = gridSize.y = gridSize.z = gridDim;
@@ -1223,20 +1059,13 @@ main(int argc, char **argv)
     printf("particles: %d\n", numParticles);
 
     bool benchmark = checkCmdLineFlag(argc, (const char **) argv, "benchmark") != 0;
-<<<<<<< HEAD
 	multiColor = checkCmdLineFlag(argc, (const char **) argv, "multiColor") != 0;
-=======
->>>>>>> master
 
     if (checkCmdLineFlag(argc, (const char **) argv, "i"))
     {
         numIterations = getCmdLineArgumentInt(argc, (const char **) argv, "i");
     }
-<<<<<<< HEAD
     if (g_refFile || save)
-=======
-    if (g_refFile)
->>>>>>> master
     {
         cudaInit(argc, argv);
     }
@@ -1256,11 +1085,8 @@ main(int argc, char **argv)
         cudaGLInit(argc, argv);
     }
 
-<<<<<<< HEAD
 	//printf("timestep: %f\n",timestep);
 
-=======
->>>>>>> master
     initParticleSystem(numParticles, gridSize, g_refFile==NULL);
     initParams();
 
@@ -1269,22 +1095,15 @@ main(int argc, char **argv)
         initMenus();
     }
 
-<<<<<<< HEAD
     if (benchmark || g_refFile || save)
-=======
-    if (benchmark || g_refFile)
->>>>>>> master
     {
         if (numIterations <= 0)
         {
             numIterations = 300;
         }
 
-<<<<<<< HEAD
 		//printf("timestep: %f\n",timestep);
 
-=======
->>>>>>> master
         runBenchmark(numIterations, argv[0]);
     }
     else

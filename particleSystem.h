@@ -8,13 +8,10 @@
  * is strictly prohibited.
  *
  */
-<<<<<<< HEAD
   /** \file particleSystem.h
   * \brief Definicja klasy ParticleSystem i części jej prostych metod.
   *
   */
-=======
->>>>>>> master
 
 #ifndef __PARTICLESYSTEM_H__
 #define __PARTICLESYSTEM_H__
@@ -92,7 +89,6 @@ class ParticleSystem
             m_params.gravity = make_float3(0.0f, x, 0.0f);
         }
 
-<<<<<<< HEAD
 		void setBoundaryDamping(float x)// ustawienie wsp napiêcia powierzchniowego
         {
             m_params.boundaryDamping = x;
@@ -106,8 +102,6 @@ class ParticleSystem
 			m_params.epsi=x;
 		}
 
-=======
->>>>>>> master
         void setCollideSpring(float x)
         {
             m_params.spring = x;
@@ -129,7 +123,6 @@ class ParticleSystem
 		{
 			m_params.bigradius=x;
 		}
-<<<<<<< HEAD
 		void setBigRadius0(float x)//ustawienie promienia duzej kuli
 		{
 			m_params.bigradius0=x;
@@ -152,8 +145,6 @@ class ParticleSystem
 		{
 			m_params.particleTypesNum=x;
 		}
-=======
->>>>>>> master
 
         void setColliderPos(float3 x)
         {
@@ -187,11 +178,8 @@ class ParticleSystem
 
         void addSphere(int index, float *pos, float *vel, int r, float spacing);
 
-<<<<<<< HEAD
 		class particleType;
 
-=======
->>>>>>> master
     protected: // methods
         ParticleSystem() {}
         uint createVBO(uint size);

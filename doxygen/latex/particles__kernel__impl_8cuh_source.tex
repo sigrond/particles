@@ -16,468 +16,532 @@
 00012 \textcolor{comment}{/*}
 00013 \textcolor{comment}{ * CUDA particle system kernel code.}
 00014 \textcolor{comment}{ */}
-00015 
-00016 \textcolor{preprocessor}{#}\textcolor{preprocessor}{ifndef} \textcolor{preprocessor}{\_PARTICLES\_KERNEL\_H\_}
-\hypertarget{particles__kernel__impl_8cuh_source_l00017}{}\hyperlink{particles__kernel__impl_8cuh_a5de512cb982bf8e9102c9e80ae68a7f2}{00017} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{\_PARTICLES\_KERNEL\_H\_}
-00018 
-00019 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{stdio}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00020 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{math}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00021 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{keywordtype}{float}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
-00022 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"helper\_math.h"}
-00023 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"math\_constants.h"}
-00024 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \hyperlink{particles__kernel_8cuh}{"particles\_kernel.cuh"}
-00025 
-00026 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \hyperlink{particles__kernel_8cuh_a0ab211ca35e2616c721fcf2dd4f99c83}{USE\_TEX}
-00027 \textcolor{comment}{// textures for particle position and velocity}
-00028 texture<float4, 1, cudaReadModeElementType> oldPosTex;
-00029 texture<float4, 1, cudaReadModeElementType> oldVelTex;
-00030 
-00031 texture<uint, 1, cudaReadModeElementType> gridParticleHashTex;
-00032 texture<uint, 1, cudaReadModeElementType> cellStartTex;
-00033 texture<uint, 1, cudaReadModeElementType> cellEndTex;
-00034 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
-00035 
-00036 \textcolor{comment}{// simulation parameters in constant memory}
-\hypertarget{particles__kernel__impl_8cuh_source_l00037}{}\hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{00037} \_\_constant\_\_ SimParams params;
-00038 
-00039 
-00040 \textcolor{comment}{/** \(\backslash\)struct integrate\_functor}
-00041 \textcolor{comment}{ * \(\backslash\)brief ta struktura inicjowana jest z krokiem delta\_time dla danych}
-00042 \textcolor{comment}{ * opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU)}
-00043 \textcolor{comment}{ * jako para (tuple) float4 położenia i prędkości}
-00044 \textcolor{comment}{ *}
-00045 \textcolor{comment}{ */}
-\hypertarget{particles__kernel__impl_8cuh_source_l00046}{}\hyperlink{structintegrate__functor}{00046} \textcolor{keyword}{struct} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{integrate\_functor}
-00047 \{
-\hypertarget{particles__kernel__impl_8cuh_source_l00048}{}\hyperlink{structintegrate__functor_a06dce1826719cd5b2a9fdd9f566da754}{00048}     \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a06dce1826719cd5b2a9fdd9f566da754}{deltaTime};
-00049 
-00050     \_\_host\_\_ \_\_device\_\_
-\hypertarget{particles__kernel__impl_8cuh_source_l00051}{}\hyperlink{structintegrate__functor_a13075d4c547ba22c37137ff2b874ae45}{00051}     \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{integrate\_functor}(\textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{delta\_time}) : 
+00015  \textcolor{comment}{/** \(\backslash\)file particles\_kernel\_impl.cuh}
+00016 \textcolor{comment}{  * \(\backslash\)brief Implementacje (definicje) funkcji odpowiadających za fizykę.}
+00017 \textcolor{comment}{  *}
+00018 \textcolor{comment}{  */}
+00019 
+00020 
+00021 \textcolor{preprocessor}{#}\textcolor{preprocessor}{ifndef} \textcolor{preprocessor}{\_PARTICLES\_KERNEL\_H\_}
+\hypertarget{particles__kernel__impl_8cuh_source_l00022}{}\hyperlink{particles__kernel__impl_8cuh_a5de512cb982bf8e9102c9e80ae68a7f2}{00022} \textcolor{preprocessor}{#}\textcolor{preprocessor}{define} \textcolor{preprocessor}{\_PARTICLES\_KERNEL\_H\_}
+00023 
+00024 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{stdio}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00025 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{math}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00026 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{keywordtype}{float}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}
+00027 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"helper\_math.h"}
+00028 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{"math\_constants.h"}
+00029 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \hyperlink{particles__kernel_8cuh}{"particles\_kernel.cuh"}
+00030 \textcolor{preprocessor}{#}\textcolor{preprocessor}{include} \textcolor{preprocessor}{<}\textcolor{preprocessor}{curand\_kernel}\textcolor{preprocessor}{.}\textcolor{preprocessor}{h}\textcolor{preprocessor}{>}\textcolor{comment}{/**< biblioteka zawierająca funkcje generujące liczby pseudolosowe i
+       quasi-losowe na karcie */}
+00031 
+00032 \textcolor{preprocessor}{#}\textcolor{preprocessor}{if} \hyperlink{particles__kernel_8cuh_a0ab211ca35e2616c721fcf2dd4f99c83}{USE\_TEX}
+00033 \textcolor{comment}{// textures for particle position and velocity}
+00034 texture<float4, 1, cudaReadModeElementType> oldPosTex;
+00035 texture<float4, 1, cudaReadModeElementType> oldVelTex;
+00036 
+00037 texture<uint, 1, cudaReadModeElementType> gridParticleHashTex;
+00038 texture<uint, 1, cudaReadModeElementType> cellStartTex;
+00039 texture<uint, 1, cudaReadModeElementType> cellEndTex;
+00040 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+00041 
+00042 \textcolor{comment}{// simulation parameters in constant memory}
+\hypertarget{particles__kernel__impl_8cuh_source_l00043}{}\hyperlink{particles__kernel__impl_8cuh_a8db8938e28edd17862daf58651051bdc}{00043} \_\_constant\_\_ SimParams params;
+00044 
+00045 \textcolor{comment}{/** \(\backslash\)struct integrate\_functor}
+00046 \textcolor{comment}{ * \(\backslash\)brief ta struktura inicjowana jest z krokiem delta\_time dla danych}
+00047 \textcolor{comment}{ * opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU)}
+00048 \textcolor{comment}{ * jako para (tuple) float4 położenia i prędkości}
+00049 \textcolor{comment}{ *}
+00050 \textcolor{comment}{ */}
+\hypertarget{particles__kernel__impl_8cuh_source_l00051}{}\hyperlink{structintegrate__functor}{00051} \textcolor{keyword}{struct} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{integrate\_functor}
+00052 \{
+\hypertarget{particles__kernel__impl_8cuh_source_l00053}{}\hyperlink{structintegrate__functor_a06dce1826719cd5b2a9fdd9f566da754}{00053}     \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a06dce1826719cd5b2a9fdd9f566da754}{deltaTime};
+00054 
+00055     \_\_host\_\_ \_\_device\_\_
+\hypertarget{particles__kernel__impl_8cuh_source_l00056}{}\hyperlink{structintegrate__functor_a13075d4c547ba22c37137ff2b874ae45}{00056}     \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{integrate\_functor}(\textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{delta\_time}) : 
       \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{deltaTime}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{delta\_time}) \{\}
-00052 
-00053     \textcolor{comment}{/** \(\backslash\)brief nowe położenie}
-00054 \textcolor{comment}{     * \(\backslash\)param t para położenia i prędkości}
-00055 \textcolor{comment}{     * wylicza nowe położenie i sprawdza czy położenie nie jest za brzegiem}
-00056 \textcolor{comment}{     */}
-00057     \textcolor{keyword}{template} <\textcolor{keyword}{typename} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{Tuple}>
-00058     \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{\_\_device\_\_}
-\hypertarget{particles__kernel__impl_8cuh_source_l00059}{}\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{00059}     \textcolor{keywordtype}{void} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{operator}()(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{Tuple} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t})
-00060     \{
-00061         \textcolor{keyword}{volatile} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float4} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{posData} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{thrust}::\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{get}<0>(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t});
-00062         \textcolor{keyword}{volatile} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float4} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{velData} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{thrust}::\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{get}<1>(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t});
-00063         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float3} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{make\_float3}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{posData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}, 
+00057 
+00058     \textcolor{comment}{/** \(\backslash\)brief nowe położenie}
+00059 \textcolor{comment}{     * \(\backslash\)param t para położenia i prędkości}
+00060 \textcolor{comment}{     * wylicza nowe położenie i sprawdza czy położenie nie jest za brzegiem}
+00061 \textcolor{comment}{     */}
+00062     \textcolor{keyword}{template} <\textcolor{keyword}{typename} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{Tuple}>
+00063     \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{\_\_device\_\_}
+\hypertarget{particles__kernel__impl_8cuh_source_l00064}{}\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{00064}     \textcolor{keywordtype}{void} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{operator}()(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{Tuple} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t})
+00065     \{
+00066         \textcolor{keyword}{volatile} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float4} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{posData} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{thrust}::\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{get}<0>(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t});
+00067         \textcolor{keyword}{volatile} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float4} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{velData} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{thrust}::\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{get}<1>(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t});
+00068         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float3} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{make\_float3}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{posData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}, 
       \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{posData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}, \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{posData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z});
-00064         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float3} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{make\_float3}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{velData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}, 
+00069         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float3} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{make\_float3}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{velData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}, 
       \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{velData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}, \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{velData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z});
-00065 
-00066         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel} += \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{gravity} * \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{deltaTime};
-00067         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{globalDamping};
-00068 
-00069         \textcolor{comment}{// new position = old position + velocity * deltaTime}
-00070         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos} += \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel} * \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{deltaTime};
-00071 
-00072         \textcolor{comment}{// set this to zero to disable collisions with cube sides}
-00073 #\textcolor{keywordflow}{if} 0
-00074 
-00075         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} > 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
-00076         \{
-00077             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} = 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
-00078             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
-00079         \}
-00080 
-00081         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} < -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
-00082         \{
-00083             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} = -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
-00084             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
-00085         \}
-00086 
-00087         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} > 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
-00088         \{
-00089             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} = 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
-00090             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
-00091         \}
+00070 
+00071         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel} += \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{gravity} * \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{deltaTime};\textcolor{comment}{/**< grawitacja */}
+00072                 \textcolor{keywordflow}{if}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{brown}!=0.0f)\textcolor{comment}{/**< ruchy Browna */}
+00073         \{
+00074                         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{seed}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{threadIdx}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}+(((
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{gridDim}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{blockIdx}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y})+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{blockIdx}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x})*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{blockDim}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x})+(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int})
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{floor}((\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z})*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{brownQuality});
+00075                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{curandState} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{s};
+00076                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{curand\_init}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{seed},0,0,&\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{s});
+00077                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{skipahead}((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int})\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{floor}(
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{brownQuality}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z}),&
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{s});
+00078                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}+=(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{curand\_normal}(&\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{s}))*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{brown};
+00079                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{skipahead}((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int})\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{floor}(
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{brownQuality}),&\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{s});
+00080                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}+=(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{curand\_normal}(&\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{s}))*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{brown};
+00081                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{skipahead}((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int})\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{floor}(
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{brownQuality}),&\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{s});
+00082                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z}+=(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{curand\_normal}(&\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{s}))*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{brown};
+00083                 \}
+00084                 \textcolor{comment}{//vel.x-=(0.1f+vel.x+vel.y*2.0f+vel.z*4.5f+pos.y+pos.z)/(100.0f)*params.brown;}
+00085                 \textcolor{comment}{//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;}
+00086                 \textcolor{comment}{//vel.z-=(0.1f+vel.x*1.5f+vel.y*5.0f+vel.z+pos.x+pos.y)/(100.0f)*params.brown;}
+00087 
+00088         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{globalDamping};\textcolor{comment}{/**< lepkosc */}
+00089                 \textcolor{comment}{//vel += params.gravity * deltaTime;}
+00090 
+00091         \textcolor{comment}{// new position = old position + velocity * deltaTime}
 00092 
-00093         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} > 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
-00094         \{
-00095             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} = 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
-00096             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
-00097         \}
-00098 
-00099         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} < -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
-00100         \{
-00101             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} = -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
-00102             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
-00103         \}
-00104 
-00105 #\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{endif}
-00106 
-00107                 \textcolor{comment}{/**< odbijanie sie od kuli */}
-00108 #\textcolor{keywordflow}{if} 1
-00109                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{xk}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x};
-00110                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{yk}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y};
-00111                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{zk}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z};
-00112                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0k}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{xk}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{yk}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{zk};
-00113                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{bigradius};\textcolor{comment}{//- params.particleRadius;}
-00114                 \textcolor{keywordflow}{if}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0k} > \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r} + FLT\_EPSILON )
-00115                 \{
-00116                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r}-=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius}*4;
-00117                         \textcolor{comment}{/*vel.x*=params.boundaryDamping;}
-00118 \textcolor{comment}{                        vel.y*=params.boundaryDamping;}
-00119 \textcolor{comment}{                        vel.z*=params.boundaryDamping;*/}
-00120                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}=0.0f;
-00121                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}=0.0f;
-00122                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z}=0.0f;
-00123                         \textcolor{comment}{/*float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));}
-00124 \textcolor{comment}{                        float fi=atan(pos.y/pos.x);}
-00125 \textcolor{comment}{                        pos.z=r*sin(theta);}
-00126 \textcolor{comment}{                        float rr=r*cos(theta);}
-00127 \textcolor{comment}{                        pos.x=rr*cos(fi);}
-00128 \textcolor{comment}{                        pos.y=rr*sin(fi);*/}
-00129                         \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{sqrt}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0k});
-00130                         \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{tmp}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r}/\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0};
-00131                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}*=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{tmp};
-00132                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}*=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{tmp};
-00133                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z}*=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{tmp};
-00134                 \}
-00135 #\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{endif}
-00136 
-00137 \textcolor{comment}{//dolna plaszczyzna}
-00138 #\textcolor{keywordflow}{if} 0
-00139         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} < -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
-00140         \{
-00141             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} = -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
-00142             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
-00143         \}
-00144 #\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{endif}
-00145 
-00146         \textcolor{comment}{// store new position and velocity}
-00147         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{thrust}::\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{get}<0>(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t}) = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{make\_float4}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}, 
+00093         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos} += \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel} * \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{deltaTime};\textcolor{comment}{/**< przemieszczenie */}
+00094 
+00095         \textcolor{comment}{// set this to zero to disable collisions with cube sides}
+00096 #\textcolor{keywordflow}{if} 0
+00097 
+00098         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} > 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
+00099         \{
+00100             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} = 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
+00101             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
+00102         \}
+00103 
+00104         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} < -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
+00105         \{
+00106             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} = -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
+00107             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
+00108         \}
+00109 
+00110         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} > 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
+00111         \{
+00112             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} = 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
+00113             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
+00114         \}
+00115 
+00116         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} > 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
+00117         \{
+00118             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} = 1.0f - \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
+00119             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
+00120         \}
+00121 
+00122         \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} < -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
+00123         \{
+00124             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} = -1.0f + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
+00125             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z} *= \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping};
+00126         \}
+00127 
+00128 #\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{endif}
+00129 
+00130                 \textcolor{comment}{//odbijanie sie od kuli}
+00131                 \textcolor{comment}{/**< odbijanie sie od kuli vel napiecie powierzchniowe */}
+00132 #\textcolor{keywordflow}{if} 1
+00133                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{xk}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{x};
+00134                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{yk}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y};
+00135                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{zk}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{z};
+00136                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0k}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{xk}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{yk}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{zk};
+00137                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{R}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{bigradius};\textcolor{comment}{//- params.particleRadius;}
+00138                 \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0}=\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{sqrt}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0k});
+00139                 \textcolor{keywordflow}{if}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaries} && \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0}>\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{R}-\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius} && \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0}<\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{R}+\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})
+00140                 \{
+00141                         \textcolor{comment}{/*if(r0>r+params.particleRadius)}
+00142 \textcolor{comment}{                        \{}
+00143 \textcolor{comment}{                                float tmp=(r+params.particleRadius/2)/r0;}
+00144 \textcolor{comment}{                                pos.x*=tmp;}
+00145 \textcolor{comment}{                                pos.y*=tmp;}
+00146 \textcolor{comment}{                                pos.z*=tmp;}
+00147 \textcolor{comment}{                        \}*/}
+00148                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float3} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{relPos} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos};
+00149                         \textcolor{keywordtype}{float} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{dist} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{length}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{relPos});
+00150                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{float3} \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{norm} = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{relPos} / \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{dist};
+00151                         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}+=-\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{boundaryDamping}*(
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{abs}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{r0}-\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{R})-(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius}))*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{norm}*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{deltaTime}/
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleMass};
+00152                 \}
+00153                 \textcolor{comment}{/*if(r0k > r*r + FLT\_EPSILON )}
+00154 \textcolor{comment}{                \{}
+00155 \textcolor{comment}{                        r-=params.particleRadius*4;}
+00156 \textcolor{comment}{                        //vel.x*=params.boundaryDamping;}
+00157 \textcolor{comment}{                        //vel.y*=params.boundaryDamping;}
+00158 \textcolor{comment}{                        //vel.z*=params.boundaryDamping;}
+00159 \textcolor{comment}{                        vel.x=0.0f;}
+00160 \textcolor{comment}{                        vel.y=0.0f;}
+00161 \textcolor{comment}{                        vel.z=0.0f;}
+00162 \textcolor{comment}{                        //float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));}
+00163 \textcolor{comment}{                        //float fi=atan(pos.y/pos.x);}
+00164 \textcolor{comment}{                        //pos.z=r*sin(theta);}
+00165 \textcolor{comment}{                        //float rr=r*cos(theta);}
+00166 \textcolor{comment}{                        //pos.x=rr*cos(fi);}
+00167 \textcolor{comment}{                        //pos.y=rr*sin(fi);}
+00168 \textcolor{comment}{                        float r0=sqrt(r0k);}
+00169 \textcolor{comment}{                        float tmp=r/r0;}
+00170 \textcolor{comment}{                        pos.x*=tmp;}
+00171 \textcolor{comment}{                        pos.y*=tmp;}
+00172 \textcolor{comment}{                        pos.z*=tmp;}
+00173 \textcolor{comment}{                \}*/}
+00174 #\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{endif}
+00175 
+00176 \textcolor{comment}{//dolna plaszczyzna}
+00177 
+00178 #\textcolor{keywordflow}{if} 1
+00179                 \textcolor{keywordflow}{if} (\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} < -2.0f*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{bigradius0} + 
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius})\textcolor{comment}{/**< blat */}
+00180         \{
+00181             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} = -2.0f*\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{bigradius0} + \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{params}.
+      \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{particleRadius};
+00182             \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{y} = 0;
+00183         \}
+00184 #\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{endif}
+00185 
+00186         \textcolor{comment}{// store new position and velocity}
+00187         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{thrust}::\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{get}<0>(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t}) = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{make\_float4}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{pos}, 
       \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{posData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{w});
-00148         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{thrust}::\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{get}<1>(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t}) = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{make\_float4}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}, 
+00188         \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{thrust}::\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{get}<1>(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{t}) = \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{make\_float4}(\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{vel}, 
       \hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{velData}.\hyperlink{structintegrate__functor_a772e86ead8690332beb50911e4448f81}{w});
-00149     \}
-00150 \};
-00151 
-00152 \textcolor{comment}{// calculate position in uniform grid}
-00153 \textcolor{comment}{/** \(\backslash\)brief calculate position in uniform grid}
-00154 \textcolor{comment}{ *}
-00155 \textcolor{comment}{ * \(\backslash\)param p float3}
-00156 \textcolor{comment}{ * \(\backslash\)return \_\_device\_\_ int3}
-00157 \textcolor{comment}{ *}
-00158 \textcolor{comment}{ */}
-\hypertarget{particles__kernel__impl_8cuh_source_l00159}{}\hyperlink{particles__kernel__impl_8cuh_a63d62750e6cbb8781c5ff252fc13c1fd}{00159} \_\_device\_\_ int3 calcGridPos(float3 p)
-00160 \{
-00161     int3 gridPos;
-00162     gridPos.x = floor((p.x - params.worldOrigin.x) / params.cellSize.x);
-00163     gridPos.y = floor((p.y - params.worldOrigin.y) / params.cellSize.y);
-00164     gridPos.z = floor((p.z - params.worldOrigin.z) / params.cellSize.z);
-00165     \textcolor{keywordflow}{return} gridPos;
-00166 \}
-00167 
-00168 \textcolor{comment}{// calculate address in grid from position (clamping to edges)}
-00169 \textcolor{comment}{/** \(\backslash\)brief calculate address in grid from position (clamping to edges)}
-00170 \textcolor{comment}{ *}
-00171 \textcolor{comment}{ * \(\backslash\)param gridPos int3}
-00172 \textcolor{comment}{ * \(\backslash\)return \_\_device\_\_ uint}
-00173 \textcolor{comment}{ *}
-00174 \textcolor{comment}{ */}
-\hypertarget{particles__kernel__impl_8cuh_source_l00175}{}\hyperlink{particles__kernel__impl_8cuh_ad20ac253847311c176aacf9a224e14e5}{00175} \_\_device\_\_ uint calcGridHash(int3 gridPos)
-00176 \{
-00177     gridPos.x = gridPos.x & (params.gridSize.x-1);  \textcolor{comment}{// wrap grid, assumes size is power of 2}
-00178     gridPos.y = gridPos.y & (params.gridSize.y-1);
-00179     gridPos.z = gridPos.z & (params.gridSize.z-1);
-00180     \textcolor{keywordflow}{return} \_\_umul24(\_\_umul24(gridPos.z, params.gridSize.y), params.gridSize.x) + \_\_umul24(gridPos.y, 
+00189     \}
+00190 \};
+00191 
+00192 \textcolor{comment}{// calculate position in uniform grid}
+00193 \textcolor{comment}{/** \(\backslash\)brief calculate position in uniform grid}
+00194 \textcolor{comment}{ *}
+00195 \textcolor{comment}{ * \(\backslash\)param p float3}
+00196 \textcolor{comment}{ * \(\backslash\)return \_\_device\_\_ int3}
+00197 \textcolor{comment}{ *}
+00198 \textcolor{comment}{ */}
+\hypertarget{particles__kernel__impl_8cuh_source_l00199}{}\hyperlink{particles__kernel__impl_8cuh_a63d62750e6cbb8781c5ff252fc13c1fd}{00199} \_\_device\_\_ int3 calcGridPos(float3 p)
+00200 \{
+00201     int3 gridPos;
+00202     gridPos.x = floor((p.x - params.worldOrigin.x) / params.cellSize.x);
+00203     gridPos.y = floor((p.y - params.worldOrigin.y) / params.cellSize.y);
+00204     gridPos.z = floor((p.z - params.worldOrigin.z) / params.cellSize.z);
+00205     \textcolor{keywordflow}{return} gridPos;
+00206 \}
+00207 
+00208 \textcolor{comment}{// calculate address in grid from position (clamping to edges)}
+00209 \textcolor{comment}{/** \(\backslash\)brief calculate address in grid from position (clamping to edges)}
+00210 \textcolor{comment}{ *}
+00211 \textcolor{comment}{ * \(\backslash\)param gridPos int3}
+00212 \textcolor{comment}{ * \(\backslash\)return \_\_device\_\_ uint}
+00213 \textcolor{comment}{ *}
+00214 \textcolor{comment}{ */}
+\hypertarget{particles__kernel__impl_8cuh_source_l00215}{}\hyperlink{particles__kernel__impl_8cuh_ad20ac253847311c176aacf9a224e14e5}{00215} \_\_device\_\_ uint calcGridHash(int3 gridPos)
+00216 \{
+00217     gridPos.x = gridPos.x & (params.gridSize.x-1);  \textcolor{comment}{// wrap grid, assumes size is power of 2}
+00218     gridPos.y = gridPos.y & (params.gridSize.y-1);
+00219     gridPos.z = gridPos.z & (params.gridSize.z-1);
+00220     \textcolor{keywordflow}{return} \_\_umul24(\_\_umul24(gridPos.z, params.gridSize.y), params.gridSize.x) + \_\_umul24(gridPos.y, 
       params.gridSize.x) + gridPos.x;
-00181 \}
-00182 
-00183 \textcolor{comment}{// calculate grid hash value for each particle}
-00184 \textcolor{comment}{/** \(\backslash\)brief calculate grid hash value for each particle}
-00185 \textcolor{comment}{ *}
-00186 \textcolor{comment}{ * \(\backslash\)param gridParticleHash uint* output}
-00187 \textcolor{comment}{ * \(\backslash\)param *gridParticleIndex uint output}
-00188 \textcolor{comment}{ * \(\backslash\)param *pos float4 input: positions}
-00189 \textcolor{comment}{ * \(\backslash\)param  uint    numParticles}
-00190 \textcolor{comment}{ * \(\backslash\)return \_\_global\_\_ void}
-00191 \textcolor{comment}{ *}
-00192 \textcolor{comment}{ */}
-00193 \_\_global\_\_
-\hypertarget{particles__kernel__impl_8cuh_source_l00194}{}\hyperlink{particles__kernel__impl_8cuh_a4c688195fb1c2963cbdcaf62c737b9d7}{00194} \textcolor{keywordtype}{void} calcHashD(uint   *gridParticleHash,  \textcolor{comment}{/* output*/}
-00195                 uint   *gridParticleIndex, \textcolor{comment}{/* output*/}
-00196                 float4 *pos,               \textcolor{comment}{/* input: positions*/}
-00197                 uint    numParticles)
-00198 \{
-00199     uint index = \_\_umul24(blockIdx.x, blockDim.x) + threadIdx.x;
-00200 
-00201     \textcolor{keywordflow}{if} (index >= numParticles) \textcolor{keywordflow}{return};
-00202 
-00203     \textcolor{keyword}{volatile} float4 p = pos[index];
-00204 
-00205     \textcolor{comment}{// get address in grid}
-00206     int3 gridPos = calcGridPos(make\_float3(p.x, p.y, p.z));
-00207     uint hash = calcGridHash(gridPos);
-00208 
-00209     \textcolor{comment}{// store grid hash and particle index}
-00210     gridParticleHash[index] = hash;
-00211     gridParticleIndex[index] = index;
-00212 \}
-00213 
-00214 \textcolor{comment}{// rearrange particle data into sorted order, and find the start of each cell}
-00215 \textcolor{comment}{// in the sorted hash array}
-00216 \textcolor{comment}{/** \(\backslash\)brief rearrange particle data into sorted order, and find the start of each cell in the sorted
-       hash array}
-00217 \textcolor{comment}{ *}
-00218 \textcolor{comment}{ * \(\backslash\)param cellStart uint* output: cell start index}
-00219 \textcolor{comment}{ * \(\backslash\)param uint   *cellEnd output: cell end index}
-00220 \textcolor{comment}{ * \(\backslash\)param float4 *sortedPos output: sorted positions}
-00221 \textcolor{comment}{ * \(\backslash\)param float4 *sortedVel output: sorted velocities}
-00222 \textcolor{comment}{ * \(\backslash\)param uint   *gridParticleHash input: sorted grid hashes}
-00223 \textcolor{comment}{ * \(\backslash\)param uint   *gridParticleIndex input: sorted particle indices}
-00224 \textcolor{comment}{ * \(\backslash\)param float4 *oldPos input: sorted position array}
-00225 \textcolor{comment}{ * \(\backslash\)param float4 *oldVel input: sorted velocity array}
-00226 \textcolor{comment}{ * \(\backslash\)param uint    numParticles}
-00227 \textcolor{comment}{ * \(\backslash\)return \_\_global\_\_ void}
-00228 \textcolor{comment}{ *}
-00229 \textcolor{comment}{ *}
-00230 \textcolor{comment}{ */}
-00231 \_\_global\_\_
-\hypertarget{particles__kernel__impl_8cuh_source_l00232}{}\hyperlink{particles__kernel__impl_8cuh_abe84636059af3ed58ef603665395e6f4}{00232} \textcolor{keywordtype}{void} reorderDataAndFindCellStartD(uint   *cellStart,        \textcolor{comment}{/* output: cell start index*/}
-00233                                   uint   *cellEnd,          \textcolor{comment}{/* output: cell end index*/}
-00234                                   float4 *sortedPos,        \textcolor{comment}{/* output: sorted positions*/}
-00235                                   float4 *sortedVel,        \textcolor{comment}{/* output: sorted velocities*/}
-00236                                   uint   *gridParticleHash, \textcolor{comment}{/* input: sorted grid hashes*/}
-00237                                   uint   *gridParticleIndex,\textcolor{comment}{/* input: sorted particle indices*/}
-00238                                   float4 *oldPos,           \textcolor{comment}{/* input: sorted position array*/}
-00239                                   float4 *oldVel,           \textcolor{comment}{/* input: sorted velocity array*/}
-00240                                   uint    numParticles)
-00241 \{
-00242     \textcolor{keyword}{extern} \_\_shared\_\_ uint sharedHash[];    \textcolor{comment}{// blockSize + 1 elements}
-00243     uint index = \_\_umul24(blockIdx.x,blockDim.x) + threadIdx.x;
+00221 \}
+00222 
+00223 \textcolor{comment}{// calculate grid hash value for each particle}
+00224 \textcolor{comment}{/** \(\backslash\)brief calculate grid hash value for each particle}
+00225 \textcolor{comment}{ *}
+00226 \textcolor{comment}{ * \(\backslash\)param gridParticleHash uint* output}
+00227 \textcolor{comment}{ * \(\backslash\)param *gridParticleIndex uint output}
+00228 \textcolor{comment}{ * \(\backslash\)param *pos float4 input: positions}
+00229 \textcolor{comment}{ * \(\backslash\)param  uint    numParticles}
+00230 \textcolor{comment}{ * \(\backslash\)return \_\_global\_\_ void}
+00231 \textcolor{comment}{ *}
+00232 \textcolor{comment}{ */}
+00233 \_\_global\_\_
+\hypertarget{particles__kernel__impl_8cuh_source_l00234}{}\hyperlink{particles__kernel__impl_8cuh_a4c688195fb1c2963cbdcaf62c737b9d7}{00234} \textcolor{keywordtype}{void} calcHashD(uint   *gridParticleHash,  \textcolor{comment}{// output}
+00235                uint   *gridParticleIndex, \textcolor{comment}{// output}
+00236                float4 *pos,               \textcolor{comment}{// input: positions}
+00237                uint    numParticles)
+00238 \{
+00239     uint index = \_\_umul24(blockIdx.x, blockDim.x) + threadIdx.x;
+00240 
+00241     \textcolor{keywordflow}{if} (index >= numParticles) \textcolor{keywordflow}{return};
+00242 
+00243     \textcolor{keyword}{volatile} float4 p = pos[index];
 00244 
-00245     uint hash;
-00246 
-00247     \textcolor{comment}{// handle case when no. of particles not multiple of block size}
-00248     \textcolor{keywordflow}{if} (index < numParticles)
-00249     \{
-00250         hash = gridParticleHash[index];
-00251 
-00252         \textcolor{comment}{// Load hash data into shared memory so that we can look}
-00253         \textcolor{comment}{// at neighboring particle's hash value without loading}
-00254         \textcolor{comment}{// two hash values per thread}
-00255         sharedHash[threadIdx.x+1] = hash;
-00256 
-00257         \textcolor{keywordflow}{if} (index > 0 && threadIdx.x == 0)
-00258         \{
-00259             \textcolor{comment}{// first thread in block must load neighbor particle hash}
-00260             sharedHash[0] = gridParticleHash[index-1];
-00261         \}
-00262     \}
-00263 
-00264     \_\_syncthreads();
-00265 
-00266     \textcolor{keywordflow}{if} (index < numParticles)
-00267     \{
-00268         \textcolor{comment}{// If this particle has a different cell index to the previous}
-00269         \textcolor{comment}{// particle then it must be the first particle in the cell,}
-00270         \textcolor{comment}{// so store the index of this particle in the cell.}
-00271         \textcolor{comment}{// As it isn't the first particle, it must also be the cell end of}
-00272         \textcolor{comment}{// the previous particle's cell}
-00273 
-00274         \textcolor{keywordflow}{if} (index == 0 || hash != sharedHash[threadIdx.x])
-00275         \{
-00276             cellStart[hash] = index;
-00277 
-00278             \textcolor{keywordflow}{if} (index > 0)
-00279                 cellEnd[sharedHash[threadIdx.x]] = index;
-00280         \}
-00281 
-00282         \textcolor{keywordflow}{if} (index == numParticles - 1)
-00283         \{
-00284             cellEnd[hash] = index + 1;
-00285         \}
+00245     \textcolor{comment}{// get address in grid}
+00246     int3 gridPos = calcGridPos(make\_float3(p.x, p.y, p.z));
+00247     uint hash = calcGridHash(gridPos);
+00248 
+00249     \textcolor{comment}{// store grid hash and particle index}
+00250     gridParticleHash[index] = hash;
+00251     gridParticleIndex[index] = index;
+00252 \}
+00253 
+00254 \textcolor{comment}{// rearrange particle data into sorted order, and find the start of each cell}
+00255 \textcolor{comment}{// in the sorted hash array}
+00256 \textcolor{comment}{/** \(\backslash\)brief rearrange particle data into sorted order, and find the start of each cell in the sorted
+       hash array}
+00257 \textcolor{comment}{ *}
+00258 \textcolor{comment}{ * \(\backslash\)param cellStart uint* output: cell start index}
+00259 \textcolor{comment}{ * \(\backslash\)param uint   *cellEnd output: cell end index}
+00260 \textcolor{comment}{ * \(\backslash\)param float4 *sortedPos output: sorted positions}
+00261 \textcolor{comment}{ * \(\backslash\)param float4 *sortedVel output: sorted velocities}
+00262 \textcolor{comment}{ * \(\backslash\)param uint   *gridParticleHash input: sorted grid hashes}
+00263 \textcolor{comment}{ * \(\backslash\)param uint   *gridParticleIndex input: sorted particle indices}
+00264 \textcolor{comment}{ * \(\backslash\)param float4 *oldPos input: sorted position array}
+00265 \textcolor{comment}{ * \(\backslash\)param float4 *oldVel input: sorted velocity array}
+00266 \textcolor{comment}{ * \(\backslash\)param uint    numParticles}
+00267 \textcolor{comment}{ * \(\backslash\)return \_\_global\_\_ void}
+00268 \textcolor{comment}{ *}
+00269 \textcolor{comment}{ *}
+00270 \textcolor{comment}{ */}
+00271 \_\_global\_\_
+\hypertarget{particles__kernel__impl_8cuh_source_l00272}{}\hyperlink{particles__kernel__impl_8cuh_abe84636059af3ed58ef603665395e6f4}{00272} \textcolor{keywordtype}{void} reorderDataAndFindCellStartD(uint   *cellStart,        \textcolor{comment}{// output: cell start index}
+00273                                   uint   *cellEnd,          \textcolor{comment}{// output: cell end index}
+00274                                   float4 *sortedPos,        \textcolor{comment}{// output: sorted positions}
+00275                                   float4 *sortedVel,        \textcolor{comment}{// output: sorted velocities}
+00276                                   uint   *gridParticleHash, \textcolor{comment}{// input: sorted grid hashes}
+00277                                   uint   *gridParticleIndex,\textcolor{comment}{// input: sorted particle indices}
+00278                                   float4 *oldPos,           \textcolor{comment}{// input: sorted position array}
+00279                                   float4 *oldVel,           \textcolor{comment}{// input: sorted velocity array}
+00280                                   uint    numParticles)
+00281 \{
+00282     \textcolor{keyword}{extern} \_\_shared\_\_ uint sharedHash[];    \textcolor{comment}{// blockSize + 1 elements}
+00283     uint index = \_\_umul24(blockIdx.x,blockDim.x) + threadIdx.x;
+00284 
+00285     uint hash;
 00286 
-00287         \textcolor{comment}{// Now use the sorted index to reorder the pos and vel data}
-00288         uint sortedIndex = gridParticleIndex[index];
-00289         float4 pos = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldPos, sortedIndex);       \textcolor{comment}{// macro does either global read or
-       texture fetch}
-00290         float4 vel = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldVel, sortedIndex);       \textcolor{comment}{// see particles\_kernel.cuh}
+00287     \textcolor{comment}{// handle case when no. of particles not multiple of block size}
+00288     \textcolor{keywordflow}{if} (index < numParticles)
+00289     \{
+00290         hash = gridParticleHash[index];
 00291 
-00292         sortedPos[index] = pos;
-00293         sortedVel[index] = vel;
-00294     \}
-00295 
+00292         \textcolor{comment}{// Load hash data into shared memory so that we can look}
+00293         \textcolor{comment}{// at neighboring particle's hash value without loading}
+00294         \textcolor{comment}{// two hash values per thread}
+00295         sharedHash[threadIdx.x+1] = hash;
 00296 
-00297 \}
-00298 
-00299 \textcolor{comment}{// collide two spheres using DEM method}
-00300 \textcolor{comment}{/** \(\backslash\)brief collide two spheres using DEM method}
-00301 \textcolor{comment}{ *}
-00302 \textcolor{comment}{ * \(\backslash\)param posA float3}
-00303 \textcolor{comment}{ * \(\backslash\)param posB float3}
-00304 \textcolor{comment}{ * \(\backslash\)param velA float3}
-00305 \textcolor{comment}{ * \(\backslash\)param velB float3}
-00306 \textcolor{comment}{ * \(\backslash\)param radiusA float}
-00307 \textcolor{comment}{ * \(\backslash\)param radiusB float}
-00308 \textcolor{comment}{ * \(\backslash\)param attraction float}
-00309 \textcolor{comment}{ * \(\backslash\)return \_\_device\_\_ float3}
-00310 \textcolor{comment}{ *}
-00311 \textcolor{comment}{ */}
-00312 \_\_device\_\_
-\hypertarget{particles__kernel__impl_8cuh_source_l00313}{}\hyperlink{particles__kernel__impl_8cuh_a1d93cb067b16b4a472e9c1a08d9d8e68}{00313} float3 collideSpheres(float3 posA, float3 posB,
-00314                       float3 velA, float3 velB,
-00315                       \textcolor{keywordtype}{float} radiusA, \textcolor{keywordtype}{float} radiusB,
-00316                       \textcolor{keywordtype}{float} attraction)
-00317 \{
-00318     \textcolor{comment}{// calculate relative position}
-00319     float3 relPos = posB - posA;
-00320 
-00321     \textcolor{keywordtype}{float} dist = length(relPos);
-00322     \textcolor{keywordtype}{float} collideDist = (radiusA + radiusB)*4;\textcolor{comment}{//zasieg dzialania sil}
-00323 
-00324     float3 force = make\_float3(0.0f);
-00325 
-00326     \textcolor{keywordflow}{if} (dist < collideDist)
-00327     \{
-00328         float3 norm = relPos / dist;
-00329 
-00330         \textcolor{comment}{// relative velocity}
-00331         \textcolor{comment}{//float3 relVel = velB - velA;}
-00332 
-00333         \textcolor{comment}{// relative tangential velocity}
-00334         \textcolor{comment}{//float3 tanVel = relVel - (dot(relVel, norm) * norm);}
+00297         \textcolor{keywordflow}{if} (index > 0 && threadIdx.x == 0)
+00298         \{
+00299             \textcolor{comment}{// first thread in block must load neighbor particle hash}
+00300             sharedHash[0] = gridParticleHash[index-1];
+00301         \}
+00302     \}
+00303 
+00304     \_\_syncthreads();
+00305 
+00306     \textcolor{keywordflow}{if} (index < numParticles)
+00307     \{
+00308         \textcolor{comment}{// If this particle has a different cell index to the previous}
+00309         \textcolor{comment}{// particle then it must be the first particle in the cell,}
+00310         \textcolor{comment}{// so store the index of this particle in the cell.}
+00311         \textcolor{comment}{// As it isn't the first particle, it must also be the cell end of}
+00312         \textcolor{comment}{// the previous particle's cell}
+00313 
+00314         \textcolor{keywordflow}{if} (index == 0 || hash != sharedHash[threadIdx.x])
+00315         \{
+00316             cellStart[hash] = index;
+00317 
+00318             \textcolor{keywordflow}{if} (index > 0)
+00319                 cellEnd[sharedHash[threadIdx.x]] = index;
+00320         \}
+00321 
+00322         \textcolor{keywordflow}{if} (index == numParticles - 1)
+00323         \{
+00324             cellEnd[hash] = index + 1;
+00325         \}
+00326 
+00327         \textcolor{comment}{// Now use the sorted index to reorder the pos and vel data}
+00328         uint sortedIndex = gridParticleIndex[index];
+00329         float4 pos = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldPos, sortedIndex);       \textcolor{comment}{// macro does either global read or
+       texture fetch}
+00330         float4 vel = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldVel, sortedIndex);       \textcolor{comment}{// see particles\_kernel.cuh}
+00331 
+00332         sortedPos[index] = pos;
+00333         sortedVel[index] = vel;
+00334     \}
 00335 
-00336         \textcolor{comment}{// spring force}
-00337         \textcolor{comment}{//force = -params.spring*(collideDist - dist) * norm;}
-00338         \textcolor{comment}{// dashpot (damping) force}
-00339         \textcolor{comment}{//force += params.damping*relVel;}
-00340         \textcolor{comment}{// tangential shear force}
-00341         \textcolor{comment}{//force += params.shear*tanVel;}
-00342         \textcolor{comment}{// attraction}
-00343         \textcolor{comment}{//force += attraction*relPos;}
-00344                 \textcolor{keywordtype}{float} epsi=0.1f;
-00345                 \textcolor{keywordtype}{float} D2=0.00001f;
-00346                 float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;
-00347                 float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;
-00348                 force= epsi*(F1+F2);
-00349 \textcolor{comment}{/////////////////////////////////////////////////////////////////////////////////}
-00350 \textcolor{comment}{/*      tu wpisywac rownania na sily dla czastek bedacywch w zasiegu    */}
-00351 \textcolor{comment}{/////////////////////////////////////////////////////////////////////////////////}
-00352     \}
-00353 
-00354     \textcolor{keywordflow}{return} force;
-00355 \}
-00356 
-00357 
-00358 
-00359 \textcolor{comment}{// collide a particle against all other particles in a given cell}
-00360 \textcolor{comment}{/** \(\backslash\)brief collide a particle against all other particles in a given cell}
-00361 \textcolor{comment}{ *}
-00362 \textcolor{comment}{ * \(\backslash\)param gridPos int3}
-00363 \textcolor{comment}{ * \(\backslash\)param index uint}
-00364 \textcolor{comment}{ * \(\backslash\)param pos float3}
-00365 \textcolor{comment}{ * \(\backslash\)param vel float3}
-00366 \textcolor{comment}{ * \(\backslash\)param oldPos float4*}
-00367 \textcolor{comment}{ * \(\backslash\)param oldVel float4*}
-00368 \textcolor{comment}{ * \(\backslash\)param cellStart uint*}
-00369 \textcolor{comment}{ * \(\backslash\)param cellEnd uint*}
-00370 \textcolor{comment}{ * \(\backslash\)return \_\_device\_\_ float3}
-00371 \textcolor{comment}{ *}
-00372 \textcolor{comment}{ */}
-00373 \_\_device\_\_
-\hypertarget{particles__kernel__impl_8cuh_source_l00374}{}\hyperlink{particles__kernel__impl_8cuh_a8e623e11d4ac873cfbe9d7c916326363}{00374} float3 collideCell(int3    gridPos,
-00375                    uint    index,
-00376                    float3  pos,
-00377                    float3  vel,
-00378                    float4 *oldPos,
-00379                    float4 *oldVel,
-00380                    uint   *cellStart,
-00381                    uint   *cellEnd)
-00382 \{
-00383     uint gridHash = calcGridHash(gridPos);
-00384 
-00385     \textcolor{comment}{// get start of bucket for this cell}
-00386     uint startIndex = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(cellStart, gridHash);
-00387 
-00388     float3 force = make\_float3(0.0f);
-00389 
-00390     \textcolor{keywordflow}{if} (startIndex != 0xffffffff)          \textcolor{comment}{// cell is not empty}
-00391     \{
-00392         \textcolor{comment}{// iterate over particles in this cell}
-00393         uint endIndex = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(cellEnd, gridHash);
-00394 
-00395         \textcolor{keywordflow}{for} (uint j=startIndex; j<endIndex; j++)
-00396         \{
-00397             \textcolor{keywordflow}{if} (j != index)                \textcolor{comment}{// check not colliding with self}
-00398             \{
-00399                 float3 pos2 = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldPos, j));
-00400                 float3 vel2 = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldVel, j));
-00401 
-00402                 \textcolor{comment}{// collide two spheres}
-00403                 force += collideSpheres(pos, pos2, vel, vel2, params.particleRadius, params.
-      particleRadius, params.attraction);
-00404             \}
-00405         \}
-00406     \}
-00407 
-00408     \textcolor{keywordflow}{return} force;
-00409 \}
-00410 
-00411 
-00412 \textcolor{comment}{/** \(\backslash\)brief wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu}
-00413 \textcolor{comment}{ *}
-00414 \textcolor{comment}{ * \(\backslash\)param newVel float4* output: new velocit}
-00415 \textcolor{comment}{ * \(\backslash\)param float4 *oldPos input: sorted positions}
-00416 \textcolor{comment}{ * \(\backslash\)param float4 *oldVel input: sorted velocities}
-00417 \textcolor{comment}{ * \(\backslash\)param uint   *gridParticleIndex input: sorted particle indices}
-00418 \textcolor{comment}{ * \(\backslash\)param uint   *cellStart}
-00419 \textcolor{comment}{ * \(\backslash\)param cellEnd uint*}
-00420 \textcolor{comment}{ * \(\backslash\)param numParticles uint}
-00421 \textcolor{comment}{ * \(\backslash\)return \_\_global\_\_ void}
-00422 \textcolor{comment}{ *}
-00423 \textcolor{comment}{ */}
-00424 \_\_global\_\_
-\hypertarget{particles__kernel__impl_8cuh_source_l00425}{}\hyperlink{particles__kernel__impl_8cuh_a9056c5c0f33cbc0acb1c2b12e1a2a530}{00425} \textcolor{keywordtype}{void} collideD(float4 *newVel,               \textcolor{comment}{/* output: new velocit*/}
-00426               float4 *oldPos,               \textcolor{comment}{/* input: sorted positions*/}
-00427               float4 *oldVel,               \textcolor{comment}{/* input: sorted velocities*/}
-00428               uint   *gridParticleIndex,    \textcolor{comment}{/* input: sorted particle indices*/}
-00429               uint   *cellStart,
-00430               uint   *cellEnd,
-00431               uint    numParticles)
-00432 \{
-00433     uint index = \_\_mul24(blockIdx.x,blockDim.x) + threadIdx.x;
+00336 
+00337 \}
+00338 
+00339 \textcolor{comment}{// collide two spheres using DEM method}
+00340 \textcolor{comment}{/** \(\backslash\)brief collide two spheres using DEM method}
+00341 \textcolor{comment}{ *}
+00342 \textcolor{comment}{ * \(\backslash\)param posA float3}
+00343 \textcolor{comment}{ * \(\backslash\)param posB float3}
+00344 \textcolor{comment}{ * \(\backslash\)param velA float3}
+00345 \textcolor{comment}{ * \(\backslash\)param velB float3}
+00346 \textcolor{comment}{ * \(\backslash\)param radiusA float}
+00347 \textcolor{comment}{ * \(\backslash\)param radiusB float}
+00348 \textcolor{comment}{ * \(\backslash\)param attraction float}
+00349 \textcolor{comment}{ * \(\backslash\)return \_\_device\_\_ float3}
+00350 \textcolor{comment}{ *}
+00351 \textcolor{comment}{ */}
+00352 \_\_device\_\_
+\hypertarget{particles__kernel__impl_8cuh_source_l00353}{}\hyperlink{particles__kernel__impl_8cuh_a1d93cb067b16b4a472e9c1a08d9d8e68}{00353} float3 collideSpheres(float3 posA, float3 posB,
+00354                       float3 velA, float3 velB,
+00355                       \textcolor{keywordtype}{float} radiusA, \textcolor{keywordtype}{float} radiusB,
+00356                       \textcolor{keywordtype}{float} attraction)
+00357 \{
+00358     \textcolor{comment}{// calculate relative position}
+00359     float3 relPos = posB - posA;
+00360 
+00361     \textcolor{keywordtype}{float} dist = length(relPos);
+00362     \textcolor{keywordtype}{float} collideDist = (radiusA + radiusB)*1.5f;\textcolor{comment}{//zasieg dzialania sil}
+00363 
+00364     float3 force = make\_float3(0.0f);
+00365 
+00366     \textcolor{keywordflow}{if} (dist < collideDist)
+00367     \{
+00368         float3 norm = relPos / dist;
+00369 
+00370         \textcolor{comment}{// relative velocity}
+00371         \textcolor{comment}{//float3 relVel = velB - velA;}
+00372 
+00373         \textcolor{comment}{// relative tangential velocity}
+00374         \textcolor{comment}{//float3 tanVel = relVel - (dot(relVel, norm) * norm);}
+00375 
+00376         \textcolor{comment}{// spring force}
+00377         \textcolor{comment}{//force = -params.spring*(collideDist - dist) * norm;}
+00378         \textcolor{comment}{// dashpot (damping) force}
+00379         \textcolor{comment}{//force += params.damping*relVel;}
+00380         \textcolor{comment}{// tangential shear force}
+00381         \textcolor{comment}{//force += params.shear*tanVel;}
+00382         \textcolor{comment}{// attraction}
+00383         \textcolor{comment}{//force += attraction*relPos;}
+00384                 \textcolor{comment}{/*float epsi=0.1f;}
+00385 \textcolor{comment}{                float D2=0.00001f;}
+00386 \textcolor{comment}{                float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;}
+00387 \textcolor{comment}{                float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;}
+00388 \textcolor{comment}{                force= epsi*(F1+F2);*/}
+00389                 \textcolor{comment}{//float epsi=0.1f;}
+00390                 \textcolor{comment}{//float D2=0.00001f;//sigma kwadrat}
+00391                 \textcolor{comment}{//float sigma=0.001f;//sigma*2^1/6=r}
+00392                 \textcolor{keywordtype}{float} sigma=2*params.particleRadius/(1.12246204f); \textcolor{comment}{//tu te¿ jest dobrze tak jak LJ
+       ka¿e :-)}
+00393                 \textcolor{keywordtype}{float} sd=sigma/dist;
+00394                 sd*=sd*sd*sd*sd*sd;
+00395                 force=-(48.0f*params.epsi/dist*sd*(sd-0.5f)+attraction/(dist*dist))*norm; \textcolor{comment}{//jest
+       dobrze :-) Uwaga na kierunek wektora normalnego}
+00396 \textcolor{comment}{/////////////////////////////////////////////////////////////////////////////////}
+00397 \textcolor{comment}{/*      tu wpisywac rownania na sily dla czastek bedacywch w zasiegu    */}
+00398 \textcolor{comment}{/////////////////////////////////////////////////////////////////////////////////}
+00399     \}
+00400 
+00401     \textcolor{keywordflow}{return} force;
+00402 \}
+00403 
+00404 
+00405 
+00406 \textcolor{comment}{// collide a particle against all other particles in a given cell}
+00407 \textcolor{comment}{/** \(\backslash\)brief collide a particle against all other particles in a given cell}
+00408 \textcolor{comment}{ *}
+00409 \textcolor{comment}{ * \(\backslash\)param gridPos int3}
+00410 \textcolor{comment}{ * \(\backslash\)param index uint}
+00411 \textcolor{comment}{ * \(\backslash\)param pos float3}
+00412 \textcolor{comment}{ * \(\backslash\)param vel float3}
+00413 \textcolor{comment}{ * \(\backslash\)param oldPos float4*}
+00414 \textcolor{comment}{ * \(\backslash\)param oldVel float4*}
+00415 \textcolor{comment}{ * \(\backslash\)param cellStart uint*}
+00416 \textcolor{comment}{ * \(\backslash\)param cellEnd uint*}
+00417 \textcolor{comment}{ * \(\backslash\)return \_\_device\_\_ float3}
+00418 \textcolor{comment}{ *}
+00419 \textcolor{comment}{ */}
+00420 \_\_device\_\_
+\hypertarget{particles__kernel__impl_8cuh_source_l00421}{}\hyperlink{particles__kernel__impl_8cuh_a8e623e11d4ac873cfbe9d7c916326363}{00421} float3 collideCell(int3    gridPos,
+00422                    uint    index,
+00423                    float3  pos,
+00424                    float3  vel,
+00425                    float4 *oldPos,
+00426                    float4 *oldVel,
+00427                    uint   *cellStart,
+00428                    uint   *cellEnd)
+00429 \{
+00430     uint gridHash = calcGridHash(gridPos);
+00431 
+00432     \textcolor{comment}{// get start of bucket for this cell}
+00433     uint startIndex = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(cellStart, gridHash);
 00434 
-00435     \textcolor{keywordflow}{if} (index >= numParticles) \textcolor{keywordflow}{return};
+00435     float3 force = make\_float3(0.0f);
 00436 
-00437     \textcolor{comment}{// read particle data from sorted arrays}
-00438     float3 pos = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldPos, index));
-00439     float3 vel = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldVel, index));
-00440 
-00441     \textcolor{comment}{// get address in grid}
-00442     int3 gridPos = calcGridPos(pos);
-00443 
-00444     \textcolor{comment}{// examine neighbouring cells}
-00445     float3 force = make\_float3(0.0f);
-00446 
-00447     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} z=-1; z<=1; z++)
-00448     \{
-00449         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y=-1; y<=1; y++)
-00450         \{
-00451             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x=-1; x<=1; x++)
-00452             \{
-00453                 int3 neighbourPos = gridPos + make\_int3(x, y, z);
-00454                 force += collideCell(neighbourPos, index, pos, vel, oldPos, oldVel, cellStart, cellEnd
+00437     \textcolor{keywordflow}{if} (startIndex != 0xffffffff)          \textcolor{comment}{// cell is not empty}
+00438     \{
+00439         \textcolor{comment}{// iterate over particles in this cell}
+00440         uint endIndex = \hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(cellEnd, gridHash);
+00441 
+00442         \textcolor{keywordflow}{for} (uint j=startIndex; j<endIndex; j++)
+00443         \{
+00444             \textcolor{keywordflow}{if} (j != index)                \textcolor{comment}{// check not colliding with self}
+00445             \{
+00446                 float3 pos2 = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldPos, j));
+00447                 float3 vel2 = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldVel, j));
+00448 
+00449                 \textcolor{comment}{// collide two spheres}
+00450                 force += collideSpheres(pos, pos2, vel, vel2, params.particleRadius, params.
+      particleRadius, params.attraction);
+00451             \}
+00452         \}
+00453     \}
+00454 
+00455     \textcolor{keywordflow}{return} force;
+00456 \}
+00457 
+00458 \textcolor{comment}{/** \(\backslash\)brief wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu}
+00459 \textcolor{comment}{ *}
+00460 \textcolor{comment}{ * \(\backslash\)param newVel float4* output: new velocit}
+00461 \textcolor{comment}{ * \(\backslash\)param float4 *oldPos input: sorted positions}
+00462 \textcolor{comment}{ * \(\backslash\)param float4 *oldVel input: sorted velocities}
+00463 \textcolor{comment}{ * \(\backslash\)param uint   *gridParticleIndex input: sorted particle indices}
+00464 \textcolor{comment}{ * \(\backslash\)param uint   *cellStart}
+00465 \textcolor{comment}{ * \(\backslash\)param cellEnd uint*}
+00466 \textcolor{comment}{ * \(\backslash\)param numParticles uint}
+00467 \textcolor{comment}{ * \(\backslash\)return \_\_global\_\_ void}
+00468 \textcolor{comment}{ *}
+00469 \textcolor{comment}{ */}
+00470 \_\_global\_\_
+\hypertarget{particles__kernel__impl_8cuh_source_l00471}{}\hyperlink{particles__kernel__impl_8cuh_a295ed0293da0aab40ac5d904c319abdf}{00471} \textcolor{keywordtype}{void} collideD(float4 *newVel,               \textcolor{comment}{// output: new velocity}
+00472               float4 *oldPos,               \textcolor{comment}{// input: sorted positions}
+00473               float4 *oldVel,               \textcolor{comment}{// input: sorted velocities}
+00474               uint   *gridParticleIndex,    \textcolor{comment}{// input: sorted particle indices}
+00475               uint   *cellStart,
+00476               uint   *cellEnd,
+00477               uint    numParticles,
+00478                           \textcolor{keywordtype}{float} deltaTime)
+00479 \{
+00480     uint index = \_\_mul24(blockIdx.x,blockDim.x) + threadIdx.x;
+00481 
+00482     \textcolor{keywordflow}{if} (index >= numParticles) \textcolor{keywordflow}{return};
+00483 
+00484     \textcolor{comment}{// read particle data from sorted arrays}
+00485     float3 pos = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldPos, index));
+00486     float3 vel = make\_float3(\hyperlink{particles__kernel_8cuh_a12269d678a65f18889c2a7e98c756457}{FETCH}(oldVel, index));
+00487 
+00488     \textcolor{comment}{// get address in grid}
+00489     int3 gridPos = calcGridPos(pos);
+00490 
+00491     \textcolor{comment}{// examine neighbouring cells}
+00492     float3 force = make\_float3(0.0f);
+00493 
+00494     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} z=-1; z<=1; z++)
+00495     \{
+00496         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y=-1; y<=1; y++)
+00497         \{
+00498             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x=-1; x<=1; x++)
+00499             \{
+00500                 int3 neighbourPos = gridPos + make\_int3(x, y, z);
+00501                 force += collideCell(neighbourPos, index, pos, vel, oldPos, oldVel, cellStart, cellEnd
       );
-00455             \}
-00456         \}
-00457     \}
-00458 
-00459     \textcolor{comment}{// collide with cursor sphere}
-00460     force += collideSpheres(pos, params.colliderPos, vel, make\_float3(0.0f, 0.0f, 0.0f), params.
-      particleRadius, params.colliderRadius, 0.0f);
-00461 
-00462     \textcolor{comment}{// write new velocity back to original unsorted location}
-00463     uint originalIndex = gridParticleIndex[index];
-00464     newVel[originalIndex] = make\_float4(vel + force, 0.0f);
-00465 \}
-00466 
-00467 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
+00502             \}
+00503         \}
+00504     \}
+00505 
+00506     \textcolor{comment}{// collide with cursor sphere}
+00507     \textcolor{comment}{//force += collideSpheres(pos, params.colliderPos, vel, make\_float3(0.0f, 0.0f, 0.0f),
+       params.particleRadius, params.colliderRadius, 0.0f);}
+00508 
+00509     \textcolor{comment}{// write new velocity back to original unsorted location}
+00510     uint originalIndex = gridParticleIndex[index];
+00511     newVel[originalIndex] = make\_float4(vel + force*(deltaTime/params.particleMass), 0.0f);
+00512 \}
+00513 
+00514 \textcolor{preprocessor}{#}\textcolor{preprocessor}{endif}
 \end{DoxyCode}

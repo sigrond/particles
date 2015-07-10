@@ -30,7 +30,7 @@
 00026     : \hyperlink{class_particle_renderer_a1d74720edb5c3a13edcdd176ac0d84c7}{m\_pos}(0),
 00027       \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles}(0),
 00028       \hyperlink{class_particle_renderer_a1ca13e546c937cb546c0da19fa853b34}{m\_pointSize}(1.0f),
-00029       \hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{m\_particleRadius}(0.125f * 0.5f),
+00029       \hyperlink{class_particle_renderer_aab5ee3cd769a64c45dc9714aabdb0ee2}{m\_particleRadius}(1.0f/32.0f),
 00030       \hyperlink{class_particle_renderer_a1718484686c2e6db488cc88c433d03cc}{m\_program}(0),
 00031       \hyperlink{class_particle_renderer_a1718484686c2e6db488cc88c433d03cc}{m\_vbo}(0),
 00032       \hyperlink{class_particle_renderer_a1718484686c2e6db488cc88c433d03cc}{m\_colorVBO}(0)
@@ -49,126 +49,127 @@
 00045     \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles} = numParticles;
 00046 \}
 00047 
-\hypertarget{render__particles_8cpp_source_l00048}{}\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{00048} \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a9c0d44ba7666ab432004a5df4cbb2b59}{setVertexBuffer}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vbo, \textcolor{keywordtype}{int} 
-      numParticles)
+\hypertarget{render__particles_8cpp_source_l00048}{}\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{00048} \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a396f73f6c16f24f34368557bfd5557e6}{setVertexBuffer}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} vbo, \textcolor{keywordtype}{int} 
+      numParticles, \textcolor{keywordtype}{float} zoom)
 00049 \{
 00050     m\_vbo = vbo;
 00051     \hyperlink{class_particle_renderer_af885fdb5e6da925209dfd960f66b5fd8}{m\_numParticles} = numParticles;
-00052 \}
-00053 
-\hypertarget{render__particles_8cpp_source_l00054}{}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{00054} \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}()
-00055 \{
-00056     \textcolor{keywordflow}{if} (!m\_vbo)
-00057     \{
-00058         glBegin(GL\_POINTS);
-00059         \{
-00060             \textcolor{keywordtype}{int} k = 0;
-00061 
-00062             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < m\_numParticles; ++i)
-00063             \{
-00064                 glVertex3fv(&m\_pos[k]);
-00065                 k += 4;
-00066             \}
-00067         \}
-00068         glEnd();
-00069     \}
-00070     \textcolor{keywordflow}{else}
-00071     \{
-00072         glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, m\_vbo);
-00073         glVertexPointer(4, GL\_FLOAT, 0, 0);
-00074         glEnableClientState(GL\_VERTEX\_ARRAY);
-00075 
-00076         \textcolor{keywordflow}{if} (m\_colorVBO)
-00077         \{
-00078             glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, m\_colorVBO);
-00079             glColorPointer(4, GL\_FLOAT, 0, 0);
-00080             glEnableClientState(GL\_COLOR\_ARRAY);
-00081         \}
-00082 
-00083         glDrawArrays(GL\_POINTS, 0, m\_numParticles);
-00084 
-00085         glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, 0);
-00086         glDisableClientState(GL\_VERTEX\_ARRAY);
-00087         glDisableClientState(GL\_COLOR\_ARRAY);
-00088     \}
-00089 \}
-00090 
-\hypertarget{render__particles_8cpp_source_l00091}{}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{00091} \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{display}(\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{DisplayMode} mode \textcolor{comment}{/* =
+00052         \textcolor{keyword}{this}\hyperlink{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{->}\hyperlink{class_particle_renderer_a065df5c32be72505267048490bd0b3cf}{zoom}=zoom;
+00053 \}
+00054 
+\hypertarget{render__particles_8cpp_source_l00055}{}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{00055} \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}()
+00056 \{
+00057     \textcolor{keywordflow}{if} (!m\_vbo)
+00058     \{
+00059         glBegin(GL\_POINTS);
+00060         \{
+00061             \textcolor{keywordtype}{int} k = 0;
+00062 
+00063             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < m\_numParticles; ++i)
+00064             \{
+00065                 glVertex3fv(&m\_pos[k]);
+00066                 k += 4;
+00067             \}
+00068         \}
+00069         glEnd();
+00070     \}
+00071     \textcolor{keywordflow}{else}
+00072     \{
+00073         glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, m\_vbo);
+00074         glVertexPointer(4, GL\_FLOAT, 0, 0);
+00075         glEnableClientState(GL\_VERTEX\_ARRAY);
+00076 
+00077         \textcolor{keywordflow}{if} (m\_colorVBO)
+00078         \{
+00079             glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, m\_colorVBO);
+00080             glColorPointer(4, GL\_FLOAT, 0, 0);
+00081             glEnableClientState(GL\_COLOR\_ARRAY);
+00082         \}
+00083 
+00084         glDrawArrays(GL\_POINTS, 0, m\_numParticles);
+00085 
+00086         glBindBufferARB(GL\_ARRAY\_BUFFER\_ARB, 0);
+00087         glDisableClientState(GL\_VERTEX\_ARRAY);
+00088         glDisableClientState(GL\_COLOR\_ARRAY);
+00089     \}
+00090 \}
+00091 
+\hypertarget{render__particles_8cpp_source_l00092}{}\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{00092} \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a80b2f52dc28bb3abbde021f7fe96f8ff}{display}(\hyperlink{class_particle_renderer_a7b691afffd1abe415cb0ce17fd26f3d5}{DisplayMode} mode \textcolor{comment}{/* =
        PARTICLE\_POINTS */})
-00092 \{
-00093     \textcolor{keywordflow}{switch} (mode)
-00094     \{
-00095         \textcolor{keywordflow}{case} PARTICLE\_POINTS:
-00096             glColor3f(1, 1, 1);
-00097             glPointSize(m\_pointSize);
-00098             \hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{(}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{)};
-00099             \textcolor{keywordflow}{break};
-00100 
-00101         \textcolor{keywordflow}{default}:
-00102         \textcolor{keywordflow}{case} PARTICLE\_SPHERES:
-00103             glEnable(GL\_POINT\_SPRITE\_ARB);
-00104             glTexEnvi(GL\_POINT\_SPRITE\_ARB, GL\_COORD\_REPLACE\_ARB, GL\_TRUE);
-00105             glEnable(GL\_VERTEX\_PROGRAM\_POINT\_SIZE\_NV);
-00106             glDepthMask(GL\_TRUE);
-00107             glEnable(GL\_DEPTH\_TEST);
-00108 
-00109             glUseProgram(m\_program);
-00110             glUniform1f(glGetUniformLocation(m\_program, \textcolor{stringliteral}{"pointScale"}), m\_window\_h / tanf(m\_fov*0.5f*(\textcolor{keywordtype}{
-      float})\hyperlink{render__particles_8cpp_ae71449b1cc6e6250b91f539153a7a0d3}{M\_PI}/180.0f));
-00111             glUniform1f(glGetUniformLocation(m\_program, \textcolor{stringliteral}{"pointRadius"}), m\_particleRadius);
-00112 
-00113             glColor3f(1, 1, 1);
-00114             \hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{(}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{)};
-00115 
-00116             glUseProgram(0);
-00117             glDisable(GL\_POINT\_SPRITE\_ARB);
-00118             \textcolor{keywordflow}{break};
-00119     \}
-00120 \}
-00121 
-00122 \hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{GLuint}
-\hypertarget{render__particles_8cpp_source_l00123}{}\hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{00123} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{\_compileProgram}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *
+00093 \{
+00094     \textcolor{keywordflow}{switch} (mode)
+00095     \{
+00096         \textcolor{keywordflow}{case} PARTICLE\_POINTS:
+00097             glColor3f(1, 1, 1);
+00098             glPointSize(m\_pointSize);
+00099             \hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{(}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{)};
+00100             \textcolor{keywordflow}{break};
+00101 
+00102         \textcolor{keywordflow}{default}:
+00103         \textcolor{keywordflow}{case} PARTICLE\_SPHERES:
+00104             glEnable(GL\_POINT\_SPRITE\_ARB);
+00105             glTexEnvi(GL\_POINT\_SPRITE\_ARB, GL\_COORD\_REPLACE\_ARB, GL\_TRUE);
+00106             glEnable(GL\_VERTEX\_PROGRAM\_POINT\_SIZE\_NV);
+00107             glDepthMask(GL\_TRUE);
+00108             glEnable(GL\_DEPTH\_TEST);
+00109 
+00110             glUseProgram(m\_program);
+00111             glUniform1f(glGetUniformLocation(m\_program, \textcolor{stringliteral}{"pointScale"}), zoom*m\_window\_h / tanf(m\_fov*
+      0.5f*(\textcolor{keywordtype}{float})\hyperlink{render__particles_8cpp_ae71449b1cc6e6250b91f539153a7a0d3}{M\_PI}/180.0f));
+00112             glUniform1f(glGetUniformLocation(m\_program, \textcolor{stringliteral}{"pointRadius"}), m\_particleRadius);
+00113 
+00114             glColor3f(1, 1, 1);
+00115             \hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{\_drawPoints}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{(}\hyperlink{class_particle_renderer_a2683c43c010bff7973a977c1953f2bd6}{)};
+00116 
+00117             glUseProgram(0);
+00118             glDisable(GL\_POINT\_SPRITE\_ARB);
+00119             \textcolor{keywordflow}{break};
+00120     \}
+00121 \}
+00122 
+00123 \hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{GLuint}
+\hypertarget{render__particles_8cpp_source_l00124}{}\hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{00124} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{\_compileProgram}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *
       \hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{vsource}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\hyperlink{class_particle_renderer_a3a7af352d38734b6bfa425e3b207d60b}{fsource})
-00124 \{
-00125     GLuint vertexShader = glCreateShader(GL\_VERTEX\_SHADER);
-00126     GLuint fragmentShader = glCreateShader(GL\_FRAGMENT\_SHADER);
-00127 
-00128     glShaderSource(vertexShader, 1, &vsource, 0);
-00129     glShaderSource(fragmentShader, 1, &fsource, 0);
-00130 
-00131     glCompileShader(vertexShader);
-00132     glCompileShader(fragmentShader);
-00133 
-00134     GLuint program = glCreateProgram();
-00135 
-00136     glAttachShader(program, vertexShader);
-00137     glAttachShader(program, fragmentShader);
-00138 
-00139     glLinkProgram(program);
-00140 
-00141     \textcolor{comment}{// check if program linked}
-00142     GLint success = 0;
-00143     glGetProgramiv(program, GL\_LINK\_STATUS, &success);
-00144 
-00145     \textcolor{keywordflow}{if} (!success)
-00146     \{
-00147         \textcolor{keywordtype}{char} temp[256];
-00148         glGetProgramInfoLog(program, 256, 0, temp);
-00149         printf(\textcolor{stringliteral}{"Failed to link program:\(\backslash\)n%s\(\backslash\)n"}, temp);
-00150         glDeleteProgram(program);
-00151         program = 0;
-00152     \}
-00153 
-00154     \textcolor{keywordflow}{return} program;
-00155 \}
-00156 
-\hypertarget{render__particles_8cpp_source_l00157}{}\hyperlink{class_particle_renderer_ac75c7f73a0014333305b174b8863a46b}{00157} \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_ac75c7f73a0014333305b174b8863a46b}{\_initGL}()
-00158 \{
-00159     m\_program = \_compileProgram(vertexShader, spherePixelShader);
-00160 
-00161 #\textcolor{keywordflow}{if} !defined(\_\_APPLE\_\_) && !defined(MACOSX)
-00162     glClampColorARB(GL\_CLAMP\_VERTEX\_COLOR\_ARB, GL\_FALSE);
-00163     glClampColorARB(GL\_CLAMP\_FRAGMENT\_COLOR\_ARB, GL\_FALSE);
-00164 #endif
-00165 \}
+00125 \{
+00126     GLuint vertexShader = glCreateShader(GL\_VERTEX\_SHADER);
+00127     GLuint fragmentShader = glCreateShader(GL\_FRAGMENT\_SHADER);
+00128 
+00129     glShaderSource(vertexShader, 1, &vsource, 0);
+00130     glShaderSource(fragmentShader, 1, &fsource, 0);
+00131 
+00132     glCompileShader(vertexShader);
+00133     glCompileShader(fragmentShader);
+00134 
+00135     GLuint program = glCreateProgram();
+00136 
+00137     glAttachShader(program, vertexShader);
+00138     glAttachShader(program, fragmentShader);
+00139 
+00140     glLinkProgram(program);
+00141 
+00142     \textcolor{comment}{// check if program linked}
+00143     GLint success = 0;
+00144     glGetProgramiv(program, GL\_LINK\_STATUS, &success);
+00145 
+00146     \textcolor{keywordflow}{if} (!success)
+00147     \{
+00148         \textcolor{keywordtype}{char} temp[256];
+00149         glGetProgramInfoLog(program, 256, 0, temp);
+00150         printf(\textcolor{stringliteral}{"Failed to link program:\(\backslash\)n%s\(\backslash\)n"}, temp);
+00151         glDeleteProgram(program);
+00152         program = 0;
+00153     \}
+00154 
+00155     \textcolor{keywordflow}{return} program;
+00156 \}
+00157 
+\hypertarget{render__particles_8cpp_source_l00158}{}\hyperlink{class_particle_renderer_ac75c7f73a0014333305b174b8863a46b}{00158} \textcolor{keywordtype}{void} \hyperlink{class_particle_renderer}{ParticleRenderer}::\hyperlink{class_particle_renderer_ac75c7f73a0014333305b174b8863a46b}{\_initGL}()
+00159 \{
+00160     m\_program = \_compileProgram(vertexShader, spherePixelShader);
+00161 
+00162 #\textcolor{keywordflow}{if} !defined(\_\_APPLE\_\_) && !defined(MACOSX)
+00163     glClampColorARB(GL\_CLAMP\_VERTEX\_COLOR\_ARB, GL\_FALSE);
+00164     glClampColorARB(GL\_CLAMP\_FRAGMENT\_COLOR\_ARB, GL\_FALSE);
+00165 #endif
+00166 \}
 \end{DoxyCode}

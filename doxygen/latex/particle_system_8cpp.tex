@@ -1,6 +1,11 @@
 \hypertarget{particle_system_8cpp}{\section{Dokumentacja pliku particle\-System.\-cpp}
 \label{particle_system_8cpp}\index{particle\-System.\-cpp@{particle\-System.\-cpp}}
 }
+
+
+Definicje (implementacje) metod klasy \hyperlink{class_particle_system}{Particle\-System} oraz funkcji pomocniczych.  
+
+
 {\ttfamily \#include \char`\"{}particle\-System.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}particle\-System.\-cuh\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}particles\-\_\-kernel.\-cuh\char`\"{}}\\*
@@ -21,6 +26,11 @@ Wykres zależności załączania dla particle\-System.\-cpp\-:\nopagebreak
 \includegraphics[width=350pt]{particle_system_8cpp__incl}
 \end{center}
 \end{figure}
+\subsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_particle_system_1_1particle_type}{Particle\-System\-::particle\-Type}
+\end{DoxyCompactItemize}
 \subsection*{Definicje}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,6 +45,18 @@ void \hyperlink{particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302}{color\-R
 \item 
 float \hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand} ()
 \end{DoxyCompactItemize}
+\subsection*{Zmienne}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{particle_system_8cpp_a54f61e4f37db321d451436bf2201b8cb}{multi\-Color}
+\end{DoxyCompactItemize}
+
+
+\subsection{Opis szczegółowy}
+Definicje (implementacje) metod klasy \hyperlink{class_particle_system}{Particle\-System} oraz funkcji pomocniczych. 
+
+Definicja w pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+
 
 
 \subsection{Dokumentacja definicji}
@@ -43,7 +65,7 @@ float \hyperlink{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}{frand} 
 \subsubsection[{C\-U\-D\-A\-R\-T\-\_\-\-P\-I\-\_\-\-F}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-U\-D\-A\-R\-T\-\_\-\-P\-I\-\_\-\-F~3.\-141592654f}}\label{particle_system_8cpp_a0af3123952dff68caffd7e1357abe1b7}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00030}{30} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00035}{35} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
@@ -58,37 +80,37 @@ Definicja w linii \hyperlink{particle_system_8cpp_source_l00030}{30} pliku \hype
 )}}\label{particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00101}{101} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00120}{120} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołuje się do \hyperlink{particle_system_8cpp_source_l00095}{lerp()}.
+Odwołuje się do \hyperlink{particle_system_8cpp_source_l00114}{lerp()}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00123}{Particle\-System\-::\-\_\-initialize()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00142}{Particle\-System\-::\-\_\-initialize()}.
 
 
 \begin{DoxyCode}
-00102 \{
-00103     \textcolor{keyword}{const} \textcolor{keywordtype}{int} ncolors = 7;
-00104     \textcolor{keywordtype}{float} c[ncolors][3] =
-00105     \{
-00106         \{ 1.0, 0.0, 0.0, \},
-00107         \{ 1.0, 0.5, 0.0, \},
-00108         \{ 1.0, 1.0, 0.0, \},
-00109         \{ 0.0, 1.0, 0.0, \},
-00110         \{ 0.0, 1.0, 1.0, \},
-00111         \{ 0.0, 0.0, 1.0, \},
-00112         \{ 1.0, 0.0, 1.0, \},
-00113     \};
-00114     t = t * (ncolors-1);
-00115     \textcolor{keywordtype}{int} i = (int) t;
-00116     \textcolor{keywordtype}{float} u = t - floor(t);
-00117     r[0] = \hyperlink{particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575}{lerp}(c[i][0], c[i+1][0], u);
-00118     r[1] = \hyperlink{particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575}{lerp}(c[i][1], c[i+1][1], u);
-00119     r[2] = \hyperlink{particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575}{lerp}(c[i][2], c[i+1][2], u);
-00120 \}
+00121 \{
+00122     \textcolor{keyword}{const} \textcolor{keywordtype}{int} ncolors = 7;
+00123     \textcolor{keywordtype}{float} c[ncolors][3] =
+00124     \{
+00125         \{ 1.0, 0.0, 0.0, \},
+00126         \{ 1.0, 0.5, 0.0, \},
+00127         \{ 1.0, 1.0, 0.0, \},
+00128         \{ 0.0, 1.0, 0.0, \},
+00129         \{ 0.0, 1.0, 1.0, \},
+00130         \{ 0.0, 0.0, 1.0, \},
+00131         \{ 1.0, 0.0, 1.0, \},
+00132     \};
+00133     t = t * (ncolors-1);
+00134     \textcolor{keywordtype}{int} i = (int) t;
+00135     \textcolor{keywordtype}{float} u = t - floor(t);
+00136     r[0] = \hyperlink{particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575}{lerp}(c[i][0], c[i+1][0], u);
+00137     r[1] = \hyperlink{particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575}{lerp}(c[i][1], c[i+1][1], u);
+00138     r[2] = \hyperlink{particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575}{lerp}(c[i][2], c[i+1][2], u);
+00139 \}
 \end{DoxyCode}
 
 
@@ -121,17 +143,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00400}{400} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00429}{429} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołania w \hyperlink{particles_8cpp_source_l00335}{add\-Sphere()} i \hyperlink{particle_system_8cpp_source_l00436}{Particle\-System\-::reset()}.
+Odwołania w \hyperlink{particles_8cpp_source_l00514}{add\-Sphere()} i \hyperlink{particle_system_8cpp_source_l00465}{Particle\-System\-::reset()}.
 
 
 \begin{DoxyCode}
-00401 \{
-00402     \textcolor{keywordflow}{return} rand() / (float) RAND\_MAX;
-00403 \}
+00430 \{
+00431     \textcolor{keywordflow}{return} rand() / (float) RAND\_MAX;
+00432 \}
 \end{DoxyCode}
 
 
@@ -155,17 +177,17 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575}
 
 
-Definicja w linii \hyperlink{particle_system_8cpp_source_l00095}{95} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
+Definicja w linii \hyperlink{particle_system_8cpp_source_l00114}{114} pliku \hyperlink{particle_system_8cpp_source}{particle\-System.\-cpp}.
 
 
 
-Odwołania w \hyperlink{particle_system_8cpp_source_l00101}{color\-Ramp()}.
+Odwołania w \hyperlink{particle_system_8cpp_source_l00120}{color\-Ramp()}.
 
 
 \begin{DoxyCode}
-00096 \{
-00097     \textcolor{keywordflow}{return} a + t*(b-a);
-00098 \}
+00115 \{
+00116     \textcolor{keywordflow}{return} a + t*(b-a);
+00117 \}
 \end{DoxyCode}
 
 
@@ -177,4 +199,14 @@ Oto graf wywoływań tej funkcji\-:\nopagebreak
 \end{center}
 \end{figure}
 
+
+
+
+\subsection{Dokumentacja zmiennych}
+\hypertarget{particle_system_8cpp_a54f61e4f37db321d451436bf2201b8cb}{\index{particle\-System.\-cpp@{particle\-System.\-cpp}!multi\-Color@{multi\-Color}}
+\index{multi\-Color@{multi\-Color}!particleSystem.cpp@{particle\-System.\-cpp}}
+\subsubsection[{multi\-Color}]{\setlength{\rightskip}{0pt plus 5cm}bool multi\-Color}}\label{particle_system_8cpp_a54f61e4f37db321d451436bf2201b8cb}
+
+
+Odwołania w \hyperlink{particle_system_8cpp_source_l00142}{Particle\-System\-::\-\_\-initialize()}.
 

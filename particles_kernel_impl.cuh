@@ -12,14 +12,11 @@
 /*
  * CUDA particle system kernel code.
  */
-<<<<<<< HEAD
  /** \file particles_kernel_impl.cuh
   * \brief Implementacje (definicje) funkcji odpowiadających za fizykę.
   *
   */
 
-=======
->>>>>>> master
 
 #ifndef _PARTICLES_KERNEL_H_
 #define _PARTICLES_KERNEL_H_
@@ -30,10 +27,7 @@
 #include "helper_math.h"
 #include "math_constants.h"
 #include "particles_kernel.cuh"
-<<<<<<< HEAD
 #include <curand_kernel.h>/**< biblioteka zawierająca funkcje generujące liczby pseudolosowe i quasi-losowe na karcie */
-=======
->>>>>>> master
 
 #if USE_TEX
 // textures for particle position and velocity
@@ -48,10 +42,6 @@ texture<uint, 1, cudaReadModeElementType> cellEndTex;
 // simulation parameters in constant memory
 __constant__ SimParams params;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 /** \struct integrate_functor
  * \brief ta struktura inicjowana jest z krokiem delta_time dla danych
  * opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU)
@@ -78,7 +68,6 @@ struct integrate_functor
         float3 pos = make_float3(posData.x, posData.y, posData.z);
         float3 vel = make_float3(velData.x, velData.y, velData.z);
 
-<<<<<<< HEAD
         vel += params.gravity * deltaTime;/**< grawitacja */
 		if(params.brown!=0.0f)/**< ruchy Browna */
         {
@@ -102,13 +91,6 @@ struct integrate_functor
         // new position = old position + velocity * deltaTime
 
         pos += vel * deltaTime;/**< przemieszczenie */
-=======
-        vel += params.gravity * deltaTime;
-        vel *= params.globalDamping;
-
-        // new position = old position + velocity * deltaTime
-        pos += vel * deltaTime;
->>>>>>> master
 
         // set this to zero to disable collisions with cube sides
 #if 0
@@ -145,18 +127,13 @@ struct integrate_functor
 
 #endif
 
-<<<<<<< HEAD
 		//odbijanie sie od kuli
 		/**< odbijanie sie od kuli vel napiecie powierzchniowe */
-=======
-		/**< odbijanie sie od kuli */
->>>>>>> master
 #if 1
 		float xk=pos.x*pos.x;
 		float yk=pos.y*pos.y;
 		float zk=pos.z*pos.z;
 		float r0k=xk+yk+zk;
-<<<<<<< HEAD
 		float R=params.bigradius;//- params.particleRadius;
 		float r0=sqrt(r0k);
 		if(params.boundaries && r0>R-params.particleRadius && r0<R+params.particleRadius)
@@ -188,30 +165,11 @@ struct integrate_functor
 			//float rr=r*cos(theta);
 			//pos.x=rr*cos(fi);
 			//pos.y=rr*sin(fi);
-=======
-		float r=params.bigradius;//- params.particleRadius;
-		if(r0k > r*r + FLT_EPSILON )
-		{
-			r-=params.particleRadius*4;
-			/*vel.x*=params.boundaryDamping;
-			vel.y*=params.boundaryDamping;
-			vel.z*=params.boundaryDamping;*/
-			vel.x=0.0f;
-			vel.y=0.0f;
-			vel.z=0.0f;
-			/*float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));
-			float fi=atan(pos.y/pos.x);
-			pos.z=r*sin(theta);
-			float rr=r*cos(theta);
-			pos.x=rr*cos(fi);
-			pos.y=rr*sin(fi);*/
->>>>>>> master
 			float r0=sqrt(r0k);
 			float tmp=r/r0;
 			pos.x*=tmp;
 			pos.y*=tmp;
 			pos.z*=tmp;
-<<<<<<< HEAD
 		}*/
 #endif
 
@@ -222,17 +180,6 @@ struct integrate_functor
         {
             pos.y = -2.0f*params.bigradius0 + params.particleRadius;
             vel.y = 0;
-=======
-		}
-#endif
-
-//dolna plaszczyzna
-#if 0
-        if (pos.y < -1.0f + params.particleRadius)
-        {
-            pos.y = -1.0f + params.particleRadius;
-            vel.y *= params.boundaryDamping;
->>>>>>> master
         }
 #endif
 
@@ -284,17 +231,10 @@ __device__ uint calcGridHash(int3 gridPos)
  *
  */
 __global__
-<<<<<<< HEAD
 void calcHashD(uint   *gridParticleHash,  // output
                uint   *gridParticleIndex, // output
                float4 *pos,               // input: positions
                uint    numParticles)
-=======
-void calcHashD(uint   *gridParticleHash,  /* output*/
-                uint   *gridParticleIndex, /* output*/
-                float4 *pos,               /* input: positions*/
-                uint    numParticles)
->>>>>>> master
 {
     uint index = __umul24(blockIdx.x, blockDim.x) + threadIdx.x;
 
@@ -329,7 +269,6 @@ void calcHashD(uint   *gridParticleHash,  /* output*/
  *
  */
 __global__
-<<<<<<< HEAD
 void reorderDataAndFindCellStartD(uint   *cellStart,        // output: cell start index
                                   uint   *cellEnd,          // output: cell end index
                                   float4 *sortedPos,        // output: sorted positions
@@ -338,16 +277,6 @@ void reorderDataAndFindCellStartD(uint   *cellStart,        // output: cell star
                                   uint   *gridParticleIndex,// input: sorted particle indices
                                   float4 *oldPos,           // input: sorted position array
                                   float4 *oldVel,           // input: sorted velocity array
-=======
-void reorderDataAndFindCellStartD(uint   *cellStart,        /* output: cell start index*/
-                                  uint   *cellEnd,          /* output: cell end index*/
-                                  float4 *sortedPos,        /* output: sorted positions*/
-                                  float4 *sortedVel,        /* output: sorted velocities*/
-                                  uint   *gridParticleHash, /* input: sorted grid hashes*/
-                                  uint   *gridParticleIndex,/* input: sorted particle indices*/
-                                  float4 *oldPos,           /* input: sorted position array*/
-                                  float4 *oldVel,           /* input: sorted velocity array*/
->>>>>>> master
                                   uint    numParticles)
 {
     extern __shared__ uint sharedHash[];    // blockSize + 1 elements
@@ -430,17 +359,12 @@ float3 collideSpheres(float3 posA, float3 posB,
     float3 relPos = posB - posA;
 
     float dist = length(relPos);
-<<<<<<< HEAD
     float collideDist = (radiusA + radiusB)*1.5f;//zasieg dzialania sil
-=======
-    float collideDist = (radiusA + radiusB)*4;//zasieg dzialania sil
->>>>>>> master
 
     float3 force = make_float3(0.0f);
 
     if (dist < collideDist)
     {
-<<<<<<< HEAD
         float3 norm = relPos / dist;
 
         // relative velocity
@@ -449,12 +373,6 @@ float3 collideSpheres(float3 posA, float3 posB,
         // relative tangential velocity
         //float3 tanVel = relVel - (dot(relVel, norm) * norm);
 
-=======
-        /*// relative velocity
-        //float3 relVel = velB - velA;
-        // relative tangential velocity
-        //float3 tanVel = relVel - (dot(relVel, norm) * norm);
->>>>>>> master
         // spring force
         //force = -params.spring*(collideDist - dist) * norm;
         // dashpot (damping) force
@@ -463,7 +381,6 @@ float3 collideSpheres(float3 posA, float3 posB,
         //force += params.shear*tanVel;
         // attraction
         //force += attraction*relPos;
-<<<<<<< HEAD
 		/*float epsi=0.1f;
 		float D2=0.00001f;
 		float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;
@@ -476,22 +393,6 @@ float3 collideSpheres(float3 posA, float3 posB,
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
 		force=-(48.0f*params.epsi/dist*sd*(sd-0.5f)+attraction/(dist*dist))*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
-=======
-		//float D2=0.00001f;//sigma kwadrat
-		//float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;
-		//float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;
-		//force= epsi*(F1+F2)/dist;*/
-        if(dist<radiusA + radiusB)
-        {
-
-        }
-        float3 norm = relPos / dist;
-		float epsi=0.1f;
-		float sigma=0.001f;
-		float sd=sigma/dist;
-		sd*=sd*sd*sd*sd*sd;
-		force=12.0f*epsi/dist*sd*(sd-0.5f)*norm;
->>>>>>> master
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////
@@ -554,10 +455,6 @@ float3 collideCell(int3    gridPos,
     return force;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 /** \brief wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu
  *
  * \param newVel float4* output: new velocit
@@ -571,7 +468,6 @@ float3 collideCell(int3    gridPos,
  *
  */
 __global__
-<<<<<<< HEAD
 void collideD(float4 *newVel,               // output: new velocity
               float4 *oldPos,               // input: sorted positions
               float4 *oldVel,               // input: sorted velocities
@@ -580,15 +476,6 @@ void collideD(float4 *newVel,               // output: new velocity
               uint   *cellEnd,
               uint    numParticles,
 			  float deltaTime)
-=======
-void collideD(float4 *newVel,               /* output: new velocit*/
-              float4 *oldPos,               /* input: sorted positions*/
-              float4 *oldVel,               /* input: sorted velocities*/
-              uint   *gridParticleIndex,    /* input: sorted particle indices*/
-              uint   *cellStart,
-              uint   *cellEnd,
-              uint    numParticles)
->>>>>>> master
 {
     uint index = __mul24(blockIdx.x,blockDim.x) + threadIdx.x;
 
@@ -621,11 +508,7 @@ void collideD(float4 *newVel,               /* output: new velocit*/
 
     // write new velocity back to original unsorted location
     uint originalIndex = gridParticleIndex[index];
-<<<<<<< HEAD
     newVel[originalIndex] = make_float4(vel + force*(deltaTime/params.particleMass), 0.0f);
-=======
-    newVel[originalIndex] = make_float4(vel + force, 0.0f);
->>>>>>> master
 }
 
 #endif
