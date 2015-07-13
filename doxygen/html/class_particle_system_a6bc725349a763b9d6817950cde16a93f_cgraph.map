@@ -1,5 +1,0 @@
-<map id="ParticleSystem::~ParticleSystem" name="ParticleSystem::~ParticleSystem">
-<area shape="rect" id="node2" href="$class_particle_system.html#a5d6a52db7d1277c8fe734ecceb69e5c6" title="ParticleSystem::_finalize" alt="" coords="224,31,391,57"/>
-<area shape="rect" id="node3" href="$particle_system_8cuh.html#a2946519c8d9c4f8ebf552bf044821ea9" title="freeArray" alt="" coords="485,5,559,32"/>
-<area shape="rect" id="node4" href="$particle_system_8cuh.html#a9afef8c00ca779aae2d7484b45bce34c" title="unregisterGLBufferObject" alt="" coords="439,56,605,83"/>
-</map>

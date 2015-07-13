@@ -1,7 +1,0 @@
-<map id="ParticleSystem::reset" name="ParticleSystem::reset">
-<area shape="rect" id="node2" href="$particle_system_8cpp.html#a5459f6b6b39f9a6b80de7f17c3777ee2" title="frand" alt="" coords="260,5,311,32"/>
-<area shape="rect" id="node3" href="$class_particle_system.html#aa792a66680e800832059854aab0d594d" title="ParticleSystem::setArray" alt="" coords="201,56,369,83"/>
-<area shape="rect" id="node4" href="$particle_system_8cuh.html#a9afef8c00ca779aae2d7484b45bce34c" title="unregisterGLBufferObject" alt="" coords="417,5,584,32"/>
-<area shape="rect" id="node5" href="$particle_system_8cuh.html#a4386a84282ceeaba09939817aa2a9c24" title="registerGLBufferObject" alt="" coords="424,56,577,83"/>
-<area shape="rect" id="node6" href="$particle_system_8cuh.html#ac4d4ecd921dbed6c2deef639ca295374" title="copyArrayToDevice" alt="" coords="434,107,567,133"/>
-</map>

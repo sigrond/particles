@@ -1,5 +1,0 @@
-<map id="ParticleSystem::reset" name="ParticleSystem::reset">
-<area shape="rect" id="node2" href="$particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initialize particle system ustawienia początkowe i utworzenie obiektu systemu cząstek ..." alt="" coords="201,5,329,32"/>
-<area shape="rect" id="node3" href="$particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="obsługa zdarzeń klawiszy i opcji z menu " alt="" coords="244,56,287,83"/>
-<area shape="rect" id="node4" href="$particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="377,56,460,83"/>
-</map>
