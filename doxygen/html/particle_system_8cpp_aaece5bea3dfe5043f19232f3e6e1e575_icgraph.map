@@ -1,5 +1,0 @@
-<map id="lerp" name="lerp">
-<area shape="rect" id="node2" href="$particle_system_8cpp.html#a1ec1ae39a0b30ca8330f7839a624f302" title="colorRamp" alt="" coords="96,37,180,63"/>
-<area shape="rect" id="node3" href="$class_particle_system.html#a484988642e046424d32a13709204e8de" title="ParticleSystem::_initialize" alt="" coords="228,37,401,63"/>
-<area shape="rect" id="node4" href="$class_particle_system.html#a8a2be3e93616aa694801369c8b8d12cb" title="ParticleSystem::Particle\lSystem" alt="" coords="449,29,612,71"/>
-</map>

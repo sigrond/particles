@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>particles: Plik źródłowy render_particles.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="particles.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">particles
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
+      <li><a href="globals.html"><span>Składowe&#160;plików</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('render__particles_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klasy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Zmienne</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Wyliczenia</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Wartości wyliczeń</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Definicje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">render_particles.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="render__particles_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 1993-2012 NVIDIA Corporation.  All rights reserved.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Please refer to the NVIDIA end user license agreement (EULA) associated</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * with this source code for terms and conditions that govern your use of</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * this software. Any use, reproduction, disclosure, or distribution of</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * this software and related documentation outside the terms of the EULA</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * is strictly prohibited.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">__RENDER_PARTICLES__</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">__RENDER_PARTICLES__</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_particle_renderer.html">   15</a></span>&#160;<span class="keyword">class</span> <a class="code" href="class_particle_renderer.html">ParticleRenderer</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="class_particle_renderer.html#a1718484686c2e6db488cc88c433d03cc">ParticleRenderer</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        ~<a class="code" href="class_particle_renderer.html#a281be31ad850fead012460fb6675db98">ParticleRenderer</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#adb3204e8af23a65b05b1aca7f43f0430">setPositions</a>(<span class="keywordtype">float</span> *pos, <span class="keywordtype">int</span> numParticles);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#a396f73f6c16f24f34368557bfd5557e6">setVertexBuffer</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vbo, <span class="keywordtype">int</span> numParticles, <span class="keywordtype">float</span> zoom);</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#af16e23ebcee20753d86d24e4e5e32c7c">   23</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#af16e23ebcee20753d86d24e4e5e32c7c">setColorBuffer</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vbo)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            m_colorVBO = vbo;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5">   28</a></span>&#160;        <span class="keyword">enum</span> <a class="code" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5">DisplayMode</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe">   30</a></span>&#160;            <a class="code" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe">PARTICLE_POINTS</a>,</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111">   31</a></span>&#160;            <a class="code" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111">PARTICLE_SPHERES</a>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc">   32</a></span>&#160;            <a class="code" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc">PARTICLE_NUM_MODES</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        };</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#a80b2f52dc28bb3abbde021f7fe96f8ff">display</a>(<a class="code" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5">DisplayMode</a> mode = <a class="code" href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe">PARTICLE_POINTS</a>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#a0e0a5d323acf55087911ea77a2a3eafa">displayGrid</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a68df35cdf53ad987aa6d8360b3531627">   38</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#a68df35cdf53ad987aa6d8360b3531627">setPointSize</a>(<span class="keywordtype">float</span> size)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <a class="code" href="class_particle_renderer.html#a1ca13e546c937cb546c0da19fa853b34">m_pointSize</a> = size;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#aff09822b565b6953fc83c88bda7fa378">   42</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#aff09822b565b6953fc83c88bda7fa378">setParticleRadius</a>(<span class="keywordtype">float</span> r)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="class_particle_renderer.html#aab5ee3cd769a64c45dc9714aabdb0ee2">m_particleRadius</a> = r;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#ad6da663d3073401a776edb8dc6cf4d5f">   46</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#ad6da663d3073401a776edb8dc6cf4d5f">setFOV</a>(<span class="keywordtype">float</span> fov)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="class_particle_renderer.html#a0aed003bd557a3c32ca7d2ca89fc59f7">m_fov</a> = fov;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#ad84b464475e5ebd42cfed6e2e91e7247">   50</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#ad84b464475e5ebd42cfed6e2e91e7247">setWindowSize</a>(<span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="class_particle_renderer.html#aa71b7eba5d5665a086b7ba80adddf19b">m_window_w</a> = w;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <a class="code" href="class_particle_renderer.html#af34b1e93f6a7f22774a6473c52027d77">m_window_h</a> = h;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">protected</span>: <span class="comment">// methods</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">_initGL</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6">_drawPoints</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">GLuint</a> <a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">_compileProgram</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">vsource</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">fsource</a>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">protected</span>: <span class="comment">// data</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a1d74720edb5c3a13edcdd176ac0d84c7">   62</a></span>&#160;        <span class="keywordtype">float</span> *<a class="code" href="class_particle_renderer.html#a1d74720edb5c3a13edcdd176ac0d84c7">m_pos</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#af885fdb5e6da925209dfd960f66b5fd8">   63</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_particle_renderer.html#af885fdb5e6da925209dfd960f66b5fd8">m_numParticles</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a1ca13e546c937cb546c0da19fa853b34">   65</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_particle_renderer.html#a1ca13e546c937cb546c0da19fa853b34">m_pointSize</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#aab5ee3cd769a64c45dc9714aabdb0ee2">   66</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_particle_renderer.html#aab5ee3cd769a64c45dc9714aabdb0ee2">m_particleRadius</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a0aed003bd557a3c32ca7d2ca89fc59f7">   67</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_particle_renderer.html#a0aed003bd557a3c32ca7d2ca89fc59f7">m_fov</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#aa71b7eba5d5665a086b7ba80adddf19b">   68</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_particle_renderer.html#aa71b7eba5d5665a086b7ba80adddf19b">m_window_w</a>, <a class="code" href="class_particle_renderer.html#af34b1e93f6a7f22774a6473c52027d77">m_window_h</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a065df5c32be72505267048490bd0b3cf">   69</a></span>&#160;                <span class="keywordtype">float</span> <a class="code" href="class_particle_renderer.html#a065df5c32be72505267048490bd0b3cf">zoom</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#ab8f0dd1a6e0f4401012bd46ae8940648">   71</a></span>&#160;        <a class="code" href="class_particle_renderer.html#ab8f0dd1a6e0f4401012bd46ae8940648">GLuint</a> <a class="code" href="class_particle_renderer.html#ab8f0dd1a6e0f4401012bd46ae8940648">m_program</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a7549feaa0982abbc44c9fe73f2eb251f">   73</a></span>&#160;        <a class="code" href="class_particle_renderer.html#a7549feaa0982abbc44c9fe73f2eb251f">GLuint</a> <a class="code" href="class_particle_renderer.html#a7549feaa0982abbc44c9fe73f2eb251f">m_vbo</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a7dcaa73a41c598207974432206b423b5">   74</a></span>&#160;        <a class="code" href="class_particle_renderer.html#a7dcaa73a41c598207974432206b423b5">GLuint</a> <a class="code" href="class_particle_renderer.html#a7dcaa73a41c598207974432206b423b5">m_colorVBO</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span> <span class="comment">//__ RENDER_PARTICLES__</span></div>
+<div class="ttc" id="class_particle_renderer_html_a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe"><div class="ttname"><a href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5a76d84afc3ec5c09bff035fe798dacbbe">ParticleRenderer::PARTICLE_POINTS</a></div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00030">render_particles.h:30</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a68df35cdf53ad987aa6d8360b3531627"><div class="ttname"><a href="class_particle_renderer.html#a68df35cdf53ad987aa6d8360b3531627">ParticleRenderer::setPointSize</a></div><div class="ttdeci">void setPointSize(float size)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00038">render_particles.h:38</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111"><div class="ttname"><a href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5acc641adfb37c1a267e9f91d128094111">ParticleRenderer::PARTICLE_SPHERES</a></div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00031">render_particles.h:31</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a1ca13e546c937cb546c0da19fa853b34"><div class="ttname"><a href="class_particle_renderer.html#a1ca13e546c937cb546c0da19fa853b34">ParticleRenderer::m_pointSize</a></div><div class="ttdeci">float m_pointSize</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00065">render_particles.h:65</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a1718484686c2e6db488cc88c433d03cc"><div class="ttname"><a href="class_particle_renderer.html#a1718484686c2e6db488cc88c433d03cc">ParticleRenderer::ParticleRenderer</a></div><div class="ttdeci">ParticleRenderer()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00025">render_particles.cpp:25</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_aa71b7eba5d5665a086b7ba80adddf19b"><div class="ttname"><a href="class_particle_renderer.html#aa71b7eba5d5665a086b7ba80adddf19b">ParticleRenderer::m_window_w</a></div><div class="ttdeci">int m_window_w</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00068">render_particles.h:68</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a2683c43c010bff7973a977c1953f2bd6"><div class="ttname"><a href="class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6">ParticleRenderer::_drawPoints</a></div><div class="ttdeci">void _drawPoints()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00055">render_particles.cpp:55</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a1d74720edb5c3a13edcdd176ac0d84c7"><div class="ttname"><a href="class_particle_renderer.html#a1d74720edb5c3a13edcdd176ac0d84c7">ParticleRenderer::m_pos</a></div><div class="ttdeci">float * m_pos</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00062">render_particles.h:62</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_af885fdb5e6da925209dfd960f66b5fd8"><div class="ttname"><a href="class_particle_renderer.html#af885fdb5e6da925209dfd960f66b5fd8">ParticleRenderer::m_numParticles</a></div><div class="ttdeci">int m_numParticles</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00063">render_particles.h:63</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a281be31ad850fead012460fb6675db98"><div class="ttname"><a href="class_particle_renderer.html#a281be31ad850fead012460fb6675db98">ParticleRenderer::~ParticleRenderer</a></div><div class="ttdeci">~ParticleRenderer()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00037">render_particles.cpp:37</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_ab8f0dd1a6e0f4401012bd46ae8940648"><div class="ttname"><a href="class_particle_renderer.html#ab8f0dd1a6e0f4401012bd46ae8940648">ParticleRenderer::m_program</a></div><div class="ttdeci">GLuint m_program</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00071">render_particles.h:71</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_ad84b464475e5ebd42cfed6e2e91e7247"><div class="ttname"><a href="class_particle_renderer.html#ad84b464475e5ebd42cfed6e2e91e7247">ParticleRenderer::setWindowSize</a></div><div class="ttdeci">void setWindowSize(int w, int h)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00050">render_particles.h:50</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a3a7af352d38734b6bfa425e3b207d60b"><div class="ttname"><a href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">ParticleRenderer::_compileProgram</a></div><div class="ttdeci">GLuint _compileProgram(const char *vsource, const char *fsource)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00125">render_particles.cpp:125</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a0e0a5d323acf55087911ea77a2a3eafa"><div class="ttname"><a href="class_particle_renderer.html#a0e0a5d323acf55087911ea77a2a3eafa">ParticleRenderer::displayGrid</a></div><div class="ttdeci">void displayGrid()</div></div>
+<div class="ttc" id="class_particle_renderer_html_aab5ee3cd769a64c45dc9714aabdb0ee2"><div class="ttname"><a href="class_particle_renderer.html#aab5ee3cd769a64c45dc9714aabdb0ee2">ParticleRenderer::m_particleRadius</a></div><div class="ttdeci">float m_particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00066">render_particles.h:66</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_adb3204e8af23a65b05b1aca7f43f0430"><div class="ttname"><a href="class_particle_renderer.html#adb3204e8af23a65b05b1aca7f43f0430">ParticleRenderer::setPositions</a></div><div class="ttdeci">void setPositions(float *pos, int numParticles)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00042">render_particles.cpp:42</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_af16e23ebcee20753d86d24e4e5e32c7c"><div class="ttname"><a href="class_particle_renderer.html#af16e23ebcee20753d86d24e4e5e32c7c">ParticleRenderer::setColorBuffer</a></div><div class="ttdeci">void setColorBuffer(unsigned int vbo)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00023">render_particles.h:23</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_aff09822b565b6953fc83c88bda7fa378"><div class="ttname"><a href="class_particle_renderer.html#aff09822b565b6953fc83c88bda7fa378">ParticleRenderer::setParticleRadius</a></div><div class="ttdeci">void setParticleRadius(float r)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00042">render_particles.h:42</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a7549feaa0982abbc44c9fe73f2eb251f"><div class="ttname"><a href="class_particle_renderer.html#a7549feaa0982abbc44c9fe73f2eb251f">ParticleRenderer::m_vbo</a></div><div class="ttdeci">GLuint m_vbo</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00073">render_particles.h:73</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a396f73f6c16f24f34368557bfd5557e6"><div class="ttname"><a href="class_particle_renderer.html#a396f73f6c16f24f34368557bfd5557e6">ParticleRenderer::setVertexBuffer</a></div><div class="ttdeci">void setVertexBuffer(unsigned int vbo, int numParticles, float zoom)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00048">render_particles.cpp:48</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_ad6da663d3073401a776edb8dc6cf4d5f"><div class="ttname"><a href="class_particle_renderer.html#ad6da663d3073401a776edb8dc6cf4d5f">ParticleRenderer::setFOV</a></div><div class="ttdeci">void setFOV(float fov)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00046">render_particles.h:46</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a7b691afffd1abe415cb0ce17fd26f3d5"><div class="ttname"><a href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5">ParticleRenderer::DisplayMode</a></div><div class="ttdeci">DisplayMode</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00028">render_particles.h:28</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a065df5c32be72505267048490bd0b3cf"><div class="ttname"><a href="class_particle_renderer.html#a065df5c32be72505267048490bd0b3cf">ParticleRenderer::zoom</a></div><div class="ttdeci">float zoom</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00069">render_particles.h:69</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_ac75c7f73a0014333305b174b8863a46b"><div class="ttname"><a href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">ParticleRenderer::_initGL</a></div><div class="ttdeci">void _initGL()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00159">render_particles.cpp:159</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc"><div class="ttname"><a href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5a251fd7044eb27c60bf1eaa1e64a2d2dc">ParticleRenderer::PARTICLE_NUM_MODES</a></div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00032">render_particles.h:32</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_af34b1e93f6a7f22774a6473c52027d77"><div class="ttname"><a href="class_particle_renderer.html#af34b1e93f6a7f22774a6473c52027d77">ParticleRenderer::m_window_h</a></div><div class="ttdeci">int m_window_h</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00068">render_particles.h:68</a></div></div>
+<div class="ttc" id="class_particle_renderer_html"><div class="ttname"><a href="class_particle_renderer.html">ParticleRenderer</a></div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00015">render_particles.h:15</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a80b2f52dc28bb3abbde021f7fe96f8ff"><div class="ttname"><a href="class_particle_renderer.html#a80b2f52dc28bb3abbde021f7fe96f8ff">ParticleRenderer::display</a></div><div class="ttdeci">void display(DisplayMode mode=PARTICLE_POINTS)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00092">render_particles.cpp:92</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a7dcaa73a41c598207974432206b423b5"><div class="ttname"><a href="class_particle_renderer.html#a7dcaa73a41c598207974432206b423b5">ParticleRenderer::m_colorVBO</a></div><div class="ttdeci">GLuint m_colorVBO</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00074">render_particles.h:74</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a0aed003bd557a3c32ca7d2ca89fc59f7"><div class="ttname"><a href="class_particle_renderer.html#a0aed003bd557a3c32ca7d2ca89fc59f7">ParticleRenderer::m_fov</a></div><div class="ttdeci">float m_fov</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00067">render_particles.h:67</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="render__particles_8h.html">render_particles.h</a></li>
+    <li class="footer">Wygenerowano Pn, 13 lip 2015 16:03:41 dla particles programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>particles: Składowe klas - Funkcje</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="particles.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">particles
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Klasy</span></a></li>
+      <li><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Lista&#160;klas</span></a></li>
+      <li><a href="classes.html"><span>Indeks&#160;klas</span></a></li>
+      <li class="current"><a href="functions.html"><span>Składowe&#160;klas</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow3" class="tabs2">
+    <ul class="tablist">
+      <li><a href="functions.html"><span>All</span></a></li>
+      <li class="current"><a href="functions_func.html"><span>Funkcje</span></a></li>
+      <li><a href="functions_vars.html"><span>Zmienne</span></a></li>
+      <li><a href="functions_enum.html"><span>Wyliczenia</span></a></li>
+      <li><a href="functions_eval.html"><span>Wartości&#160;wyliczeń</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index__"><span>_</span></a></li>
+      <li><a href="#index_a"><span>a</span></a></li>
+      <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_d"><span>d</span></a></li>
+      <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_o"><span>o</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_u"><span>u</span></a></li>
+      <li class="current"><a href="#index_~"><span>~</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_func.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klasy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Zmienne</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Wyliczenia</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Wartości wyliczeń</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Definicje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+&#160;
+
+<h3><a class="anchor" id="index__"></a>- _ -</h3><ul>
+<li>_compileProgram()
+: <a class="el" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">ParticleRenderer</a>
+</li>
+<li>_drawPoints()
+: <a class="el" href="class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6">ParticleRenderer</a>
+</li>
+<li>_finalize()
+: <a class="el" href="class_particle_system.html#a5d6a52db7d1277c8fe734ecceb69e5c6">ParticleSystem</a>
+</li>
+<li>_initGL()
+: <a class="el" href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">ParticleRenderer</a>
+</li>
+<li>_initialize()
+: <a class="el" href="class_particle_system.html#a484988642e046424d32a13709204e8de">ParticleSystem</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>addSphere()
+: <a class="el" href="class_particle_system.html#af2f16676fe8a0523cfb867a9a856970c">ParticleSystem</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>createVBO()
+: <a class="el" href="class_particle_system.html#a399eb5cb9c422fd3370899e4d8a5d62e">ParticleSystem</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
+<li>display()
+: <a class="el" href="class_particle_renderer.html#a80b2f52dc28bb3abbde021f7fe96f8ff">ParticleRenderer</a>
+</li>
+<li>displayGrid()
+: <a class="el" href="class_particle_renderer.html#a0e0a5d323acf55087911ea77a2a3eafa">ParticleRenderer</a>
+</li>
+<li>dumpGrid()
+: <a class="el" href="class_particle_system.html#a722bdb7cc940f052400a69fe9569a49e">ParticleSystem</a>
+</li>
+<li>dumpParticles()
+: <a class="el" href="class_particle_system.html#a9025f319e07c58c6ece1cd2a620ce33a">ParticleSystem</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>getArray()
+: <a class="el" href="class_particle_system.html#a8bdfaa6198651ef0ceb8be489ecd78e3">ParticleSystem</a>
+</li>
+<li>getCellSize()
+: <a class="el" href="class_particle_system.html#a608bcb87f3d30fbfeae810da28ae1052">ParticleSystem</a>
+</li>
+<li>getColliderPos()
+: <a class="el" href="class_particle_system.html#a3c8578d474f5a6f14d903a242aec96ec">ParticleSystem</a>
+</li>
+<li>getColliderRadius()
+: <a class="el" href="class_particle_system.html#a56f07dfab9d5cbf510c6e0a28e816038">ParticleSystem</a>
+</li>
+<li>getColorBuffer()
+: <a class="el" href="class_particle_system.html#a5d300a37ebf1a2fb8575f82ced6a208f">ParticleSystem</a>
+</li>
+<li>getCudaColorVBO()
+: <a class="el" href="class_particle_system.html#af89375a9131276f941dccefa7840adda">ParticleSystem</a>
+</li>
+<li>getCudaPosVBO()
+: <a class="el" href="class_particle_system.html#a2c8214a5bcd9d9c24d16e1f0063c06d6">ParticleSystem</a>
+</li>
+<li>getCurrentReadBuffer()
+: <a class="el" href="class_particle_system.html#ae9f149d6b7c3b148fc397473c7c3c2e2">ParticleSystem</a>
+</li>
+<li>getGridSize()
+: <a class="el" href="class_particle_system.html#af94ba180bcb348afcfd81bb699d6aab0">ParticleSystem</a>
+</li>
+<li>getNumParticles()
+: <a class="el" href="class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0">ParticleSystem</a>
+</li>
+<li>getParticleRadius()
+: <a class="el" href="class_particle_system.html#abdb59a91d8483017ad71455bb2958993">ParticleSystem</a>
+</li>
+<li>getWorldOrigin()
+: <a class="el" href="class_particle_system.html#a19d9bb799a5b5704d8fd6a286f6be20d">ParticleSystem</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>initGrid()
+: <a class="el" href="class_particle_system.html#a2e08c4e354b0de5e2dc468a0fb457dfe">ParticleSystem</a>
+</li>
+<li>integrate_functor()
+: <a class="el" href="structintegrate__functor.html#a13075d4c547ba22c37137ff2b874ae45">integrate_functor</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>operator()()
+: <a class="el" href="structintegrate__functor.html#a772e86ead8690332beb50911e4448f81">integrate_functor</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>ParticleRenderer()
+: <a class="el" href="class_particle_renderer.html#a1718484686c2e6db488cc88c433d03cc">ParticleRenderer</a>
+</li>
+<li>ParticleSystem()
+: <a class="el" href="class_particle_system.html#a8a2be3e93616aa694801369c8b8d12cb">ParticleSystem</a>
+</li>
+<li>particleType()
+: <a class="el" href="class_particle_system_1_1particle_type.html#a12bff78b90f86f1d8b3f26958aef6152">ParticleSystem::particleType</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>reset()
+: <a class="el" href="class_particle_system.html#a519070812dd9eb349f270c793c5f64b6">ParticleSystem</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>setArray()
+: <a class="el" href="class_particle_system.html#aa792a66680e800832059854aab0d594d">ParticleSystem</a>
+</li>
+<li>setBigRadius()
+: <a class="el" href="class_particle_system.html#a97efe00aa29307ecae0165da33d4770a">ParticleSystem</a>
+</li>
+<li>setBigRadius0()
+: <a class="el" href="class_particle_system.html#a55005091f11f7e9734c6b3fd2f1a5b1c">ParticleSystem</a>
+</li>
+<li>setBoundaries()
+: <a class="el" href="class_particle_system.html#a99bbe16b8e181415c2aa71c11edace98">ParticleSystem</a>
+</li>
+<li>setBoundaryDamping()
+: <a class="el" href="class_particle_system.html#a1b17ae9291cf9974f63219cc9eac6ec6">ParticleSystem</a>
+</li>
+<li>setBrown()
+: <a class="el" href="class_particle_system.html#a01a5d2e20d18dcd29fa7f8f9bc5f75e9">ParticleSystem</a>
+</li>
+<li>setBrownQuality()
+: <a class="el" href="class_particle_system.html#a0b8c24c273a5a89ba27c7b6c949d2ce1">ParticleSystem</a>
+</li>
+<li>setCollideAttraction()
+: <a class="el" href="class_particle_system.html#aef02d293e3dc61c50fa6d085aa0b03de">ParticleSystem</a>
+</li>
+<li>setCollideDamping()
+: <a class="el" href="class_particle_system.html#a8f8d21c7079c3a0e66558b9ec5bef597">ParticleSystem</a>
+</li>
+<li>setColliderPos()
+: <a class="el" href="class_particle_system.html#a9c49794585cad649de400dc7375d7801">ParticleSystem</a>
+</li>
+<li>setCollideShear()
+: <a class="el" href="class_particle_system.html#aea667093542a1bdad65bdcb427e5625f">ParticleSystem</a>
+</li>
+<li>setCollideSpring()
+: <a class="el" href="class_particle_system.html#a7ed53fca9ef126898d29314478ec8fd4">ParticleSystem</a>
+</li>
+<li>setColorBuffer()
+: <a class="el" href="class_particle_renderer.html#af16e23ebcee20753d86d24e4e5e32c7c">ParticleRenderer</a>
+</li>
+<li>setDamping()
+: <a class="el" href="class_particle_system.html#aa26996b9ca13499b13f944f3aaeae10c">ParticleSystem</a>
+</li>
+<li>setEpsi()
+: <a class="el" href="class_particle_system.html#a6290c054a797ec9fa691179ffb4631f7">ParticleSystem</a>
+</li>
+<li>setFOV()
+: <a class="el" href="class_particle_renderer.html#ad6da663d3073401a776edb8dc6cf4d5f">ParticleRenderer</a>
+</li>
+<li>setGravity()
+: <a class="el" href="class_particle_system.html#a755f64f917389ef41df81b663d1f5bd2">ParticleSystem</a>
+</li>
+<li>setIterations()
+: <a class="el" href="class_particle_system.html#a11f55976f6ef34dceea208fbe06694cd">ParticleSystem</a>
+</li>
+<li>setParticleMass()
+: <a class="el" href="class_particle_system.html#a92e1db62e4025fab4996ce9a3ca5882f">ParticleSystem</a>
+</li>
+<li>setParticleRadius()
+: <a class="el" href="class_particle_renderer.html#aff09822b565b6953fc83c88bda7fa378">ParticleRenderer</a>
+</li>
+<li>setParticleTypesNum()
+: <a class="el" href="class_particle_system.html#ac82e5fa73b2b91dfa44db14daa37b389">ParticleSystem</a>
+</li>
+<li>setPointSize()
+: <a class="el" href="class_particle_renderer.html#a68df35cdf53ad987aa6d8360b3531627">ParticleRenderer</a>
+</li>
+<li>setPositions()
+: <a class="el" href="class_particle_renderer.html#adb3204e8af23a65b05b1aca7f43f0430">ParticleRenderer</a>
+</li>
+<li>setVertexBuffer()
+: <a class="el" href="class_particle_renderer.html#a396f73f6c16f24f34368557bfd5557e6">ParticleRenderer</a>
+</li>
+<li>setWindowSize()
+: <a class="el" href="class_particle_renderer.html#ad84b464475e5ebd42cfed6e2e91e7247">ParticleRenderer</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>update()
+: <a class="el" href="class_particle_system.html#a166fd86f020b6024d7d42723762d7cb2">ParticleSystem</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_~"></a>- ~ -</h3><ul>
+<li>~ParticleRenderer()
+: <a class="el" href="class_particle_renderer.html#a281be31ad850fead012460fb6675db98">ParticleRenderer</a>
+</li>
+<li>~ParticleSystem()
+: <a class="el" href="class_particle_system.html#a6bc725349a763b9d6817950cde16a93f">ParticleSystem</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+<<<<<<< HEAD
+    <li class="footer">Wygenerowano Cz, 9 lip 2015 18:39:24 dla particles programem
+=======
+    <li class="footer">Wygenerowano Pt, 10 lip 2015 17:55:39 dla particles programem
+>>>>>>> sigrond
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

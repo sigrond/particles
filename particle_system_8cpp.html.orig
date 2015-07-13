@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>particles: Dokumentacja pliku particleSystem.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="particles.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">particles
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
+      <li><a href="globals.html"><span>Składowe&#160;plików</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('particle_system_8cpp.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klasy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Zmienne</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Wyliczenia</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Wartości wyliczeń</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Definicje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#define-members">Definicje</a> &#124;
+<a href="#func-members">Funkcje</a> &#124;
+<a href="#var-members">Zmienne</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku particleSystem.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Definicje (implementacje) metod klasy <a class="el" href="class_particle_system.html">ParticleSystem</a> oraz funkcji pomocniczych.  
+<a href="#details">Więcej...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="particle_system_8h_source.html">particleSystem.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="particle_system_8cuh_source.html">particleSystem.cuh</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>&quot;</code><br/>
+<code>#include &lt;cuda_runtime.h&gt;</code><br/>
+<code>#include &lt;helper_functions.h&gt;</code><br/>
+<code>#include &lt;helper_cuda.h&gt;</code><br/>
+<code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &lt;math.h&gt;</code><br/>
+<code>#include &lt;memory.h&gt;</code><br/>
+<code>#include &lt;cstdio&gt;</code><br/>
+<code>#include &lt;cstdlib&gt;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;GL/glew.h&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Wykres zależności załączania dla particleSystem.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="particle_system_8cpp__incl.png" border="0" usemap="#particle_system_8cpp" alt=""/></div>
+<map name="particle_system_8cpp" id="particle_system_8cpp">
+<area shape="rect" id="node2" href="particle_system_8h.html" title="Definicja klasy ParticleSystem i części jej prostych metod. " alt="" coords="159,80,279,107"/><area shape="rect" id="node4" href="particles__kernel_8cuh.html" title="Definicja struktury przechowuj�cej parametry symulacji. " alt="" coords="307,155,446,181"/><area shape="rect" id="node7" href="particle_system_8cuh.html" title="Same deklaracje funkcji. " alt="" coords="355,80,489,107"/></map>
+</div>
+</div>
+<p><a href="particle_system_8cpp_source.html">Idź do kodu źródłowego tego pliku.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Komponenty</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_particle_system_1_1particle_type.html">ParticleSystem::particleType</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definicje</h2></td></tr>
+<tr class="memitem:a0af3123952dff68caffd7e1357abe1b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cpp.html#a0af3123952dff68caffd7e1357abe1b7">CUDART_PI_F</a>&#160;&#160;&#160;3.141592654f</td></tr>
+<tr class="separator:a0af3123952dff68caffd7e1357abe1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:aaece5bea3dfe5043f19232f3e6e1e575"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a> (float a, float b, float t)</td></tr>
+<tr class="separator:aaece5bea3dfe5043f19232f3e6e1e575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ec1ae39a0b30ca8330f7839a624f302"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cpp.html#a1ec1ae39a0b30ca8330f7839a624f302">colorRamp</a> (float t, float *r)</td></tr>
+<tr class="separator:a1ec1ae39a0b30ca8330f7839a624f302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5459f6b6b39f9a6b80de7f17c3777ee2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cpp.html#a5459f6b6b39f9a6b80de7f17c3777ee2">frand</a> ()</td></tr>
+<tr class="separator:a5459f6b6b39f9a6b80de7f17c3777ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Zmienne</h2></td></tr>
+<tr class="memitem:a54f61e4f37db321d451436bf2201b8cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cpp.html#a54f61e4f37db321d451436bf2201b8cb">multiColor</a></td></tr>
+<tr class="separator:a54f61e4f37db321d451436bf2201b8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Definicje (implementacje) metod klasy <a class="el" href="class_particle_system.html">ParticleSystem</a> oraz funkcji pomocniczych. </p>
+
+<p>Definicja w pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
+</div><h2 class="groupheader">Dokumentacja definicji</h2>
+<a class="anchor" id="a0af3123952dff68caffd7e1357abe1b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CUDART_PI_F&#160;&#160;&#160;3.141592654f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00035">35</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji</h2>
+<a class="anchor" id="a1ec1ae39a0b30ca8330f7839a624f302"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void colorRamp </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00120">120</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="particle_system_8cpp_source.html#l00114">lerp()</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00142">ParticleSystem::_initialize()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> ncolors = 7;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">float</span> c[ncolors][3] =</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        { 1.0, 0.0, 0.0, },</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        { 1.0, 0.5, 0.0, },</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        { 1.0, 1.0, 0.0, },</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        { 0.0, 1.0, 0.0, },</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        { 0.0, 1.0, 1.0, },</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        { 0.0, 0.0, 1.0, },</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        { 1.0, 0.0, 1.0, },</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    };</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    t = t * (ncolors-1);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">int</span> i = (int) t;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">float</span> u = t - floor(t);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    r[0] = <a class="code" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a>(c[i][0], c[i+1][0], u);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    r[1] = <a class="code" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a>(c[i][1], c[i+1][1], u);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    r[2] = <a class="code" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a>(c[i][2], c[i+1][2], u);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+<div class="ttc" id="particle_system_8cpp_html_aaece5bea3dfe5043f19232f3e6e1e575"><div class="ttname"><a href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a></div><div class="ttdeci">float lerp(float a, float b, float t)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00114">particleSystem.cpp:114</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302_cgraph.png" border="0" usemap="#particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302_cgraph" alt=""/></div>
+<map name="particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302_cgraph" id="particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302_cgraph">
+<area shape="rect" id="node2" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575" title="lerp" alt="" coords="137,5,180,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302_icgraph.png" border="0" usemap="#particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302_icgraph" alt=""/></div>
+<map name="particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302_icgraph" id="particle_system_8cpp_a1ec1ae39a0b30ca8330f7839a624f302_icgraph">
+<area shape="rect" id="node2" href="class_particle_system.html#a484988642e046424d32a13709204e8de" title="ParticleSystem::_initialize" alt="" coords="137,37,311,63"/><area shape="rect" id="node3" href="class_particle_system.html#a8a2be3e93616aa694801369c8b8d12cb" title="ParticleSystem::Particle\lSystem" alt="" coords="359,29,521,71"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5459f6b6b39f9a6b80de7f17c3777ee2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float frand </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00429">429</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
+
+<<<<<<< HEAD
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00538">addSphere()</a> i <a class="el" href="particle_system_8cpp_source.html#l00465">ParticleSystem::reset()</a>.</p>
+=======
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00514">addSphere()</a> i <a class="el" href="particle_system_8cpp_source.html#l00465">ParticleSystem::reset()</a>.</p>
+>>>>>>> sigrond
+<div class="fragment"><div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;{</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keywordflow">return</span> rand() / (float) RAND_MAX;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2_icgraph.png" border="0" usemap="#particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2_icgraph" alt=""/></div>
+<map name="particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2_icgraph" id="particle_system_8cpp_a5459f6b6b39f9a6b80de7f17c3777ee2_icgraph">
+<area shape="rect" id="node2" href="particles_8cpp.html#a9872049f02ceefff37c3bd4f0f7b1891" title="wstawianie kuli cząstek na życzenie " alt="" coords="136,31,220,57"/><area shape="rect" id="node6" href="class_particle_system.html#a519070812dd9eb349f270c793c5f64b6" title="ParticleSystem::reset" alt="" coords="104,81,252,108"/><area shape="rect" id="node3" href="particles_8cpp.html#a01131b63acf241e9db91704d89ce15d2" title="idle" alt="" coords="343,5,385,32"/><area shape="rect" id="node4" href="particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="obsługa zdarzeń klawiszy i opcji z menu " alt="" coords="343,56,385,83"/><area shape="rect" id="node5" href="particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="476,56,559,83"/><area shape="rect" id="node7" href="particles_8cpp.html#a84431b1c39c053e49799109e5b6b488a" title="initialize particle system ustawienia początkowe i utworzenie obiektu systemu cząstek ..." alt="" coords="300,107,428,133"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aaece5bea3dfe5043f19232f3e6e1e575"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float lerp </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00114">114</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00120">colorRamp()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;{</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> a + t*(b-a);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575_icgraph.png" border="0" usemap="#particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575_icgraph" alt=""/></div>
+<map name="particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575_icgraph" id="particle_system_8cpp_aaece5bea3dfe5043f19232f3e6e1e575_icgraph">
+<area shape="rect" id="node2" href="particle_system_8cpp.html#a1ec1ae39a0b30ca8330f7839a624f302" title="colorRamp" alt="" coords="96,37,180,63"/><area shape="rect" id="node3" href="class_particle_system.html#a484988642e046424d32a13709204e8de" title="ParticleSystem::_initialize" alt="" coords="228,37,401,63"/><area shape="rect" id="node4" href="class_particle_system.html#a8a2be3e93616aa694801369c8b8d12cb" title="ParticleSystem::Particle\lSystem" alt="" coords="449,29,612,71"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja zmiennych</h2>
+<a class="anchor" id="a54f61e4f37db321d451436bf2201b8cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool multiColor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00142">ParticleSystem::_initialize()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="particle_system_8cpp.html">particleSystem.cpp</a></li>
+<<<<<<< HEAD
+    <li class="footer">Wygenerowano Cz, 9 lip 2015 18:39:21 dla particles programem
+=======
+    <li class="footer">Wygenerowano Pt, 10 lip 2015 17:55:32 dla particles programem
+>>>>>>> sigrond
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

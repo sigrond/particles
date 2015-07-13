@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>particles: Składowe plików</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="particles.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">particles
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
+      <li class="current"><a href="globals.html"><span>Składowe&#160;plików</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow3" class="tabs2">
+    <ul class="tablist">
+      <li><a href="globals.html"><span>All</span></a></li>
+      <li><a href="globals_func.html"><span>Funkcje</span></a></li>
+      <li><a href="globals_vars.html"><span>Zmienne</span></a></li>
+      <li><a href="globals_type.html"><span>Definicje&#160;typów</span></a></li>
+      <li><a href="globals_eval.html"><span>Wartości&#160;wyliczeń</span></a></li>
+      <li class="current"><a href="globals_defs.html"><span>Definicje</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals_defs.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klasy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Zmienne</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Wyliczenia</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Wartości wyliczeń</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Definicje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+&#160;<ul>
+<li>_PARTICLES_KERNEL_H_
+: <a class="el" href="particles__kernel__impl_8cuh.html#a5de512cb982bf8e9102c9e80ae68a7f2">particles_kernel_impl.cuh</a>
+</li>
+<li>A
+: <a class="el" href="particles_8cpp.html#a955f504eccf76b4eb2489c0adab03121">particles.cpp</a>
+</li>
+<li>CUDART_PI_F
+: <a class="el" href="particle_system_8cpp.html#a0af3123952dff68caffd7e1357abe1b7">particleSystem.cpp</a>
+</li>
+<li>DEBUG_GRID
+: <a class="el" href="particle_system_8h.html#ae8e259f1517dc644367009cfc06caebe">particleSystem.h</a>
+</li>
+<li>DO_TIMING
+: <a class="el" href="particle_system_8h.html#a55968a72af09a67a7420f59ee7435ea3">particleSystem.h</a>
+</li>
+<li>FETCH
+: <a class="el" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">particles_kernel.cuh</a>
+</li>
+<li>GRID_SIZE
+: <a class="el" href="particles_8cpp.html#a08246606c233e7785a497c09672f366f">particles.cpp</a>
+</li>
+<li>M_PI
+: <a class="el" href="render__particles_8cpp.html#ae71449b1cc6e6250b91f539153a7a0d3">render_particles.cpp</a>
+</li>
+<li>MAX_EPSILON_ERROR
+: <a class="el" href="particles_8cpp.html#a9608807ab27261888018dac76a7f4acd">particles.cpp</a>
+</li>
+<li>NUM_PARTICLES
+: <a class="el" href="particles_8cpp.html#a75cbc112dce4b21c13fe7bb671accab1">particles.cpp</a>
+</li>
+<li>PARTICLES_KERNEL_H
+: <a class="el" href="particles__kernel_8cuh.html#a384444f066551f04f65ff94b99aa7091">particles_kernel.cuh</a>
+</li>
+<li>STRINGIFY
+: <a class="el" href="shaders_8cpp.html#ab06e1eb2e9bf38e0d452b1f796aed208">shaders.cpp</a>
+</li>
+<li>THRESHOLD
+: <a class="el" href="particles_8cpp.html#a4679d8ea8690999a6c6c7c0cb245c879">particles.cpp</a>
+</li>
+<li>USE_TEX
+: <a class="el" href="particles__kernel_8cuh.html#a0ab211ca35e2616c721fcf2dd4f99c83">particles_kernel.cuh</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+<<<<<<< HEAD
+    <li class="footer">Wygenerowano Cz, 9 lip 2015 18:39:26 dla particles programem
+=======
+    <li class="footer">Wygenerowano Pt, 10 lip 2015 17:55:43 dla particles programem
+>>>>>>> sigrond
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -109,7 +109,7 @@ Opis Ogólny</h1>
 </ul>
 <h1><a class="anchor" id="linki_do_fizyki"></a>
 Linki do fizyki</h1>
-<p><a href="http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html">http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html</a> <a href="http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf">http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf</a> <a href="http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html">http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html</a> <a href="http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf">http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf</a> <a href="http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions">http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions</a> </p>
+<p><a href="http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html">http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html</a> <a href="http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf">http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf</a> <a href="http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html">http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html</a> <a href="http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf">http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf</a> <a href="http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions">http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions</a> &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD </p>
 <h1><a class="anchor" id="Repozytorium"></a>
 Repozytorium</h1>
 <p><a href="https://github.com/sigrond/particles/tree/spica">https://github.com/sigrond/particles/tree/spica</a> </p>
@@ -162,12 +162,6 @@ Chcę to wykożystać;
 ponumeruję rodzaje cząstek i przed skopiowaniem do karty będę przypisywł na 4 pozycję każdej cząstce
 numer jej rodzaju, a przy wczytywaniu do głównej pamięci RAM dla GL'a będę te numery zapisywał
 do osobnej tablicy i przed wykonywaniem przekształceń GL 4 pozycje zapełnie 1.
-
-EDIT:
-Lepiej użyć wektora prędkości, bo tam 4 współżędna zawsze może mieć dowolną wartość,
-a nie będzie trzeba ciągle zamieniać numeru typu z 1 i niepełna implementacja
-będzia miała mniejszy wpływ na działanie symulacji.
-Zwiększy się też prostota rozwiązania.
 
 
 	Modyfikacje funkcji:
@@ -225,7 +219,11 @@ Zadbać o ustalenie na początku symulacji ile będzie typów cząstek i jakie o
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Wygenerowano Pn, 13 lip 2015 16:03:46 dla particles programem
+<<<<<<< HEAD
+    <li class="footer">Wygenerowano Cz, 9 lip 2015 18:39:23 dla particles programem
+=======
+    <li class="footer">Wygenerowano Pt, 10 lip 2015 17:55:38 dla particles programem
+>>>>>>> sigrond
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
