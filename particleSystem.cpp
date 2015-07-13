@@ -462,6 +462,11 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
 }
 
 void
+/** \brief rozłożenie cząstek
+ *
+ * \param config ParticleConfig
+ *
+ */
 ParticleSystem::reset(ParticleConfig config)
 {
     switch (config)

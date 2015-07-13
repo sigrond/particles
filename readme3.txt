@@ -15,6 +15,12 @@ ponumeruję rodzaje cząstek i przed skopiowaniem do karty będę przypisywł na
 numer jej rodzaju, a przy wczytywaniu do głównej pamięci RAM dla GL'a będę te numery zapisywał
 do osobnej tablicy i przed wykonywaniem przekształceń GL 4 pozycje zapełnie 1.
 
+EDIT:
+Lepiej użyć wektora prędkości, bo tam 4 współżędna zawsze może mieć dowolną wartość,
+a nie będzie trzeba ciągle zamieniać numeru typu z 1 i niepełna implementacja
+będzia miała mniejszy wpływ na działanie symulacji.
+Zwiększy się też prostota rozwiązania.
+
 
 	Modyfikacje funkcji:
 
