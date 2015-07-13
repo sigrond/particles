@@ -1,6 +1,6 @@
-/** \file paricleType.h
- * \author Tomasz Jakubczyk
+/** \file particleType.h
  * \brief Zawiera klase opisującą typ cząstki
+ * \author Tomasz Jakubczyk
  *
  */
 
