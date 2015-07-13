@@ -1,19 +1,19 @@
 	Autor: Tomasz Jakubczyk
-Plan dodania obs³ugi wielu rodzajów cz¹stek na raz
+Plan dodania obsÅ‚ugi wielu rodzajÃ³w czÄ…stek na raz
 
 
 	Koncepcja:
 
-¯eby oszczêdzaæ wyko¿ystywan¹ pamiêæ karty graficznej zauwa¿am, ¿e ca³e float4 jest ³adowane do pamieci.
-4 pozycja zawsze zawiera 1, które jest potrzebne do transformacji GL w postaci znormalizowanej.
-Oryginalnie kopiowana jest ca³a tablica float4 do karty graficznej mimo, ¿e co 4 float jest tam zbêdny,
-jest to spowodowane tym, ¿e kod kopiowania miêdzy pamiêciami jest prostszy i nie trzeba wykonywaæ dodatkowych
-operacji zsuwania i rozsuwania pamiêci.
-W efekcie w pamiêci karty sê niewyko¿ystywane pozycje zawieraj¹ce 1.
-Chcê to wyko¿ystaæ;
-ponumerujê rodzaje cz¹stek i przed skopiowaniem do karty bêdê przypisyw³ na 4 pozycjê ka¿dej cz¹stce
-numer jej rodzaju, a przy wczytywaniu do g³ównej pamiêci RAM dla GL'a bêdê te numery zapisywa³
-do osobnej tablicy i przed wykonywaniem przekszta³ceñ GL 4 pozycje zape³nie 1.
+Å»eby oszczÄ™dzaÄ‡ wykoÅ¼ystywanÄ… pamiÄ™Ä‡ karty graficznej zauwaÅ¼am, Å¼e caÅ‚e float4 jest Å‚adowane do pamieci.
+4 pozycja zawsze zawiera 1, ktÃ³re jest potrzebne do transformacji GL w postaci znormalizowanej.
+Oryginalnie kopiowana jest caÅ‚a tablica float4 do karty graficznej mimo, Å¼e co 4 float jest tam zbÄ™dny,
+jest to spowodowane tym, Å¼e kod kopiowania miÄ™dzy pamiÄ™ciami jest prostszy i nie trzeba wykonywaÄ‡ dodatkowych
+operacji zsuwania i rozsuwania pamiÄ™ci.
+W efekcie w pamiÄ™ci karty sÄ™ niewykoÅ¼ystywane pozycje zawierajÄ…ce 1.
+ChcÄ™ to wykoÅ¼ystaÄ‡;
+ponumerujÄ™ rodzaje czÄ…stek i przed skopiowaniem do karty bÄ™dÄ™ przypisywÅ‚ na 4 pozycjÄ™ kaÅ¼dej czÄ…stce
+numer jej rodzaju, a przy wczytywaniu do gÅ‚Ã³wnej pamiÄ™ci RAM dla GL'a bÄ™dÄ™ te numery zapisywaÅ‚
+do osobnej tablicy i przed wykonywaniem przeksztaÅ‚ceÅ„ GL 4 pozycje zapeÅ‚nie 1.
 
 
 	Modyfikacje funkcji:
@@ -21,48 +21,48 @@ do osobnej tablicy i przed wykonywaniem przekszta³ceñ GL 4 pozycje zape³nie 1.
 Plik particles_kernel_impl.cuh
 
 operator() integrate_functor
-Informacja o rodzaju cz¹stki mo¿e byæ przechowywana w float4 posData
-w metodzie bêdzie trzeba uwzglêdniæ, ¿e cz¹stki maj¹ ró¿ne promienie (params.particleRadius).
+Informacja o rodzaju czÄ…stki moÅ¼e byÄ‡ przechowywana w float4 posData
+w metodzie bÄ™dzie trzeba uwzglÄ™dniÄ‡, Å¼e czÄ…stki majÄ… rÃ³Å¼ne promienie (params.particleRadius).
 
 collideSpheres
-Argumenty funkcji float3 nale¿y zamieniæ na float4 poniewa¿ w tej funkcji obliczane s¹ si³y dzia³aj¹ce
-na cz¹stki podczas zderzenia.
+Argumenty funkcji float3 naleÅ¼y zamieniÄ‡ na float4 poniewaÅ¼ w tej funkcji obliczane sÄ… siÅ‚y dziaÅ‚ajÄ…ce
+na czÄ…stki podczas zderzenia.
 
 collideCell
-Argument pos funkcji zmieniæ z float3 na float4.
-Potrzebne s¹ informacje o rodzaju obu cz¹stek i nale¿y je uwzglêdniæ; szczególnie ró¿ne promienie.
-Odpowiednio zmodyfikowaæ wywo³anie collideSpheres.
+Argument pos funkcji zmieniÄ‡ z float3 na float4.
+Potrzebne sÄ… informacje o rodzaju obu czÄ…stek i naleÅ¼y je uwzglÄ™dniÄ‡; szczegÃ³lnie rÃ³Å¼ne promienie.
+Odpowiednio zmodyfikowaÄ‡ wywoÅ‚anie collideSpheres.
 
 collideD
-Odpowiednio zmodyfikowaæ wywo³anie collideCell.
-Uwzglêdniæ masê cz¹stki zale¿n¹ od jej rodzaju przy wyliczaniu nowej prêdkoœci.
+Odpowiednio zmodyfikowaÄ‡ wywoÅ‚anie collideCell.
+UwzglÄ™dniÄ‡ masÄ™ czÄ…stki zaleÅ¼nÄ… od jej rodzaju przy wyliczaniu nowej prÄ™dkoÅ›ci.
 
 particles_kernel.cuh
 
 SimParams
-Zmieniæ parametry cz¹stek float (particleRadius, particleMass) na tablice float i odwo³ywaæ siê do nich
-przez numer typu cz¹stki.
+ZmieniÄ‡ parametry czÄ…stek float (particleRadius, particleMass) na tablice float i odwoÅ‚ywaÄ‡ siÄ™ do nich
+przez numer typu czÄ…stki.
 
 particleSystem.cpp
 
-Chyba gdzieœ w tym pliku trzeba zadbaæ o zamiany 1 z numerem typu cz¹stki.
+Chyba gdzieÅ› w tym pliku trzeba zadbaÄ‡ o zamiany 1 z numerem typu czÄ…stki.
 
 ParticleSystem::ParticleSystem
-Ustaliæ parametry cz¹stek dla ró¿nych typów.
-Dobrze by by³o wczeœniej mieæ vector z parametrami typów cz¹stek.
+UstaliÄ‡ parametry czÄ…stek dla rÃ³Å¼nych typÃ³w.
+Dobrze by byÅ‚o wczeÅ›niej mieÄ‡ vector z parametrami typÃ³w czÄ…stek.
 
 ParticleSystem::initGrid, ParticleSystem::reset
-Losowaæ typ cz¹stki z dostêpnych.
-Powinna tu wkroczyæ tablica z przypisanymi typami do cz¹stek.
+LosowaÄ‡ typ czÄ…stki z dostÄ™pnych.
+Powinna tu wkroczyÄ‡ tablica z przypisanymi typami do czÄ…stek.
 
 ParticleSystem::particleType
-Ustaliæ, czy to dobry pomys³ i zintegrowaæ z reszt¹.
+UstaliÄ‡, czy to dobry pomysÅ‚ i zintegrowaÄ‡ z resztÄ….
 
 ParticleSystem::update
-Tu jest po³¹czenie sterowania CUDA i GL.
-Nale¿y zadbaæ, ¿eby prze³¹czanie 1 do normalizacji z numerem typu cz¹stki przebiega³o w w³aœciwej kolejnoœci.
+Tu jest poÅ‚Ä…czenie sterowania CUDA i GL.
+NaleÅ¼y zadbaÄ‡, Å¼eby przeÅ‚Ä…czanie 1 do normalizacji z numerem typu czÄ…stki przebiegaÅ‚o w wÅ‚aÅ›ciwej kolejnoÅ›ci.
 
 particles.cpp
 
-Zadbaæ o ustalenie na pocz¹tku symulacji ile bêdzie typów cz¹stek i jakie one bêd¹.
+ZadbaÄ‡ o ustalenie na poczÄ…tku symulacji ile bÄ™dzie typÃ³w czÄ…stek i jakie one bÄ™dÄ….
 

@@ -481,7 +481,10 @@ ParticleSystem::reset(ParticleConfig config)
                     //point[0] = frand();
                     //point[1] = frand();
                     //point[2] = frand();
+<<<<<<< HEAD
 
+=======
+>>>>>>> sigrond
 					/*point[0]=tmpbrad*frand()-tmprad;//frand -> (0.0f,1.0f) 1.0f - promien kuli
 					float my=sqrt(tmprad*tmprad-point[0]*point[0]);
 					point[1]=rand() /( float ) RAND_MAX *( 2*my ) - my;
@@ -621,6 +624,7 @@ class ParticleSystem::particleType
 };
 
 
+<<<<<<< HEAD
 
 #include "particleSystem.h"
 #include "particleSystem.cuh"
@@ -1131,3 +1135,5 @@ ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacin
     setArray(POSITION, m_hPos, start, index);
     setArray(VELOCITY, m_hVel, start, index);
 }
+=======
+>>>>>>> sigrond

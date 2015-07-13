@@ -276,6 +276,7 @@ extern "C"
     }
 
 }   // extern "C"
+<<<<<<< HEAD
 
 // This file contains C wrappers around the some of the CUDA API and the
 // kernel functions so that they can be called from "particleSystem.cpp"
@@ -536,3 +537,5 @@ extern "C"
     }
 
 }   // extern "C"
+=======
+>>>>>>> sigrond

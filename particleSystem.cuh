@@ -62,6 +62,7 @@ extern "C"
                  uint   numParticles,
                  uint   numCells,
 				 float deltaTime);
+<<<<<<< HEAD
 
     void sortParticles(uint *dGridParticleHash, uint *dGridParticleIndex, uint numParticles);
 
@@ -115,6 +116,8 @@ extern "C"
                  uint  *cellEnd,
                  uint   numParticles,
                  uint   numCells);
+=======
+>>>>>>> sigrond
 
     void sortParticles(uint *dGridParticleHash, uint *dGridParticleIndex, uint numParticles);
 

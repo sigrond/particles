@@ -180,6 +180,7 @@ class ParticleSystem
 
 		class particleType;
 
+<<<<<<< HEAD
     protected: // methods
         ParticleSystem() {}
         uint createVBO(uint size);
@@ -367,6 +368,8 @@ class ParticleSystem
 
         void addSphere(int index, float *pos, float *vel, int r, float spacing);
 
+=======
+>>>>>>> sigrond
     protected: // methods
         ParticleSystem() {}
         uint createVBO(uint size);

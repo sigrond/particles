@@ -62,6 +62,7 @@ struct SimParams
 
 	int particleTypesNum;
 	unsigned long long int brownQuality;
+<<<<<<< HEAD
 };
 
 #endif
@@ -105,6 +106,8 @@ struct SimParams
     float boundaryDamping;
 
 	float bigradius;
+=======
+>>>>>>> sigrond
 };
 
 #endif

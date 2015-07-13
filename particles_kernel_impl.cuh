@@ -393,6 +393,7 @@ float3 collideSpheres(float3 posA, float3 posB,
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
 		force=-(48.0f*params.epsi/dist*sd*(sd-0.5f)+attraction/(dist*dist))*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
+<<<<<<< HEAD
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////
@@ -851,6 +852,8 @@ float3 collideSpheres(float3 posA, float3 posB,
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
 		force=12.0f*epsi/dist*sd*(sd-0.5f)*norm;
+=======
+>>>>>>> sigrond
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////
@@ -913,7 +916,10 @@ float3 collideCell(int3    gridPos,
     return force;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> sigrond
 /** \brief wyliczenie wypadkowej siły zderzeń jednej cząstki ze wszystkimi w zasięgu
  *
  * \param newVel float4* output: new velocit
@@ -927,6 +933,7 @@ float3 collideCell(int3    gridPos,
  *
  */
 __global__
+<<<<<<< HEAD
 void collideD(float4 *newVel,               /* output: new velocit*/
               float4 *oldPos,               /* input: sorted positions*/
               float4 *oldVel,               /* input: sorted velocities*/
@@ -934,6 +941,16 @@ void collideD(float4 *newVel,               /* output: new velocit*/
               uint   *cellStart,
               uint   *cellEnd,
               uint    numParticles)
+=======
+void collideD(float4 *newVel,               // output: new velocity
+              float4 *oldPos,               // input: sorted positions
+              float4 *oldVel,               // input: sorted velocities
+              uint   *gridParticleIndex,    // input: sorted particle indices
+              uint   *cellStart,
+              uint   *cellEnd,
+              uint    numParticles,
+			  float deltaTime)
+>>>>>>> sigrond
 {
     uint index = __mul24(blockIdx.x,blockDim.x) + threadIdx.x;
 
@@ -966,7 +983,11 @@ void collideD(float4 *newVel,               /* output: new velocit*/
 
     // write new velocity back to original unsorted location
     uint originalIndex = gridParticleIndex[index];
+<<<<<<< HEAD
     newVel[originalIndex] = make_float4(vel + force, 0.0f);
+=======
+    newVel[originalIndex] = make_float4(vel + force*(deltaTime/params.particleMass), 0.0f);
+>>>>>>> sigrond
 }
 
 #endif

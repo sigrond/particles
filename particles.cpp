@@ -102,13 +102,20 @@ const float inertia = 0.1f;
  * \brief powiększenie
  */
 float zoom=1.0f;
+<<<<<<< HEAD
 
+=======
+>>>>>>> sigrond
 ParticleRenderer::DisplayMode displayMode = ParticleRenderer::PARTICLE_SPHERES;
 
 int mode = 0;
 bool displayEnabled = true;
 bool bPause = false;
+<<<<<<< HEAD
 bool displaySliders = false;
+=======
+bool displaySliders = true;
+>>>>>>> sigrond
 bool wireframe = false;
 bool demoMode = false;
 int idleCounter = 0;
@@ -122,7 +129,10 @@ uint3 gridSize;
 int numIterations = 0; // run until exit
 
 // simulation parameters
+<<<<<<< HEAD
 
+=======
+>>>>>>> sigrond
 /** \var timestep
  * \brief krok czasu
  */
@@ -156,7 +166,10 @@ unsigned long long int brownQuality=10;
 
 int particleTypesNum=1;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> sigrond
 float collideSpring = 0.5f;;
 float collideDamping = 0.02f;;
 float collideShear = 0.1f;
@@ -205,7 +218,10 @@ char        *g_refFile = NULL;
 
 char* save=NULL;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> sigrond
 const char *sSDKsample = "CUDA Particles Simulation";
 
 extern "C" void cudaInit(int argc, char **argv);
@@ -355,11 +371,14 @@ void runBenchmark(int iterations, char *exec_path)
 	{
 		fclose(f);
 	}
+<<<<<<< HEAD
 
     for (int i = 0; i < iterations; ++i)
     {
         psystem->update(timestep);
     }
+=======
+>>>>>>> sigrond
 
     cudaDeviceSynchronize();
     sdkStopTimer(&timer);
@@ -430,11 +449,14 @@ void display()
 		psystem->setBrown(brown);
 
 		parowanieKropliWCzasie();
+<<<<<<< HEAD
 		licznik++;
 		time_past+=timestep;
 		//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
 		bigRadius=bigRadius0-A*sqrt(time_past);
 		psystem->setBigRadius(bigRadius);
+=======
+>>>>>>> sigrond
 
         psystem->update(timestep);
 
@@ -489,6 +511,7 @@ void display()
     //float3 p = psystem->getColliderPos();
     //glTranslatef(p.x, p.y, p.z);
 	//glScalef(zoom, zoom, zoom);
+<<<<<<< HEAD
     glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
 
     // cube -> sphere
@@ -500,6 +523,8 @@ void display()
     glPushMatrix();
     float3 p = psystem->getColliderPos();
     glTranslatef(p.x, p.y, p.z);
+=======
+>>>>>>> sigrond
     //glColor3f(1.0, 0.0, 0.0);
     //glutSolidSphere(psystem->getColliderRadius(), 20, 10);
     glPopMatrix();
@@ -689,7 +714,11 @@ void motion(int x, int y)
     switch (mode)
     {
         case M_VIEW:
+<<<<<<< HEAD
             if (buttonState == 3)
+=======
+			if (buttonState == 3)
+>>>>>>> sigrond
             {
                 // left+middle = zoom
                 camera_trans[2] += (dy / 100.0f) * 0.5f * fabs(camera_trans[2]);
@@ -970,6 +999,10 @@ main(int argc, char **argv)
 
     if (argc > 1)
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> sigrond
 
 		if (checkCmdLineFlag(argc, (const char **) argv, "bigRadius0"))
         {
@@ -1128,6 +1161,7 @@ main(int argc, char **argv)
 
 		//printf("timestep: %f\n",timestep);
 
+<<<<<<< HEAD
         runBenchmark(numIterations, argv[0]);
     }
     else
@@ -1920,6 +1954,8 @@ main(int argc, char **argv)
             numIterations = 300;
         }
 
+=======
+>>>>>>> sigrond
         runBenchmark(numIterations, argv[0]);
     }
     else
