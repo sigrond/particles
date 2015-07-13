@@ -77,10 +77,13 @@
 #include <cstdio>
 #include <algorithm>
 #include <float.h>
+#include <vector>
 
 #include "particleSystem.h"
 #include "render_particles.h"
 #include "paramgl.h"
+
+#include "particleType.h"
 
 #define MAX_EPSILON_ERROR 5.00f
 #define THRESHOLD         0.30f
@@ -180,6 +183,11 @@ unsigned long long int licznik=0;
 long double time_past=0.0;
 
 extern bool multiColor=false;
+
+/** \var typyCzastek
+ * \brief tablica z typami cząstek
+ */
+std::vector<particleType> typyCzastek;
 
 ParticleSystem *psystem = 0;
 

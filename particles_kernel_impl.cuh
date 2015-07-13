@@ -95,33 +95,33 @@ struct integrate_functor
         // set this to zero to disable collisions with cube sides
 #if 0
 
-        if (pos.x > 1.0f - params.particleRadius)
+        if (pos.x > 1.0f - params.particleRadius[velData.w])
         {
-            pos.x = 1.0f - params.particleRadius;
+            pos.x = 1.0f - params.particleRadius[velData.w];
             vel.x *= params.boundaryDamping;
         }
 
-        if (pos.x < -1.0f + params.particleRadius)
+        if (pos.x < -1.0f + params.particleRadius[velData.w])
         {
-            pos.x = -1.0f + params.particleRadius;
+            pos.x = -1.0f + params.particleRadius[velData.w];
             vel.x *= params.boundaryDamping;
         }
 
-        if (pos.y > 1.0f - params.particleRadius)
+        if (pos.y > 1.0f - params.particleRadius[velData.w])
         {
-            pos.y = 1.0f - params.particleRadius;
+            pos.y = 1.0f - params.particleRadius[velData.w];
             vel.y *= params.boundaryDamping;
         }
 
-        if (pos.z > 1.0f - params.particleRadius)
+        if (pos.z > 1.0f - params.particleRadius[velData.w])
         {
-            pos.z = 1.0f - params.particleRadius;
+            pos.z = 1.0f - params.particleRadius[velData.w];
             vel.z *= params.boundaryDamping;
         }
 
-        if (pos.z < -1.0f + params.particleRadius)
+        if (pos.z < -1.0f + params.particleRadius[velData.w])
         {
-            pos.z = -1.0f + params.particleRadius;
+            pos.z = -1.0f + params.particleRadius[velData.w];
             vel.z *= params.boundaryDamping;
         }
 
@@ -136,7 +136,7 @@ struct integrate_functor
 		float r0k=xk+yk+zk;
 		float R=params.bigradius;//- params.particleRadius;
 		float r0=sqrt(r0k);
-		if(params.boundaries && r0>R-params.particleRadius && r0<R+params.particleRadius)
+		if(params.boundaries && r0>R-params.particleRadius[velData.w] && r0<R+params.particleRadius[velData.w])
 		{
 			/*if(r0>r+params.particleRadius)
 			{
@@ -148,7 +148,7 @@ struct integrate_functor
 			float3 relPos = pos;
 			float dist = length(relPos);
 			float3 norm = relPos / dist;
-			vel+=-params.boundaryDamping*(abs(r0-R)-(params.particleRadius))*norm*deltaTime/params.particleMass;
+			vel+=-params.boundaryDamping*(abs(r0-R)-(params.particleRadius[velData.w]))*norm*deltaTime/params.particleMass[velData.w];
 		}
 		/*if(r0k > r*r + FLT_EPSILON )
 		{
@@ -176,9 +176,9 @@ struct integrate_functor
 //dolna plaszczyzna
 
 #if 1
-		if (pos.y < -2.0f*params.bigradius0 + params.particleRadius)/**< blat */
+		if (pos.y < -2.0f*params.bigradius0 + params.particleRadius[velData.w])/**< blat */
         {
-            pos.y = -2.0f*params.bigradius0 + params.particleRadius;
+            pos.y = -2.0f*params.bigradius0 + params.particleRadius[velData.w];
             vel.y = 0;
         }
 #endif
@@ -351,7 +351,7 @@ void reorderDataAndFindCellStartD(uint   *cellStart,        // output: cell star
  */
 __device__
 float3 collideSpheres(float3 posA, float3 posB,
-                      float3 velA, float3 velB,
+                      float4 velA, float4 velB,
                       float radiusA, float radiusB,
                       float attraction)
 {
@@ -389,7 +389,8 @@ float3 collideSpheres(float3 posA, float3 posB,
 		//float epsi=0.1f;
 		//float D2=0.00001f;//sigma kwadrat
 		//float sigma=0.001f;//sigma*2^1/6=r
-		float sigma=2*params.particleRadius/(1.12246204f); //tu te¿ jest dobrze tak jak LJ ka¿e :-)
+		//float sigma=2*params.particleRadius/(1.12246204f); //tu te¿ jest dobrze tak jak LJ ka¿e :-)
+		float sigma=(params.particleRadius[velA.w]+params.particleRadius[velB.w])/(1.12246204f);
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
 		force=-(48.0f*params.epsi/dist*sd*(sd-0.5f)+attraction/(dist*dist))*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
@@ -421,7 +422,7 @@ __device__
 float3 collideCell(int3    gridPos,
                    uint    index,
                    float3  pos,
-                   float3  vel,
+                   float4  vel,
                    float4 *oldPos,
                    float4 *oldVel,
                    uint   *cellStart,
@@ -444,10 +445,11 @@ float3 collideCell(int3    gridPos,
             if (j != index)                // check not colliding with self
             {
                 float3 pos2 = make_float3(FETCH(oldPos, j));
-                float3 vel2 = make_float3(FETCH(oldVel, j));
+                //float3 vel2 = make_float3(FETCH(oldVel, j));
+                float4 vel2 = FETCH(oldVel, j);
 
                 // collide two spheres
-                force += collideSpheres(pos, pos2, vel, vel2, params.particleRadius, params.particleRadius, params.attraction);
+                force += collideSpheres(pos, pos2, vel, vel2, params.particleRadius[vel.w], params.particleRadius[vel2.w], params.attraction);
             }
         }
     }
@@ -483,7 +485,8 @@ void collideD(float4 *newVel,               // output: new velocity
 
     // read particle data from sorted arrays
     float3 pos = make_float3(FETCH(oldPos, index));
-    float3 vel = make_float3(FETCH(oldVel, index));
+    //float3 vel = make_float3(FETCH(oldVel, index));
+    float4 vel = FETCH(oldVel, index);
 
     // get address in grid
     int3 gridPos = calcGridPos(pos);
@@ -508,7 +511,7 @@ void collideD(float4 *newVel,               // output: new velocity
 
     // write new velocity back to original unsorted location
     uint originalIndex = gridParticleIndex[index];
-    newVel[originalIndex] = make_float4(vel + force*(deltaTime/params.particleMass), 0.0f);
+    newVel[originalIndex] = make_float4(make_float3(vel) + force*(deltaTime/params.particleMass[vel.w]), vel.w);
 }
 
 #endif

@@ -178,7 +178,7 @@ class ParticleSystem
 
         void addSphere(int index, float *pos, float *vel, int r, float spacing);
 
-		class particleType;
+		//class particleType;
 
     protected: // methods
         ParticleSystem() {}

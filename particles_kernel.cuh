@@ -26,6 +26,9 @@
 #endif
 
 #include "vector_types.h"
+
+#define MAX_TYPE_NUM 10
+
 typedef unsigned int uint;
 
 // simulation parameters
@@ -36,9 +39,10 @@ struct SimParams
 
     float3 gravity;
     float globalDamping;
-    float particleRadius;
 
-	float particleMass;
+    float particleRadius[MAX_TYPE_NUM];
+
+	float particleMass[MAX_TYPE_NUM];
 
     uint3 gridSize;
     uint numCells;
@@ -57,7 +61,7 @@ struct SimParams
 	float bigradius;
 	float bigradius0;
 	bool boundaries;
-	float epsi;
+	float epsi;//tu cos sie zmieni
 	float brown;
 
 	int particleTypesNum;

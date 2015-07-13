@@ -31,11 +31,15 @@
 #include <algorithm>
 #include <GL/glew.h>
 
+#include <vector>
+#include "particleType.h"
+
 #ifndef CUDART_PI_F
 #define CUDART_PI_F         3.141592654f
 #endif
 
 extern bool multiColor;
+extern std::vector<particleType> typyCzastek;
 
 ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenGL) :
     m_bInitialized(false),
@@ -59,14 +63,29 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.numCells = m_numGridCells;
     m_params.numBodies = m_numParticles;
 
-	/**
-	* promieñ w mikronach
-	*/
-    m_params.particleRadius = 0.225f;//1.0f / 32.0f;//32.0f / 64.0f;
+    int iloscTypow=typyCzastek.size();
+    if(iloscTypow>0)
+    {
+        for(int i=0;i<iloscTypow;i++)
+        {
+            /**
+            * promieñ w mikronach
+            */
+            m_params.particleRadius[i] = typyCzastek[i].particleRadius;
+            m_params.particleMass[i]=typyCzastek[i].particleMass;
+        }
+        m_params.particleTypesNum=iloscTypow;
+    }
+    else
+    {
+        m_params.particleRadius[0] = 0.225f;//1.0f / 32.0f;//32.0f / 64.0f;
+        m_params.particleMass[0]=1.0f;
+        m_params.particleTypesNum=1
+    }
+
     m_params.colliderPos = make_float3(-1.2f, -0.8f, 0.8f);
     m_params.colliderRadius = 0.2f;
 
-	m_params.particleMass=1.0f;
 
     m_params.worldOrigin = make_float3(-1.0f, -1.0f, -1.0f);
     //    m_params.cellSize = make_float3(worldSize.x / m_gridSize.x, worldSize.y / m_gridSize.y, worldSize.z / m_gridSize.z);
@@ -89,7 +108,6 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 	m_params.brown=0.00001f;
 	m_params.brownQuality=10;
 
-	m_params.particleTypesNum=1;
 
     _initialize(numParticles);
 }
@@ -454,7 +472,14 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
                     m_hVel[i*4] = 0.0f;
                     m_hVel[i*4+1] = 0.0f;
                     m_hVel[i*4+2] = 0.0f;
-                    m_hVel[i*4+3] = 0.0f;
+                    if(typyCzastek.size()>0)
+                    {
+                        m_hVel[i*4+3]=rand()%typyCzastek.size();
+                    }
+                    else
+                    {
+                        m_hVel[i*4+3] = 0.0f;
+                    }
                 }
             }
         }
@@ -591,7 +616,7 @@ ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacin
     setArray(VELOCITY, m_hVel, start, index);
 }
 
-class ParticleSystem::particleType
+/*class ParticleSystem::particleType
 {
 	public:
 		enum types
@@ -611,16 +636,16 @@ class ParticleSystem::particleType
 				mass=0.001f;
 				radius=0.225f;
 			}
-			else /*if(x==2.0f)*/
+			else //if(x==2.0f)
 			{
 				type=TypeTwo;
 				mass=0.00001f;
 				radius=0.0225f;
 			}
-			/*else
-			{
-				type=Default;
-			}*/
+			//else
+			//{
+			//	type=Default;
+			//}
 		};
-};
+};*/
 
