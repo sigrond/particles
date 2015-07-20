@@ -1,6 +1,5 @@
 var class_particle_system =
 [
-    [ "particleType", "class_particle_system_1_1particle_type.html", "class_particle_system_1_1particle_type" ],
     [ "ParticleArray", "class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3", [
       [ "POSITION", "class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a9e9a2992d230a2674debf26e0e8e0299", null ],
       [ "VELOCITY", "class_particle_system.html#a332fbe57a36aaea5c18b4ea4fba6bbb3a3702de73065f01b4f6ffa604b799e53d", null ]

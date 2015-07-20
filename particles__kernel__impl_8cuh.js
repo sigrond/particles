@@ -5,9 +5,9 @@ var particles__kernel__impl_8cuh =
     [ "calcGridHash", "particles__kernel__impl_8cuh.html#ad20ac253847311c176aacf9a224e14e5", null ],
     [ "calcGridPos", "particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd", null ],
     [ "calcHashD", "particles__kernel__impl_8cuh.html#a4c688195fb1c2963cbdcaf62c737b9d7", null ],
-    [ "collideCell", "particles__kernel__impl_8cuh.html#a8e623e11d4ac873cfbe9d7c916326363", null ],
+    [ "collideCell", "particles__kernel__impl_8cuh.html#a56786086ef4f6602f65564767fbfecdd", null ],
     [ "collideD", "particles__kernel__impl_8cuh.html#a295ed0293da0aab40ac5d904c319abdf", null ],
-    [ "collideSpheres", "particles__kernel__impl_8cuh.html#a1d93cb067b16b4a472e9c1a08d9d8e68", null ],
+    [ "collideSpheres", "particles__kernel__impl_8cuh.html#a0558bfe8fc21ab0bfa0685ece3ff81a3", null ],
     [ "reorderDataAndFindCellStartD", "particles__kernel__impl_8cuh.html#abe84636059af3ed58ef603665395e6f4", null ],
     [ "params", "particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc", null ]
 ];

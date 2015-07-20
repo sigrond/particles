@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['radius',['radius',['../class_particle_system_1_1particle_type.html#a262c51b90d7c71f897584e1584c22a41',1,'ParticleSystem::particleType']]],
   ['registerglbufferobject',['registerGLBufferObject',['../particle_system_8cuh.html#a4386a84282ceeaba09939817aa2a9c24',1,'registerGLBufferObject(uint vbo, struct cudaGraphicsResource **cuda_vbo_resource):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a4386a84282ceeaba09939817aa2a9c24',1,'registerGLBufferObject(uint vbo, struct cudaGraphicsResource **cuda_vbo_resource):&#160;particleSystem_cuda.cu']]],
   ['render_5fparticles_2ecpp',['render_particles.cpp',['../render__particles_8cpp.html',1,'']]],
   ['render_5fparticles_2eh',['render_particles.h',['../render__particles_8h.html',1,'']]],

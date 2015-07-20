@@ -45,6 +45,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="pages.html"><span>Dodatkowe&#160;strony</span></a></li>
       <li class="current"><a href="annotated.html"><span>Klasy</span></a></li>
       <li><a href="files.html"><span>Pliki</span></a></li>
       <li>
@@ -107,12 +108,12 @@ $(document).ready(function(){initNavTree('annotated.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock">Tutaj znajdują się klasy, struktury, unie i interfejsy wraz z ich krótkimi opisami:</div><div class="directory">
-<div class="levels">[poziom szczegółów <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
+<table class="directory">
 <tr id="row_0_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structintegrate__functor.html" target="_self">integrate_functor</a></td><td class="desc">Ta struktura inicjowana jest z krokiem delta_time dla danych opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU) jako para (tuple) float4 położenia i prędkości </td></tr>
 <tr id="row_1_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_particle_renderer.html" target="_self">ParticleRenderer</a></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><img id="arr_2_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('2_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_particle_system.html" target="_self">ParticleSystem</a></td><td class="desc"></td></tr>
-<tr id="row_2_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_particle_system_1_1particle_type.html" target="_self">particleType</a></td><td class="desc"></td></tr>
-<tr id="row_3_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="struct_sim_params.html" target="_self">SimParams</a></td><td class="desc"></td></tr>
+<tr id="row_2_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_particle_system.html" target="_self">ParticleSystem</a></td><td class="desc"></td></tr>
+<tr id="row_3_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="classparticle_type.html" target="_self">particleType</a></td><td class="desc">Klasa przechowująca informacje o rodzajach cząstek </td></tr>
+<tr id="row_4_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="struct_sim_params.html" target="_self">SimParams</a></td><td class="desc"></td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
@@ -120,7 +121,7 @@ $(document).ready(function(){initNavTree('annotated.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Wygenerowano Pn, 13 lip 2015 16:03:46 dla particles programem
+    <li class="footer">Wygenerowano Pn, 20 lip 2015 19:27:17 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -7,6 +7,10 @@ var files =
     [ "particleSystem.cuh", "particle_system_8cuh.html", "particle_system_8cuh" ],
     [ "particleSystem.h", "particle_system_8h.html", "particle_system_8h" ],
     [ "particleSystem_cuda.cu", "particle_system__cuda_8cu.html", "particle_system__cuda_8cu" ],
+    [ "particleType.cpp", "particle_type_8cpp.html", null ],
+    [ "particleType.h", "particle_type_8h.html", [
+      [ "particleType", "classparticle_type.html", "classparticle_type" ]
+    ] ],
     [ "render_particles.cpp", "render__particles_8cpp.html", "render__particles_8cpp" ],
     [ "render_particles.h", "render__particles_8h.html", [
       [ "ParticleRenderer", "class_particle_renderer.html", "class_particle_renderer" ]

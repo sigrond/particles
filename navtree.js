@@ -11,6 +11,7 @@ var NAVTREE =
         [ "Koncepcja symulowania różnych cząstek", "index.html#koncepcja_symulowania_roznych_czastek", null ]
       ] ]
     ] ],
+    [ "Lista rzeczy do zrobienia", "todo.html", null ],
     [ "Klasy", null, [
       [ "Lista klas", "annotated.html", "annotated" ],
       [ "Indeks klas", "classes.html", null ],
@@ -39,7 +40,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"particles_8cpp.html#a9fcb578cacbd3a3b1ab593fc123cffb5"
+"particles_8cpp.html#a9608807ab27261888018dac76a7f4acd"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

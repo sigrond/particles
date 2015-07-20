@@ -6,5 +6,7 @@ var searchData=
   ['particlesystem_2ecpp',['particleSystem.cpp',['../particle_system_8cpp.html',1,'']]],
   ['particlesystem_2ecuh',['particleSystem.cuh',['../particle_system_8cuh.html',1,'']]],
   ['particlesystem_2eh',['particleSystem.h',['../particle_system_8h.html',1,'']]],
-  ['particlesystem_5fcuda_2ecu',['particleSystem_cuda.cu',['../particle_system__cuda_8cu.html',1,'']]]
+  ['particlesystem_5fcuda_2ecu',['particleSystem_cuda.cu',['../particle_system__cuda_8cu.html',1,'']]],
+  ['particletype_2ecpp',['particleType.cpp',['../particle_type_8cpp.html',1,'']]],
+  ['particletype_2eh',['particleType.h',['../particle_type_8h.html',1,'']]]
 ];

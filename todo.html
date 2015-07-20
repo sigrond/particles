@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="particles.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">particles
    </div>
@@ -100,15 +101,21 @@ $(document).ready(function(){initNavTree('todo.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_todo000001"></a>Składowa <a class="el" href="particles_8cpp.html#a7e5899314715e526b22add369ae43c77">brown</a>  </dt>
-<dd>załączyć bibliotekę curand i pożądnie zaimplementować ruchy browna </dd>
+<dt><a class="anchor" id="_todo000004"></a>Składowa <a class="el" href="class_particle_system.html#af2f16676fe8a0523cfb867a9a856970c">ParticleSystem::addSphere</a>  (int index, float *pos, float *vel, int r, float spacing)</dt>
+<dd>tutaj też trzeba losować typ odpowiednio, ale można zastosować uproszczenia bo nie jest to domyślna metoda ustawiania cząstek w symulacji  </dd>
+<dt><a class="anchor" id="_todo000002"></a>Składowa <a class="el" href="class_particle_system.html#abdb59a91d8483017ad71455bb2958993">ParticleSystem::getParticleRadius</a>  ()</dt>
+<dd>poprawić z uwzględnieniem różnych typów cząstek  </dd>
+<dt><a class="anchor" id="_todo000003"></a>Składowa <a class="el" href="class_particle_system.html#a519070812dd9eb349f270c793c5f64b6">ParticleSystem::reset</a>  (ParticleConfig config)</dt>
+<dd>należy dodać właściwe losowanie typu cząstki i uwzględnić przy sprawdzaniu położenia rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały  </dd>
+<dt><a class="anchor" id="_todo000001"></a>Składowa <a class="el" href="class_particle_system.html#a92e1db62e4025fab4996ce9a3ca5882f">ParticleSystem::setParticleMass</a>  (float x)</dt>
+<dd>jakoś poprawić bo rożne typy cząstek mają różne masy </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Wygenerowano So, 28 lut 2015 17:36:34 dla particles programem
+    <li class="footer">Wygenerowano Pn, 20 lip 2015 19:27:16 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
