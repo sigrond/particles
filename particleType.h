@@ -16,14 +16,14 @@ public:
     float particleCharge;
     unsigned short typeNumber;
     static unsigned short typeCounter;
-    particleTypes() : typeNumber(typeCounter)
+    particleType() : typeNumber(typeCounter)
     {
         typeCounter++;
     }
-    ~particleTypes()
+    ~particleType()
     {
         typeCounter--;
     }
 };
 
-particleType::typeCounter=0;
+

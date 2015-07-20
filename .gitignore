@@ -121,3 +121,6 @@ data/test1.bin
 *.scope_file_list
 *.cscope_file_list
 UpgradeLog.htm
+UpgradeLog.XML
+_UpgradeReport_Files/
+particles_vs2008.sln.old

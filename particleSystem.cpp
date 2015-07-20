@@ -80,7 +80,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     {
         m_params.particleRadius[0] = 0.225f;//1.0f / 32.0f;//32.0f / 64.0f;
         m_params.particleMass[0]=1.0f;
-        m_params.particleTypesNum=1
+        m_params.particleTypesNum=1;
     }
 
     m_params.colliderPos = make_float3(-1.2f, -0.8f, 0.8f);
@@ -89,7 +89,16 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 
     m_params.worldOrigin = make_float3(-1.0f, -1.0f, -1.0f);
     //    m_params.cellSize = make_float3(worldSize.x / m_gridSize.x, worldSize.y / m_gridSize.y, worldSize.z / m_gridSize.z);
-    float cellSize = m_params.particleRadius * 3.0f;  // cell size equal to particle diameter
+	/**< żeby zachować strukturę składającą się z identycznych sześcianów trzeba wybrać największy typ cząstek */
+	float maxRadius=0.0f;
+	for(int i=0;i<m_params.particleTypesNum;i++)
+	{
+		if(maxRadius<=m_params.particleRadius[i])
+		{
+			maxRadius=m_params.particleRadius[i];
+		}
+	}
+	float cellSize = maxRadius * 3.0f;  // cell size equal to particle diameter
     m_params.cellSize = make_float3(cellSize, cellSize, cellSize);
 
     m_params.spring = 0.5f;
@@ -463,10 +472,11 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
                 uint i = (z*size[1]*size[0]) + (y*size[0]) + x;
 
                 if (i < numParticles)
-                {
-                    m_hPos[i*4] = (spacing * x) + m_params.particleRadius - 1.0f + (frand()*2.0f-1.0f)*jitter;
-                    m_hPos[i*4+1] = (spacing * y) + m_params.particleRadius - 1.0f + (frand()*2.0f-1.0f)*jitter;
-                    m_hPos[i*4+2] = (spacing * z) + m_params.particleRadius - 1.0f + (frand()*2.0f-1.0f)*jitter;
+                {/**< losowanie typu */
+					unsigned int tmpType=rand()%m_params.particleTypesNum;
+					m_hPos[i*4] = (spacing * x) + m_params.particleRadius[tmpType] - 1.0f + (frand()*2.0f-1.0f)*jitter;
+                    m_hPos[i*4+1] = (spacing * y) + m_params.particleRadius[tmpType] - 1.0f + (frand()*2.0f-1.0f)*jitter;
+                    m_hPos[i*4+2] = (spacing * z) + m_params.particleRadius[tmpType] - 1.0f + (frand()*2.0f-1.0f)*jitter;
                     m_hPos[i*4+3] = 1.0f;
 
                     m_hVel[i*4] = 0.0f;
@@ -474,7 +484,7 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
                     m_hVel[i*4+2] = 0.0f;
                     if(typyCzastek.size()>0)
                     {
-                        m_hVel[i*4+3]=rand()%typyCzastek.size();
+                        m_hVel[i*4+3]=tmpType;//rand()%typyCzastek.size();
                     }
                     else
                     {
@@ -494,13 +504,16 @@ void
  */
 ParticleSystem::reset(ParticleConfig config)
 {
+/** \todo należy dodać właściwe losowanie typu cząstki i uwzględnić przy sprawdzaniu położenia
+ * rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały  */
+	unsigned int tmpType=rand()%m_params.particleTypesNum;
     switch (config)
     {
         default:
         case CONFIG_RANDOM:
             {
                 int p = 0, v = 0;
-				float tmpbrad=m_params.bigradius-m_params.particleRadius;
+				float tmpbrad=m_params.bigradius-m_params.particleRadius[tmpType];
 				float tmprad=tmpbrad/2;
 				//printf("%f\n",tmprad);
 				bool bo1=false;
@@ -529,7 +542,7 @@ ParticleSystem::reset(ParticleConfig config)
                         for(uint j=0;j<m_numParticles && j<i;j++)
                         {
 							int j4=4*j;
-                            if( ( (m_hPos[j4]-point[0]*2)*(m_hPos[j4]-point[0]*2)+(m_hPos[j4+1]-point[1]*2)*(m_hPos[j4+1]-point[1]*2)+(m_hPos[j4+2]-point[2]*2)*(m_hPos[j4+2]-point[2]*2) )<4.0f*m_params.particleRadius*m_params.particleRadius)
+                            if( ( (m_hPos[j4]-point[0]*2)*(m_hPos[j4]-point[0]*2)+(m_hPos[j4+1]-point[1]*2)*(m_hPos[j4+1]-point[1]*2)+(m_hPos[j4+2]-point[2]*2)*(m_hPos[j4+2]-point[2]*2) )<4.0f*m_params.particleRadius[tmpType]*m_params.particleRadius[tmpType])
                             {
 								//printf("%d %d %f %f %f\n",i ,j ,point[0],point[1],point[2]);
                                 bo1=false;
@@ -542,14 +555,14 @@ ParticleSystem::reset(ParticleConfig config)
                         m_hPos[p++] = 2 * (point[0] - 0.0f);
                         m_hPos[p++] = 2 * (point[1] - 0.0f);
                         m_hPos[p++] = 2 * (point[2] - 0.0f);
-                        m_hPos[p++] = 1.0f; // radius
+                        m_hPos[p++] = 1.0f; /**< 1 postaci znormalizowanej macierzy do trasformacji GL */
                         /*m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;
                         m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
                         m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;*/
 						m_hVel[v++] = 0.0f;
 						m_hVel[v++] = 0.0f;
 						m_hVel[v++] = 0.0f;
-                        m_hVel[v++] = 0.0f;
+                        m_hVel[v++] = tmpType;
 						}
                     }
                 }
@@ -565,11 +578,11 @@ ParticleSystem::reset(ParticleConfig config)
 
         case CONFIG_GRID:
             {
-                float jitter = m_params.particleRadius*0.01f;
+                float jitter = m_params.particleRadius[tmpType]*0.01f;
                 uint s = (int) ceilf(powf((float) m_numParticles, 1.0f / 3.0f));
                 uint gridSize[3];
                 gridSize[0] = gridSize[1] = gridSize[2] = s;
-                initGrid(gridSize, m_params.particleRadius*2.0f, jitter, m_numParticles);
+                initGrid(gridSize, m_params.particleRadius[tmpType]*2.0f, jitter, m_numParticles);
             }
             break;
     }
@@ -581,6 +594,10 @@ ParticleSystem::reset(ParticleConfig config)
 void
 ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacing)
 {
+	/** \todo tutaj też trzeba losować typ odpowiednio, ale można zastosować uproszczenia
+	 * bo nie jest to domyślna metoda ustawiania cząstek w symulacji
+	*/
+	unsigned int tmpType=rand()%m_params.particleTypesNum;
     uint index = start;
 
     for (int z=-r; z<=r; z++)
@@ -593,9 +610,9 @@ ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacin
                 float dy = y*spacing;
                 float dz = z*spacing;
                 float l = sqrtf(dx*dx + dy*dy + dz*dz);
-                float jitter = m_params.particleRadius*0.01f;
+                float jitter = m_params.particleRadius[tmpType]*0.01f;
 
-                if ((l <= m_params.particleRadius*2.0f*r) && (index < m_numParticles))
+                if ((l <= m_params.particleRadius[tmpType]*2.0f*r) && (index < m_numParticles))
                 {
                     m_hPos[index*4]   = pos[0] + dx + (frand()*2.0f-1.0f)*jitter;
                     m_hPos[index*4+1] = pos[1] + dy + (frand()*2.0f-1.0f)*jitter;
