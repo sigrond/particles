@@ -93,9 +93,12 @@ class ParticleSystem
         {
             m_params.boundaryDamping = x;
         }
+		/** \brief ustawia masę cząstki
+		 * \todo jakoś poprawić bo rożne typy cząstek mają różne masy
+		 */
 		void setParticleMass(float x)
 		{
-			m_params.particleMass=x;
+			m_params.particleMass[0]=x;
 		}
 		void setEpsi(float x)
 		{
@@ -150,10 +153,12 @@ class ParticleSystem
         {
             m_params.colliderPos = x;
         }
-
+		/** \brief pobiera promień cząstki
+		 * \todo poprawić z uwzględnieniem różnych typów cząstek
+		 */
         float getParticleRadius()
         {
-            return m_params.particleRadius;
+            return m_params.particleRadius[0];
         }
         float3 getColliderPos()
         {
