@@ -481,7 +481,7 @@ void display()
 	//glScalef(zoom, zoom, zoom);
 
     // collider
-    glPushMatrix();
+    //glPushMatrix();
 
 	/*glBegin(GL_QUADS);
 		glVertex4f(-1, 0, -1, 0);
