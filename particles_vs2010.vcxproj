@@ -211,6 +211,7 @@
     <ClInclude Include="..\..\common\inc\rendercheck_gl.h" />
     <ClInclude Include="particleSystem.h" />
     <ClInclude Include="particleType.h" />
+    <ClInclude Include="particleTypesLoader.h" />
     <ClInclude Include="render_particles.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="shaders.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="particles.cpp" />
     <ClCompile Include="particleSystem.cpp" />
     <ClCompile Include="particleType.cpp" />
+    <ClCompile Include="particleTypesLoader.cpp" />
     <ClCompile Include="render_particles.cpp" />
     <ClCompile Include="shaders.cpp" />
   </ItemGroup>

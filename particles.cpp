@@ -84,6 +84,8 @@
 #include <algorithm>
 #include <float.h>
 #include <vector>
+#include <string>
+#include <iostream>
 
 #include "particleSystem.h"
 #include "render_particles.h"
@@ -1121,8 +1123,9 @@ main(int argc, char **argv)
     }
 
 	//printf("timestep: %f\n",timestep);
-
-    particleTypesLoader pTLoader(string("particleType.cfg"));
+	std::cout<<"Uwaga różne typy cząstek!\nKonfiguracja w particleType.cfg\nWyświetlany rozmiar cząstek na razie nie odpowiada wartościom symulacji!\n";
+	std::string plikKonfiguracyjny("particleType.cfg");
+    particleTypesLoader pTLoader(plikKonfiguracyjny);
     pTLoader.loadTypes(typyCzastek);
 
     initParticleSystem(numParticles, gridSize, g_refFile==NULL);

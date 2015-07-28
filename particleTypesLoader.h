@@ -4,6 +4,8 @@
  * o typach cząstek z pliku
  */
 
+#pragma once
+
 #include "particleType.h"
 #include <vector>
 #include <fstream>

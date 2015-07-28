@@ -4,6 +4,8 @@
  */
 #include "particleTypesLoader.h"
 #include <cstdlib>
+#include <sstream>
+#include <iostream>
 
 /** \todo przydała by się jakaś ładna implementacja ltrim, rtrim i
  * trim żeby łatwo usuwać nadmiarowe białe znaki
@@ -20,10 +22,11 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 {
     std::string dataStr;
     unsigned int lastPos=0;
-    stringstream iss;
+    std::stringstream iss;
     configFile.open(fileName.c_str());
     if(!configFile.is_open())
     {
+		std::cerr<<"can't open the config file\n";
         return;
     }
     dstV.clear();
@@ -38,6 +41,9 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
             dstV.push_back(particleType());
             lastPos=dstV.size()-1;
             dstV[lastPos].setParticleName(dataStr);
+#ifdef _DEBUG
+			std::clog<<"particleType "<<dataStr<<"\n{\n";
+#endif
             std::getline(configFile,dataStr,'}');
             iss<<dataStr;
             while(iss.good())/**< wypełnianie parametrów */
@@ -49,19 +55,31 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
                 {
                     std::getline(iss,dataStr,';');
                     dstV[lastPos].particleRadius=(float)atof(dataStr.c_str());
+#ifdef _DEBUG
+					std::clog<<"\tparticleRadius="<<(float)atof(dataStr.c_str())<<";\n";
+#endif
                 }
                 else if(dataStr.compare("particleMass")==0)
                 {
                     std::getline(iss,dataStr,';');
                     dstV[lastPos].particleMass=(float)atof(dataStr.c_str());
+#ifdef _DEBUG
+					std::clog<<"\tparticleMass="<<(float)atof(dataStr.c_str())<<";\n";
+#endif
                 }
                 else if(dataStr.compare("particleNoOfType")==0)
                 {
                     std::getline(iss,dataStr,';');
                     dstV[lastPos].particleNoOfType=(unsigned int)atoi(dataStr.c_str());
+#ifdef _DEBUG
+					std::clog<<"\tparticleNoOfType="<<(unsigned int)atoi(dataStr.c_str())<<";\n";
+#endif
                 }
             }
             iss.clear();
+#ifdef _DEBUG
+			std::clog<<"}\n";
+#endif
         }
     }
     configFile.close();
