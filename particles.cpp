@@ -42,7 +42,9 @@
  http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf
  http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions
  * \section Repozytorium Repozytorium
- https://github.com/sigrond/particles/tree/spica
+ https://github.com/sigrond/particles
+ * \subsection dokumentacja_repozytorium Dokumentacja Repozytorium
+ http://sigrond.github.io/particles
  * \section READMEs READMEs
  * \subsection parametry_uruchamiania Parametry Uruchamiania
  * \verbinclude readme2.txt
@@ -50,6 +52,10 @@
  * \verbinclude readme1.txt
  * \subsection koncepcja_symulowania_roznych_czastek Koncepcja symulowania różnych cząstek
  * \verbinclude readme3.txt
+ * \subsection rezerwa Opis formatu pliku konfiguracji typów cząstek
+ * Niestety trzeba go napisać.
+ * Domyślny plik "particleType.cfg".
+ * Więcej można znaleźć w "particleTypesLoader.cpp"
  */
 
 // OpenGL Graphics includes
@@ -84,6 +90,7 @@
 #include "paramgl.h"
 
 #include "particleType.h"
+#include "particleTypesLoader.h"
 
 #define MAX_EPSILON_ERROR 5.00f
 #define THRESHOLD         0.30f
@@ -429,8 +436,8 @@ void display()
         psystem->setCollideShear(collideShear);
         psystem->setCollideAttraction(collideAttraction);
 		psystem->setBoundaryDamping(-boundaryDamping);
-		psystem->setParticleMass(particleMass);
-		psystem->setEpsi(epsi);
+		psystem->setParticleMass(particleMass);/**< \todo teraz trzeba ustawiać wiele mas */
+		psystem->setEpsi(epsi);/**< \todo epsilonów będzie więcej */
 		psystem->setBrown(brown);
 
 		parowanieKropliWCzasie();
@@ -926,7 +933,7 @@ void initParams()
         params->AddParam(new Param<float>("effective gravity"  , gravity , 0.0f, 1.0f, 0.00001f, &gravity));
         //params->AddParam(new Param<float> ("A", A , 0.0f, 1.0f, 0.0001, &A));
 		params->AddParam(new Param<float>("surface tension"  , boundaryDamping , 0.0f, 2.0f, 0.00001f, &boundaryDamping));
-		params->AddParam(new Param<float>("particle mass"  , particleMass , 0.001f, 2.0f, 0.00001f, &particleMass));
+		//params->AddParam(new Param<float>("particle mass"  , particleMass , 0.001f, 2.0f, 0.00001f, &particleMass));
 		params->AddParam(new Param<float>("epsilon"  , epsi , 0.0f, 1.0f, 0.00001f, &epsi));
 		params->AddParam(new Param<float>("brown"  , brown , 0.0f, 0.5f, 0.00001f, &brown));
 
@@ -1114,6 +1121,9 @@ main(int argc, char **argv)
     }
 
 	//printf("timestep: %f\n",timestep);
+
+    particleTypesLoader pTLoader(string("particleType.cfg"));
+    pTLoader.loadTypes(typyCzastek);
 
     initParticleSystem(numParticles, gridSize, g_refFile==NULL);
     initParams();

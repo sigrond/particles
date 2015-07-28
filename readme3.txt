@@ -21,6 +21,14 @@ a nie będzie trzeba ciągle zamieniać numeru typu z 1 i niepełna implementacj
 będzia miała mniejszy wpływ na działanie symulacji.
 Zwiększy się też prostota rozwiązania.
 
+EDIT:
+Następnym problemem wykrytym w trakcie pisania jest rysowanie cząstek w różnych rozmiarach.
+Obecnie funkcja raz zadaje rozmiar i rysuje wszystkie cząstki jako punkty za raz jako
+zbiór punktów. Zgodnie z sugestią dr hab. inż. D.J. ;-) przy losowaniu cząstek typy
+przypisujemy pokolei. Po pierwsze likwiduje to problemy z proporcja i rozkładem ilości
+typów cząstek. Po drugie nie trzeba losować typu. Po trzecie można łatwo rozdzielić cząstki
+na tyle grup ile typów i zastosować obecny algorytm rysowania dla każdej z osobna.
+
 
 	Modyfikacje funkcji:
 

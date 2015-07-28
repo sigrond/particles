@@ -463,6 +463,11 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
 {
     srand(1973);
 
+    /*unsigned int tabOfTypesNumbers[10];
+    unsigned int typeCounter=0;
+    unsigned int nextType=0;
+    nextType=typyCzastek[0].particleNoOfType;*/
+
     for (uint z=0; z<size[2]; z++)
     {
         for (uint y=0; y<size[1]; y++)
@@ -496,17 +501,26 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
     }
 }
 
-void
 /** \brief rozłożenie cząstek
  *
  * \param config ParticleConfig
  *
  */
+void
 ParticleSystem::reset(ParticleConfig config)
 {
 /** \todo należy dodać właściwe losowanie typu cząstki i uwzględnić przy sprawdzaniu położenia
  * rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały  */
-	unsigned int tmpType=rand()%m_params.particleTypesNum;
+	//unsigned int tmpType=rand()%m_params.particleTypesNum;
+
+    unsigned int tmpType=0;
+    unsigned int typeCounter=0;/**< ile cząstek już dodaliśmy */
+    unsigned int nextType=0;/**< po ilu dodanych cząstkach zaczyna się następny typ */
+    if(!typyCzastek.empty())
+    {
+        nextType=typyCzastek[0].particleNoOfType;
+    }
+
     switch (config)
     {
         default:
@@ -551,18 +565,24 @@ ParticleSystem::reset(ParticleConfig config)
                         }
                         if(bo1)
 						{
-                        i++;
-                        m_hPos[p++] = 2 * (point[0] - 0.0f);
-                        m_hPos[p++] = 2 * (point[1] - 0.0f);
-                        m_hPos[p++] = 2 * (point[2] - 0.0f);
-                        m_hPos[p++] = 1.0f; /**< 1 postaci znormalizowanej macierzy do trasformacji GL */
-                        /*m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;
-                        m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
-                        m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;*/
-						m_hVel[v++] = 0.0f;
-						m_hVel[v++] = 0.0f;
-						m_hVel[v++] = 0.0f;
-                        m_hVel[v++] = tmpType;
+						    if(typeCounter>=nextType)
+                            {
+                                nextType+=typyCzastek[++tmpType].particleNoOfType;
+                            }
+                            typeCounter++;
+
+                            i++;
+                            m_hPos[p++] = 2 * (point[0] - 0.0f);
+                            m_hPos[p++] = 2 * (point[1] - 0.0f);
+                            m_hPos[p++] = 2 * (point[2] - 0.0f);
+                            m_hPos[p++] = 1.0f; /**< 1 postaci znormalizowanej macierzy do trasformacji GL */
+                            /*m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;
+                            m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
+                            m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;*/
+                            m_hVel[v++] = 0.0f;
+                            m_hVel[v++] = 0.0f;
+                            m_hVel[v++] = 0.0f;
+                            m_hVel[v++] = tmpType;
 						}
                     }
                 }

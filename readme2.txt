@@ -1,4 +1,4 @@
-cmd line
+﻿cmd line
 particles -nazwaParametru=liczba
 
 np:
@@ -16,4 +16,10 @@ damping -lepkość
 boundaryDamping -napięcie powierchniowe
 particleMass -masa cząstki
 gravity -grawitacja
+save -zapis do pliku
+A -stała parowania kropli
+particleTypesNum -ilość rodzjów cząstek
+bQuality -liczba naturalna
+brown -mnożnik róchów Browna
+multiColor -losowe kolory kulek
 help
