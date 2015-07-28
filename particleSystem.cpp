@@ -513,12 +513,13 @@ ParticleSystem::reset(ParticleConfig config)
  * rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały  */
 	//unsigned int tmpType=rand()%m_params.particleTypesNum;
 
-    unsigned int tmpType=0;
+    unsigned int tmpType=m_numParticles;
     unsigned int typeCounter=0;/**< ile cząstek już dodaliśmy */
     unsigned int nextType=0;/**< po ilu dodanych cząstkach zaczyna się następny typ */
     if(!typyCzastek.empty())
     {
         nextType=typyCzastek[0].particleNoOfType;
+        typyCzastek[0].ofTypeParticleTrack.clear();
     }
 
     switch (config)
@@ -531,10 +532,18 @@ ParticleSystem::reset(ParticleConfig config)
 				float tmprad=tmpbrad/2;
 				//printf("%f\n",tmprad);
 				bool bo1=false;
-
+/**< \todo trzeba dać jakiś warunek sprawdzający czy liczby cząstek z pliku konfiguracyjnego zgadzają się z ustawieniami globalnymi */
                 for (uint i=0; i < m_numParticles; /*i++*/)
                 {
                     float point[3];
+                    if(typeCounter>=nextType)
+                    {
+                        nextType+=typyCzastek[++tmpType].particleNoOfType;
+                        /**< \todo trzeba jeszcze uwzględnić rozmiar cząstki którą podejżewamy o przecinanie się z nową */
+                        tmpbrad=m_params.bigradius-m_params.particleRadius[tmpType];
+                        tmprad=tmpbrad/2;
+                        typyCzastek[tmpType].ofTypeParticleTrack.clear();
+                    }
                     //point[0] = frand();
                     //point[1] = frand();
                     //point[2] = frand();
@@ -565,13 +574,10 @@ ParticleSystem::reset(ParticleConfig config)
                         }
                         if(bo1)
 						{
-						    if(typeCounter>=nextType)
-                            {
-                                nextType+=typyCzastek[++tmpType].particleNoOfType;
-                            }
                             typeCounter++;
 
                             i++;
+                            typyCzastek[tmpType].ofTypeParticleTrack.push_back(p);
                             m_hPos[p++] = 2 * (point[0] - 0.0f);
                             m_hPos[p++] = 2 * (point[1] - 0.0f);
                             m_hPos[p++] = 2 * (point[2] - 0.0f);

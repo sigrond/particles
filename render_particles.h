@@ -56,6 +56,7 @@ class ParticleRenderer
     protected: // methods
         void _initGL();
         void _drawPoints();
+        void _drawPoints(int pFrom, int pTo);
         GLuint _compileProgram(const char *vsource, const char *fsource);
 
     protected: // data

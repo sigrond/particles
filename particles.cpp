@@ -1123,6 +1123,9 @@ main(int argc, char **argv)
     }
 
 	//printf("timestep: %f\n",timestep);
+#ifdef _DEBUG
+    std::cout<<"Debug Build!\n";
+#endif // _DEBUG
 	std::cout<<"Uwaga różne typy cząstek!\nKonfiguracja w particleType.cfg\nWyświetlany rozmiar cząstek na razie nie odpowiada wartościom symulacji!\n";
 	std::string plikKonfiguracyjny("particleType.cfg");
     particleTypesLoader pTLoader(plikKonfiguracyjny);
