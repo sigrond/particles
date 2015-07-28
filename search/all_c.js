@@ -49,5 +49,5 @@ var searchData=
   ['modelview',['modelView',['../particles_8cpp.html#a4067d49c28b37c689a16350cb3ff64d7',1,'particles.cpp']]],
   ['motion',['motion',['../particles_8cpp.html#a45a7d7c86c97ca6a2d4d32ce2d263f67',1,'particles.cpp']]],
   ['mouse',['mouse',['../particles_8cpp.html#ac76a5d78172a826cd6ee9512b89a86c0',1,'particles.cpp']]],
-  ['multicolor',['multiColor',['../particles_8cpp.html#a54f61e4f37db321d451436bf2201b8cb',1,'multiColor():&#160;particles.cpp'],['../particle_system_8cpp.html#a54f61e4f37db321d451436bf2201b8cb',1,'multiColor():&#160;particleSystem.cpp']]]
+  ['multicolor',['multiColor',['../particles_8cpp.html#a54f61e4f37db321d451436bf2201b8cb',1,'multiColor():&#160;particles.cpp'],['../particle_system_8cpp.html#a54f61e4f37db321d451436bf2201b8cb',1,'multiColor():&#160;particleSystem.cpp'],['../render__particles_8cpp.html#a54f61e4f37db321d451436bf2201b8cb',1,'multiColor():&#160;render_particles.cpp']]]
 ];

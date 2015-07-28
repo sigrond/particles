@@ -9,6 +9,7 @@ var class_particle_renderer =
     [ "~ParticleRenderer", "class_particle_renderer.html#a281be31ad850fead012460fb6675db98", null ],
     [ "_compileProgram", "class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b", null ],
     [ "_drawPoints", "class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6", null ],
+    [ "_drawPoints", "class_particle_renderer.html#a72a381995fa00b02a5ab19202c153835", null ],
     [ "_initGL", "class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b", null ],
     [ "display", "class_particle_renderer.html#a80b2f52dc28bb3abbde021f7fe96f8ff", null ],
     [ "displayGrid", "class_particle_renderer.html#a0e0a5d323acf55087911ea77a2a3eafa", null ],
