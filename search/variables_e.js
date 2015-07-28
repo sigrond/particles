@@ -4,6 +4,8 @@ var searchData=
   ['particlecharge',['particleCharge',['../classparticle_type.html#a9d3a4409f0d4edd0b778545e57f5e6a3',1,'particleType']]],
   ['particledensity',['particleDensity',['../classparticle_type.html#a18e513905d085201a402c9fd9dc3a265',1,'particleType']]],
   ['particlemass',['particleMass',['../struct_sim_params.html#a0104d1aeb5c6700f12e0edd6d06bcf1d',1,'SimParams::particleMass()'],['../classparticle_type.html#ae1a2c20c1201b466ccbbb4b3fdf8f9e3',1,'particleType::particleMass()'],['../particles_8cpp.html#a1181da8b1b5d355e3388181470ecf70f',1,'particleMass():&#160;particles.cpp']]],
+  ['particlename',['particleName',['../classparticle_type.html#aff93e884df33d6c63f889878066690d4',1,'particleType']]],
+  ['particlenooftype',['particleNoOfType',['../classparticle_type.html#afcea095208bc89d9618fa29be50d40be',1,'particleType']]],
   ['particleradius',['particleRadius',['../struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e',1,'SimParams::particleRadius()'],['../classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3',1,'particleType::particleRadius()']]],
   ['particletypesnum',['particleTypesNum',['../struct_sim_params.html#adc3e5f65a1a0ef7c944007ac99eb8034',1,'SimParams::particleTypesNum()'],['../particles_8cpp.html#abebcf16aa212d26e4fb1335a433f0b5c',1,'particleTypesNum():&#160;particles.cpp']]],
   ['psystem',['psystem',['../particles_8cpp.html#a6fa81770b30ecffc7110864e64fe4fc5',1,'particles.cpp']]]

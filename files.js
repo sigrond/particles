@@ -11,6 +11,10 @@ var files =
     [ "particleType.h", "particle_type_8h.html", [
       [ "particleType", "classparticle_type.html", "classparticle_type" ]
     ] ],
+    [ "particleTypesLoader.cpp", "particle_types_loader_8cpp.html", null ],
+    [ "particleTypesLoader.h", "particle_types_loader_8h.html", [
+      [ "particleTypesLoader", "classparticle_types_loader.html", "classparticle_types_loader" ]
+    ] ],
     [ "render_particles.cpp", "render__particles_8cpp.html", "render__particles_8cpp" ],
     [ "render_particles.h", "render__particles_8h.html", [
       [ "ParticleRenderer", "class_particle_renderer.html", "class_particle_renderer" ]

@@ -101,21 +101,31 @@ $(document).ready(function(){initNavTree('todo.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_todo000004"></a>Składowa <a class="el" href="class_particle_system.html#af2f16676fe8a0523cfb867a9a856970c">ParticleSystem::addSphere</a>  (int index, float *pos, float *vel, int r, float spacing)</dt>
+<dt><a class="anchor" id="_todo000001"></a>Składowa <a class="el" href="particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269">display</a>  ()</dt>
+<dd><p class="startdd">teraz trzeba ustawiać wiele mas </p>
+<p class="enddd">epsilonów będzie więcej  </p>
+</dd>
+<dt><a class="anchor" id="_todo000009"></a>Składowa <a class="el" href="class_particle_renderer.html#a80b2f52dc28bb3abbde021f7fe96f8ff">ParticleRenderer::display</a>  (DisplayMode mode=PARTICLE_POINTS)</dt>
+<dd>kule mog� mie� r�ne promienie  </dd>
+<dt><a class="anchor" id="_todo000006"></a>Składowa <a class="el" href="class_particle_system.html#af2f16676fe8a0523cfb867a9a856970c">ParticleSystem::addSphere</a>  (int index, float *pos, float *vel, int r, float spacing)</dt>
 <dd>tutaj też trzeba losować typ odpowiednio, ale można zastosować uproszczenia bo nie jest to domyślna metoda ustawiania cząstek w symulacji  </dd>
-<dt><a class="anchor" id="_todo000002"></a>Składowa <a class="el" href="class_particle_system.html#abdb59a91d8483017ad71455bb2958993">ParticleSystem::getParticleRadius</a>  ()</dt>
+<dt><a class="anchor" id="_todo000004"></a>Składowa <a class="el" href="class_particle_system.html#abdb59a91d8483017ad71455bb2958993">ParticleSystem::getParticleRadius</a>  ()</dt>
 <dd>poprawić z uwzględnieniem różnych typów cząstek  </dd>
-<dt><a class="anchor" id="_todo000003"></a>Składowa <a class="el" href="class_particle_system.html#a519070812dd9eb349f270c793c5f64b6">ParticleSystem::reset</a>  (ParticleConfig config)</dt>
+<dt><a class="anchor" id="_todo000005"></a>Składowa <a class="el" href="class_particle_system.html#a519070812dd9eb349f270c793c5f64b6">ParticleSystem::reset</a>  (ParticleConfig config)</dt>
 <dd>należy dodać właściwe losowanie typu cząstki i uwzględnić przy sprawdzaniu położenia rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały  </dd>
-<dt><a class="anchor" id="_todo000001"></a>Składowa <a class="el" href="class_particle_system.html#a92e1db62e4025fab4996ce9a3ca5882f">ParticleSystem::setParticleMass</a>  (float x)</dt>
-<dd>jakoś poprawić bo rożne typy cząstek mają różne masy </dd>
+<dt><a class="anchor" id="_todo000003"></a>Składowa <a class="el" href="class_particle_system.html#a92e1db62e4025fab4996ce9a3ca5882f">ParticleSystem::setParticleMass</a>  (float x)</dt>
+<dd>jakoś poprawić bo rożne typy cząstek mają różne masy  </dd>
+<dt><a class="anchor" id="_todo000007"></a>Składowa <a class="el" href="classparticle_types_loader.html#a06c57d5168b0050299832b6cd617aefa">particleTypesLoader::loadTypes</a>  (std::vector&lt; particleType &gt; &amp;dstV)</dt>
+<dd><p class="startdd">przydała by się jakaś ładna implementacja ltrim, rtrim i trim żeby łatwo usuwać nadmiarowe białe znaki </p>
+<p class="enddd">Potrzebny jest opis struktury pliku </p>
+</dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Wygenerowano Pn, 20 lip 2015 19:27:16 dla particles programem
+    <li class="footer">Wygenerowano Wt, 28 lip 2015 13:00:41 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

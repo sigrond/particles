@@ -113,7 +113,10 @@ Linki do fizyki</h1>
 <p><a href="http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html">http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html</a> <a href="http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf">http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf</a> <a href="http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html">http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html</a> <a href="http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf">http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf</a> <a href="http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions">http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions</a> </p>
 <h1><a class="anchor" id="Repozytorium"></a>
 Repozytorium</h1>
-<p><a href="https://github.com/sigrond/particles/tree/spica">https://github.com/sigrond/particles/tree/spica</a> </p>
+<p><a href="https://github.com/sigrond/particles">https://github.com/sigrond/particles</a> </p>
+<h2><a class="anchor" id="dokumentacja_repozytorium"></a>
+Dokumentacja Repozytorium</h2>
+<p><a href="http://sigrond.github.io/particles">http://sigrond.github.io/particles</a> </p>
 <h1><a class="anchor" id="READMEs"></a>
 READMEs</h1>
 <h2><a class="anchor" id="parametry_uruchamiania"></a>
@@ -136,6 +139,12 @@ damping -lepkość
 boundaryDamping -napięcie powierchniowe
 particleMass -masa cząstki
 gravity -grawitacja
+save -zapis do pliku
+A -stała parowania kropli
+particleTypesNum -ilość rodzjów cząstek
+bQuality -liczba naturalna
+brown -mnożnik róchów Browna
+multiColor -losowe kolory kulek
 help
 </pre> <h2><a class="anchor" id="oryginalny_readme"></a>
 Oryginalny Readme</h2>
@@ -169,6 +178,14 @@ Lepiej użyć wektora prędkości, bo tam 4 współżędna zawsze może mieć do
 a nie będzie trzeba ciągle zamieniać numeru typu z 1 i niepełna implementacja
 będzia miała mniejszy wpływ na działanie symulacji.
 Zwiększy się też prostota rozwiązania.
+
+EDIT:
+Następnym problemem wykrytym w trakcie pisania jest rysowanie cząstek w różnych rozmiarach.
+Obecnie funkcja raz zadaje rozmiar i rysuje wszystkie cząstki jako punkty za raz jako
+zbiór punktów. Zgodnie z sugestią dr hab. inż. D.J. ;-) przy losowaniu cząstek typy
+przypisujemy pokolei. Po pierwsze likwiduje to problemy z proporcja i rozkładem ilości
+typów cząstek. Po drugie nie trzeba losować typu. Po trzecie można łatwo rozdzielić cząstki
+na tyle grup ile typów i zastosować obecny algorytm rysowania dla każdej z osobna.
 
 
 	Modyfikacje funkcji:
@@ -221,12 +238,15 @@ particles.cpp
 
 Zadbać o ustalenie na początku symulacji ile będzie typów cząstek i jakie one będą.
 
-</pre> </div></div><!-- contents -->
+</pre> <h2><a class="anchor" id="rezerwa"></a>
+Opis formatu pliku konfiguracji typów cząstek</h2>
+<p>Niestety trzeba go napisać. Domyślny plik "particleType.cfg". Więcej można znaleźć w "particleTypesLoader.cpp" </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Wygenerowano Pn, 20 lip 2015 19:27:17 dla particles programem
+    <li class="footer">Wygenerowano Wt, 28 lip 2015 13:00:43 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -21,6 +21,7 @@ var searchData=
   ['setiterations',['setIterations',['../class_particle_system.html#a11f55976f6ef34dceea208fbe06694cd',1,'ParticleSystem']]],
   ['setparameters',['setParameters',['../particle_system_8cuh.html#a342176dbaba2668312c45e1a1423fc4e',1,'setParameters(SimParams *hostParams):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a342176dbaba2668312c45e1a1423fc4e',1,'setParameters(SimParams *hostParams):&#160;particleSystem_cuda.cu']]],
   ['setparticlemass',['setParticleMass',['../class_particle_system.html#a92e1db62e4025fab4996ce9a3ca5882f',1,'ParticleSystem']]],
+  ['setparticlename',['setParticleName',['../classparticle_type.html#a882d5bcf94f8f806bed40120f89715b8',1,'particleType']]],
   ['setparticleradius',['setParticleRadius',['../class_particle_renderer.html#aff09822b565b6953fc83c88bda7fa378',1,'ParticleRenderer']]],
   ['setparticletypesnum',['setParticleTypesNum',['../class_particle_system.html#ac82e5fa73b2b91dfa44db14daa37b389',1,'ParticleSystem']]],
   ['setpointsize',['setPointSize',['../class_particle_renderer.html#a68df35cdf53ad987aa6d8360b3531627',1,'ParticleRenderer']]],

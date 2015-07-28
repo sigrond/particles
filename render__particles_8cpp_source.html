@@ -219,60 +219,61 @@ $(document).ready(function(){initNavTree('render__particles_8cpp_source.html',''
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            glUniform1f(glGetUniformLocation(m_program, <span class="stringliteral">&quot;pointScale&quot;</span>), zoom*m_window_h / tanf(m_fov*0.5f*(<span class="keywordtype">float</span>)<a class="code" href="render__particles_8cpp.html#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a>/180.0f));</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            glUniform1f(glGetUniformLocation(m_program, <span class="stringliteral">&quot;pointRadius&quot;</span>), m_particleRadius);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            glColor3f(1, 1, 1);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <a class="code" href="class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6">_drawPoints</a><a class="code" href="class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6">(</a><a class="code" href="class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6">)</a>;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            glUseProgram(0);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            glDisable(GL_POINT_SPRITE_ARB);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">GLuint</a></div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">  125</a></span>&#160;<a class="code" href="class_particle_renderer.html">ParticleRenderer</a>::<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">_compileProgram</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">vsource</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">fsource</a>)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;{</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    glShaderSource(vertexShader, 1, &amp;vsource, 0);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    glShaderSource(fragmentShader, 1, &amp;fsource, 0);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    glCompileShader(vertexShader);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    glCompileShader(fragmentShader);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    GLuint program = glCreateProgram();</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    glAttachShader(program, vertexShader);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    glAttachShader(program, fragmentShader);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    glLinkProgram(program);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// check if program linked</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    GLint success = 0;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    glGetProgramiv(program, GL_LINK_STATUS, &amp;success);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">if</span> (!success)</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordtype">char</span> temp[256];</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        glGetProgramInfoLog(program, 256, 0, temp);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        printf(<span class="stringliteral">&quot;Failed to link program:\n%s\n&quot;</span>, temp);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        glDeleteProgram(program);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        program = 0;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">return</span> program;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">  159</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html">ParticleRenderer</a>::<a class="code" href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">_initGL</a>()</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    m_program = _compileProgram(vertexShader, spherePixelShader);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;#<span class="keywordflow">if</span> !defined(__APPLE__) &amp;&amp; !defined(MACOSX)</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    glClampColorARB(GL_CLAMP_VERTEX_COLOR_ARB, GL_FALSE);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    glClampColorARB(GL_CLAMP_FRAGMENT_COLOR_ARB, GL_FALSE);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;#endif</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="comment">/**&lt; \todo kule mog¹ mieæ ró¿ne promienie */</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            glColor3f(1, 1, 1);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <a class="code" href="class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6">_drawPoints</a><a class="code" href="class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6">(</a><a class="code" href="class_particle_renderer.html#a2683c43c010bff7973a977c1953f2bd6">)</a>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            glUseProgram(0);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            glDisable(GL_POINT_SPRITE_ARB);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">GLuint</a></div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">  126</a></span>&#160;<a class="code" href="class_particle_renderer.html">ParticleRenderer</a>::<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">_compileProgram</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">vsource</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">fsource</a>)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    glShaderSource(vertexShader, 1, &amp;vsource, 0);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    glShaderSource(fragmentShader, 1, &amp;fsource, 0);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    glCompileShader(vertexShader);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    glCompileShader(fragmentShader);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    GLuint program = glCreateProgram();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    glAttachShader(program, vertexShader);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    glAttachShader(program, fragmentShader);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    glLinkProgram(program);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="comment">// check if program linked</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    GLint success = 0;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    glGetProgramiv(program, GL_LINK_STATUS, &amp;success);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">if</span> (!success)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordtype">char</span> temp[256];</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        glGetProgramInfoLog(program, 256, 0, temp);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        printf(<span class="stringliteral">&quot;Failed to link program:\n%s\n&quot;</span>, temp);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        glDeleteProgram(program);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        program = 0;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">return</span> program;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">  160</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_particle_renderer.html">ParticleRenderer</a>::<a class="code" href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">_initGL</a>()</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    m_program = _compileProgram(vertexShader, spherePixelShader);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;#<span class="keywordflow">if</span> !defined(__APPLE__) &amp;&amp; !defined(MACOSX)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    glClampColorARB(GL_CLAMP_VERTEX_COLOR_ARB, GL_FALSE);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    glClampColorARB(GL_CLAMP_FRAGMENT_COLOR_ARB, GL_FALSE);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;#endif</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
 <div class="ttc" id="render__particles_8cpp_html_ae71449b1cc6e6250b91f539153a7a0d3"><div class="ttname"><a href="render__particles_8cpp.html#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a></div><div class="ttdeci">#define M_PI</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00022">render_particles.cpp:22</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a1ca13e546c937cb546c0da19fa853b34"><div class="ttname"><a href="class_particle_renderer.html#a1ca13e546c937cb546c0da19fa853b34">ParticleRenderer::m_pointSize</a></div><div class="ttdeci">float m_pointSize</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00065">render_particles.h:65</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a1718484686c2e6db488cc88c433d03cc"><div class="ttname"><a href="class_particle_renderer.html#a1718484686c2e6db488cc88c433d03cc">ParticleRenderer::ParticleRenderer</a></div><div class="ttdeci">ParticleRenderer()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00025">render_particles.cpp:25</a></div></div>
@@ -280,13 +281,13 @@ $(document).ready(function(){initNavTree('render__particles_8cpp_source.html',''
 <div class="ttc" id="class_particle_renderer_html_a1d74720edb5c3a13edcdd176ac0d84c7"><div class="ttname"><a href="class_particle_renderer.html#a1d74720edb5c3a13edcdd176ac0d84c7">ParticleRenderer::m_pos</a></div><div class="ttdeci">float * m_pos</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00062">render_particles.h:62</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_af885fdb5e6da925209dfd960f66b5fd8"><div class="ttname"><a href="class_particle_renderer.html#af885fdb5e6da925209dfd960f66b5fd8">ParticleRenderer::m_numParticles</a></div><div class="ttdeci">int m_numParticles</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00063">render_particles.h:63</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a281be31ad850fead012460fb6675db98"><div class="ttname"><a href="class_particle_renderer.html#a281be31ad850fead012460fb6675db98">ParticleRenderer::~ParticleRenderer</a></div><div class="ttdeci">~ParticleRenderer()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00037">render_particles.cpp:37</a></div></div>
-<div class="ttc" id="class_particle_renderer_html_a3a7af352d38734b6bfa425e3b207d60b"><div class="ttname"><a href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">ParticleRenderer::_compileProgram</a></div><div class="ttdeci">GLuint _compileProgram(const char *vsource, const char *fsource)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00125">render_particles.cpp:125</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_a3a7af352d38734b6bfa425e3b207d60b"><div class="ttname"><a href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">ParticleRenderer::_compileProgram</a></div><div class="ttdeci">GLuint _compileProgram(const char *vsource, const char *fsource)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00126">render_particles.cpp:126</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_aab5ee3cd769a64c45dc9714aabdb0ee2"><div class="ttname"><a href="class_particle_renderer.html#aab5ee3cd769a64c45dc9714aabdb0ee2">ParticleRenderer::m_particleRadius</a></div><div class="ttdeci">float m_particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00066">render_particles.h:66</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_adb3204e8af23a65b05b1aca7f43f0430"><div class="ttname"><a href="class_particle_renderer.html#adb3204e8af23a65b05b1aca7f43f0430">ParticleRenderer::setPositions</a></div><div class="ttdeci">void setPositions(float *pos, int numParticles)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00042">render_particles.cpp:42</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a396f73f6c16f24f34368557bfd5557e6"><div class="ttname"><a href="class_particle_renderer.html#a396f73f6c16f24f34368557bfd5557e6">ParticleRenderer::setVertexBuffer</a></div><div class="ttdeci">void setVertexBuffer(unsigned int vbo, int numParticles, float zoom)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00048">render_particles.cpp:48</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a7b691afffd1abe415cb0ce17fd26f3d5"><div class="ttname"><a href="class_particle_renderer.html#a7b691afffd1abe415cb0ce17fd26f3d5">ParticleRenderer::DisplayMode</a></div><div class="ttdeci">DisplayMode</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00028">render_particles.h:28</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a065df5c32be72505267048490bd0b3cf"><div class="ttname"><a href="class_particle_renderer.html#a065df5c32be72505267048490bd0b3cf">ParticleRenderer::zoom</a></div><div class="ttdeci">float zoom</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00069">render_particles.h:69</a></div></div>
-<div class="ttc" id="class_particle_renderer_html_ac75c7f73a0014333305b174b8863a46b"><div class="ttname"><a href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">ParticleRenderer::_initGL</a></div><div class="ttdeci">void _initGL()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00159">render_particles.cpp:159</a></div></div>
+<div class="ttc" id="class_particle_renderer_html_ac75c7f73a0014333305b174b8863a46b"><div class="ttname"><a href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">ParticleRenderer::_initGL</a></div><div class="ttdeci">void _initGL()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00160">render_particles.cpp:160</a></div></div>
 <div class="ttc" id="class_particle_renderer_html"><div class="ttname"><a href="class_particle_renderer.html">ParticleRenderer</a></div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00015">render_particles.h:15</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a80b2f52dc28bb3abbde021f7fe96f8ff"><div class="ttname"><a href="class_particle_renderer.html#a80b2f52dc28bb3abbde021f7fe96f8ff">ParticleRenderer::display</a></div><div class="ttdeci">void display(DisplayMode mode=PARTICLE_POINTS)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00092">render_particles.cpp:92</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -295,7 +296,7 @@ $(document).ready(function(){initNavTree('render__particles_8cpp_source.html',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="render__particles_8cpp.html">render_particles.cpp</a></li>
-    <li class="footer">Wygenerowano Pn, 20 lip 2015 19:27:14 dla particles programem
+    <li class="footer">Wygenerowano Wt, 28 lip 2015 13:00:37 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

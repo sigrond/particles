@@ -121,6 +121,8 @@ $(document).ready(function(){initNavTree('classparticle_type.html','');});
 Diagram współpracy dla particleType:</div>
 <div class="dyncontent">
 <div class="center"><img src="classparticle_type__coll__graph.png" border="0" usemap="#particle_type_coll__map" alt="Collaboration graph"/></div>
+<map name="particle_type_coll__map" id="particle_type_coll__map">
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -129,6 +131,9 @@ Metody publiczne</h2></td></tr>
 <tr class="separator:a4779ff7485249c8056089daa71c57a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a117da57883ce714167c46db700aa5413"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_type.html#a117da57883ce714167c46db700aa5413">~particleType</a> ()</td></tr>
 <tr class="separator:a117da57883ce714167c46db700aa5413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a882d5bcf94f8f806bed40120f89715b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_type.html#a882d5bcf94f8f806bed40120f89715b8">setParticleName</a> (std::string name)</td></tr>
+<tr class="memdesc:a882d5bcf94f8f806bed40120f89715b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nazwy typu cząstki.  <a href="#a882d5bcf94f8f806bed40120f89715b8">Więcej...</a><br/></td></tr>
+<tr class="separator:a882d5bcf94f8f806bed40120f89715b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atrybuty publiczne</h2></td></tr>
@@ -140,6 +145,14 @@ Atrybuty publiczne</h2></td></tr>
 <tr class="separator:a18e513905d085201a402c9fd9dc3a265"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d3a4409f0d4edd0b778545e57f5e6a3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_type.html#a9d3a4409f0d4edd0b778545e57f5e6a3">particleCharge</a></td></tr>
 <tr class="separator:a9d3a4409f0d4edd0b778545e57f5e6a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcea095208bc89d9618fa29be50d40be"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_type.html#afcea095208bc89d9618fa29be50d40be">particleNoOfType</a></td></tr>
+<tr class="memdesc:afcea095208bc89d9618fa29be50d40be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ilość cząstek danego typu w symulacji.  <a href="#afcea095208bc89d9618fa29be50d40be">Więcej...</a><br/></td></tr>
+<tr class="separator:afcea095208bc89d9618fa29be50d40be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe3840f2ff2c921e908b99e0cbd5f159"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_type.html#abe3840f2ff2c921e908b99e0cbd5f159">ofTypeParticleTrack</a></td></tr>
+<tr class="memdesc:abe3840f2ff2c921e908b99e0cbd5f159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tablica wskaźników na pozycje cząstek w pamięci hosta.  <a href="#abe3840f2ff2c921e908b99e0cbd5f159">Więcej...</a><br/></td></tr>
+<tr class="separator:abe3840f2ff2c921e908b99e0cbd5f159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff93e884df33d6c63f889878066690d4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_type.html#aff93e884df33d6c63f889878066690d4">particleName</a></td></tr>
+<tr class="separator:aff93e884df33d6c63f889878066690d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e8ef08969cc83629593075fa3c52136"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a></td></tr>
 <tr class="separator:a4e8ef08969cc83629593075fa3c52136"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -151,7 +164,7 @@ Statyczne atrybuty publiczne</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Klasa przechowująca informacje o rodzajach cząstek. </p>
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00009">9</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00013">13</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 </div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a class="anchor" id="a4779ff7485249c8056089daa71c57a9a"></a>
 <div class="memitem">
@@ -174,16 +187,31 @@ Statyczne atrybuty publiczne</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00019">19</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00032">32</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00018">typeCounter</a> i <a class="el" href="particle_type_8h_source.html#l00017">typeNumber</a>.</p>
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                   : <a class="code" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a>(<a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>)</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>++;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
-<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00018">particleType.h:18</a></div></div>
-<div class="ttc" id="classparticle_type_html_a4e8ef08969cc83629593075fa3c52136"><div class="ttname"><a href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">particleType::typeNumber</a></div><div class="ttdeci">unsigned short typeNumber</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00017">particleType.h:17</a></div></div>
+<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00018">particleMass</a>, <a class="el" href="particle_type_8h_source.html#l00024">particleNoOfType</a>, <a class="el" href="particle_type_8h_source.html#l00017">particleRadius</a>, <a class="el" href="particle_type_8h_source.html#l00031">typeCounter</a> i <a class="el" href="particle_type_8h_source.html#l00030">typeNumber</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00019">particleTypesLoader::loadTypes()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                   :</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a>(<a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>), <a class="code" href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleRadius</a>(0.0f), <a class="code" href="classparticle_type.html#ae1a2c20c1201b466ccbbb4b3fdf8f9e3">particleMass</a>(0.0f), <a class="code" href="classparticle_type.html#afcea095208bc89d9618fa29be50d40be">particleNoOfType</a>(0)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>++;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="ttc" id="classparticle_type_html_a3fbd548d0c60b406d0944944b0ea82d3"><div class="ttname"><a href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleType::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00017">particleType.h:17</a></div></div>
+<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00031">particleType.h:31</a></div></div>
+<div class="ttc" id="classparticle_type_html_afcea095208bc89d9618fa29be50d40be"><div class="ttname"><a href="classparticle_type.html#afcea095208bc89d9618fa29be50d40be">particleType::particleNoOfType</a></div><div class="ttdeci">unsigned int particleNoOfType</div><div class="ttdoc">Ilość cząstek danego typu w symulacji. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00024">particleType.h:24</a></div></div>
+<div class="ttc" id="classparticle_type_html_a4e8ef08969cc83629593075fa3c52136"><div class="ttname"><a href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">particleType::typeNumber</a></div><div class="ttdeci">unsigned short typeNumber</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00030">particleType.h:30</a></div></div>
+<div class="ttc" id="classparticle_type_html_ae1a2c20c1201b466ccbbb4b3fdf8f9e3"><div class="ttname"><a href="classparticle_type.html#ae1a2c20c1201b466ccbbb4b3fdf8f9e3">particleType::particleMass</a></div><div class="ttdeci">float particleMass</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00018">particleType.h:18</a></div></div>
 </div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="classparticle_type_a4779ff7485249c8056089daa71c57a9a_icgraph.png" border="0" usemap="#classparticle_type_a4779ff7485249c8056089daa71c57a9a_icgraph" alt=""/></div>
+<map name="classparticle_type_a4779ff7485249c8056089daa71c57a9a_icgraph" id="classparticle_type_a4779ff7485249c8056089daa71c57a9a_icgraph">
+<area shape="rect" id="node2" href="classparticle_types_loader.html#a06c57d5168b0050299832b6cd617aefa" title="Załaduje dane z pliku do wektora. Plik będzie na nowo otwarty i przeczytany, a wektor wyczyszczony i ..." alt="" coords="224,5,363,47"/><area shape="rect" id="node3" href="particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="411,13,461,39"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a117da57883ce714167c46db700aa5413"></a>
@@ -207,17 +235,78 @@ Statyczne atrybuty publiczne</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00023">23</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00037">37</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00018">typeCounter</a>.</p>
-<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>--;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00018">particleType.h:18</a></div></div>
+<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00031">typeCounter</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>--;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00031">particleType.h:31</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a class="anchor" id="a882d5bcf94f8f806bed40120f89715b8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void particleType::setParticleName </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ustawienie nazwy typu cząstki. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>std::string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>void </dd></dl>
+
+<p>Definicja w linii <a class="el" href="particle_type_8cpp_source.html#l00017">17</a> pliku <a class="el" href="particle_type_8cpp_source.html">particleType.cpp</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00029">particleName</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00019">particleTypesLoader::loadTypes()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classparticle_type.html#aff93e884df33d6c63f889878066690d4">particleName</a>=name;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="ttc" id="classparticle_type_html_aff93e884df33d6c63f889878066690d4"><div class="ttname"><a href="classparticle_type.html#aff93e884df33d6c63f889878066690d4">particleType::particleName</a></div><div class="ttdeci">std::string particleName</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00029">particleType.h:29</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="classparticle_type_a882d5bcf94f8f806bed40120f89715b8_icgraph.png" border="0" usemap="#classparticle_type_a882d5bcf94f8f806bed40120f89715b8_icgraph" alt=""/></div>
+<map name="classparticle_type_a882d5bcf94f8f806bed40120f89715b8_icgraph" id="classparticle_type_a882d5bcf94f8f806bed40120f89715b8_icgraph">
+<area shape="rect" id="node2" href="classparticle_types_loader.html#a06c57d5168b0050299832b6cd617aefa" title="Załaduje dane z pliku do wektora. Plik będzie na nowo otwarty i przeczytany, a wektor wyczyszczony i ..." alt="" coords="249,5,388,47"/><area shape="rect" id="node3" href="particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="436,13,487,39"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a class="anchor" id="abe3840f2ff2c921e908b99e0cbd5f159"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">particleType::ofTypeParticleTrack</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tablica wskaźników na pozycje cząstek w pamięci hosta. </p>
+
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00028">28</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a9d3a4409f0d4edd0b778545e57f5e6a3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -228,7 +317,7 @@ Statyczne atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00016">16</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00020">20</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
 </div>
 </div>
@@ -242,7 +331,7 @@ Statyczne atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00015">15</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00019">19</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
 </div>
 </div>
@@ -256,7 +345,43 @@ Statyczne atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00014">14</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00018">18</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00032">particleType()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aff93e884df33d6c63f889878066690d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string particleType::particleName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00029">29</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_type_8cpp_source.html#l00017">setParticleName()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afcea095208bc89d9618fa29be50d40be"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">particleType::particleNoOfType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ilość cząstek danego typu w symulacji. </p>
+
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00024">24</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00032">particleType()</a> i <a class="el" href="particle_system_8cpp_source.html#l00510">ParticleSystem::reset()</a>.</p>
 
 </div>
 </div>
@@ -271,7 +396,9 @@ Statyczne atrybuty publiczne</h2></td></tr>
 </div><div class="memdoc">
 <p>&lt; mogło by być śliczne get i set, ale na razie są niepotrzebne </p>
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00013">13</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00017">17</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00032">particleType()</a>.</p>
 
 </div>
 </div>
@@ -293,9 +420,9 @@ Statyczne atrybuty publiczne</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00018">18</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00031">31</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00019">particleType()</a> i <a class="el" href="particle_type_8h_source.html#l00023">~particleType()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00032">particleType()</a> i <a class="el" href="particle_type_8h_source.html#l00037">~particleType()</a>.</p>
 
 </div>
 </div>
@@ -309,9 +436,9 @@ Statyczne atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00017">17</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00030">30</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00019">particleType()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00032">particleType()</a>.</p>
 
 </div>
 </div>
@@ -325,7 +452,7 @@ Statyczne atrybuty publiczne</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classparticle_type.html">particleType</a></li>
-    <li class="footer">Wygenerowano Pn, 20 lip 2015 19:27:17 dla particles programem
+    <li class="footer">Wygenerowano Wt, 28 lip 2015 13:00:43 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

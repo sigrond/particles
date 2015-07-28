@@ -10,5 +10,6 @@ var searchData=
   ['colliderpos',['colliderPos',['../struct_sim_params.html#aa27be265020f137f0a9cfbc3f1d2d9f8',1,'SimParams']]],
   ['colliderradius',['colliderRadius',['../struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478',1,'SimParams']]],
   ['collideshear',['collideShear',['../particles_8cpp.html#a5bc1804bc03a9aa78be10ae1b3b8f48b',1,'particles.cpp']]],
-  ['collidespring',['collideSpring',['../particles_8cpp.html#a3d02873abdeffa306da3e5580d94cd0e',1,'particles.cpp']]]
+  ['collidespring',['collideSpring',['../particles_8cpp.html#a3d02873abdeffa306da3e5580d94cd0e',1,'particles.cpp']]],
+  ['configfile',['configFile',['../classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145',1,'particleTypesLoader']]]
 ];

@@ -106,18 +106,37 @@ $(document).ready(function(){initNavTree('particle_type_8cpp_source.html','');})
 <div class="title">particleType.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="particle_type_8cpp.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="particle_type_8h.html" title="Zawiera klase opisującą typ cząstki. ">&quot;particleType.h&quot;</a></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="classparticle_type.html">particleType</a>::<a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>=0;</div>
-<div class="ttc" id="classparticle_type_html"><div class="ttname"><a href="classparticle_type.html">particleType</a></div><div class="ttdoc">Klasa przechowująca informacje o rodzajach cząstek. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00009">particleType.h:9</a></div></div>
-<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00018">particleType.h:18</a></div></div>
+<a href="particle_type_8cpp.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/** \file particleType.cpp</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \brief Definicje metod klasy particleType.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Na razie zawiera tylko inicjalizacjê licznika obiektów (pole statyczne)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \author Tomasz Jakubczyk</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="particle_type_8h.html" title="Zawiera klase opisującą typ cząstki. ">&quot;particleType.h&quot;</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="classparticle_type.html">particleType</a>::<a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>=0;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/** \brief Ustawienie nazwy typu cząstki</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * \param name std::string</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * \return void</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classparticle_type.html#a882d5bcf94f8f806bed40120f89715b8">   17</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classparticle_type.html">particleType</a>::<a class="code" href="classparticle_type.html#a882d5bcf94f8f806bed40120f89715b8">setParticleName</a>(std::string name)</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classparticle_type.html#aff93e884df33d6c63f889878066690d4">particleName</a>=name;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="ttc" id="classparticle_type_html_aff93e884df33d6c63f889878066690d4"><div class="ttname"><a href="classparticle_type.html#aff93e884df33d6c63f889878066690d4">particleType::particleName</a></div><div class="ttdeci">std::string particleName</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00029">particleType.h:29</a></div></div>
+<div class="ttc" id="classparticle_type_html_a882d5bcf94f8f806bed40120f89715b8"><div class="ttname"><a href="classparticle_type.html#a882d5bcf94f8f806bed40120f89715b8">particleType::setParticleName</a></div><div class="ttdeci">void setParticleName(std::string name)</div><div class="ttdoc">Ustawienie nazwy typu cząstki. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8cpp_source.html#l00017">particleType.cpp:17</a></div></div>
+<div class="ttc" id="classparticle_type_html"><div class="ttname"><a href="classparticle_type.html">particleType</a></div><div class="ttdoc">Klasa przechowująca informacje o rodzajach cząstek. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00013">particleType.h:13</a></div></div>
+<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00031">particleType.h:31</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="particle_type_8cpp.html">particleType.cpp</a></li>
-    <li class="footer">Wygenerowano Pn, 20 lip 2015 19:27:14 dla particles programem
+    <li class="footer">Wygenerowano Wt, 28 lip 2015 13:00:36 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
