@@ -975,6 +975,19 @@ void initMenus()
 int
 main(int argc, char **argv)
 {
+#ifdef _DEBUG
+    std::cout<<"Debug Build!\n";
+#endif // _DEBUG
+	std::cout<<"Uwaga różne typy cząstek!\nKonfiguracja w particleType.cfg\nWyświetlany rozmiar cząstek na razie nie odpowiada wartościom symulacji!\n";
+	std::string plikKonfiguracyjny("particleType.cfg");
+    particleTypesLoader pTLoader(plikKonfiguracyjny);
+    pTLoader.loadTypes(typyCzastek);
+
+#ifdef _DEBUG
+	std::clog<<"typyCzastek.size() "<<typyCzastek.size()<<"\n";
+    system("pause");
+#endif // _DEBUG
+
     printf("%s Starting...\n\n", sSDKsample);
 
     numParticles = NUM_PARTICLES;
@@ -1117,22 +1130,29 @@ main(int argc, char **argv)
             printf("exiting...\n");
             exit(EXIT_SUCCESS);
         }
-
+#ifdef _DEBUG
+		system("pause");
+#endif // _DEBUG
         initGL(&argc, argv);
         cudaGLInit(argc, argv);
+#ifdef _DEBUG
+		system("pause");
+#endif // _DEBUG
     }
 
 	//printf("timestep: %f\n",timestep);
-#ifdef _DEBUG
-    std::cout<<"Debug Build!\n";
-#endif // _DEBUG
-	std::cout<<"Uwaga różne typy cząstek!\nKonfiguracja w particleType.cfg\nWyświetlany rozmiar cząstek na razie nie odpowiada wartościom symulacji!\n";
-	std::string plikKonfiguracyjny("particleType.cfg");
-    particleTypesLoader pTLoader(plikKonfiguracyjny);
-    pTLoader.loadTypes(typyCzastek);
 
     initParticleSystem(numParticles, gridSize, g_refFile==NULL);
+#ifdef _DEBUG
+	std::clog<<"initParticleSystem\n";
+	system("pause");
+#endif // _DEBUG
     initParams();
+
+#ifdef _DEBUG
+	system("pause");
+	//std::clog<<"typyCzastek.size() "<<typyCzastek.size()<<"\n";
+#endif
 
     if (!g_refFile)
     {

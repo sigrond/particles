@@ -14,15 +14,21 @@
 #include <math.h>
 #include <assert.h>
 #include <stdio.h>
+#include <vector>
+#include <iostream>
+#include <cstdlib>
 
 #include "render_particles.h"
 #include "shaders.h"
+
+#include "particleType.h"
 
 #ifndef M_PI
 #define M_PI    3.1415926535897932384626433832795
 #endif
 
 extern bool multiColor;
+extern std::vector<particleType> typyCzastek;
 
 ParticleRenderer::ParticleRenderer()
     : m_pos(0),
@@ -97,7 +103,7 @@ void ParticleRenderer::_drawPoints(int pFrom, int pTo)
     {
         glBegin(GL_POINTS);
         {
-            int k = pFrom;
+            int k = pFrom*4;
 
             for (int i = pFrom; i < pTo; ++i)
             {
@@ -120,7 +126,7 @@ void ParticleRenderer::_drawPoints(int pFrom, int pTo)
             glEnableClientState(GL_COLOR_ARRAY);
         }
 
-        glDrawArrays(GL_POINTS, pFrom/4, (pTo-pFrom)/4);
+        glDrawArrays(GL_POINTS, pFrom, (pTo-pFrom));
 
         glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -130,6 +136,10 @@ void ParticleRenderer::_drawPoints(int pFrom, int pTo)
 
 void ParticleRenderer::display(DisplayMode mode /* = PARTICLE_POINTS */)
 {
+/*#ifdef _DEBUG
+	system("pause");
+	std::clog<<"typyCzastek.size() "<<typyCzastek.size()<<"\n";
+#endif*/
     int nextType=0;
     int typeBegin=0;
     switch (mode)
@@ -148,20 +158,23 @@ void ParticleRenderer::display(DisplayMode mode /* = PARTICLE_POINTS */)
             glDepthMask(GL_TRUE);
             glEnable(GL_DEPTH_TEST);
 
-            glUseProgram(m_program);
-
+			glUseProgram(m_program);
             for(int i=0;i<typyCzastek.size();i++)
             {
+				
                 glUniform1f(glGetUniformLocation(m_program, "pointScale"), zoom*m_window_h / tanf(m_fov*0.5f*(float)M_PI/180.0f));
                 glUniform1f(glGetUniformLocation(m_program, "pointRadius"), typyCzastek[i].particleRadius);
+				
                 /**< \todo kule mogą mieć różne promienie */
                 glColor3f(typyCzastek[i].particleColorR, typyCzastek[i].particleColorG, typyCzastek[i].particleColorB);
-                nextType+=typyCzastek[i].particleNoOfType;/**< \todo może byc potrzebne zabezpieczenie na 0 typów cząstek */
+                
+				nextType+=typyCzastek[i].particleNoOfType;
                 _drawPoints(typeBegin, nextType);
                 typeBegin=nextType;
-            }
+				
+			}
+			glUseProgram(0);
 
-            glUseProgram(0);
             glDisable(GL_POINT_SPRITE_ARB);
             break;
     }

@@ -513,7 +513,7 @@ ParticleSystem::reset(ParticleConfig config)
  * rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały  */
 	//unsigned int tmpType=rand()%m_params.particleTypesNum;
 
-    unsigned int tmpType=m_numParticles;
+    unsigned int tmpType=0;
     unsigned int typeCounter=0;/**< ile cząstek już dodaliśmy */
     unsigned int nextType=0;/**< po ilu dodanych cząstkach zaczyna się następny typ */
     if(!typyCzastek.empty())

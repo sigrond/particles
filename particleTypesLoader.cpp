@@ -38,7 +38,7 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
         {/**< nie przewiduję żeby było tu więcej białych znaków niz jedna spacja */
             std::getline(configFile,dataStr,'{');/**< nazwa typu. parametry w {} */
             dataStr.erase(dataStr.find_last_not_of(" \f\n\r\t\v")+1);/**< rtrim */
-            dstV.push_back(particleType());
+            dstV.push_back(*(new particleType()));
             lastPos=dstV.size()-1;
             dstV[lastPos].setParticleName(dataStr);
 #ifdef _DEBUG
@@ -83,6 +83,9 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
         }
     }
     configFile.close();
+#ifdef _DEBUG
+	std::clog<<"dstV.size() "<<dstV.size()<<"\n";
+#endif
 }
 
 

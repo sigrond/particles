@@ -6,9 +6,10 @@
 
 #pragma once
 
- #include <string>
- #include <vector>
- #include <cstdlib>
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <iostream>
 
 /** \class particleType
  * \brief Klasa przechowująca informacje o rodzajach cząstek.
@@ -44,6 +45,9 @@ public:
         particleColorR(0), particleColorG(0), particleColorB(0)
     {
         typeCounter++;
+#ifdef _DEBUG
+		std::clog<<"particleType contructor "<<typeNumber<<"\n";
+#endif
         if(typeNumber==0)particleColorG=1.0f;
         if(typeNumber==1)particleColorR=1.0f;
         if(typeNumber==2)particleColorB=1.0f;
