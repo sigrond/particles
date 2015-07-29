@@ -1107,6 +1107,7 @@ main(int argc, char **argv)
 
     gridSize.x = gridSize.y = gridSize.z = gridDim;
     printf("grid: %d x %d x %d = %d cells\n", gridSize.x, gridSize.y, gridSize.z, gridSize.x*gridSize.y*gridSize.z);
+	numParticles = pTLoader.getParticlesNumber();
     printf("particles: %d\n", numParticles);
 
     bool benchmark = checkCmdLineFlag(argc, (const char **) argv, "benchmark") != 0;
@@ -1142,6 +1143,7 @@ main(int argc, char **argv)
     }
 
 	//printf("timestep: %f\n",timestep);
+	numParticles = pTLoader.getParticlesNumber();
 
     initParticleSystem(numParticles, gridSize, g_refFile==NULL);
 #ifdef _DEBUG

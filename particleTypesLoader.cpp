@@ -132,6 +132,10 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 #endif
         }
     }
+	if(particlesNumber==0)
+	{
+		throw "loading error";
+	}
     configFile.close();
 #ifdef _DEBUG
 	std::clog<<"dstV.size() "<<dstV.size()<<"\n";
