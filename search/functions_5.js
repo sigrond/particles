@@ -11,5 +11,6 @@ var searchData=
   ['getgridsize',['getGridSize',['../class_particle_system.html#af94ba180bcb348afcfd81bb699d6aab0',1,'ParticleSystem']]],
   ['getnumparticles',['getNumParticles',['../class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0',1,'ParticleSystem']]],
   ['getparticleradius',['getParticleRadius',['../class_particle_system.html#abdb59a91d8483017ad71455bb2958993',1,'ParticleSystem']]],
+  ['getparticlesnumber',['getParticlesNumber',['../classparticle_types_loader.html#a9c120a0e5bfb3942c85a596a8dec3477',1,'particleTypesLoader']]],
   ['getworldorigin',['getWorldOrigin',['../class_particle_system.html#a19d9bb799a5b5704d8fd6a286f6be20d',1,'ParticleSystem']]]
 ];

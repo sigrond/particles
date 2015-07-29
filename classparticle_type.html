@@ -121,8 +121,6 @@ $(document).ready(function(){initNavTree('classparticle_type.html','');});
 Diagram współpracy dla particleType:</div>
 <div class="dyncontent">
 <div class="center"><img src="classparticle_type__coll__graph.png" border="0" usemap="#particle_type_coll__map" alt="Collaboration graph"/></div>
-<map name="particle_type_coll__map" id="particle_type_coll__map">
-</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -134,6 +132,9 @@ Metody publiczne</h2></td></tr>
 <tr class="memitem:a882d5bcf94f8f806bed40120f89715b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_type.html#a882d5bcf94f8f806bed40120f89715b8">setParticleName</a> (std::string name)</td></tr>
 <tr class="memdesc:a882d5bcf94f8f806bed40120f89715b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ustawienie nazwy typu cząstki.  <a href="#a882d5bcf94f8f806bed40120f89715b8">Więcej...</a><br/></td></tr>
 <tr class="separator:a882d5bcf94f8f806bed40120f89715b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d6dbf7fa209b609f7e7007c0c2fb115"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_type.html#a0d6dbf7fa209b609f7e7007c0c2fb115">calcParams</a> (bool, bool, bool)</td></tr>
+<tr class="memdesc:a0d6dbf7fa209b609f7e7007c0c2fb115"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ta metoda ustala czy zostały ustawione parametry potrzebne do symulacji. Jeśli brakuje i jest wstanie wyliczyć z innych to wylicza. Podstawowo ma wyliczać masę z promienia i gęstości.  <a href="#a0d6dbf7fa209b609f7e7007c0c2fb115">Więcej...</a><br/></td></tr>
+<tr class="separator:a0d6dbf7fa209b609f7e7007c0c2fb115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atrybuty publiczne</h2></td></tr>
@@ -170,7 +171,7 @@ Statyczne atrybuty publiczne</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Klasa przechowująca informacje o rodzajach cząstek. </p>
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00016">16</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00017">17</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 </div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a class="anchor" id="a4779ff7485249c8056089daa71c57a9a"></a>
 <div class="memitem">
@@ -193,34 +194,37 @@ Statyczne atrybuty publiczne</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00042">42</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00043">43</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00027">particleColorB</a>, <a class="el" href="particle_type_8h_source.html#l00026">particleColorG</a>, <a class="el" href="particle_type_8h_source.html#l00025">particleColorR</a>, <a class="el" href="particle_type_8h_source.html#l00021">particleMass</a>, <a class="el" href="particle_type_8h_source.html#l00031">particleNoOfType</a>, <a class="el" href="particle_type_8h_source.html#l00020">particleRadius</a>, <a class="el" href="particle_type_8h_source.html#l00041">typeCounter</a> i <a class="el" href="particle_type_8h_source.html#l00040">typeNumber</a>.</p>
+<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00028">particleColorB</a>, <a class="el" href="particle_type_8h_source.html#l00027">particleColorG</a>, <a class="el" href="particle_type_8h_source.html#l00026">particleColorR</a>, <a class="el" href="particle_type_8h_source.html#l00022">particleMass</a>, <a class="el" href="particle_type_8h_source.html#l00032">particleNoOfType</a>, <a class="el" href="particle_type_8h_source.html#l00021">particleRadius</a>, <a class="el" href="particle_type_8h_source.html#l00042">typeCounter</a> i <a class="el" href="particle_type_8h_source.html#l00041">typeNumber</a>.</p>
 
 <p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                   :</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a>(<a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>), <a class="code" href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleRadius</a>(0.0f), <a class="code" href="classparticle_type.html#ae1a2c20c1201b466ccbbb4b3fdf8f9e3">particleMass</a>(0.0f), <a class="code" href="classparticle_type.html#afcea095208bc89d9618fa29be50d40be">particleNoOfType</a>(0),</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classparticle_type.html#a81ad8fe86125e2299f0419572e388ec5">particleColorR</a>(0), <a class="code" href="classparticle_type.html#a603b704b983330cf5575eb6828de59a2">particleColorG</a>(0), <a class="code" href="classparticle_type.html#a78970eae573e5aa40fa9ae2bbaef58ae">particleColorB</a>(0)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>++;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a>==0)<a class="code" href="classparticle_type.html#a603b704b983330cf5575eb6828de59a2">particleColorG</a>=1.0f;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a>==1)<a class="code" href="classparticle_type.html#a81ad8fe86125e2299f0419572e388ec5">particleColorR</a>=1.0f;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a>==2)<a class="code" href="classparticle_type.html#a78970eae573e5aa40fa9ae2bbaef58ae">particleColorB</a>=1.0f;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a>&gt;=3)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="classparticle_type.html#a81ad8fe86125e2299f0419572e388ec5">particleColorR</a>=rand() / (float) RAND_MAX;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <a class="code" href="classparticle_type.html#a603b704b983330cf5575eb6828de59a2">particleColorG</a>=rand() / (float) RAND_MAX;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <a class="code" href="classparticle_type.html#a78970eae573e5aa40fa9ae2bbaef58ae">particleColorB</a>=rand() / (float) RAND_MAX;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="ttc" id="classparticle_type_html_a81ad8fe86125e2299f0419572e388ec5"><div class="ttname"><a href="classparticle_type.html#a81ad8fe86125e2299f0419572e388ec5">particleType::particleColorR</a></div><div class="ttdeci">float particleColorR</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00025">particleType.h:25</a></div></div>
-<div class="ttc" id="classparticle_type_html_a603b704b983330cf5575eb6828de59a2"><div class="ttname"><a href="classparticle_type.html#a603b704b983330cf5575eb6828de59a2">particleType::particleColorG</a></div><div class="ttdeci">float particleColorG</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00026">particleType.h:26</a></div></div>
-<div class="ttc" id="classparticle_type_html_a3fbd548d0c60b406d0944944b0ea82d3"><div class="ttname"><a href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleType::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00020">particleType.h:20</a></div></div>
-<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00041">particleType.h:41</a></div></div>
-<div class="ttc" id="classparticle_type_html_afcea095208bc89d9618fa29be50d40be"><div class="ttname"><a href="classparticle_type.html#afcea095208bc89d9618fa29be50d40be">particleType::particleNoOfType</a></div><div class="ttdeci">unsigned int particleNoOfType</div><div class="ttdoc">Ilość cząstek danego typu w symulacji. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00031">particleType.h:31</a></div></div>
-<div class="ttc" id="classparticle_type_html_a4e8ef08969cc83629593075fa3c52136"><div class="ttname"><a href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">particleType::typeNumber</a></div><div class="ttdeci">unsigned short typeNumber</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00040">particleType.h:40</a></div></div>
-<div class="ttc" id="classparticle_type_html_ae1a2c20c1201b466ccbbb4b3fdf8f9e3"><div class="ttname"><a href="classparticle_type.html#ae1a2c20c1201b466ccbbb4b3fdf8f9e3">particleType::particleMass</a></div><div class="ttdeci">float particleMass</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00021">particleType.h:21</a></div></div>
-<div class="ttc" id="classparticle_type_html_a78970eae573e5aa40fa9ae2bbaef58ae"><div class="ttname"><a href="classparticle_type.html#a78970eae573e5aa40fa9ae2bbaef58ae">particleType::particleColorB</a></div><div class="ttdeci">float particleColorB</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00027">particleType.h:27</a></div></div>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                   :</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a>(<a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>), <a class="code" href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleRadius</a>(0.0f), <a class="code" href="classparticle_type.html#ae1a2c20c1201b466ccbbb4b3fdf8f9e3">particleMass</a>(0.0f), <a class="code" href="classparticle_type.html#afcea095208bc89d9618fa29be50d40be">particleNoOfType</a>(0),</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classparticle_type.html#a81ad8fe86125e2299f0419572e388ec5">particleColorR</a>(0), <a class="code" href="classparticle_type.html#a603b704b983330cf5575eb6828de59a2">particleColorG</a>(0), <a class="code" href="classparticle_type.html#a78970eae573e5aa40fa9ae2bbaef58ae">particleColorB</a>(0)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>++;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span>                std::clog&lt;&lt;<span class="stringliteral">&quot;particleType contructor &quot;</span>&lt;&lt;<a class="code" href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">typeNumber</a>&lt;&lt;<span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">if</span>(typeNumber==0)<a class="code" href="classparticle_type.html#a603b704b983330cf5575eb6828de59a2">particleColorG</a>=1.0f;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span>(typeNumber==1)<a class="code" href="classparticle_type.html#a81ad8fe86125e2299f0419572e388ec5">particleColorR</a>=1.0f;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">if</span>(typeNumber==2)<a class="code" href="classparticle_type.html#a78970eae573e5aa40fa9ae2bbaef58ae">particleColorB</a>=1.0f;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span>(typeNumber&gt;=3)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="classparticle_type.html#a81ad8fe86125e2299f0419572e388ec5">particleColorR</a>=rand() / (float) RAND_MAX;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="classparticle_type.html#a603b704b983330cf5575eb6828de59a2">particleColorG</a>=rand() / (float) RAND_MAX;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="classparticle_type.html#a78970eae573e5aa40fa9ae2bbaef58ae">particleColorB</a>=rand() / (float) RAND_MAX;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="ttc" id="classparticle_type_html_a81ad8fe86125e2299f0419572e388ec5"><div class="ttname"><a href="classparticle_type.html#a81ad8fe86125e2299f0419572e388ec5">particleType::particleColorR</a></div><div class="ttdeci">float particleColorR</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00026">particleType.h:26</a></div></div>
+<div class="ttc" id="classparticle_type_html_a603b704b983330cf5575eb6828de59a2"><div class="ttname"><a href="classparticle_type.html#a603b704b983330cf5575eb6828de59a2">particleType::particleColorG</a></div><div class="ttdeci">float particleColorG</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00027">particleType.h:27</a></div></div>
+<div class="ttc" id="classparticle_type_html_a3fbd548d0c60b406d0944944b0ea82d3"><div class="ttname"><a href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleType::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00021">particleType.h:21</a></div></div>
+<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00042">particleType.h:42</a></div></div>
+<div class="ttc" id="classparticle_type_html_afcea095208bc89d9618fa29be50d40be"><div class="ttname"><a href="classparticle_type.html#afcea095208bc89d9618fa29be50d40be">particleType::particleNoOfType</a></div><div class="ttdeci">unsigned int particleNoOfType</div><div class="ttdoc">Ilość cząstek danego typu w symulacji. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00032">particleType.h:32</a></div></div>
+<div class="ttc" id="classparticle_type_html_a4e8ef08969cc83629593075fa3c52136"><div class="ttname"><a href="classparticle_type.html#a4e8ef08969cc83629593075fa3c52136">particleType::typeNumber</a></div><div class="ttdeci">unsigned short typeNumber</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00041">particleType.h:41</a></div></div>
+<div class="ttc" id="classparticle_type_html_ae1a2c20c1201b466ccbbb4b3fdf8f9e3"><div class="ttname"><a href="classparticle_type.html#ae1a2c20c1201b466ccbbb4b3fdf8f9e3">particleType::particleMass</a></div><div class="ttdeci">float particleMass</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00022">particleType.h:22</a></div></div>
+<div class="ttc" id="classparticle_type_html_a78970eae573e5aa40fa9ae2bbaef58ae"><div class="ttname"><a href="classparticle_type.html#a78970eae573e5aa40fa9ae2bbaef58ae">particleType::particleColorB</a></div><div class="ttdeci">float particleColorB</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00028">particleType.h:28</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywoływań tej funkcji:</div>
@@ -254,17 +258,87 @@ Oto graf wywoływań tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00057">57</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00061">61</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00041">typeCounter</a>.</p>
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>--;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00041">particleType.h:41</a></div></div>
+<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00042">typeCounter</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">typeCounter</a>--;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="ttc" id="classparticle_type_html_a6619c01380db5e25bd38982c2efbc5b1"><div class="ttname"><a href="classparticle_type.html#a6619c01380db5e25bd38982c2efbc5b1">particleType::typeCounter</a></div><div class="ttdeci">static unsigned short typeCounter</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00042">particleType.h:42</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a class="anchor" id="a0d6dbf7fa209b609f7e7007c0c2fb115"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void particleType::calcParams </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>pMassSet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>pRadiusSet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>pDensitySet</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ta metoda ustala czy zostały ustawione parametry potrzebne do symulacji. Jeśli brakuje i jest wstanie wyliczyć z innych to wylicza. Podstawowo ma wyliczać masę z promienia i gęstości. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pMassSet</td><td>bool </td></tr>
+    <tr><td class="paramname">pRadiusSet</td><td>bool </td></tr>
+    <tr><td class="paramname">pDensitySet</td><td>bool </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>void </dd></dl>
+
+<p>Definicja w linii <a class="el" href="particle_type_8cpp_source.html#l00036">36</a> pliku <a class="el" href="particle_type_8cpp_source.html">particleType.cpp</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00023">particleDensity</a>, <a class="el" href="particle_type_8h_source.html#l00022">particleMass</a> i <a class="el" href="particle_type_8h_source.html#l00021">particleRadius</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">float</span> Volume=0.0f;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span>((!pMassSet)&amp;&amp;pRadiusSet&amp;&amp;pDensitySet)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        Volume=(4.0f/3.0f)*<a class="code" href="particle_type_8cpp.html#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a>*<a class="code" href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleRadius</a>*<a class="code" href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleRadius</a>*<a class="code" href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleRadius</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classparticle_type.html#a18e513905d085201a402c9fd9dc3a265">particleDensity</a>=<a class="code" href="classparticle_type.html#ae1a2c20c1201b466ccbbb4b3fdf8f9e3">particleMass</a>/Volume;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="ttc" id="particle_type_8cpp_html_ae71449b1cc6e6250b91f539153a7a0d3"><div class="ttname"><a href="particle_type_8cpp.html#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a></div><div class="ttdeci">#define M_PI</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8cpp_source.html#l00023">particleType.cpp:23</a></div></div>
+<div class="ttc" id="classparticle_type_html_a3fbd548d0c60b406d0944944b0ea82d3"><div class="ttname"><a href="classparticle_type.html#a3fbd548d0c60b406d0944944b0ea82d3">particleType::particleRadius</a></div><div class="ttdeci">float particleRadius</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00021">particleType.h:21</a></div></div>
+<div class="ttc" id="classparticle_type_html_a18e513905d085201a402c9fd9dc3a265"><div class="ttname"><a href="classparticle_type.html#a18e513905d085201a402c9fd9dc3a265">particleType::particleDensity</a></div><div class="ttdeci">float particleDensity</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00023">particleType.h:23</a></div></div>
+<div class="ttc" id="classparticle_type_html_ae1a2c20c1201b466ccbbb4b3fdf8f9e3"><div class="ttname"><a href="classparticle_type.html#ae1a2c20c1201b466ccbbb4b3fdf8f9e3">particleType::particleMass</a></div><div class="ttdeci">float particleMass</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00022">particleType.h:22</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="classparticle_type_a0d6dbf7fa209b609f7e7007c0c2fb115_icgraph.png" border="0" usemap="#classparticle_type_a0d6dbf7fa209b609f7e7007c0c2fb115_icgraph" alt=""/></div>
+<map name="classparticle_type_a0d6dbf7fa209b609f7e7007c0c2fb115_icgraph" id="classparticle_type_a0d6dbf7fa209b609f7e7007c0c2fb115_icgraph">
+<area shape="rect" id="node2" href="classparticle_types_loader.html#a06c57d5168b0050299832b6cd617aefa" title="Załaduje dane z pliku do wektora. Plik będzie na nowo otwarty i przeczytany, a wektor wyczyszczony i ..." alt="" coords="223,5,361,47"/><area shape="rect" id="node3" href="particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="409,13,460,39"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a882d5bcf94f8f806bed40120f89715b8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -290,13 +364,13 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_type_8cpp_source.html#l00017">17</a> pliku <a class="el" href="particle_type_8cpp_source.html">particleType.cpp</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00039">particleName</a>.</p>
+<p>Odwołuje się do <a class="el" href="particle_type_8h_source.html#l00040">particleName</a>.</p>
 
 <p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classparticle_type.html#aff93e884df33d6c63f889878066690d4">particleName</a>=name;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="ttc" id="classparticle_type_html_aff93e884df33d6c63f889878066690d4"><div class="ttname"><a href="classparticle_type.html#aff93e884df33d6c63f889878066690d4">particleType::particleName</a></div><div class="ttdeci">std::string particleName</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00039">particleType.h:39</a></div></div>
+<div class="ttc" id="classparticle_type_html_aff93e884df33d6c63f889878066690d4"><div class="ttname"><a href="classparticle_type.html#aff93e884df33d6c63f889878066690d4">particleType::particleName</a></div><div class="ttdeci">std::string particleName</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00040">particleType.h:40</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywoływań tej funkcji:</div>
@@ -322,9 +396,9 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Tablica pozycji cząstek w pamięci hosta jest to pozycja pierwszej liczby z czwórki opisującej cząstkę jeśli cząstki są uporządkowane po typach, to wystarczy sprawdzać ile cząstek jest w typie i po numerze cząstki znać jej typ. </p>
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00038">38</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00039">39</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00510">ParticleSystem::reset()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00509">ParticleSystem::reset()</a>.</p>
 
 </div>
 </div>
@@ -339,7 +413,9 @@ Oto graf wywoływań tej funkcji:</div>
 </div><div class="memdoc">
 <p>można jednemu typowi cząstek nadać jeden kolor </p>
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00023">23</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00024">24</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a>.</p>
 
 </div>
 </div>
@@ -353,9 +429,9 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00027">27</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00028">28</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00042">particleType()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a> i <a class="el" href="particle_type_8h_source.html#l00043">particleType()</a>.</p>
 
 </div>
 </div>
@@ -369,9 +445,9 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00026">26</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00027">27</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00042">particleType()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a> i <a class="el" href="particle_type_8h_source.html#l00043">particleType()</a>.</p>
 
 </div>
 </div>
@@ -385,9 +461,9 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00025">25</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00026">26</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00042">particleType()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a> i <a class="el" href="particle_type_8h_source.html#l00043">particleType()</a>.</p>
 
 </div>
 </div>
@@ -401,7 +477,9 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00022">22</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00023">23</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_type_8cpp_source.html#l00036">calcParams()</a> i <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a>.</p>
 
 </div>
 </div>
@@ -415,9 +493,9 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00021">21</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00022">22</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a> i <a class="el" href="particle_type_8h_source.html#l00042">particleType()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_type_8cpp_source.html#l00036">calcParams()</a>, <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a> i <a class="el" href="particle_type_8h_source.html#l00043">particleType()</a>.</p>
 
 </div>
 </div>
@@ -431,7 +509,7 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00039">39</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00040">40</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
 <p>Odwołania w <a class="el" href="particle_type_8cpp_source.html#l00017">setParticleName()</a>.</p>
 
@@ -449,9 +527,9 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Ilość cząstek danego typu w symulacji. </p>
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00031">31</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00032">32</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a>, <a class="el" href="particle_type_8h_source.html#l00042">particleType()</a> i <a class="el" href="particle_system_8cpp_source.html#l00510">ParticleSystem::reset()</a>.</p>
+<p>Odwołania w <a class="el" href="render__particles_8cpp_source.html#l00159">ParticleRenderer::display()</a>, <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a>, <a class="el" href="particle_type_8h_source.html#l00043">particleType()</a> i <a class="el" href="particle_system_8cpp_source.html#l00509">ParticleSystem::reset()</a>.</p>
 
 </div>
 </div>
@@ -466,9 +544,9 @@ Oto graf wywoływań tej funkcji:</div>
 </div><div class="memdoc">
 <p>&lt; mogło by być śliczne get i set, ale na razie są niepotrzebne </p>
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00020">20</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00021">21</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a> i <a class="el" href="particle_type_8h_source.html#l00042">particleType()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_type_8cpp_source.html#l00036">calcParams()</a>, <a class="el" href="particle_types_loader_8cpp_source.html#l00021">particleTypesLoader::loadTypes()</a> i <a class="el" href="particle_type_8h_source.html#l00043">particleType()</a>.</p>
 
 </div>
 </div>
@@ -490,9 +568,9 @@ Oto graf wywoływań tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00041">41</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00042">42</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00042">particleType()</a> i <a class="el" href="particle_type_8h_source.html#l00057">~particleType()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00043">particleType()</a> i <a class="el" href="particle_type_8h_source.html#l00061">~particleType()</a>.</p>
 
 </div>
 </div>
@@ -506,9 +584,9 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00040">40</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_type_8h_source.html#l00041">41</a> pliku <a class="el" href="particle_type_8h_source.html">particleType.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00042">particleType()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_type_8h_source.html#l00043">particleType()</a>.</p>
 
 </div>
 </div>
@@ -522,7 +600,7 @@ Oto graf wywoływań tej funkcji:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classparticle_type.html">particleType</a></li>
-    <li class="footer">Wygenerowano Wt, 28 lip 2015 19:25:34 dla particles programem
+    <li class="footer">Wygenerowano Śr, 29 lip 2015 14:35:54 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

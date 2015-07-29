@@ -13,6 +13,7 @@ var searchData=
   ['getgridsize',['getGridSize',['../class_particle_system.html#af94ba180bcb348afcfd81bb699d6aab0',1,'ParticleSystem']]],
   ['getnumparticles',['getNumParticles',['../class_particle_system.html#a6f89e8d4c3e3e328088b7d652cee84b0',1,'ParticleSystem']]],
   ['getparticleradius',['getParticleRadius',['../class_particle_system.html#abdb59a91d8483017ad71455bb2958993',1,'ParticleSystem']]],
+  ['getparticlesnumber',['getParticlesNumber',['../classparticle_types_loader.html#a9c120a0e5bfb3942c85a596a8dec3477',1,'particleTypesLoader']]],
   ['getworldorigin',['getWorldOrigin',['../class_particle_system.html#a19d9bb799a5b5704d8fd6a286f6be20d',1,'ParticleSystem']]],
   ['globaldamping',['globalDamping',['../struct_sim_params.html#a7058bad8c867d9d42d8c9d842638ebea',1,'SimParams']]],
   ['gravity',['gravity',['../struct_sim_params.html#ae7508eba5dd90859215b59d19e001bb9',1,'SimParams::gravity()'],['../particles_8cpp.html#a31924e6c9b17aad7f861e818b8be5d8f',1,'gravity():&#160;particles.cpp']]],

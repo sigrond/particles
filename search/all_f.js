@@ -21,6 +21,7 @@ var searchData=
   ['particles_5fkernel_2ecuh',['particles_kernel.cuh',['../particles__kernel_8cuh.html',1,'']]],
   ['particles_5fkernel_5fh',['PARTICLES_KERNEL_H',['../particles__kernel_8cuh.html#a384444f066551f04f65ff94b99aa7091',1,'particles_kernel.cuh']]],
   ['particles_5fkernel_5fimpl_2ecuh',['particles_kernel_impl.cuh',['../particles__kernel__impl_8cuh.html',1,'']]],
+  ['particlesnumber',['particlesNumber',['../classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424',1,'particleTypesLoader']]],
   ['particlesystem',['ParticleSystem',['../class_particle_system.html',1,'ParticleSystem'],['../class_particle_system.html#a8a2be3e93616aa694801369c8b8d12cb',1,'ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenGL)'],['../class_particle_system.html#a9028ec8023c61773dd4a668c3ad8cc26',1,'ParticleSystem::ParticleSystem()']]],
   ['particlesystem_2ecpp',['particleSystem.cpp',['../particle_system_8cpp.html',1,'']]],
   ['particlesystem_2ecuh',['particleSystem.cuh',['../particle_system_8cuh.html',1,'']]],

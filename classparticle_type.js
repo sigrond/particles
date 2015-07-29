@@ -2,6 +2,7 @@ var classparticle_type =
 [
     [ "particleType", "classparticle_type.html#a4779ff7485249c8056089daa71c57a9a", null ],
     [ "~particleType", "classparticle_type.html#a117da57883ce714167c46db700aa5413", null ],
+    [ "calcParams", "classparticle_type.html#a0d6dbf7fa209b609f7e7007c0c2fb115", null ],
     [ "setParticleName", "classparticle_type.html#a882d5bcf94f8f806bed40120f89715b8", null ],
     [ "ofTypeParticleTrack", "classparticle_type.html#abe3840f2ff2c921e908b99e0cbd5f159", null ],
     [ "particleCharge", "classparticle_type.html#a9d3a4409f0d4edd0b778545e57f5e6a3", null ],

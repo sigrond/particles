@@ -106,6 +106,7 @@ $(document).ready(function(){initNavTree('classparticle_types_loader.html','');}
   <div class="summary">
 <a href="#pub-methods">Metody publiczne</a> &#124;
 <a href="#pub-attribs">Atrybuty publiczne</a> &#124;
+<a href="#pri-attribs">Atrybuty prywatne</a> &#124;
 <a href="classparticle_types_loader-members.html">Lista wszystkich składowych</a>  </div>
   <div class="headertitle">
 <div class="title">Dokumentacja klasy particleTypesLoader</div>  </div>
@@ -131,6 +132,9 @@ Metody publiczne</h2></td></tr>
 <tr class="memitem:a06c57d5168b0050299832b6cd617aefa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_types_loader.html#a06c57d5168b0050299832b6cd617aefa">loadTypes</a> (std::vector&lt; <a class="el" href="classparticle_type.html">particleType</a> &gt; &amp;dstV)</td></tr>
 <tr class="memdesc:a06c57d5168b0050299832b6cd617aefa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Załaduje dane z pliku do wektora. Plik będzie na nowo otwarty i przeczytany, a wektor wyczyszczony i wypełniony od nowa.  <a href="#a06c57d5168b0050299832b6cd617aefa">Więcej...</a><br/></td></tr>
 <tr class="separator:a06c57d5168b0050299832b6cd617aefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c120a0e5bfb3942c85a596a8dec3477"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_types_loader.html#a9c120a0e5bfb3942c85a596a8dec3477">getParticlesNumber</a> ()</td></tr>
+<tr class="memdesc:a9c120a0e5bfb3942c85a596a8dec3477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca sumę cząstek ze wszystkich podanych typów.  <a href="#a9c120a0e5bfb3942c85a596a8dec3477">Więcej...</a><br/></td></tr>
+<tr class="separator:a9c120a0e5bfb3942c85a596a8dec3477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atrybuty publiczne</h2></td></tr>
@@ -138,6 +142,11 @@ Atrybuty publiczne</h2></td></tr>
 <tr class="separator:a3e80f25ebe9bb2740ef5d2dd28605145"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f7f010c7bc9706a829dc1c63820fd5c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">fileName</a></td></tr>
 <tr class="separator:a8f7f010c7bc9706a829dc1c63820fd5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Atrybuty prywatne</h2></td></tr>
+<tr class="memitem:acfe4faab7f4f54d611a04697c9347424"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particlesNumber</a></td></tr>
+<tr class="separator:acfe4faab7f4f54d611a04697c9347424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Klasa ładowarki ustawień typów cząstek z pliku. </p>
@@ -165,8 +174,11 @@ Atrybuty publiczne</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_types_loader_8h_source.html#l00021">21</a> pliku <a class="el" href="particle_types_loader_8h_source.html">particleTypesLoader.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{};</div>
+<p>Definicja w linii <a class="el" href="particle_types_loader_8h_source.html#l00023">23</a> pliku <a class="el" href="particle_types_loader_8h_source.html">particleTypesLoader.h</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="particle_types_loader_8h_source.html#l00019">particlesNumber</a>.</p>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;:<a class="code" href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particlesNumber</a>(0){};</div>
+<div class="ttc" id="classparticle_types_loader_html_acfe4faab7f4f54d611a04697c9347424"><div class="ttname"><a href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particleTypesLoader::particlesNumber</a></div><div class="ttdeci">unsigned int particlesNumber</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00019">particleTypesLoader.h:19</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -192,13 +204,13 @@ Atrybuty publiczne</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_types_loader_8h_source.html#l00022">22</a> pliku <a class="el" href="particle_types_loader_8h_source.html">particleTypesLoader.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_types_loader_8h_source.html#l00024">24</a> pliku <a class="el" href="particle_types_loader_8h_source.html">particleTypesLoader.h</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particle_types_loader_8h_source.html#l00020">fileName</a>.</p>
+<p>Odwołuje się do <a class="el" href="particle_types_loader_8h_source.html#l00022">fileName</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00976">main()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;: <a class="code" href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">fileName</a>(name){};</div>
-<div class="ttc" id="classparticle_types_loader_html_a8f7f010c7bc9706a829dc1c63820fd5c"><div class="ttname"><a href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">particleTypesLoader::fileName</a></div><div class="ttdeci">std::string fileName</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00020">particleTypesLoader.h:20</a></div></div>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00977">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;: <a class="code" href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">fileName</a>(name){};</div>
+<div class="ttc" id="classparticle_types_loader_html_a8f7f010c7bc9706a829dc1c63820fd5c"><div class="ttname"><a href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">particleTypesLoader::fileName</a></div><div class="ttdeci">std::string fileName</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00022">particleTypesLoader.h:22</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywoływań tej funkcji:</div>
@@ -212,6 +224,43 @@ Oto graf wywoływań tej funkcji:</div>
 </div>
 </div>
 <h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a class="anchor" id="a9c120a0e5bfb3942c85a596a8dec3477"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int particleTypesLoader::getParticlesNumber </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zwraca sumę cząstek ze wszystkich podanych typów. </p>
+<dl class="section return"><dt>Zwraca</dt><dd>unsigned int </dd></dl>
+
+<p>Definicja w linii <a class="el" href="particle_types_loader_8cpp_source.html#l00146">146</a> pliku <a class="el" href="particle_types_loader_8cpp_source.html">particleTypesLoader.cpp</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="particle_types_loader_8h_source.html#l00019">particlesNumber</a>.</p>
+
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00977">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;{</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particlesNumber</a>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
+<div class="ttc" id="classparticle_types_loader_html_acfe4faab7f4f54d611a04697c9347424"><div class="ttname"><a href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particleTypesLoader::particlesNumber</a></div><div class="ttdeci">unsigned int particlesNumber</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00019">particleTypesLoader.h:19</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="classparticle_types_loader_a9c120a0e5bfb3942c85a596a8dec3477_icgraph.png" border="0" usemap="#classparticle_types_loader_a9c120a0e5bfb3942c85a596a8dec3477_icgraph" alt=""/></div>
+<map name="classparticle_types_loader_a9c120a0e5bfb3942c85a596a8dec3477_icgraph" id="classparticle_types_loader_a9c120a0e5bfb3942c85a596a8dec3477_icgraph">
+<area shape="rect" id="node2" href="particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="197,13,248,39"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a06c57d5168b0050299832b6cd617aefa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -227,7 +276,7 @@ Oto graf wywoływań tej funkcji:</div>
 </div><div class="memdoc">
 
 <p>Załaduje dane z pliku do wektora. Plik będzie na nowo otwarty i przeczytany, a wektor wyczyszczony i wypełniony od nowa. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Do zrobienia:</a></b></dt><dd>przydała by się jakaś ładna implementacja ltrim, rtrim i trim żeby łatwo usuwać nadmiarowe białe znaki </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Do zrobienia:</a></b></dt><dd>przydała by się jakaś ładna implementacja ltrim, rtrim i trim żeby łatwo usuwać nadmiarowe białe znaki </dd></dl>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
     <tr><td class="paramname">dstV</td><td>std::vector&lt;particleType&gt;&amp; </td></tr>
@@ -235,7 +284,7 @@ Oto graf wywoływań tej funkcji:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd>void </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Do zrobienia:</a></b></dt><dd>Potrzebny jest opis struktury pliku </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Do zrobienia:</a></b></dt><dd>Potrzebny jest opis struktury pliku </dd></dl>
 <p>&lt; ltrim</p>
 <p>&lt; rozpoczęcie opisu typu cząstki</p>
 <p>&lt; nie przewiduję żeby było tu więcej białych znaków niz jedna spacja</p>
@@ -248,84 +297,138 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_types_loader_8cpp_source.html#l00021">21</a> pliku <a class="el" href="particle_types_loader_8cpp_source.html">particleTypesLoader.cpp</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particle_types_loader_8h_source.html#l00019">configFile</a>, <a class="el" href="particle_types_loader_8h_source.html#l00020">fileName</a>, <a class="el" href="particle_type_8h_source.html#l00021">particleType::particleMass</a>, <a class="el" href="particle_type_8h_source.html#l00031">particleType::particleNoOfType</a>, <a class="el" href="particle_type_8h_source.html#l00020">particleType::particleRadius</a>, <a class="el" href="particle_type_8h_source.html#l00042">particleType::particleType()</a> i <a class="el" href="particle_type_8cpp_source.html#l00017">particleType::setParticleName()</a>.</p>
+<p>Odwołuje się do <a class="el" href="particle_type_8cpp_source.html#l00036">particleType::calcParams()</a>, <a class="el" href="particle_types_loader_8h_source.html#l00021">configFile</a>, <a class="el" href="particle_types_loader_8h_source.html#l00022">fileName</a>, <a class="el" href="particle_type_8h_source.html#l00024">particleType::particleCharge</a>, <a class="el" href="particle_type_8h_source.html#l00028">particleType::particleColorB</a>, <a class="el" href="particle_type_8h_source.html#l00027">particleType::particleColorG</a>, <a class="el" href="particle_type_8h_source.html#l00026">particleType::particleColorR</a>, <a class="el" href="particle_type_8h_source.html#l00023">particleType::particleDensity</a>, <a class="el" href="particle_type_8h_source.html#l00022">particleType::particleMass</a>, <a class="el" href="particle_type_8h_source.html#l00032">particleType::particleNoOfType</a>, <a class="el" href="particle_type_8h_source.html#l00021">particleType::particleRadius</a>, <a class="el" href="particle_types_loader_8h_source.html#l00019">particlesNumber</a>, <a class="el" href="particle_type_8h_source.html#l00043">particleType::particleType()</a> i <a class="el" href="particle_type_8cpp_source.html#l00017">particleType::setParticleName()</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00976">main()</a>.</p>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00977">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::string dataStr;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> lastPos=0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::stringstream iss;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>.open(<a class="code" href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">fileName</a>.c_str());</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>.is_open())</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                std::cerr&lt;&lt;<span class="stringliteral">&quot;can&#39;t open the config file\n&quot;</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    dstV.clear();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">while</span>(<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>.good())</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        std::getline(<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>,dataStr,<span class="charliteral">&#39; &#39;</span>);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        dataStr.erase(0,dataStr.find_first_not_of(<span class="stringliteral">&quot; \f\n\r\t\v&quot;</span>));</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleType&quot;</span>)==0)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            std::getline(<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>,dataStr,<span class="charliteral">&#39;{&#39;</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            dataStr.erase(dataStr.find_last_not_of(<span class="stringliteral">&quot; \f\n\r\t\v&quot;</span>)+1);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            dstV.push_back(<a class="code" href="classparticle_type.html">particleType</a>());</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            lastPos=dstV.size()-1;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            dstV[lastPos].setParticleName(dataStr);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span>                        std::clog&lt;&lt;<span class="stringliteral">&quot;particleType &quot;</span>&lt;&lt;dataStr&lt;&lt;<span class="stringliteral">&quot;\n{\n&quot;</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span>            std::getline(<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>,dataStr,<span class="charliteral">&#39;}&#39;</span>);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            iss&lt;&lt;dataStr;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">while</span>(iss.good())</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                std::getline(iss,dataStr,<span class="charliteral">&#39;=&#39;</span>);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                dataStr.erase(0,dataStr.find_first_not_of(<span class="stringliteral">&quot; \f\n\r\t\v&quot;</span>));</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                dataStr.erase(dataStr.find_last_not_of(<span class="stringliteral">&quot; \f\n\r\t\v&quot;</span>)+1);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleRadius&quot;</span>)==0)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    dstV[lastPos].particleRadius=(float)atof(dataStr.c_str());</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleRadius=&quot;</span>&lt;&lt;(float)atof(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span>                }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleMass&quot;</span>)==0)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    dstV[lastPos].particleMass=(float)atof(dataStr.c_str());</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleMass=&quot;</span>&lt;&lt;(float)atof(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor"></span>                }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleNoOfType&quot;</span>)==0)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    dstV[lastPos].particleNoOfType=(<span class="keywordtype">unsigned</span> int)atoi(dataStr.c_str());</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleNoOfType=&quot;</span>&lt;&lt;(<span class="keywordtype">unsigned</span> int)atoi(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor"></span>                }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            iss.clear();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor"></span>                        std::clog&lt;&lt;<span class="stringliteral">&quot;}\n&quot;</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor"></span>        }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>.close();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="ttc" id="classparticle_types_loader_html_a8f7f010c7bc9706a829dc1c63820fd5c"><div class="ttname"><a href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">particleTypesLoader::fileName</a></div><div class="ttdeci">std::string fileName</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00020">particleTypesLoader.h:20</a></div></div>
-<div class="ttc" id="classparticle_type_html"><div class="ttname"><a href="classparticle_type.html">particleType</a></div><div class="ttdoc">Klasa przechowująca informacje o rodzajach cząstek. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00016">particleType.h:16</a></div></div>
-<div class="ttc" id="classparticle_types_loader_html_a3e80f25ebe9bb2740ef5d2dd28605145"><div class="ttname"><a href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">particleTypesLoader::configFile</a></div><div class="ttdeci">std::fstream configFile</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00019">particleTypesLoader.h:19</a></div></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">bool</span> pMassSet=<span class="keyword">false</span>,pRadiusSet=<span class="keyword">false</span>,pDensitySet=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particlesNumber</a>=0;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::string dataStr;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> lastPos=0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::stringstream iss;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>.open(<a class="code" href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">fileName</a>.c_str());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>.is_open())</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                std::cerr&lt;&lt;<span class="stringliteral">&quot;can&#39;t open the config file\n&quot;</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    dstV.clear();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">while</span>(<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>.good())</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        std::getline(<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>,dataStr,<span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        dataStr.erase(0,dataStr.find_first_not_of(<span class="stringliteral">&quot; \f\n\r\t\v&quot;</span>));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleType&quot;</span>)==0)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            std::getline(<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>,dataStr,<span class="charliteral">&#39;{&#39;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            dataStr.erase(dataStr.find_last_not_of(<span class="stringliteral">&quot; \f\n\r\t\v&quot;</span>)+1);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            dstV.push_back(*(<span class="keyword">new</span> <a class="code" href="classparticle_type.html">particleType</a>()));</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            lastPos=dstV.size()-1;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            dstV[lastPos].setParticleName(dataStr);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span>                        std::clog&lt;&lt;<span class="stringliteral">&quot;particleType &quot;</span>&lt;&lt;dataStr&lt;&lt;<span class="stringliteral">&quot;\n{\n&quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span>            std::getline(<a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>,dataStr,<span class="charliteral">&#39;}&#39;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            iss&lt;&lt;dataStr;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            pMassSet=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            pRadiusSet=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            pDensitySet=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">while</span>(iss.good())</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                std::getline(iss,dataStr,<span class="charliteral">&#39;=&#39;</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                dataStr.erase(0,dataStr.find_first_not_of(<span class="stringliteral">&quot; \f\n\r\t\v&quot;</span>));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                dataStr.erase(dataStr.find_last_not_of(<span class="stringliteral">&quot; \f\n\r\t\v&quot;</span>)+1);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleRadius&quot;</span>)==0)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    dstV[lastPos].particleRadius=(float)atof(dataStr.c_str());</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    pRadiusSet=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleRadius=&quot;</span>&lt;&lt;(float)atof(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor"></span>                }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleMass&quot;</span>)==0)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    dstV[lastPos].particleMass=(float)atof(dataStr.c_str());</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    pMassSet=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleMass=&quot;</span>&lt;&lt;(float)atof(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor"></span>                }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleNoOfType&quot;</span>)==0)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    dstV[lastPos].particleNoOfType=(<span class="keywordtype">unsigned</span> int)atoi(dataStr.c_str());</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    <a class="code" href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particlesNumber</a>+=dstV[lastPos].particleNoOfType;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleNoOfType=&quot;</span>&lt;&lt;(<span class="keywordtype">unsigned</span> int)atoi(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span>                }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleDensity&quot;</span>)==0)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    dstV[lastPos].particleDensity=(float)atof(dataStr.c_str());</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    pDensitySet=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleDensity=&quot;</span>&lt;&lt;(float)atof(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span>                }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleCharge&quot;</span>)==0)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    dstV[lastPos].particleCharge=(float)atof(dataStr.c_str());</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleCharge=&quot;</span>&lt;&lt;(float)atof(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor"></span>                }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleColorR&quot;</span>)==0)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    dstV[lastPos].particleColorR=(float)atof(dataStr.c_str());</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleColorR=&quot;</span>&lt;&lt;(float)atof(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span>                }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleColorG&quot;</span>)==0)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                    dstV[lastPos].particleColorG=(float)atof(dataStr.c_str());</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleColorG=&quot;</span>&lt;&lt;(float)atof(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor"></span>                }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span>(dataStr.compare(<span class="stringliteral">&quot;particleColorB&quot;</span>)==0)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                    std::getline(iss,dataStr,<span class="charliteral">&#39;;&#39;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                    dstV[lastPos].particleColorB=(float)atof(dataStr.c_str());</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span>                                        std::clog&lt;&lt;<span class="stringliteral">&quot;\tparticleColorB=&quot;</span>&lt;&lt;(float)atof(dataStr.c_str())&lt;&lt;<span class="stringliteral">&quot;;\n&quot;</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor"></span>                }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            dstV[lastPos].calcParams(pMassSet,pRadiusSet,pDensitySet);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            iss.clear();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor"></span>                        std::clog&lt;&lt;<span class="stringliteral">&quot;}\n&quot;</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor"></span>        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">configFile</a>.close();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#ifdef _DEBUG</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor"></span>        std::clog&lt;&lt;<span class="stringliteral">&quot;dstV.size() &quot;</span>&lt;&lt;dstV.size()&lt;&lt;<span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="ttc" id="classparticle_types_loader_html_a8f7f010c7bc9706a829dc1c63820fd5c"><div class="ttname"><a href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">particleTypesLoader::fileName</a></div><div class="ttdeci">std::string fileName</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00022">particleTypesLoader.h:22</a></div></div>
+<div class="ttc" id="classparticle_types_loader_html_acfe4faab7f4f54d611a04697c9347424"><div class="ttname"><a href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particleTypesLoader::particlesNumber</a></div><div class="ttdeci">unsigned int particlesNumber</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00019">particleTypesLoader.h:19</a></div></div>
+<div class="ttc" id="classparticle_type_html"><div class="ttname"><a href="classparticle_type.html">particleType</a></div><div class="ttdoc">Klasa przechowująca informacje o rodzajach cząstek. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00017">particleType.h:17</a></div></div>
+<div class="ttc" id="classparticle_types_loader_html_a3e80f25ebe9bb2740ef5d2dd28605145"><div class="ttname"><a href="classparticle_types_loader.html#a3e80f25ebe9bb2740ef5d2dd28605145">particleTypesLoader::configFile</a></div><div class="ttdeci">std::fstream configFile</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00021">particleTypesLoader.h:21</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywołań dla tej funkcji:</div>
 <div class="dyncontent">
 <div class="center"><img src="classparticle_types_loader_a06c57d5168b0050299832b6cd617aefa_cgraph.png" border="0" usemap="#classparticle_types_loader_a06c57d5168b0050299832b6cd617aefa_cgraph" alt=""/></div>
 <map name="classparticle_types_loader_a06c57d5168b0050299832b6cd617aefa_cgraph" id="classparticle_types_loader_a06c57d5168b0050299832b6cd617aefa_cgraph">
-<area shape="rect" id="node2" href="classparticle_type.html#a4779ff7485249c8056089daa71c57a9a" title="particleType::particleType" alt="" coords="205,5,375,32"/><area shape="rect" id="node3" href="classparticle_type.html#a882d5bcf94f8f806bed40120f89715b8" title="Ustawienie nazwy typu cząstki. " alt="" coords="192,56,388,83"/></map>
+<area shape="rect" id="node2" href="classparticle_type.html#a0d6dbf7fa209b609f7e7007c0c2fb115" title="Ta metoda ustala czy zostały ustawione parametry potrzebne do symulacji. Jeśli brakuje i jest wstanie..." alt="" coords="205,5,375,32"/><area shape="rect" id="node3" href="classparticle_type.html#a4779ff7485249c8056089daa71c57a9a" title="particleType::particleType" alt="" coords="205,56,375,83"/><area shape="rect" id="node4" href="classparticle_type.html#a882d5bcf94f8f806bed40120f89715b8" title="Ustawienie nazwy typu cząstki. " alt="" coords="192,107,388,133"/></map>
 </div>
 </p>
 
@@ -351,7 +454,7 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_types_loader_8h_source.html#l00019">19</a> pliku <a class="el" href="particle_types_loader_8h_source.html">particleTypesLoader.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_types_loader_8h_source.html#l00021">21</a> pliku <a class="el" href="particle_types_loader_8h_source.html">particleTypesLoader.h</a>.</p>
 
 <p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">loadTypes()</a>.</p>
 
@@ -367,9 +470,33 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_types_loader_8h_source.html#l00020">20</a> pliku <a class="el" href="particle_types_loader_8h_source.html">particleTypesLoader.h</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_types_loader_8h_source.html#l00022">22</a> pliku <a class="el" href="particle_types_loader_8h_source.html">particleTypesLoader.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">loadTypes()</a> i <a class="el" href="particle_types_loader_8h_source.html#l00022">particleTypesLoader()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00021">loadTypes()</a> i <a class="el" href="particle_types_loader_8h_source.html#l00024">particleTypesLoader()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acfe4faab7f4f54d611a04697c9347424"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int particleTypesLoader::particlesNumber</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="particle_types_loader_8h_source.html#l00019">19</a> pliku <a class="el" href="particle_types_loader_8h_source.html">particleTypesLoader.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_types_loader_8cpp_source.html#l00146">getParticlesNumber()</a>, <a class="el" href="particle_types_loader_8cpp_source.html#l00021">loadTypes()</a> i <a class="el" href="particle_types_loader_8h_source.html#l00023">particleTypesLoader()</a>.</p>
 
 </div>
 </div>
@@ -383,7 +510,7 @@ Oto graf wywoływań tej funkcji:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classparticle_types_loader.html">particleTypesLoader</a></li>
-    <li class="footer">Wygenerowano Wt, 28 lip 2015 19:25:34 dla particles programem
+    <li class="footer">Wygenerowano Śr, 29 lip 2015 14:35:54 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

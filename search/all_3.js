@@ -4,6 +4,7 @@ var searchData=
   ['calcgridpos',['calcGridPos',['../particles__kernel__impl_8cuh.html#a63d62750e6cbb8781c5ff252fc13c1fd',1,'particles_kernel_impl.cuh']]],
   ['calchash',['calcHash',['../particle_system_8cuh.html#ae0a4037d25e768622443077546399cf2',1,'calcHash(uint *gridParticleHash, uint *gridParticleIndex, float *pos, int numParticles):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#ae0a4037d25e768622443077546399cf2',1,'calcHash(uint *gridParticleHash, uint *gridParticleIndex, float *pos, int numParticles):&#160;particleSystem_cuda.cu']]],
   ['calchashd',['calcHashD',['../particles__kernel__impl_8cuh.html#a4c688195fb1c2963cbdcaf62c737b9d7',1,'particles_kernel_impl.cuh']]],
+  ['calcparams',['calcParams',['../classparticle_type.html#a0d6dbf7fa209b609f7e7007c0c2fb115',1,'particleType']]],
   ['camera_5frot',['camera_rot',['../particles_8cpp.html#a9fcb578cacbd3a3b1ab593fc123cffb5',1,'particles.cpp']]],
   ['camera_5frot_5flag',['camera_rot_lag',['../particles_8cpp.html#a2993bf9f16707b5c3ff46e0b751f0373',1,'particles.cpp']]],
   ['camera_5ftrans',['camera_trans',['../particles_8cpp.html#affab132fdfca08b149d2f866fd486ed4',1,'particles.cpp']]],

@@ -240,13 +240,26 @@ Zadbać o ustalenie na początku symulacji ile będzie typów cząstek i jakie o
 
 </pre> <h2><a class="anchor" id="rezerwa"></a>
 Opis formatu pliku konfiguracji typów cząstek</h2>
-<p>Niestety trzeba go napisać. Domyślny plik "particleType.cfg". Więcej można znaleźć w "particleTypesLoader.cpp" </p>
+<p>Niestety trzeba go napisać. Domyślny plik "particleType.cfg". </p>
+<pre class="fragment">particleType czastka1
+{
+	particleRadius=0.225;
+	particleMass=0.001;
+	particleNoOfType=256;
+}
+particleType czastka2
+{
+	particleRadius=0.5;
+	particleMass=0.1;
+	particleNoOfType=256;
+}
+</pre><p> Więcej można znaleźć w "particleTypesLoader.cpp" </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Wygenerowano Wt, 28 lip 2015 19:25:34 dla particles programem
+    <li class="footer">Wygenerowano Śr, 29 lip 2015 14:35:55 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
