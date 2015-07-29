@@ -979,7 +979,7 @@ main(int argc, char **argv)
 #ifdef _DEBUG
     std::cout<<"Debug Build!\n";
 #endif // _DEBUG
-	std::cout<<"Uwaga różne typy cząstek!\nKonfiguracja w particleType.cfg\nWyświetlany rozmiar cząstek na razie nie odpowiada wartościom symulacji!\n";
+	std::cout<<"Uwaga różne typy cząstek!\nKonfiguracja w particleType.cfg\n";
 	std::string plikKonfiguracyjny("particleType.cfg");
     particleTypesLoader pTLoader(plikKonfiguracyjny);
     pTLoader.loadTypes(typyCzastek);
