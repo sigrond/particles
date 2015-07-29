@@ -9,9 +9,17 @@
  *
  */
 
+ /** \file render_particles.h
+  * \brief Plik nagłówkowy dla klasy ParticleRenderer
+  *
+  */
+
+
 #ifndef __RENDER_PARTICLES__
 #define __RENDER_PARTICLES__
 
+/** \brief Klasa odpowiedzialna za renderowanie GL
+ */
 class ParticleRenderer
 {
     public:

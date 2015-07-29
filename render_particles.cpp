@@ -9,6 +9,12 @@
  *
  */
 
+ /** \file render_particles.cpp
+  * \brief Zawiera implementacje funkcji związanych z wyświetlaniem cząstek w GL.
+  * Generalnie metody klasy ParticleRenderer.
+  */
+
+
 #include <GL/glew.h>
 
 #include <math.h>
@@ -97,6 +103,16 @@ void ParticleRenderer::_drawPoints()
     }
 }
 
+/** \brief Funkcja odpowiedzialna za rysowanie cząstek.
+ * Została utworzona na podstawie oryginalnej _drawPoints().
+ * Rysuje tylko zadany fragment bufora współżędnych.
+ * Dzieki tej funkcji można rysować grupy cząstek o różnych rozmiarach i kolorach.
+ * \author Tomasz Jakubczyk
+ * \param pFrom int Numer pierwszej cząstki z zakresu do odrysowania.
+ * \param pTo int Numer pierwszej cząstki poza zakresem do odrysowania.
+ * \return void
+ *
+ */
 void ParticleRenderer::_drawPoints(int pFrom, int pTo)
 {
     if (!m_vbo)/**< zarejestrowanie miejsc w pamięci gdzie są współżędne punktów */
@@ -119,14 +135,14 @@ void ParticleRenderer::_drawPoints(int pFrom, int pTo)
         glVertexPointer(4, GL_FLOAT, 0, 0);
         glEnableClientState(GL_VERTEX_ARRAY);
 
-        if (m_colorVBO && multiColor)
+        if (m_colorVBO && multiColor)/**< nie używamy bufora kolorów jeśli wszystkie cząstki z grupy mają być w jednym kolorze. */
         {
             glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_colorVBO);
             glColorPointer(4, GL_FLOAT, 0, 0);
             glEnableClientState(GL_COLOR_ARRAY);
         }
 
-        glDrawArrays(GL_POINTS, pFrom, (pTo-pFrom));
+        glDrawArrays(GL_POINTS, pFrom, (pTo-pFrom));/**< rysowanie fragmentu bufora */
 
         glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -134,6 +150,12 @@ void ParticleRenderer::_drawPoints(int pFrom, int pTo)
     }
 }
 
+/** \brief Funkcja ustawiająca sposób rysowania i parametry oraz
+ * wywołująca funkcję odrysowującą _drawPoints
+ * \param DisplayMode mode  = PARTICLE_POINTS
+ * \return void
+ *
+ */
 void ParticleRenderer::display(DisplayMode mode /* = PARTICLE_POINTS */)
 {
 /*#ifdef _DEBUG
@@ -159,19 +181,18 @@ void ParticleRenderer::display(DisplayMode mode /* = PARTICLE_POINTS */)
             glEnable(GL_DEPTH_TEST);
 
 			glUseProgram(m_program);
-            for(int i=0;i<typyCzastek.size();i++)
+            for(int i=0;i<typyCzastek.size();i++)/**< rysujemy cząstki grupami. Wszystkie cząstki z jednego typu za raz ze wspólnymi cechami (promień i kolor) */
             {
-				
-                glUniform1f(glGetUniformLocation(m_program, "pointScale"), zoom*m_window_h / tanf(m_fov*0.5f*(float)M_PI/180.0f));
-                glUniform1f(glGetUniformLocation(m_program, "pointRadius"), typyCzastek[i].particleRadius);
-				
-                /**< \todo kule mogą mieć różne promienie */
-                glColor3f(typyCzastek[i].particleColorR, typyCzastek[i].particleColorG, typyCzastek[i].particleColorB);
-                
+
+                glUniform1f(glGetUniformLocation(m_program, "pointScale"), zoom*m_window_h / tanf(m_fov*0.5f*(float)M_PI/180.0f));/**< skalowanie rozmiaru cząstki do ekranu */
+                glUniform1f(glGetUniformLocation(m_program, "pointRadius"), typyCzastek[i].particleRadius);/**< nadanie grupie cząstek jednego promienia */
+
+                glColor3f(typyCzastek[i].particleColorR, typyCzastek[i].particleColorG, typyCzastek[i].particleColorB);/**< ustalenie jednego koloru dla grupy cząstek */
+
 				nextType+=typyCzastek[i].particleNoOfType;
-                _drawPoints(typeBegin, nextType);
+                _drawPoints(typeBegin, nextType);/**< wywołanie rysowania grupy cząstek */
                 typeBegin=nextType;
-				
+
 			}
 			glUseProgram(0);
 

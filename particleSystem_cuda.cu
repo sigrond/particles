@@ -127,6 +127,12 @@ extern "C"
         }
     }
 
+    /** \brief Kopiowanie parametrów symulacji z pamiêci RAM hosta do pamiêci device (karta graficzna)
+     *
+     * \param hostParams SimParams* Struktura z parametrami symulacji.
+     * \return void
+     *
+     */
     void setParameters(SimParams *hostParams)
     {
         // copy parameters to constant memory

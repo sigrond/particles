@@ -20,6 +20,8 @@
  */
 void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 {
+    bool pMassSet=false,pRadiusSet=false,pDensitySet=false;
+    particlesNumber=0;
     std::string dataStr;
     unsigned int lastPos=0;
     std::stringstream iss;
@@ -46,6 +48,9 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 #endif
             std::getline(configFile,dataStr,'}');
             iss<<dataStr;
+            pMassSet=false;
+            pRadiusSet=false;
+            pDensitySet=false;
             while(iss.good())/**< wypełnianie parametrów */
             {
                 std::getline(iss,dataStr,'=');/**< wysypie się jeśli nie będzie '=' */
@@ -55,6 +60,7 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
                 {
                     std::getline(iss,dataStr,';');
                     dstV[lastPos].particleRadius=(float)atof(dataStr.c_str());
+                    pRadiusSet=true;
 #ifdef _DEBUG
 					std::clog<<"\tparticleRadius="<<(float)atof(dataStr.c_str())<<";\n";
 #endif
@@ -63,6 +69,7 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
                 {
                     std::getline(iss,dataStr,';');
                     dstV[lastPos].particleMass=(float)atof(dataStr.c_str());
+                    pMassSet=true;
 #ifdef _DEBUG
 					std::clog<<"\tparticleMass="<<(float)atof(dataStr.c_str())<<";\n";
 #endif
@@ -71,11 +78,54 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
                 {
                     std::getline(iss,dataStr,';');
                     dstV[lastPos].particleNoOfType=(unsigned int)atoi(dataStr.c_str());
+                    particlesNumber+=dstV[lastPos].particleNoOfType;
 #ifdef _DEBUG
 					std::clog<<"\tparticleNoOfType="<<(unsigned int)atoi(dataStr.c_str())<<";\n";
 #endif
                 }
+                else if(dataStr.compare("particleDensity")==0)
+                {
+                    std::getline(iss,dataStr,';');
+                    dstV[lastPos].particleDensity=(float)atof(dataStr.c_str());
+                    pDensitySet=true;
+#ifdef _DEBUG
+					std::clog<<"\tparticleDensity="<<(float)atof(dataStr.c_str())<<";\n";
+#endif
+                }
+                else if(dataStr.compare("particleCharge")==0)
+                {
+                    std::getline(iss,dataStr,';');
+                    dstV[lastPos].particleCharge=(float)atof(dataStr.c_str());
+#ifdef _DEBUG
+					std::clog<<"\tparticleCharge="<<(float)atof(dataStr.c_str())<<";\n";
+#endif
+                }
+                else if(dataStr.compare("particleColorR")==0)
+                {
+                    std::getline(iss,dataStr,';');
+                    dstV[lastPos].particleColorR=(float)atof(dataStr.c_str());
+#ifdef _DEBUG
+					std::clog<<"\tparticleColorR="<<(float)atof(dataStr.c_str())<<";\n";
+#endif
+                }
+                else if(dataStr.compare("particleColorG")==0)
+                {
+                    std::getline(iss,dataStr,';');
+                    dstV[lastPos].particleColorG=(float)atof(dataStr.c_str());
+#ifdef _DEBUG
+					std::clog<<"\tparticleColorG="<<(float)atof(dataStr.c_str())<<";\n";
+#endif
+                }
+                else if(dataStr.compare("particleColorB")==0)
+                {
+                    std::getline(iss,dataStr,';');
+                    dstV[lastPos].particleColorB=(float)atof(dataStr.c_str());
+#ifdef _DEBUG
+					std::clog<<"\tparticleColorB="<<(float)atof(dataStr.c_str())<<";\n";
+#endif
+                }
             }
+            dstV[lastPos].calcParams(pMassSet,pRadiusSet,pDensitySet);
             iss.clear();
 #ifdef _DEBUG
 			std::clog<<"}\n";
@@ -86,6 +136,16 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 #ifdef _DEBUG
 	std::clog<<"dstV.size() "<<dstV.size()<<"\n";
 #endif
+}
+
+/** \brief Zwraca sumę cząstek ze wszystkich podanych typów
+ *
+ * \return unsigned int
+ *
+ */
+unsigned int particleTypesLoader::getParticlesNumber()
+{
+    return particlesNumber;
 }
 
 

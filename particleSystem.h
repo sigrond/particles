@@ -24,6 +24,8 @@
 #include "vector_functions.h"
 
 // Particle system class
+/** \brief Klasa odpowiadająca za parametry i ustawienie symulacji.
+ */
 class ParticleSystem
 {
     public:

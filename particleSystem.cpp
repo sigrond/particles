@@ -503,11 +503,10 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
 
 /** \brief rozłożenie cząstek
  *
- * \param config ParticleConfig
- *
+ * \param config ParticleConfig Typ wyliczeniowy. Wybór sposobu rozłożenia cząstek.
+ * \return void
  */
-void
-ParticleSystem::reset(ParticleConfig config)
+void ParticleSystem::reset(ParticleConfig config)
 {
 /** \todo należy dodać właściwe losowanie typu cząstki i uwzględnić przy sprawdzaniu położenia
  * rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały  */
@@ -521,23 +520,32 @@ ParticleSystem::reset(ParticleConfig config)
         nextType=typyCzastek[0].particleNoOfType;
         typyCzastek[0].ofTypeParticleTrack.clear();
     }
+    else
+    {
+        throw typyCzastek;
+    }
 
+    int p = 0, v = 0;
+    float tmpbrad=m_params.bigradius-m_params.particleRadius[tmpType];
+    float tmprad=tmpbrad/2;
+    //printf("%f\n",tmprad);
+    bool bo1=false;
+    float point[3];
+    int j4;
+    float jitter;
     switch (config)
     {
         default:
         case CONFIG_RANDOM:
             {
-                int p = 0, v = 0;
-				float tmpbrad=m_params.bigradius-m_params.particleRadius[tmpType];
-				float tmprad=tmpbrad/2;
-				//printf("%f\n",tmprad);
-				bool bo1=false;
-/**< \todo trzeba dać jakiś warunek sprawdzający czy liczby cząstek z pliku konfiguracyjnego zgadzają się z ustawieniami globalnymi */
                 for (uint i=0; i < m_numParticles; /*i++*/)
                 {
-                    float point[3];
                     if(typeCounter>=nextType)
                     {
+                        if(typyCzastek.size()<=(tmpType+1))
+                        {
+                            break;
+                        }
                         nextType+=typyCzastek[++tmpType].particleNoOfType;
                         /**< \todo trzeba jeszcze uwzględnić rozmiar cząstki którą podejżewamy o przecinanie się z nową */
                         tmpbrad=m_params.bigradius-m_params.particleRadius[tmpType];
@@ -564,7 +572,7 @@ ParticleSystem::reset(ParticleConfig config)
                         bo1=true;
                         for(uint j=0;j<m_numParticles && j<i;j++)
                         {
-							int j4=4*j;
+							j4=4*j;
                             if( ( (m_hPos[j4]-point[0]*2)*(m_hPos[j4]-point[0]*2)+(m_hPos[j4+1]-point[1]*2)*(m_hPos[j4+1]-point[1]*2)+(m_hPos[j4+2]-point[2]*2)*(m_hPos[j4+2]-point[2]*2) )<4.0f*m_params.particleRadius[tmpType]*m_params.particleRadius[tmpType])
                             {
 								//printf("%d %d %f %f %f\n",i ,j ,point[0],point[1],point[2]);
@@ -604,7 +612,7 @@ ParticleSystem::reset(ParticleConfig config)
 
         case CONFIG_GRID:
             {
-                float jitter = m_params.particleRadius[tmpType]*0.01f;
+                jitter = m_params.particleRadius[tmpType]*0.01f;
                 uint s = (int) ceilf(powf((float) m_numParticles, 1.0f / 3.0f));
                 uint gridSize[3];
                 gridSize[0] = gridSize[1] = gridSize[2] = s;

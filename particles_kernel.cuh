@@ -9,7 +9,7 @@
  *
  */
   /** \file particles_kernel.cuh
-  * \brief Definicja struktury przechowuj¹cej parametry symulacji.
+  * \brief Definicja struktury przechowujÄ…cej parametry symulacji.
   *
   */
 
@@ -32,6 +32,8 @@
 typedef unsigned int uint;
 
 // simulation parameters
+/** \brief Struktura z parametrami symulacji przekazywanymi z host do device.
+ */
 struct SimParams
 {
     float3 colliderPos;

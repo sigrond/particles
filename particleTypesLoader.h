@@ -15,10 +15,13 @@
  */
 class particleTypesLoader
 {
+private:
+    unsigned int particlesNumber;
 public:
     std::fstream configFile;
     std::string fileName;
-    particleTypesLoader(){};
+    particleTypesLoader():particlesNumber(0){};
     particleTypesLoader(std::string name) : fileName(name){};
     void loadTypes(std::vector<particleType> &dstV);
+    unsigned int getParticlesNumber();
 };

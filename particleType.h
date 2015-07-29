@@ -63,6 +63,7 @@ public:
         typeCounter--;
     }
     void setParticleName(std::string name);
+    void calcParams(bool,bool,bool);
 };
 
 

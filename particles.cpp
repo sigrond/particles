@@ -55,6 +55,7 @@
  * \subsection rezerwa Opis formatu pliku konfiguracji typów cząstek
  * Niestety trzeba go napisać.
  * Domyślny plik "particleType.cfg".
+ * \verbinclude particleType.cfg
  * Więcej można znaleźć w "particleTypesLoader.cpp"
  */
 
@@ -303,7 +304,7 @@ void parowanieKropliWCzasie()
 	licznik++;
 	time_past+=timestep;
 	if(bigRadius>psystem->getParticleRadius()*pow(psystem->getNumParticles(),0.3f))
-	{
+	{/**< \todo trzeba ustalić nowy poprawiony wzór na koniec parowania */
 		bigRadius=bigRadius0-A*sqrt(time_past);
 		psystem->setBigRadius(bigRadius);
 	}
@@ -438,7 +439,7 @@ void display()
         psystem->setCollideShear(collideShear);
         psystem->setCollideAttraction(collideAttraction);
 		psystem->setBoundaryDamping(-boundaryDamping);
-		psystem->setParticleMass(particleMass);/**< \todo teraz trzeba ustawiać wiele mas */
+		//psystem->setParticleMass(particleMass);
 		psystem->setEpsi(epsi);/**< \todo epsilonów będzie więcej */
 		psystem->setBrown(brown);
 
@@ -990,7 +991,7 @@ main(int argc, char **argv)
 
     printf("%s Starting...\n\n", sSDKsample);
 
-    numParticles = NUM_PARTICLES;
+    numParticles = pTLoader.getParticlesNumber();//NUM_PARTICLES;
     uint gridDim = GRID_SIZE;
     numIterations = 0;
 
