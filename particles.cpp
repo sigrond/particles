@@ -489,20 +489,7 @@ void display()
 
 
 	//glScalef(zoom, zoom, zoom);
-
-    // collider
-    //glPushMatrix();
-    glColor3f(0.1, 0.1, 0.1);
-	glBegin(GL_QUADS);
-		glVertex4f(-1, 0, -1, 0);
-		glVertex4f(-1, 0, 1, 0);
-		glVertex4f(1, 0, 1, 0);
-		glVertex4f(1, 0, -1, 0);
-		glVertex4f(-1, -0.1, -1, 0);
-		glVertex4f(-1, -0.1, 1, 0);
-		glVertex4f(1, -0.1, 1, 0);
-		glVertex4f(1, -0.1, -1, 0);
-	glEnd();
+	
 
     //float3 p = psystem->getColliderPos();
     //glTranslatef(p.x, p.y, p.z);
@@ -526,6 +513,21 @@ void display()
     {
         renderer->display(displayMode);
     }
+
+	glEnable (GL_BLEND);
+	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glPushMatrix();
+		//glColor3f(0.0, 0.1, 0.3);
+		glColor4f(0.2, 0.8, 1.0,0.5);
+		glBegin(GL_POLYGON);
+			glVertex3f( -20.0f*bigRadius0, -2.0f*bigRadius0, -20.0f*bigRadius0);
+			glVertex3f( -20.0f*bigRadius0,  -2.0f*bigRadius0, 20.0f*bigRadius0);
+			glVertex3f(  20.0f*bigRadius0,  -2.0f*bigRadius0, 20.0f*bigRadius0);
+			glVertex3f(  20.0f*bigRadius0, -2.0f*bigRadius0, -20.0f*bigRadius0);
+		glEnd();
+		//glTranslatef(0,-2.0f*bigRadius0,0);
+	glPopMatrix();
+	glDisable(GL_BLEND);
 
     if (displaySliders)
     {
