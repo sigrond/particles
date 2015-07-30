@@ -100,7 +100,23 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">Cząstki </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="Opis_Ogólny"></a>
+<div class="textblock"><h1><a class="anchor" id="swtep"></a>
+Wstęp</h1>
+<p>Program symuluje kroplę cieczy z nanocząstkami w środku (zwiesina) w pułapce. W zawiesini może znajdować się kilka różnych rodzajów nanocząstek. Symulowane są odziaływania między nanocząstkami między sobą oraz z napięciem powierzchniowym kropli, która paruje zwmniejszając swój promień. Możliwe jest też opuszczenie kryształu, który pozostał po wyparowaniu cieczy na płaską powierzchnię na dnie pułapki. Obecnie zakłada się, że nanocząstki są sztywnymi kulami i wylicznay jest potencjał Lennarda-Jonesa. </p>
+<h2><a class="anchor" id="parametry"></a>
+Uwzględniane Parametry Symulacji</h2>
+<ul>
+<li>Krok czasu obliczeń.</li>
+<li>Lepkość cieczy.</li>
+<li>Efektywna grawitacja.</li>
+<li>Napięcie powierzchniowe.</li>
+<li>Współczynnik proporcjonalny potencjału Lennarda-Jonesa.</li>
+<li>Współczynnik ruchów Browna.</li>
+<li>Odpychanie Coulombowskie.</li>
+<li>Ilości różnych rodzajów cząstek wraz z ich promieniami i masami (lub gęstościami).</li>
+<li>Szybkość parowania kropli. </li>
+</ul>
+<h1><a class="anchor" id="Opis_Ogólny"></a>
 Opis Ogólny</h1>
 <ul>
 <li>Najpierw wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości. Prędkość to poprzednia prędkość, grawitacja i lepkość.</li>
@@ -241,7 +257,13 @@ Zadbać o ustalenie na początku symulacji ile będzie typów cząstek i jakie o
 </pre> <h2><a class="anchor" id="rezerwa"></a>
 Opis formatu pliku konfiguracji typów cząstek</h2>
 <p>Niestety trzeba go napisać. Domyślny plik "particleType.cfg". </p>
-<pre class="fragment">particleType czastka1
+<pre class="fragment">particleType czastka3
+{
+	particleRadius=0.1;
+	particleMass=0.0001;
+	particleNoOfType=512;
+}
+particleType czastka1
 {
 	particleRadius=0.225;
 	particleMass=0.001;
@@ -252,14 +274,15 @@ particleType czastka2
 	particleRadius=0.5;
 	particleMass=0.1;
 	particleNoOfType=256;
-}
-</pre><p> Więcej można znaleźć w "particleTypesLoader.cpp" </p>
+	particleColorR=0.0;
+	particleColorB=1.0;
+}</pre><p> Więcej można znaleźć w "particleTypesLoader.cpp" </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Wygenerowano Śr, 29 lip 2015 14:35:55 dla particles programem
+    <li class="footer">Wygenerowano Cz, 30 lip 2015 17:28:31 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

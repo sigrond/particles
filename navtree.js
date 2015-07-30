@@ -2,6 +2,9 @@ var NAVTREE =
 [
   [ "particles", "index.html", [
     [ "Cząstki", "index.html", [
+      [ "Wstęp", "index.html#swtep", [
+        [ "Uwzględniane Parametry Symulacji", "index.html#parametry", null ]
+      ] ],
       [ "Opis Ogólny", "index.html#Opis_Ogólny", null ],
       [ "Linki do fizyki", "index.html#linki_do_fizyki", null ],
       [ "Repozytorium", "index.html#Repozytorium", [
@@ -43,7 +46,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"particles_8cpp.html#a46d030c711d3073320681aafbb4c490b"
+"particles_8cpp.html#a45a7d7c86c97ca6a2d4d32ce2d263f67"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
