@@ -492,14 +492,18 @@ void display()
 
     // collider
     //glPushMatrix();
-
-	/*glBegin(GL_QUADS);
+    glColor3f(0.1, 0.1, 0.1);
+	glBegin(GL_QUADS);
 		glVertex4f(-1, 0, -1, 0);
 		glVertex4f(-1, 0, 1, 0);
 		glVertex4f(1, 0, 1, 0);
 		glVertex4f(1, 0, -1, 0);
+		glVertex4f(-1, -0.1, -1, 0);
+		glVertex4f(-1, -0.1, 1, 0);
+		glVertex4f(1, -0.1, 1, 0);
+		glVertex4f(1, -0.1, -1, 0);
 	glEnd();
-	glColor3f(1.0, 0.0, 0.0);*/
+
     //float3 p = psystem->getColliderPos();
     //glTranslatef(p.x, p.y, p.z);
 	//glScalef(zoom, zoom, zoom);
