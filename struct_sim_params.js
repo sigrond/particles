@@ -16,6 +16,8 @@ var struct_sim_params =
     [ "gravity", "struct_sim_params.html#ae7508eba5dd90859215b59d19e001bb9", null ],
     [ "gridSize", "struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949", null ],
     [ "maxParticlesPerCell", "struct_sim_params.html#a557e8042b00135073cd51fabf4594142", null ],
+    [ "normalizedCharge", "struct_sim_params.html#a9d5acaa1355b569453dc80eaeb998809", null ],
+    [ "normalizeEpsilon", "struct_sim_params.html#a2d0037a720c368a5fde3cdc7a24d258b", null ],
     [ "numBodies", "struct_sim_params.html#adb68e9ee2422208807756b367efdf842", null ],
     [ "numCells", "struct_sim_params.html#a9d51112b7e86d46b6f33126a67cc84b4", null ],
     [ "particleMass", "struct_sim_params.html#a0104d1aeb5c6700f12e0edd6d06bcf1d", null ],

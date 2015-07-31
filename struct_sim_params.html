@@ -20,6 +20,12 @@
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="MathJax/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -117,6 +123,8 @@ $(document).ready(function(){initNavTree('struct_sim_params.html','');});
 Diagram współpracy dla SimParams:</div>
 <div class="dyncontent">
 <div class="center"><img src="struct_sim_params__coll__graph.png" border="0" usemap="#_sim_params_coll__map" alt="Collaboration graph"/></div>
+<map name="_sim_params_coll__map" id="_sim_params_coll__map">
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -133,6 +141,10 @@ Atrybuty publiczne</h2></td></tr>
 <tr class="separator:aa53d745b59a75b39c77beb0fc485322e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0104d1aeb5c6700f12e0edd6d06bcf1d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a0104d1aeb5c6700f12e0edd6d06bcf1d">particleMass</a> [<a class="el" href="particles__kernel_8cuh.html#a96dbe53f3972a936dc6b4e19cbe0a035">MAX_TYPE_NUM</a>]</td></tr>
 <tr class="separator:a0104d1aeb5c6700f12e0edd6d06bcf1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d5acaa1355b569453dc80eaeb998809"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a9d5acaa1355b569453dc80eaeb998809">normalizedCharge</a> [<a class="el" href="particles__kernel_8cuh.html#a96dbe53f3972a936dc6b4e19cbe0a035">MAX_TYPE_NUM</a>]</td></tr>
+<tr class="separator:a9d5acaa1355b569453dc80eaeb998809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d0037a720c368a5fde3cdc7a24d258b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a2d0037a720c368a5fde3cdc7a24d258b">normalizeEpsilon</a> [<a class="el" href="particles__kernel_8cuh.html#a3d029a15c9aca153ce413054d33de16c">MAX_EPSI_NUM</a>]</td></tr>
+<tr class="separator:a2d0037a720c368a5fde3cdc7a24d258b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cfb18ff777876da3ad69aae6e023949"><td class="memItemLeft" align="right" valign="top">uint3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a4cfb18ff777876da3ad69aae6e023949">gridSize</a></td></tr>
 <tr class="separator:a4cfb18ff777876da3ad69aae6e023949"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d51112b7e86d46b6f33126a67cc84b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a9d51112b7e86d46b6f33126a67cc84b4">numCells</a></td></tr>
@@ -159,10 +171,10 @@ Atrybuty publiczne</h2></td></tr>
 <tr class="separator:af41979948fdd8f76fe28ce2b43eb24cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5809a1ec819f5a99e350ed28b01834fc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a5809a1ec819f5a99e350ed28b01834fc">bigradius0</a></td></tr>
 <tr class="separator:a5809a1ec819f5a99e350ed28b01834fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01507f06cc018071a0eb741438aaa09b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a01507f06cc018071a0eb741438aaa09b">boundaries</a></td></tr>
-<tr class="separator:a01507f06cc018071a0eb741438aaa09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a760551182a6dff0b67f3048daa2620fb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a760551182a6dff0b67f3048daa2620fb">epsi</a></td></tr>
 <tr class="separator:a760551182a6dff0b67f3048daa2620fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01507f06cc018071a0eb741438aaa09b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a01507f06cc018071a0eb741438aaa09b">boundaries</a></td></tr>
+<tr class="separator:a01507f06cc018071a0eb741438aaa09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88dae34e74c9184adfa9169bad06d0ee"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">brown</a></td></tr>
 <tr class="separator:a88dae34e74c9184adfa9169bad06d0ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc3e5f65a1a0ef7c944007ac99eb8034"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sim_params.html#adc3e5f65a1a0ef7c944007ac99eb8034">particleTypesNum</a></td></tr>
@@ -173,7 +185,7 @@ Atrybuty publiczne</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Struktura z parametrami symulacji przekazywanymi z host do device. </p>
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00037">37</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00038">38</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 </div><h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
 <a class="anchor" id="acf7442ae8a49237861944271cb630d01"></a>
 <div class="memitem">
@@ -184,8 +196,9 @@ Atrybuty publiczne</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>mnożnik sił Coulombowskich </p>
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00060">60</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00065">65</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -199,7 +212,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00063">63</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00068">68</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -213,7 +226,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00064">64</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00069">69</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -227,7 +240,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00065">65</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00071">71</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -241,7 +254,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00061">61</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00066">66</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -255,7 +268,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00067">67</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00072">72</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -269,7 +282,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00070">70</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00075">75</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -283,7 +296,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00052">52</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00057">57</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -297,7 +310,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00039">39</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00040">40</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -311,7 +324,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00040">40</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00041">41</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -325,7 +338,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00058">58</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00063">63</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -338,8 +351,9 @@ Atrybuty publiczne</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>mnożnik epsilonów </p>
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00066">66</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00070">70</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -353,7 +367,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00043">43</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00044">44</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -367,7 +381,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00042">42</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00043">43</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -381,7 +395,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00049">49</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00054">54</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -395,7 +409,35 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00055">55</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00060">60</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d5acaa1355b569453dc80eaeb998809"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SimParams::normalizedCharge[<a class="el" href="particles__kernel_8cuh.html#a96dbe53f3972a936dc6b4e19cbe0a035">MAX_TYPE_NUM</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00050">50</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2d0037a720c368a5fde3cdc7a24d258b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SimParams::normalizeEpsilon[<a class="el" href="particles__kernel_8cuh.html#a3d029a15c9aca153ce413054d33de16c">MAX_EPSI_NUM</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00052">52</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -409,7 +451,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00054">54</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00059">59</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -423,7 +465,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00050">50</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00055">55</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -437,7 +479,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00047">47</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00048">48</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -451,7 +493,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00045">45</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00046">46</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -465,7 +507,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00069">69</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00074">74</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -479,7 +521,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00059">59</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00064">64</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -493,7 +535,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00057">57</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00062">62</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -507,7 +549,7 @@ Atrybuty publiczne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00051">51</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00056">56</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -520,7 +562,7 @@ Atrybuty publiczne</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_sim_params.html">SimParams</a></li>
-    <li class="footer">Wygenerowano Cz, 30 lip 2015 17:28:31 dla particles programem
+    <li class="footer">Wygenerowano Pt, 31 lip 2015 19:17:38 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

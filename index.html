@@ -20,6 +20,12 @@
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="MathJax/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -257,32 +263,47 @@ Zadbać o ustalenie na początku symulacji ile będzie typów cząstek i jakie o
 </pre> <h2><a class="anchor" id="rezerwa"></a>
 Opis formatu pliku konfiguracji typów cząstek</h2>
 <p>Niestety trzeba go napisać. Domyślny plik "particleType.cfg". </p>
-<pre class="fragment">particleType czastka3
+<pre class="fragment">particleType czastka1
 {
 	particleRadius=0.1;
 	particleMass=0.0001;
 	particleNoOfType=512;
+	particleCharge=1.0;
 }
-particleType czastka1
+particleType czastka2
 {
 	particleRadius=0.225;
 	particleMass=0.001;
 	particleNoOfType=256;
+	particleCharge=2.0;
 }
-particleType czastka2
+particleType czastka3
 {
-	particleRadius=0.5;
-	particleMass=0.1;
+	particleRadius=0.3;
+	particleMass=0.002;
 	particleNoOfType=256;
 	particleColorR=0.0;
+	particleColorG=0.0;
 	particleColorB=1.0;
-}</pre><p> Więcej można znaleźć w "particleTypesLoader.cpp" </p>
+	particleCharge=3.0;
+}
+normalizedEpsilon epsilony
+{
+    1.0 , 1.5 , 2.0 ,
+          2.0 , 2.5 ,
+                3.0 ,
+}
+</pre><p> Więcej można znaleźć w "particleTypesLoader.cpp" oraz "particleType.h" </p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a class="el" href="classparticle_types_loader.html#a06c57d5168b0050299832b6cd617aefa" title="Załaduje dane z pliku do wektora. Plik będzie na nowo otwarty i przeczytany, a wektor wyczyszczony i ...">particleTypesLoader::loadTypes</a> <br/>
+ <a class="el" href="particle_types_loader_8cpp.html" title="Definicje metod klasy particleTypesLoader. ">particleTypesLoader.cpp</a> <br/>
+ <a class="el" href="classparticle_type.html#a63236e18a0217d47f16de798617a5b73" title="Vektor zawierający mnożniki epsilona do potencjału Lennarda-Jonesa. Pozycja w wektorze odpowiada prze...">particleType::normalizedEpsilon</a> <br/>
+ <a class="el" href="particle_type_8h.html" title="Zawiera klase opisującą typ cząstki. ">particleType.h</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Wygenerowano Cz, 30 lip 2015 17:28:31 dla particles programem
+    <li class="footer">Wygenerowano Pt, 31 lip 2015 19:17:39 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

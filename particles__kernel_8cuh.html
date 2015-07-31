@@ -20,6 +20,12 @@
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="MathJax/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -143,8 +149,10 @@ Definicje</h2></td></tr>
 <tr class="separator:a0ab211ca35e2616c721fcf2dd4f99c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12269d678a65f18889c2a7e98c756457"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel_8cuh.html#a12269d678a65f18889c2a7e98c756457">FETCH</a>(t, i)&#160;&#160;&#160;t[i]</td></tr>
 <tr class="separator:a12269d678a65f18889c2a7e98c756457"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96dbe53f3972a936dc6b4e19cbe0a035"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel_8cuh.html#a96dbe53f3972a936dc6b4e19cbe0a035">MAX_TYPE_NUM</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memitem:a96dbe53f3972a936dc6b4e19cbe0a035"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel_8cuh.html#a96dbe53f3972a936dc6b4e19cbe0a035">MAX_TYPE_NUM</a>&#160;&#160;&#160;5</td></tr>
 <tr class="separator:a96dbe53f3972a936dc6b4e19cbe0a035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d029a15c9aca153ce413054d33de16c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particles__kernel_8cuh.html#a3d029a15c9aca153ce413054d33de16c">MAX_EPSI_NUM</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:a3d029a15c9aca153ce413054d33de16c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Definicje typów</h2></td></tr>
@@ -184,12 +192,26 @@ Definicje typów</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3d029a15c9aca153ce413054d33de16c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_EPSI_NUM&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00031">31</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a96dbe53f3972a936dc6b4e19cbe0a035"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MAX_TYPE_NUM&#160;&#160;&#160;10</td>
+          <td class="memname">#define MAX_TYPE_NUM&#160;&#160;&#160;5</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -237,7 +259,7 @@ Definicje typów</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00032">32</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel_8cuh_source.html#l00033">33</a> pliku <a class="el" href="particles__kernel_8cuh_source.html">particles_kernel.cuh</a>.</p>
 
 </div>
 </div>
@@ -247,7 +269,7 @@ Definicje typów</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="particles__kernel_8cuh.html">particles_kernel.cuh</a></li>
-    <li class="footer">Wygenerowano Cz, 30 lip 2015 17:28:25 dla particles programem
+    <li class="footer">Wygenerowano Pt, 31 lip 2015 19:17:36 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

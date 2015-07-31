@@ -42,6 +42,7 @@ var searchData=
   ['main',['main',['../particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'particles.cpp']]],
   ['mainmenu',['mainMenu',['../particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6',1,'particles.cpp']]],
   ['mapglbufferobject',['mapGLBufferObject',['../particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642',1,'mapGLBufferObject(struct cudaGraphicsResource **cuda_vbo_resource):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#aa491077afd740a269815eb9ce81c8642',1,'mapGLBufferObject(struct cudaGraphicsResource **cuda_vbo_resource):&#160;particleSystem_cuda.cu']]],
+  ['max_5fepsi_5fnum',['MAX_EPSI_NUM',['../particles__kernel_8cuh.html#a3d029a15c9aca153ce413054d33de16c',1,'particles_kernel.cuh']]],
   ['max_5fepsilon_5ferror',['MAX_EPSILON_ERROR',['../particles_8cpp.html#a9608807ab27261888018dac76a7f4acd',1,'particles.cpp']]],
   ['max_5ftype_5fnum',['MAX_TYPE_NUM',['../particles__kernel_8cuh.html#a96dbe53f3972a936dc6b4e19cbe0a035',1,'particles_kernel.cuh']]],
   ['maxparticlespercell',['maxParticlesPerCell',['../struct_sim_params.html#a557e8042b00135073cd51fabf4594142',1,'SimParams']]],

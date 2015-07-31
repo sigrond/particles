@@ -20,6 +20,12 @@
 <script type="text/javascript">
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="MathJax/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -359,8 +365,8 @@ $(document).ready(function(){initNavTree('render__particles_8cpp_source.html',''
 <div class="ttc" id="class_particle_renderer_html_a1d74720edb5c3a13edcdd176ac0d84c7"><div class="ttname"><a href="class_particle_renderer.html#a1d74720edb5c3a13edcdd176ac0d84c7">ParticleRenderer::m_pos</a></div><div class="ttdeci">float * m_pos</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00071">render_particles.h:71</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_af885fdb5e6da925209dfd960f66b5fd8"><div class="ttname"><a href="class_particle_renderer.html#af885fdb5e6da925209dfd960f66b5fd8">ParticleRenderer::m_numParticles</a></div><div class="ttdeci">int m_numParticles</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00072">render_particles.h:72</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a281be31ad850fead012460fb6675db98"><div class="ttname"><a href="class_particle_renderer.html#a281be31ad850fead012460fb6675db98">ParticleRenderer::~ParticleRenderer</a></div><div class="ttdeci">~ParticleRenderer()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00051">render_particles.cpp:51</a></div></div>
-<div class="ttc" id="particle_type_8cpp_html_ae71449b1cc6e6250b91f539153a7a0d3"><div class="ttname"><a href="particle_type_8cpp.html#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a></div><div class="ttdeci">#define M_PI</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8cpp_source.html#l00023">particleType.cpp:23</a></div></div>
-<div class="ttc" id="render__particles_8cpp_html_ab20dfcdbb20ef76dff29f92805e255cd"><div class="ttname"><a href="render__particles_8cpp.html#ab20dfcdbb20ef76dff29f92805e255cd">typyCzastek</a></div><div class="ttdeci">std::vector&lt; particleType &gt; typyCzastek</div><div class="ttdoc">tablica z typami cząstek </div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00219">particles.cpp:219</a></div></div>
+<div class="ttc" id="particle_type_8cpp_html_ae71449b1cc6e6250b91f539153a7a0d3"><div class="ttname"><a href="particle_type_8cpp.html#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a></div><div class="ttdeci">#define M_PI</div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8cpp_source.html#l00025">particleType.cpp:25</a></div></div>
+<div class="ttc" id="render__particles_8cpp_html_ab20dfcdbb20ef76dff29f92805e255cd"><div class="ttname"><a href="render__particles_8cpp.html#ab20dfcdbb20ef76dff29f92805e255cd">typyCzastek</a></div><div class="ttdeci">std::vector&lt; particleType &gt; typyCzastek</div><div class="ttdoc">tablica z typami cząstek </div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00223">particles.cpp:223</a></div></div>
 <div class="ttc" id="render__particles_8cpp_html_a54f61e4f37db321d451436bf2201b8cb"><div class="ttname"><a href="render__particles_8cpp.html#a54f61e4f37db321d451436bf2201b8cb">multiColor</a></div><div class="ttdeci">bool multiColor</div></div>
 <div class="ttc" id="class_particle_renderer_html_a3a7af352d38734b6bfa425e3b207d60b"><div class="ttname"><a href="class_particle_renderer.html#a3a7af352d38734b6bfa425e3b207d60b">ParticleRenderer::_compileProgram</a></div><div class="ttdeci">GLuint _compileProgram(const char *vsource, const char *fsource)</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00205">render_particles.cpp:205</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a72a381995fa00b02a5ab19202c153835"><div class="ttname"><a href="class_particle_renderer.html#a72a381995fa00b02a5ab19202c153835">ParticleRenderer::_drawPoints</a></div><div class="ttdeci">void _drawPoints(int pFrom, int pTo)</div><div class="ttdoc">Funkcja odpowiedzialna za rysowanie cząstek. Została utworzona na podstawie oryginalnej _drawPoints()...</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00116">render_particles.cpp:116</a></div></div>
@@ -373,14 +379,14 @@ $(document).ready(function(){initNavTree('render__particles_8cpp_source.html',''
 <div class="ttc" id="class_particle_renderer_html_ac75c7f73a0014333305b174b8863a46b"><div class="ttname"><a href="class_particle_renderer.html#ac75c7f73a0014333305b174b8863a46b">ParticleRenderer::_initGL</a></div><div class="ttdeci">void _initGL()</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00239">render_particles.cpp:239</a></div></div>
 <div class="ttc" id="class_particle_renderer_html"><div class="ttname"><a href="class_particle_renderer.html">ParticleRenderer</a></div><div class="ttdoc">Klasa odpowiedzialna za renderowanie GL. </div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8h_source.html#l00023">render_particles.h:23</a></div></div>
 <div class="ttc" id="class_particle_renderer_html_a80b2f52dc28bb3abbde021f7fe96f8ff"><div class="ttname"><a href="class_particle_renderer.html#a80b2f52dc28bb3abbde021f7fe96f8ff">ParticleRenderer::display</a></div><div class="ttdeci">void display(DisplayMode mode=PARTICLE_POINTS)</div><div class="ttdoc">Funkcja ustawiająca sposób rysowania i parametry oraz wywołująca funkcję odrysowującą _drawPoints...</div><div class="ttdef"><b>Definition:</b> <a href="render__particles_8cpp_source.html#l00159">render_particles.cpp:159</a></div></div>
-<div class="ttc" id="classparticle_type_html_afcea095208bc89d9618fa29be50d40be"><div class="ttname"><a href="classparticle_type.html#afcea095208bc89d9618fa29be50d40be">particleType::particleNoOfType</a></div><div class="ttdeci">unsigned int particleNoOfType</div><div class="ttdoc">Ilość cząstek danego typu w symulacji. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00032">particleType.h:32</a></div></div>
+<div class="ttc" id="classparticle_type_html_afcea095208bc89d9618fa29be50d40be"><div class="ttname"><a href="classparticle_type.html#afcea095208bc89d9618fa29be50d40be">particleType::particleNoOfType</a></div><div class="ttdeci">unsigned int particleNoOfType</div><div class="ttdoc">Ilość cząstek danego typu w symulacji. </div><div class="ttdef"><b>Definition:</b> <a href="particle_type_8h_source.html#l00056">particleType.h:56</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="render__particles_8cpp.html">render_particles.cpp</a></li>
-    <li class="footer">Wygenerowano Cz, 30 lip 2015 17:28:23 dla particles programem
+    <li class="footer">Wygenerowano Pt, 31 lip 2015 19:17:34 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
