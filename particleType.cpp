@@ -6,6 +6,8 @@
 
 #include "particleType.h"
 
+std::vector<float> particleType::normalizedEpsilon;
+
 unsigned short particleType::typeCounter=0;
 
 /** \brief Ustawienie nazwy typu cząstki

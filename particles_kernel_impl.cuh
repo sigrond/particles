@@ -393,7 +393,12 @@ float3 collideSpheres(float3 posA, float3 posB,
 		float sigma=(params.particleRadius[(int)velA.w]+params.particleRadius[(int)velB.w])/(1.12246204f);
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
-		force=-(48.0f*params.epsi/dist*sd*(sd-0.5f)+attraction/(dist*dist))*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
+		float q1q2=params.normalizedCharge[(int)velA.w]*params.normalizedCharge[(int)velB.w];
+		float a=!(velB.w<velA.w)?velA.w:velB.w;/**< min(x,y) */
+		float b= (velA.w<velB.w)?velB.w:velA.w - a;/**< max(x,y)-min(x,y) */
+		int epsilonIndex=(int)floor(a*(params.particleTypesNum-((a-1.0f)/2.0f))+b+0.5f);/**< wzór na index z zabezpieczeniem przeciwko niedokładności działań na float'ach */
+		float epsilon=params.epsi*params.normalizeEpsilon[epsilonIndex];
+		force=-(48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist))*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////

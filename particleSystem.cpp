@@ -73,14 +73,21 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
             */
             m_params.particleRadius[i] = typyCzastek[i].particleRadius;
             m_params.particleMass[i]=typyCzastek[i].particleMass;
+            m_params.normalizedCharge[i]=typyCzastek[i].particleCharge;
         }
         m_params.particleTypesNum=iloscTypow;
+        for(int i=0;i<particleType::normalizedEpsilon.size();i++)
+        {
+            m_params.normalizeEpsilon[i]=particleType::normalizedEpsilon[i];
+        }
     }
     else
     {
         m_params.particleRadius[0] = 0.225f;//1.0f / 32.0f;//32.0f / 64.0f;
         m_params.particleMass[0]=1.0f;
         m_params.particleTypesNum=1;
+        m_params.normalizedCharge[0]=1.0f;
+        m_params.normalizeEpsilon[0]=1.0f;
     }
 
     m_params.colliderPos = make_float3(-1.2f, -0.8f, 0.8f);
@@ -501,15 +508,16 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
     }
 }
 
-/** \brief rozłożenie cząstek
- *
+/** \fn void ParticleSystem::reset(ParticleConfig config)
+ * \brief rozłożenie cząstek
  * \param config ParticleConfig Typ wyliczeniowy. Wybór sposobu rozłożenia cząstek.
  * \return void
  */
 void ParticleSystem::reset(ParticleConfig config)
 {
 /** \todo należy dodać właściwe losowanie typu cząstki i uwzględnić przy sprawdzaniu położenia
- * rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały  */
+ * rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały
+ */
 	//unsigned int tmpType=rand()%m_params.particleTypesNum;
 
     unsigned int tmpType=0;
@@ -667,36 +675,4 @@ ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacin
     setArray(VELOCITY, m_hVel, start, index);
 }
 
-/*class ParticleSystem::particleType
-{
-	public:
-		enum types
-		{
-			TypeOne=1,
-			TypeTwo=2,
-			Default
-		};
-		types type;
-		float mass;
-		float radius;
-		particleType(float x)
-		{
-			if(x==1.0f)
-			{
-				type=TypeOne;
-				mass=0.001f;
-				radius=0.225f;
-			}
-			else //if(x==2.0f)
-			{
-				type=TypeTwo;
-				mass=0.00001f;
-				radius=0.0225f;
-			}
-			//else
-			//{
-			//	type=Default;
-			//}
-		};
-};*/
 

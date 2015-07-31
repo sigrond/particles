@@ -27,7 +27,8 @@
 
 #include "vector_types.h"
 
-#define MAX_TYPE_NUM 10
+#define MAX_TYPE_NUM 5
+#define MAX_EPSI_NUM 15
 
 typedef unsigned int uint;
 
@@ -46,6 +47,10 @@ struct SimParams
 
 	float particleMass[MAX_TYPE_NUM];
 
+	float normalizedCharge[MAX_TYPE_NUM];
+
+	float normalizeEpsilon[MAX_EPSI_NUM];
+
     uint3 gridSize;
     uint numCells;
     float3 worldOrigin;
@@ -57,13 +62,13 @@ struct SimParams
     float spring;
     float damping;
     float shear;
-    float attraction;
+    float attraction;/**< mnożnik sił Coulombowskich */
     float boundaryDamping;
 
 	float bigradius;
 	float bigradius0;
+	float epsi;/**< mnożnik epsilonów */
 	bool boundaries;
-	float epsi;//tu cos sie zmieni
 	float brown;
 
 	int particleTypesNum;

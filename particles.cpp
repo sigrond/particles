@@ -27,6 +27,25 @@
 
 
 /** \mainpage Cząstki
+ * \section swtep Wstęp
+ * Program symuluje kroplę cieczy z nanocząstkami w środku (zwiesina) w pułapce.
+ * W zawiesini może znajdować się kilka różnych rodzajów nanocząstek.
+ * Symulowane są odziaływania między nanocząstkami między sobą oraz z
+ * napięciem powierzchniowym kropli, która paruje zwmniejszając swój promień.
+ * Możliwe jest też opuszczenie kryształu, który pozostał po wyparowaniu cieczy
+ * na płaską powierzchnię na dnie pułapki.
+ * Obecnie zakłada się, że nanocząstki są sztywnymi kulami i wylicznay jest
+ * potencjał Lennarda-Jonesa.
+ * \subsection parametry Uwzględniane Parametry Symulacji
+ * - Krok czasu obliczeń.
+ * - Lepkość cieczy.
+ * - Efektywna grawitacja.
+ * - Napięcie powierzchniowe.
+ * - Współczynnik proporcjonalny potencjału Lennarda-Jonesa.
+ * - Współczynnik ruchów Browna.
+ * - Odpychanie Coulombowskie.
+ * - Ilości różnych rodzajów cząstek wraz z ich promieniami i masami (lub gęstościami).
+ * - Szybkość parowania kropli.
  * \section Opis_Ogólny Opis Ogólny
  * - Najpierw wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.
  * Prędkość to poprzednia prędkość, grawitacja i lepkość.
@@ -56,7 +75,11 @@
  * Niestety trzeba go napisać.
  * Domyślny plik "particleType.cfg".
  * \verbinclude particleType.cfg
- * Więcej można znaleźć w "particleTypesLoader.cpp"
+ * Więcej można znaleźć w "particleTypesLoader.cpp" oraz "particleType.h"
+ * \sa particleTypesLoader::loadTypes
+ * \n particleTypesLoader.cpp
+ * \n particleType::normalizedEpsilon
+ * \n particleType.h
  */
 
 // OpenGL Graphics includes
@@ -489,7 +512,7 @@ void display()
 
 
 	//glScalef(zoom, zoom, zoom);
-	
+
 
     //float3 p = psystem->getColliderPos();
     //glTranslatef(p.x, p.y, p.z);
@@ -514,6 +537,9 @@ void display()
         renderer->display(displayMode);
     }
 
+    /** Ten blok kodu rysuje półprzezroczysty kwadrat pod kroplą
+     * na wysokości ograniczenia dolnego.
+     */
 	glEnable (GL_BLEND);
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glPushMatrix();

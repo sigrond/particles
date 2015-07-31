@@ -131,6 +131,25 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 			std::clog<<"}\n";
 #endif
         }
+        if(dataStr.compare("normalizedEpsilon")==0)/**< specjalan skrucona tablica znormalizowanych epsilonów jak w particleType */
+        {
+            std::getline(configFile,dataStr,'{');/**< nawias otwierający */
+#ifdef _DEBUG
+			std::clog<<"normalizedEpsilon "<<dataStr<<"\n{\n";
+#endif
+            std::getline(configFile,dataStr,'}');
+            iss<<dataStr;
+            particleType::normalizedEpsilon.clear();
+            while(iss.good())/**< wypełnianie parametrów */
+            {
+                std::getline(iss,dataStr,',');
+                dataStr.erase(0,dataStr.find_first_not_of(" \f\n\r\t\v"));/**< ltrim */
+                dataStr.erase(dataStr.find_last_not_of(" \f\n\r\t\v")+1);/**< rtrim */
+                particleType::normalizedEpsilon.push_back((float)atof(dataStr.c_str()));
+            }
+
+            iss.clear();
+        }
     }
 	if(particlesNumber==0)
 	{
