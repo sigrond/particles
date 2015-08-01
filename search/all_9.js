@@ -13,6 +13,7 @@ var searchData=
   ['integrate_5ffunctor',['integrate_functor',['../structintegrate__functor.html',1,'integrate_functor'],['../structintegrate__functor.html#a13075d4c547ba22c37137ff2b874ae45',1,'integrate_functor::integrate_functor()']]],
   ['integratesystem',['integrateSystem',['../particle_system_8cuh.html#a34e9db8b801cd537e5ae5a4a886e020c',1,'integrateSystem(float *pos, float *vel, float deltaTime, uint numParticles):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a34e9db8b801cd537e5ae5a4a886e020c',1,'integrateSystem(float *pos, float *vel, float deltaTime, uint numParticles):&#160;particleSystem_cuda.cu']]],
   ['iterations',['iterations',['../particles_8cpp.html#a1d10e252e778731e59f0f71afd7e727e',1,'particles.cpp']]],
+  ['itstimetodraw',['itsTimeToDraw',['../particles_8cpp.html#a556f6846cc9ae71e13f170163d9aa442',1,'particles.cpp']]],
   ['ixform',['ixform',['../particles_8cpp.html#aa22b13a9b9cf40b19f9c1c09603862c8',1,'particles.cpp']]],
   ['ixformpoint',['ixformPoint',['../particles_8cpp.html#a9b3bc33348ec5b4dbb049f91362459b8',1,'particles.cpp']]]
 ];

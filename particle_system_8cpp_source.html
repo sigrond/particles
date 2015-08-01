@@ -419,7 +419,7 @@ $(document).ready(function(){initNavTree('particle_system_8cpp_source.html','');
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_particle_system.html#a5d99413ffc0791e6aa9f02308caf7f1e">m_bUseOpenGL</a>)</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    {</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        dPos = (<span class="keywordtype">float</span> *) <a class="code" href="particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642">mapGLBufferObject</a><a class="code" href="particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642">(</a>&amp;<a class="code" href="class_particle_system.html#a9c5de70c1705672e5722ad30dee1b14b">m_cuda_posvbo_resource</a><a class="code" href="particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642">)</a>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        dPos = (<span class="keywordtype">float</span> *) <a class="code" href="particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642">mapGLBufferObject</a><a class="code" href="particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642">(</a>&amp;<a class="code" href="class_particle_system.html#a9c5de70c1705672e5722ad30dee1b14b">m_cuda_posvbo_resource</a><a class="code" href="particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642">)</a>;<span class="comment">/**&lt; ta funkcja wpływa na prawa dostępu do zasobów */</span></div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    }</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    {</div>
@@ -427,7 +427,7 @@ $(document).ready(function(){initNavTree('particle_system_8cpp_source.html','');
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    }</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="comment">// update constants</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    setParameters(&amp;m_params);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    setParameters(&amp;m_params);<span class="comment">/**&lt; SimParams */</span></div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="comment">// integrate</span></div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="particle_system_8cuh.html#a34e9db8b801cd537e5ae5a4a886e020c">integrateSystem</a><a class="code" href="particle_system_8cuh.html#a34e9db8b801cd537e5ae5a4a886e020c">(</a></div>
@@ -803,7 +803,7 @@ $(document).ready(function(){initNavTree('particle_system_8cpp_source.html','');
 <div class="ttc" id="particle_system_8cuh_html_ac71da7e4672a2732a098ba933a799257"><div class="ttname"><a href="particle_system_8cuh.html#ac71da7e4672a2732a098ba933a799257">sortParticles</a></div><div class="ttdeci">void sortParticles(uint *dGridParticleHash, uint *dGridParticleIndex, uint numParticles)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system__cuda_8cu_source.html#l00277">particleSystem_cuda.cu:277</a></div></div>
 <div class="ttc" id="particle_system_8cpp_html_a5459f6b6b39f9a6b80de7f17c3777ee2"><div class="ttname"><a href="particle_system_8cpp.html#a5459f6b6b39f9a6b80de7f17c3777ee2">frand</a></div><div class="ttdeci">float frand()</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00463">particleSystem.cpp:463</a></div></div>
 <div class="ttc" id="class_particle_system_html_a1dca3996c8068602412ef9f7826605d1"><div class="ttname"><a href="class_particle_system.html#a1dca3996c8068602412ef9f7826605d1">ParticleSystem::ParticleConfig</a></div><div class="ttdeci">ParticleConfig</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00035">particleSystem.h:35</a></div></div>
-<div class="ttc" id="render__particles_8cpp_html_ab20dfcdbb20ef76dff29f92805e255cd"><div class="ttname"><a href="render__particles_8cpp.html#ab20dfcdbb20ef76dff29f92805e255cd">typyCzastek</a></div><div class="ttdeci">std::vector&lt; particleType &gt; typyCzastek</div><div class="ttdoc">tablica z typami cząstek </div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00223">particles.cpp:223</a></div></div>
+<div class="ttc" id="render__particles_8cpp_html_ab20dfcdbb20ef76dff29f92805e255cd"><div class="ttname"><a href="render__particles_8cpp.html#ab20dfcdbb20ef76dff29f92805e255cd">typyCzastek</a></div><div class="ttdeci">std::vector&lt; particleType &gt; typyCzastek</div><div class="ttdoc">tablica z typami cząstek </div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00224">particles.cpp:224</a></div></div>
 <div class="ttc" id="class_particle_system_html_a8d8ad2d142f3a5b83f2c10a46f5d7a8b"><div class="ttname"><a href="class_particle_system.html#a8d8ad2d142f3a5b83f2c10a46f5d7a8b">ParticleSystem::m_hCellEnd</a></div><div class="ttdeci">uint * m_hCellEnd</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00209">particleSystem.h:209</a></div></div>
 <div class="ttc" id="class_particle_system_html_a166fd86f020b6024d7d42723762d7cb2"><div class="ttname"><a href="class_particle_system.html#a166fd86f020b6024d7d42723762d7cb2">ParticleSystem::update</a></div><div class="ttdeci">void update(float deltaTime)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00300">particleSystem.cpp:300</a></div></div>
 <div class="ttc" id="class_particle_system_html_a5d99413ffc0791e6aa9f02308caf7f1e"><div class="ttname"><a href="class_particle_system.html#a5d99413ffc0791e6aa9f02308caf7f1e">ParticleSystem::m_bUseOpenGL</a></div><div class="ttdeci">bool m_bUseOpenGL</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8h_source.html#l00200">particleSystem.h:200</a></div></div>
@@ -860,7 +860,7 @@ $(document).ready(function(){initNavTree('particle_system_8cpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="particle_system_8cpp.html">particleSystem.cpp</a></li>
-    <li class="footer">Wygenerowano Pt, 31 lip 2015 19:17:31 dla particles programem
+    <li class="footer">Wygenerowano So, 1 sie 2015 17:48:29 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
