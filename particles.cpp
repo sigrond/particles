@@ -222,6 +222,16 @@ extern bool multiColor=false;
  */
 std::vector<particleType> typyCzastek;
 
+/** \brief Zmienna logiczna stwierdzająca czy czas rysować w GL
+ * została dodana, żeby móc zachować stały FPS w grafice i
+ * dać więcej czasu na obliczenia CUDA.
+ */
+bool itsTimeToDraw=true;
+
+/** \brief Licznik czasu do utrzymywania stałego FPS.
+ */
+long double timeFromLastDisplayedFrameIn_ms=0.0f;
+
 ParticleSystem *psystem = 0;
 
 // fps
@@ -473,104 +483,119 @@ void display()
 		bigRadius=bigRadius0-A*sqrt(time_past);
 		psystem->setBigRadius(bigRadius);
 
-        psystem->update(timestep);
+        psystem->update(timestep);/**< tu zachodzą właściwe obliczenia CUDA */
 
-        if (renderer)
+        if (renderer && itsTimeToDraw)
         {
             renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles(), zoom);
         }
     }
 
-    // render
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    // view transform
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-
-    for (int c = 0; c < 3; ++c)
+    if(itsTimeToDraw)
     {
-        camera_trans_lag[c] += (camera_trans[c] - camera_trans_lag[c]) * inertia;
-        camera_rot_lag[c] += (camera_rot[c] - camera_rot_lag[c]) * inertia;
-    }
+        // render
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    glTranslatef(camera_trans_lag[0], camera_trans_lag[1], camera_trans_lag[2]);
-    glRotatef(camera_rot_lag[0], 1.0, 0.0, 0.0);
-    glRotatef(camera_rot_lag[1], 0.0, 1.0, 0.0);
+        // view transform
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
 
-	glScalef(zoom, zoom, zoom);
+        for (int c = 0; c < 3; ++c)
+        {
+            camera_trans_lag[c] += (camera_trans[c] - camera_trans_lag[c]) * inertia;
+            camera_rot_lag[c] += (camera_rot[c] - camera_rot_lag[c]) * inertia;
+        }
 
-    glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
+        glTranslatef(camera_trans_lag[0], camera_trans_lag[1], camera_trans_lag[2]);
+        glRotatef(camera_rot_lag[0], 1.0, 0.0, 0.0);
+        glRotatef(camera_rot_lag[1], 0.0, 1.0, 0.0);
 
-	//glScalef(zoom, zoom, zoom);
+        glScalef(zoom, zoom, zoom);
 
-    // cube -> sphere
-    glColor3f(1.0, 1.0, 1.0);
-    //glutWireCube(2.0);
-	if(boundaries)
-	glutWireSphere(bigRadius, 20, 10);
+        glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
+
+        //glScalef(zoom, zoom, zoom);
+
+        // cube -> sphere
+        glColor3f(1.0, 1.0, 1.0);
+        //glutWireCube(2.0);
+        if(boundaries)
+        glutWireSphere(bigRadius, 20, 10);
 
 
-	//glScalef(zoom, zoom, zoom);
+        //glScalef(zoom, zoom, zoom);
 
 
-    //float3 p = psystem->getColliderPos();
-    //glTranslatef(p.x, p.y, p.z);
-	//glScalef(zoom, zoom, zoom);
-    glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
+        //float3 p = psystem->getColliderPos();
+        //glTranslatef(p.x, p.y, p.z);
+        //glScalef(zoom, zoom, zoom);
+        glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
 
-    // cube -> sphere
-    glColor3f(1.0, 1.0, 1.0);
-    //glutWireCube(2.0);
-	glutWireSphere(bigRadius, 20, 10);
+        // cube -> sphere
+        glColor3f(1.0, 1.0, 1.0);
+        //glutWireCube(2.0);
+        glutWireSphere(bigRadius, 20, 10);
 
-    // collider
-    glPushMatrix();
-    float3 p = psystem->getColliderPos();
-    glTranslatef(p.x, p.y, p.z);
-    //glColor3f(1.0, 0.0, 0.0);
-    //glutSolidSphere(psystem->getColliderRadius(), 20, 10);
-    glPopMatrix();
+        // collider
+        glPushMatrix();
+        float3 p = psystem->getColliderPos();
+        glTranslatef(p.x, p.y, p.z);
+        //glColor3f(1.0, 0.0, 0.0);
+        //glutSolidSphere(psystem->getColliderRadius(), 20, 10);
+        glPopMatrix();
 
-    if (renderer && displayEnabled)
-    {
-        renderer->display(displayMode);
-    }
+        if (renderer && displayEnabled)
+        {
+            renderer->display(displayMode);
+        }
 
-    /** Ten blok kodu rysuje półprzezroczysty kwadrat pod kroplą
-     * na wysokości ograniczenia dolnego.
-     */
-	glEnable (GL_BLEND);
-	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glPushMatrix();
-		//glColor3f(0.0, 0.1, 0.3);
-		glColor4f(0.2, 0.8, 1.0,0.5);
-		glBegin(GL_POLYGON);
-			glVertex3f( -20.0f*bigRadius0, -2.0f*bigRadius0, -20.0f*bigRadius0);
-			glVertex3f( -20.0f*bigRadius0,  -2.0f*bigRadius0, 20.0f*bigRadius0);
-			glVertex3f(  20.0f*bigRadius0,  -2.0f*bigRadius0, 20.0f*bigRadius0);
-			glVertex3f(  20.0f*bigRadius0, -2.0f*bigRadius0, -20.0f*bigRadius0);
-		glEnd();
-		//glTranslatef(0,-2.0f*bigRadius0,0);
-	glPopMatrix();
-	glDisable(GL_BLEND);
-
-    if (displaySliders)
-    {
-        glDisable(GL_DEPTH_TEST);
-        glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ZERO); // invert color
-        glEnable(GL_BLEND);
-        params->Render(0, 0);
+        /** Ten blok kodu rysuje półprzezroczysty kwadrat pod kroplą
+         * na wysokości ograniczenia dolnego.
+         */
+        glEnable (GL_BLEND);
+        glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glPushMatrix();
+            //glColor3f(0.0, 0.1, 0.3);
+            glColor4f(0.2, 0.8, 1.0,0.5);
+            glBegin(GL_POLYGON);
+                glVertex3f( -20.0f*bigRadius0, -2.0f*bigRadius0, -20.0f*bigRadius0);
+                glVertex3f( -20.0f*bigRadius0,  -2.0f*bigRadius0, 20.0f*bigRadius0);
+                glVertex3f(  20.0f*bigRadius0,  -2.0f*bigRadius0, 20.0f*bigRadius0);
+                glVertex3f(  20.0f*bigRadius0, -2.0f*bigRadius0, -20.0f*bigRadius0);
+            glEnd();
+            //glTranslatef(0,-2.0f*bigRadius0,0);
+        glPopMatrix();
         glDisable(GL_BLEND);
-        glEnable(GL_DEPTH_TEST);
-    }
+
+        if (displaySliders)
+        {
+            glDisable(GL_DEPTH_TEST);
+            glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ZERO); // invert color
+            glEnable(GL_BLEND);
+            params->Render(0, 0);
+            glDisable(GL_BLEND);
+            glEnable(GL_DEPTH_TEST);
+        }
+
+        glutSwapBuffers();
+        glutReportErrors();
+    }/**< koniec warunku itsTimeToDraw */
 
     sdkStopTimer(&timer);
 
-    glutSwapBuffers();
-    glutReportErrors();
+    long double timeTakenIn_ms=sdkGetAverageTimerValue(&timer);
+    timeFromLastDisplayedFrameIn_ms+=timeTakenIn_ms;
+    if(timeFromLastDisplayedFrameIn_ms>=33.3333333333333333f)/**< to powinno utrzymać stały FPS */
+    {
+        itsTimeToDraw=true;
+        timeFromLastDisplayedFrameIn_ms=0.0f;
+    }
+    else
+    {
+        itsTimeToDraw=false;
+    }
 
-    computeFPS();
+    computeFPS();/**< teraz nie jest to FPS, tylko chwilowa prędkość wykonywania programu */
 }
 
 inline float frand()

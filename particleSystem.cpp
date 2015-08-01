@@ -305,7 +305,7 @@ ParticleSystem::update(float deltaTime)
 
     if (m_bUseOpenGL)
     {
-        dPos = (float *) mapGLBufferObject(&m_cuda_posvbo_resource);
+        dPos = (float *) mapGLBufferObject(&m_cuda_posvbo_resource);/**< ta funkcja wpływa na prawa dostępu do zasobów */
     }
     else
     {
@@ -313,7 +313,7 @@ ParticleSystem::update(float deltaTime)
     }
 
     // update constants
-    setParameters(&m_params);
+    setParameters(&m_params);/**< SimParams */
 
     // integrate
     integrateSystem(
