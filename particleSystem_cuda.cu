@@ -147,7 +147,9 @@ extern "C"
     float getSurfacePreasure()
     {
         float tmpP;
+		float hostParams=0.0f;
         checkCudaErrors(cudaMemcpyFromSymbol(&tmpP,surfacePreasure,sizeof(float)));
+		checkCudaErrors(cudaMemcpyToSymbol(surfacePreasure, &hostParams, sizeof(float)));
         return tmpP;
     }
 

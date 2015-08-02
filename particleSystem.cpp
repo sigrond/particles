@@ -361,7 +361,7 @@ ParticleSystem::update(float deltaTime)
         m_numGridCells,
 		deltaTime);
 
-    if(bool itsTimeToDraw)
+    if(itsTimeToDraw)
     {
         hostSurfacePreasure=getSurfacePreasure();/**< pobranie ciśnienia */
     }

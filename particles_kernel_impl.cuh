@@ -70,11 +70,11 @@ struct integrate_functor
         float3 pos = make_float3(posData.x, posData.y, posData.z);
         float3 vel = make_float3(velData.x, velData.y, velData.z);
 
-        __shared__ float sharedPreasure;/**< ciśnienie dla bloku */
-        if(threadIdx.x==0)
-        {
-            sharedPreasure=0.0f;
-        }
+        //__shared__ float sharedPreasure;/**< ciśnienie dla bloku */
+        //if(threadIdx.x==0)
+        //{
+        //    sharedPreasure=0.0f;
+        //}
 
         vel += params.gravity * deltaTime;/**< grawitacja */
 		if(params.brown!=0.0f)/**< ruchy Browna */
@@ -159,16 +159,17 @@ struct integrate_functor
 			float force=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
 			float momentum=force*deltaTime;/**< pęd */
 			vel+=-momentum*norm/params.particleMass[(int)velData.w];
-			if(calcSurfacePreasure)
+			if(params.calcSurfacePreasure)
 			{
 			    momentum=abs(momentum);
-			    __syncthreads();
-			    atomicAdd(&sharedPreasure,momentum);
-			    __syncthreads();
-			    if(threadIdx.x==0)
-                {
-                    atomicAdd(&surfacePreasure,sharedPreasure);
-                }
+			    //__syncthreads();
+			    //atomicAdd(&sharedPreasure,momentum);
+			    //__syncthreads();
+			    //if(threadIdx.x==0)
+                //{
+                //    atomicAdd(&surfacePreasure,sharedPreasure);
+                //}
+				atomicAdd(&surfacePreasure,momentum);
 			}
 		}
 		/*if(r0k > r*r + FLT_EPSILON )
