@@ -32,6 +32,8 @@ extern "C"
 
     void setParameters(SimParams *hostParams);
 
+    float getSurfacePreasure();
+
     void integrateSystem(float *pos,
                          float *vel,
                          float deltaTime,

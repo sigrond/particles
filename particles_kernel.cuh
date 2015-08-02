@@ -73,6 +73,8 @@ struct SimParams
 
 	int particleTypesNum;
 	unsigned long long int brownQuality;
+
+	bool calcSurfacePreasure;
 };
 
 #endif

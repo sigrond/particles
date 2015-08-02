@@ -40,6 +40,8 @@
 
 extern bool multiColor;
 extern std::vector<particleType> typyCzastek;
+extern float hostSurfacePreasure;
+extern bool itsTimeToDraw;
 
 ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenGL) :
     m_bInitialized(false),
@@ -123,6 +125,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 	m_params.epsi=0.1f;
 	m_params.brown=0.00001f;
 	m_params.brownQuality=10;
+	m_params.calcSurfacePreasure=true;
 
 
     _initialize(numParticles);
@@ -357,6 +360,11 @@ ParticleSystem::update(float deltaTime)
         m_numParticles,
         m_numGridCells,
 		deltaTime);
+
+    if(bool itsTimeToDraw)
+    {
+        hostSurfacePreasure=getSurfacePreasure();/**< pobranie ciśnienia */
+    }
 
     // note: do unmap at end here to avoid unnecessary graphics/CUDA context switch
     if (m_bUseOpenGL)

@@ -127,7 +127,7 @@ extern "C"
         }
     }
 
-    /** \brief Kopiowanie parametr�w symulacji z pami�ci RAM hosta do pami�ci device (karta graficzna)
+    /** \brief Kopiowanie parametrów symulacji z pamiêci RAM hosta do pamiêci device (karta graficzna)
      *
      * \param hostParams SimParams* Struktura z parametrami symulacji.
      * \return void
@@ -137,6 +137,18 @@ extern "C"
     {
         // copy parameters to constant memory
         checkCudaErrors(cudaMemcpyToSymbol(params, hostParams, sizeof(SimParams)));
+    }
+
+    /** \brief Funkcja pobiera z device wartość ciśnienia na
+     * powierchni kropli i zwraca (do host'a)
+     * \return float
+     *
+     */
+    float getSurfacePreasure()
+    {
+        float tmpP;
+        checkCudaErrors(cudaMemcpyFromSymbol(&tmpP,surfacePreasure,sizeof(float)));
+        return tmpP;
     }
 
     //Round a / b to nearest higher integer value

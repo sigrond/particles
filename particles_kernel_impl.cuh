@@ -42,6 +42,8 @@ texture<uint, 1, cudaReadModeElementType> cellEndTex;
 // simulation parameters in constant memory
 __constant__ SimParams params;
 
+__device__ float surfacePreasure;
+
 /** \struct integrate_functor
  * \brief ta struktura inicjowana jest z krokiem delta_time dla danych
  * opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU)
@@ -67,6 +69,12 @@ struct integrate_functor
         volatile float4 velData = thrust::get<1>(t);
         float3 pos = make_float3(posData.x, posData.y, posData.z);
         float3 vel = make_float3(velData.x, velData.y, velData.z);
+
+        __shared__ float sharedPreasure;/**< ciśnienie dla bloku */
+        if(threadIdx.x==0)
+        {
+            sharedPreasure=0.0f;
+        }
 
         vel += params.gravity * deltaTime;/**< grawitacja */
 		if(params.brown!=0.0f)/**< ruchy Browna */
@@ -148,7 +156,20 @@ struct integrate_functor
 			float3 relPos = pos;
 			float dist = length(relPos);
 			float3 norm = relPos / dist;
-			vel+=-params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]))*norm*deltaTime/params.particleMass[(int)velData.w];
+			float force=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
+			float momentum=force*deltaTime;/**< pęd */
+			vel+=-momentum*norm/params.particleMass[(int)velData.w];
+			if(calcSurfacePreasure)
+			{
+			    momentum=abs(momentum);
+			    __syncthreads();
+			    atomicAdd(&sharedPreasure,momentum);
+			    __syncthreads();
+			    if(threadIdx.x==0)
+                {
+                    atomicAdd(&surfacePreasure,sharedPreasure);
+                }
+			}
 		}
 		/*if(r0k > r*r + FLT_EPSILON )
 		{

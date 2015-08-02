@@ -155,6 +155,18 @@ class ParticleSystem
         {
             m_params.colliderPos = x;
         }
+
+        /** \brief ustawienie zmiennej logicznej czy chcemy
+         * policzyć i zwrócić ciśnienie powierzchniowe kropli
+         * \param x bool
+         * \return void
+         *
+         */
+        void setCalcSurfacePreasure(bool x)
+        {
+            m_params.calcSurfacePreasure=x;
+        }
+
 		/** \brief pobiera promień cząstki
 		 * \todo poprawić z uwzględnieniem różnych typów cząstek
 		 */

@@ -27,6 +27,7 @@
 
 
 /** \mainpage Cząstki
+ * \author Tomasz Jakubczyk
  * \section swtep Wstęp
  * Program symuluje kroplę cieczy z nanocząstkami w środku (zwiesina) w pułapce.
  * W zawiesini może znajdować się kilka różnych rodzajów nanocząstek.
@@ -231,6 +232,11 @@ bool itsTimeToDraw=true;
 /** \brief Licznik czasu do utrzymywania stałego FPS.
  */
 long double timeFromLastDisplayedFrameIn_ms=0.0f;
+
+/** \brief Wartość ciśnienia wywieranego prze zcżastki na
+ * powiercznię kropli. Znajduje się w pamięci po stronie host'a (CPU)
+ */
+float hostSurfacePreasure=0.0f;
 
 ParticleSystem *psystem = 0;
 
@@ -444,7 +450,7 @@ void computeFPS()
     {
         char fps[256];
         float ifps = 1.f / (sdkGetAverageTimerValue(&timer) / 1000.f);
-        sprintf(fps, "CUDA Particles (%d particles): %3.1f fps, r:%f, R:%f, i:%llu, T:%Lf", numParticles, ifps, psystem->getParticleRadius(), bigRadius, licznik, time_past);
+        sprintf(fps, "CUDA Particles (%d particles): %3.1f fps, p:%f, R:%f, i:%llu, T:%Lf", numParticles, ifps, hostSurfacePreasure, bigRadius, licznik, time_past);
 
         glutSetWindowTitle(fps);
         fpsCount = 0;
@@ -475,6 +481,7 @@ void display()
 		//psystem->setParticleMass(particleMass);
 		psystem->setEpsi(epsi);/**< \todo epsilonów będzie więcej */
 		psystem->setBrown(brown);
+		psystem->setCalcSurfacePreasure(itsTimeToDraw);/**< czy chcemy policzyć i ściągnąć wartość ciśnienia na powierchni kropli */
 
 		parowanieKropliWCzasie();
 		licznik++;
