@@ -34,7 +34,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="particles.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="czastki2.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">particles
    </div>
@@ -187,9 +187,11 @@ $(document).ready(function(){initNavTree('particles__kernel_8cuh_source.html',''
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="struct_sim_params.html#adc3e5f65a1a0ef7c944007ac99eb8034">   74</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="struct_sim_params.html#adc3e5f65a1a0ef7c944007ac99eb8034">particleTypesNum</a>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">   75</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">brownQuality</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="struct_sim_params.html#ae50f5316f3a8c277809346111bdbd468">   77</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="struct_sim_params.html#ae50f5316f3a8c277809346111bdbd468">calcSurfacePreasure</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
 <div class="ttc" id="struct_sim_params_html_a0104d1aeb5c6700f12e0edd6d06bcf1d"><div class="ttname"><a href="struct_sim_params.html#a0104d1aeb5c6700f12e0edd6d06bcf1d">SimParams::particleMass</a></div><div class="ttdeci">float particleMass[MAX_TYPE_NUM]</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00048">particles_kernel.cuh:48</a></div></div>
 <div class="ttc" id="struct_sim_params_html_ae7508eba5dd90859215b59d19e001bb9"><div class="ttname"><a href="struct_sim_params.html#ae7508eba5dd90859215b59d19e001bb9">SimParams::gravity</a></div><div class="ttdeci">float3 gravity</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00043">particles_kernel.cuh:43</a></div></div>
 <div class="ttc" id="struct_sim_params_html_a88dae34e74c9184adfa9169bad06d0ee"><div class="ttname"><a href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">SimParams::brown</a></div><div class="ttdeci">float brown</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00072">particles_kernel.cuh:72</a></div></div>
@@ -221,13 +223,14 @@ $(document).ready(function(){initNavTree('particles__kernel_8cuh_source.html',''
 <div class="ttc" id="struct_sim_params_html_adb68e9ee2422208807756b367efdf842"><div class="ttname"><a href="struct_sim_params.html#adb68e9ee2422208807756b367efdf842">SimParams::numBodies</a></div><div class="ttdeci">uint numBodies</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00059">particles_kernel.cuh:59</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a0ab211ca35e2616c721fcf2dd4f99c83"><div class="ttname"><a href="particles__kernel_8cuh.html#a0ab211ca35e2616c721fcf2dd4f99c83">USE_TEX</a></div><div class="ttdeci">#define USE_TEX</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00020">particles_kernel.cuh:20</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a96dbe53f3972a936dc6b4e19cbe0a035"><div class="ttname"><a href="particles__kernel_8cuh.html#a96dbe53f3972a936dc6b4e19cbe0a035">MAX_TYPE_NUM</a></div><div class="ttdeci">#define MAX_TYPE_NUM</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00030">particles_kernel.cuh:30</a></div></div>
+<div class="ttc" id="struct_sim_params_html_ae50f5316f3a8c277809346111bdbd468"><div class="ttname"><a href="struct_sim_params.html#ae50f5316f3a8c277809346111bdbd468">SimParams::calcSurfacePreasure</a></div><div class="ttdeci">bool calcSurfacePreasure</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00077">particles_kernel.cuh:77</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="particles__kernel_8cuh.html">particles_kernel.cuh</a></li>
-    <li class="footer">Wygenerowano So, 1 sie 2015 17:48:27 dla particles programem
+    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:09 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

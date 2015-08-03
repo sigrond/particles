@@ -7,6 +7,7 @@ var struct_sim_params =
     [ "boundaryDamping", "struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9", null ],
     [ "brown", "struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee", null ],
     [ "brownQuality", "struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff", null ],
+    [ "calcSurfacePreasure", "struct_sim_params.html#ae50f5316f3a8c277809346111bdbd468", null ],
     [ "cellSize", "struct_sim_params.html#ad5d71ad4ba6acc829a35f47b3da3e169", null ],
     [ "colliderPos", "struct_sim_params.html#aa27be265020f137f0a9cfbc3f1d2d9f8", null ],
     [ "colliderRadius", "struct_sim_params.html#a06ca2162f6f0aec08343db6ed8cd4478", null ],

@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>particles: Dokumentacja pliku paramgl.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="MathJax/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="czastki2.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">particles
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="pages.html"><span>Dodatkowe&#160;strony</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
+      <li><a href="globals.html"><span>Składowe&#160;plików</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('paramgl_8h.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klasy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Zmienne</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Wyliczenia</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Wartości wyliczeń</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Definicje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#func-members">Funkcje</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku paramgl.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;GL/freeglut.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="param_8h_source.html">param.h</a>&gt;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Wykres zależności załączania dla paramgl.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="paramgl_8h__incl.png" border="0" usemap="#paramgl_8h" alt=""/></div>
+<map name="paramgl_8h" id="paramgl_8h">
+<area shape="rect" id="node4" href="param_8h.html" title="param.h" alt="" coords="216,80,285,107"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ten wykres pokazuje, które pliki bezpośrednio lub pośrednio załączają ten plik:</div>
+<div class="dyncontent">
+<div class="center"><img src="paramgl_8h__dep__incl.png" border="0" usemap="#paramgl_8hdep" alt=""/></div>
+<map name="paramgl_8hdep" id="paramgl_8hdep">
+<area shape="rect" id="node2" href="particles_8cpp.html" title="Główny plik projektu. Zawiera main i funkcje sterujące całym programem. " alt="" coords="5,80,101,107"/></map>
+</div>
+</div>
+<p><a href="paramgl_8h_source.html">Idź do kodu źródłowego tego pliku.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Komponenty</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_list_g_l.html">ParamListGL</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_param_list_g_l_1_1_color.html">ParamListGL::Color</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:a9e70c1f281e934883db8f24ac215a40f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paramgl_8h.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a> (void)</td></tr>
+<tr class="separator:a9e70c1f281e934883db8f24ac215a40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3791f379d6dbce2bae6c5af556c36f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paramgl_8h.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a> (void)</td></tr>
+<tr class="separator:aa3791f379d6dbce2bae6c5af556c36f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fae799be5d4d9bdfe212b75cdc0634a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paramgl_8h.html#a9fae799be5d4d9bdfe212b75cdc0634a">glPrint</a> (int x, int y, const char *s, void *font)</td></tr>
+<tr class="separator:a9fae799be5d4d9bdfe212b75cdc0634a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd1fc363327219f64b5bab219fe6200"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paramgl_8h.html#a5dd1fc363327219f64b5bab219fe6200">glPrintShadowed</a> (int x, int y, const char *s, void *font, float *color)</td></tr>
+<tr class="separator:a5dd1fc363327219f64b5bab219fe6200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja funkcji</h2>
+<a class="anchor" id="a9e70c1f281e934883db8f24ac215a40f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void beginWinCoords </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="paramgl_8h_source.html#l00030">30</a> pliku <a class="el" href="paramgl_8h_source.html">paramgl.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00100">ParamListGL::Render()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    glMatrixMode(GL_MODELVIEW);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    glPushMatrix();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    glLoadIdentity();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    glTranslatef(0.0, (GLfloat)(glutGet(GLUT_WINDOW_HEIGHT) - 1.0), 0.0);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    glScalef(1.0, -1.0, 1.0);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    glMatrixMode(GL_PROJECTION);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    glPushMatrix();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    glLoadIdentity();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    glOrtho(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT), -1, 1);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    glMatrixMode(GL_MODELVIEW);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="paramgl_8h_a9e70c1f281e934883db8f24ac215a40f_icgraph.png" border="0" usemap="#paramgl_8h_a9e70c1f281e934883db8f24ac215a40f_icgraph" alt=""/></div>
+<map name="paramgl_8h_a9e70c1f281e934883db8f24ac215a40f_icgraph" id="paramgl_8h_a9e70c1f281e934883db8f24ac215a40f_icgraph">
+<area shape="rect" id="node2" href="class_param_list_g_l.html#a78a1999c0f0d1a17e9123f5ad8fabe23" title="ParamListGL::Render" alt="" coords="171,29,317,56"/><area shape="rect" id="node3" href="particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="365,29,428,56"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa3791f379d6dbce2bae6c5af556c36f0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void endWinCoords </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="paramgl_8h_source.html#l00046">46</a> pliku <a class="el" href="paramgl_8h_source.html">paramgl.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00100">ParamListGL::Render()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    glMatrixMode(GL_PROJECTION);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    glPopMatrix();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    glMatrixMode(GL_MODELVIEW);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    glPopMatrix();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="paramgl_8h_aa3791f379d6dbce2bae6c5af556c36f0_icgraph.png" border="0" usemap="#paramgl_8h_aa3791f379d6dbce2bae6c5af556c36f0_icgraph" alt=""/></div>
+<map name="paramgl_8h_aa3791f379d6dbce2bae6c5af556c36f0_icgraph" id="paramgl_8h_aa3791f379d6dbce2bae6c5af556c36f0_icgraph">
+<area shape="rect" id="node2" href="class_param_list_g_l.html#a78a1999c0f0d1a17e9123f5ad8fabe23" title="ParamListGL::Render" alt="" coords="160,29,307,56"/><area shape="rect" id="node3" href="particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="355,29,417,56"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9fae799be5d4d9bdfe212b75cdc0634a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void glPrint </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>font</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="paramgl_8h_source.html#l00055">55</a> pliku <a class="el" href="paramgl_8h_source.html">paramgl.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00066">glPrintShadowed()</a> i <a class="el" href="paramgl_8h_source.html#l00100">ParamListGL::Render()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    glRasterPos2f((GLfloat)x, (GLfloat)y);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> len = (int) strlen(s);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; len; i++)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        glutBitmapCharacter(font, s[i]);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="paramgl_8h_a9fae799be5d4d9bdfe212b75cdc0634a_icgraph.png" border="0" usemap="#paramgl_8h_a9fae799be5d4d9bdfe212b75cdc0634a_icgraph" alt=""/></div>
+<map name="paramgl_8h_a9fae799be5d4d9bdfe212b75cdc0634a_icgraph" id="paramgl_8h_a9fae799be5d4d9bdfe212b75cdc0634a_icgraph">
+<area shape="rect" id="node2" href="paramgl_8h.html#a5dd1fc363327219f64b5bab219fe6200" title="glPrintShadowed" alt="" coords="112,5,231,32"/><area shape="rect" id="node3" href="class_param_list_g_l.html#a78a1999c0f0d1a17e9123f5ad8fabe23" title="ParamListGL::Render" alt="" coords="279,31,425,57"/><area shape="rect" id="node4" href="particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="473,31,536,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5dd1fc363327219f64b5bab219fe6200"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void glPrintShadowed </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>font</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="paramgl_8h_source.html#l00066">66</a> pliku <a class="el" href="paramgl_8h_source.html">paramgl.h</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="paramgl_8h_source.html#l00055">glPrint()</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00100">ParamListGL::Render()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    glColor3f(0.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="paramgl_8h.html#a9fae799be5d4d9bdfe212b75cdc0634a">glPrint</a>(x-1, y-1, s, font);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    glColor3fv((GLfloat *) color);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="paramgl_8h.html#a9fae799be5d4d9bdfe212b75cdc0634a">glPrint</a>(x, y, s, font);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="ttc" id="paramgl_8h_html_a9fae799be5d4d9bdfe212b75cdc0634a"><div class="ttname"><a href="paramgl_8h.html#a9fae799be5d4d9bdfe212b75cdc0634a">glPrint</a></div><div class="ttdeci">void glPrint(int x, int y, const char *s, void *font)</div><div class="ttdef"><b>Definition:</b> <a href="paramgl_8h_source.html#l00055">paramgl.h:55</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="paramgl_8h_a5dd1fc363327219f64b5bab219fe6200_cgraph.png" border="0" usemap="#paramgl_8h_a5dd1fc363327219f64b5bab219fe6200_cgraph" alt=""/></div>
+<map name="paramgl_8h_a5dd1fc363327219f64b5bab219fe6200_cgraph" id="paramgl_8h_a5dd1fc363327219f64b5bab219fe6200_cgraph">
+<area shape="rect" id="node2" href="paramgl_8h.html#a9fae799be5d4d9bdfe212b75cdc0634a" title="glPrint" alt="" coords="172,5,231,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="paramgl_8h_a5dd1fc363327219f64b5bab219fe6200_icgraph.png" border="0" usemap="#paramgl_8h_a5dd1fc363327219f64b5bab219fe6200_icgraph" alt=""/></div>
+<map name="paramgl_8h_a5dd1fc363327219f64b5bab219fe6200_icgraph" id="paramgl_8h_a5dd1fc363327219f64b5bab219fe6200_icgraph">
+<area shape="rect" id="node2" href="class_param_list_g_l.html#a78a1999c0f0d1a17e9123f5ad8fabe23" title="ParamListGL::Render" alt="" coords="172,29,319,56"/><area shape="rect" id="node3" href="particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="367,29,429,56"/></map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="paramgl_8h.html">paramgl.h</a></li>
+    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:17 dla particles programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

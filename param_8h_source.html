@@ -1,0 +1,502 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>particles: Plik źródłowy param.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="MathJax/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="czastki2.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">particles
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="pages.html"><span>Dodatkowe&#160;strony</span></a></li>
+      <li><a href="annotated.html"><span>Klasy</span></a></li>
+      <li class="current"><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;plików</span></a></li>
+      <li><a href="globals.html"><span>Składowe&#160;plików</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('param_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klasy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Zmienne</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Wyliczenia</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Wartości wyliczeń</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Definicje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">param.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="param_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright 1993-2013 NVIDIA Corporation.  All rights reserved.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Please refer to the NVIDIA end user license agreement (EULA) associated</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * with this source code for terms and conditions that govern your use of</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * this software. Any use, reproduction, disclosure, or distribution of</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * this software and related documentation outside the terms of the EULA</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * is strictly prohibited.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> Simple parameter system</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> sgreen@nvidia.com 4/2001</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">PARAM_H</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">PARAM_H</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">string</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">vector</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">map</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">iostream</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">sstream</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">iomanip</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// base class for named parameter</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_param_base.html">   28</a></span>&#160;<span class="keyword">class</span> <a class="code" href="class_param_base.html">ParamBase</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_param_base.html#a275d5a2720001ad86a80e234a56c6194">   31</a></span>&#160;        <a class="code" href="class_param_base.html#a275d5a2720001ad86a80e234a56c6194">ParamBase</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name) : <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a>(name) { }</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_param_base.html#a891833f69f96260d21443b0c21525bd3">   32</a></span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="class_param_base.html#a891833f69f96260d21443b0c21525bd3">ParamBase</a>() { }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_param_base.html#ab447288debefe955dc2de6a64d56d092">   34</a></span>&#160;        std::string &amp;<a class="code" href="class_param_base.html#ab447288debefe955dc2de6a64d56d092">GetName</a>()</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="class_param_base.html#af503d1fe7f8e1498cd94c654a470b4b1">GetFloatValue</a>() = 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_param_base.html#aeb3ac099b3c83c7f3b8ae10d05f9972b">GetIntValue</a>() = 0;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">virtual</span> std::string <a class="code" href="class_param_base.html#ac0ba37f139ddf296df900a1bca865b9e">GetValueString</a>() = 0;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_param_base.html#a7c844cc161e6eaa60a084ee1608e1b3e">Reset</a>() = 0;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_param_base.html#a57f660ecae63990fd6b3d040e55a2215">Increment</a>() = 0;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_param_base.html#ab748981c9096eff54c1e39077b5cbd36">Decrement</a>() = 0;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">float</span> <a class="code" href="class_param_base.html#a61b1babd750f887a31787ec0f39662b2">GetPercentage</a>() = 0;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_param_base.html#a9e65004b0fe4d9ac6e34c8ab7a3d24f8">SetPercentage</a>(<span class="keywordtype">float</span> p) = 0;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_param_base.html#ab488e8e5c575e8a047efb5c52a6b5740">Write</a>(std::ostream &amp;stream) = 0;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_param_base.html#a17bb9203943f11607e903ff446c5633f">Read</a>(std::istream &amp;stream) = 0;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_param_base.html#a702f91a34eaefd957802a52b6a408ffd">IsList</a>() = 0;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">   56</a></span>&#160;        std::string <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">// derived class for single-valued parameter</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_param.html">   60</a></span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="keyword">class</span> <a class="code" href="class_param.html">Param</a> : <span class="keyword">public</span> <a class="code" href="class_param_base.html">ParamBase</a></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_param.html#a3fe39b3576dcace6bf1df5735417cf20">   63</a></span>&#160;        <a class="code" href="class_param.html#a3fe39b3576dcace6bf1df5735417cf20">Param</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, T value = 0, T min = 0, T max = 10000, T step = 1, T *ptr = 0) :</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="class_param_base.html">ParamBase</a>(name),</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="class_param.html#a51bd0eec526738572fc051104e61c06c">m_default</a>(value),</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="class_param.html#a148a0fb5e6091080ab6c4675c5c4923e">m_min</a>(min),</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="class_param.html#a95169c88d1c52a949199ec19cd3e1c0d">m_max</a>(max),</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="class_param.html#a868e30fdfca3a8764a792432277a9c58">m_step</a>(step),</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <a class="code" href="class_param.html#a8151bf403d3d838db06d6a1981eb9a51">m_precision</a>(3)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">if</span> (ptr)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> = ptr;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> = &amp;<a class="code" href="class_param.html#a68ac88e852d3cc546d95dc4fc3cd89d0">m_value</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> = value;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_param.html#a1f29b8fe33c5c62f74b9c97fdc6d3128">   82</a></span>&#160;        ~<a class="code" href="class_param.html#a1f29b8fe33c5c62f74b9c97fdc6d3128">Param</a>() { }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_param.html#ad0b687cefcb6b2e98720279b690604f9">   84</a></span>&#160;        T <a class="code" href="class_param.html#ad0b687cefcb6b2e98720279b690604f9">GetValue</a>() <span class="keyword">const</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">return</span> *<a class="code" href="class_param.html">m_ptr</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_param.html#a36356e72349681f83fabc63246229aa4">   88</a></span>&#160;        T <a class="code" href="class_param.html#a36356e72349681f83fabc63246229aa4">SetValue</a>(<span class="keyword">const</span> T value)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            *<a class="code" href="class_param.html">m_ptr</a> = <a class="code" href="class_param.html">value</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="class_param.html#a82f3f54692e83774cbb8b2e1501af803">   93</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_param.html#a82f3f54692e83774cbb8b2e1501af803">GetFloatValue</a>()</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">return</span> (<span class="keywordtype">float</span>) *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_param.html#a58761f3d5f69e4e281498f748cc55b52">   97</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_param.html#a58761f3d5f69e4e281498f748cc55b52">GetIntValue</a>()</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_param.html#a3973a1abcba28cc9b15325302d4f97b1">  102</a></span>&#160;        std::string <a class="code" href="class_param.html#a3973a1abcba28cc9b15325302d4f97b1">GetValueString</a>()</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            std::ostringstream ost;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            ost&lt;&lt;std::setprecision(<a class="code" href="class_param.html#a8151bf403d3d838db06d6a1981eb9a51">m_precision</a>)&lt;&lt;std::fixed;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            ost&lt;&lt;*<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">return</span> ost.str();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_param.html#a3af01335e7f369e8a14a61af7c8e31d1">  110</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param.html#a3af01335e7f369e8a14a61af7c8e31d1">SetPrecision</a>(<span class="keywordtype">int</span> x)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="class_param.html">m_precision</a> = <a class="code" href="class_param.html">x</a>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_param.html#ac8c4c126350cbd5889c482e4fd1c0f7a">  115</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_param.html#ac8c4c126350cbd5889c482e4fd1c0f7a">GetPercentage</a>()</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">return</span> (*<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> - <a class="code" href="class_param.html#a148a0fb5e6091080ab6c4675c5c4923e">m_min</a>) / (<span class="keywordtype">float</span>)(<a class="code" href="class_param.html#a95169c88d1c52a949199ec19cd3e1c0d">m_max</a> - <a class="code" href="class_param.html#a148a0fb5e6091080ab6c4675c5c4923e">m_min</a>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_param.html#addc6a78e58a99e6d6c66c9c7125737d0">  120</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param.html#addc6a78e58a99e6d6c66c9c7125737d0">SetPercentage</a>(<span class="keywordtype">float</span> p)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> = (T)(<a class="code" href="class_param.html#a148a0fb5e6091080ab6c4675c5c4923e">m_min</a> + p * (<a class="code" href="class_param.html#a95169c88d1c52a949199ec19cd3e1c0d">m_max</a> - <a class="code" href="class_param.html#a148a0fb5e6091080ab6c4675c5c4923e">m_min</a>));</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="class_param.html#a8592f8f76ca41146e808ab3f8e3a05f6">  125</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param.html#a8592f8f76ca41146e808ab3f8e3a05f6">Reset</a>()</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> = <a class="code" href="class_param.html#a51bd0eec526738572fc051104e61c06c">m_default</a>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_param.html#ae5eab92d33ed0870ac3efba05a393ad0">  130</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param.html#ae5eab92d33ed0870ac3efba05a393ad0">Increment</a>()</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> += <a class="code" href="class_param.html#a868e30fdfca3a8764a792432277a9c58">m_step</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">if</span> (*<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> &gt; <a class="code" href="class_param.html#a95169c88d1c52a949199ec19cd3e1c0d">m_max</a>)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> = <a class="code" href="class_param.html#a95169c88d1c52a949199ec19cd3e1c0d">m_max</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_param.html#a8ece1c117c1e7d8f5d81944d66e1d418">  140</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param.html#a8ece1c117c1e7d8f5d81944d66e1d418">Decrement</a>()</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> -= <a class="code" href="class_param.html#a868e30fdfca3a8764a792432277a9c58">m_step</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">if</span> (*<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> &lt; <a class="code" href="class_param.html#a148a0fb5e6091080ab6c4675c5c4923e">m_min</a>)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> = <a class="code" href="class_param.html#a148a0fb5e6091080ab6c4675c5c4923e">m_min</a>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="class_param.html#ad633bd3034b1e33aead09787e30e35a7">  150</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param.html#ad633bd3034b1e33aead09787e30e35a7">Write</a>(std::ostream &amp;stream)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            stream &lt;&lt; <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a> &lt;&lt; <span class="stringliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="class_param.html#a17294d22405cd74868de1fbe78aa3a9d">  154</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param.html#a17294d22405cd74868de1fbe78aa3a9d">Read</a>(std::istream &amp;stream)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            stream &gt;&gt; <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a> &gt;&gt; *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="class_param.html#acd17654cbdc7b2938e1883fbb6262150">  159</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_param.html#acd17654cbdc7b2938e1883fbb6262150">IsList</a>()</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="class_param.html#a68ac88e852d3cc546d95dc4fc3cd89d0">  165</a></span>&#160;        T <a class="code" href="class_param.html#a68ac88e852d3cc546d95dc4fc3cd89d0">m_value</a>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">  166</a></span>&#160;        T *<a class="code" href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">m_ptr</a>;         <span class="comment">// pointer to value declared elsewhere</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="class_param.html#a868e30fdfca3a8764a792432277a9c58">  167</a></span>&#160;        T <a class="code" href="class_param.html#a51bd0eec526738572fc051104e61c06c">m_default</a>, <a class="code" href="class_param.html#a148a0fb5e6091080ab6c4675c5c4923e">m_min</a>, <a class="code" href="class_param.html#a95169c88d1c52a949199ec19cd3e1c0d">m_max</a>, <a class="code" href="class_param.html#a868e30fdfca3a8764a792432277a9c58">m_step</a>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="class_param.html#a8151bf403d3d838db06d6a1981eb9a51">  168</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_param.html#a8151bf403d3d838db06d6a1981eb9a51">m_precision</a>;  <span class="comment">// number of digits after decimal point in string output</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;};</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">const</span> <a class="code" href="class_param.html">Param</a>&lt;<span class="keywordtype">int</span>&gt; <a class="code" href="param_8h.html#a97fd8222c5aed0d01db864c15aea03da">dummy</a><a class="code" href="class_param.html#a3fe39b3576dcace6bf1df5735417cf20">(</a><span class="stringliteral">&quot;error&quot;</span><a class="code" href="class_param.html#a3fe39b3576dcace6bf1df5735417cf20">)</a>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">// list of parameters</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="class_param_list.html">  174</a></span>&#160;<span class="keyword">class</span> <a class="code" href="class_param_list.html">ParamList</a> : <span class="keyword">public</span> <a class="code" href="class_param_base.html">ParamBase</a></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="class_param_list.html#a9508c6e46e6f893d058b714b60a5e31a">  177</a></span>&#160;        <a class="code" href="class_param_list.html#a9508c6e46e6f893d058b714b60a5e31a">ParamList</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name = <span class="stringliteral">&quot;&quot;</span>) :</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <a class="code" href="class_param_base.html">ParamBase</a><a class="code" href="class_param_base.html#a275d5a2720001ad86a80e234a56c6194">(</a>name<a class="code" href="class_param_base.html#a275d5a2720001ad86a80e234a56c6194">)</a></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <a class="code" href="class_param_list.html#ade143a564d7795a20e325e313c097d33">active</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="class_param_list.html#a7747d55e78db8602a0369a327b364847">  182</a></span>&#160;        ~<a class="code" href="class_param_list.html#a7747d55e78db8602a0369a327b364847">ParamList</a>() { }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="class_param_list.html#a8a432f471235ef49ff751c25d27c5f8d">  184</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_param_list.html#a8a432f471235ef49ff751c25d27c5f8d">GetFloatValue</a>()</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        }</div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="class_param_list.html#afdd5fb08da30d550b0f58ec0dd8af2f1">  188</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_param_list.html#afdd5fb08da30d550b0f58ec0dd8af2f1">GetIntValue</a>()</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="class_param_list.html#a1b540279554db7a6297b061d532ac137">  193</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param_list.html#a1b540279554db7a6297b061d532ac137">AddParam</a>(<a class="code" href="class_param_base.html">ParamBase</a> *param)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.push_back(param);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <a class="code" href="class_param_list.html#a8e5f60d8dcaed727b66ccc32ffe58cb3">m_map</a>[param-&gt;GetName()] = param;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a> = <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.begin();</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="comment">// look-up parameter based on name</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="class_param_list.html#a7948796b56cf04fd0d92044800a739a3">  201</a></span>&#160;        <a class="code" href="class_param_base.html">ParamBase</a> *<a class="code" href="class_param_list.html#a7948796b56cf04fd0d92044800a739a3">GetParam</a>(<span class="keywordtype">char</span> *name)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <a class="code" href="class_param_base.html">ParamBase</a> *p = <a class="code" href="class_param_list.html#a8e5f60d8dcaed727b66ccc32ffe58cb3">m_map</a>[name];</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">if</span> (p)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="keywordflow">return</span> p;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                <span class="keywordflow">return</span> (<a class="code" href="class_param_base.html">ParamBase</a> *) &amp;<a class="code" href="param_8h.html#a97fd8222c5aed0d01db864c15aea03da">dummy</a>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="class_param_list.html#a27c10612876e3968a69fe9917c09e56d">  215</a></span>&#160;        <a class="code" href="class_param_base.html">ParamBase</a> *<a class="code" href="class_param_list.html#a27c10612876e3968a69fe9917c09e56d">GetParam</a>(<span class="keywordtype">int</span> i)</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>[i];</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="class_param_list.html#af9d97d989ec797db9273084e13ddc4ea">  220</a></span>&#160;        <a class="code" href="class_param_base.html">ParamBase</a> *<a class="code" href="class_param_list.html#af9d97d989ec797db9273084e13ddc4ea">GetCurrent</a>()</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">return</span> *<a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a>;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="class_param_list.html#aad7b80d495ddbf0690c766cfac31b123">  225</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_param_list.html#aad7b80d495ddbf0690c766cfac31b123">GetSize</a>()</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)<a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.size();</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="class_param_list.html#a413da22f5fa05d14d7f0702cde84e92e">  230</a></span>&#160;        std::string <a class="code" href="class_param_list.html#a413da22f5fa05d14d7f0702cde84e92e">GetValueString</a>()</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="comment">// functions to traverse list</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="class_param_list.html#ab23e788d95aeb46fb210d060e8e4cf6a">  236</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param_list.html#ab23e788d95aeb46fb210d060e8e4cf6a">Reset</a>()</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a> = <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.begin();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="class_param_list.html#a9e22fdc087923e28df76eaca259fe024">  241</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param_list.html#a9e22fdc087923e28df76eaca259fe024">Increment</a>()</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a>++;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a> == <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.end())</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                <a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a> = <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.begin();</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="class_param_list.html#a7edef4c75738305c1b716a1f53718589">  251</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param_list.html#a7edef4c75738305c1b716a1f53718589">Decrement</a>()</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a> == <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.begin())</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a> = <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.end()-1;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a>--;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="class_param_list.html#a5cbc341b4648fd0ebbabff82ec953501">  264</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_param_list.html#a5cbc341b4648fd0ebbabff82ec953501">GetPercentage</a>()</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="class_param_list.html#a8feb121002b7735c299e30e28b37b97e">  268</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param_list.html#a8feb121002b7735c299e30e28b37b97e">SetPercentage</a>(<span class="keywordtype">float</span> <span class="comment">/*p*/</span>) {}</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="class_param_list.html#a599339d9d70754c3163e01442620ce56">  270</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param_list.html#a599339d9d70754c3163e01442620ce56">Write</a>(std::ostream &amp;stream)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            stream &lt;&lt; <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a> &lt;&lt; <span class="stringliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">for</span> (std::vector&lt;<a class="code" href="class_param_base.html">ParamBase</a> *&gt;::const_iterator p = <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.begin(); p != <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.end(); ++p)</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                (*p)<a class="code" href="class_param_base.html#ab488e8e5c575e8a047efb5c52a6b5740">-&gt;</a><a class="code" href="class_param_base.html#ab488e8e5c575e8a047efb5c52a6b5740">Write</a><a class="code" href="class_param_base.html#ab488e8e5c575e8a047efb5c52a6b5740">(</a>stream<a class="code" href="class_param_base.html#ab488e8e5c575e8a047efb5c52a6b5740">)</a>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="class_param_list.html#a569d500cc2220b6b5308f61dd115eaaf">  280</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param_list.html#a569d500cc2220b6b5308f61dd115eaaf">Read</a>(std::istream &amp;stream)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            stream &gt;&gt; <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a>;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <span class="keywordflow">for</span> (std::vector&lt;<a class="code" href="class_param_base.html">ParamBase</a> *&gt;::const_iterator p = <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.begin(); p != <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.end(); ++p)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                (*p)<a class="code" href="class_param_base.html#a17bb9203943f11607e903ff446c5633f">-&gt;</a><a class="code" href="class_param_base.html#a17bb9203943f11607e903ff446c5633f">Read</a><a class="code" href="class_param_base.html#a17bb9203943f11607e903ff446c5633f">(</a>stream<a class="code" href="class_param_base.html#a17bb9203943f11607e903ff446c5633f">)</a>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno"><a class="line" href="class_param_list.html#a097616c5a32beac431f6071a4639ea7a">  290</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_param_list.html#a097616c5a32beac431f6071a4639ea7a">IsList</a>()</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="class_param_list.html#a4af8fd66b4934e9f185599501c5b9706">  295</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_param_list.html#a4af8fd66b4934e9f185599501c5b9706">ResetAll</a>()</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">for</span> (std::vector&lt;<a class="code" href="class_param_base.html">ParamBase</a> *&gt;::const_iterator p = <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.begin(); p != <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>.end(); ++p)</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                (*p)<a class="code" href="class_param_base.html#a7c844cc161e6eaa60a084ee1608e1b3e">-&gt;</a><a class="code" href="class_param_base.html#a7c844cc161e6eaa60a084ee1608e1b3e">Reset</a><a class="code" href="class_param_base.html#a7c844cc161e6eaa60a084ee1608e1b3e">(</a><a class="code" href="class_param_base.html#a7c844cc161e6eaa60a084ee1608e1b3e">)</a>;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="class_param_list.html#ade143a564d7795a20e325e313c097d33">  304</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_param_list.html#ade143a564d7795a20e325e313c097d33">active</a>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno"><a class="line" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">  305</a></span>&#160;        std::vector&lt;<a class="code" href="class_param_base.html">ParamBase</a> *&gt; <a class="code" href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">m_params</a>;</div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="class_param_list.html#a8e5f60d8dcaed727b66ccc32ffe58cb3">  306</a></span>&#160;        std::map&lt;std::string, <a class="code" href="class_param_base.html">ParamBase</a> *&gt; <a class="code" href="class_param_list.html#a8e5f60d8dcaed727b66ccc32ffe58cb3">m_map</a>;</div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">  307</a></span>&#160;        std::vector&lt;<a class="code" href="class_param_base.html">ParamBase</a> *&gt;::const_iterator <a class="code" href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">m_current</a>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;};</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="ttc" id="class_param_list_html_a1b540279554db7a6297b061d532ac137"><div class="ttname"><a href="class_param_list.html#a1b540279554db7a6297b061d532ac137">ParamList::AddParam</a></div><div class="ttdeci">void AddParam(ParamBase *param)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00193">param.h:193</a></div></div>
+<div class="ttc" id="class_param_html_ad0b687cefcb6b2e98720279b690604f9"><div class="ttname"><a href="class_param.html#ad0b687cefcb6b2e98720279b690604f9">Param::GetValue</a></div><div class="ttdeci">T GetValue() const </div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00084">param.h:84</a></div></div>
+<div class="ttc" id="class_param_html_a8c4bda4cd29d90e782bd7d7caf0bee9c"><div class="ttname"><a href="class_param.html#a8c4bda4cd29d90e782bd7d7caf0bee9c">Param::m_ptr</a></div><div class="ttdeci">T * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00166">param.h:166</a></div></div>
+<div class="ttc" id="class_param_base_html_af503d1fe7f8e1498cd94c654a470b4b1"><div class="ttname"><a href="class_param_base.html#af503d1fe7f8e1498cd94c654a470b4b1">ParamBase::GetFloatValue</a></div><div class="ttdeci">virtual float GetFloatValue()=0</div></div>
+<div class="ttc" id="class_param_base_html_ab488e8e5c575e8a047efb5c52a6b5740"><div class="ttname"><a href="class_param_base.html#ab488e8e5c575e8a047efb5c52a6b5740">ParamBase::Write</a></div><div class="ttdeci">virtual void Write(std::ostream &amp;stream)=0</div></div>
+<div class="ttc" id="class_param_html_a8592f8f76ca41146e808ab3f8e3a05f6"><div class="ttname"><a href="class_param.html#a8592f8f76ca41146e808ab3f8e3a05f6">Param::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00125">param.h:125</a></div></div>
+<div class="ttc" id="class_param_html_a148a0fb5e6091080ab6c4675c5c4923e"><div class="ttname"><a href="class_param.html#a148a0fb5e6091080ab6c4675c5c4923e">Param::m_min</a></div><div class="ttdeci">T m_min</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00167">param.h:167</a></div></div>
+<div class="ttc" id="class_param_html_a17294d22405cd74868de1fbe78aa3a9d"><div class="ttname"><a href="class_param.html#a17294d22405cd74868de1fbe78aa3a9d">Param::Read</a></div><div class="ttdeci">void Read(std::istream &amp;stream)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00154">param.h:154</a></div></div>
+<div class="ttc" id="class_param_list_html_a569d500cc2220b6b5308f61dd115eaaf"><div class="ttname"><a href="class_param_list.html#a569d500cc2220b6b5308f61dd115eaaf">ParamList::Read</a></div><div class="ttdeci">void Read(std::istream &amp;stream)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00280">param.h:280</a></div></div>
+<div class="ttc" id="class_param_html"><div class="ttname"><a href="class_param.html">Param</a></div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00060">param.h:60</a></div></div>
+<div class="ttc" id="class_param_list_html_ab23e788d95aeb46fb210d060e8e4cf6a"><div class="ttname"><a href="class_param_list.html#ab23e788d95aeb46fb210d060e8e4cf6a">ParamList::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00236">param.h:236</a></div></div>
+<div class="ttc" id="class_param_list_html_a413da22f5fa05d14d7f0702cde84e92e"><div class="ttname"><a href="class_param_list.html#a413da22f5fa05d14d7f0702cde84e92e">ParamList::GetValueString</a></div><div class="ttdeci">std::string GetValueString()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00230">param.h:230</a></div></div>
+<div class="ttc" id="class_param_list_html_a8e5f60d8dcaed727b66ccc32ffe58cb3"><div class="ttname"><a href="class_param_list.html#a8e5f60d8dcaed727b66ccc32ffe58cb3">ParamList::m_map</a></div><div class="ttdeci">std::map&lt; std::string, ParamBase * &gt; m_map</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00306">param.h:306</a></div></div>
+<div class="ttc" id="class_param_list_html_a7edef4c75738305c1b716a1f53718589"><div class="ttname"><a href="class_param_list.html#a7edef4c75738305c1b716a1f53718589">ParamList::Decrement</a></div><div class="ttdeci">void Decrement()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00251">param.h:251</a></div></div>
+<div class="ttc" id="class_param_list_html_ade143a564d7795a20e325e313c097d33"><div class="ttname"><a href="class_param_list.html#ade143a564d7795a20e325e313c097d33">ParamList::active</a></div><div class="ttdeci">bool active</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00304">param.h:304</a></div></div>
+<div class="ttc" id="class_param_html_ac8c4c126350cbd5889c482e4fd1c0f7a"><div class="ttname"><a href="class_param.html#ac8c4c126350cbd5889c482e4fd1c0f7a">Param::GetPercentage</a></div><div class="ttdeci">float GetPercentage()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00115">param.h:115</a></div></div>
+<div class="ttc" id="class_param_list_html_a097616c5a32beac431f6071a4639ea7a"><div class="ttname"><a href="class_param_list.html#a097616c5a32beac431f6071a4639ea7a">ParamList::IsList</a></div><div class="ttdeci">bool IsList()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00290">param.h:290</a></div></div>
+<div class="ttc" id="class_param_html_a36356e72349681f83fabc63246229aa4"><div class="ttname"><a href="class_param.html#a36356e72349681f83fabc63246229aa4">Param::SetValue</a></div><div class="ttdeci">T SetValue(const T value)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00088">param.h:88</a></div></div>
+<div class="ttc" id="class_param_list_html_a8a432f471235ef49ff751c25d27c5f8d"><div class="ttname"><a href="class_param_list.html#a8a432f471235ef49ff751c25d27c5f8d">ParamList::GetFloatValue</a></div><div class="ttdeci">float GetFloatValue()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00184">param.h:184</a></div></div>
+<div class="ttc" id="class_param_base_html"><div class="ttname"><a href="class_param_base.html">ParamBase</a></div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00028">param.h:28</a></div></div>
+<div class="ttc" id="class_param_list_html_a9e22fdc087923e28df76eaca259fe024"><div class="ttname"><a href="class_param_list.html#a9e22fdc087923e28df76eaca259fe024">ParamList::Increment</a></div><div class="ttdeci">void Increment()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00241">param.h:241</a></div></div>
+<div class="ttc" id="class_param_html_ad633bd3034b1e33aead09787e30e35a7"><div class="ttname"><a href="class_param.html#ad633bd3034b1e33aead09787e30e35a7">Param::Write</a></div><div class="ttdeci">void Write(std::ostream &amp;stream)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00150">param.h:150</a></div></div>
+<div class="ttc" id="class_param_base_html_a17bb9203943f11607e903ff446c5633f"><div class="ttname"><a href="class_param_base.html#a17bb9203943f11607e903ff446c5633f">ParamBase::Read</a></div><div class="ttdeci">virtual void Read(std::istream &amp;stream)=0</div></div>
+<div class="ttc" id="class_param_base_html_a275d5a2720001ad86a80e234a56c6194"><div class="ttname"><a href="class_param_base.html#a275d5a2720001ad86a80e234a56c6194">ParamBase::ParamBase</a></div><div class="ttdeci">ParamBase(const char *name)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00031">param.h:31</a></div></div>
+<div class="ttc" id="class_param_html_addc6a78e58a99e6d6c66c9c7125737d0"><div class="ttname"><a href="class_param.html#addc6a78e58a99e6d6c66c9c7125737d0">Param::SetPercentage</a></div><div class="ttdeci">void SetPercentage(float p)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00120">param.h:120</a></div></div>
+<div class="ttc" id="class_param_base_html_ab447288debefe955dc2de6a64d56d092"><div class="ttname"><a href="class_param_base.html#ab447288debefe955dc2de6a64d56d092">ParamBase::GetName</a></div><div class="ttdeci">std::string &amp; GetName()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00034">param.h:34</a></div></div>
+<div class="ttc" id="class_param_html_a95169c88d1c52a949199ec19cd3e1c0d"><div class="ttname"><a href="class_param.html#a95169c88d1c52a949199ec19cd3e1c0d">Param::m_max</a></div><div class="ttdeci">T m_max</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00167">param.h:167</a></div></div>
+<div class="ttc" id="class_param_list_html_aad7b80d495ddbf0690c766cfac31b123"><div class="ttname"><a href="class_param_list.html#aad7b80d495ddbf0690c766cfac31b123">ParamList::GetSize</a></div><div class="ttdeci">int GetSize()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00225">param.h:225</a></div></div>
+<div class="ttc" id="class_param_base_html_ab748981c9096eff54c1e39077b5cbd36"><div class="ttname"><a href="class_param_base.html#ab748981c9096eff54c1e39077b5cbd36">ParamBase::Decrement</a></div><div class="ttdeci">virtual void Decrement()=0</div></div>
+<div class="ttc" id="class_param_html_a8ece1c117c1e7d8f5d81944d66e1d418"><div class="ttname"><a href="class_param.html#a8ece1c117c1e7d8f5d81944d66e1d418">Param::Decrement</a></div><div class="ttdeci">void Decrement()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00140">param.h:140</a></div></div>
+<div class="ttc" id="param_8h_html_a97fd8222c5aed0d01db864c15aea03da"><div class="ttname"><a href="param_8h.html#a97fd8222c5aed0d01db864c15aea03da">dummy</a></div><div class="ttdeci">const Param&lt; int &gt; dummy(&quot;error&quot;)</div></div>
+<div class="ttc" id="class_param_html_ae5eab92d33ed0870ac3efba05a393ad0"><div class="ttname"><a href="class_param.html#ae5eab92d33ed0870ac3efba05a393ad0">Param::Increment</a></div><div class="ttdeci">void Increment()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00130">param.h:130</a></div></div>
+<div class="ttc" id="class_param_html_a82f3f54692e83774cbb8b2e1501af803"><div class="ttname"><a href="class_param.html#a82f3f54692e83774cbb8b2e1501af803">Param::GetFloatValue</a></div><div class="ttdeci">float GetFloatValue()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00093">param.h:93</a></div></div>
+<div class="ttc" id="class_param_list_html_a4af8fd66b4934e9f185599501c5b9706"><div class="ttname"><a href="class_param_list.html#a4af8fd66b4934e9f185599501c5b9706">ParamList::ResetAll</a></div><div class="ttdeci">void ResetAll()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00295">param.h:295</a></div></div>
+<div class="ttc" id="class_param_list_html_a9508c6e46e6f893d058b714b60a5e31a"><div class="ttname"><a href="class_param_list.html#a9508c6e46e6f893d058b714b60a5e31a">ParamList::ParamList</a></div><div class="ttdeci">ParamList(const char *name=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00177">param.h:177</a></div></div>
+<div class="ttc" id="class_param_base_html_ac0ba37f139ddf296df900a1bca865b9e"><div class="ttname"><a href="class_param_base.html#ac0ba37f139ddf296df900a1bca865b9e">ParamBase::GetValueString</a></div><div class="ttdeci">virtual std::string GetValueString()=0</div></div>
+<div class="ttc" id="class_param_html_a68ac88e852d3cc546d95dc4fc3cd89d0"><div class="ttname"><a href="class_param.html#a68ac88e852d3cc546d95dc4fc3cd89d0">Param::m_value</a></div><div class="ttdeci">T m_value</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00165">param.h:165</a></div></div>
+<div class="ttc" id="class_param_list_html"><div class="ttname"><a href="class_param_list.html">ParamList</a></div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00174">param.h:174</a></div></div>
+<div class="ttc" id="class_param_html_a3af01335e7f369e8a14a61af7c8e31d1"><div class="ttname"><a href="class_param.html#a3af01335e7f369e8a14a61af7c8e31d1">Param::SetPrecision</a></div><div class="ttdeci">void SetPrecision(int x)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00110">param.h:110</a></div></div>
+<div class="ttc" id="class_param_list_html_a8feb121002b7735c299e30e28b37b97e"><div class="ttname"><a href="class_param_list.html#a8feb121002b7735c299e30e28b37b97e">ParamList::SetPercentage</a></div><div class="ttdeci">void SetPercentage(float)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00268">param.h:268</a></div></div>
+<div class="ttc" id="class_param_base_html_a891833f69f96260d21443b0c21525bd3"><div class="ttname"><a href="class_param_base.html#a891833f69f96260d21443b0c21525bd3">ParamBase::~ParamBase</a></div><div class="ttdeci">virtual ~ParamBase()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00032">param.h:32</a></div></div>
+<div class="ttc" id="class_param_list_html_af9d97d989ec797db9273084e13ddc4ea"><div class="ttname"><a href="class_param_list.html#af9d97d989ec797db9273084e13ddc4ea">ParamList::GetCurrent</a></div><div class="ttdeci">ParamBase * GetCurrent()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00220">param.h:220</a></div></div>
+<div class="ttc" id="class_param_list_html_a27c10612876e3968a69fe9917c09e56d"><div class="ttname"><a href="class_param_list.html#a27c10612876e3968a69fe9917c09e56d">ParamList::GetParam</a></div><div class="ttdeci">ParamBase * GetParam(int i)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00215">param.h:215</a></div></div>
+<div class="ttc" id="class_param_base_html_a7c844cc161e6eaa60a084ee1608e1b3e"><div class="ttname"><a href="class_param_base.html#a7c844cc161e6eaa60a084ee1608e1b3e">ParamBase::Reset</a></div><div class="ttdeci">virtual void Reset()=0</div></div>
+<div class="ttc" id="class_param_list_html_a8081c2d9ec9fc13a7c1f7652f9449b90"><div class="ttname"><a href="class_param_list.html#a8081c2d9ec9fc13a7c1f7652f9449b90">ParamList::m_current</a></div><div class="ttdeci">std::vector&lt; ParamBase * &gt;::const_iterator m_current</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00307">param.h:307</a></div></div>
+<div class="ttc" id="class_param_list_html_a7747d55e78db8602a0369a327b364847"><div class="ttname"><a href="class_param_list.html#a7747d55e78db8602a0369a327b364847">ParamList::~ParamList</a></div><div class="ttdeci">~ParamList()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00182">param.h:182</a></div></div>
+<div class="ttc" id="class_param_base_html_a702f91a34eaefd957802a52b6a408ffd"><div class="ttname"><a href="class_param_base.html#a702f91a34eaefd957802a52b6a408ffd">ParamBase::IsList</a></div><div class="ttdeci">virtual bool IsList()=0</div></div>
+<div class="ttc" id="class_param_base_html_aeb3ac099b3c83c7f3b8ae10d05f9972b"><div class="ttname"><a href="class_param_base.html#aeb3ac099b3c83c7f3b8ae10d05f9972b">ParamBase::GetIntValue</a></div><div class="ttdeci">virtual int GetIntValue()=0</div></div>
+<div class="ttc" id="class_param_html_a51bd0eec526738572fc051104e61c06c"><div class="ttname"><a href="class_param.html#a51bd0eec526738572fc051104e61c06c">Param::m_default</a></div><div class="ttdeci">T m_default</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00167">param.h:167</a></div></div>
+<div class="ttc" id="class_param_html_a868e30fdfca3a8764a792432277a9c58"><div class="ttname"><a href="class_param.html#a868e30fdfca3a8764a792432277a9c58">Param::m_step</a></div><div class="ttdeci">T m_step</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00167">param.h:167</a></div></div>
+<div class="ttc" id="class_param_list_html_a33a85e6f95f8992d49a1b133eb73fa7b"><div class="ttname"><a href="class_param_list.html#a33a85e6f95f8992d49a1b133eb73fa7b">ParamList::m_params</a></div><div class="ttdeci">std::vector&lt; ParamBase * &gt; m_params</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00305">param.h:305</a></div></div>
+<div class="ttc" id="class_param_base_html_a57f660ecae63990fd6b3d040e55a2215"><div class="ttname"><a href="class_param_base.html#a57f660ecae63990fd6b3d040e55a2215">ParamBase::Increment</a></div><div class="ttdeci">virtual void Increment()=0</div></div>
+<div class="ttc" id="class_param_base_html_a5730beccf3510b97714a8d49b69499c2"><div class="ttname"><a href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">ParamBase::m_name</a></div><div class="ttdeci">std::string m_name</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00056">param.h:56</a></div></div>
+<div class="ttc" id="class_param_list_html_a7948796b56cf04fd0d92044800a739a3"><div class="ttname"><a href="class_param_list.html#a7948796b56cf04fd0d92044800a739a3">ParamList::GetParam</a></div><div class="ttdeci">ParamBase * GetParam(char *name)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00201">param.h:201</a></div></div>
+<div class="ttc" id="class_param_html_a58761f3d5f69e4e281498f748cc55b52"><div class="ttname"><a href="class_param.html#a58761f3d5f69e4e281498f748cc55b52">Param::GetIntValue</a></div><div class="ttdeci">int GetIntValue()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00097">param.h:97</a></div></div>
+<div class="ttc" id="class_param_base_html_a9e65004b0fe4d9ac6e34c8ab7a3d24f8"><div class="ttname"><a href="class_param_base.html#a9e65004b0fe4d9ac6e34c8ab7a3d24f8">ParamBase::SetPercentage</a></div><div class="ttdeci">virtual void SetPercentage(float p)=0</div></div>
+<div class="ttc" id="class_param_html_acd17654cbdc7b2938e1883fbb6262150"><div class="ttname"><a href="class_param.html#acd17654cbdc7b2938e1883fbb6262150">Param::IsList</a></div><div class="ttdeci">bool IsList()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00159">param.h:159</a></div></div>
+<div class="ttc" id="class_param_html_a8151bf403d3d838db06d6a1981eb9a51"><div class="ttname"><a href="class_param.html#a8151bf403d3d838db06d6a1981eb9a51">Param::m_precision</a></div><div class="ttdeci">int m_precision</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00168">param.h:168</a></div></div>
+<div class="ttc" id="class_param_base_html_a61b1babd750f887a31787ec0f39662b2"><div class="ttname"><a href="class_param_base.html#a61b1babd750f887a31787ec0f39662b2">ParamBase::GetPercentage</a></div><div class="ttdeci">virtual float GetPercentage()=0</div></div>
+<div class="ttc" id="class_param_html_a3973a1abcba28cc9b15325302d4f97b1"><div class="ttname"><a href="class_param.html#a3973a1abcba28cc9b15325302d4f97b1">Param::GetValueString</a></div><div class="ttdeci">std::string GetValueString()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00102">param.h:102</a></div></div>
+<div class="ttc" id="class_param_list_html_a599339d9d70754c3163e01442620ce56"><div class="ttname"><a href="class_param_list.html#a599339d9d70754c3163e01442620ce56">ParamList::Write</a></div><div class="ttdeci">void Write(std::ostream &amp;stream)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00270">param.h:270</a></div></div>
+<div class="ttc" id="class_param_list_html_afdd5fb08da30d550b0f58ec0dd8af2f1"><div class="ttname"><a href="class_param_list.html#afdd5fb08da30d550b0f58ec0dd8af2f1">ParamList::GetIntValue</a></div><div class="ttdeci">int GetIntValue()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00188">param.h:188</a></div></div>
+<div class="ttc" id="class_param_html_a3fe39b3576dcace6bf1df5735417cf20"><div class="ttname"><a href="class_param.html#a3fe39b3576dcace6bf1df5735417cf20">Param::Param</a></div><div class="ttdeci">Param(const char *name, T value=0, T min=0, T max=10000, T step=1, T *ptr=0)</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00063">param.h:63</a></div></div>
+<div class="ttc" id="class_param_list_html_a5cbc341b4648fd0ebbabff82ec953501"><div class="ttname"><a href="class_param_list.html#a5cbc341b4648fd0ebbabff82ec953501">ParamList::GetPercentage</a></div><div class="ttdeci">float GetPercentage()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00264">param.h:264</a></div></div>
+<div class="ttc" id="class_param_html_a1f29b8fe33c5c62f74b9c97fdc6d3128"><div class="ttname"><a href="class_param.html#a1f29b8fe33c5c62f74b9c97fdc6d3128">Param::~Param</a></div><div class="ttdeci">~Param()</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00082">param.h:82</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="param_8h.html">param.h</a></li>
+    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:09 dla particles programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

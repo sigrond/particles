@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['particles_5fkernel_5fh',['PARTICLES_KERNEL_H',['../particles__kernel_8cuh.html#a384444f066551f04f65ff94b99aa7091',1,'particles_kernel.cuh']]]
+  ['num_5fparticles',['NUM_PARTICLES',['../particles_8cpp.html#a75cbc112dce4b21c13fe7bb671accab1',1,'particles.cpp']]]
 ];

@@ -34,7 +34,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="particles.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="czastki2.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">particles
    </div>
@@ -76,6 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Lista&#160;klas</span></a></li>
       <li><a href="classes.html"><span>Indeks&#160;klas</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchia&#160;klas</span></a></li>
       <li><a href="functions.html"><span>Składowe&#160;klas</span></a></li>
     </ul>
   </div>
@@ -214,7 +215,7 @@ Atrybuty prywatne</h2></td></tr>
 
 <p>Odwołuje się do <a class="el" href="particle_types_loader_8h_source.html#l00022">fileName</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01035">main()</a>.</p>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01057">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;: <a class="code" href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">fileName</a>(name){};</div>
 <div class="ttc" id="classparticle_types_loader_html_a8f7f010c7bc9706a829dc1c63820fd5c"><div class="ttname"><a href="classparticle_types_loader.html#a8f7f010c7bc9706a829dc1c63820fd5c">particleTypesLoader::fileName</a></div><div class="ttdeci">std::string fileName</div><div class="ttdef"><b>Definition:</b> <a href="particle_types_loader_8h_source.html#l00022">particleTypesLoader.h:22</a></div></div>
 </div><!-- fragment -->
@@ -250,7 +251,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Odwołuje się do <a class="el" href="particle_types_loader_8h_source.html#l00019">particlesNumber</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01035">main()</a>.</p>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01057">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particlesNumber</a>;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
@@ -282,7 +283,7 @@ Oto graf wywoływań tej funkcji:</div>
 </div><div class="memdoc">
 
 <p>Załaduje dane z pliku do wektora. Plik będzie na nowo otwarty i przeczytany, a wektor wyczyszczony i wypełniony od nowa. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Do zrobienia:</a></b></dt><dd>przydała by się jakaś ładna implementacja ltrim, rtrim i trim żeby łatwo usuwać nadmiarowe białe znaki </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Do zrobienia:</a></b></dt><dd>przydała by się jakaś ładna implementacja ltrim, rtrim i trim żeby łatwo usuwać nadmiarowe białe znaki </dd></dl>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
     <tr><td class="paramname">dstV</td><td>std::vector&lt;particleType&gt;&amp; </td></tr>
@@ -290,7 +291,7 @@ Oto graf wywoływań tej funkcji:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd>void </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Do zrobienia:</a></b></dt><dd>Potrzebny jest opis struktury pliku </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Do zrobienia:</a></b></dt><dd>Potrzebny jest opis struktury pliku </dd></dl>
 <p>&lt; ltrim</p>
 <p>&lt; rozpoczęcie opisu typu cząstki</p>
 <p>&lt; nie przewiduję żeby było tu więcej białych znaków niz jedna spacja</p>
@@ -310,7 +311,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Odwołuje się do <a class="el" href="particle_type_8cpp_source.html#l00038">particleType::calcParams()</a>, <a class="el" href="particle_types_loader_8h_source.html#l00021">configFile</a>, <a class="el" href="particle_types_loader_8h_source.html#l00022">fileName</a>, <a class="el" href="particle_type_8h_source.html#l00052">particleType::normalizedEpsilon</a>, <a class="el" href="particle_type_8h_source.html#l00024">particleType::particleCharge</a>, <a class="el" href="particle_type_8h_source.html#l00028">particleType::particleColorB</a>, <a class="el" href="particle_type_8h_source.html#l00027">particleType::particleColorG</a>, <a class="el" href="particle_type_8h_source.html#l00026">particleType::particleColorR</a>, <a class="el" href="particle_type_8h_source.html#l00023">particleType::particleDensity</a>, <a class="el" href="particle_type_8h_source.html#l00022">particleType::particleMass</a>, <a class="el" href="particle_type_8h_source.html#l00056">particleType::particleNoOfType</a>, <a class="el" href="particle_type_8h_source.html#l00021">particleType::particleRadius</a>, <a class="el" href="particle_types_loader_8h_source.html#l00019">particlesNumber</a>, <a class="el" href="particle_type_8h_source.html#l00067">particleType::particleType()</a> i <a class="el" href="particle_type_8cpp_source.html#l00019">particleType::setParticleName()</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01035">main()</a>.</p>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01057">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">bool</span> pMassSet=<span class="keyword">false</span>,pRadiusSet=<span class="keyword">false</span>,pDensitySet=<span class="keyword">false</span>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classparticle_types_loader.html#acfe4faab7f4f54d611a04697c9347424">particlesNumber</a>=0;</div>
@@ -545,7 +546,7 @@ Oto graf wywoływań tej funkcji:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classparticle_types_loader.html">particleTypesLoader</a></li>
-    <li class="footer">Wygenerowano So, 1 sie 2015 17:48:44 dla particles programem
+    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:22 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -34,7 +34,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="particles.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="czastki2.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">particles
    </div>
@@ -150,8 +150,11 @@ Funkcje</h2></td></tr>
 <tr class="memitem:a98c3325419b7528d34a51ca7972d7095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cuh.html#a98c3325419b7528d34a51ca7972d7095">unmapGLBufferObject</a> (struct cudaGraphicsResource *cuda_vbo_resource)</td></tr>
 <tr class="separator:a98c3325419b7528d34a51ca7972d7095"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a342176dbaba2668312c45e1a1423fc4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cuh.html#a342176dbaba2668312c45e1a1423fc4e">setParameters</a> (<a class="el" href="struct_sim_params.html">SimParams</a> *hostParams)</td></tr>
-<tr class="memdesc:a342176dbaba2668312c45e1a1423fc4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kopiowanie parametr�w symulacji z pami�ci RAM hosta do pami�ci device (karta graficzna)  <a href="#a342176dbaba2668312c45e1a1423fc4e">Więcej...</a><br/></td></tr>
+<tr class="memdesc:a342176dbaba2668312c45e1a1423fc4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kopiowanie parametrów symulacji z pamiêci RAM hosta do pamiêci device (karta graficzna)  <a href="#a342176dbaba2668312c45e1a1423fc4e">Więcej...</a><br/></td></tr>
 <tr class="separator:a342176dbaba2668312c45e1a1423fc4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae866af3e05dfa571d966b5b9dd9137d5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cuh.html#ae866af3e05dfa571d966b5b9dd9137d5">getSurfacePreasure</a> ()</td></tr>
+<tr class="memdesc:ae866af3e05dfa571d966b5b9dd9137d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja pobiera z device wartość ciśnienia na powierchni kropli i zwraca (do host'a)  <a href="#ae866af3e05dfa571d966b5b9dd9137d5">Więcej...</a><br/></td></tr>
+<tr class="separator:ae866af3e05dfa571d966b5b9dd9137d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34e9db8b801cd537e5ae5a4a886e020c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cuh.html#a34e9db8b801cd537e5ae5a4a886e020c">integrateSystem</a> (float *pos, float *vel, float deltaTime, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="el" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</td></tr>
 <tr class="separator:a34e9db8b801cd537e5ae5a4a886e020c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0a4037d25e768622443077546399cf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cuh.html#ae0a4037d25e768622443077546399cf2">calcHash</a> (<a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *gridParticleHash, <a class="el" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> *gridParticleIndex, float *pos, int <a class="el" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)</td></tr>
@@ -192,7 +195,7 @@ Funkcje</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00176">ParticleSystem::_initialize()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00179">ParticleSystem::_initialize()</a>.</p>
 
 <p><div class="dynheader">
 Oto graf wywoływań tej funkcji:</div>
@@ -241,25 +244,25 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00169">169</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00183">183</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00300">ParticleSystem::update()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> numThreads, numBlocks;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a>(<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>, 256, numBlocks, numThreads);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">/*      wywolanie watkow        */</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="comment">// execute the kernel</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        calcHashD&lt;&lt;&lt; numBlocks, numThreads &gt;&gt;&gt;(gridParticleHash,</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                               gridParticleIndex,</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                               (float4 *) pos,</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                               <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="comment">// check if kernel invocation generated an error</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        getLastCudaError(<span class="stringliteral">&quot;Kernel execution failed&quot;</span>);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> numThreads, numBlocks;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="code" href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a>(<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>, 256, numBlocks, numThreads);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">/*      wywolanie watkow        */</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="comment">// execute the kernel</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        calcHashD&lt;&lt;&lt; numBlocks, numThreads &gt;&gt;&gt;(gridParticleHash,</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                                               gridParticleIndex,</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                                               (float4 *) pos,</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                                               <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="comment">// check if kernel invocation generated an error</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        getLastCudaError(<span class="stringliteral">&quot;Kernel execution failed&quot;</span>);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
 <div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00156">particles.cpp:156</a></div></div>
-<div class="ttc" id="particle_system__cuda_8cu_html_a78e8aa50e0629b57cff219a2fa753ed0"><div class="ttname"><a href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a></div><div class="ttdeci">void computeGridSize(uint n, uint blockSize, uint &amp;numBlocks, uint &amp;numThreads)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system__cuda_8cu_source.html#l00149">particleSystem_cuda.cu:149</a></div></div>
+<div class="ttc" id="particle_system__cuda_8cu_html_a78e8aa50e0629b57cff219a2fa753ed0"><div class="ttname"><a href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a></div><div class="ttdeci">void computeGridSize(uint n, uint blockSize, uint &amp;numBlocks, uint &amp;numThreads)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system__cuda_8cu_source.html#l00163">particleSystem_cuda.cu:163</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00033">particles_kernel.cuh:33</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -339,44 +342,44 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00231">231</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00245">245</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00300">ParticleSystem::update()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor">#if USE_TEX</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="preprocessor"></span>        checkCudaErrors(cudaBindTexture(0, oldPosTex, sortedPos, <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>*<span class="keyword">sizeof</span>(float4)));</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        checkCudaErrors(cudaBindTexture(0, oldVelTex, sortedVel, <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>*<span class="keyword">sizeof</span>(float4)));</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        checkCudaErrors(cudaBindTexture(0, cellStartTex, cellStart, numCells*<span class="keyword">sizeof</span>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)));</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        checkCudaErrors(cudaBindTexture(0, cellEndTex, cellEnd, numCells*<span class="keyword">sizeof</span>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)));</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="comment">// thread per particle</span></div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> numThreads, numBlocks;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <a class="code" href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a>(<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>, 64, numBlocks, numThreads);</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">/*      wywolanie watkow zderzen        */</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="comment">// execute the kernel</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        collideD&lt;&lt;&lt; numBlocks, numThreads &gt;&gt;&gt;((float4 *)newVel,</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                              (float4 *)sortedPos,</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                              (float4 *)sortedVel,</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                              gridParticleIndex,</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                                              cellStart,</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                              cellEnd,</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                              <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>,</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                                                                                          deltaTime);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="comment">// check if kernel invocation generated an error</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        getLastCudaError(&quot;Kernel execution failed&quot;);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#if USE_TEX</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor"></span>        checkCudaErrors(cudaUnbindTexture(oldPosTex));</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        checkCudaErrors(cudaUnbindTexture(oldVelTex));</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        checkCudaErrors(cudaUnbindTexture(cellStartTex));</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        checkCudaErrors(cudaUnbindTexture(cellEndTex));</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor"></span>    }</div>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#if USE_TEX</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor"></span>        checkCudaErrors(cudaBindTexture(0, oldPosTex, sortedPos, <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>*<span class="keyword">sizeof</span>(float4)));</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        checkCudaErrors(cudaBindTexture(0, oldVelTex, sortedVel, <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>*<span class="keyword">sizeof</span>(float4)));</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        checkCudaErrors(cudaBindTexture(0, cellStartTex, cellStart, numCells*<span class="keyword">sizeof</span>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)));</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        checkCudaErrors(cudaBindTexture(0, cellEndTex, cellEnd, numCells*<span class="keyword">sizeof</span>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)));</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="comment">// thread per particle</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> numThreads, numBlocks;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <a class="code" href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a>(<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>, 64, numBlocks, numThreads);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">/*      wywolanie watkow zderzen        */</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="comment">// execute the kernel</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        collideD&lt;&lt;&lt; numBlocks, numThreads &gt;&gt;&gt;((float4 *)newVel,</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                              (float4 *)sortedPos,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                              (float4 *)sortedVel,</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                              gridParticleIndex,</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                              cellStart,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                              cellEnd,</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                              <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>,</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                                                                          deltaTime);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="comment">// check if kernel invocation generated an error</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        getLastCudaError(&quot;Kernel execution failed&quot;);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#if USE_TEX</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor"></span>        checkCudaErrors(cudaUnbindTexture(oldPosTex));</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        checkCudaErrors(cudaUnbindTexture(oldVelTex));</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        checkCudaErrors(cudaUnbindTexture(cellStartTex));</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        checkCudaErrors(cudaUnbindTexture(cellEndTex));</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="preprocessor"></span>    }</div>
 <div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00156">particles.cpp:156</a></div></div>
-<div class="ttc" id="particle_system__cuda_8cu_html_a78e8aa50e0629b57cff219a2fa753ed0"><div class="ttname"><a href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a></div><div class="ttdeci">void computeGridSize(uint n, uint blockSize, uint &amp;numBlocks, uint &amp;numThreads)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system__cuda_8cu_source.html#l00149">particleSystem_cuda.cu:149</a></div></div>
+<div class="ttc" id="particle_system__cuda_8cu_html_a78e8aa50e0629b57cff219a2fa753ed0"><div class="ttname"><a href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a></div><div class="ttdeci">void computeGridSize(uint n, uint blockSize, uint &amp;numBlocks, uint &amp;numThreads)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system__cuda_8cu_source.html#l00163">particleSystem_cuda.cu:163</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00033">particles_kernel.cuh:33</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -428,7 +431,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00114">114</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00369">ParticleSystem::dumpGrid()</a>, <a class="el" href="particle_system_8cpp_source.html#l00394">ParticleSystem::dumpParticles()</a>, <a class="el" href="particle_system_8cpp_source.html#l00409">ParticleSystem::getArray()</a> i <a class="el" href="particles_8cpp_source.html#l00357">runBenchmark()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00377">ParticleSystem::dumpGrid()</a>, <a class="el" href="particle_system_8cpp_source.html#l00402">ParticleSystem::dumpParticles()</a>, <a class="el" href="particle_system_8cpp_source.html#l00417">ParticleSystem::getArray()</a> i <a class="el" href="particles_8cpp_source.html#l00370">runBenchmark()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    {</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">if</span> (cuda_vbo_resource)</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
@@ -494,7 +497,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00083">83</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00437">ParticleSystem::setArray()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00445">ParticleSystem::setArray()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        checkCudaErrors(cudaMemcpy((<span class="keywordtype">char</span> *) device + offset, host, size, cudaMemcpyHostToDevice));</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
@@ -536,7 +539,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00048">48</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01035">main()</a>.</p>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01057">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">int</span> devID;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
@@ -577,7 +580,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00073">73</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00267">ParticleSystem::_finalize()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00270">ParticleSystem::_finalize()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        checkCudaErrors(cudaFree(devPtr));</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
@@ -588,6 +591,45 @@ Oto graf wywoływań tej funkcji:</div>
 <div class="center"><img src="particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9_icgraph.png" border="0" usemap="#particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9_icgraph" alt=""/></div>
 <map name="particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9_icgraph" id="particle_system_8cuh_a2946519c8d9c4f8ebf552bf044821ea9_icgraph">
 <area shape="rect" id="node2" href="class_particle_system.html#a5d6a52db7d1277c8fe734ecceb69e5c6" title="ParticleSystem::_finalize" alt="" coords="128,13,295,39"/><area shape="rect" id="node3" href="class_particle_system.html#a6bc725349a763b9d6817950cde16a93f" title="ParticleSystem::~Particle\lSystem" alt="" coords="343,5,513,47"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae866af3e05dfa571d966b5b9dd9137d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float getSurfacePreasure </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkcja pobiera z device wartość ciśnienia na powierchni kropli i zwraca (do host'a) </p>
+<dl class="section return"><dt>Zwraca</dt><dd>float </dd></dl>
+
+<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00147">147</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
+
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordtype">float</span> tmpP;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="keywordtype">float</span> hostParams=0.0f;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        checkCudaErrors(cudaMemcpyFromSymbol(&amp;tmpP,<a class="code" href="particles__kernel__impl_8cuh.html#a67a73b8e9b2dbe8d6edccb406727ac4c">surfacePreasure</a>,<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)));</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                checkCudaErrors(cudaMemcpyToSymbol(<a class="code" href="particles__kernel__impl_8cuh.html#a67a73b8e9b2dbe8d6edccb406727ac4c">surfacePreasure</a>, &amp;hostParams, <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)));</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> tmpP;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
+<div class="ttc" id="particles__kernel__impl_8cuh_html_a67a73b8e9b2dbe8d6edccb406727ac4c"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a67a73b8e9b2dbe8d6edccb406727ac4c">surfacePreasure</a></div><div class="ttdeci">__device__ float surfacePreasure</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00045">particles_kernel_impl.cuh:45</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="particle_system_8cuh_ae866af3e05dfa571d966b5b9dd9137d5_icgraph.png" border="0" usemap="#particle_system_8cuh_ae866af3e05dfa571d966b5b9dd9137d5_icgraph" alt=""/></div>
+<map name="particle_system_8cuh_ae866af3e05dfa571d966b5b9dd9137d5_icgraph" id="particle_system_8cuh_ae866af3e05dfa571d966b5b9dd9137d5_icgraph">
+<area shape="rect" id="node2" href="class_particle_system.html#a166fd86f020b6024d7d42723762d7cb2" title="ParticleSystem::update" alt="" coords="189,56,348,83"/><area shape="rect" id="node3" href="particles_8cpp.html#acd4773d821b4657197abdd8058000f56" title="uruchomienie symulacji bez GUI z zapisem wyniku " alt="" coords="396,5,503,32"/><area shape="rect" id="node5" href="particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="418,56,481,83"/><area shape="rect" id="node6" href="particles_8cpp.html#a09dcf1dc0fc67f47de1a59851fd7282e" title="obsługa zdarzeń klawiszy i opcji z menu " alt="" coords="428,107,471,133"/><area shape="rect" id="node4" href="particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="567,5,617,32"/><area shape="rect" id="node7" href="particles_8cpp.html#ac623a05dc7ab8844bdf40dc55c124fc6" title="mainMenu" alt="" coords="551,107,633,133"/></map>
 </div>
 </p>
 
@@ -629,20 +671,20 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00155">155</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00169">169</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00300">ParticleSystem::update()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        thrust::device_ptr&lt;float4&gt; d_pos4((float4 *)pos);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        thrust::device_ptr&lt;float4&gt; d_vel4((float4 *)vel);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        thrust::for_each(</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            thrust::make_zip_iterator(thrust::make_tuple(d_pos4, d_vel4)),</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            thrust::make_zip_iterator(thrust::make_tuple(d_pos4+<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>, d_vel4+<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)),</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <a class="code" href="structintegrate__functor.html">integrate_functor</a>(deltaTime));</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        thrust::device_ptr&lt;float4&gt; d_pos4((float4 *)pos);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        thrust::device_ptr&lt;float4&gt; d_vel4((float4 *)vel);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        thrust::for_each(</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            thrust::make_zip_iterator(thrust::make_tuple(d_pos4, d_vel4)),</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            thrust::make_zip_iterator(thrust::make_tuple(d_pos4+<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>, d_vel4+<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>)),</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <a class="code" href="structintegrate__functor.html">integrate_functor</a>(deltaTime));</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
 <div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00156">particles.cpp:156</a></div></div>
-<div class="ttc" id="structintegrate__functor_html"><div class="ttname"><a href="structintegrate__functor.html">integrate_functor</a></div><div class="ttdoc">ta struktura inicjowana jest z krokiem delta_time dla danych opisujących prędkość i położenie cząstki...</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00051">particles_kernel_impl.cuh:51</a></div></div>
+<div class="ttc" id="structintegrate__functor_html"><div class="ttname"><a href="structintegrate__functor.html">integrate_functor</a></div><div class="ttdoc">ta struktura inicjowana jest z krokiem delta_time dla danych opisujących prędkość i położenie cząstki...</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00053">particles_kernel_impl.cuh:53</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywoływań tej funkcji:</div>
@@ -671,7 +713,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00099">99</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00300">ParticleSystem::update()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordtype">void</span> *ptr;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        checkCudaErrors(cudaGraphicsMapResources(1, cuda_vbo_resource, 0));</div>
@@ -718,7 +760,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00088">88</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00176">ParticleSystem::_initialize()</a> i <a class="el" href="particle_system_8cpp_source.html#l00437">ParticleSystem::setArray()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00179">ParticleSystem::_initialize()</a> i <a class="el" href="particle_system_8cpp_source.html#l00445">ParticleSystem::setArray()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        checkCudaErrors(cudaGraphicsGLRegisterBuffer(cuda_vbo_resource, vbo,</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                     cudaGraphicsMapFlagsNone));</div>
@@ -807,41 +849,41 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00190">190</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00204">204</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00300">ParticleSystem::update()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> numThreads, numBlocks;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <a class="code" href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a>(<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>, 256, numBlocks, numThreads);</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="comment">// set all cells to empty</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        checkCudaErrors(cudaMemset(cellStart, 0xffffffff, numCells*<span class="keyword">sizeof</span>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)));</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#if USE_TEX</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor"></span>        checkCudaErrors(cudaBindTexture(0, oldPosTex, oldPos, <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>*<span class="keyword">sizeof</span>(float4)));</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        checkCudaErrors(cudaBindTexture(0, oldVelTex, oldVel, <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>*<span class="keyword">sizeof</span>(float4)));</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> smemSize = <span class="keyword">sizeof</span>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)*(numThreads+1);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        reorderDataAndFindCellStartD&lt;&lt;&lt; numBlocks, numThreads, smemSize&gt;&gt;&gt;(</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            cellStart,</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            cellEnd,</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            (float4 *) sortedPos,</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            (float4 *) sortedVel,</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            gridParticleHash,</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            gridParticleIndex,</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            (float4 *) oldPos,</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            (float4 *) oldVel,</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        getLastCudaError(<span class="stringliteral">&quot;Kernel execution failed: reorderDataAndFindCellStartD&quot;</span>);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#if USE_TEX</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor"></span>        checkCudaErrors(cudaUnbindTexture(oldPosTex));</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        checkCudaErrors(cudaUnbindTexture(oldVelTex));</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor"></span>    }</div>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> numThreads, numBlocks;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <a class="code" href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a>(<a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>, 256, numBlocks, numThreads);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="comment">// set all cells to empty</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        checkCudaErrors(cudaMemset(cellStart, 0xffffffff, numCells*<span class="keyword">sizeof</span>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)));</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">#if USE_TEX</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor"></span>        checkCudaErrors(cudaBindTexture(0, oldPosTex, oldPos, <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>*<span class="keyword">sizeof</span>(float4)));</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        checkCudaErrors(cudaBindTexture(0, oldVelTex, oldVel, <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>*<span class="keyword">sizeof</span>(float4)));</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> smemSize = <span class="keyword">sizeof</span>(<a class="code" href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>)*(numThreads+1);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        reorderDataAndFindCellStartD&lt;&lt;&lt; numBlocks, numThreads, smemSize&gt;&gt;&gt;(</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            cellStart,</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            cellEnd,</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            (float4 *) sortedPos,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            (float4 *) sortedVel,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            gridParticleHash,</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            gridParticleIndex,</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            (float4 *) oldPos,</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            (float4 *) oldVel,</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        getLastCudaError(<span class="stringliteral">&quot;Kernel execution failed: reorderDataAndFindCellStartD&quot;</span>);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#if USE_TEX</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor"></span>        checkCudaErrors(cudaUnbindTexture(oldPosTex));</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        checkCudaErrors(cudaUnbindTexture(oldVelTex));</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor"></span>    }</div>
 <div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00156">particles.cpp:156</a></div></div>
-<div class="ttc" id="particle_system__cuda_8cu_html_a78e8aa50e0629b57cff219a2fa753ed0"><div class="ttname"><a href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a></div><div class="ttdeci">void computeGridSize(uint n, uint blockSize, uint &amp;numBlocks, uint &amp;numThreads)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system__cuda_8cu_source.html#l00149">particleSystem_cuda.cu:149</a></div></div>
+<div class="ttc" id="particle_system__cuda_8cu_html_a78e8aa50e0629b57cff219a2fa753ed0"><div class="ttname"><a href="particle_system__cuda_8cu.html#a78e8aa50e0629b57cff219a2fa753ed0">computeGridSize</a></div><div class="ttdeci">void computeGridSize(uint n, uint blockSize, uint &amp;numBlocks, uint &amp;numThreads)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system__cuda_8cu_source.html#l00163">particleSystem_cuda.cu:163</a></div></div>
 <div class="ttc" id="particles__kernel_8cuh_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="particles__kernel_8cuh.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00033">particles_kernel.cuh:33</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -869,7 +911,7 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Kopiowanie parametr�w symulacji z pami�ci RAM hosta do pami�ci device (karta graficzna) </p>
+<p>Kopiowanie parametrów symulacji z pamiêci RAM hosta do pamiêci device (karta graficzna) </p>
 <dl class="params"><dt>Parametry</dt><dd>
   <table class="params">
     <tr><td class="paramname">hostParams</td><td>SimParams* Struktura z parametrami symulacji. </td></tr>
@@ -884,7 +926,7 @@ Oto graf wywoływań tej funkcji:</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        checkCudaErrors(cudaMemcpyToSymbol(<a class="code" href="particles_8cpp.html#ace10f2fb51e03e3be1ccf7837c9c5c68">params</a>, hostParams, <span class="keyword">sizeof</span>(<a class="code" href="struct_sim_params.html">SimParams</a>)));</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
 <div class="ttc" id="struct_sim_params_html"><div class="ttname"><a href="struct_sim_params.html">SimParams</a></div><div class="ttdoc">Struktura z parametrami symulacji przekazywanymi z host do device. </div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00038">particles_kernel.cuh:38</a></div></div>
-<div class="ttc" id="particles_8cpp_html_ace10f2fb51e03e3be1ccf7837c9c5c68"><div class="ttname"><a href="particles_8cpp.html#ace10f2fb51e03e3be1ccf7837c9c5c68">params</a></div><div class="ttdeci">ParamListGL * params</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00247">particles.cpp:247</a></div></div>
+<div class="ttc" id="particles_8cpp_html_ace10f2fb51e03e3be1ccf7837c9c5c68"><div class="ttname"><a href="particles_8cpp.html#ace10f2fb51e03e3be1ccf7837c9c5c68">params</a></div><div class="ttdeci">ParamListGL * params</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00260">particles.cpp:260</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -918,14 +960,14 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00277">277</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00291">291</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00300">ParticleSystem::update()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        thrust::sort_by_key(thrust::device_ptr&lt;uint&gt;(dGridParticleHash),</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                            thrust::device_ptr&lt;uint&gt;(dGridParticleHash + <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>),</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                            thrust::device_ptr&lt;uint&gt;(dGridParticleIndex));</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        thrust::sort_by_key(thrust::device_ptr&lt;uint&gt;(dGridParticleHash),</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                            thrust::device_ptr&lt;uint&gt;(dGridParticleHash + <a class="code" href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a>),</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                            thrust::device_ptr&lt;uint&gt;(dGridParticleIndex));</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    }</div>
 <div class="ttc" id="particles_8cpp_html_a05b8a90212054a3eb1a036ae0c269596"><div class="ttname"><a href="particles_8cpp.html#a05b8a90212054a3eb1a036ae0c269596">numParticles</a></div><div class="ttdeci">uint numParticles</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00156">particles.cpp:156</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -975,7 +1017,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00109">109</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00300">ParticleSystem::update()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    {</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        checkCudaErrors(cudaGraphicsUnmapResources(1, &amp;cuda_vbo_resource, 0));</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
@@ -1007,7 +1049,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Definicja w linii <a class="el" href="particle_system__cuda_8cu_source.html#l00094">94</a> pliku <a class="el" href="particle_system__cuda_8cu_source.html">particleSystem_cuda.cu</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00267">ParticleSystem::_finalize()</a> i <a class="el" href="particle_system_8cpp_source.html#l00437">ParticleSystem::setArray()</a>.</p>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00270">ParticleSystem::_finalize()</a> i <a class="el" href="particle_system_8cpp_source.html#l00445">ParticleSystem::setArray()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        checkCudaErrors(cudaGraphicsUnregisterResource(cuda_vbo_resource));</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
@@ -1029,7 +1071,7 @@ Oto graf wywoływań tej funkcji:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="particle_system_8cuh.html">particleSystem.cuh</a></li>
-    <li class="footer">Wygenerowano So, 1 sie 2015 17:48:40 dla particles programem
+    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:18 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

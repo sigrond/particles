@@ -21,8 +21,9 @@ var NAVTREE =
     [ "Klasy", null, [
       [ "Lista klas", "annotated.html", "annotated" ],
       [ "Indeks klas", "classes.html", null ],
+      [ "Hierarchia klas", "hierarchy.html", "hierarchy" ],
       [ "Składowe klas", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Funkcje", "functions_func.html", null ],
         [ "Zmienne", "functions_vars.html", null ],
         [ "Wyliczenia", "functions_enum.html", null ],
@@ -45,8 +46,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"particles_8cpp.html#a4067d49c28b37c689a16350cb3ff64d7"
+"_g_lgraph_8cpp.html",
+"class_particle_system.html#a4280ede7d75e44c8c0d4edfa5ee7dd02",
+"particles_8cpp.html#a6fed970e4454f0b672cd023315b9e343"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

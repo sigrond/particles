@@ -9,6 +9,7 @@ var particle_system__cuda_8cu =
     [ "cudaGLInit", "particle_system__cuda_8cu.html#a4e20ffdf94c8d60a5c32ecde149c8554", null ],
     [ "cudaInit", "particle_system__cuda_8cu.html#ad205012a960928f6fb61ea4f51a95e9f", null ],
     [ "freeArray", "particle_system__cuda_8cu.html#a2946519c8d9c4f8ebf552bf044821ea9", null ],
+    [ "getSurfacePreasure", "particle_system__cuda_8cu.html#ae866af3e05dfa571d966b5b9dd9137d5", null ],
     [ "iDivUp", "particle_system__cuda_8cu.html#aa5accec7fb28381615c8cb68522c9eb3", null ],
     [ "integrateSystem", "particle_system__cuda_8cu.html#a34e9db8b801cd537e5ae5a4a886e020c", null ],
     [ "mapGLBufferObject", "particle_system__cuda_8cu.html#aa491077afd740a269815eb9ce81c8642", null ],

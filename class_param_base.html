@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>particles: Dokumentacja klasy ParamBase</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script src="MathJax/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="czastki2.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">particles
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Strona&#160;główna</span></a></li>
+      <li><a href="pages.html"><span>Dodatkowe&#160;strony</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Klasy</span></a></li>
+      <li><a href="files.html"><span>Pliki</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Lista&#160;klas</span></a></li>
+      <li><a href="classes.html"><span>Indeks&#160;klas</span></a></li>
+      <li><a href="inherits.html"><span>Hierarchia&#160;klas</span></a></li>
+      <li><a href="functions.html"><span>Składowe&#160;klas</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_param_base.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Klasy</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pliki</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funkcje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Zmienne</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definicje typów</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Wyliczenia</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Wartości wyliczeń</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Definicje</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Strony</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pro-attribs">Atrybuty chronione</a> &#124;
+<a href="class_param_base-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja klasy ParamBase<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="param_8h_source.html">param.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagram dziedziczenia dla ParamBase</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base__inherit__graph.png" border="0" usemap="#_param_base_inherit__map" alt="Inheritance graph"/></div>
+<map name="_param_base_inherit__map" id="_param_base_inherit__map">
+<area shape="rect" id="node2" href="class_param.html" title="{Param\&lt; T \&gt;\n|&#45; m_value\l&#45; m_ptr\l&#45; m_default\l&#45; m_min\l&#45; m_max\l&#45; m_step\l&#45; m_precision\l|+ Param()\l+ ~Param()\l+ GetValue()\l+ SetValue()\l+ GetFloatValue()\l+ GetIntValue()\l+ GetValueString()\l+ SetPrecision()\l+ GetPercentage()\l+ SetPercentage()\li 6 więcej...\l}" alt="" coords="5,321,136,633"/><area shape="rect" id="node3" href="class_param_list.html" title="{ParamList\n|# active\l# m_params\l# m_map\l# m_current\l|+ ParamList()\l+ ~ParamList()\l+ GetFloatValue()\l+ GetIntValue()\l+ AddParam()\l+ GetParam()\l+ GetParam()\l+ GetCurrent()\l+ GetSize()\l+ GetValueString()\li 9 więcej...\l}" alt="" coords="160,343,291,611"/><area shape="rect" id="node4" href="class_param_list_g_l.html" title="{ParamListGL\n|&#45; m_font\l&#45; m_font_h\l&#45; m_bar_x\l&#45; m_bar_w\l&#45; m_bar_h\l&#45; m_text_x\l&#45; m_separation\l&#45; m_value_x\l&#45; m_bar_offset\l&#45; m_start_x\li 7 więcej...\l|+ ParamListGL()\l+ Render()\l+ Mouse()\l+ Motion()\l+ Special()\l+ SetFont()\l+ SetSelectedColor()\l+ SetUnSelectedColor()\l+ SetBarColorInner()\l+ SetBarColorOuter()\l+ SetActive()\l}" alt="" coords="146,681,305,1052"/></map>
+</div>
+<div class="dynheader">
+Diagram współpracy dla ParamBase:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base__coll__graph.png" border="0" usemap="#_param_base_coll__map" alt="Collaboration graph"/></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a275d5a2720001ad86a80e234a56c6194"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#a275d5a2720001ad86a80e234a56c6194">ParamBase</a> (const char *name)</td></tr>
+<tr class="separator:a275d5a2720001ad86a80e234a56c6194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a891833f69f96260d21443b0c21525bd3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#a891833f69f96260d21443b0c21525bd3">~ParamBase</a> ()</td></tr>
+<tr class="separator:a891833f69f96260d21443b0c21525bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab447288debefe955dc2de6a64d56d092"><td class="memItemLeft" align="right" valign="top">std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#ab447288debefe955dc2de6a64d56d092">GetName</a> ()</td></tr>
+<tr class="separator:ab447288debefe955dc2de6a64d56d092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af503d1fe7f8e1498cd94c654a470b4b1"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#af503d1fe7f8e1498cd94c654a470b4b1">GetFloatValue</a> ()=0</td></tr>
+<tr class="separator:af503d1fe7f8e1498cd94c654a470b4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb3ac099b3c83c7f3b8ae10d05f9972b"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#aeb3ac099b3c83c7f3b8ae10d05f9972b">GetIntValue</a> ()=0</td></tr>
+<tr class="separator:aeb3ac099b3c83c7f3b8ae10d05f9972b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ba37f139ddf296df900a1bca865b9e"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#ac0ba37f139ddf296df900a1bca865b9e">GetValueString</a> ()=0</td></tr>
+<tr class="separator:ac0ba37f139ddf296df900a1bca865b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c844cc161e6eaa60a084ee1608e1b3e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#a7c844cc161e6eaa60a084ee1608e1b3e">Reset</a> ()=0</td></tr>
+<tr class="separator:a7c844cc161e6eaa60a084ee1608e1b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57f660ecae63990fd6b3d040e55a2215"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#a57f660ecae63990fd6b3d040e55a2215">Increment</a> ()=0</td></tr>
+<tr class="separator:a57f660ecae63990fd6b3d040e55a2215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab748981c9096eff54c1e39077b5cbd36"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#ab748981c9096eff54c1e39077b5cbd36">Decrement</a> ()=0</td></tr>
+<tr class="separator:ab748981c9096eff54c1e39077b5cbd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61b1babd750f887a31787ec0f39662b2"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#a61b1babd750f887a31787ec0f39662b2">GetPercentage</a> ()=0</td></tr>
+<tr class="separator:a61b1babd750f887a31787ec0f39662b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e65004b0fe4d9ac6e34c8ab7a3d24f8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#a9e65004b0fe4d9ac6e34c8ab7a3d24f8">SetPercentage</a> (float p)=0</td></tr>
+<tr class="separator:a9e65004b0fe4d9ac6e34c8ab7a3d24f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab488e8e5c575e8a047efb5c52a6b5740"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#ab488e8e5c575e8a047efb5c52a6b5740">Write</a> (std::ostream &amp;stream)=0</td></tr>
+<tr class="separator:ab488e8e5c575e8a047efb5c52a6b5740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17bb9203943f11607e903ff446c5633f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#a17bb9203943f11607e903ff446c5633f">Read</a> (std::istream &amp;stream)=0</td></tr>
+<tr class="separator:a17bb9203943f11607e903ff446c5633f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a702f91a34eaefd957802a52b6a408ffd"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#a702f91a34eaefd957802a52b6a408ffd">IsList</a> ()=0</td></tr>
+<tr class="separator:a702f91a34eaefd957802a52b6a408ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Atrybuty chronione</h2></td></tr>
+<tr class="memitem:a5730beccf3510b97714a8d49b69499c2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a></td></tr>
+<tr class="separator:a5730beccf3510b97714a8d49b69499c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock">
+<p>Definicja w linii <a class="el" href="param_8h_source.html#l00028">28</a> pliku <a class="el" href="param_8h_source.html">param.h</a>.</p>
+</div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a class="anchor" id="a275d5a2720001ad86a80e234a56c6194"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ParamBase::ParamBase </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="param_8h_source.html#l00031">31</a> pliku <a class="el" href="param_8h_source.html">param.h</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="param_8h_source.html#l00056">m_name</a>.</p>
+
+<p>Odwołania w <a class="el" href="param_8h_source.html#l00177">ParamList::ParamList()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;: <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a>(name) { }</div>
+<div class="ttc" id="class_param_base_html_a5730beccf3510b97714a8d49b69499c2"><div class="ttname"><a href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">ParamBase::m_name</a></div><div class="ttdeci">std::string m_name</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00056">param.h:56</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_a275d5a2720001ad86a80e234a56c6194_icgraph.png" border="0" usemap="#class_param_base_a275d5a2720001ad86a80e234a56c6194_icgraph" alt=""/></div>
+<map name="class_param_base_a275d5a2720001ad86a80e234a56c6194_icgraph" id="class_param_base_a275d5a2720001ad86a80e234a56c6194_icgraph">
+<area shape="rect" id="node2" href="class_param_list.html#a9508c6e46e6f893d058b714b60a5e31a" title="ParamList::ParamList" alt="" coords="220,5,368,32"/><area shape="rect" id="node3" href="class_param_list_g_l.html#a0549a2947851136c88c9325309a04173" title="ParamListGL::ParamListGL" alt="" coords="416,5,599,32"/><area shape="rect" id="node4" href="particles_8cpp.html#adf670f569f3be8036b915a6245caf9da" title="initParams" alt="" coords="647,5,731,32"/><area shape="rect" id="node5" href="particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="779,5,829,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a891833f69f96260d21443b0c21525bd3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual ParamBase::~ParamBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="param_8h_source.html#l00032">32</a> pliku <a class="el" href="param_8h_source.html">param.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{ }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a class="anchor" id="ab748981c9096eff54c1e39077b5cbd36"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ParamBase::Decrement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#a7edef4c75738305c1b716a1f53718589">ParamList</a> i <a class="el" href="class_param.html#a8ece1c117c1e7d8f5d81944d66e1d418">Param&lt; T &gt;</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00211">ParamListGL::Special()</a>.</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_ab748981c9096eff54c1e39077b5cbd36_icgraph.png" border="0" usemap="#class_param_base_ab748981c9096eff54c1e39077b5cbd36_icgraph" alt=""/></div>
+<map name="class_param_base_ab748981c9096eff54c1e39077b5cbd36_icgraph" id="class_param_base_ab748981c9096eff54c1e39077b5cbd36_icgraph">
+<area shape="rect" id="node2" href="class_param_list_g_l.html#a546688eb85b628520047299fca3c5455" title="ParamListGL::Special" alt="" coords="215,5,364,32"/><area shape="rect" id="node3" href="particles_8cpp.html#ab838340d9e4833a685975205d9c8196a" title="special" alt="" coords="412,5,475,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af503d1fe7f8e1498cd94c654a470b4b1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float ParamBase::GetFloatValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#a8a432f471235ef49ff751c25d27c5f8d">ParamList</a> i <a class="el" href="class_param.html#a82f3f54692e83774cbb8b2e1501af803">Param&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeb3ac099b3c83c7f3b8ae10d05f9972b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int ParamBase::GetIntValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#afdd5fb08da30d550b0f58ec0dd8af2f1">ParamList</a> i <a class="el" href="class_param.html#a58761f3d5f69e4e281498f748cc55b52">Param&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab447288debefe955dc2de6a64d56d092"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string&amp; ParamBase::GetName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="param_8h_source.html#l00034">34</a> pliku <a class="el" href="param_8h_source.html">param.h</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="param_8h_source.html#l00056">m_name</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00100">ParamListGL::Render()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">m_name</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
+<div class="ttc" id="class_param_base_html_a5730beccf3510b97714a8d49b69499c2"><div class="ttname"><a href="class_param_base.html#a5730beccf3510b97714a8d49b69499c2">ParamBase::m_name</a></div><div class="ttdeci">std::string m_name</div><div class="ttdef"><b>Definition:</b> <a href="param_8h_source.html#l00056">param.h:56</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_ab447288debefe955dc2de6a64d56d092_icgraph.png" border="0" usemap="#class_param_base_ab447288debefe955dc2de6a64d56d092_icgraph" alt=""/></div>
+<map name="class_param_base_ab447288debefe955dc2de6a64d56d092_icgraph" id="class_param_base_ab447288debefe955dc2de6a64d56d092_icgraph">
+<area shape="rect" id="node2" href="class_param_list_g_l.html#a78a1999c0f0d1a17e9123f5ad8fabe23" title="ParamListGL::Render" alt="" coords="207,29,353,56"/><area shape="rect" id="node3" href="particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="401,29,464,56"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a61b1babd750f887a31787ec0f39662b2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float ParamBase::GetPercentage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#a5cbc341b4648fd0ebbabff82ec953501">ParamList</a> i <a class="el" href="class_param.html#ac8c4c126350cbd5889c482e4fd1c0f7a">Param&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac0ba37f139ddf296df900a1bca865b9e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string ParamBase::GetValueString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#a413da22f5fa05d14d7f0702cde84e92e">ParamList</a> i <a class="el" href="class_param.html#a3973a1abcba28cc9b15325302d4f97b1">Param&lt; T &gt;</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00100">ParamListGL::Render()</a>.</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_ac0ba37f139ddf296df900a1bca865b9e_icgraph.png" border="0" usemap="#class_param_base_ac0ba37f139ddf296df900a1bca865b9e_icgraph" alt=""/></div>
+<map name="class_param_base_ac0ba37f139ddf296df900a1bca865b9e_icgraph" id="class_param_base_ac0ba37f139ddf296df900a1bca865b9e_icgraph">
+<area shape="rect" id="node2" href="class_param_list_g_l.html#a78a1999c0f0d1a17e9123f5ad8fabe23" title="ParamListGL::Render" alt="" coords="240,29,387,56"/><area shape="rect" id="node3" href="particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="435,29,497,56"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a57f660ecae63990fd6b3d040e55a2215"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ParamBase::Increment </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#a9e22fdc087923e28df76eaca259fe024">ParamList</a> i <a class="el" href="class_param.html#ae5eab92d33ed0870ac3efba05a393ad0">Param&lt; T &gt;</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00211">ParamListGL::Special()</a>.</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_a57f660ecae63990fd6b3d040e55a2215_icgraph.png" border="0" usemap="#class_param_base_a57f660ecae63990fd6b3d040e55a2215_icgraph" alt=""/></div>
+<map name="class_param_base_a57f660ecae63990fd6b3d040e55a2215_icgraph" id="class_param_base_a57f660ecae63990fd6b3d040e55a2215_icgraph">
+<area shape="rect" id="node2" href="class_param_list_g_l.html#a546688eb85b628520047299fca3c5455" title="ParamListGL::Special" alt="" coords="208,5,357,32"/><area shape="rect" id="node3" href="particles_8cpp.html#ab838340d9e4833a685975205d9c8196a" title="special" alt="" coords="405,5,468,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a702f91a34eaefd957802a52b6a408ffd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ParamBase::IsList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#a097616c5a32beac431f6071a4639ea7a">ParamList</a> i <a class="el" href="class_param.html#acd17654cbdc7b2938e1883fbb6262150">Param&lt; T &gt;</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00100">ParamListGL::Render()</a>.</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_a702f91a34eaefd957802a52b6a408ffd_icgraph.png" border="0" usemap="#class_param_base_a702f91a34eaefd957802a52b6a408ffd_icgraph" alt=""/></div>
+<map name="class_param_base_a702f91a34eaefd957802a52b6a408ffd_icgraph" id="class_param_base_a702f91a34eaefd957802a52b6a408ffd_icgraph">
+<area shape="rect" id="node2" href="class_param_list_g_l.html#a78a1999c0f0d1a17e9123f5ad8fabe23" title="ParamListGL::Render" alt="" coords="183,29,329,56"/><area shape="rect" id="node3" href="particles_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269" title="funkcja odpowiadająca za symulację z włączonym GUI " alt="" coords="377,29,440,56"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a17bb9203943f11607e903ff446c5633f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ParamBase::Read </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#a569d500cc2220b6b5308f61dd115eaaf">ParamList</a> i <a class="el" href="class_param.html#a17294d22405cd74868de1fbe78aa3a9d">Param&lt; T &gt;</a>.</p>
+
+<p>Odwołania w <a class="el" href="param_8h_source.html#l00280">ParamList::Read()</a>.</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_a17bb9203943f11607e903ff446c5633f_icgraph.png" border="0" usemap="#class_param_base_a17bb9203943f11607e903ff446c5633f_icgraph" alt=""/></div>
+<map name="class_param_base_a17bb9203943f11607e903ff446c5633f_icgraph" id="class_param_base_a17bb9203943f11607e903ff446c5633f_icgraph">
+<area shape="rect" id="node2" href="class_param_list.html#a569d500cc2220b6b5308f61dd115eaaf" title="ParamList::Read" alt="" coords="181,5,300,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7c844cc161e6eaa60a084ee1608e1b3e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ParamBase::Reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#ab23e788d95aeb46fb210d060e8e4cf6a">ParamList</a> i <a class="el" href="class_param.html#a8592f8f76ca41146e808ab3f8e3a05f6">Param&lt; T &gt;</a>.</p>
+
+<p>Odwołania w <a class="el" href="param_8h_source.html#l00295">ParamList::ResetAll()</a> i <a class="el" href="paramgl_8h_source.html#l00211">ParamListGL::Special()</a>.</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_a7c844cc161e6eaa60a084ee1608e1b3e_icgraph.png" border="0" usemap="#class_param_base_a7c844cc161e6eaa60a084ee1608e1b3e_icgraph" alt=""/></div>
+<map name="class_param_base_a7c844cc161e6eaa60a084ee1608e1b3e_icgraph" id="class_param_base_a7c844cc161e6eaa60a084ee1608e1b3e_icgraph">
+<area shape="rect" id="node2" href="class_param_list.html#a4af8fd66b4934e9f185599501c5b9706" title="ParamList::ResetAll" alt="" coords="191,5,329,32"/><area shape="rect" id="node3" href="class_param_list_g_l.html#a546688eb85b628520047299fca3c5455" title="ParamListGL::Special" alt="" coords="185,56,335,83"/><area shape="rect" id="node4" href="particles_8cpp.html#ab838340d9e4833a685975205d9c8196a" title="special" alt="" coords="383,56,445,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9e65004b0fe4d9ac6e34c8ab7a3d24f8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ParamBase::SetPercentage </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#a8feb121002b7735c299e30e28b37b97e">ParamList</a> i <a class="el" href="class_param.html#addc6a78e58a99e6d6c66c9c7125737d0">Param&lt; T &gt;</a>.</p>
+
+<p>Odwołania w <a class="el" href="paramgl_8h_source.html#l00188">ParamListGL::Motion()</a> i <a class="el" href="paramgl_8h_source.html#l00211">ParamListGL::Special()</a>.</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_a9e65004b0fe4d9ac6e34c8ab7a3d24f8_icgraph.png" border="0" usemap="#class_param_base_a9e65004b0fe4d9ac6e34c8ab7a3d24f8_icgraph" alt=""/></div>
+<map name="class_param_base_a9e65004b0fe4d9ac6e34c8ab7a3d24f8_icgraph" id="class_param_base_a9e65004b0fe4d9ac6e34c8ab7a3d24f8_icgraph">
+<area shape="rect" id="node2" href="class_param_list_g_l.html#a20b11463f9890d9ebe18f36e3cf3a174" title="ParamListGL::Motion" alt="" coords="239,5,385,32"/><area shape="rect" id="node4" href="class_param_list_g_l.html#a546688eb85b628520047299fca3c5455" title="ParamListGL::Special" alt="" coords="237,56,387,83"/><area shape="rect" id="node3" href="particles_8cpp.html#a45a7d7c86c97ca6a2d4d32ce2d263f67" title="motion" alt="" coords="435,5,497,32"/><area shape="rect" id="node5" href="particles_8cpp.html#ab838340d9e4833a685975205d9c8196a" title="special" alt="" coords="435,56,497,83"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab488e8e5c575e8a047efb5c52a6b5740"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ParamBase::Write </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementowany w <a class="el" href="class_param_list.html#a599339d9d70754c3163e01442620ce56">ParamList</a> i <a class="el" href="class_param.html#ad633bd3034b1e33aead09787e30e35a7">Param&lt; T &gt;</a>.</p>
+
+<p>Odwołania w <a class="el" href="param_8h_source.html#l00270">ParamList::Write()</a>.</p>
+
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_param_base_ab488e8e5c575e8a047efb5c52a6b5740_icgraph.png" border="0" usemap="#class_param_base_ab488e8e5c575e8a047efb5c52a6b5740_icgraph" alt=""/></div>
+<map name="class_param_base_ab488e8e5c575e8a047efb5c52a6b5740_icgraph" id="class_param_base_ab488e8e5c575e8a047efb5c52a6b5740_icgraph">
+<area shape="rect" id="node2" href="class_param_list.html#a599339d9d70754c3163e01442620ce56" title="ParamList::Write" alt="" coords="183,5,303,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a class="anchor" id="a5730beccf3510b97714a8d49b69499c2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ParamBase::m_name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definicja w linii <a class="el" href="param_8h_source.html#l00056">56</a> pliku <a class="el" href="param_8h_source.html">param.h</a>.</p>
+
+<p>Odwołania w <a class="el" href="param_8h_source.html#l00034">GetName()</a>, <a class="el" href="param_8h_source.html#l00230">ParamList::GetValueString()</a>, <a class="el" href="param_8h_source.html#l00031">ParamBase()</a>, <a class="el" href="param_8h_source.html#l00154">Param&lt; T &gt;::Read()</a>, <a class="el" href="param_8h_source.html#l00280">ParamList::Read()</a>, <a class="el" href="param_8h_source.html#l00150">Param&lt; T &gt;::Write()</a> i <a class="el" href="param_8h_source.html#l00270">ParamList::Write()</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li><a class="el" href="param_8h_source.html">param.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_param_base.html">ParamBase</a></li>
+    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:20 dla particles programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

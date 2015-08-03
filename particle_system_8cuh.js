@@ -7,6 +7,7 @@ var particle_system_8cuh =
     [ "copyArrayToDevice", "particle_system_8cuh.html#ac4d4ecd921dbed6c2deef639ca295374", null ],
     [ "cudaInit", "particle_system_8cuh.html#ad205012a960928f6fb61ea4f51a95e9f", null ],
     [ "freeArray", "particle_system_8cuh.html#a2946519c8d9c4f8ebf552bf044821ea9", null ],
+    [ "getSurfacePreasure", "particle_system_8cuh.html#ae866af3e05dfa571d966b5b9dd9137d5", null ],
     [ "integrateSystem", "particle_system_8cuh.html#a34e9db8b801cd537e5ae5a4a886e020c", null ],
     [ "mapGLBufferObject", "particle_system_8cuh.html#aa491077afd740a269815eb9ce81c8642", null ],
     [ "registerGLBufferObject", "particle_system_8cuh.html#a4386a84282ceeaba09939817aa2a9c24", null ],

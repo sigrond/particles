@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['integrate_5ffunctor',['integrate_functor',['../structintegrate__functor.html',1,'']]]
+  ['bufferconfig',['bufferConfig',['../structbuffer_config.html',1,'']]]
 ];
