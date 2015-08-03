@@ -118,6 +118,7 @@
 
 #include "particleType.h"
 #include "particleTypesLoader.h"
+#include "GLgraph.h"
 
 #define MAX_EPSILON_ERROR 5.00f
 #define THRESHOLD         0.30f
@@ -508,12 +509,14 @@ void display()
 
     if(itsTimeToDraw)
     {
+
         // render
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // view transform
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
+
 
         for (int c = 0; c < 3; ++c)
         {
@@ -526,6 +529,16 @@ void display()
         glRotatef(camera_rot_lag[1], 0.0, 1.0, 0.0);
 
         glScalef(zoom, zoom, zoom);
+
+		glPushMatrix();
+        preasureVector.push_back(hostSurfacePreasure);
+        glDisable(GL_DEPTH_TEST);
+        glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ZERO); // invert color
+        glEnable(GL_BLEND);
+        preasureGraph->render(0, glutGet(GLUT_WINDOW_HEIGHT)-50);
+        glDisable(GL_BLEND);
+        glEnable(GL_DEPTH_TEST);
+		glPopMatrix();
 
         glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
 
@@ -591,14 +604,6 @@ void display()
             glDisable(GL_BLEND);
             glEnable(GL_DEPTH_TEST);
         }
-
-        preasureVector.push_back(hostSurfacePreasure);
-        glDisable(GL_DEPTH_TEST);
-        glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ZERO); // invert color
-        glEnable(GL_BLEND);
-        preasureGraph->render(0, 100);
-        glDisable(GL_BLEND);
-        glEnable(GL_DEPTH_TEST);
 
         glutSwapBuffers();
         glutReportErrors();
@@ -1255,7 +1260,7 @@ main(int argc, char **argv)
     else
     {
         preasureGraph=new GLgraph();
-        preasureGraph.setDataVector(&preasureVector);
+        preasureGraph->setDataVector(&preasureVector);
 
         glutDisplayFunc(display);
         glutReshapeFunc(reshape);

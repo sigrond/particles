@@ -2,7 +2,8 @@
  * \author Tomasz Jakubczyk
  * \brief Plik z metodami klasy GLgraph
  */
-
+#include "GLgraph.h"
+#include <GL/freeglut.h>
 
 /** \brief Metoda przypisuje klasie wskaźnik do wektora
  * na podstawie którego ma byc rysowany wykres.
@@ -54,14 +55,19 @@ void GLgraph::render(float xStartPos, float yStartPos)
     glColor3f(0,1,0);
     glLineWidth(3.0);
     glBegin(GL_LINE_STRIP);
-    glVertex2f(0f+xStartPos, 0f+yStartPos);
-    float x = 0f+xStartPos;
-    for (int i=0; x<100.0f+xStartPos && i<dataVectorPtr->size(); i++)
+    glVertex2f(xStartPos, yStartPos);
+    float x = xStartPos;
+	float width=glutGet(GLUT_WINDOW_WIDTH);
+	float hight=glutGet(GLUT_WINDOW_HEIGHT);
+	int pomniejszenie=1;
+    for (int i=0; i<dataVectorPtr->size(); i++)
     {
-        x+=100.0f/((float)dataVectorPtr->size();
-        glVertex2f(x, (*dataVectorPtr)[i]+yStartPos);
+		pomniejszenie=(float)dataVectorPtr->size()/(float)width+1.5f;
+        x+=1.0f;//1000.0f/((float)dataVectorPtr->size());
+        glVertex2f(x/(float)pomniejszenie, -(*dataVectorPtr)[i]*10.0f*hight+yStartPos);
     }
-    glVertex2f(100f+xStartPos, 0f+yStartPos);
+    //glVertex2f(width+xStartPos, yStartPos);
     glEnd();
+	glLineWidth(1.0);
     endWinCoords();
 }

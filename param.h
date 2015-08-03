@@ -1,5 +1,5 @@
 /*
- * Copyright 1993-2013 NVIDIA Corporation.  All rights reserved.
+ * Copyright 1993-2012 NVIDIA Corporation.  All rights reserved.
  *
  * Please refer to the NVIDIA end user license agreement (EULA) associated
  * with this source code for terms and conditions that govern your use of
@@ -66,8 +66,12 @@ template<class T> class Param : public ParamBase
             m_min(min),
             m_max(max),
             m_step(step),
-            m_precision(3)
+            m_precision(5)
         {
+			if(max<value)
+			{
+				m_max=3*value;
+			}
             if (ptr)
             {
                 m_ptr = ptr;

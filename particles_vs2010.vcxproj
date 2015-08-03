@@ -209,6 +209,7 @@
     <ClInclude Include="..\..\common\inc\param.h" />
     <ClInclude Include="..\..\common\inc\paramgl.h" />
     <ClInclude Include="..\..\common\inc\rendercheck_gl.h" />
+    <ClInclude Include="GLgraph.h" />
     <ClInclude Include="particleSystem.h" />
     <ClInclude Include="particleType.h" />
     <ClInclude Include="particleTypesLoader.h" />
@@ -217,6 +218,7 @@
     <ClInclude Include="shaders.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GLgraph.cpp" />
     <ClCompile Include="particles.cpp" />
     <ClCompile Include="particleSystem.cpp" />
     <ClCompile Include="particleType.cpp" />
