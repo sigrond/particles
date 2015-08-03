@@ -174,6 +174,25 @@ class ParticleSystem
         {
             return m_params.particleRadius[0];
         }
+
+        /** \brief Zwraca promień największej cząstki.
+         *
+         * \return float
+         *
+         */
+        float getMaxParticleRadius()
+        {
+            float tmpMax=0.0f;
+            for(int i=0; i<m_params.particleTypesNum;i++)
+            {
+                if(m_params.particleRadius[i]>tmpMax)
+                {
+                    tmpMax=m_params.particleRadius[i];
+                }
+            }
+            return tmpMax;
+        }
+
         float3 getColliderPos()
         {
             return m_params.colliderPos;

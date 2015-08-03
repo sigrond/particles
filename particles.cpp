@@ -238,6 +238,14 @@ long double timeFromLastDisplayedFrameIn_ms=0.0f;
  */
 float hostSurfacePreasure=0.0f;
 
+/** \brief rysowacz wykresu
+ */
+GLgraph* preasureGraph=NULL;
+
+/** \brief tablica ciśnienia
+ */
+std::vector<float> preasureVector;
+
 ParticleSystem *psystem = 0;
 
 // fps
@@ -342,7 +350,7 @@ void parowanieKropliWCzasie()
 	//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
 	licznik++;
 	time_past+=timestep;
-	if(bigRadius>psystem->getParticleRadius()*pow(psystem->getNumParticles(),0.3f))
+	if(bigRadius>psystem->getMaxParticleRadius()*pow(psystem->getNumParticles(),0.3f))
 	{/**< \todo trzeba ustalić nowy poprawiony wzór na koniec parowania */
 		bigRadius=bigRadius0-A*sqrt(time_past);
 		psystem->setBigRadius(bigRadius);
@@ -479,7 +487,7 @@ void display()
         psystem->setCollideAttraction(collideAttraction);
 		psystem->setBoundaryDamping(-boundaryDamping);
 		//psystem->setParticleMass(particleMass);
-		psystem->setEpsi(epsi);/**< \todo epsilonów będzie więcej */
+		psystem->setEpsi(epsi);/**< mnożnik epsilonów */
 		psystem->setBrown(brown);
 		psystem->setCalcSurfacePreasure(itsTimeToDraw);/**< czy chcemy policzyć i ściągnąć wartość ciśnienia na powierchni kropli */
 
@@ -583,6 +591,14 @@ void display()
             glDisable(GL_BLEND);
             glEnable(GL_DEPTH_TEST);
         }
+
+        preasureVector.push_back(hostSurfacePreasure);
+        glDisable(GL_DEPTH_TEST);
+        glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ZERO); // invert color
+        glEnable(GL_BLEND);
+        preasureGraph->render(0, 100);
+        glDisable(GL_BLEND);
+        glEnable(GL_DEPTH_TEST);
 
         glutSwapBuffers();
         glutReportErrors();
@@ -1238,6 +1254,9 @@ main(int argc, char **argv)
     }
     else
     {
+        preasureGraph=new GLgraph();
+        preasureGraph.setDataVector(&preasureVector);
+
         glutDisplayFunc(display);
         glutReshapeFunc(reshape);
         glutMouseFunc(mouse);
