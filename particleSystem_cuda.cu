@@ -153,6 +153,29 @@ extern "C"
         return tmpP;
     }
 
+    /** \brief Ustawienie zmiennej globalnej globalDeltaTime w pamięci devic
+     *
+     * \param dt float
+     * \return void
+     *
+     */
+    void setGlobalDeltaTime(float dt)
+    {
+        checkCudaErrors(cudaMemcpyToSymbol(globalDeltaTime, &dt, sizeof(float)));
+    }
+
+    /** \brief Pobranie wartości globalDeltaTime, żeby wiedzieć jaki krok został wykonany
+     *
+     * \return float
+     *
+     */
+    float getGlobalDeltaTime()
+    {
+        float tmpP;
+        checkCudaErrors(cudaMemcpyFromSymbol(&tmpP,globalDeltaTime,sizeof(float)));
+        return tmpP;
+    }
+
     //Round a / b to nearest higher integer value
     uint iDivUp(uint a, uint b)
     {

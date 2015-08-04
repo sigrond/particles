@@ -144,6 +144,10 @@
 		<Unit filename="../../common/inc/param.h" />
 		<Unit filename="../../common/inc/paramgl.h" />
 		<Unit filename="../../common/inc/rendercheck_gl.h" />
+		<Unit filename="GLgraph.cpp" />
+		<Unit filename="GLgraph.h" />
+		<Unit filename="param.h" />
+		<Unit filename="paramgl.h" />
 		<Unit filename="particleSystem.cpp" />
 		<Unit filename="particleSystem.cuh" />
 		<Unit filename="particleSystem.h" />
@@ -160,6 +164,7 @@
 		<Unit filename="particles_kernel_impl.cuh" />
 		<Unit filename="render_particles.cpp" />
 		<Unit filename="render_particles.h" />
+		<Unit filename="rendercheck_gl.h" />
 		<Unit filename="resource.h" />
 		<Unit filename="shaders.cpp" />
 		<Unit filename="shaders.h" />

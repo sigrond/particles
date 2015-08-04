@@ -42,6 +42,7 @@ extern bool multiColor;
 extern std::vector<particleType> typyCzastek;
 extern float hostSurfacePreasure;
 extern bool itsTimeToDraw;
+extern float timestep;
 
 ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenGL) :
     m_bInitialized(false),
@@ -317,9 +318,10 @@ ParticleSystem::update(float deltaTime)
 
     // update constants
     setParameters(&m_params);/**< SimParams */
+    setGlobalDeltaTime(deltaTime);
 
     // integrate
-    integrateSystem(
+    integrateSystem(/**< \todo wydaje mi się, że jeśli krok czasu się zmienia, to w każdym kroku powinien być taki sam dla całkowania i zderzeń */
         dPos,
         m_dVel,
         deltaTime,
@@ -349,6 +351,8 @@ ParticleSystem::update(float deltaTime)
         m_numParticles,
         m_numGridCells);
 
+    setGlobalDeltaTime(0.01f);/**< maksymalny krok czasu */
+
     // process collisions
     collide(
         m_dVel,
@@ -360,6 +364,8 @@ ParticleSystem::update(float deltaTime)
         m_numParticles,
         m_numGridCells,
 		deltaTime);
+
+    timestep=getGlobalDeltaTime();
 
     if(itsTimeToDraw)
     {

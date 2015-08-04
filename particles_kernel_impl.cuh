@@ -44,6 +44,8 @@ __constant__ SimParams params;
 
 __device__ float surfacePreasure;
 
+__device__ float globalDeltaTime;
+
 /** \struct integrate_functor
  * \brief ta struktura inicjowana jest z krokiem delta_time dla danych
  * opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU)
@@ -358,6 +360,18 @@ void reorderDataAndFindCellStartD(uint   *cellStart,        // output: cell star
 
 }
 
+__device__ static float atomicMin(float* address, float val)
+{
+    int* address_as_i = (int*) address;
+    int old = *address_as_i, assumed;
+    do {
+        assumed = old;
+        old = ::atomicCAS(address_as_i, assumed,
+            __float_as_int(::fminf(val, __int_as_float(assumed))));
+    } while (assumed != old);
+    return __int_as_float(old);
+}
+
 // collide two spheres using DEM method
 /** \brief collide two spheres using DEM method
  *
@@ -420,10 +434,19 @@ float3 collideSpheres(float3 posA, float3 posB,
 		float b= (velA.w<velB.w)?velB.w:velA.w - a;/**< max(x,y)-min(x,y) */
 		int epsilonIndex=(int)floor(a*(params.particleTypesNum-((a-1.0f)/2.0f))+b+0.5f);/**< wzór na index z zabezpieczeniem przeciwko niedokładności działań na float'ach */
 		float epsilon=params.epsi*params.normalizeEpsilon[epsilonIndex];
-		force=-(48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist))*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
+		float foreScalar=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
+		force=-foreScalar*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////
+        dist=(radiusA + radiusB)*0.99f;
+        sd=sigma/dist;
+        sd*=sd*sd*sd*sd*sd;
+        float forceMax=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
+        float3 p=(make_float3(velA)+make_float3(velB))*(params.particleMass[(int)velA.w]+params.particleMass[(int)velB.w]);
+        float Pi=sqrt(p.x*p.x+p.y*p.y+p.z*p.z);
+        float DtMax=Pi/forceMax;
+        atomicMin(&globalDeltaTime,DtMax);/**< \todo zrobić przyspieszenie przez shared memory */
     }
 
     return force;
@@ -538,7 +561,8 @@ void collideD(float4 *newVel,               // output: new velocity
 
     // write new velocity back to original unsorted location
     uint originalIndex = gridParticleIndex[index];
-    newVel[originalIndex] = make_float4(make_float3(vel) + force*(deltaTime/params.particleMass[(int)vel.w]), vel.w);
+    __syncthreads();/**< wyrównanie globalDeltaTime */
+    newVel[originalIndex] = make_float4(make_float3(vel) + force*(/*deltaTime*/globalDeltaTime/params.particleMass[(int)vel.w]), vel.w);
 }
 
 #endif

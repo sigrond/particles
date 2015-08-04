@@ -34,6 +34,11 @@ extern "C"
 
     float getSurfacePreasure();
 
+    void setGlobalDeltaTime(float dt);
+
+    float getGlobalDeltaTime();
+
+
     void integrateSystem(float *pos,
                          float *vel,
                          float deltaTime,
