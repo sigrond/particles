@@ -443,11 +443,19 @@ float3 collideSpheres(float3 posA, float3 posB,
         sd=sigma/dist;
         sd*=sd*sd*sd*sd*sd;
         float forceMax=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
-        float3 p=(make_float3(velA)+make_float3(velB))*(params.particleMass[(int)velA.w]+params.particleMass[(int)velB.w]);
-        float Pi=sqrt(p.x*p.x+p.y*p.y+p.z*p.z);
-        float DtMax=Pi/forceMax;
-        atomicMin(&globalDeltaTime,DtMax);/**< \todo zrobić przyspieszenie przez shared memory */
-    }
+        float3 pA=make_float3(velA)*params.particleMass[(int)velA.w]*norm;
+		float3 pB=make_float3(velB)*params.particleMass[(int)velB.w]*norm;
+        float Pi=sqrt(pA.x*pA.x+pA.y*pA.y+pA.z*pA.z)+sqrt(pB.x*pB.x+pB.y*pB.y+pB.z*pB.z);
+		if(Pi>0.0f)
+		{
+			float DtMax=Pi/abs(forceMax);
+			if(DtMax<0.00001f)
+			{
+				DtMax=0.00001f;
+			}
+			atomicMin(&globalDeltaTime,DtMax);/**< \todo zrobić przyspieszenie przez shared memory */
+		}
+	}
 
     return force;
 }
