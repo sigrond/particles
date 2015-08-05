@@ -354,7 +354,9 @@ void parowanieKropliWCzasie()
 	//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
 	licznik++;
 	time_past+=timestep;
-	if(bigRadius>psystem->getMaxParticleRadius()*pow(psystem->getNumParticles(),0.3f))
+	//std::cout<<psystem->getMaxParticleRadius()*pow(psystem->getNumParticles(),0.3f)<<std::endl;
+	if(bigRadius>(psystem->getMaxParticleRadius()*pow(psystem->getNumParticles(),0.3f))
+		&& bigRadius>0.0f)
 	{/**< \todo trzeba ustalić nowy poprawiony wzór na koniec parowania */
 		bigRadius=bigRadius0-A*sqrt(time_past);
 		psystem->setBigRadius(bigRadius);
@@ -362,7 +364,7 @@ void parowanieKropliWCzasie()
 	}
 	else if(tSF<3.14f)
     {
-        tSF+=timestep;
+        tSF+=timestep;//*10.0f;
         boundaryDamping=SF*(-(tanh(tSF)-1.0f)/2.0f);
         if(boundaryDamping<0.0f)
         {
@@ -373,7 +375,7 @@ void parowanieKropliWCzasie()
 	{
 		boundaries=false;
 		boundaryDamping=0.0f;
-		timestep=0.0001f;
+		//timestep=0.0001f;
 	}
 }
 
@@ -507,11 +509,11 @@ void display()
 		psystem->setCalcSurfacePreasure(itsTimeToDraw);/**< czy chcemy policzyć i ściągnąć wartość ciśnienia na powierchni kropli */
 
 		parowanieKropliWCzasie();
-		licznik++;
-		time_past+=timestep;
+		//licznik++;
+		//time_past+=timestep;
 		//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
-		bigRadius=bigRadius0-A*sqrt(time_past);
-		psystem->setBigRadius(bigRadius);
+		//bigRadius=bigRadius0-A*sqrt(time_past);
+		//psystem->setBigRadius(bigRadius);
 
         psystem->update(timestep);/**< tu zachodzą właściwe obliczenia CUDA */
 
@@ -562,7 +564,9 @@ void display()
         glColor3f(1.0, 1.0, 1.0);
         //glutWireCube(2.0);
         if(boundaries)
-        glutWireSphere(bigRadius, 20, 10);
+        {
+			glutWireSphere(bigRadius, 20, 10);
+		}
 
 
         //glScalef(zoom, zoom, zoom);
