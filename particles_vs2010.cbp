@@ -141,9 +141,6 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="../../common/inc/param.h" />
-		<Unit filename="../../common/inc/paramgl.h" />
-		<Unit filename="../../common/inc/rendercheck_gl.h" />
 		<Unit filename="GLgraph.cpp" />
 		<Unit filename="GLgraph.h" />
 		<Unit filename="param.h" />
@@ -152,6 +149,7 @@
 		<Unit filename="particleSystem.cuh" />
 		<Unit filename="particleSystem.h" />
 		<Unit filename="particleSystem_cuda.cu" />
+		<Unit filename="particleType.cfg" />
 		<Unit filename="particleType.cpp" />
 		<Unit filename="particleType.h" />
 		<Unit filename="particleTypesLoader.cpp" />

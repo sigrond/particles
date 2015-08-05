@@ -316,12 +316,15 @@ ParticleSystem::update(float deltaTime)
         dPos = (float *) m_cudaPosVBO;
     }
 
+    /** Algorytm Verleta z listami Verleta
+     */
+
     // update constants
     setParameters(&m_params);/**< SimParams */
     setGlobalDeltaTime(deltaTime);
 
     // integrate
-    integrateSystem(/**< \todo wydaje mi się, że jeśli krok czasu się zmienia, to w każdym kroku powinien być taki sam dla całkowania i zderzeń */
+    integrateSystem(
         dPos,
         m_dVel,
         deltaTime,

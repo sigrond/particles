@@ -61,6 +61,7 @@
  http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html
  http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf
  http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions
+ https://pl.wikibooks.org/wiki/Mechanika_teoretyczna/Mechanika_teoretyczna#Doskonale_spr.C4.99.C5.BCyste_zderzenie_dw.C3.B3ch_cz.C4.85stek
  * \section Repozytorium Repozytorium
  https://github.com/sigrond/particles
  * \subsection dokumentacja_repozytorium Dokumentacja Repozytorium
@@ -343,6 +344,8 @@ void initGL(int *argc, char **argv)
     glutReportErrors();
 }
 
+long double tSF=-3.14f;
+long double SF=0.0f;
 /** \brief sterowanie parowaniem kropli
  * \return void
  */
@@ -355,10 +358,21 @@ void parowanieKropliWCzasie()
 	{/**< \todo trzeba ustalić nowy poprawiony wzór na koniec parowania */
 		bigRadius=bigRadius0-A*sqrt(time_past);
 		psystem->setBigRadius(bigRadius);
+		SF=boundaryDamping;
 	}
-	else if(boundaries)
+	else if(tSF<3.14f)
+    {
+        tSF+=timestep;
+        boundaryDamping=SF*(-(tanh(tSF)-1.0f)/2.0f);
+        if(boundaryDamping<0.0f)
+        {
+            boundaryDamping=0.0f;
+        }
+    }
+	else
 	{
 		boundaries=false;
+		boundaryDamping=0.0f;
 		timestep=0.0001f;
 	}
 }
