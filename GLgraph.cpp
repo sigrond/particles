@@ -62,9 +62,9 @@ void GLgraph::render(float xStartPos, float yStartPos)
 	int pomniejszenie=1;
     for (int i=0; i<dataVectorPtr->size(); i++)
     {
-		pomniejszenie=(float)dataVectorPtr->size()/(float)width+1.5f;
+		pomniejszenie=(float)dataVectorPtr->size()/(float)width+1.2f;
         x+=1.0f;//1000.0f/((float)dataVectorPtr->size());
-        glVertex2f(x/(float)pomniejszenie, -(*dataVectorPtr)[i]*10.0f*hight+yStartPos);
+        glVertex2f(x/(float)pomniejszenie, -(*dataVectorPtr)[i]*5.0f*hight+yStartPos);
     }
     //glVertex2f(width+xStartPos, yStartPos);
     glEnd();

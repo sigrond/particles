@@ -391,12 +391,12 @@ float3 collideSpheres(float3 posA, float3 posB,
                       float radiusA, float radiusB,
                       float attraction)
 {
-    __shared__ float sharedDeltaTime;
+    /*__shared__ float sharedDeltaTime;
     if(threadIdx.x==0)
     {
-        sharedDeltaTime=0.0f;
+        sharedDeltaTime=1.0f;
     }
-    __syncthreads();
+    __syncthreads();*/
     // calculate relative position
     float3 relPos = posB - posA;
 
@@ -456,18 +456,19 @@ float3 collideSpheres(float3 posA, float3 posB,
 		//{
 		//	float DtMax=Pi/abs(forceMax);
 		float3 relVel=make_float3(velB)*norm-make_float3(velA)*norm;
-		float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z)
-		float DtMax=0.99f*dist/relVelS;
+		float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
+		float DtMax=0.1f*dist/relVelS;
         if(DtMax<0.00001f)
         {
             DtMax=0.00001f;
         }
-        atomicMin(&sharedDeltaTime,DtMax);
+		atomicMin(&globalDeltaTime,DtMax);
+        /*atomicMin(&sharedDeltaTime,DtMax);
         __syncthreads();
         if(threadIdx.x==0)
         {
             atomicMin(&globalDeltaTime,sharedDeltaTime);
-        }
+        }*/
 		//}
 	}
 

@@ -127,7 +127,7 @@
 #define GRID_SIZE       64
 #define NUM_PARTICLES   512
 
-const uint width = 640, height = 480;
+const uint width = 1280, height = 1024;
 
 // view params
 int ox, oy;
@@ -196,7 +196,7 @@ int particleTypesNum=1;
 float collideSpring = 0.5f;;
 float collideDamping = 0.02f;;
 float collideShear = 0.1f;
-float collideAttraction = 0.2f;
+float collideAttraction = 0.08f;
 
 /** \var bigRadius
  * \brief promien duzej kuli w mikronach
@@ -319,6 +319,7 @@ void initGL(int *argc, char **argv)
     glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);
     glutInitWindowSize(width, height);
     glutCreateWindow("CUDA Particles");
+	//glutFullScreen();
 
     glewInit();
 
@@ -344,8 +345,10 @@ void initGL(int *argc, char **argv)
     glutReportErrors();
 }
 
-long double tSF=-3.14f;
+long double tSF=0.0f;
 long double SF=0.0f;
+bool koncowka_parowania=false;
+float time_to_end=0.0f;
 /** \brief sterowanie parowaniem kropli
  * \return void
  */
@@ -356,16 +359,19 @@ void parowanieKropliWCzasie()
 	time_past+=timestep;
 	//std::cout<<psystem->getMaxParticleRadius()*pow(psystem->getNumParticles(),0.3f)<<std::endl;
 	if(bigRadius>(psystem->getMaxParticleRadius()*pow(psystem->getNumParticles(),0.3f))
-		&& bigRadius>0.0f)
-	{/**< \todo trzeba ustalić nowy poprawiony wzór na koniec parowania */
-		bigRadius=bigRadius0-A*sqrt(time_past);
-		psystem->setBigRadius(bigRadius);
+		&& bigRadius>0.0f && hostSurfacePreasure<0.01f)
+	{
 		SF=boundaryDamping;
 	}
-	else if(tSF<3.14f)
+	else if(tSF<6.0f)
     {
-        tSF+=timestep;//*10.0f;
-        boundaryDamping=SF*(-(tanh(tSF)-1.0f)/2.0f);
+		if(!koncowka_parowania)
+		{
+			koncowka_parowania=true;
+			time_to_end=(bigRadius0/A)*(bigRadius0/A)-time_past;
+		}
+        tSF+=6.0f*timestep/time_to_end;//*10.0f;
+        boundaryDamping=SF*(-(tanh(tSF-3.0f)-1.0f)/2.0f);
         if(boundaryDamping<0.0f)
         {
             boundaryDamping=0.0f;
@@ -377,6 +383,15 @@ void parowanieKropliWCzasie()
 		boundaryDamping=0.0f;
 		//timestep=0.0001f;
 	}
+	if(bigRadius>0.0f)
+	{
+		bigRadius=bigRadius0-A*sqrt(time_past);
+	}
+	else
+	{
+		bigRadius=0.0f;
+	}
+	psystem->setBigRadius(bigRadius);
 }
 
 /** \brief uruchomienie symulacji bez GUI z zapisem wyniku
@@ -882,6 +897,10 @@ void key(unsigned char key, int /*x*/, int /*y*/)
 		case '0':
 			time_past=0.0;
 			bigRadius=bigRadius0;
+			tSF=-0.0f;
+			SF=0.0f;
+			koncowka_parowania=false;
+			boundaries=true;
 			break;
 
 		case 'b':
