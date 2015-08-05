@@ -391,6 +391,12 @@ float3 collideSpheres(float3 posA, float3 posB,
                       float radiusA, float radiusB,
                       float attraction)
 {
+    __shared__ float sharedDeltaTime;
+    if(threadIdx.x==0)
+    {
+        sharedDeltaTime=0.0f;
+    }
+    __syncthreads();
     // calculate relative position
     float3 relPos = posB - posA;
 
@@ -439,22 +445,30 @@ float3 collideSpheres(float3 posA, float3 posB,
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////
-        dist=(radiusA + radiusB)*0.99f;
-        sd=sigma/dist;
-        sd*=sd*sd*sd*sd*sd;
-        float forceMax=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
-        float3 pA=make_float3(velA)*params.particleMass[(int)velA.w]*norm;
-		float3 pB=make_float3(velB)*params.particleMass[(int)velB.w]*norm;
-        float Pi=sqrt(pA.x*pA.x+pA.y*pA.y+pA.z*pA.z)+sqrt(pB.x*pB.x+pB.y*pB.y+pB.z*pB.z);
-		if(Pi>0.0f)
-		{
-			float DtMax=Pi/abs(forceMax);
-			if(DtMax<0.00001f)
-			{
-				DtMax=0.00001f;
-			}
-			atomicMin(&globalDeltaTime,DtMax);/**< \todo zrobić przyspieszenie przez shared memory */
-		}
+        //dist=(radiusA + radiusB)*0.99f;
+        //sd=sigma/dist;
+        //sd*=sd*sd*sd*sd*sd;
+        //float forceMax=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
+        //float3 pA=make_float3(velA)*params.particleMass[(int)velA.w]*norm;
+		//float3 pB=make_float3(velB)*params.particleMass[(int)velB.w]*norm;
+        //float Pi=sqrt(pA.x*pA.x+pA.y*pA.y+pA.z*pA.z)+sqrt(pB.x*pB.x+pB.y*pB.y+pB.z*pB.z);
+		//if(Pi>0.0f)
+		//{
+		//	float DtMax=Pi/abs(forceMax);
+		float3 relVel=make_float3(velB)*norm-make_float3(velA)*norm;
+		float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z)
+		float DtMax=0.99f*dist/relVelS;
+        if(DtMax<0.00001f)
+        {
+            DtMax=0.00001f;
+        }
+        atomicMin(&sharedDeltaTime,DtMax);
+        __syncthreads();
+        if(threadIdx.x==0)
+        {
+            atomicMin(&globalDeltaTime,sharedDeltaTime);
+        }
+		//}
 	}
 
     return force;
