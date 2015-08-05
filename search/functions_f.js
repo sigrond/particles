@@ -25,6 +25,7 @@ var searchData=
   ['setexecpath',['setExecPath',['../class_check_render.html#a5457947d77ffdd63bebd4b1cd698ecc5',1,'CheckRender']]],
   ['setfont',['SetFont',['../class_param_list_g_l.html#acb5a09519fb2a489fc9b9cafa238ee02',1,'ParamListGL']]],
   ['setfov',['setFOV',['../class_particle_renderer.html#ad6da663d3073401a776edb8dc6cf4d5f',1,'ParticleRenderer']]],
+  ['setglobaldeltatime',['setGlobalDeltaTime',['../particle_system_8cuh.html#a8bfca05ad4a22863d51c2bf5354e6c39',1,'setGlobalDeltaTime(float dt):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a8bfca05ad4a22863d51c2bf5354e6c39',1,'setGlobalDeltaTime(float dt):&#160;particleSystem_cuda.cu']]],
   ['setgravity',['setGravity',['../class_particle_system.html#a755f64f917389ef41df81b663d1f5bd2',1,'ParticleSystem']]],
   ['setiterations',['setIterations',['../class_particle_system.html#a11f55976f6ef34dceea208fbe06694cd',1,'ParticleSystem']]],
   ['setparameters',['setParameters',['../particle_system_8cuh.html#a342176dbaba2668312c45e1a1423fc4e',1,'setParameters(SimParams *hostParams):&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a342176dbaba2668312c45e1a1423fc4e',1,'setParameters(SimParams *hostParams):&#160;particleSystem_cuda.cu']]],

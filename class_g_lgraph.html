@@ -176,9 +176,20 @@ Atrybuty prywatne</h2></td></tr>
 <p>Definicja w linii <a class="el" href="_g_lgraph_8h_source.html#l00012">12</a> pliku <a class="el" href="_g_lgraph_8h_source.html">GLgraph.h</a>.</p>
 
 <p>Odwołuje się do <a class="el" href="_g_lgraph_8h_source.html#l00017">dataVectorPtr</a>.</p>
+
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01076">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;:<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>(NULL){};</div>
 <div class="ttc" id="class_g_lgraph_html_a990c44a95d136768ef6d5d927f794005"><div class="ttname"><a href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">GLgraph::dataVectorPtr</a></div><div class="ttdeci">std::vector&lt; float &gt; * dataVectorPtr</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8h_source.html#l00017">GLgraph.h:17</a></div></div>
 </div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_g_lgraph_a79b1c35b10782c0f07eb58f9437fdf3a_icgraph.png" border="0" usemap="#class_g_lgraph_a79b1c35b10782c0f07eb58f9437fdf3a_icgraph" alt=""/></div>
+<map name="class_g_lgraph_a79b1c35b10782c0f07eb58f9437fdf3a_icgraph" id="class_g_lgraph_a79b1c35b10782c0f07eb58f9437fdf3a_icgraph">
+<area shape="rect" id="node2" href="particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="181,5,232,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a010baac0df2b4428b97ecdfcd1db88eb"></a>
@@ -242,28 +253,45 @@ Atrybuty prywatne</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd>void </dd></dl>
 
-<p>Definicja w linii <a class="el" href="_g_lgraph_8cpp_source.html#l00050">50</a> pliku <a class="el" href="_g_lgraph_8cpp_source.html">GLgraph.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="_g_lgraph_8cpp.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    glClear(GL_COLOR_BUFFER_BIT);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    glColor3f(0,1,0);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    glLineWidth(3.0);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    glBegin(GL_LINE_STRIP);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    glVertex2f(0f+xStartPos, 0f+yStartPos);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">float</span> x = 0f+xStartPos;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; x&lt;100.0f+xStartPos &amp;&amp; i&lt;<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>-&gt;size(); i++)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        x+=100.0f/((float)<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>-&gt;size();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        glVertex2f(x, (*<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>)[i]+yStartPos);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    glVertex2f(100f+xStartPos, 0f+yStartPos);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    glEnd();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="_g_lgraph_8cpp.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="ttc" id="_g_lgraph_8cpp_html_aa3791f379d6dbce2bae6c5af556c36f0"><div class="ttname"><a href="_g_lgraph_8cpp.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a></div><div class="ttdeci">void endWinCoords(void)</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8cpp_source.html#l00034">GLgraph.cpp:34</a></div></div>
-<div class="ttc" id="_g_lgraph_8cpp_html_a9e70c1f281e934883db8f24ac215a40f"><div class="ttname"><a href="_g_lgraph_8cpp.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a></div><div class="ttdeci">void beginWinCoords(void)</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8cpp_source.html#l00018">GLgraph.cpp:18</a></div></div>
+<p>Definicja w linii <a class="el" href="_g_lgraph_8cpp_source.html#l00051">51</a> pliku <a class="el" href="_g_lgraph_8cpp_source.html">GLgraph.cpp</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="paramgl_8h_source.html#l00030">beginWinCoords()</a>, <a class="el" href="_g_lgraph_8h_source.html#l00017">dataVectorPtr</a> i <a class="el" href="paramgl_8h_source.html#l00046">endWinCoords()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="_g_lgraph_8cpp.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    glClear(GL_COLOR_BUFFER_BIT);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    glColor3f(0,1,0);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    glLineWidth(3.0);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    glBegin(GL_LINE_STRIP);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    glVertex2f(xStartPos, yStartPos);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">float</span> x = xStartPos;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">float</span> <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>=glutGet(GLUT_WINDOW_WIDTH);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">float</span> hight=glutGet(GLUT_WINDOW_HEIGHT);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">int</span> pomniejszenie=1;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>-&gt;size(); i++)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                pomniejszenie=(float)<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>-&gt;size()/(float)width+1.5f;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        x+=1.0f;<span class="comment">//1000.0f/((float)dataVectorPtr-&gt;size());</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        glVertex2f(x/(<span class="keywordtype">float</span>)pomniejszenie, -(*<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>)[i]*10.0f*hight+yStartPos);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">//glVertex2f(width+xStartPos, yStartPos);</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    glEnd();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        glLineWidth(1.0);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="_g_lgraph_8cpp.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="ttc" id="_g_lgraph_8cpp_html_aa3791f379d6dbce2bae6c5af556c36f0"><div class="ttname"><a href="_g_lgraph_8cpp.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a></div><div class="ttdeci">void endWinCoords(void)</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8cpp_source.html#l00035">GLgraph.cpp:35</a></div></div>
+<div class="ttc" id="_g_lgraph_8cpp_html_a9e70c1f281e934883db8f24ac215a40f"><div class="ttname"><a href="_g_lgraph_8cpp.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a></div><div class="ttdeci">void beginWinCoords(void)</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8cpp_source.html#l00019">GLgraph.cpp:19</a></div></div>
 <div class="ttc" id="class_g_lgraph_html_a990c44a95d136768ef6d5d927f794005"><div class="ttname"><a href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">GLgraph::dataVectorPtr</a></div><div class="ttdeci">std::vector&lt; float &gt; * dataVectorPtr</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8h_source.html#l00017">GLgraph.h:17</a></div></div>
+<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
 </div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywołań dla tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_g_lgraph_a8c089b8634b8ef23c31afddedd801d89_cgraph.png" border="0" usemap="#class_g_lgraph_a8c089b8634b8ef23c31afddedd801d89_cgraph" alt=""/></div>
+<map name="class_g_lgraph_a8c089b8634b8ef23c31afddedd801d89_cgraph" id="class_g_lgraph_a8c089b8634b8ef23c31afddedd801d89_cgraph">
+<area shape="rect" id="node2" href="paramgl_8h.html#a9e70c1f281e934883db8f24ac215a40f" title="beginWinCoords" alt="" coords="168,5,285,32"/><area shape="rect" id="node3" href="paramgl_8h.html#aa3791f379d6dbce2bae6c5af556c36f0" title="endWinCoords" alt="" coords="173,56,280,83"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a47facd622312980c1efe99fd11481c61"></a>
@@ -289,12 +317,25 @@ Atrybuty prywatne</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Zwraca</dt><dd>void </dd></dl>
 
-<p>Definicja w linii <a class="el" href="_g_lgraph_8cpp_source.html#l00013">13</a> pliku <a class="el" href="_g_lgraph_8cpp_source.html">GLgraph.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>=srcV;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+<p>Definicja w linii <a class="el" href="_g_lgraph_8cpp_source.html#l00014">14</a> pliku <a class="el" href="_g_lgraph_8cpp_source.html">GLgraph.cpp</a>.</p>
+
+<p>Odwołuje się do <a class="el" href="_g_lgraph_8h_source.html#l00017">dataVectorPtr</a>.</p>
+
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01076">main()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>=srcV;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="ttc" id="class_g_lgraph_html_a990c44a95d136768ef6d5d927f794005"><div class="ttname"><a href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">GLgraph::dataVectorPtr</a></div><div class="ttdeci">std::vector&lt; float &gt; * dataVectorPtr</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8h_source.html#l00017">GLgraph.h:17</a></div></div>
 </div><!-- fragment -->
+<p><div class="dynheader">
+Oto graf wywoływań tej funkcji:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_g_lgraph_a47facd622312980c1efe99fd11481c61_icgraph.png" border="0" usemap="#class_g_lgraph_a47facd622312980c1efe99fd11481c61_icgraph" alt=""/></div>
+<map name="class_g_lgraph_a47facd622312980c1efe99fd11481c61_icgraph" id="class_g_lgraph_a47facd622312980c1efe99fd11481c61_icgraph">
+<area shape="rect" id="node2" href="particles_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="216,5,267,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
@@ -318,7 +359,7 @@ Atrybuty prywatne</h2></td></tr>
 
 <p>Definicja w linii <a class="el" href="_g_lgraph_8h_source.html#l00017">17</a> pliku <a class="el" href="_g_lgraph_8h_source.html">GLgraph.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="_g_lgraph_8h_source.html#l00012">GLgraph()</a>.</p>
+<p>Odwołania w <a class="el" href="_g_lgraph_8h_source.html#l00012">GLgraph()</a>, <a class="el" href="_g_lgraph_8cpp_source.html#l00051">render()</a> i <a class="el" href="_g_lgraph_8cpp_source.html#l00014">setDataVector()</a>.</p>
 
 </div>
 </div>
@@ -332,7 +373,7 @@ Atrybuty prywatne</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_g_lgraph.html">GLgraph</a></li>
-    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:20 dla particles programem
+    <li class="footer">Wygenerowano Śr, 5 sie 2015 17:16:32 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

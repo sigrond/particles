@@ -132,7 +132,7 @@ Diagram współpracy dla CheckBackBuffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_check_back_buffer__coll__graph.png" border="0" usemap="#_check_back_buffer_coll__map" alt="Collaboration graph"/></div>
 <map name="_check_back_buffer_coll__map" id="_check_back_buffer_coll__map">
-<area shape="rect" id="node2" href="class_check_render.html" title="{CheckRender\n|# m_Width\l# m_Height\l# m_Bpp\l# m_pImageData\l# m_bQAReadback\l# m_bUseFBO\l# m_bUsePBO\l# m_pboReadback\l# m_PixelFormat\l# m_fThresholdCompare\l|+ CheckRender()\l+ ~CheckRender()\l+ allocateMemory()\l+ setExecPath()\l+ EnableQAReadback()\l+ IsQAReadback()\l+ IsFBO()\l+ IsPBO()\l+ imageData()\l+ setPixelFormat()\li 15 więcej...\l}" alt="" coords="7,145,170,501"/></map>
+<area shape="rect" id="node2" href="class_check_render.html" title="{CheckRender\n|# m_Width\l# m_Height\l# m_Bpp\l# m_pImageData\l# m_bQAReadback\l# m_bUseFBO\l# m_bUsePBO\l# m_pboReadback\l# m_PixelFormat\l# m_fThresholdCompare\l# m_ExecPath\l|+ CheckRender()\l+ ~CheckRender()\l+ allocateMemory()\l+ setExecPath()\l+ EnableQAReadback()\l+ IsQAReadback()\l+ IsFBO()\l+ IsPBO()\l+ imageData()\l+ setPixelFormat()\li 15 więcej...\l}" alt="" coords="7,5,170,376"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -229,12 +229,12 @@ Dodatkowe Dziedziczone Składowe</h2></td></tr>
 <tr class="separator:a392c350beb6b6d05a15c339473371ea8 inherit pro_attribs_class_check_render"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46611cb62f30b6e2b08d0cf8f6587c1f inherit pro_attribs_class_check_render"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_check_render.html#a46611cb62f30b6e2b08d0cf8f6587c1f">m_fThresholdCompare</a></td></tr>
 <tr class="separator:a46611cb62f30b6e2b08d0cf8f6587c1f inherit pro_attribs_class_check_render"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2efbd23c4792caf5ffb46aa14f4d85cc inherit pro_attribs_class_check_render"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_check_render.html#a2efbd23c4792caf5ffb46aa14f4d85cc">m_ExecPath</a></td></tr>
-<tr class="separator:a2efbd23c4792caf5ffb46aa14f4d85cc inherit pro_attribs_class_check_render"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87df77af21841f0b30ee4803ceb5db68 inherit pro_attribs_class_check_render"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_check_render.html#a87df77af21841f0b30ee4803ceb5db68">m_ExecPath</a> [256]</td></tr>
+<tr class="separator:a87df77af21841f0b30ee4803ceb5db68 inherit pro_attribs_class_check_render"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock">
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00586">586</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00549">549</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
 </div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a class="anchor" id="a48aaa82466b43dd3e15a341c6bade15d"></a>
 <div class="memitem">
@@ -280,16 +280,16 @@ Dodatkowe Dziedziczone Składowe</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00589">589</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00552">552</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="rendercheck__gl_8h_source.html#l00054">CheckRender::CheckRender()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                                                                                                           :</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;            <a class="code" href="class_check_render.html#aeba98d7f08e4a90aafe24b9ecedf378c">CheckRender</a>(<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, Bpp, <span class="keyword">false</span>, <span class="keyword">false</span>, bUseOpenGL)</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        {</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        }</div>
-<div class="ttc" id="class_check_render_html_aeba98d7f08e4a90aafe24b9ecedf378c"><div class="ttname"><a href="class_check_render.html#aeba98d7f08e4a90aafe24b9ecedf378c">CheckRender::CheckRender</a></div><div class="ttdeci">CheckRender(unsigned int width, unsigned int height, unsigned int Bpp, bool bQAReadback, bool bUseFBO, bool bUsePBO)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00054">rendercheck_gl.h:54</a></div></div>
-<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00128">particles.cpp:128</a></div></div>
-<div class="ttc" id="particles_8cpp_html_aa90d4ba1278109bf241d6e43db40f80c"><div class="ttname"><a href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a></div><div class="ttdeci">const uint height</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00128">particles.cpp:128</a></div></div>
+<p>Odwołuje się do <a class="el" href="rendercheck__gl_8h_source.html#l00053">CheckRender::CheckRender()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                                                                                                           :</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;            <a class="code" href="class_check_render.html#aeba98d7f08e4a90aafe24b9ecedf378c">CheckRender</a>(<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, Bpp, <span class="keyword">false</span>, <span class="keyword">false</span>, bUseOpenGL)</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        {</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        }</div>
+<div class="ttc" id="class_check_render_html_aeba98d7f08e4a90aafe24b9ecedf378c"><div class="ttname"><a href="class_check_render.html#aeba98d7f08e4a90aafe24b9ecedf378c">CheckRender::CheckRender</a></div><div class="ttdeci">CheckRender(unsigned int width, unsigned int height, unsigned int Bpp, bool bQAReadback, bool bUseFBO, bool bUsePBO)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00053">rendercheck_gl.h:53</a></div></div>
+<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
+<div class="ttc" id="particles_8cpp_html_aa90d4ba1278109bf241d6e43db40f80c"><div class="ttname"><a href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a></div><div class="ttdeci">const uint height</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywołań dla tej funkcji:</div>
@@ -323,9 +323,9 @@ Oto graf wywołań dla tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00594">594</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        {</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        }</div>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00557">557</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        {</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -351,8 +351,8 @@ Oto graf wywołań dla tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00754">754</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;{};</div>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00717">717</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -377,8 +377,8 @@ Oto graf wywołań dla tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00755">755</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;{};</div>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00718">718</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -403,8 +403,8 @@ Oto graf wywołań dla tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00759">759</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;{};</div>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00722">722</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -448,22 +448,22 @@ Oto graf wywołań dla tej funkcji:</div>
 
 <p>Implementuje <a class="el" href="class_check_render.html#a8f77175f7b33a911ac48dda6fc6a2318">CheckRender</a>.</p>
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00598">598</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00561">561</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
 
-<p>Odwołania w <a class="el" href="rendercheck__gl_8h_source.html#l00613">readback()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        {</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            GLenum nErrorCode = glGetError();</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            <span class="keywordflow">if</span> (nErrorCode != GL_NO_ERROR)</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            {</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;                <span class="keywordflow">if</span> (!silent)</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                {</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                    printf(<span class="stringliteral">&quot;Assertion failed(%s,%d): %s\n&quot;</span>, zfile, line, gluErrorString(nErrorCode));</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;                }</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            }</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;        }</div>
+<p>Odwołania w <a class="el" href="rendercheck__gl_8h_source.html#l00576">readback()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            GLenum nErrorCode = glGetError();</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            <span class="keywordflow">if</span> (nErrorCode != GL_NO_ERROR)</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            {</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                <span class="keywordflow">if</span> (!silent)</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;                {</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;                    printf(<span class="stringliteral">&quot;Assertion failed(%s,%d): %s\n&quot;</span>, zfile, line, gluErrorString(nErrorCode));</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;                }</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            }</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        }</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywoływań tej funkcji:</div>
@@ -510,54 +510,54 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Implementuje <a class="el" href="class_check_render.html#aef9bbea4a349b351ff6301c61d04ce9b">CheckRender</a>.</p>
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00613">613</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00576">576</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="rendercheck__gl_8h_source.html#l00129">CheckRender::bindReadback()</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00598">checkStatus()</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00578">CheckRender::m_bUsePBO</a> i <a class="el" href="rendercheck__gl_8h_source.html#l00143">CheckRender::unbindReadback()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        {</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            <span class="keywordtype">bool</span> ret = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_check_render.html#a26d71232aac12c6827bb3a5a99694c92">m_bUsePBO</a>)</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;            {</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                <span class="comment">// binds the PBO for readback</span></div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;                <a class="code" href="class_check_render.html#adcf7a822869e6450e837b20475c11d8b">bindReadback</a>();</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;                <span class="comment">// Initiate the readback BLT from BackBuffer-&gt;PBO-&gt;membuf</span></div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                glReadPixels(0, 0, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, <a class="code" href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">getPixelFormat</a>(),      GL_UNSIGNED_BYTE, <a class="code" href="rendercheck__gl_8h.html#a063a3af905ecefe83d76ca3f0fe0653e">BUFFER_OFFSET</a>(0));</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                ret = <a class="code" href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">checkStatus</a>(__FILE__, __LINE__, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                <span class="keywordflow">if</span> (!ret)</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                {</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;                    printf(<span class="stringliteral">&quot;CheckBackBuffer::glReadPixels() checkStatus = %d\n&quot;</span>, ret);</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                }</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;                <span class="comment">// map - unmap simulates readback without the copy</span></div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;                <span class="keywordtype">void</span> *ioMem = glMapBufferARB(GL_PIXEL_PACK_BUFFER_ARB, GL_READ_ONLY_ARB);</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;                memcpy(<a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>,    ioMem, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>*<a class="code" href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">m_Bpp</a>);</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;</div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                glUnmapBufferARB(GL_PIXEL_PACK_BUFFER_ARB);</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                <span class="comment">// release the PBO</span></div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;                <a class="code" href="class_check_render.html#ac5f0fd3b9f30e5311022e040351611b4">unbindReadback</a>();</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            }</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;            {</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;                <span class="comment">// reading direct from the backbuffer</span></div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;                glReadBuffer(GL_FRONT);</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                glReadPixels(0, 0, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, <a class="code" href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">getPixelFormat</a>(), GL_UNSIGNED_BYTE, <a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>);</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;            }</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        }</div>
-<div class="ttc" id="class_check_render_html_a2b69198de0f9b499365a9fd1fac12ed3"><div class="ttname"><a href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">CheckRender::getPixelFormat</a></div><div class="ttdeci">virtual int getPixelFormat()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00120">rendercheck_gl.h:120</a></div></div>
-<div class="ttc" id="class_check_back_buffer_html_a1ffdc711593c9412f339a35e25bc3c18"><div class="ttname"><a href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">CheckBackBuffer::checkStatus</a></div><div class="ttdeci">virtual bool checkStatus(const char *zfile, int line, bool silent)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00598">rendercheck_gl.h:598</a></div></div>
-<div class="ttc" id="class_check_render_html_a0c54a30742a5316c7acf211fa357df35"><div class="ttname"><a href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">CheckRender::m_Bpp</a></div><div class="ttdeci">unsigned int m_Bpp</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00576">rendercheck_gl.h:576</a></div></div>
-<div class="ttc" id="class_check_render_html_ad437a31d197f955cb93ee7b543472fac"><div class="ttname"><a href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">CheckRender::m_pImageData</a></div><div class="ttdeci">unsigned char * m_pImageData</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00577">rendercheck_gl.h:577</a></div></div>
-<div class="ttc" id="rendercheck__gl_8h_html_a063a3af905ecefe83d76ca3f0fe0653e"><div class="ttname"><a href="rendercheck__gl_8h.html#a063a3af905ecefe83d76ca3f0fe0653e">BUFFER_OFFSET</a></div><div class="ttdeci">#define BUFFER_OFFSET(i)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00041">rendercheck_gl.h:41</a></div></div>
-<div class="ttc" id="class_check_render_html_adcf7a822869e6450e837b20475c11d8b"><div class="ttname"><a href="class_check_render.html#adcf7a822869e6450e837b20475c11d8b">CheckRender::bindReadback</a></div><div class="ttdeci">virtual void bindReadback()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00129">rendercheck_gl.h:129</a></div></div>
-<div class="ttc" id="class_check_render_html_a26d71232aac12c6827bb3a5a99694c92"><div class="ttname"><a href="class_check_render.html#a26d71232aac12c6827bb3a5a99694c92">CheckRender::m_bUsePBO</a></div><div class="ttdeci">bool m_bUsePBO</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00578">rendercheck_gl.h:578</a></div></div>
-<div class="ttc" id="class_check_render_html_ac5f0fd3b9f30e5311022e040351611b4"><div class="ttname"><a href="class_check_render.html#ac5f0fd3b9f30e5311022e040351611b4">CheckRender::unbindReadback</a></div><div class="ttdeci">virtual void unbindReadback()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00143">rendercheck_gl.h:143</a></div></div>
-<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00128">particles.cpp:128</a></div></div>
-<div class="ttc" id="particles_8cpp_html_aa90d4ba1278109bf241d6e43db40f80c"><div class="ttname"><a href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a></div><div class="ttdeci">const uint height</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00128">particles.cpp:128</a></div></div>
+<p>Odwołuje się do <a class="el" href="rendercheck__gl_8h_source.html#l00128">CheckRender::bindReadback()</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00561">checkStatus()</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00541">CheckRender::m_bUsePBO</a> i <a class="el" href="rendercheck__gl_8h_source.html#l00142">CheckRender::unbindReadback()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        {</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            <span class="keywordtype">bool</span> ret = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_check_render.html#a26d71232aac12c6827bb3a5a99694c92">m_bUsePBO</a>)</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            {</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;                <span class="comment">// binds the PBO for readback</span></div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;                <a class="code" href="class_check_render.html#adcf7a822869e6450e837b20475c11d8b">bindReadback</a>();</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;                <span class="comment">// Initiate the readback BLT from BackBuffer-&gt;PBO-&gt;membuf</span></div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;                glReadPixels(0, 0, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, <a class="code" href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">getPixelFormat</a>(),      GL_UNSIGNED_BYTE, <a class="code" href="rendercheck__gl_8h.html#a063a3af905ecefe83d76ca3f0fe0653e">BUFFER_OFFSET</a>(0));</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                ret = <a class="code" href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">checkStatus</a>(__FILE__, __LINE__, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;                <span class="keywordflow">if</span> (!ret)</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                {</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                    printf(<span class="stringliteral">&quot;CheckBackBuffer::glReadPixels() checkStatus = %d\n&quot;</span>, ret);</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                }</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                <span class="comment">// map - unmap simulates readback without the copy</span></div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;                <span class="keywordtype">void</span> *ioMem = glMapBufferARB(GL_PIXEL_PACK_BUFFER_ARB, GL_READ_ONLY_ARB);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;                memcpy(<a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>,    ioMem, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>*<a class="code" href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">m_Bpp</a>);</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;                glUnmapBufferARB(GL_PIXEL_PACK_BUFFER_ARB);</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;                <span class="comment">// release the PBO</span></div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;                <a class="code" href="class_check_render.html#ac5f0fd3b9f30e5311022e040351611b4">unbindReadback</a>();</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            }</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;            {</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                <span class="comment">// reading direct from the backbuffer</span></div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                glReadBuffer(GL_FRONT);</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;                glReadPixels(0, 0, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, <a class="code" href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">getPixelFormat</a>(), GL_UNSIGNED_BYTE, <a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>);</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            }</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;            <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;        }</div>
+<div class="ttc" id="class_check_render_html_a2b69198de0f9b499365a9fd1fac12ed3"><div class="ttname"><a href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">CheckRender::getPixelFormat</a></div><div class="ttdeci">virtual int getPixelFormat()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00119">rendercheck_gl.h:119</a></div></div>
+<div class="ttc" id="class_check_back_buffer_html_a1ffdc711593c9412f339a35e25bc3c18"><div class="ttname"><a href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">CheckBackBuffer::checkStatus</a></div><div class="ttdeci">virtual bool checkStatus(const char *zfile, int line, bool silent)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00561">rendercheck_gl.h:561</a></div></div>
+<div class="ttc" id="class_check_render_html_a0c54a30742a5316c7acf211fa357df35"><div class="ttname"><a href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">CheckRender::m_Bpp</a></div><div class="ttdeci">unsigned int m_Bpp</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00539">rendercheck_gl.h:539</a></div></div>
+<div class="ttc" id="class_check_render_html_ad437a31d197f955cb93ee7b543472fac"><div class="ttname"><a href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">CheckRender::m_pImageData</a></div><div class="ttdeci">unsigned char * m_pImageData</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00540">rendercheck_gl.h:540</a></div></div>
+<div class="ttc" id="rendercheck__gl_8h_html_a063a3af905ecefe83d76ca3f0fe0653e"><div class="ttname"><a href="rendercheck__gl_8h.html#a063a3af905ecefe83d76ca3f0fe0653e">BUFFER_OFFSET</a></div><div class="ttdeci">#define BUFFER_OFFSET(i)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00040">rendercheck_gl.h:40</a></div></div>
+<div class="ttc" id="class_check_render_html_adcf7a822869e6450e837b20475c11d8b"><div class="ttname"><a href="class_check_render.html#adcf7a822869e6450e837b20475c11d8b">CheckRender::bindReadback</a></div><div class="ttdeci">virtual void bindReadback()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00128">rendercheck_gl.h:128</a></div></div>
+<div class="ttc" id="class_check_render_html_a26d71232aac12c6827bb3a5a99694c92"><div class="ttname"><a href="class_check_render.html#a26d71232aac12c6827bb3a5a99694c92">CheckRender::m_bUsePBO</a></div><div class="ttdeci">bool m_bUsePBO</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00541">rendercheck_gl.h:541</a></div></div>
+<div class="ttc" id="class_check_render_html_ac5f0fd3b9f30e5311022e040351611b4"><div class="ttname"><a href="class_check_render.html#ac5f0fd3b9f30e5311022e040351611b4">CheckRender::unbindReadback</a></div><div class="ttdeci">virtual void unbindReadback()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00142">rendercheck_gl.h:142</a></div></div>
+<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
+<div class="ttc" id="particles_8cpp_html_aa90d4ba1278109bf241d6e43db40f80c"><div class="ttname"><a href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a></div><div class="ttdeci">const uint height</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywołań dla tej funkcji:</div>
@@ -610,111 +610,111 @@ Oto graf wywołań dla tej funkcji:</div>
 
 <p>Implementuje <a class="el" href="class_check_render.html#acd89d03df448a8562c8c808abd6b8291">CheckRender</a>.</p>
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00650">650</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00613">613</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="rendercheck__gl_8h_source.html#l00129">CheckRender::bindReadback()</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00598">checkStatus()</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00578">CheckRender::m_bUseFBO</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00578">CheckRender::m_bUsePBO</a> i <a class="el" href="rendercheck__gl_8h_source.html#l00143">CheckRender::unbindReadback()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;        {</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;            <span class="keywordtype">bool</span> ret = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_check_render.html#a6a78b3f489651191cab649c496207a80">m_bUseFBO</a>)</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;            {</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_check_render.html#a26d71232aac12c6827bb3a5a99694c92">m_bUsePBO</a>)</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;                {</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;                    printf(<span class="stringliteral">&quot;CheckBackBuffer::readback() FBO-&gt;PBO-&gt;m_pImageData\n&quot;</span>);</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;                    <span class="comment">// binds the PBO for readback</span></div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;                    <a class="code" href="class_check_render.html#adcf7a822869e6450e837b20475c11d8b">bindReadback</a>();</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;                    <span class="comment">// bind FBO buffer (we want to transfer FBO -&gt; PBO)</span></div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;                    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, bufObject);</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;                    <span class="comment">// Now initiate the readback to PBO</span></div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;                    glReadPixels(0, 0, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, <a class="code" href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">getPixelFormat</a>(),      GL_UNSIGNED_BYTE, <a class="code" href="rendercheck__gl_8h.html#a063a3af905ecefe83d76ca3f0fe0653e">BUFFER_OFFSET</a>(0));</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;                    ret = <a class="code" href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">checkStatus</a>(__FILE__, __LINE__, <span class="keyword">true</span>);</div>
+<p>Odwołuje się do <a class="el" href="rendercheck__gl_8h_source.html#l00128">CheckRender::bindReadback()</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00561">checkStatus()</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00541">CheckRender::m_bUseFBO</a>, <a class="el" href="rendercheck__gl_8h_source.html#l00541">CheckRender::m_bUsePBO</a> i <a class="el" href="rendercheck__gl_8h_source.html#l00142">CheckRender::unbindReadback()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        {</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            <span class="keywordtype">bool</span> ret = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_check_render.html#a6a78b3f489651191cab649c496207a80">m_bUseFBO</a>)</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;            {</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_check_render.html#a26d71232aac12c6827bb3a5a99694c92">m_bUsePBO</a>)</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;                {</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;                    printf(<span class="stringliteral">&quot;CheckBackBuffer::readback() FBO-&gt;PBO-&gt;m_pImageData\n&quot;</span>);</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;                    <span class="comment">// binds the PBO for readback</span></div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                    <a class="code" href="class_check_render.html#adcf7a822869e6450e837b20475c11d8b">bindReadback</a>();</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;                    <span class="comment">// bind FBO buffer (we want to transfer FBO -&gt; PBO)</span></div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, bufObject);</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;                    <span class="comment">// Now initiate the readback to PBO</span></div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                    glReadPixels(0, 0, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, <a class="code" href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">getPixelFormat</a>(),      GL_UNSIGNED_BYTE, <a class="code" href="rendercheck__gl_8h.html#a063a3af905ecefe83d76ca3f0fe0653e">BUFFER_OFFSET</a>(0));</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                    ret = <a class="code" href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">checkStatus</a>(__FILE__, __LINE__, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;                    <span class="keywordflow">if</span> (!ret)</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;                    {</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                        printf(<span class="stringliteral">&quot;CheckBackBuffer::readback() FBO-&gt;PBO checkStatus = %d\n&quot;</span>, ret);</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                    }</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                    <span class="comment">// map - unmap simulates readback without the copy</span></div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;                    <span class="keywordtype">void</span> *ioMem = glMapBufferARB(GL_PIXEL_PACK_BUFFER_ARB, GL_READ_ONLY_ARB);</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;                    memcpy(<a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>,    ioMem, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>*<a class="code" href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">m_Bpp</a>);</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                    glUnmapBufferARB(GL_PIXEL_PACK_BUFFER_ARB);</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;                    <span class="comment">// release the FBO</span></div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                    <span class="comment">// release the PBO</span></div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;                    <a class="code" href="class_check_render.html#ac5f0fd3b9f30e5311022e040351611b4">unbindReadback</a>();</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;                }</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;                {</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;                    printf(<span class="stringliteral">&quot;CheckBackBuffer::readback() FBO-&gt;m_pImageData\n&quot;</span>);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;                    <span class="comment">// Reading direct to FBO using glReadPixels</span></div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;                    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, bufObject);</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;                    ret = <a class="code" href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">checkStatus</a>(__FILE__, __LINE__, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;                    <span class="keywordflow">if</span> (!ret)</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;                    {</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;                        printf(<span class="stringliteral">&quot;CheckBackBuffer::readback::glBindFramebufferEXT() fbo=%d checkStatus = %d\n&quot;</span>, bufObject, ret);</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;                    }</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;                    glReadBuffer(static_cast&lt;GLenum&gt;(GL_COLOR_ATTACHMENT0_EXT));</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;                    ret &amp;= <a class="code" href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">checkStatus</a>(__FILE__, __LINE__, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;                    <span class="keywordflow">if</span> (!ret)</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;                    {</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;                        printf(<span class="stringliteral">&quot;CheckBackBuffer::readback::glReadBuffer() fbo=%d checkStatus = %d\n&quot;</span>, bufObject, ret);</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;                    }</div>
 <div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;                    <span class="keywordflow">if</span> (!ret)</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                    {</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;                        printf(<span class="stringliteral">&quot;CheckBackBuffer::readback() FBO-&gt;PBO checkStatus = %d\n&quot;</span>, ret);</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;                    }</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                    <span class="comment">// map - unmap simulates readback without the copy</span></div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;                    <span class="keywordtype">void</span> *ioMem = glMapBufferARB(GL_PIXEL_PACK_BUFFER_ARB, GL_READ_ONLY_ARB);</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;                    memcpy(<a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>,    ioMem, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>*<a class="code" href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">m_Bpp</a>);</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;                    glUnmapBufferARB(GL_PIXEL_PACK_BUFFER_ARB);</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;                    <span class="comment">// release the FBO</span></div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;                    <span class="comment">// release the PBO</span></div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;                    <a class="code" href="class_check_render.html#ac5f0fd3b9f30e5311022e040351611b4">unbindReadback</a>();</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;                }</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;                {</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;                    printf(<span class="stringliteral">&quot;CheckBackBuffer::readback() FBO-&gt;m_pImageData\n&quot;</span>);</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                    <span class="comment">// Reading direct to FBO using glReadPixels</span></div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, bufObject);</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;                    ret = <a class="code" href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">checkStatus</a>(__FILE__, __LINE__, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;                    <span class="keywordflow">if</span> (!ret)</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                    {</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                        printf(<span class="stringliteral">&quot;CheckBackBuffer::readback::glBindFramebufferEXT() fbo=%d checkStatus = %d\n&quot;</span>, bufObject, ret);</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                    }</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;                    glReadPixels(0, 0, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, <a class="code" href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">getPixelFormat</a>(), GL_UNSIGNED_BYTE, <a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>);</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;                    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;                }</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;            }</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;            {</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;                printf(<span class="stringliteral">&quot;CheckBackBuffer::readback() PBO-&gt;m_pImageData\n&quot;</span>);</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;                <span class="comment">// read from bufObject (PBO) to system memorys image</span></div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;                glBindBufferARB(GL_PIXEL_PACK_BUFFER_ARB, bufObject);   <span class="comment">// Bind the PBO</span></div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                <span class="comment">// map - unmap simulates readback without the copy</span></div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                <span class="keywordtype">void</span> *ioMem = glMapBufferARB(GL_PIXEL_PACK_BUFFER_ARB, GL_READ_ONLY_ARB);</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;                <span class="comment">// allocate a buffer so we can flip the image</span></div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *temp_buf = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *)malloc(<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>*<a class="code" href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">m_Bpp</a>);</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;                memcpy(temp_buf, ioMem, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>*m_Bpp);</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;                <span class="comment">// let&#39;s flip the image as we copy</span></div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y = 0; y &lt; <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>; y++)</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                {</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;                    memcpy((<span class="keywordtype">void</span> *)&amp;(<a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>[(height-y)*<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp]), (<span class="keywordtype">void</span> *)&amp;(temp_buf[y*<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp]), <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp);</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;                }</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                free(temp_buf);</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                glUnmapBufferARB(GL_PIXEL_PACK_BUFFER_ARB);</div>
 <div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                    glReadBuffer(static_cast&lt;GLenum&gt;(GL_COLOR_ATTACHMENT0_EXT));</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                    ret &amp;= <a class="code" href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">checkStatus</a>(__FILE__, __LINE__, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                    <span class="keywordflow">if</span> (!ret)</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;                    {</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;                        printf(<span class="stringliteral">&quot;CheckBackBuffer::readback::glReadBuffer() fbo=%d checkStatus = %d\n&quot;</span>, bufObject, ret);</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;                    }</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                    glReadPixels(0, 0, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>, <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>, <a class="code" href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">getPixelFormat</a>(), GL_UNSIGNED_BYTE, <a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>);</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                    glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                }</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;            }</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;            {</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                printf(<span class="stringliteral">&quot;CheckBackBuffer::readback() PBO-&gt;m_pImageData\n&quot;</span>);</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                <span class="comment">// read from bufObject (PBO) to system memorys image</span></div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                glBindBufferARB(GL_PIXEL_PACK_BUFFER_ARB, bufObject);   <span class="comment">// Bind the PBO</span></div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                <span class="comment">// map - unmap simulates readback without the copy</span></div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                <span class="keywordtype">void</span> *ioMem = glMapBufferARB(GL_PIXEL_PACK_BUFFER_ARB, GL_READ_ONLY_ARB);</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;                <span class="comment">// allocate a buffer so we can flip the image</span></div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *temp_buf = (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *)malloc(<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>*<a class="code" href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">m_Bpp</a>);</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                memcpy(temp_buf, ioMem, <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>*m_Bpp);</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                <span class="comment">// let&#39;s flip the image as we copy</span></div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y = 0; y &lt; <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>; y++)</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;                {</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;                    memcpy((<span class="keywordtype">void</span> *)&amp;(<a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>[(height-y)*<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp]), (<span class="keywordtype">void</span> *)&amp;(temp_buf[y*<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp]), <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp);</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                }</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;                free(temp_buf);</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                glUnmapBufferARB(GL_PIXEL_PACK_BUFFER_ARB);</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;                <span class="comment">// read from bufObject (PBO) to system memory image</span></div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                glBindBufferARB(GL_PIXEL_PACK_BUFFER_ARB, 0);   <span class="comment">// unBind the PBO</span></div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            }</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="rendercheck__gl_8h.html#a92b7fdde0a112f24e77d994f3962e630">CHECK_FBO</a>;</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;        }</div>
-<div class="ttc" id="class_check_render_html_a2b69198de0f9b499365a9fd1fac12ed3"><div class="ttname"><a href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">CheckRender::getPixelFormat</a></div><div class="ttdeci">virtual int getPixelFormat()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00120">rendercheck_gl.h:120</a></div></div>
-<div class="ttc" id="class_check_back_buffer_html_a1ffdc711593c9412f339a35e25bc3c18"><div class="ttname"><a href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">CheckBackBuffer::checkStatus</a></div><div class="ttdeci">virtual bool checkStatus(const char *zfile, int line, bool silent)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00598">rendercheck_gl.h:598</a></div></div>
-<div class="ttc" id="class_check_render_html_a0c54a30742a5316c7acf211fa357df35"><div class="ttname"><a href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">CheckRender::m_Bpp</a></div><div class="ttdeci">unsigned int m_Bpp</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00576">rendercheck_gl.h:576</a></div></div>
-<div class="ttc" id="class_check_render_html_ad437a31d197f955cb93ee7b543472fac"><div class="ttname"><a href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">CheckRender::m_pImageData</a></div><div class="ttdeci">unsigned char * m_pImageData</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00577">rendercheck_gl.h:577</a></div></div>
-<div class="ttc" id="rendercheck__gl_8h_html_a92b7fdde0a112f24e77d994f3962e630"><div class="ttname"><a href="rendercheck__gl_8h.html#a92b7fdde0a112f24e77d994f3962e630">CHECK_FBO</a></div><div class="ttdeci">#define CHECK_FBO</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00046">rendercheck_gl.h:46</a></div></div>
-<div class="ttc" id="rendercheck__gl_8h_html_a063a3af905ecefe83d76ca3f0fe0653e"><div class="ttname"><a href="rendercheck__gl_8h.html#a063a3af905ecefe83d76ca3f0fe0653e">BUFFER_OFFSET</a></div><div class="ttdeci">#define BUFFER_OFFSET(i)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00041">rendercheck_gl.h:41</a></div></div>
-<div class="ttc" id="class_check_render_html_adcf7a822869e6450e837b20475c11d8b"><div class="ttname"><a href="class_check_render.html#adcf7a822869e6450e837b20475c11d8b">CheckRender::bindReadback</a></div><div class="ttdeci">virtual void bindReadback()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00129">rendercheck_gl.h:129</a></div></div>
-<div class="ttc" id="class_check_render_html_a26d71232aac12c6827bb3a5a99694c92"><div class="ttname"><a href="class_check_render.html#a26d71232aac12c6827bb3a5a99694c92">CheckRender::m_bUsePBO</a></div><div class="ttdeci">bool m_bUsePBO</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00578">rendercheck_gl.h:578</a></div></div>
-<div class="ttc" id="class_check_render_html_ac5f0fd3b9f30e5311022e040351611b4"><div class="ttname"><a href="class_check_render.html#ac5f0fd3b9f30e5311022e040351611b4">CheckRender::unbindReadback</a></div><div class="ttdeci">virtual void unbindReadback()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00143">rendercheck_gl.h:143</a></div></div>
-<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00128">particles.cpp:128</a></div></div>
-<div class="ttc" id="class_check_render_html_a6a78b3f489651191cab649c496207a80"><div class="ttname"><a href="class_check_render.html#a6a78b3f489651191cab649c496207a80">CheckRender::m_bUseFBO</a></div><div class="ttdeci">bool m_bUseFBO</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00578">rendercheck_gl.h:578</a></div></div>
-<div class="ttc" id="particles_8cpp_html_aa90d4ba1278109bf241d6e43db40f80c"><div class="ttname"><a href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a></div><div class="ttdeci">const uint height</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00128">particles.cpp:128</a></div></div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                <span class="comment">// read from bufObject (PBO) to system memory image</span></div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                glBindBufferARB(GL_PIXEL_PACK_BUFFER_ARB, 0);   <span class="comment">// unBind the PBO</span></div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            }</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="rendercheck__gl_8h.html#a92b7fdde0a112f24e77d994f3962e630">CHECK_FBO</a>;</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;        }</div>
+<div class="ttc" id="class_check_render_html_a2b69198de0f9b499365a9fd1fac12ed3"><div class="ttname"><a href="class_check_render.html#a2b69198de0f9b499365a9fd1fac12ed3">CheckRender::getPixelFormat</a></div><div class="ttdeci">virtual int getPixelFormat()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00119">rendercheck_gl.h:119</a></div></div>
+<div class="ttc" id="class_check_back_buffer_html_a1ffdc711593c9412f339a35e25bc3c18"><div class="ttname"><a href="class_check_back_buffer.html#a1ffdc711593c9412f339a35e25bc3c18">CheckBackBuffer::checkStatus</a></div><div class="ttdeci">virtual bool checkStatus(const char *zfile, int line, bool silent)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00561">rendercheck_gl.h:561</a></div></div>
+<div class="ttc" id="class_check_render_html_a0c54a30742a5316c7acf211fa357df35"><div class="ttname"><a href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">CheckRender::m_Bpp</a></div><div class="ttdeci">unsigned int m_Bpp</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00539">rendercheck_gl.h:539</a></div></div>
+<div class="ttc" id="class_check_render_html_ad437a31d197f955cb93ee7b543472fac"><div class="ttname"><a href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">CheckRender::m_pImageData</a></div><div class="ttdeci">unsigned char * m_pImageData</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00540">rendercheck_gl.h:540</a></div></div>
+<div class="ttc" id="rendercheck__gl_8h_html_a92b7fdde0a112f24e77d994f3962e630"><div class="ttname"><a href="rendercheck__gl_8h.html#a92b7fdde0a112f24e77d994f3962e630">CHECK_FBO</a></div><div class="ttdeci">#define CHECK_FBO</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00045">rendercheck_gl.h:45</a></div></div>
+<div class="ttc" id="rendercheck__gl_8h_html_a063a3af905ecefe83d76ca3f0fe0653e"><div class="ttname"><a href="rendercheck__gl_8h.html#a063a3af905ecefe83d76ca3f0fe0653e">BUFFER_OFFSET</a></div><div class="ttdeci">#define BUFFER_OFFSET(i)</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00040">rendercheck_gl.h:40</a></div></div>
+<div class="ttc" id="class_check_render_html_adcf7a822869e6450e837b20475c11d8b"><div class="ttname"><a href="class_check_render.html#adcf7a822869e6450e837b20475c11d8b">CheckRender::bindReadback</a></div><div class="ttdeci">virtual void bindReadback()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00128">rendercheck_gl.h:128</a></div></div>
+<div class="ttc" id="class_check_render_html_a26d71232aac12c6827bb3a5a99694c92"><div class="ttname"><a href="class_check_render.html#a26d71232aac12c6827bb3a5a99694c92">CheckRender::m_bUsePBO</a></div><div class="ttdeci">bool m_bUsePBO</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00541">rendercheck_gl.h:541</a></div></div>
+<div class="ttc" id="class_check_render_html_ac5f0fd3b9f30e5311022e040351611b4"><div class="ttname"><a href="class_check_render.html#ac5f0fd3b9f30e5311022e040351611b4">CheckRender::unbindReadback</a></div><div class="ttdeci">virtual void unbindReadback()</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00142">rendercheck_gl.h:142</a></div></div>
+<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
+<div class="ttc" id="class_check_render_html_a6a78b3f489651191cab649c496207a80"><div class="ttname"><a href="class_check_render.html#a6a78b3f489651191cab649c496207a80">CheckRender::m_bUseFBO</a></div><div class="ttdeci">bool m_bUseFBO</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00541">rendercheck_gl.h:541</a></div></div>
+<div class="ttc" id="particles_8cpp_html_aa90d4ba1278109bf241d6e43db40f80c"><div class="ttname"><a href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a></div><div class="ttdeci">const uint height</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywołań dla tej funkcji:</div>
@@ -767,20 +767,20 @@ Oto graf wywołań dla tej funkcji:</div>
 
 <p>Implementuje <a class="el" href="class_check_render.html#ac08abb7b8283d87899399efa23617773">CheckRender</a>.</p>
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00742">742</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;        {</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;            <span class="comment">// let&#39;s flip the image as we copy</span></div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y = 0; y &lt; <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>; y++)</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;            {</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                memcpy((<span class="keywordtype">void</span> *)&amp;(<a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>[(height-y)*<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">m_Bpp</a>]), (<span class="keywordtype">void</span> *)&amp;(memBuf[y*<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp]), <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp);</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;            }</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;        }</div>
-<div class="ttc" id="class_check_render_html_a0c54a30742a5316c7acf211fa357df35"><div class="ttname"><a href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">CheckRender::m_Bpp</a></div><div class="ttdeci">unsigned int m_Bpp</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00576">rendercheck_gl.h:576</a></div></div>
-<div class="ttc" id="class_check_render_html_ad437a31d197f955cb93ee7b543472fac"><div class="ttname"><a href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">CheckRender::m_pImageData</a></div><div class="ttdeci">unsigned char * m_pImageData</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00577">rendercheck_gl.h:577</a></div></div>
-<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00128">particles.cpp:128</a></div></div>
-<div class="ttc" id="particles_8cpp_html_aa90d4ba1278109bf241d6e43db40f80c"><div class="ttname"><a href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a></div><div class="ttdeci">const uint height</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00128">particles.cpp:128</a></div></div>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00705">705</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;        {</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;            <span class="comment">// let&#39;s flip the image as we copy</span></div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> y = 0; y &lt; <a class="code" href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a>; y++)</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;            {</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                memcpy((<span class="keywordtype">void</span> *)&amp;(<a class="code" href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">m_pImageData</a>[(height-y)*<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*<a class="code" href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">m_Bpp</a>]), (<span class="keywordtype">void</span> *)&amp;(memBuf[y*<a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp]), <a class="code" href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a>*m_Bpp);</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;            }</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        }</div>
+<div class="ttc" id="class_check_render_html_a0c54a30742a5316c7acf211fa357df35"><div class="ttname"><a href="class_check_render.html#a0c54a30742a5316c7acf211fa357df35">CheckRender::m_Bpp</a></div><div class="ttdeci">unsigned int m_Bpp</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00539">rendercheck_gl.h:539</a></div></div>
+<div class="ttc" id="class_check_render_html_ad437a31d197f955cb93ee7b543472fac"><div class="ttname"><a href="class_check_render.html#ad437a31d197f955cb93ee7b543472fac">CheckRender::m_pImageData</a></div><div class="ttdeci">unsigned char * m_pImageData</div><div class="ttdef"><b>Definition:</b> <a href="rendercheck__gl_8h_source.html#l00540">rendercheck_gl.h:540</a></div></div>
+<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
+<div class="ttc" id="particles_8cpp_html_aa90d4ba1278109bf241d6e43db40f80c"><div class="ttname"><a href="particles_8cpp.html#aa90d4ba1278109bf241d6e43db40f80c">height</a></div><div class="ttdeci">const uint height</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -805,8 +805,8 @@ Oto graf wywołań dla tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00756">756</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;{};</div>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00719">719</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -831,8 +831,8 @@ Oto graf wywołań dla tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00762">762</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;{};</div>
+<p>Definicja w linii <a class="el" href="rendercheck__gl_8h_source.html#l00725">725</a> pliku <a class="el" href="rendercheck__gl_8h_source.html">rendercheck_gl.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;{};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -845,7 +845,7 @@ Oto graf wywołań dla tej funkcji:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_check_back_buffer.html">CheckBackBuffer</a></li>
-    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:19 dla particles programem
+    <li class="footer">Wygenerowano Śr, 5 sie 2015 17:16:31 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

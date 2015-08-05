@@ -171,6 +171,9 @@ Zmienne</h2></td></tr>
 <tr class="memitem:a556f6846cc9ae71e13f170163d9aa442"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cpp.html#a556f6846cc9ae71e13f170163d9aa442">itsTimeToDraw</a></td></tr>
 <tr class="memdesc:a556f6846cc9ae71e13f170163d9aa442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zmienna logiczna stwierdzająca czy czas rysować w GL została dodana, żeby móc zachować stały FPS w grafice i dać więcej czasu na obliczenia CUDA.  <a href="#a556f6846cc9ae71e13f170163d9aa442">Więcej...</a><br/></td></tr>
 <tr class="separator:a556f6846cc9ae71e13f170163d9aa442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9edcc09985767509bf717e25ac80ab7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="particle_system_8cpp.html#ab9edcc09985767509bf717e25ac80ab7">timestep</a></td></tr>
+<tr class="memdesc:ab9edcc09985767509bf717e25ac80ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">krok czasu  <a href="#ab9edcc09985767509bf717e25ac80ab7">Więcej...</a><br/></td></tr>
+<tr class="separator:ab9edcc09985767509bf717e25ac80ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Definicje (implementacje) metod klasy <a class="el" href="class_particle_system.html" title="Klasa odpowiadająca za parametry i ustawienie symulacji. ">ParticleSystem</a> oraz funkcji pomocniczych. </p>
@@ -216,31 +219,31 @@ Zmienne</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00157">157</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00158">158</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particle_system_8cpp_source.html#l00151">lerp()</a>.</p>
+<p>Odwołuje się do <a class="el" href="particle_system_8cpp_source.html#l00152">lerp()</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00179">ParticleSystem::_initialize()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;{</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> ncolors = 7;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">float</span> c[ncolors][3] =</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        { 1.0, 0.0, 0.0, },</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        { 1.0, 0.5, 0.0, },</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        { 1.0, 1.0, 0.0, },</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        { 0.0, 1.0, 0.0, },</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        { 0.0, 1.0, 1.0, },</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        { 0.0, 0.0, 1.0, },</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        { 1.0, 0.0, 1.0, },</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    };</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    t = t * (ncolors-1);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">int</span> i = (int) t;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">float</span> u = t - floor(t);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    r[0] = <a class="code" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a>(c[i][0], c[i+1][0], u);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    r[1] = <a class="code" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a>(c[i][1], c[i+1][1], u);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    r[2] = <a class="code" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a>(c[i][2], c[i+1][2], u);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
-<div class="ttc" id="particle_system_8cpp_html_aaece5bea3dfe5043f19232f3e6e1e575"><div class="ttname"><a href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a></div><div class="ttdeci">float lerp(float a, float b, float t)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00151">particleSystem.cpp:151</a></div></div>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00180">ParticleSystem::_initialize()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;{</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> ncolors = 7;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">float</span> c[ncolors][3] =</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        { 1.0, 0.0, 0.0, },</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        { 1.0, 0.5, 0.0, },</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        { 1.0, 1.0, 0.0, },</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        { 0.0, 1.0, 0.0, },</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        { 0.0, 1.0, 1.0, },</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        { 0.0, 0.0, 1.0, },</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        { 1.0, 0.0, 1.0, },</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    };</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    t = t * (ncolors-1);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordtype">int</span> i = (int) t;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">float</span> u = t - floor(t);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    r[0] = <a class="code" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a>(c[i][0], c[i+1][0], u);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    r[1] = <a class="code" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a>(c[i][1], c[i+1][1], u);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    r[2] = <a class="code" href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a>(c[i][2], c[i+1][2], u);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
+<div class="ttc" id="particle_system_8cpp_html_aaece5bea3dfe5043f19232f3e6e1e575"><div class="ttname"><a href="particle_system_8cpp.html#aaece5bea3dfe5043f19232f3e6e1e575">lerp</a></div><div class="ttdeci">float lerp(float a, float b, float t)</div><div class="ttdef"><b>Definition:</b> <a href="particle_system_8cpp_source.html#l00152">particleSystem.cpp:152</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywołań dla tej funkcji:</div>
@@ -283,12 +286,12 @@ Oto graf wywoływań tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00471">471</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00480">480</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00632">addSphere()</a> i <a class="el" href="particle_system_8cpp_source.html#l00524">ParticleSystem::reset()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;{</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="keywordflow">return</span> rand() / (float) RAND_MAX;</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;}</div>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00651">addSphere()</a> i <a class="el" href="particle_system_8cpp_source.html#l00533">ParticleSystem::reset()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;{</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    <span class="keywordflow">return</span> rand() / (float) RAND_MAX;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;}</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywoływań tej funkcji:</div>
@@ -339,12 +342,12 @@ Oto graf wywoływań tej funkcji:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00151">151</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
+<p>Definicja w linii <a class="el" href="particle_system_8cpp_source.html#l00152">152</a> pliku <a class="el" href="particle_system_8cpp_source.html">particleSystem.cpp</a>.</p>
 
-<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00157">colorRamp()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;{</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">return</span> a + t*(b-a);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<p>Odwołania w <a class="el" href="particle_system_8cpp_source.html#l00158">colorRamp()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> a + t*(b-a);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywoływań tej funkcji:</div>
@@ -370,9 +373,9 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Wartość ciśnienia wywieranego prze zcżastki na powiercznię kropli. Znajduje się w pamięci po stronie host'a (CPU) </p>
 
-<p>Definicja w linii <a class="el" href="particles_8cpp_source.html#l00239">239</a> pliku <a class="el" href="particles_8cpp_source.html">particles.cpp</a>.</p>
+<p>Definicja w linii <a class="el" href="particles_8cpp_source.html#l00241">241</a> pliku <a class="el" href="particles_8cpp_source.html">particles.cpp</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00452">computeFPS()</a>, <a class="el" href="particles_8cpp_source.html#l00474">display()</a> i <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00467">computeFPS()</a>, <a class="el" href="particles_8cpp_source.html#l00489">display()</a> i <a class="el" href="particle_system_8cpp_source.html#l00304">ParticleSystem::update()</a>.</p>
 
 </div>
 </div>
@@ -388,9 +391,9 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>Zmienna logiczna stwierdzająca czy czas rysować w GL została dodana, żeby móc zachować stały FPS w grafice i dać więcej czasu na obliczenia CUDA. </p>
 
-<p>Definicja w linii <a class="el" href="particles_8cpp_source.html#l00230">230</a> pliku <a class="el" href="particles_8cpp_source.html">particles.cpp</a>.</p>
+<p>Definicja w linii <a class="el" href="particles_8cpp_source.html#l00232">232</a> pliku <a class="el" href="particles_8cpp_source.html">particles.cpp</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00474">display()</a> i <a class="el" href="particle_system_8cpp_source.html#l00303">ParticleSystem::update()</a>.</p>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00489">display()</a> i <a class="el" href="particle_system_8cpp_source.html#l00304">ParticleSystem::update()</a>.</p>
 
 </div>
 </div>
@@ -406,6 +409,24 @@ Oto graf wywoływań tej funkcji:</div>
 
 </div>
 </div>
+<a class="anchor" id="ab9edcc09985767509bf717e25ac80ab7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float timestep</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>krok czasu </p>
+
+<p>Definicja w linii <a class="el" href="particles_8cpp_source.html#l00166">166</a> pliku <a class="el" href="particles_8cpp_source.html">particles.cpp</a>.</p>
+
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l00489">display()</a>, <a class="el" href="particles_8cpp_source.html#l01014">initParams()</a>, <a class="el" href="particles_8cpp_source.html#l00874">key()</a>, <a class="el" href="particles_8cpp_source.html#l00352">parowanieKropliWCzasie()</a>, <a class="el" href="particles_8cpp_source.html#l00385">runBenchmark()</a> i <a class="el" href="particle_system_8cpp_source.html#l00304">ParticleSystem::update()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ab20dfcdbb20ef76dff29f92805e255cd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -418,7 +439,7 @@ Oto graf wywoływań tej funkcji:</div>
 
 <p>tablica z typami cząstek </p>
 
-<p>Definicja w linii <a class="el" href="particles_8cpp_source.html#l00224">224</a> pliku <a class="el" href="particles_8cpp_source.html">particles.cpp</a>.</p>
+<p>Definicja w linii <a class="el" href="particles_8cpp_source.html#l00226">226</a> pliku <a class="el" href="particles_8cpp_source.html">particles.cpp</a>.</p>
 
 </div>
 </div>
@@ -428,7 +449,7 @@ Oto graf wywoływań tej funkcji:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="particle_system_8cpp.html">particleSystem.cpp</a></li>
-    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:17 dla particles programem
+    <li class="footer">Wygenerowano Śr, 5 sie 2015 17:16:29 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

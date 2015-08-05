@@ -144,7 +144,7 @@ Atrybuty publiczne</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>ta struktura inicjowana jest z krokiem delta_time dla danych opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU) jako para (tuple) float4 położenia i prędkości </p>
 
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00053">53</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00055">55</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 </div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
 <a class="anchor" id="a13075d4c547ba22c37137ff2b874ae45"></a>
 <div class="memitem">
@@ -168,11 +168,11 @@ Atrybuty publiczne</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00058">58</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00060">60</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particles__kernel__impl_8cuh_source.html#l00066">operator()()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;: <a class="code" href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">deltaTime</a>(delta_time) {}</div>
-<div class="ttc" id="structintegrate__functor_html_a06dce1826719cd5b2a9fdd9f566da754"><div class="ttname"><a href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">integrate_functor::deltaTime</a></div><div class="ttdeci">float deltaTime</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00055">particles_kernel_impl.cuh:55</a></div></div>
+<p>Odwołuje się do <a class="el" href="particles__kernel__impl_8cuh_source.html#l00068">operator()()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;: <a class="code" href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">deltaTime</a>(delta_time) {}</div>
+<div class="ttc" id="structintegrate__functor_html_a06dce1826719cd5b2a9fdd9f566da754"><div class="ttname"><a href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">integrate_functor::deltaTime</a></div><div class="ttdeci">float deltaTime</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00057">particles_kernel_impl.cuh:57</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywołań dla tej funkcji:</div>
@@ -226,154 +226,154 @@ template&lt;typename Tuple &gt; </div>
 <p>&lt; pęd</p>
 <p>&lt; blat </p>
 
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00066">66</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00068">68</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 
-<p>Odwołuje się do <a class="el" href="particles__kernel__impl_8cuh_source.html#l00066">operator()()</a>.</p>
+<p>Odwołuje się do <a class="el" href="particles__kernel__impl_8cuh_source.html#l00068">operator()()</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles__kernel__impl_8cuh_source.html#l00058">integrate_functor()</a> i <a class="el" href="particles__kernel__impl_8cuh_source.html#l00066">operator()()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">volatile</span> float4 posData = thrust::get&lt;0&gt;(t);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">volatile</span> float4 velData = thrust::get&lt;1&gt;(t);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        float3 pos = make_float3(posData.x, posData.y, posData.z);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        float3 vel = make_float3(velData.x, velData.y, velData.z);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">//__shared__ float sharedPreasure;/**&lt; ciśnienie dla bloku */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="comment">//if(threadIdx.x==0)</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">//{</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">//    sharedPreasure=0.0f;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">//}</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        vel += <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ae7508eba5dd90859215b59d19e001bb9">gravity</a> * <a class="code" href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">deltaTime</a>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">if</span>(<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">brown</a>!=0.0f)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x)+(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)floor((vel.x+vel.y+vel.z)*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">brownQuality</a>);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        curandState s;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        curand_init(seed,0,0,&amp;s);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        skipahead((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)floor(vel.z*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">brownQuality</a>+pos.x+pos.y+pos.z),&amp;s);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        vel.x+=(curand_normal(&amp;s))*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">brown</a>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        skipahead((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)floor(vel.y*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">brownQuality</a>),&amp;s);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        vel.y+=(curand_normal(&amp;s))*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">brown</a>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        skipahead((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)floor(vel.x*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">brownQuality</a>),&amp;s);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        vel.z+=(curand_normal(&amp;s))*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">brown</a>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="comment">//vel.x-=(0.1f+vel.x+vel.y*2.0f+vel.z*4.5f+pos.y+pos.z)/(100.0f)*params.brown;</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="comment">//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="comment">//vel.z-=(0.1f+vel.x*1.5f+vel.y*5.0f+vel.z+pos.x+pos.y)/(100.0f)*params.brown;</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        vel *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a7058bad8c867d9d42d8c9d842638ebea">globalDamping</a>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="comment">//vel += params.gravity * deltaTime;</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">// new position = old position + velocity * deltaTime</span></div>
+<p>Odwołania w <a class="el" href="particles__kernel__impl_8cuh_source.html#l00060">integrate_functor()</a> i <a class="el" href="particles__kernel__impl_8cuh_source.html#l00068">operator()()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">volatile</span> float4 posData = thrust::get&lt;0&gt;(t);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">volatile</span> float4 velData = thrust::get&lt;1&gt;(t);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        float3 pos = make_float3(posData.x, posData.y, posData.z);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        float3 vel = make_float3(velData.x, velData.y, velData.z);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">//__shared__ float sharedPreasure;/**&lt; ciśnienie dla bloku */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">//if(threadIdx.x==0)</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">//{</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">//    sharedPreasure=0.0f;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">//}</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        vel += <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ae7508eba5dd90859215b59d19e001bb9">gravity</a> * <a class="code" href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">deltaTime</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">if</span>(<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">brown</a>!=0.0f)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x)+(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)floor((vel.x+vel.y+vel.z)*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">brownQuality</a>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        curandState s;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        curand_init(seed,0,0,&amp;s);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        skipahead((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)floor(vel.z*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">brownQuality</a>+pos.x+pos.y+pos.z),&amp;s);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        vel.x+=(curand_normal(&amp;s))*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">brown</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        skipahead((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)floor(vel.y*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">brownQuality</a>),&amp;s);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        vel.y+=(curand_normal(&amp;s))*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">brown</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        skipahead((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span>)floor(vel.x*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a366145dd58e2e7eacebffcbe78dd89ff">brownQuality</a>),&amp;s);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                        vel.z+=(curand_normal(&amp;s))*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">brown</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="comment">//vel.x-=(0.1f+vel.x+vel.y*2.0f+vel.z*4.5f+pos.y+pos.z)/(100.0f)*params.brown;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="comment">//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="comment">//vel.z-=(0.1f+vel.x*1.5f+vel.y*5.0f+vel.z+pos.x+pos.y)/(100.0f)*params.brown;</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        vel *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a7058bad8c867d9d42d8c9d842638ebea">globalDamping</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="comment">//vel += params.gravity * deltaTime;</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        pos += vel * <a class="code" href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">deltaTime</a>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="comment">// set this to zero to disable collisions with cube sides</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">if</span> (pos.x &gt; 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            pos.x = 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            vel.x *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (pos.x &lt; -1.0f + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            pos.x = -1.0f + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            vel.x *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">if</span> (pos.y &gt; 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            pos.y = 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            vel.y *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">if</span> (pos.z &gt; 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            pos.z = 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            vel.z *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">if</span> (pos.z &lt; -1.0f + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            pos.z = -1.0f + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            vel.z *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="comment">//odbijanie sie od kuli</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment"></span><span class="preprocessor">#if 1</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor"></span>                <span class="keywordtype">float</span> xk=pos.x*pos.x;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordtype">float</span> yk=pos.y*pos.y;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keywordtype">float</span> zk=pos.z*pos.z;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="keywordtype">float</span> r0k=xk+yk+zk;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="keywordtype">float</span> R=<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#af41979948fdd8f76fe28ce2b43eb24cd">bigradius</a>;<span class="comment">//- params.particleRadius;</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keywordtype">float</span> r0=sqrt(r0k);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordflow">if</span>(<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a01507f06cc018071a0eb741438aaa09b">boundaries</a> &amp;&amp; r0&gt;R-<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w] &amp;&amp; r0&lt;R+<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        <span class="comment">/*if(r0&gt;r+params.particleRadius)</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">                        {</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">                                float tmp=(r+params.particleRadius/2)/r0;</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">                                pos.x*=tmp;</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">                                pos.y*=tmp;</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">                                pos.z*=tmp;</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">                        }*/</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                        float3 relPos = pos;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        <span class="keywordtype">float</span> dist = length(relPos);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                        float3 norm = relPos / dist;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        <span class="keywordtype">float</span> force=<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>*(abs(r0-R)-(<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w]));</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        <span class="keywordtype">float</span> momentum=force*<a class="code" href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">deltaTime</a>;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                        vel+=-momentum*norm/<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a0104d1aeb5c6700f12e0edd6d06bcf1d">particleMass</a>[(int)velData.w];</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                        <span class="keywordflow">if</span>(<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ae50f5316f3a8c277809346111bdbd468">calcSurfacePreasure</a>)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                        {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                            momentum=abs(momentum);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                            <span class="comment">//__syncthreads();</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                            <span class="comment">//atomicAdd(&amp;sharedPreasure,momentum);</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">// new position = old position + velocity * deltaTime</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        pos += vel * <a class="code" href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">deltaTime</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="comment">// set this to zero to disable collisions with cube sides</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">if</span> (pos.x &gt; 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            pos.x = 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            vel.x *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">if</span> (pos.x &lt; -1.0f + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            pos.x = -1.0f + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            vel.x *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">if</span> (pos.y &gt; 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            pos.y = 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            vel.y *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (pos.z &gt; 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            pos.z = 1.0f - <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            vel.z *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">if</span> (pos.z &lt; -1.0f + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            pos.z = -1.0f + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            vel.z *= <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <span class="comment">//odbijanie sie od kuli</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment"></span><span class="preprocessor">#if 1</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor"></span>                <span class="keywordtype">float</span> xk=pos.x*pos.x;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="keywordtype">float</span> yk=pos.y*pos.y;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="keywordtype">float</span> zk=pos.z*pos.z;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keywordtype">float</span> r0k=xk+yk+zk;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordtype">float</span> R=<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#af41979948fdd8f76fe28ce2b43eb24cd">bigradius</a>;<span class="comment">//- params.particleRadius;</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keywordtype">float</span> r0=sqrt(r0k);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordflow">if</span>(<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a01507f06cc018071a0eb741438aaa09b">boundaries</a> &amp;&amp; r0&gt;R-<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w] &amp;&amp; r0&lt;R+<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        <span class="comment">/*if(r0&gt;r+params.particleRadius)</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">                        {</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">                                float tmp=(r+params.particleRadius/2)/r0;</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">                                pos.x*=tmp;</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">                                pos.y*=tmp;</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">                                pos.z*=tmp;</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">                        }*/</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                        float3 relPos = pos;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        <span class="keywordtype">float</span> dist = length(relPos);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        float3 norm = relPos / dist;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                        <span class="keywordtype">float</span> force=<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">boundaryDamping</a>*(abs(r0-R)-(<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w]));</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                        <span class="keywordtype">float</span> momentum=force*<a class="code" href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">deltaTime</a>;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                        vel+=-momentum*norm/<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a0104d1aeb5c6700f12e0edd6d06bcf1d">particleMass</a>[(int)velData.w];</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        <span class="keywordflow">if</span>(<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#ae50f5316f3a8c277809346111bdbd468">calcSurfacePreasure</a>)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                            momentum=abs(momentum);</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                            <span class="comment">//__syncthreads();</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                            <span class="comment">//if(threadIdx.x==0)</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <span class="comment">//{</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="comment">//    atomicAdd(&amp;surfacePreasure,sharedPreasure);</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="comment">//}</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                atomicAdd(&amp;<a class="code" href="particles__kernel__impl_8cuh.html#a67a73b8e9b2dbe8d6edccb406727ac4c">surfacePreasure</a>,momentum);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                        }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                }</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="comment">/*if(r0k &gt; r*r + FLT_EPSILON )</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">                {</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">                        r-=params.particleRadius*4;</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">                        //vel.x*=params.boundaryDamping;</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">                        //vel.y*=params.boundaryDamping;</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">                        //vel.z*=params.boundaryDamping;</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">                        vel.x=0.0f;</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">                        vel.y=0.0f;</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">                        vel.z=0.0f;</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">                        //float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">                        //float fi=atan(pos.y/pos.x);</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">                        //pos.z=r*sin(theta);</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">                        //float rr=r*cos(theta);</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">                        //pos.x=rr*cos(fi);</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">                        //pos.y=rr*sin(fi);</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">                        float r0=sqrt(r0k);</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">                        float tmp=r/r0;</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">                        pos.x*=tmp;</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">                        pos.y*=tmp;</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">                        pos.z*=tmp;</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">                }*/</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">//dolna plaszczyzna</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#if 1</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor"></span>                <span class="keywordflow">if</span> (pos.y &lt; -2.0f*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a5809a1ec819f5a99e350ed28b01834fc">bigradius0</a> + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            pos.y = -2.0f*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a5809a1ec819f5a99e350ed28b01834fc">bigradius0</a> + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            vel.y = 0;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        }</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="comment">// store new position and velocity</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        thrust::get&lt;0&gt;(t) = make_float4(pos, posData.w);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        thrust::get&lt;1&gt;(t) = make_float4(vel, velData.w);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                            <span class="comment">//atomicAdd(&amp;sharedPreasure,momentum);</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                            <span class="comment">//__syncthreads();</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                            <span class="comment">//if(threadIdx.x==0)</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="comment">//{</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <span class="comment">//    atomicAdd(&amp;surfacePreasure,sharedPreasure);</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="comment">//}</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                atomicAdd(&amp;<a class="code" href="particles__kernel__impl_8cuh.html#a67a73b8e9b2dbe8d6edccb406727ac4c">surfacePreasure</a>,momentum);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                        }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="comment">/*if(r0k &gt; r*r + FLT_EPSILON )</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">                {</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">                        r-=params.particleRadius*4;</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">                        //vel.x*=params.boundaryDamping;</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">                        //vel.y*=params.boundaryDamping;</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">                        //vel.z*=params.boundaryDamping;</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">                        vel.x=0.0f;</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">                        vel.y=0.0f;</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">                        vel.z=0.0f;</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">                        //float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">                        //float fi=atan(pos.y/pos.x);</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">                        //pos.z=r*sin(theta);</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">                        //float rr=r*cos(theta);</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">                        //pos.x=rr*cos(fi);</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">                        //pos.y=rr*sin(fi);</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">                        float r0=sqrt(r0k);</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">                        float tmp=r/r0;</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">                        pos.x*=tmp;</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">                        pos.y*=tmp;</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">                        pos.z*=tmp;</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">                }*/</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">//dolna plaszczyzna</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#if 1</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor"></span>                <span class="keywordflow">if</span> (pos.y &lt; -2.0f*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a5809a1ec819f5a99e350ed28b01834fc">bigradius0</a> + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(<span class="keywordtype">int</span>)velData.w])</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            pos.y = -2.0f*<a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#a5809a1ec819f5a99e350ed28b01834fc">bigradius0</a> + <a class="code" href="particles__kernel__impl_8cuh.html#a8db8938e28edd17862daf58651051bdc">params</a>.<a class="code" href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">particleRadius</a>[(int)velData.w];</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            vel.y = 0;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="comment">// store new position and velocity</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        thrust::get&lt;0&gt;(t) = make_float4(pos, posData.w);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        thrust::get&lt;1&gt;(t) = make_float4(vel, velData.w);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
 <div class="ttc" id="struct_sim_params_html_a0104d1aeb5c6700f12e0edd6d06bcf1d"><div class="ttname"><a href="struct_sim_params.html#a0104d1aeb5c6700f12e0edd6d06bcf1d">SimParams::particleMass</a></div><div class="ttdeci">float particleMass[MAX_TYPE_NUM]</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00048">particles_kernel.cuh:48</a></div></div>
 <div class="ttc" id="struct_sim_params_html_ae7508eba5dd90859215b59d19e001bb9"><div class="ttname"><a href="struct_sim_params.html#ae7508eba5dd90859215b59d19e001bb9">SimParams::gravity</a></div><div class="ttdeci">float3 gravity</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00043">particles_kernel.cuh:43</a></div></div>
 <div class="ttc" id="struct_sim_params_html_a88dae34e74c9184adfa9169bad06d0ee"><div class="ttname"><a href="struct_sim_params.html#a88dae34e74c9184adfa9169bad06d0ee">SimParams::brown</a></div><div class="ttdeci">float brown</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00072">particles_kernel.cuh:72</a></div></div>
@@ -384,7 +384,7 @@ template&lt;typename Tuple &gt; </div>
 <div class="ttc" id="struct_sim_params_html_a01507f06cc018071a0eb741438aaa09b"><div class="ttname"><a href="struct_sim_params.html#a01507f06cc018071a0eb741438aaa09b">SimParams::boundaries</a></div><div class="ttdeci">bool boundaries</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00071">particles_kernel.cuh:71</a></div></div>
 <div class="ttc" id="struct_sim_params_html_a4da0c7593d6569e48ee50e7d0c7576f9"><div class="ttname"><a href="struct_sim_params.html#a4da0c7593d6569e48ee50e7d0c7576f9">SimParams::boundaryDamping</a></div><div class="ttdeci">float boundaryDamping</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00066">particles_kernel.cuh:66</a></div></div>
 <div class="ttc" id="struct_sim_params_html_aa53d745b59a75b39c77beb0fc485322e"><div class="ttname"><a href="struct_sim_params.html#aa53d745b59a75b39c77beb0fc485322e">SimParams::particleRadius</a></div><div class="ttdeci">float particleRadius[MAX_TYPE_NUM]</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00046">particles_kernel.cuh:46</a></div></div>
-<div class="ttc" id="structintegrate__functor_html_a06dce1826719cd5b2a9fdd9f566da754"><div class="ttname"><a href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">integrate_functor::deltaTime</a></div><div class="ttdeci">float deltaTime</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00055">particles_kernel_impl.cuh:55</a></div></div>
+<div class="ttc" id="structintegrate__functor_html_a06dce1826719cd5b2a9fdd9f566da754"><div class="ttname"><a href="structintegrate__functor.html#a06dce1826719cd5b2a9fdd9f566da754">integrate_functor::deltaTime</a></div><div class="ttdeci">float deltaTime</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00057">particles_kernel_impl.cuh:57</a></div></div>
 <div class="ttc" id="struct_sim_params_html_a7058bad8c867d9d42d8c9d842638ebea"><div class="ttname"><a href="struct_sim_params.html#a7058bad8c867d9d42d8c9d842638ebea">SimParams::globalDamping</a></div><div class="ttdeci">float globalDamping</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00044">particles_kernel.cuh:44</a></div></div>
 <div class="ttc" id="particles__kernel__impl_8cuh_html_a67a73b8e9b2dbe8d6edccb406727ac4c"><div class="ttname"><a href="particles__kernel__impl_8cuh.html#a67a73b8e9b2dbe8d6edccb406727ac4c">surfacePreasure</a></div><div class="ttdeci">__device__ float surfacePreasure</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel__impl_8cuh_source.html#l00045">particles_kernel_impl.cuh:45</a></div></div>
 <div class="ttc" id="struct_sim_params_html_ae50f5316f3a8c277809346111bdbd468"><div class="ttname"><a href="struct_sim_params.html#ae50f5316f3a8c277809346111bdbd468">SimParams::calcSurfacePreasure</a></div><div class="ttdeci">bool calcSurfacePreasure</div><div class="ttdef"><b>Definition:</b> <a href="particles__kernel_8cuh_source.html#l00077">particles_kernel.cuh:77</a></div></div>
@@ -418,7 +418,7 @@ Oto graf wywoływań tej funkcji:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00055">55</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
+<p>Definicja w linii <a class="el" href="particles__kernel__impl_8cuh_source.html#l00057">57</a> pliku <a class="el" href="particles__kernel__impl_8cuh_source.html">particles_kernel_impl.cuh</a>.</p>
 
 </div>
 </div>
@@ -431,7 +431,7 @@ Oto graf wywoływań tej funkcji:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structintegrate__functor.html">integrate_functor</a></li>
-    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:20 dla particles programem
+    <li class="footer">Wygenerowano Śr, 5 sie 2015 17:16:32 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

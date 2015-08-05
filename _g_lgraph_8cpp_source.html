@@ -116,78 +116,88 @@ $(document).ready(function(){initNavTree('_g_lgraph_8cpp_source.html','');});
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \author Tomasz Jakubczyk</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \brief Plik z metodami klasy GLgraph</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">/** \brief Metoda przypisuje klasie wskaźnik do wektora</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * na podstawie którego ma byc rysowany wykres.</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * \param srcV std::vector&lt;float&gt;*</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * \return void</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_g_lgraph.html#a47facd622312980c1efe99fd11481c61">   13</a></span>&#160;<span class="keywordtype">void</span> GLgraph::setDataVector(std::vector&lt;<span class="keywordtype">float</span>&gt;* srcV)</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    dataVectorPtr=srcV;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="_g_lgraph_8cpp.html#a9e70c1f281e934883db8f24ac215a40f">   18</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="paramgl_8h.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    glMatrixMode(GL_MODELVIEW);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    glPushMatrix();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    glLoadIdentity();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    glTranslatef(0.0, (GLfloat)(glutGet(GLUT_WINDOW_HEIGHT) - 1.0), 0.0);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    glScalef(1.0, -1.0, 1.0);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    glMatrixMode(GL_PROJECTION);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    glPushMatrix();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    glLoadIdentity();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    glOrtho(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT), -1, 1);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    glMatrixMode(GL_MODELVIEW);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="_g_lgraph_8cpp.html#aa3791f379d6dbce2bae6c5af556c36f0">   34</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="paramgl_8h.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    glMatrixMode(GL_PROJECTION);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    glPopMatrix();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    glMatrixMode(GL_MODELVIEW);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    glPopMatrix();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/** \brief Rysowanie wykresu</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> * \param xStartPos float</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * \param yStartPos float</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> * \return void</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_g_lgraph.html#a8c089b8634b8ef23c31afddedd801d89">   50</a></span>&#160;<span class="keywordtype">void</span> GLgraph::render(<span class="keywordtype">float</span> xStartPos, <span class="keywordtype">float</span> yStartPos)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    beginWinCoords();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    glClear(GL_COLOR_BUFFER_BIT);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    glColor3f(0,1,0);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    glLineWidth(3.0);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    glBegin(GL_LINE_STRIP);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    glVertex2f(0f+xStartPos, 0f+yStartPos);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">float</span> x = 0f+xStartPos;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; x&lt;100.0f+xStartPos &amp;&amp; i&lt;dataVectorPtr-&gt;size(); i++)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        x+=100.0f/((<span class="keywordtype">float</span>)dataVectorPtr-&gt;size();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        glVertex2f(x, (*dataVectorPtr)[i]+yStartPos);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    glVertex2f(100f+xStartPos, 0f+yStartPos);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    glEnd();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    endWinCoords();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_g_lgraph_8h.html" title="Plik nagłówkowy klasy GLgraph. ">&quot;GLgraph.h&quot;</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">GL</span><span class="preprocessor">/</span><span class="preprocessor">freeglut</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/** \brief Metoda przypisuje klasie wskaźnik do wektora</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * na podstawie którego ma byc rysowany wykres.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * \param srcV std::vector&lt;float&gt;*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * \return void</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_g_lgraph.html#a47facd622312980c1efe99fd11481c61">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_lgraph.html">GLgraph</a>::<a class="code" href="class_g_lgraph.html#a47facd622312980c1efe99fd11481c61">setDataVector</a>(std::vector&lt;<span class="keywordtype">float</span>&gt;* srcV)</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>=srcV;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="_g_lgraph_8cpp.html#a9e70c1f281e934883db8f24ac215a40f">   19</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="paramgl_8h.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    glMatrixMode(GL_MODELVIEW);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    glPushMatrix();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    glLoadIdentity();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    glTranslatef(0.0, (GLfloat)(glutGet(GLUT_WINDOW_HEIGHT) - 1.0), 0.0);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    glScalef(1.0, -1.0, 1.0);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    glMatrixMode(GL_PROJECTION);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    glPushMatrix();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    glLoadIdentity();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    glOrtho(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT), -1, 1);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    glMatrixMode(GL_MODELVIEW);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="_g_lgraph_8cpp.html#aa3791f379d6dbce2bae6c5af556c36f0">   35</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="paramgl_8h.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    glMatrixMode(GL_PROJECTION);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    glPopMatrix();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    glMatrixMode(GL_MODELVIEW);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    glPopMatrix();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/** \brief Rysowanie wykresu</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * \param xStartPos float</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> * \param yStartPos float</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * \return void</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_g_lgraph.html#a8c089b8634b8ef23c31afddedd801d89">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_lgraph.html">GLgraph</a>::<a class="code" href="class_g_lgraph.html#a8c089b8634b8ef23c31afddedd801d89">render</a>(<span class="keywordtype">float</span> xStartPos, <span class="keywordtype">float</span> yStartPos)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="paramgl_8h.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a><a class="code" href="paramgl_8h.html#a9e70c1f281e934883db8f24ac215a40f">(</a><a class="code" href="paramgl_8h.html#a9e70c1f281e934883db8f24ac215a40f">)</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    glClear(GL_COLOR_BUFFER_BIT);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    glColor3f(0,1,0);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    glLineWidth(3.0);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    glBegin(GL_LINE_STRIP);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    glVertex2f(xStartPos, yStartPos);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">float</span> x = xStartPos;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">float</span> width=glutGet(GLUT_WINDOW_WIDTH);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">float</span> hight=glutGet(GLUT_WINDOW_HEIGHT);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">int</span> pomniejszenie=1;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>-&gt;size(); i++)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                pomniejszenie=(<span class="keywordtype">float</span>)<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>-&gt;size()/(<span class="keywordtype">float</span>)width+1.5f;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        x+=1.0f;<span class="comment">//1000.0f/((float)dataVectorPtr-&gt;size());</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        glVertex2f(x/(<span class="keywordtype">float</span>)pomniejszenie, -(*dataVectorPtr)[i]*10.0f*hight+yStartPos);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">//glVertex2f(width+xStartPos, yStartPos);</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    glEnd();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        glLineWidth(1.0);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="paramgl_8h.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a><a class="code" href="paramgl_8h.html#aa3791f379d6dbce2bae6c5af556c36f0">(</a><a class="code" href="paramgl_8h.html#aa3791f379d6dbce2bae6c5af556c36f0">)</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 <div class="ttc" id="paramgl_8h_html_aa3791f379d6dbce2bae6c5af556c36f0"><div class="ttname"><a href="paramgl_8h.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a></div><div class="ttdeci">void endWinCoords(void)</div><div class="ttdef"><b>Definition:</b> <a href="paramgl_8h_source.html#l00046">paramgl.h:46</a></div></div>
 <div class="ttc" id="paramgl_8h_html_a9e70c1f281e934883db8f24ac215a40f"><div class="ttname"><a href="paramgl_8h.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a></div><div class="ttdeci">void beginWinCoords(void)</div><div class="ttdef"><b>Definition:</b> <a href="paramgl_8h_source.html#l00030">paramgl.h:30</a></div></div>
+<div class="ttc" id="class_g_lgraph_html"><div class="ttname"><a href="class_g_lgraph.html">GLgraph</a></div><div class="ttdoc">Klasa rysująca wykres. </div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8h_source.html#l00009">GLgraph.h:9</a></div></div>
+<div class="ttc" id="class_g_lgraph_html_a8c089b8634b8ef23c31afddedd801d89"><div class="ttname"><a href="class_g_lgraph.html#a8c089b8634b8ef23c31afddedd801d89">GLgraph::render</a></div><div class="ttdeci">void render(float, float)</div><div class="ttdoc">Rysowanie wykresu. </div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8cpp_source.html#l00051">GLgraph.cpp:51</a></div></div>
+<div class="ttc" id="class_g_lgraph_html_a990c44a95d136768ef6d5d927f794005"><div class="ttname"><a href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">GLgraph::dataVectorPtr</a></div><div class="ttdeci">std::vector&lt; float &gt; * dataVectorPtr</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8h_source.html#l00017">GLgraph.h:17</a></div></div>
+<div class="ttc" id="class_g_lgraph_html_a47facd622312980c1efe99fd11481c61"><div class="ttname"><a href="class_g_lgraph.html#a47facd622312980c1efe99fd11481c61">GLgraph::setDataVector</a></div><div class="ttdeci">void setDataVector(std::vector&lt; float &gt; *srcV)</div><div class="ttdoc">Metoda przypisuje klasie wskaźnik do wektora na podstawie którego ma byc rysowany wykres...</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8cpp_source.html#l00014">GLgraph.cpp:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_abc18e8d02245c85775a48aeff088e40.html">particles</a></li><li class="navelem"><a class="el" href="_g_lgraph_8cpp.html">GLgraph.cpp</a></li>
-    <li class="footer">Wygenerowano Pn, 3 sie 2015 15:12:07 dla particles programem
+    <li class="footer">Wygenerowano Śr, 5 sie 2015 17:16:19 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -12,6 +12,7 @@ var searchData=
   ['getdepthtex',['getDepthTex',['../class_c_frame_buffer_object.html#afab2419f4bca923d1e25e7691698cc38',1,'CFrameBufferObject']]],
   ['getfbo',['getFbo',['../class_c_frame_buffer_object.html#a03257523ade7ba78239f117a8ef6a704',1,'CFrameBufferObject']]],
   ['getfloatvalue',['GetFloatValue',['../class_param_base.html#af503d1fe7f8e1498cd94c654a470b4b1',1,'ParamBase::GetFloatValue()'],['../class_param.html#a82f3f54692e83774cbb8b2e1501af803',1,'Param::GetFloatValue()'],['../class_param_list.html#a8a432f471235ef49ff751c25d27c5f8d',1,'ParamList::GetFloatValue()']]],
+  ['getglobaldeltatime',['getGlobalDeltaTime',['../particle_system_8cuh.html#a7d308d0b97cf49bb8400badafe50570a',1,'getGlobalDeltaTime():&#160;particleSystem_cuda.cu'],['../particle_system__cuda_8cu.html#a7d308d0b97cf49bb8400badafe50570a',1,'getGlobalDeltaTime():&#160;particleSystem_cuda.cu']]],
   ['getgridsize',['getGridSize',['../class_particle_system.html#af94ba180bcb348afcfd81bb699d6aab0',1,'ParticleSystem']]],
   ['getintvalue',['GetIntValue',['../class_param_base.html#aeb3ac099b3c83c7f3b8ae10d05f9972b',1,'ParamBase::GetIntValue()'],['../class_param.html#a58761f3d5f69e4e281498f748cc55b52',1,'Param::GetIntValue()'],['../class_param_list.html#afdd5fb08da30d550b0f58ec0dd8af2f1',1,'ParamList::GetIntValue()']]],
   ['getmaxparticleradius',['getMaxParticleRadius',['../class_particle_system.html#a0157b46cf1ec1d93ce5e58f18f4cc8d2',1,'ParticleSystem']]],
