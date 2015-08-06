@@ -316,7 +316,7 @@ ParticleSystem::update(float deltaTime)
         dPos = (float *) m_cudaPosVBO;
     }
 
-    /** Algorytm Verleta z listami Verleta
+    /** \todo Algorytm Verleta z listami Verleta (brakuje tablicy sił)
      */
 
     // update constants

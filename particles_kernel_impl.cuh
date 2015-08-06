@@ -95,6 +95,7 @@ struct integrate_functor
 		//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;
 		//vel.z-=(0.1f+vel.x*1.5f+vel.y*5.0f+vel.z+pos.x+pos.y)/(100.0f)*params.brown;
 
+
         vel *= params.globalDamping;/**< lepkosc */
 		//vel += params.gravity * deltaTime;
 
@@ -155,9 +156,13 @@ struct integrate_functor
 				pos.y*=tmp;
 				pos.z*=tmp;
 			}*/
-			float3 relPos = pos;
-			float dist = length(relPos);
-			float3 norm = relPos / dist;
+
+            float3 relPos = pos;
+            float dist = length(relPos);
+            float3 norm = relPos / dist;
+
+			vel+=vel*norm*0.9f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
+
 			float force=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
 			float momentum=force*deltaTime;/**< pęd */
 			vel+=-momentum*norm/params.particleMass[(int)velData.w];
