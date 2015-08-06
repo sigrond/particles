@@ -346,7 +346,7 @@ void initGL(int *argc, char **argv)
 }
 
 long double tSF=0.0f;
-long double SF=0.0f;
+long double SF=boundaryDamping;
 bool koncowka_parowania=false;
 float time_to_end=0.0f;
 /** \brief sterowanie parowaniem kropli
@@ -361,7 +361,10 @@ void parowanieKropliWCzasie()
 	if(bigRadius>(psystem->getMaxParticleRadius()*pow(psystem->getNumParticles(),0.3f))
 		&& bigRadius>0.0f && hostSurfacePreasure<0.01f)
 	{
-		SF=boundaryDamping;
+		if(!koncowka_parowania)
+		{
+			SF=boundaryDamping;
+		}
 	}
 	else if(tSF<6.0f)
     {
@@ -901,6 +904,10 @@ void key(unsigned char key, int /*x*/, int /*y*/)
 			SF=0.0f;
 			koncowka_parowania=false;
 			boundaries=true;
+			preasureVector.clear();
+			psystem->setBigRadius(bigRadius);
+			boundaryDamping=1.0f;
+			psystem->reset(ParticleSystem::CONFIG_RANDOM);
 			break;
 
 		case 'b':

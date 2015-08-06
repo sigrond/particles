@@ -99,9 +99,6 @@ struct integrate_functor
         vel *= params.globalDamping;/**< lepkosc */
 		//vel += params.gravity * deltaTime;
 
-        // new position = old position + velocity * deltaTime
-
-        pos += vel * deltaTime;/**< przemieszczenie */
 
         // set this to zero to disable collisions with cube sides
 #if 0
@@ -161,7 +158,7 @@ struct integrate_functor
             float dist = length(relPos);
             float3 norm = relPos / dist;
 
-			vel+=vel*norm*0.9f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
+			vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
 
 			float force=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
 			float momentum=force*deltaTime;/**< pęd */
@@ -211,6 +208,9 @@ struct integrate_functor
             vel.y = 0;
         }
 #endif
+		// new position = old position + velocity * deltaTime
+
+        pos += vel * deltaTime;/**< przemieszczenie */
 
         // store new position and velocity
         thrust::get<0>(t) = make_float4(pos, posData.w);
