@@ -38,9 +38,12 @@ extern "C"
 
     float getGlobalDeltaTime();
 
+    void setForcePtr(float* ptr);
+
 
     void integrateSystem(float *pos,
                          float *vel,
+                         float *force,
                          float deltaTime,
                          uint numParticles);
 

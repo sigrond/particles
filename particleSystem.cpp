@@ -52,6 +52,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_hVel(0),
     m_dPos(0),
     m_dVel(0),
+    m_dForce(0),
     m_gridSize(gridSize),
     m_timer(NULL),
     m_solverIterations(1)
@@ -209,6 +210,10 @@ ParticleSystem::_initialize(int numParticles)
         checkCudaErrors(cudaMalloc((void **)&m_cudaPosVBO, memSize)) ;
     }
 
+    allocateArray((void **)&m_dForce, memSize);
+    setForcePtr(m_dForce);
+    checkCudaErrors(cudaMemset(m_dForce,0,memSize));
+
     allocateArray((void **)&m_dVel, memSize);
 
     allocateArray((void **)&m_dSortedPos, memSize);
@@ -277,6 +282,8 @@ ParticleSystem::_finalize()
     delete [] m_hCellStart;
     delete [] m_hCellEnd;
 
+    freeArray(m_dForce);
+
     freeArray(m_dVel);
     freeArray(m_dSortedPos);
     freeArray(m_dSortedVel);
@@ -316,19 +323,10 @@ ParticleSystem::update(float deltaTime)
         dPos = (float *) m_cudaPosVBO;
     }
 
-    /** \todo Algorytm Verleta z listami Verleta (brakuje tablicy sił)
-     */
 
     // update constants
     setParameters(&m_params);/**< SimParams */
     setGlobalDeltaTime(deltaTime);
-
-    // integrate
-    integrateSystem(
-        dPos,
-        m_dVel,
-        deltaTime,
-        m_numParticles);
 
     // calculate grid hash
     calcHash(
@@ -367,6 +365,14 @@ ParticleSystem::update(float deltaTime)
         m_numParticles,
         m_numGridCells,
 		deltaTime);
+
+    // integrate
+    integrateSystem(
+        dPos,
+        m_dVel,
+        m_dForce,
+        deltaTime,
+        m_numParticles);
 
     timestep=getGlobalDeltaTime();
 

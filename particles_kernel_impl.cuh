@@ -46,6 +46,20 @@ __device__ float surfacePreasure;
 
 __device__ float globalDeltaTime;
 
+__constant__ float* forcePtr;
+
+__device__ static float atomicMin(float* address, float val)
+{
+    int* address_as_i = (int*) address;
+    int old = *address_as_i, assumed;
+    do {
+        assumed = old;
+        old = ::atomicCAS(address_as_i, assumed,
+            __float_as_int(::fminf(val, __int_as_float(assumed))));
+    } while (assumed != old);
+    return __int_as_float(old);
+}
+
 /** \struct integrate_functor
  * \brief ta struktura inicjowana jest z krokiem delta_time dla danych
  * opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU)
@@ -69,16 +83,11 @@ struct integrate_functor
     {
         volatile float4 posData = thrust::get<0>(t);
         volatile float4 velData = thrust::get<1>(t);
+        volatile float4 forceData=thrust::get<2>(t);
         float3 pos = make_float3(posData.x, posData.y, posData.z);
         float3 vel = make_float3(velData.x, velData.y, velData.z);
+        float3 force = make_float3(forceData.x, forceData.y, forceData.z);
 
-        //__shared__ float sharedPreasure;/**< ciśnienie dla bloku */
-        //if(threadIdx.x==0)
-        //{
-        //    sharedPreasure=0.0f;
-        //}
-
-        vel += params.gravity * deltaTime;/**< grawitacja */
 		if(params.brown!=0.0f)/**< ruchy Browna */
         {
 			unsigned int seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x)+(unsigned int)floor((vel.x+vel.y+vel.z)*params.brownQuality);
@@ -91,13 +100,7 @@ struct integrate_functor
 			skipahead((unsigned long long int)floor(vel.x*params.brownQuality),&s);
 			vel.z+=(curand_normal(&s))*params.brown;
 		}
-		//vel.x-=(0.1f+vel.x+vel.y*2.0f+vel.z*4.5f+pos.y+pos.z)/(100.0f)*params.brown;
-		//vel.y-=(0.1f+vel.x*3.5f+vel.y+vel.z*2.5f+pos.x+pos.z)/(100.0f)*params.brown;
-		//vel.z-=(0.1f+vel.x*1.5f+vel.y*5.0f+vel.z+pos.x+pos.y)/(100.0f)*params.brown;
 
-
-        vel *= params.globalDamping;/**< lepkosc */
-		//vel += params.gravity * deltaTime;
 
 
         // set this to zero to disable collisions with cube sides
@@ -146,57 +149,31 @@ struct integrate_functor
 		float r0=sqrt(r0k);
 		if(params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
 		{
-			/*if(r0>r+params.particleRadius)
-			{
-				float tmp=(r+params.particleRadius/2)/r0;
-				pos.x*=tmp;
-				pos.y*=tmp;
-				pos.z*=tmp;
-			}*/
-
             float3 relPos = pos;
             float dist = length(relPos);
             float3 norm = relPos / dist;
 
+            float3 relVel=make_float3(vel)*norm;
+            float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
+            float DtMax=0.1f*params.particleRadius[(int)velData.w]/relVelS;
+            if(DtMax<0.00001f)
+            {
+                DtMax=0.00001f;
+            }
+            atomicMin(&globalDeltaTime,DtMax);
+
 			vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
 
-			float force=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
-			float momentum=force*deltaTime;/**< pęd */
-			vel+=-momentum*norm/params.particleMass[(int)velData.w];
-			if(params.calcSurfacePreasure)
-			{
-			    momentum=abs(momentum);
-			    //__syncthreads();
-			    //atomicAdd(&sharedPreasure,momentum);
-			    //__syncthreads();
-			    //if(threadIdx.x==0)
-                //{
-                //    atomicAdd(&surfacePreasure,sharedPreasure);
-                //}
-				atomicAdd(&surfacePreasure,momentum);
-			}
+			force-=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
+
 		}
-		/*if(r0k > r*r + FLT_EPSILON )
-		{
-			r-=params.particleRadius*4;
-			//vel.x*=params.boundaryDamping;
-			//vel.y*=params.boundaryDamping;
-			//vel.z*=params.boundaryDamping;
-			vel.x=0.0f;
-			vel.y=0.0f;
-			vel.z=0.0f;
-			//float theta=atan(pos.z/sqrt(pos.x*pos.x+pos.y*pos.y));
-			//float fi=atan(pos.y/pos.x);
-			//pos.z=r*sin(theta);
-			//float rr=r*cos(theta);
-			//pos.x=rr*cos(fi);
-			//pos.y=rr*sin(fi);
-			float r0=sqrt(r0k);
-			float tmp=r/r0;
-			pos.x*=tmp;
-			pos.y*=tmp;
-			pos.z*=tmp;
-		}*/
+		__syncthreads();
+        if(params.calcSurfacePreasure && params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
+        {
+            float momentum=forceF1*globalDeltaTime;/**< pęd */
+            momentum=abs(momentum);
+            atomicAdd(&surfacePreasure,momentum);
+        }
 #endif
 
 //dolna plaszczyzna
@@ -208,13 +185,16 @@ struct integrate_functor
             vel.y = 0;
         }
 #endif
-		// new position = old position + velocity * deltaTime
-
+		vel += params.gravity * globalDeltaTime;/**< grawitacja */
+		vel *= params.globalDamping;/**< lepkosc */
+        vel += force*(globalDeltaTime/params.particleMass[(int)vel.w]);/**< siły oddziaływań między cząsteczkami */
+        // new position = old position + velocity * deltaTime
         pos += vel * deltaTime;/**< przemieszczenie */
 
         // store new position and velocity
         thrust::get<0>(t) = make_float4(pos, posData.w);
         thrust::get<1>(t) = make_float4(vel, velData.w);
+        thrust::get<2>(t) = make_float4(0.0f);/**< zerowanie tablicy sił na koniec kroku całkowania */
     }
 };
 
@@ -365,18 +345,6 @@ void reorderDataAndFindCellStartD(uint   *cellStart,        // output: cell star
 
 }
 
-__device__ static float atomicMin(float* address, float val)
-{
-    int* address_as_i = (int*) address;
-    int old = *address_as_i, assumed;
-    do {
-        assumed = old;
-        old = ::atomicCAS(address_as_i, assumed,
-            __float_as_int(::fminf(val, __int_as_float(assumed))));
-    } while (assumed != old);
-    return __int_as_float(old);
-}
-
 // collide two spheres using DEM method
 /** \brief collide two spheres using DEM method
  *
@@ -396,12 +364,6 @@ float3 collideSpheres(float3 posA, float3 posB,
                       float radiusA, float radiusB,
                       float attraction)
 {
-    /*__shared__ float sharedDeltaTime;
-    if(threadIdx.x==0)
-    {
-        sharedDeltaTime=1.0f;
-    }
-    __syncthreads();*/
     // calculate relative position
     float3 relPos = posB - posA;
 
@@ -414,29 +376,6 @@ float3 collideSpheres(float3 posA, float3 posB,
     {
         float3 norm = relPos / dist;
 
-        // relative velocity
-        //float3 relVel = velB - velA;
-
-        // relative tangential velocity
-        //float3 tanVel = relVel - (dot(relVel, norm) * norm);
-
-        // spring force
-        //force = -params.spring*(collideDist - dist) * norm;
-        // dashpot (damping) force
-        //force += params.damping*relVel;
-        // tangential shear force
-        //force += params.shear*tanVel;
-        // attraction
-        //force += attraction*relPos;
-		/*float epsi=0.1f;
-		float D2=0.00001f;
-		float3 F1 = - 12 * pow( D2 /  dist ,6.0f)*norm;
-		float3 F2 = 12 * pow(D2 / dist, 3.0f)*norm;
-		force= epsi*(F1+F2);*/
-		//float epsi=0.1f;
-		//float D2=0.00001f;//sigma kwadrat
-		//float sigma=0.001f;//sigma*2^1/6=r
-		//float sigma=2*params.particleRadius/(1.12246204f); //tu te¿ jest dobrze tak jak LJ ka¿e :-)
 		float sigma=(params.particleRadius[(int)velA.w]+params.particleRadius[(int)velB.w])/(1.12246204f);
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
@@ -450,16 +389,6 @@ float3 collideSpheres(float3 posA, float3 posB,
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////
-        //dist=(radiusA + radiusB)*0.99f;
-        //sd=sigma/dist;
-        //sd*=sd*sd*sd*sd*sd;
-        //float forceMax=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
-        //float3 pA=make_float3(velA)*params.particleMass[(int)velA.w]*norm;
-		//float3 pB=make_float3(velB)*params.particleMass[(int)velB.w]*norm;
-        //float Pi=sqrt(pA.x*pA.x+pA.y*pA.y+pA.z*pA.z)+sqrt(pB.x*pB.x+pB.y*pB.y+pB.z*pB.z);
-		//if(Pi>0.0f)
-		//{
-		//	float DtMax=Pi/abs(forceMax);
 		float3 relVel=make_float3(velB)*norm-make_float3(velA)*norm;
 		float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
 		float DtMax=0.1f*dist/relVelS;
@@ -468,13 +397,6 @@ float3 collideSpheres(float3 posA, float3 posB,
             DtMax=0.00001f;
         }
 		atomicMin(&globalDeltaTime,DtMax);
-        /*atomicMin(&sharedDeltaTime,DtMax);
-        __syncthreads();
-        if(threadIdx.x==0)
-        {
-            atomicMin(&globalDeltaTime,sharedDeltaTime);
-        }*/
-		//}
 	}
 
     return force;
@@ -584,13 +506,11 @@ void collideD(float4 *newVel,               // output: new velocity
         }
     }
 
-    // collide with cursor sphere
-    //force += collideSpheres(pos, params.colliderPos, vel, make_float3(0.0f, 0.0f, 0.0f), params.particleRadius, params.colliderRadius, 0.0f);
-
     // write new velocity back to original unsorted location
     uint originalIndex = gridParticleIndex[index];
-    __syncthreads();/**< wyrównanie globalDeltaTime */
-    newVel[originalIndex] = make_float4(make_float3(vel) + force*(/*deltaTime*/globalDeltaTime/params.particleMass[(int)vel.w]), vel.w);
+    //__syncthreads();/**< wyrównanie globalDeltaTime */
+    //newVel[originalIndex] = make_float4(make_float3(vel) + force*(globalDeltaTime/params.particleMass[(int)vel.w]), vel.w);
+    forcePtr[originalIndex]=make_float4(force, 0.0f);
 }
 
 #endif

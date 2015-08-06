@@ -176,6 +176,17 @@ extern "C"
         return tmpP;
     }
 
+    /** \brief Zapisanie w stałej pamięci GPU adresu do tablicy sił
+     *
+     * \param ptr float*
+     * \return void
+     *
+     */
+    void setForcePtr(float* ptr)
+    {
+        checkCudaErrors(cudaMemcpyToSymbol(forcePtr, &ptr, sizeof(float*)));
+    }
+
     //Round a / b to nearest higher integer value
     uint iDivUp(uint a, uint b)
     {
@@ -189,17 +200,29 @@ extern "C"
         numBlocks = iDivUp(n, numThreads);
     }
 
+    /** \brief Całkowanie ruchu każdej cząstki
+     *
+     * \param pos float*
+     * \param vel float*
+     * \param force float*
+     * \param deltaTime float
+     * \param numParticles uint
+     * \return void
+     *
+     */
     void integrateSystem(float *pos,
                          float *vel,
+                         float* force,
                          float deltaTime,
                          uint numParticles)
     {
         thrust::device_ptr<float4> d_pos4((float4 *)pos);
         thrust::device_ptr<float4> d_vel4((float4 *)vel);
+        thrust::device_ptr<float4> d_force4((float4 *)force);
 
         thrust::for_each(
-            thrust::make_zip_iterator(thrust::make_tuple(d_pos4, d_vel4)),
-            thrust::make_zip_iterator(thrust::make_tuple(d_pos4+numParticles, d_vel4+numParticles)),
+            thrust::make_zip_iterator(thrust::make_tuple(d_pos4, d_vel4, d_force4)),
+            thrust::make_zip_iterator(thrust::make_tuple(d_pos4+numParticles, d_vel4+numParticles, d_force4+numParticles)),
             integrate_functor(deltaTime));
     }
 

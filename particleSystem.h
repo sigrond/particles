@@ -243,6 +243,8 @@ class ParticleSystem
         float *m_dPos;
         float *m_dVel;
 
+        float *m_dForce;/**<  */
+
         float *m_dSortedPos;
         float *m_dSortedVel;
 
@@ -259,6 +261,7 @@ class ParticleSystem
 
         float *m_cudaPosVBO;        // these are the CUDA deviceMem Pos
         float *m_cudaColorVBO;      // these are the CUDA deviceMem Color
+
 
         struct cudaGraphicsResource *m_cuda_posvbo_resource; // handles OpenGL-CUDA exchange
         struct cudaGraphicsResource *m_cuda_colorvbo_resource; // handles OpenGL-CUDA exchange
