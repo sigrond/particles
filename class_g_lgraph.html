@@ -177,7 +177,7 @@ Atrybuty prywatne</h2></td></tr>
 
 <p>Odwołuje się do <a class="el" href="_g_lgraph_8h_source.html#l00017">dataVectorPtr</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01076">main()</a>.</p>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01113">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;:<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>(NULL){};</div>
 <div class="ttc" id="class_g_lgraph_html_a990c44a95d136768ef6d5d927f794005"><div class="ttname"><a href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">GLgraph::dataVectorPtr</a></div><div class="ttdeci">std::vector&lt; float &gt; * dataVectorPtr</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8h_source.html#l00017">GLgraph.h:17</a></div></div>
 </div><!-- fragment -->
@@ -269,9 +269,9 @@ Oto graf wywoływań tej funkcji:</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">int</span> pomniejszenie=1;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>-&gt;size(); i++)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                pomniejszenie=(float)<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>-&gt;size()/(float)width+1.5f;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                pomniejszenie=(float)<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>-&gt;size()/(float)width+1.2f;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        x+=1.0f;<span class="comment">//1000.0f/((float)dataVectorPtr-&gt;size());</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        glVertex2f(x/(<span class="keywordtype">float</span>)pomniejszenie, -(*<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>)[i]*10.0f*hight+yStartPos);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        glVertex2f(x/(<span class="keywordtype">float</span>)pomniejszenie, -(*<a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>)[i]*5.0f*hight+yStartPos);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">//glVertex2f(width+xStartPos, yStartPos);</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    glEnd();</div>
@@ -281,7 +281,7 @@ Oto graf wywoływań tej funkcji:</div>
 <div class="ttc" id="_g_lgraph_8cpp_html_aa3791f379d6dbce2bae6c5af556c36f0"><div class="ttname"><a href="_g_lgraph_8cpp.html#aa3791f379d6dbce2bae6c5af556c36f0">endWinCoords</a></div><div class="ttdeci">void endWinCoords(void)</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8cpp_source.html#l00035">GLgraph.cpp:35</a></div></div>
 <div class="ttc" id="_g_lgraph_8cpp_html_a9e70c1f281e934883db8f24ac215a40f"><div class="ttname"><a href="_g_lgraph_8cpp.html#a9e70c1f281e934883db8f24ac215a40f">beginWinCoords</a></div><div class="ttdeci">void beginWinCoords(void)</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8cpp_source.html#l00019">GLgraph.cpp:19</a></div></div>
 <div class="ttc" id="class_g_lgraph_html_a990c44a95d136768ef6d5d927f794005"><div class="ttname"><a href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">GLgraph::dataVectorPtr</a></div><div class="ttdeci">std::vector&lt; float &gt; * dataVectorPtr</div><div class="ttdef"><b>Definition:</b> <a href="_g_lgraph_8h_source.html#l00017">GLgraph.h:17</a></div></div>
-<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00130">particles.cpp:130</a></div></div>
+<div class="ttc" id="particles_8cpp_html_a215ce3b0108691bf1f304ea0f709f67d"><div class="ttname"><a href="particles_8cpp.html#a215ce3b0108691bf1f304ea0f709f67d">width</a></div><div class="ttdeci">const uint width</div><div class="ttdef"><b>Definition:</b> <a href="particles_8cpp_source.html#l00135">particles.cpp:135</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Oto graf wywołań dla tej funkcji:</div>
@@ -321,7 +321,7 @@ Oto graf wywołań dla tej funkcji:</div>
 
 <p>Odwołuje się do <a class="el" href="_g_lgraph_8h_source.html#l00017">dataVectorPtr</a>.</p>
 
-<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01076">main()</a>.</p>
+<p>Odwołania w <a class="el" href="particles_8cpp_source.html#l01113">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_g_lgraph.html#a990c44a95d136768ef6d5d927f794005">dataVectorPtr</a>=srcV;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
@@ -373,7 +373,7 @@ Oto graf wywoływań tej funkcji:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_g_lgraph.html">GLgraph</a></li>
-    <li class="footer">Wygenerowano Śr, 5 sie 2015 17:16:32 dla particles programem
+    <li class="footer">Wygenerowano So, 8 sie 2015 14:53:16 dla particles programem
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

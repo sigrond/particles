@@ -6,6 +6,7 @@ var NAVTREE =
         [ "Uwzględniane Parametry Symulacji", "index.html#parametry", null ]
       ] ],
       [ "Opis Ogólny", "index.html#Opis_Ogólny", null ],
+      [ "Wzory W Kodzie", "index.html#wzory_w_kodzie", null ],
       [ "Linki do fizyki", "index.html#linki_do_fizyki", null ],
       [ "Repozytorium", "index.html#Repozytorium", [
         [ "Dokumentacja Repozytorium", "index.html#dokumentacja_repozytorium", null ]
@@ -47,8 +48,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_g_lgraph_8cpp.html",
-"class_particle_system.html#a4280ede7d75e44c8c0d4edfa5ee7dd02",
-"particles_8cpp.html#a639b27811b99d2487d6d94dd3c3b2a81"
+"class_particle_system.html#a3a0b9c760c2bfcf811d54b8194ebea01",
+"particles_8cpp.html#a5459f6b6b39f9a6b80de7f17c3777ee2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

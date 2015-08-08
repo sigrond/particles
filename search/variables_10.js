@@ -6,5 +6,6 @@ var searchData=
   ['spherepixelshader',['spherePixelShader',['../shaders_8h.html#abad1d2b70401d6f3a4f61a462369373d',1,'spherePixelShader():&#160;shaders.cpp'],['../shaders_8cpp.html#abad1d2b70401d6f3a4f61a462369373d',1,'spherePixelShader():&#160;shaders.cpp']]],
   ['spring',['spring',['../struct_sim_params.html#a301314921adc7bce20d8955cf03cdf3f',1,'SimParams']]],
   ['ssdksample',['sSDKsample',['../particles_8cpp.html#aa5924a75cb4cd299c96829772cc2f3cd',1,'particles.cpp']]],
-  ['surfacepreasure',['surfacePreasure',['../particles__kernel__impl_8cuh.html#a67a73b8e9b2dbe8d6edccb406727ac4c',1,'particles_kernel_impl.cuh']]]
+  ['surfacepreasure',['surfacePreasure',['../particles__kernel__impl_8cuh.html#a67a73b8e9b2dbe8d6edccb406727ac4c',1,'particles_kernel_impl.cuh']]],
+  ['surfacevel',['surfaceVel',['../struct_sim_params.html#a173de10303a7d1bf309bdd5e4990428d',1,'SimParams']]]
 ];

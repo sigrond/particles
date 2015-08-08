@@ -26,5 +26,6 @@ var struct_sim_params =
     [ "particleTypesNum", "struct_sim_params.html#adc3e5f65a1a0ef7c944007ac99eb8034", null ],
     [ "shear", "struct_sim_params.html#ad48210724ada15a14a649b25ad61575b", null ],
     [ "spring", "struct_sim_params.html#a301314921adc7bce20d8955cf03cdf3f", null ],
+    [ "surfaceVel", "struct_sim_params.html#a173de10303a7d1bf309bdd5e4990428d", null ],
     [ "worldOrigin", "struct_sim_params.html#a1ed7465773f15f2874650f19cec3d0a9", null ]
 ];
