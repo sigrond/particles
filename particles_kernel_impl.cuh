@@ -171,13 +171,17 @@ struct integrate_functor
 
 		if(params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
 		{
-
-			vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
+            force-=18.84955592f*params.viscosity*(vel+norm*params.surfaceVel)*params.particleRadius[(int)velData.w];
+			//vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
 
 			forceF1=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
 			force-=forceF1*norm;
 
 		}
+		else
+        {
+            force-=18.84955592f*params.viscosity*vel*params.particleRadius[(int)velData.w];
+        }
 		__syncthreads();
         if(params.calcSurfacePreasure && params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
         {
@@ -197,7 +201,7 @@ struct integrate_functor
         }
 #endif
 		vel += params.gravity * globalDeltaTime;/**< grawitacja */
-		vel *= params.globalDamping;/**< lepkosc */
+		//vel *= params.globalDamping;/**< lepkosc */
         vel += force*(globalDeltaTime/params.particleMass[(int)velData.w]);/**< siły oddziaływań między cząsteczkami */
         // new position = old position + velocity * deltaTime
         pos += vel * deltaTime;/**< przemieszczenie */

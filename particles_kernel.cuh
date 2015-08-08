@@ -77,6 +77,7 @@ struct SimParams
 	bool calcSurfacePreasure;
 
 	float surfaceVel;/**< r0/(t+dt)-A/sqrt(t+dt) */
+	float viscosity;
 };
 
 #endif
