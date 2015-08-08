@@ -155,20 +155,22 @@ struct integrate_functor
 		float R=params.bigradius;//- params.particleRadius;
 		float r0=sqrt(r0k);
 		float forceF1=0.0f;
+
+        float3 relPos = pos;
+        float dist = length(relPos);
+        float3 norm = relPos / dist;
+
+        float3 relVel=-norm*params.surfaceVel-vel*norm;
+        float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
+        float DtMax=0.1f*params.particleRadius[(int)velData.w]/relVelS;
+        if(DtMax<0.00001f)
+        {
+            DtMax=0.00001f;
+        }
+        atomicMin(&globalDeltaTime,DtMax);
+
 		if(params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
 		{
-            float3 relPos = pos;
-            float dist = length(relPos);
-            float3 norm = relPos / dist;
-
-            float3 relVel=-norm*params.surfaceVel-vel*norm;
-            float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
-            float DtMax=0.1f*params.particleRadius[(int)velData.w]/relVelS;
-            if(DtMax<0.00001f)
-            {
-                DtMax=0.00001f;
-            }
-            atomicMin(&globalDeltaTime,DtMax);
 
 			vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
 

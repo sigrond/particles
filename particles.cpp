@@ -378,7 +378,7 @@ void parowanieKropliWCzasie()
 			koncowka_parowania=true;
 			time_to_end=(bigRadius0/A)*(bigRadius0/A)-time_past;
 		}
-        tSF+=6.0f*timestep*50.0f*A;///time_to_end;
+        tSF+=6.0f*timestep*10.0f*A;///time_to_end;
         boundaryDamping=SF*(-(tanh(tSF-3.0f)-1.0f)/2.0f);
         if(boundaryDamping<0.0f)
         {
