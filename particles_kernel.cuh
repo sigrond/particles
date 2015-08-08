@@ -65,7 +65,7 @@ struct SimParams
     float attraction;/**< mnożnik sił Coulombowskich */
     float boundaryDamping;
 
-	float bigradius;
+	float bigradius;/**< promien duzej kuli w mikrometrach */
 	float bigradius0;
 	float epsi;/**< mnożnik epsilonów */
 	bool boundaries;
@@ -77,7 +77,7 @@ struct SimParams
 	bool calcSurfacePreasure;
 
 	float surfaceVel;/**< r0/(t+dt)-A/sqrt(t+dt) */
-	float viscosity;
+	float viscosity;/**< 0,89 mPa·s */
 };
 
 #endif

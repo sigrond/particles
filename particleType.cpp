@@ -41,7 +41,8 @@ void particleType::calcParams(bool pMassSet,bool pRadiusSet,bool pDensitySet)
     if((!pMassSet)&&pRadiusSet&&pDensitySet)
     {
         Volume=(4.0f/3.0f)*M_PI*particleRadius*particleRadius*particleRadius;
-        particleDensity=particleMass/Volume;
+        //particleDensity=particleMass/Volume;
+        particleMass=particleDensity*Volume;
     }
 }
 

@@ -204,7 +204,7 @@ float collideShear = 0.1f;
 float collideAttraction = 0.05f;
 
 /** \var bigRadius
- * \brief promien duzej kuli w mikronach
+ * \brief promien duzej kuli w mikrometrach
  */
 float bigRadius=10.0f;//promien duzej kuli
 float bigRadius0=bigRadius;//poczatkowy promien duzej kuli
