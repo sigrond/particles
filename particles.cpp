@@ -48,13 +48,18 @@
  * - Ilości różnych rodzajów cząstek wraz z ich promieniami i masami (lub gęstościami).
  * - Szybkość parowania kropli.
  * \section Opis_Ogólny Opis Ogólny
- * - Najpierw wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.
- * Prędkość to poprzednia prędkość, grawitacja i lepkość.
- * - Potem cząstki dzielone są na komurki według ich położenia.
+ * - Cząstki dzielone są na komórki według ich położenia.
+ * (::calcHash, ::sortParticles, ::reorderDataAndFindCellStart)
  * - Dla każdej cząstki wyliczana jest siła jaka na nią zadziała.
  * Składa się ona ze zderzeń ze wszystkimi cząstkami w zasięgu,
- * muszą one być w tej samej komurce, albo w sąsiedniej.
- * - Prędkość jest wyliczana z poprzedniej prękości i siły.
+ * muszą one być w tej samej komórce, albo w sąsiedniej. (::collide)
+ * - Prędkość jest wyliczana z poprzedniej prękości i sił.
+ * Wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.
+ * (::integrateSystem)
+ * \section wzory_w_kodzie Wzory W Kodzie
+ * - Zderzenie dwóch cząstek: ::collideSpheres w particles_kernel_impl.cuh
+ * - Lepkość, grawitacja, wyliczanie nowej prędkości i pozycji: \b integrate_functor::operator()(Tuple t) integrate_functor w particles_kernel_impl.cuh
+ * - Parowanie kropli: ::parowanieKropliWCzasie w particles.cpp
  * \section linki_do_fizyki Linki do fizyki
  http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html
  http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf
@@ -1110,6 +1115,7 @@ main(int argc, char **argv)
 #ifdef _DEBUG
     std::cout<<"Debug Build!\n";
 #endif // _DEBUG
+    std::cout<<"Dokumentacja: http://sigrond.github.io/particles\n";
 	std::cout<<"Uwaga różne typy cząstek!\nKonfiguracja w particleType.cfg\n";
 	std::string plikKonfiguracyjny("particleType.cfg");
     particleTypesLoader pTLoader(plikKonfiguracyjny);
@@ -1212,22 +1218,22 @@ main(int argc, char **argv)
             printf("particles -nazwaParametru=liczba\n");
             printf("np:\n");
             printf("particles -bigRadius0=0.1 \n");
-            printf("bigRadius0 -początkowy promień kropli\n");
-            printf("n -liczba cząstek\n");
+            printf("bigRadius0 -poczatkowy promien kropli\n");
+            printf("n -liczba czastek\n");
             printf("grid -rozmiar gridu\n");
             printf("file -nazwa pliku do porównania z wynikiem\n");
             printf("timestep -krok czasu\n");
-            printf("benchmark -obliczenia bez GUI, pokazuje wydajnoœæ\n");
-            printf("i -liczba kroków\n");
+            printf("benchmark -obliczenia bez GUI, pokazuje wydajnosc\n");
+            printf("i -liczba krokow\n");
             printf("device -wybór GPU\n");
             printf("epsi -epsilon w sile Lenarda-Jonesa\n");
-            printf("damping -lepkość\n");
-            printf("boundaryDamping -napięcie powierchniowe\n");
-            printf("particleMass -masa cząstki\n");
+            printf("damping -lepkosc\n");
+            printf("boundaryDamping -napiecie powierchniowe\n");
+            printf("particleMass -masa czastki\n");
             printf("gravity -grawitacja\n");
 			printf("save -zapis do pliku\n");
 			printf("A -stała parowania kropli\n");
-			printf("particleTypesNum -ilość rodzjów cząstek\n");
+			printf("particleTypesNum -ilosc rodzjow czastek\n");
 			printf("bQuality -liczba naturalna\n");
 			printf("brown -mnożnik róchów Browna\n");
 			printf("multiColor -losowe kolory kulek\n");

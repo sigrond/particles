@@ -40,14 +40,21 @@ texture<uint, 1, cudaReadModeElementType> cellEndTex;
 #endif
 
 // simulation parameters in constant memory
-__constant__ SimParams params;
+__constant__ SimParams params;/**< simulation parameters in constant memory */
 
-__device__ float surfacePreasure;
+__device__ float surfacePreasure;/**< wyliczane ciśnienie cząstek na powierzchni */
 
-__device__ float globalDeltaTime;
+__device__ float globalDeltaTime;/**< ustalany krok czasu dla symulacji */
 
-__constant__ float4* forcePtr;
+__constant__ float4* forcePtr;/**< wskaźnik na tablicę sił */
 
+/** \brief Przeciążona funkcja atomicMin na obsługę float.
+ * Zapewnia dostęp do zmiennej jednemu wątkowi na raz.
+ * \param address float*
+ * \param val float
+ * \return __device__  float
+ *
+ */
 __device__ static float atomicMin(float* address, float val)
 {
     int* address_as_i = (int*) address;
