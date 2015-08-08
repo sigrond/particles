@@ -201,7 +201,7 @@ int particleTypesNum=1;
 float collideSpring = 0.5f;;
 float collideDamping = 0.02f;;
 float collideShear = 0.1f;
-float collideAttraction = 0.08f;
+float collideAttraction = 0.05f;
 
 /** \var bigRadius
  * \brief promien duzej kuli w mikronach
