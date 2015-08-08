@@ -378,7 +378,7 @@ void parowanieKropliWCzasie()
 			koncowka_parowania=true;
 			time_to_end=(bigRadius0/A)*(bigRadius0/A)-time_past;
 		}
-        tSF+=6.0f*timestep/time_to_end;//*10.0f;
+        tSF+=6.0f*timestep*10.0f;///time_to_end;
         boundaryDamping=SF*(-(tanh(tSF-3.0f)-1.0f)/2.0f);
         if(boundaryDamping<0.0f)
         {
@@ -1116,7 +1116,7 @@ main(int argc, char **argv)
     std::cout<<"Debug Build!\n";
 #endif // _DEBUG
     std::cout<<"Dokumentacja: http://sigrond.github.io/particles\n";
-	std::cout<<"Uwaga różne typy cząstek!\nKonfiguracja w particleType.cfg\n";
+	std::cout<<"Uwaga rozne typy czastek!\nKonfiguracja w particleType.cfg\n";
 	std::string plikKonfiguracyjny("particleType.cfg");
     particleTypesLoader pTLoader(plikKonfiguracyjny);
     pTLoader.loadTypes(typyCzastek);
