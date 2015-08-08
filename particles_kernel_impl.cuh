@@ -171,7 +171,7 @@ struct integrate_functor
 
 		if(params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
 		{
-            force-=18.84955592f*params.viscosity*(vel+norm*params.surfaceVel)*params.particleRadius[(int)velData.w];
+            force+=18.84955592f*params.viscosity*(vel+norm*params.surfaceVel)*params.particleRadius[(int)velData.w];
 			//vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
 
 			forceF1=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
@@ -180,7 +180,7 @@ struct integrate_functor
 		}
 		else
         {
-            force-=18.84955592f*params.viscosity*vel*params.particleRadius[(int)velData.w];
+            force+=18.84955592f*params.viscosity*vel*params.particleRadius[(int)velData.w];
         }
 		__syncthreads();
         if(params.calcSurfacePreasure && params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
