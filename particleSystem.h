@@ -167,6 +167,17 @@ class ParticleSystem
             m_params.calcSurfacePreasure=x;
         }
 
+        /** \brief ustawia chwilową prędkość zmniejszania się promienia kropli
+         *
+         * \param x float
+         * \return void
+         *
+         */
+        void setSurfaceVel(float x)
+        {
+            m_params.surfaceVel=x;
+        }
+
 		/** \brief pobiera promień cząstki
 		 * \todo poprawić z uwzględnieniem różnych typów cząstek
 		 */

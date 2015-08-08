@@ -389,10 +389,12 @@ void parowanieKropliWCzasie()
 	if(bigRadius>0.0f)
 	{
 		bigRadius=bigRadius0-A*sqrt(time_past);
+		psystem->setSurfaceVel(A*sqrt(time_past)/time_past);
 	}
 	else
 	{
 		bigRadius=0.0f;
+		psystem->setSurfaceVel(0.0f);
 	}
 	psystem->setBigRadius(bigRadius);
 }

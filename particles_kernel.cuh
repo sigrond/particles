@@ -75,6 +75,8 @@ struct SimParams
 	unsigned long long int brownQuality;
 
 	bool calcSurfacePreasure;
+
+	float surfaceVel;/**< r0/(t+dt)-A/sqrt(t+dt) */
 };
 
 #endif

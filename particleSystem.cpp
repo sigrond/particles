@@ -128,6 +128,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 	m_params.brown=0.00001f;
 	m_params.brownQuality=10;
 	m_params.calcSurfacePreasure=true;
+	m_params.surfaceVel=0.01f;
 
 
     _initialize(numParticles);

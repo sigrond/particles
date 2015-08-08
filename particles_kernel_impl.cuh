@@ -153,7 +153,7 @@ struct integrate_functor
             float dist = length(relPos);
             float3 norm = relPos / dist;
 
-            float3 relVel=make_float3(vel)*norm;
+            float3 relVel=-norm*params.surfaceVel-make_float3(vel)*norm;
             float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
             float DtMax=0.1f*params.particleRadius[(int)velData.w]/relVelS;
             if(DtMax<0.00001f)
