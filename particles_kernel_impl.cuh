@@ -46,7 +46,7 @@ __device__ float surfacePreasure;
 
 __device__ float globalDeltaTime;
 
-__constant__ float* forcePtr;
+__constant__ float4* forcePtr;
 
 __device__ static float atomicMin(float* address, float val)
 {
@@ -147,13 +147,14 @@ struct integrate_functor
 		float r0k=xk+yk+zk;
 		float R=params.bigradius;//- params.particleRadius;
 		float r0=sqrt(r0k);
+		float forceF1=0.0f;
 		if(params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
 		{
             float3 relPos = pos;
             float dist = length(relPos);
             float3 norm = relPos / dist;
 
-            float3 relVel=-norm*params.surfaceVel-make_float3(vel)*norm;
+            float3 relVel=-norm*params.surfaceVel-vel*norm;
             float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
             float DtMax=0.1f*params.particleRadius[(int)velData.w]/relVelS;
             if(DtMax<0.00001f)
@@ -164,7 +165,8 @@ struct integrate_functor
 
 			vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
 
-			force-=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
+			forceF1=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
+			force-=forceF1*norm;
 
 		}
 		__syncthreads();
@@ -187,7 +189,7 @@ struct integrate_functor
 #endif
 		vel += params.gravity * globalDeltaTime;/**< grawitacja */
 		vel *= params.globalDamping;/**< lepkosc */
-        vel += force*(globalDeltaTime/params.particleMass[(int)vel.w]);/**< siły oddziaływań między cząsteczkami */
+        vel += force*(globalDeltaTime/params.particleMass[(int)velData.w]);/**< siły oddziaływań między cząsteczkami */
         // new position = old position + velocity * deltaTime
         pos += vel * deltaTime;/**< przemieszczenie */
 
