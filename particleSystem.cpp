@@ -116,7 +116,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.damping = 0.1f;
     m_params.shear = 0.1f;
     m_params.attraction = 0.1f;
-    m_params.boundaryDamping = -1.0f;
+    m_params.boundaryDamping = -1000.0f;
 
     m_params.gravity = make_float3(0.0f, -0.0003f, 0.0f);
     m_params.globalDamping = 1.0f;
@@ -124,12 +124,12 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 	m_params.bigradius=10.0f;//docelowo zmieny rozmiar zewnetrznej kuli
 	m_params.bigradius0=10.0f;
 	m_params.boundaries=true;
-	m_params.epsi=0.1f;
+	m_params.epsi=1.0f;
 	m_params.brown=0.00001f;
 	m_params.brownQuality=10;
 	m_params.calcSurfacePreasure=true;
 	m_params.surfaceVel=0.01f;
-	m_params.viscosity=0.00089f;//0,89 mPa·s
+	m_params.viscosity=0.00890f;//ng/(um*s) = 0,89 mPa·s
 
 
     _initialize(numParticles);

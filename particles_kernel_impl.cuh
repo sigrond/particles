@@ -162,26 +162,27 @@ struct integrate_functor
 
         float3 relVel=-norm*params.surfaceVel-vel*norm;
         float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
-        float DtMax=0.1f*params.particleRadius[(int)velData.w]/relVelS;
+        /*float DtMax=0.1f*params.particleRadius[(int)velData.w]/relVelS;
         if(DtMax<0.00001f)
         {
             DtMax=0.00001f;
         }
-        atomicMin(&globalDeltaTime,DtMax);
+        atomicMin(&globalDeltaTime,DtMax);*/
 
 		if(params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
 		{
-            force+=18.84955592f*params.viscosity*(vel+norm*params.surfaceVel)*params.particleRadius[(int)velData.w];
+            //force+=18.84955592f*params.viscosity*(vel+norm*params.surfaceVel)*params.particleRadius[(int)velData.w];
 			//vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone tłumienie w kierunku radialnym */
 
 			forceF1=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siła napięcia powierzchniowego */
 			force-=forceF1*norm;
 
 		}
-		else
+		/*else
         {
             force+=18.84955592f*params.viscosity*vel*params.particleRadius[(int)velData.w];
-        }
+        }*/
+		force-=18.84955592f*params.viscosity*params.globalDamping*vel*params.particleRadius[(int)velData.w];
 		__syncthreads();
         if(params.calcSurfacePreasure && params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
         {
@@ -202,9 +203,10 @@ struct integrate_functor
 #endif
 		vel += params.gravity * globalDeltaTime;/**< grawitacja */
 		//vel *= params.globalDamping;/**< lepkosc */
-        vel += force*(globalDeltaTime/params.particleMass[(int)velData.w]);/**< siły oddziaływań między cząsteczkami */
+        pos += 0.5f * vel * globalDeltaTime;/**< przemieszczenie ze starą prędkością*/
+		vel += force*(globalDeltaTime/params.particleMass[(int)velData.w]);/**< siły oddziaływań między cząsteczkami */
         // new position = old position + velocity * deltaTime
-        pos += vel * deltaTime;/**< przemieszczenie */
+        pos += 0.5f * vel * globalDeltaTime;/**< przemieszczenie z nową prędkością*/
 
         // store new position and velocity
         thrust::get<0>(t) = make_float4(pos, posData.w);
