@@ -78,6 +78,8 @@ struct SimParams
 
 	float surfaceVel;/**< r0/(t+dt)-A/sqrt(t+dt) */
 	float viscosity;/**< 0,89 mPa·s */
+
+	bool autoDt;
 };
 
 #endif

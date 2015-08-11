@@ -253,6 +253,8 @@ GLgraph* preasureGraph=NULL;
  */
 std::vector<float> preasureVector;
 
+bool autoDeltaTime=true;/**< zmienny czy stały krok czasu */
+
 ParticleSystem *psystem = 0;
 
 // fps
@@ -296,6 +298,7 @@ void initParticleSystem(int numParticles, uint3 gridSize, bool bUseOpenGL)
     //psystem->reset(ParticleSystem::CONFIG_GRID);
 	psystem->reset(ParticleSystem::CONFIG_RANDOM);
 	psystem->setBrownQuality(brownQuality);
+	psystem->setAutoDt(autoDeltaTime);
 
     if (bUseOpenGL)
     {
@@ -1177,6 +1180,7 @@ main(int argc, char **argv)
 		if (checkCmdLineFlag(argc, (const char **) argv, "timestep"))
         {
             timestep = getCmdLineArgumentFloat(argc, (const char **) argv, "timestep");
+            autoDeltaTime=false;
 			//printf("flag timestep set to: %f\n",timestep);
         }
 		if (checkCmdLineFlag(argc, (const char **) argv, "epsi"))
@@ -1222,7 +1226,7 @@ main(int argc, char **argv)
             printf("n -liczba czastek\n");
             printf("grid -rozmiar gridu\n");
             printf("file -nazwa pliku do porównania z wynikiem\n");
-            printf("timestep -krok czasu\n");
+            printf("timestep -krok czasu, jesli ustawiony to staly\n");
             printf("benchmark -obliczenia bez GUI, pokazuje wydajnosc\n");
             printf("i -liczba krokow\n");
             printf("device -wybór GPU\n");

@@ -413,7 +413,10 @@ float3 collideSpheres(float3 posA, float3 posB,
         {
             DtMax=0.00001f;
         }
-		atomicMin(&globalDeltaTime,DtMax);
+        if(params.autoDt)
+		{
+		    atomicMin(&globalDeltaTime,DtMax);
+		}
 	}
 
     return force;

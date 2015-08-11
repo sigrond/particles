@@ -130,6 +130,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 	m_params.calcSurfacePreasure=true;
 	m_params.surfaceVel=0.01f;
 	m_params.viscosity=0.00890f;//ng/(um*s) = 0,89 mPa·s
+	m_params.autoDt=true;
 
 
     _initialize(numParticles);
@@ -354,7 +355,10 @@ ParticleSystem::update(float deltaTime)
         m_numParticles,
         m_numGridCells);
 
-    setGlobalDeltaTime(0.01f);/**< maksymalny krok czasu */
+    if(m_params.autoDt)
+    {
+        setGlobalDeltaTime(0.01f);/**< maksymalny krok czasu */
+    }
 
     // process collisions
     collide(

@@ -204,6 +204,17 @@ class ParticleSystem
             return tmpMax;
         }
 
+        /** \brief ustawia czy zmienny krok czasu, czy stały
+         *
+         * \param x bool
+         * \return void
+         *
+         */
+        void setAutoDt(bool x)
+        {
+            m_params.autoDt=x;
+        }
+
         float3 getColliderPos()
         {
             return m_params.colliderPos;
