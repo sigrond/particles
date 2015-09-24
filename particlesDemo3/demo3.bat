@@ -1,0 +1,1 @@
+particles.exe -bigRadius0=0.7 -A=1.0 -timestep=0.00005
