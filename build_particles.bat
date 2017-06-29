@@ -1,0 +1,1 @@
+nvcc GLgraph.cpp particles.cpp particleSystem.cpp particleSystem_cuda.cu particleType.cpp particleTypesLoader.cpp render_particles.cpp shaders.cpp -o particles --use-local-env --cl-version 2015 -I"d:\Program Files\NVIDIA Corporation\CUDA Samples\v8.0\common\inc" -L"D:\Program Files\NVIDIA Corporation\CUDA Samples\v8.0\common\lib\x64" -lglew64 -lfreeglut

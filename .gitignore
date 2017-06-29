@@ -6,7 +6,7 @@ ipch/particles_vs2010-6f936b98/5fdcd102.ipch
 Thumbs.db
 #Ignore files build by Visual Studio
 *.obj
-*.exe
+
 *.pdb
 *.aps
 *.pch
@@ -113,3 +113,5 @@ _UpgradeReport_Files/
 particles_vs2008.sln.old
 *.old
 *.tlog
+*.exp
+*.db
