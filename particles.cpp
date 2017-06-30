@@ -435,6 +435,10 @@ void runBenchmark(int iterations, char *exec_path)
 
 	//printf("timestep: %f\n",timestep);
 
+#ifdef MYDEBUG
+	psystem->dumpParticles(0, 20);
+#endif // MYDEBUG
+
 	checkCudaErrors(cudaMallocHost(&hPos,sizeof(float)*4*numParticles));
     for (int i = 0; i < iterations; ++i)
     {
@@ -462,10 +466,16 @@ void runBenchmark(int iterations, char *exec_path)
 		fclose(f);
 	}
 
-    for (int i = 0; i < iterations; ++i)
+    /*for (int i = 0; i < iterations; ++i)
     {
         psystem->update(timestep);
-    }
+    }*/
+
+#ifdef MYDEBUG
+	psystem->dumpParticles(0, 20);
+#endif // MYDEBUG
+
+	
 
     cudaDeviceSynchronize();
     sdkStopTimer(&timer);
@@ -474,7 +484,7 @@ void runBenchmark(int iterations, char *exec_path)
     printf("particles, Throughput = %.4f KParticles/s, Time = %.5f s, Size = %u particles, NumDevsUsed = %u, Workgroup = %u\n",
            (1.0e-3 * numParticles)/fAvgSeconds, fAvgSeconds, numParticles, 1, 0);
 
-    if (g_refFile)
+    /*if (g_refFile)
     {
         printf("\nChecking result...\n\n");
         float *hPos = (float *)malloc(sizeof(float)*4*psystem->getNumParticles());
@@ -488,7 +498,7 @@ void runBenchmark(int iterations, char *exec_path)
         {
             g_TotalErrors++;
         }
-    }
+    }*/
 }
 
 /** \brief liczenie i wypisnie danych na pasku

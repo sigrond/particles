@@ -423,7 +423,7 @@ void
 ParticleSystem::dumpParticles(uint start, uint count)
 {
     // debug
-    copyArrayFromDevice(m_hPos, 0, &m_cuda_posvbo_resource, sizeof(float)*4*count);
+    copyArrayFromDevice(m_hPos, m_cudaPosVBO, 0, sizeof(float)*4*count);
     copyArrayFromDevice(m_hVel, m_dVel, 0, sizeof(float)*4*count);
 
     for (uint i=start; i<start+count; i++)
@@ -480,6 +480,10 @@ ParticleSystem::setArray(ParticleArray array, const float *data, int start, int 
                     glBindBuffer(GL_ARRAY_BUFFER, 0);
                     registerGLBufferObject(m_posVbo, &m_cuda_posvbo_resource);
                 }
+				else
+				{
+					copyArrayToDevice(m_cudaPosVBO, data, start * 4 * sizeof(float), count * 4 * sizeof(float));
+				}
             }
             break;
 
