@@ -255,6 +255,8 @@ std::vector<float> preasureVector;
 
 bool autoDeltaTime=true;/**< zmienny czy stały krok czasu */
 
+unsigned int divider = 10;
+
 ParticleSystem *psystem = 0;
 
 // fps
@@ -444,7 +446,7 @@ void runBenchmark(int iterations, char *exec_path)
     {
 		parowanieKropliWCzasie();
         psystem->update(timestep);
-		if(save && f && i%10==0)
+		if(save && f && i%divider==0)
 		{
 
 			checkCudaErrors(cudaMemcpy((void*)hPos,psystem->getCudaPosVBO(),sizeof(float)*4*numParticles,cudaMemcpyDeviceToHost));
@@ -1246,6 +1248,7 @@ main(int argc, char **argv)
             printf("particleMass -masa czastki\n");
             printf("gravity -grawitacja\n");
 			printf("save -zapis do pliku\n");
+			printf("divider -krok zapisu do pliku\n");
 			printf("A -stała parowania kropli\n");
 			printf("particleTypesNum -ilosc rodzjow czastek\n");
 			printf("bQuality -liczba naturalna\n");
@@ -1268,6 +1271,10 @@ main(int argc, char **argv)
     {
         numIterations = getCmdLineArgumentInt(argc, (const char **) argv, "i");
     }
+	if (checkCmdLineFlag(argc, (const char **)argv, "divider"))
+	{
+		divider = getCmdLineArgumentInt(argc, (const char **)argv, "divider");
+	}
     if (g_refFile || save)
     {
         cudaInit(argc, argv);
