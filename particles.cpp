@@ -277,6 +277,9 @@ unsigned int g_TotalErrors = 0;
 char        *g_refFile = NULL;
 
 char* save=NULL;
+char* load = NULL;//nazwa pliku do odczytu
+float* frame = NULL;//wskaznik do miejsca z wczytanymi z pliku pozycjami w danym kroku
+FILE* f = NULL;//wkaznik do otwartego wczytanego pliku
 
 const char *sSDKsample = "CUDA Particles Simulation";
 
@@ -442,6 +445,7 @@ void runBenchmark(int iterations, char *exec_path)
 #endif // MYDEBUG
 
 	checkCudaErrors(cudaMallocHost(&hPos,sizeof(float)*4*numParticles));
+	printf("progress: ....");
     for (int i = 0; i < iterations; ++i)
     {
 		parowanieKropliWCzasie();
@@ -452,7 +456,7 @@ void runBenchmark(int iterations, char *exec_path)
 			checkCudaErrors(cudaMemcpy((void*)hPos,psystem->getCudaPosVBO(),sizeof(float)*4*numParticles,cudaMemcpyDeviceToHost));
 			fwrite((void*)&time_past,sizeof(long double),1,f);
 			fwrite((void*)hPos,sizeof(float),4*numParticles,f);
-
+			printf("\b\b\b\b%3d%%", (int)((((float)i)/((float)iterations))*100.0f));
 		}
     }
 	//cudaDeviceSynchronize();
@@ -525,11 +529,14 @@ void computeFPS()
     }
 }
 
+double read_time = 0;
+
 /** \brief funkcja odpowiadająca za symulację z włączonym GUI
  * \return void
  */
 void display()
 {
+	//system("pause");
     sdkStartTimer(&timer);
 
     // update the simulation
@@ -548,19 +555,53 @@ void display()
 		psystem->setBrown(brown);
 		psystem->setCalcSurfacePreasure(itsTimeToDraw);/**< czy chcemy policzyć i ściągnąć wartość ciśnienia na powierchni kropli */
 
-		parowanieKropliWCzasie();
+		if (!load || (load && itsTimeToDraw))
+		{
+			parowanieKropliWCzasie();
+		}
 		//licznik++;
 		//time_past+=timestep;
 		//bigRadius=bigRadius0-A*sqrt(licznik*timestep);//r=r0-A*sqrt(t)
 		//bigRadius=bigRadius0-A*sqrt(time_past);
 		//psystem->setBigRadius(bigRadius);
+		if (load && itsTimeToDraw)
+		{
+			double old_time = read_time;
+			fread(&read_time, sizeof(double), 1, f);
+			timestep = abs(old_time - read_time);
+			time_past = read_time;
+			//system("pause");
+			//psystem->update(timestep);
+			//system("pause");
+			//unsigned int tmpPt = psystem->getCurrentReadBuffer();
+			int co=fread(frame, sizeof(float), psystem->getNumParticles() * 4, f);
+			//printf("co: %d\n", co);
+			psystem->setArray(ParticleSystem::POSITION, frame, 0, psystem->getNumParticles());
+			//system("pause");
+			if(co<psystem->getNumParticles()*4)
+			{
+				//bPause = true;
+				fseek(f, sizeof(int), SEEK_SET);
+				licznik = 0;
+				read_time = 0;
+				//printf("koniec pliku. powrót na początek. spacja aby wznowić\n");
+			}
+		}
+		else if (load)
+		{
+			//printf("licznik: %llu, time_past: %f, timeFromLastDisplayedFrameIn_ms: %f\n", licznik, time_past, timeFromLastDisplayedFrameIn_ms);
+			psystem->setArray(ParticleSystem::POSITION, frame, 0, psystem->getNumParticles());
+			renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles(), zoom);
+		}
+		else if(!load)
+		{
+			psystem->update(timestep);/**< tu zachodzą właściwe obliczenia CUDA */
+		}
 
-        psystem->update(timestep);/**< tu zachodzą właściwe obliczenia CUDA */
-
-        if (renderer && itsTimeToDraw)
-        {
-            renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles(), zoom);
-        }
+		if (renderer && itsTimeToDraw)
+		{
+			renderer->setVertexBuffer(psystem->getCurrentReadBuffer(), psystem->getNumParticles(), zoom);
+		}
     }
 
     if(itsTimeToDraw)
@@ -632,7 +673,9 @@ void display()
 
         if (renderer && displayEnabled)
         {
+			//system("pause");
             renderer->display(displayMode);
+			//system("pause");
         }
 
         /** Ten blok kodu rysuje półprzezroczysty kwadrat pod kroplą
@@ -666,6 +709,10 @@ void display()
         glutSwapBuffers();
         glutReportErrors();
     }/**< koniec warunku itsTimeToDraw */
+	else if (load)//tu nie potrzbujemy mnustwa czasu na obliczenia
+	{
+		glutPostRedisplay();
+	}
 
     sdkStopTimer(&timer);
 
@@ -680,8 +727,9 @@ void display()
     {
         itsTimeToDraw=false;
     }
-
+	//system("pause");
     computeFPS();/**< teraz nie jest to FPS, tylko chwilowa prędkość wykonywania programu */
+	//system("pause");
 }
 
 inline float frand()
@@ -1048,7 +1096,7 @@ void idle(void)
         printf("Entering demo mode\n");
     }
 
-    if (demoMode)
+    if (demoMode && itsTimeToDraw)
     {
         camera_rot[1] += 0.1f;
 
@@ -1189,6 +1237,11 @@ main(int argc, char **argv)
 			}
         }
 
+		if (checkCmdLineFlag(argc, (const char **)argv, "load"))
+		{
+			getCmdLineArgumentString(argc, (const char **)argv, "load", &load);
+		}
+
 		if (checkCmdLineFlag(argc, (const char **) argv, "timestep"))
         {
             timestep = getCmdLineArgumentFloat(argc, (const char **) argv, "timestep");
@@ -1249,6 +1302,7 @@ main(int argc, char **argv)
             printf("gravity -grawitacja\n");
 			printf("save -zapis do pliku\n");
 			printf("divider -krok zapisu do pliku\n");
+			printf("load -plik do odczytu\n");
 			printf("A -stała parowania kropli\n");
 			printf("particleTypesNum -ilosc rodzjow czastek\n");
 			printf("bQuality -liczba naturalna\n");
@@ -1315,6 +1369,27 @@ main(int argc, char **argv)
 	//std::clog<<"typyCzastek.size() "<<typyCzastek.size()<<"\n";
 #endif
 
+	if (load)
+	{
+		printf("load name: %s\n", load);
+		f = fopen(load, "rb");
+		fseek(f, 0, SEEK_END);
+		long int fileSize = ftell(f);
+		fseek(f, 0, SEEK_SET);
+		printf("fsize(bytes): %d\n", fileSize);
+		int tmpnumParticles;
+		fread(&tmpnumParticles, sizeof(int), 1, f);
+		printf("numParticles: %d\n", tmpnumParticles);
+		if (numParticles != tmpnumParticles)
+		{
+			printf("Wczytane nieodpowiadajace sobie liczbą cząstek pliki konfiguracyjny i z zapisanymi danymi!");
+			//numParticles = numParticles > tmpnumParticles ? numParticles : tmpnumParticles;
+		}
+		int numFrames = (fileSize - sizeof(int)) / (numParticles * 4 * sizeof(float) + sizeof(double));
+		printf("numFrames: %d\n", numFrames);
+		frame = new float[numParticles * 4];
+	}
+
     if (!g_refFile)
     {
         initMenus();
@@ -1352,6 +1427,16 @@ main(int argc, char **argv)
     {
         delete psystem;
     }
+
+	if (f)
+	{
+		fclose(f);
+	}
+
+	if (frame)
+	{
+		delete[] frame;
+	}
 
     cudaDeviceReset();
     exit(g_TotalErrors > 0 ? EXIT_FAILURE : EXIT_SUCCESS);
