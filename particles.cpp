@@ -280,6 +280,8 @@ char* save=NULL;
 char* load = NULL;//nazwa pliku do odczytu
 float* frame = NULL;//wskaznik do miejsca z wczytanymi z pliku pozycjami w danym kroku
 FILE* f = NULL;//wkaznik do otwartego wczytanego pliku
+float frame_nuber = 0;
+int numFrames = 0;
 
 const char *sSDKsample = "CUDA Particles Simulation";
 
@@ -566,14 +568,16 @@ void display()
 		//psystem->setBigRadius(bigRadius);
 		if (load && itsTimeToDraw)
 		{
+			if (frame_nuber + 1 != licznik)
+			{
+				licznik = frame_nuber;
+				fseek(f, sizeof(int) + ( sizeof(double) + sizeof(float) * psystem->getNumParticles() * 4 ) * frame_nuber, SEEK_SET);
+			}
 			double old_time = read_time;
 			fread(&read_time, sizeof(double), 1, f);
 			timestep = abs(old_time - read_time);
 			time_past = read_time;
-			//system("pause");
-			//psystem->update(timestep);
-			//system("pause");
-			//unsigned int tmpPt = psystem->getCurrentReadBuffer();
+			frame_nuber = licznik;
 			int co=fread(frame, sizeof(float), psystem->getNumParticles() * 4, f);
 			//printf("co: %d\n", co);
 			psystem->setArray(ParticleSystem::POSITION, frame, 0, psystem->getNumParticles());
@@ -1143,6 +1147,10 @@ void initParams()
         //params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));
         //params->AddParam(new Param<float>("collide shear"  , collideShear  , 0.0f, 0.1f, 0.001f, &collideShear));
         params->AddParam(new Param<float>("Coulomb repulsion", collideAttraction, 0.0f, 0.01f, 0.00001f, &collideAttraction));
+		if (load)
+		{
+			params->AddParam(new Param<float>("frame", frame_nuber, 0.0f, (float)numFrames, 1.0f, &frame_nuber));
+		}
     }
 }
 
@@ -1362,7 +1370,6 @@ main(int argc, char **argv)
 	std::clog<<"initParticleSystem\n";
 	system("pause");
 #endif // _DEBUG
-    initParams();
 
 #ifdef _DEBUG
 	system("pause");
@@ -1385,10 +1392,12 @@ main(int argc, char **argv)
 			printf("Wczytane nieodpowiadajace sobie liczbą cząstek pliki konfiguracyjny i z zapisanymi danymi!");
 			//numParticles = numParticles > tmpnumParticles ? numParticles : tmpnumParticles;
 		}
-		int numFrames = (fileSize - sizeof(int)) / (numParticles * 4 * sizeof(float) + sizeof(double));
+		numFrames = (fileSize - sizeof(int)) / (numParticles * 4 * sizeof(float) + sizeof(double));
 		printf("numFrames: %d\n", numFrames);
 		frame = new float[numParticles * 4];
 	}
+
+	initParams();
 
     if (!g_refFile)
     {
