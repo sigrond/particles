@@ -115,3 +115,5 @@ particles_vs2008.sln.old
 *.tlog
 *.exp
 *.db
+*.opendb
+*.filters

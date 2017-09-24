@@ -433,7 +433,7 @@ void runBenchmark(int iterations, char *exec_path)
 
 	float *hPos=NULL;
 	FILE* f=NULL;
-	if(save)
+	if(save && f==NULL)
 	{
 		f=fopen(save,"wb");
 		//fprintf(f,"%d",psystem->getNumParticles());//iloœæ cz¹stek
@@ -532,6 +532,7 @@ void computeFPS()
 }
 
 double read_time = 0;
+float *hPos = NULL;//wskaznik do miejsca na pobieranie danych z karty
 
 /** \brief funkcja odpowiadająca za symulację z włączonym GUI
  * \return void
@@ -540,6 +541,18 @@ void display()
 {
 	//system("pause");
     sdkStartTimer(&timer);
+
+	//otwarcie pliku do zapisu
+	if (save && f == NULL)
+	{
+		f = fopen(save, "wb");
+		//fprintf(f,"%d",psystem->getNumParticles());//iloœæ cz¹stek
+		fwrite((void*)&numParticles, sizeof(int), 1, f);
+
+		//za pierwszym razem rezerwacja miejsca na pobrane pozycje
+		//checkCudaErrors(cudaMallocHost(&hPos, sizeof(float) * 4 * numParticles));
+		printf("progress: ....");
+	}
 
     // update the simulation
     if (!bPause)
@@ -571,7 +584,7 @@ void display()
 			if (frame_nuber + 1 != licznik)
 			{
 				licznik = frame_nuber;
-				fseek(f, sizeof(int) + ( sizeof(double) + sizeof(float) * psystem->getNumParticles() * 4 ) * frame_nuber, SEEK_SET);
+				fseek(f, (unsigned long long int)(sizeof(int) + ( sizeof(double) + sizeof(float) * psystem->getNumParticles() * 4 ) * frame_nuber), SEEK_SET);
 			}
 			double old_time = read_time;
 			fread(&read_time, sizeof(double), 1, f);
@@ -600,6 +613,30 @@ void display()
 		else if(!load)
 		{
 			psystem->update(timestep);/**< tu zachodzą właściwe obliczenia CUDA */
+		}
+
+		//zapis klatki do pliku
+		if (save && f && licznik%divider == 0)
+		{
+			//checkCudaErrors(cudaMemcpy((void*)hPos, psystem->getCudaPosVBO(), sizeof(float) * 4 * numParticles, cudaMemcpyDeviceToHost));
+			hPos = psystem->getArray(ParticleSystem::POSITION);
+			fwrite((void*)&time_past, sizeof(long double), 1, f);
+			fwrite((void*)hPos, sizeof(float), 4 * numParticles, f);
+			printf("\b\b\b\b%3d%%", (int)((((float)licznik) / ((float)numIterations))*100.0f));
+		}
+
+		//koniec zapisu do pliku
+		if (save && licznik >= numIterations)
+		{
+			fprintf(f, "%Lf", time_past);//czas klatki
+			//checkCudaErrors(cudaFreeHost(hPos));
+			hPos = NULL;
+			save = NULL;
+			fclose(f);
+			f = NULL;
+			//bPause = true;
+			//printf("Simulation is paused...\n");
+			printf("Simulation with save to file has ended at iteration: %llu !\n", licznik);
 		}
 
 		if (renderer && itsTimeToDraw)
@@ -991,6 +1028,10 @@ void key(unsigned char key, int /*x*/, int /*y*/)
 
         case ' ':
             bPause = !bPause;
+			if (!bPause)
+				printf("Simulation is playing...\n");
+			else
+				printf("Simulation is paused...\n");
             break;
 
         case 13:
@@ -1117,7 +1158,7 @@ void idle(void)
 
 void initParams()
 {
-    if (g_refFile || save)
+    if (g_refFile/* || save*/)
     {
         //timestep = 0.0f;
         //damping = 0.0f;
@@ -1239,10 +1280,10 @@ main(int argc, char **argv)
             getCmdLineArgumentString(argc, (const char **)argv, "save", &save);
 			fpsLimit = frameCheckNumber;
             numIterations = 1;
-			if(!g_refFile)
+			/*if(!g_refFile)
 			{
 				g_refFile=save;
-			}
+			}*/
         }
 
 		if (checkCmdLineFlag(argc, (const char **)argv, "load"))
@@ -1337,7 +1378,7 @@ main(int argc, char **argv)
 	{
 		divider = getCmdLineArgumentInt(argc, (const char **)argv, "divider");
 	}
-    if (g_refFile || save)
+    if (g_refFile)
     {
         cudaInit(argc, argv);
     }
@@ -1404,7 +1445,7 @@ main(int argc, char **argv)
         initMenus();
     }
 
-    if (benchmark || g_refFile || save)
+    if (benchmark || g_refFile)
     {
         if (numIterations <= 0)
         {
