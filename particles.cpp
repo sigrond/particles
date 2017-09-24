@@ -282,6 +282,7 @@ float* frame = NULL;//wskaznik do miejsca z wczytanymi z pliku pozycjami w danym
 FILE* f = NULL;//wkaznik do otwartego wczytanego pliku
 float frame_nuber = 0;
 int numFrames = 0;
+bool saveStop = false;
 
 const char *sSDKsample = "CUDA Particles Simulation";
 
@@ -626,17 +627,23 @@ void display()
 		}
 
 		//koniec zapisu do pliku
-		if (save && licznik >= numIterations)
+		if (save && (licznik >= numIterations || saveStop))
 		{
 			fprintf(f, "%Lf", time_past);//czas klatki
 			//checkCudaErrors(cudaFreeHost(hPos));
 			hPos = NULL;
-			save = NULL;
+			
 			fclose(f);
 			f = NULL;
 			//bPause = true;
 			//printf("Simulation is paused...\n");
 			printf("Simulation with save to file has ended at iteration: %llu !\n", licznik);
+
+			f = fopen(std::string(save).append(".state").c_str(), "wb");
+			save = NULL;
+			fwrite((void*)&numParticles, sizeof(int), 1, f);
+			fclose(f);
+			f = NULL;
 		}
 
 		if (renderer && itsTimeToDraw)
@@ -1115,6 +1122,9 @@ void key(unsigned char key, int /*x*/, int /*y*/)
         case 'h':
             displaySliders = !displaySliders;
             break;
+		case 's':
+			saveStop = true;
+			break;
     }
 
     demoMode = false;
@@ -1215,6 +1225,7 @@ void initMenus()
 	glutAddMenuEntry("Reset time [0]", '0');
 	glutAddMenuEntry("Boundaries on/off [b]", 'b');
     glutAddMenuEntry("Quit (esc)", '\033');
+	glutAddMenuEntry("Stop saveing[s]", 's');
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
