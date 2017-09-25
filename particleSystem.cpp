@@ -450,15 +450,17 @@ ParticleSystem::getArray(ParticleArray array)
             hdata = m_hPos;
             ddata = m_dPos;
             cuda_vbo_resource = m_cuda_posvbo_resource;
+			copyArrayFromDevice(hdata, ddata, &cuda_vbo_resource, m_numParticles * 4 * sizeof(float));
             break;
 
         case VELOCITY:
             hdata = m_hVel;
             ddata = m_dVel;
+			checkCudaErrors(cudaMemcpy(hdata, ddata, m_numParticles * 4 * sizeof(float), cudaMemcpyDeviceToHost));
             break;
     }
 
-    copyArrayFromDevice(hdata, ddata, &cuda_vbo_resource, m_numParticles*4*sizeof(float));
+    
     return hdata;
 }
 

@@ -534,6 +534,7 @@ void computeFPS()
 
 double read_time = 0;
 float *hPos = NULL;//wskaznik do miejsca na pobieranie danych z karty
+float *hVel = NULL;
 
 /** \brief funkcja odpowiadająca za symulację z włączonym GUI
  * \return void
@@ -641,8 +642,15 @@ void display()
 
 			f = fopen(std::string(save).append(".state").c_str(), "wb");
 			save = NULL;
-			fwrite((void*)&numParticles, sizeof(int), 1, f);
+			fwrite((void*)&numParticles, sizeof(int), 1, f);//liczba cząstek
+			fwrite((void*)&bigRadius, sizeof(float), 1, f);//promień kropli
+			fwrite((void*)&time_past, sizeof(long double), 1, f);//zatrzymany czas
+			hPos = psystem->getArray(ParticleSystem::POSITION);
+			fwrite((void*)hPos, sizeof(float), 4 * numParticles, f);//pozycje cząstek
+			hVel = psystem->getArray(ParticleSystem::VELOCITY);
+			fwrite((void*)hVel, sizeof(float), 4 * numParticles, f);//prędkości cząstek
 			fclose(f);
+			//psystem->dumpParticles(0, 64);
 			f = NULL;
 		}
 

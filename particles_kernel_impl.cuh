@@ -385,7 +385,7 @@ float3 collideSpheres(float3 posA, float3 posB,
     float3 relPos = posB - posA;
 
     float dist = length(relPos);
-    float collideDist = (radiusA + radiusB)*1.5f;//zasieg dzialania sil
+    float collideDist = (radiusA + radiusB)*4.0f;//zasieg dzialania sil
 
     float3 force = make_float3(0.0f);
 
