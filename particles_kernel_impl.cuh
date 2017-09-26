@@ -42,9 +42,9 @@ texture<uint, 1, cudaReadModeElementType> cellEndTex;
 // simulation parameters in constant memory
 __constant__ SimParams params;/**< simulation parameters in constant memory */
 
-__device__ float surfacePreasure;/**< wyliczane ciśnienie cząstek na powierzchni */
+__device__ double surfacePreasure;/**< wyliczane ciśnienie cząstek na powierzchni */
 
-__device__ float globalDeltaTime;/**< ustalany krok czasu dla symulacji */
+__device__ double globalDeltaTime;/**< ustalany krok czasu dla symulacji */
 
 __constant__ float4* forcePtr;/**< wskaźnik na tablicę sił */
 
@@ -55,7 +55,7 @@ __constant__ float4* forcePtr;/**< wskaźnik na tablicę sił */
  * \return __device__  float
  *
  */
-__device__ static float atomicMin(float* address, float val)
+__device__ static double atomicMin(double* address, double val)
 {
     int* address_as_i = (int*) address;
     int old = *address_as_i, assumed;
@@ -67,6 +67,8 @@ __device__ static float atomicMin(float* address, float val)
     return __int_as_float(old);
 }
 
+
+
 /** \struct integrate_functor
  * \brief ta struktura inicjowana jest z krokiem delta_time dla danych
  * opisujących prędkość i położenie cząstki, te dane siedzą w wektorze thrust (w GPU)
@@ -75,10 +77,10 @@ __device__ static float atomicMin(float* address, float val)
  */
 struct integrate_functor
 {
-    float deltaTime;
+	double deltaTime;
 
     __host__ __device__
-    integrate_functor(float delta_time) : deltaTime(delta_time) {}
+    integrate_functor(double delta_time) : deltaTime(delta_time) {}
 
     /** \brief nowe położenie
      * \param t para położenia i prędkości
@@ -148,20 +150,20 @@ struct integrate_functor
 		//odbijanie sie od kuli
 		/**< odbijanie sie od kuli vel napiecie powierzchniowe */
 #if 1
-		float xk=pos.x*pos.x;
-		float yk=pos.y*pos.y;
-		float zk=pos.z*pos.z;
-		float r0k=xk+yk+zk;
-		float R=params.bigradius;//- params.particleRadius;
-		float r0=sqrt(r0k);
-		float forceF1=0.0f;
+		double xk=pos.x*pos.x;
+		double yk=pos.y*pos.y;
+		double zk=pos.z*pos.z;
+		double r0k=xk+yk+zk;
+		double R=params.bigradius;//- params.particleRadius;
+		double r0=sqrt(r0k);
+		double forceF1=0.0f;
 
         float3 relPos = pos;
-        float dist = length(relPos);
+		double dist = length(relPos);
         float3 norm = relPos / dist;
 
         float3 relVel=-norm*params.surfaceVel-vel*norm;
-        float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
+		double relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
         /*float DtMax=0.1f*params.particleRadius[(int)velData.w]/relVelS;
         if(DtMax<0.00001f)
         {
@@ -186,7 +188,7 @@ struct integrate_functor
 		__syncthreads();
         if(params.calcSurfacePreasure && params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
         {
-            float momentum=forceF1*globalDeltaTime;/**< pęd */
+			double momentum=forceF1*globalDeltaTime;/**< pęd */
             momentum=abs(momentum);
             atomicAdd(&surfacePreasure,momentum);
         }
@@ -378,14 +380,14 @@ void reorderDataAndFindCellStartD(uint   *cellStart,        // output: cell star
 __device__
 float3 collideSpheres(float3 posA, float3 posB,
                       float4 velA, float4 velB,
-                      float radiusA, float radiusB,
-                      float attraction)
+                      double radiusA, double radiusB,
+	double attraction)
 {
     // calculate relative position
     float3 relPos = posB - posA;
 
-    float dist = length(relPos);
-    float collideDist = (radiusA + radiusB)*4.0f;//zasieg dzialania sil
+	double dist = length(relPos);
+	double collideDist = (radiusA + radiusB)*4.0f;//zasieg dzialania sil
 
     float3 force = make_float3(0.0f);
 
@@ -393,22 +395,22 @@ float3 collideSpheres(float3 posA, float3 posB,
     {
         float3 norm = relPos / dist;
 
-		float sigma=(params.particleRadius[(int)velA.w]+params.particleRadius[(int)velB.w])/(1.12246204f);
-		float sd=sigma/dist;
+		double sigma=(params.particleRadius[(int)velA.w]+params.particleRadius[(int)velB.w])/(1.12246204f);
+		double sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
-		float q1q2=params.normalizedCharge[(int)velA.w]*params.normalizedCharge[(int)velB.w];
-		float a=!(velB.w<velA.w)?velA.w:velB.w;/**< min(x,y) */
-		float b= (velA.w<velB.w)?velB.w:velA.w - a;/**< max(x,y)-min(x,y) */
+		double q1q2=params.normalizedCharge[(int)velA.w]*params.normalizedCharge[(int)velB.w];
+		double a=!(velB.w<velA.w)?velA.w:velB.w;/**< min(x,y) */
+		double b= (velA.w<velB.w)?velB.w:velA.w - a;/**< max(x,y)-min(x,y) */
 		int epsilonIndex=(int)floor(a*(params.particleTypesNum-((a-1.0f)/2.0f))+b+0.5f);/**< wzór na index z zabezpieczeniem przeciwko niedokładności działań na float'ach */
-		float epsilon=params.epsi*params.normalizeEpsilon[epsilonIndex];
-		float foreScalar=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
+		double epsilon=params.epsi*params.normalizeEpsilon[epsilonIndex];
+		double foreScalar=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
 		force=-foreScalar*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
 /////////////////////////////////////////////////////////////////////////////////
 		float3 relVel=make_float3(velB)*norm-make_float3(velA)*norm;
-		float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
-		float DtMax=0.1f*dist/relVelS;
+		double relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
+		double DtMax=0.1f*dist/relVelS;
         if(DtMax<0.00001f)
         {
             DtMax=0.00001f;
@@ -497,7 +499,7 @@ void collideD(float4 *newVel,               // output: new velocity
               uint   *cellStart,
               uint   *cellEnd,
               uint    numParticles,
-			  float deltaTime)
+			  double deltaTime)
 {
     uint index = __mul24(blockIdx.x,blockDim.x) + threadIdx.x;
 

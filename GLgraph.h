@@ -11,8 +11,8 @@ class GLgraph
 public:
     GLgraph():dataVectorPtr(NULL){};
     ~GLgraph(){};
-    void setDataVector(std::vector<float>* srcV);
-    void render(float,float);
+    void setDataVector(std::vector<double>* srcV);
+    void render(double, double);
 private:
-    std::vector<float>* dataVectorPtr;
+    std::vector<double>* dataVectorPtr;
 };

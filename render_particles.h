@@ -26,7 +26,7 @@ class ParticleRenderer
         ParticleRenderer();
         ~ParticleRenderer();
 
-        void setPositions(float *pos, int numParticles);
+        void setPositions(double *pos, int numParticles);
         void setVertexBuffer(unsigned int vbo, int numParticles, float zoom);
         void setColorBuffer(unsigned int vbo)
         {
@@ -47,7 +47,7 @@ class ParticleRenderer
         {
             m_pointSize = size;
         }
-        void setParticleRadius(float r)
+        void setParticleRadius(double r)
         {
             m_particleRadius = r;
         }
@@ -68,11 +68,11 @@ class ParticleRenderer
         GLuint _compileProgram(const char *vsource, const char *fsource);
 
     protected: // data
-        float *m_pos;
+		double *m_pos;
         int m_numParticles;
 
         float m_pointSize;
-        float m_particleRadius;
+		double m_particleRadius;
         float m_fov;
         int m_window_w, m_window_h;
 		float zoom;

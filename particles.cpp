@@ -168,51 +168,51 @@ int numIterations = 0; // run until exit
 /** \var timestep
  * \brief krok czasu
  */
-float timestep = 0.0f;//0.5f;
+double timestep = 0.0f;//0.5f;
 /** \var damping
  * \brief lepkość
  */
-float damping = 0.99f;//0.08f;//global damping
-float gravity = 0.0f;//0.0003f;
+double damping = 0.99f;//0.08f;//global damping
+double gravity = 0.0f;//0.0003f;
 int iterations = 1;
 int ballr = 10;
 
 /** \var boundaryDamping
  * \brief współczynnik oddziaływania z brzegami
  */
-float boundaryDamping= 1.0f;
+double boundaryDamping= 1.0f;
 /** \var particleMass
  * \brief masa cząstki
  */
-float particleMass=0.001f;
+double particleMass=0.001f;
 bool boundaries=true;
 /** \var epsi
  * \brief epsilon do siły lenarda jonesa
  */
-float epsi=0.01f;
+double epsi=0.01f;
 /** \var brown
  * \brief nasilenie ruchów browna
  */
-float brown=0.0f;
+double brown=0.0f;
 unsigned long long int brownQuality=10;
 
 int particleTypesNum=1;
 
-float collideSpring = 0.5f;;
-float collideDamping = 0.02f;;
-float collideShear = 0.1f;
-float collideAttraction = 0.05f;
+double collideSpring = 0.5f;;
+double collideDamping = 0.02f;;
+double collideShear = 0.1f;
+double collideAttraction = 0.05f;
 
 /** \var bigRadius
  * \brief promien duzej kuli w mikrometrach
  */
-float bigRadius=10.0f;//promien duzej kuli
-float bigRadius0=bigRadius;//poczatkowy promien duzej kuli
+double bigRadius=10.0f;//promien duzej kuli
+double bigRadius0=bigRadius;//poczatkowy promien duzej kuli
 /** \var kurczenie
  * A r=r0-A*sqrt(t)
  * \brief parametr równania na parowanie kropli
  */
-float kurczenie=0.1f;//A r=r0-A*sqrt(t)
+double kurczenie=0.1f;//A r=r0-A*sqrt(t)
 #define A kurczenie
 /** \var licznik
  * \brief ilość kroków od początku symulacji
@@ -243,7 +243,7 @@ long double timeFromLastDisplayedFrameIn_ms=0.0f;
 /** \brief Wartość ciśnienia wywieranego prze zcżastki na
  * powiercznię kropli. Znajduje się w pamięci po stronie host'a (CPU)
  */
-float hostSurfacePreasure=0.0f;
+double hostSurfacePreasure=0.0f;
 
 /** \brief rysowacz wykresu
  */
@@ -251,7 +251,7 @@ GLgraph* preasureGraph=NULL;
 
 /** \brief tablica ciśnienia
  */
-std::vector<float> preasureVector;
+std::vector<double> preasureVector;
 
 bool autoDeltaTime=true;/**< zmienny czy stały krok czasu */
 
@@ -278,9 +278,9 @@ char        *g_refFile = NULL;
 
 char* save=NULL;
 char* load = NULL;//nazwa pliku do odczytu
-float* frame = NULL;//wskaznik do miejsca z wczytanymi z pliku pozycjami w danym kroku
+double* frame = NULL;//wskaznik do miejsca z wczytanymi z pliku pozycjami w danym kroku
 FILE* f = NULL;//wkaznik do otwartego wczytanego pliku
-float frame_nuber = 0;
+double frame_nuber = 0;
 int numFrames = 0;
 bool saveStop = false;
 char* loadState = NULL;//nazwa pliku z zapisanym stanem
@@ -365,7 +365,7 @@ void initGL(int *argc, char **argv)
 long double tSF=0.0f;
 long double SF=boundaryDamping;
 bool koncowka_parowania=false;
-float time_to_end=0.0f;
+double time_to_end=0.0f;
 /** \brief sterowanie parowaniem kropli
  * \return void
  */
@@ -433,7 +433,7 @@ void runBenchmark(int iterations, char *exec_path)
 	psystem->setEpsi(epsi);
 	psystem->setBrown(brown);
 
-	float *hPos=NULL;
+	double *hPos=NULL;
 	FILE* f=NULL;
 	if(save && f==NULL)
 	{
@@ -448,7 +448,7 @@ void runBenchmark(int iterations, char *exec_path)
 	psystem->dumpParticles(0, 20);
 #endif // MYDEBUG
 
-	checkCudaErrors(cudaMallocHost(&hPos,sizeof(float)*4*numParticles));
+	checkCudaErrors(cudaMallocHost(&hPos,sizeof(double)*4*numParticles));
 	printf("progress: ....");
     for (int i = 0; i < iterations; ++i)
     {
@@ -457,10 +457,10 @@ void runBenchmark(int iterations, char *exec_path)
 		if(save && f && i%divider==0)
 		{
 
-			checkCudaErrors(cudaMemcpy((void*)hPos,psystem->getCudaPosVBO(),sizeof(float)*4*numParticles,cudaMemcpyDeviceToHost));
+			checkCudaErrors(cudaMemcpy((void*)hPos,psystem->getCudaPosVBO(),sizeof(double)*4*numParticles,cudaMemcpyDeviceToHost));
 			fwrite((void*)&time_past,sizeof(long double),1,f);
-			fwrite((void*)hPos,sizeof(float),4*numParticles,f);
-			printf("\b\b\b\b%3d%%", (int)((((float)i)/((float)iterations))*100.0f));
+			fwrite((void*)hPos,sizeof(double),4*numParticles,f);
+			printf("\b\b\b\b%3d%%", (int)((((double)i)/((double)iterations))*100.0f));
 		}
     }
 	//cudaDeviceSynchronize();
@@ -489,7 +489,7 @@ void runBenchmark(int iterations, char *exec_path)
 
     cudaDeviceSynchronize();
     sdkStopTimer(&timer);
-    float fAvgSeconds = ((float)1.0e-3 * (float)sdkGetTimerValue(&timer)/(float)iterations);
+	double fAvgSeconds = ((double)1.0e-3 * (double)sdkGetTimerValue(&timer)/(double)iterations);
 
     printf("particles, Throughput = %.4f KParticles/s, Time = %.5f s, Size = %u particles, NumDevsUsed = %u, Workgroup = %u\n",
            (1.0e-3 * numParticles)/fAvgSeconds, fAvgSeconds, numParticles, 1, 0);
@@ -522,7 +522,7 @@ void computeFPS()
     if (fpsCount == fpsLimit)
     {
         char fps[256];
-        float ifps = 1.f / (sdkGetAverageTimerValue(&timer) / 1000.f);
+		double ifps = 1.f / (sdkGetAverageTimerValue(&timer) / 1000.f);
         sprintf(fps, "CUDA Particles (%d particles): %3.1f fps, p:%f, R:%f, i:%llu, T:%Lf", numParticles, ifps, hostSurfacePreasure, bigRadius, licznik, time_past);
 
         glutSetWindowTitle(fps);
@@ -534,8 +534,8 @@ void computeFPS()
 }
 
 double read_time = 0;
-float *hPos = NULL;//wskaznik do miejsca na pobieranie danych z karty
-float *hVel = NULL;
+double *hPos = NULL;//wskaznik do miejsca na pobieranie danych z karty
+double *hVel = NULL;
 
 /** \brief funkcja odpowiadająca za symulację z włączonym GUI
  * \return void
@@ -593,8 +593,8 @@ void display()
 			fread(&read_time, sizeof(double), 1, f);
 			timestep = abs(old_time - read_time);
 			time_past = read_time;
-			frame_nuber = (float)licznik;
-			int co=fread(frame, sizeof(float), psystem->getNumParticles() * 4, f);
+			frame_nuber = (double)licznik;
+			int co=fread(frame, sizeof(double), psystem->getNumParticles() * 4, f);
 			//printf("co: %d\n", co);
 			psystem->setArray(ParticleSystem::POSITION, frame, 0, psystem->getNumParticles());
 			//system("pause");
@@ -624,8 +624,8 @@ void display()
 			//checkCudaErrors(cudaMemcpy((void*)hPos, psystem->getCudaPosVBO(), sizeof(float) * 4 * numParticles, cudaMemcpyDeviceToHost));
 			hPos = psystem->getArray(ParticleSystem::POSITION);
 			fwrite((void*)&time_past, sizeof(long double), 1, f);
-			fwrite((void*)hPos, sizeof(float), 4 * numParticles, f);
-			printf("\b\b\b\b%3d%%", (int)((((float)licznik) / ((float)numIterations))*100.0f));
+			fwrite((void*)hPos, sizeof(double), 4 * numParticles, f);
+			printf("\b\b\b\b%3d%%", (int)((((double)licznik) / ((double)numIterations))*100.0f));
 		}
 
 		//koniec zapisu do pliku
@@ -644,12 +644,12 @@ void display()
 			f = fopen(std::string(save).append(".state").c_str(), "wb");
 			save = NULL;
 			fwrite((void*)&numParticles, sizeof(int), 1, f);//liczba cząstek 4 bajty
-			fwrite((void*)&bigRadius, sizeof(float), 1, f);//promień kropli 4 bajty
+			fwrite((void*)&bigRadius, sizeof(double), 1, f);//promień kropli 8 bajty
 			fwrite((void*)&time_past, sizeof(long double), 1, f);//zatrzymany czas 8 bajtów
 			hPos = psystem->getArray(ParticleSystem::POSITION);
-			fwrite((void*)hPos, sizeof(float), 4 * numParticles, f);//pozycje cząstek
+			fwrite((void*)hPos, sizeof(double), 4 * numParticles, f);//pozycje cząstek
 			hVel = psystem->getArray(ParticleSystem::VELOCITY);
-			fwrite((void*)hVel, sizeof(float), 4 * numParticles, f);//prędkości cząstek
+			fwrite((void*)hVel, sizeof(double), 4 * numParticles, f);//prędkości cząstek
 			fclose(f);
 			//psystem->dumpParticles(0, 64);
 			f = NULL;
@@ -789,9 +789,9 @@ void display()
 	//system("pause");
 }
 
-inline float frand()
+inline double frand()
 {
-    return rand() / (float) RAND_MAX;
+    return rand() / (double) RAND_MAX;
 }
 
 /** \brief wstawianie kuli cząstek na życzenie
@@ -800,9 +800,9 @@ inline float frand()
 void addSphere()
 {
     // inject a sphere of particles
-    float pr = psystem->getParticleRadius();
-    float tr = pr+(pr*2.0f)*ballr;
-    float pos[4], vel[4];
+	double pr = psystem->getParticleRadius();
+	double tr = pr+(pr*2.0f)*ballr;
+	double pos[4], vel[4];
     pos[0] = -1.0f + tr + frand()*(2.0f - tr*2.0f);
     pos[1] = 1.0f - tr;
     pos[2] = -1.0f + tr + frand()*(2.0f - tr*2.0f);
@@ -914,16 +914,16 @@ void xform(float *v, float *r, GLfloat *m)
  * \param m GLfloat*
  * \return void
  */
-void ixform(float *v, float *r, GLfloat *m)
+void ixform(double *v, double *r, GLfloat *m)
 {
     r[0] = v[0]*m[0] + v[1]*m[1] + v[2]*m[2];
     r[1] = v[0]*m[4] + v[1]*m[5] + v[2]*m[6];
     r[2] = v[0]*m[8] + v[1]*m[9] + v[2]*m[10];
 }
 
-void ixformPoint(float *v, float *r, GLfloat *m)
+void ixformPoint(double *v, double *r, GLfloat *m)
 {
-    float x[4];
+	double x[4];
     x[0] = v[0] - m[12];
     x[1] = v[1] - m[13];
     x[2] = v[2] - m[14];
@@ -978,7 +978,7 @@ void motion(int x, int y)
 
                 if (buttonState==1)
                 {
-                    float v[3], r[3];
+					double v[3], r[3];
                     v[0] = dx*translateSpeed;
                     v[1] = -dy*translateSpeed;
                     v[2] = 0.0f;
@@ -989,7 +989,7 @@ void motion(int x, int y)
                 }
                 else if (buttonState==2)
                 {
-                    float v[3], r[3];
+					double v[3], r[3];
                     v[0] = 0.0f;
                     v[1] = 0.0f;
                     v[2] = dy*translateSpeed;
@@ -1105,8 +1105,8 @@ void key(unsigned char key, int /*x*/, int /*y*/)
         case '4':
             {
                 // shoot ball from camera
-                float pr = psystem->getParticleRadius();
-                float vel[4], velw[4], pos[4], posw[4];
+                double pr = psystem->getParticleRadius();
+				double vel[4], velw[4], pos[4], posw[4];
                 vel[0] = 0.0f;
                 vel[1] = 0.0f;
                 vel[2] = -0.05f;
@@ -1194,22 +1194,22 @@ void initParams()
 
         // create a new parameter list
         params = new ParamListGL("misc");
-        params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.002f, 0.00001f, &timestep));
-        params->AddParam(new Param<float>("liquid viscosity"  , damping , 0.0f, 1.0f, 0.00001f, &damping));
-        params->AddParam(new Param<float>("effective gravity"  , gravity , 0.0f, 1.0f, 0.00001f, &gravity));
+        params->AddParam(new Param<double>("time step", timestep, 0.0f, 0.002f, 0.00001f, &timestep));
+        params->AddParam(new Param<double>("liquid viscosity"  , damping , 0.0f, 1.0f, 0.00001f, &damping));
+        params->AddParam(new Param<double>("effective gravity"  , gravity , 0.0f, 1.0f, 0.00001f, &gravity));
         //params->AddParam(new Param<float> ("A", A , 0.0f, 1.0f, 0.0001, &A));
-		params->AddParam(new Param<float>("surface tension"  , boundaryDamping , 0.0f, 2.0f, 0.00001f, &boundaryDamping));
+		params->AddParam(new Param<double>("surface tension"  , boundaryDamping , 0.0f, 2.0f, 0.00001f, &boundaryDamping));
 		//params->AddParam(new Param<float>("particle mass"  , particleMass , 0.001f, 2.0f, 0.00001f, &particleMass));
-		params->AddParam(new Param<float>("epsilon"  , epsi , 0.0f, 1.0f, 0.00001f, &epsi));
-		params->AddParam(new Param<float>("brown"  , brown , 0.0f, 0.5f, 0.00001f, &brown));
+		params->AddParam(new Param<double>("epsilon"  , epsi , 0.0f, 1.0f, 0.00001f, &epsi));
+		params->AddParam(new Param<double>("brown"  , brown , 0.0f, 0.5f, 0.00001f, &brown));
 
         //params->AddParam(new Param<float>("collide spring" , collideSpring , 0.0f, 1.0f, 0.001f, &collideSpring));
         //params->AddParam(new Param<float>("collide damping", collideDamping, 0.0f, 0.1f, 0.001f, &collideDamping));
         //params->AddParam(new Param<float>("collide shear"  , collideShear  , 0.0f, 0.1f, 0.001f, &collideShear));
-        params->AddParam(new Param<float>("Coulomb repulsion", collideAttraction, 0.0f, 0.01f, 0.00001f, &collideAttraction));
+        params->AddParam(new Param<double>("Coulomb repulsion", collideAttraction, 0.0f, 0.01f, 0.00001f, &collideAttraction));
 		if (load)
 		{
-			params->AddParam(new Param<float>("frame", frame_nuber, 0.0f, (float)numFrames, 1.0f, &frame_nuber));
+			params->AddParam(new Param<double>("frame", frame_nuber, 0.0f, (double)numFrames, 1.0f, &frame_nuber));
 		}
     }
 }
@@ -1459,9 +1459,9 @@ main(int argc, char **argv)
 			printf("Wczytane nieodpowiadajace sobie liczbą cząstek pliki konfiguracyjny i z zapisanymi danymi!");
 			//numParticles = numParticles > tmpnumParticles ? numParticles : tmpnumParticles;
 		}
-		numFrames = (fileSize - sizeof(int)) / (numParticles * 4 * sizeof(float) + sizeof(double));
+		numFrames = (fileSize - sizeof(int)) / (numParticles * 4 * sizeof(double) + sizeof(double));
 		printf("numFrames: %d\n", numFrames);
-		frame = new float[numParticles * 4];
+		frame = new double[numParticles * 4];
 	}
 
 	if (loadState)
@@ -1480,11 +1480,11 @@ main(int argc, char **argv)
 		printf("bigRadius(%d): %f\n", (int)sizeof(bigRadius), bigRadius);
 		co = fread(&time_past, sizeof(time_past), 1, fLS);//czas 8 bajtów
 		printf("time_past(%d): %f\n", (int)sizeof(time_past), time_past);
-		float* tPos = new float[numParticles * 4];
-		float* tVel = new float[numParticles * 4];
-		co = fread(tPos, sizeof(float), psystem->getNumParticles() * 4, fLS);
+		double* tPos = new double[numParticles * 4];
+		double* tVel = new double[numParticles * 4];
+		co = fread(tPos, sizeof(double), psystem->getNumParticles() * 4, fLS);
 		//printf("state Position bytes read: %d\n", co * sizeof(float));
-		co = fread(tVel, sizeof(float), psystem->getNumParticles() * 4, fLS);
+		co = fread(tVel, sizeof(double), psystem->getNumParticles() * 4, fLS);
 		//printf("state Velocity bytes read: %d\n", co * sizeof(float));
 		//printf("head: %d\n", ftell(fLS));
 		//fseek(fLS, 0, SEEK_END);

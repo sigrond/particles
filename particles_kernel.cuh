@@ -41,15 +41,15 @@ struct SimParams
     float  colliderRadius;
 
     float3 gravity;
-    float globalDamping;
+    double globalDamping;
 
-    float particleRadius[MAX_TYPE_NUM];
+	double particleRadius[MAX_TYPE_NUM];
 
-	float particleMass[MAX_TYPE_NUM];
+	double particleMass[MAX_TYPE_NUM];
 
-	float normalizedCharge[MAX_TYPE_NUM];
+	double normalizedCharge[MAX_TYPE_NUM];
 
-	float normalizeEpsilon[MAX_EPSI_NUM];
+	double normalizeEpsilon[MAX_EPSI_NUM];
 
     uint3 gridSize;
     uint numCells;
@@ -59,25 +59,25 @@ struct SimParams
     uint numBodies;
     uint maxParticlesPerCell;
 
-    float spring;
-    float damping;
-    float shear;
-    float attraction;/**< mnożnik sił Coulombowskich */
-    float boundaryDamping;
+	double spring;
+	double damping;
+	double shear;
+	double attraction;/**< mnożnik sił Coulombowskich */
+	double boundaryDamping;
 
-	float bigradius;/**< promien duzej kuli w mikrometrach */
-	float bigradius0;
-	float epsi;/**< mnożnik epsilonów */
+	double bigradius;/**< promien duzej kuli w mikrometrach */
+	double bigradius0;
+	double epsi;/**< mnożnik epsilonów */
 	bool boundaries;
-	float brown;
+	double brown;
 
 	int particleTypesNum;
 	unsigned long long int brownQuality;
 
 	bool calcSurfacePreasure;
 
-	float surfaceVel;/**< r0/(t+dt)-A/sqrt(t+dt) */
-	float viscosity;/**< 0,89 mPa·s */
+	double surfaceVel;/**< r0/(t+dt)-A/sqrt(t+dt) */
+	double viscosity;/**< 0,89 mPa·s */
 
 	bool autoDt;
 };

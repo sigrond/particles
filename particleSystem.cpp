@@ -40,9 +40,9 @@
 
 extern bool multiColor;
 extern std::vector<particleType> typyCzastek;
-extern float hostSurfacePreasure;
+extern double hostSurfacePreasure;
 extern bool itsTimeToDraw;
-extern float timestep;
+extern double timestep;
 
 ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenGL) :
     m_bInitialized(false),
@@ -101,7 +101,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
     m_params.worldOrigin = make_float3(-1.0f, -1.0f, -1.0f);
     //    m_params.cellSize = make_float3(worldSize.x / m_gridSize.x, worldSize.y / m_gridSize.y, worldSize.z / m_gridSize.z);
 	/**< żeby zachować strukturę składającą się z identycznych sześcianów trzeba wybrać największy typ cząstek */
-	float maxRadius=0.0f;
+	double maxRadius=0.0f;
 	for(int i=0;i<m_params.particleTypesNum;i++)
 	{
 		if(maxRadius<=m_params.particleRadius[i])
@@ -109,7 +109,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 			maxRadius=m_params.particleRadius[i];
 		}
 	}
-	float cellSize = maxRadius * 3.0f;  // cell size equal to particle diameter
+	double cellSize = maxRadius * 3.0f;  // cell size equal to particle diameter
     m_params.cellSize = make_float3(cellSize, cellSize, cellSize);
 
     m_params.spring = 0.5f;
@@ -159,7 +159,7 @@ inline float lerp(float a, float b, float t)
 }
 
 // create a color ramp
-void colorRamp(float t, float *r)
+void colorRamp(float t, double *r)
 {
     const int ncolors = 7;
     float c[ncolors][3] =
@@ -188,11 +188,11 @@ ParticleSystem::_initialize(int numParticles)
     m_numParticles = numParticles;
 
     // allocate host storage
-    m_hPos = new float[m_numParticles*4];
-    m_hVel = new float[m_numParticles*4];
+    m_hPos = new double[m_numParticles*4];
+    m_hVel = new double[m_numParticles*4];
 
-    memset(m_hPos, 0, m_numParticles*4*sizeof(float));
-    memset(m_hVel, 0, m_numParticles*4*sizeof(float));
+    memset(m_hPos, 0, m_numParticles*4*sizeof(double));
+    memset(m_hVel, 0, m_numParticles*4*sizeof(double));
 
     m_hCellStart = new uint[m_numGridCells];
     memset(m_hCellStart, 0, m_numGridCells*sizeof(uint));
@@ -201,7 +201,7 @@ ParticleSystem::_initialize(int numParticles)
     memset(m_hCellEnd, 0, m_numGridCells*sizeof(uint));
 
     // allocate GPU data
-    unsigned int memSize = sizeof(float) * 4 * m_numParticles;
+    unsigned int memSize = sizeof(double) * 4 * m_numParticles;
 
     if (m_bUseOpenGL)
     {
@@ -230,17 +230,17 @@ ParticleSystem::_initialize(int numParticles)
 
     if (m_bUseOpenGL)
     {
-        m_colorVBO = createVBO(m_numParticles*4*sizeof(float));
+        m_colorVBO = createVBO(m_numParticles*4*sizeof(double));
         registerGLBufferObject(m_colorVBO, &m_cuda_colorvbo_resource);
 
         // fill color buffer
         glBindBufferARB(GL_ARRAY_BUFFER, m_colorVBO);
-        float *data = (float *) glMapBufferARB(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
-        float *ptr = data;
+		double *data = (double *) glMapBufferARB(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+		double *ptr = data;
 
         for (uint i=0; i<m_numParticles; i++)
         {
-            float t = i / (float) m_numParticles;
+			double t = i / (double) m_numParticles;
 			if(multiColor)
 			{
 #if 0
@@ -265,7 +265,7 @@ ParticleSystem::_initialize(int numParticles)
     }
     else
     {
-        checkCudaErrors(cudaMalloc((void **)&m_cudaColorVBO, sizeof(float)*numParticles*4));
+        checkCudaErrors(cudaMalloc((void **)&m_cudaColorVBO, sizeof(double)*numParticles*4));
     }
 
     sdkCreateTimer(&m_timer);
@@ -311,19 +311,19 @@ ParticleSystem::_finalize()
 
 // step the simulation
 void
-ParticleSystem::update(float deltaTime)
+ParticleSystem::update(double deltaTime)
 {
     assert(m_bInitialized);
 
-    float *dPos;
+	double *dPos;
 
     if (m_bUseOpenGL)
     {
-        dPos = (float *) mapGLBufferObject(&m_cuda_posvbo_resource);/**< ta funkcja wpływa na prawa dostępu do zasobów */
+        dPos = (double *) mapGLBufferObject(&m_cuda_posvbo_resource);/**< ta funkcja wpływa na prawa dostępu do zasobów */
     }
     else
     {
-        dPos = (float *) m_cudaPosVBO;
+        dPos = (double *) m_cudaPosVBO;
     }
 
 
@@ -423,8 +423,8 @@ void
 ParticleSystem::dumpParticles(uint start, uint count)
 {
     // debug
-    copyArrayFromDevice(m_hPos, m_cudaPosVBO, 0, sizeof(float)*4*count);
-    copyArrayFromDevice(m_hVel, m_dVel, 0, sizeof(float)*4*count);
+    copyArrayFromDevice(m_hPos, m_cudaPosVBO, 0, sizeof(double)*4*count);
+    copyArrayFromDevice(m_hVel, m_dVel, 0, sizeof(double)*4*count);
 
     for (uint i=start; i<start+count; i++)
     {
@@ -434,13 +434,13 @@ ParticleSystem::dumpParticles(uint start, uint count)
     }
 }
 
-float *
+double *
 ParticleSystem::getArray(ParticleArray array)
 {
     assert(m_bInitialized);
 
-    float *hdata = 0;
-    float *ddata = 0;
+	double *hdata = 0;
+	double *ddata = 0;
     struct cudaGraphicsResource *cuda_vbo_resource = 0;
 
     switch (array)
@@ -450,13 +450,13 @@ ParticleSystem::getArray(ParticleArray array)
             hdata = m_hPos;
             ddata = m_dPos;
             cuda_vbo_resource = m_cuda_posvbo_resource;
-			copyArrayFromDevice(hdata, ddata, &cuda_vbo_resource, m_numParticles * 4 * sizeof(float));
+			copyArrayFromDevice(hdata, ddata, &cuda_vbo_resource, m_numParticles * 4 * sizeof(double));
             break;
 
         case VELOCITY:
             hdata = m_hVel;
             ddata = m_dVel;
-			checkCudaErrors(cudaMemcpy(hdata, ddata, m_numParticles * 4 * sizeof(float), cudaMemcpyDeviceToHost));
+			checkCudaErrors(cudaMemcpy(hdata, ddata, m_numParticles * 4 * sizeof(double), cudaMemcpyDeviceToHost));
             break;
     }
 
@@ -465,7 +465,7 @@ ParticleSystem::getArray(ParticleArray array)
 }
 
 void
-ParticleSystem::setArray(ParticleArray array, const float *data, int start, int count)
+ParticleSystem::setArray(ParticleArray array, const double *data, int start, int count)
 {
     assert(m_bInitialized);
 
@@ -478,30 +478,30 @@ ParticleSystem::setArray(ParticleArray array, const float *data, int start, int 
                 {
                     unregisterGLBufferObject(m_cuda_posvbo_resource);
                     glBindBuffer(GL_ARRAY_BUFFER, m_posVbo);
-                    glBufferSubData(GL_ARRAY_BUFFER, start*4*sizeof(float), count*4*sizeof(float), data);
+                    glBufferSubData(GL_ARRAY_BUFFER, start*4*sizeof(double), count*4*sizeof(double), data);
                     glBindBuffer(GL_ARRAY_BUFFER, 0);
                     registerGLBufferObject(m_posVbo, &m_cuda_posvbo_resource);
                 }
 				else
 				{
-					copyArrayToDevice(m_cudaPosVBO, data, start * 4 * sizeof(float), count * 4 * sizeof(float));
+					copyArrayToDevice(m_cudaPosVBO, data, start * 4 * sizeof(double), count * 4 * sizeof(double));
 				}
             }
             break;
 
         case VELOCITY:
-            copyArrayToDevice(m_dVel, data, start*4*sizeof(float), count*4*sizeof(float));
+            copyArrayToDevice(m_dVel, data, start*4*sizeof(double), count*4*sizeof(double));
             break;
     }
 }
 
-inline float frand()
+inline double frand()
 {
-    return rand() / (float) RAND_MAX;
+    return rand() / (double) RAND_MAX;
 }
 
 void
-ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numParticles)
+ParticleSystem::initGrid(uint *size, double spacing, double jitter, uint numParticles)
 {
     srand(1973);
 
@@ -531,7 +531,7 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
                     m_hVel[i*4+2] = 0.0f;
                     if(typyCzastek.size()>0)
                     {
-                        m_hVel[i*4+3]=(float)tmpType;//rand()%typyCzastek.size();
+                        m_hVel[i*4+3]=(double)tmpType;//rand()%typyCzastek.size();
                     }
                     else
                     {
@@ -569,13 +569,13 @@ void ParticleSystem::reset(ParticleConfig config)
     }
 
     int p = 0, v = 0;
-    float tmpbrad=m_params.bigradius-m_params.particleRadius[tmpType];
-    float tmprad=tmpbrad/2;
+	double tmpbrad=m_params.bigradius-m_params.particleRadius[tmpType];
+	double tmprad=tmpbrad/2;
     //printf("%f\n",tmprad);
     bool bo1=false;
-    float point[3];
+	double point[3];
     int j4;
-    float jitter;
+	double jitter;
     switch (config)
     {
         default:
@@ -640,7 +640,7 @@ void ParticleSystem::reset(ParticleConfig config)
                             m_hVel[v++] = 0.0f;
                             m_hVel[v++] = 0.0f;
                             m_hVel[v++] = 0.0f;
-                            m_hVel[v++] = (float)tmpType;
+                            m_hVel[v++] = (double)tmpType;
 						}
                     }
                 }
@@ -657,7 +657,7 @@ void ParticleSystem::reset(ParticleConfig config)
         case CONFIG_GRID:
             {
                 jitter = m_params.particleRadius[tmpType]*0.01f;
-                uint s = (int) ceilf(powf((float) m_numParticles, 1.0f / 3.0f));
+                uint s = (int) ceilf(powf((double) m_numParticles, 1.0f / 3.0f));
                 uint gridSize[3];
                 gridSize[0] = gridSize[1] = gridSize[2] = s;
                 initGrid(gridSize, m_params.particleRadius[tmpType]*2.0f, jitter, m_numParticles);
@@ -670,7 +670,7 @@ void ParticleSystem::reset(ParticleConfig config)
 }
 
 void
-ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacing)
+ParticleSystem::addSphere(int start, double *pos, double *vel, int r, double spacing)
 {
 	/** \todo tutaj też trzeba losować typ odpowiednio, ale można zastosować uproszczenia
 	 * bo nie jest to domyślna metoda ustawiania cząstek w symulacji
@@ -684,11 +684,11 @@ ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacin
         {
             for (int x=-r; x<=r; x++)
             {
-                float dx = x*spacing;
-                float dy = y*spacing;
-                float dz = z*spacing;
-                float l = sqrtf(dx*dx + dy*dy + dz*dz);
-                float jitter = m_params.particleRadius[tmpType]*0.01f;
+				double dx = x*spacing;
+				double dy = y*spacing;
+				double dz = z*spacing;
+				double l = sqrtf(dx*dx + dy*dy + dz*dz);
+				double jitter = m_params.particleRadius[tmpType]*0.01f;
 
                 if ((l <= m_params.particleRadius[tmpType]*2.0f*r) && (index < m_numParticles))
                 {

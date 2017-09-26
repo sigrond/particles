@@ -45,11 +45,11 @@ class ParticleSystem
             VELOCITY,
         };
 
-        void update(float deltaTime);
+        void update(double deltaTime);
         void reset(ParticleConfig config);
 
-        float *getArray(ParticleArray array);
-        void   setArray(ParticleArray array, const float *data, int start, int count);
+		double *getArray(ParticleArray array);
+        void   setArray(ParticleArray array, const double *data, int start, int count);
 
         int    getNumParticles() const
         {
@@ -82,57 +82,57 @@ class ParticleSystem
             m_solverIterations = i;
         }
 
-        void setDamping(float x)
+        void setDamping(double x)
         {
             m_params.globalDamping = x;
         }
-        void setGravity(float x)
+        void setGravity(double x)
         {
             m_params.gravity = make_float3(0.0f, x, 0.0f);
         }
 
-		void setBoundaryDamping(float x)// ustawienie wsp napiêcia powierzchniowego
+		void setBoundaryDamping(double x)// ustawienie wsp napiêcia powierzchniowego
         {
             m_params.boundaryDamping = x;
         }
 		/** \brief ustawia masę cząstki
 		 * \todo jakoś poprawić bo rożne typy cząstek mają różne masy
 		 */
-		void setParticleMass(float x)
+		void setParticleMass(double x)
 		{
 			m_params.particleMass[0]=x;
 		}
-		void setEpsi(float x)
+		void setEpsi(double x)
 		{
 			m_params.epsi=x;
 		}
 
-        void setCollideSpring(float x)
+        void setCollideSpring(double x)
         {
             m_params.spring = x;
         }
-        void setCollideDamping(float x)
+        void setCollideDamping(double x)
         {
             m_params.damping = x;
         }
-        void setCollideShear(float x)
+        void setCollideShear(double x)
         {
             m_params.shear = x;
         }
-        void setCollideAttraction(float x)
+        void setCollideAttraction(double x)
         {
             m_params.attraction = x;
         }
 
-		void setBigRadius(float x)//ustawienie promienia duzej kuli
+		void setBigRadius(double x)//ustawienie promienia duzej kuli
 		{
 			m_params.bigradius=x;
 		}
-		void setBigRadius0(float x)//ustawienie promienia duzej kuli
+		void setBigRadius0(double x)//ustawienie promienia duzej kuli
 		{
 			m_params.bigradius0=x;
 		}
-		void setBrown(float x)
+		void setBrown(double x)
 		{
 			m_params.brown=x;
 		}
@@ -173,7 +173,7 @@ class ParticleSystem
          * \return void
          *
          */
-        void setSurfaceVel(float x)
+        void setSurfaceVel(double x)
         {
             m_params.surfaceVel=x;
         }
@@ -181,7 +181,7 @@ class ParticleSystem
 		/** \brief pobiera promień cząstki
 		 * \todo poprawić z uwzględnieniem różnych typów cząstek
 		 */
-        float getParticleRadius()
+		double getParticleRadius()
         {
             return m_params.particleRadius[0];
         }
@@ -191,9 +191,9 @@ class ParticleSystem
          * \return float
          *
          */
-        float getMaxParticleRadius()
+		double getMaxParticleRadius()
         {
-            float tmpMax=0.0f;
+			double tmpMax=0.0f;
             for(int i=0; i<m_params.particleTypesNum;i++)
             {
                 if(m_params.particleRadius[i]>tmpMax)
@@ -219,7 +219,7 @@ class ParticleSystem
         {
             return m_params.colliderPos;
         }
-        float getColliderRadius()
+		double getColliderRadius()
         {
             return m_params.colliderRadius;
         }
@@ -236,7 +236,7 @@ class ParticleSystem
             return m_params.cellSize;
         }
 
-        void addSphere(int index, float *pos, float *vel, int r, float spacing);
+        void addSphere(int index, double *pos, double *vel, int r, double spacing);
 
 		//class particleType;
 
@@ -247,28 +247,28 @@ class ParticleSystem
         void _initialize(int numParticles);
         void _finalize();
 
-        void initGrid(uint *size, float spacing, float jitter, uint numParticles);
+        void initGrid(uint *size, double spacing, double jitter, uint numParticles);
 
     protected: // data
         bool m_bInitialized, m_bUseOpenGL;
         uint m_numParticles;
 
         // CPU data
-        float *m_hPos;              // particle positions
-        float *m_hVel;              // particle velocities
+		double *m_hPos;              // particle positions
+		double *m_hVel;              // particle velocities
 
         uint  *m_hParticleHash;
         uint  *m_hCellStart;
         uint  *m_hCellEnd;
 
         // GPU data
-        float *m_dPos;
-        float *m_dVel;
+		double *m_dPos;
+		double *m_dVel;
 
-        float *m_dForce;/**<  */
+		double *m_dForce;/**<  */
 
-        float *m_dSortedPos;
-        float *m_dSortedVel;
+		double *m_dSortedPos;
+		double *m_dSortedVel;
 
         // grid data for sorting method
         uint  *m_dGridParticleHash; // grid hash value for each particle
@@ -281,8 +281,8 @@ class ParticleSystem
         uint   m_posVbo;            // vertex buffer object for particle positions
         uint   m_colorVBO;          // vertex buffer object for colors
 
-        float *m_cudaPosVBO;        // these are the CUDA deviceMem Pos
-        float *m_cudaColorVBO;      // these are the CUDA deviceMem Color
+        double *m_cudaPosVBO;        // these are the CUDA deviceMem Pos
+		double *m_cudaColorVBO;      // these are the CUDA deviceMem Color
 
 
         struct cudaGraphicsResource *m_cuda_posvbo_resource; // handles OpenGL-CUDA exchange

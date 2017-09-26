@@ -18,14 +18,14 @@ class particleType
 {
 public:
     /**< mogło by być śliczne get i set, ale na razie są niepotrzebne */
-    float particleRadius;/**< \brief promień */
-    float particleMass;/**< \brief masa */
-    float particleDensity;/**< \brief gęstość */
-    float particleCharge;/**< \brief ładunek */
+	double particleRadius;/**< \brief promień */
+	double particleMass;/**< \brief masa */
+	double particleDensity;/**< \brief gęstość */
+	double particleCharge;/**< \brief ładunek */
     /**< można jednemu typowi cząstek nadać jeden kolor */
-    float particleColorR;/**< \brief natężenie koloru czerwonego */
-    float particleColorG;/**< \brief natężenie koloru zielonego */
-    float particleColorB;/**< \brief natężenie koloru niebieskiego */
+	double particleColorR;/**< \brief natężenie koloru czerwonego */
+	double particleColorG;/**< \brief natężenie koloru zielonego */
+	double particleColorB;/**< \brief natężenie koloru niebieskiego */
     /** \brief Vektor zawierający mnożniki epsilona do potencjału
      * Lennarda-Jonesa. Pozycja w wektorze odpowiada przeciciu
      * dwuch typów zgodnie ze wzorem:
@@ -49,7 +49,7 @@ public:
      * Zatem złożoność pamięciowa przechowywania epsilonów jest:
      * \f[ O \left ( m \right ) = \frac{1}{2} n^{2} + \frac{1}{2} n \f]
      */
-    static std::vector<float> normalizedEpsilon;
+    static std::vector<double> normalizedEpsilon;
     /** \var particleNoOfType
      * \brief Ilość cząstek danego typu w symulacji
      */

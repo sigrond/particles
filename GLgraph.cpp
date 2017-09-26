@@ -11,7 +11,7 @@
  * \return void
  *
  */
-void GLgraph::setDataVector(std::vector<float>* srcV)
+void GLgraph::setDataVector(std::vector<double>* srcV)
 {
     dataVectorPtr=srcV;
 }
@@ -48,7 +48,7 @@ inline void endWinCoords(void)
  * \return void
  *
  */
-void GLgraph::render(float xStartPos, float yStartPos)
+void GLgraph::render(double xStartPos, double yStartPos)
 {
     beginWinCoords();
     glClear(GL_COLOR_BUFFER_BIT);
@@ -64,7 +64,7 @@ void GLgraph::render(float xStartPos, float yStartPos)
     {
 		pomniejszenie=(int)((float)dataVectorPtr->size()/(float)width+1.2f);
         x+=1.0f;//1000.0f/((float)dataVectorPtr->size());
-        glVertex2f(x/(float)pomniejszenie, -(*dataVectorPtr)[i]*5.0f*hight+yStartPos);
+        glVertex2f(x/(float)pomniejszenie, -(*dataVectorPtr)[i]*5.0f*hight+(float)yStartPos);
     }
     //glVertex2f(width+xStartPos, yStartPos);
     glEnd();

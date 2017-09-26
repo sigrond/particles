@@ -6,7 +6,7 @@
 
 #include "particleType.h"
 
-std::vector<float> particleType::normalizedEpsilon;
+std::vector<double> particleType::normalizedEpsilon;
 
 unsigned short particleType::typeCounter=0;
 
@@ -37,7 +37,7 @@ void particleType::setParticleName(std::string name)
  */
 void particleType::calcParams(bool pMassSet,bool pRadiusSet,bool pDensitySet)
 {
-    float Volume=0.0f;
+	double Volume=0.0f;
     if((!pMassSet)&&pRadiusSet&&pDensitySet)
     {
         Volume=(4.0f/3.0f)*M_PI*particleRadius*particleRadius*particleRadius;

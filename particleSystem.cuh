@@ -32,46 +32,46 @@ extern "C"
 
     void setParameters(SimParams *hostParams);
 
-    float getSurfacePreasure();
+	double getSurfacePreasure();
 
-    void setGlobalDeltaTime(float dt);
+    void setGlobalDeltaTime(double dt);
 
-    float getGlobalDeltaTime();
+	double getGlobalDeltaTime();
 
-    void setForcePtr(float* ptr);
+    void setForcePtr(double* ptr);
 
 
-    void integrateSystem(float *pos,
-                         float *vel,
-                         float *force,
-                         float deltaTime,
+    void integrateSystem(double *pos,
+                         double *vel,
+                         double *force,
+                         double deltaTime,
                          uint numParticles);
 
     void calcHash(uint  *gridParticleHash,
                   uint  *gridParticleIndex,
-                  float *pos,
+                  double *pos,
                   int    numParticles);
 
     void reorderDataAndFindCellStart(uint  *cellStart,
                                      uint  *cellEnd,
-                                     float *sortedPos,
-                                     float *sortedVel,
+                                     double *sortedPos,
+                                     double *sortedVel,
                                      uint  *gridParticleHash,
                                      uint  *gridParticleIndex,
-                                     float *oldPos,
-                                     float *oldVel,
+                                     double *oldPos,
+                                     double *oldVel,
                                      uint   numParticles,
                                      uint   numCells);
 
-    void collide(float *newVel,
-                 float *sortedPos,
-                 float *sortedVel,
+    void collide(double *newVel,
+                 double *sortedPos,
+                 double *sortedVel,
                  uint  *gridParticleIndex,
                  uint  *cellStart,
                  uint  *cellEnd,
                  uint   numParticles,
                  uint   numCells,
-				 float deltaTime);
+				 double deltaTime);
 
     void sortParticles(uint *dGridParticleHash, uint *dGridParticleIndex, uint numParticles);
 

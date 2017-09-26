@@ -17,23 +17,23 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     int numParticles;
     fread(&numParticles,sizeof(int),1,f);
     printf("numParticles: %d\n",numParticles);
-    int numFrames=(fileSize-sizeof(int))/(numParticles*4*sizeof(float)+sizeof(double));
+    int numFrames=(fileSize-sizeof(int))/(numParticles*4*sizeof(double)+sizeof(double));
     printf("numFrames: %d\n",numFrames);
     //int dims[2]={numParticles*4,numFrames};
     const char* field_names[]={"time","poz"};
     mxArray* retArray=mxCreateStructMatrix(numFrames,1,2,field_names);
     double time;
     mxArray* poz;
-    float* pozData;
+	double* pozData;
     //int tmp;
     for(int i=0;i<numFrames;i++)
     {
         fread(&time,sizeof(double),1,f);
         //printf("time: %f\n",time);
         mxSetField(retArray,i,"time",mxCreateDoubleScalar(time));
-        poz=mxCreateNumericMatrix(4,numParticles,mxSINGLE_CLASS,mxREAL);
+        poz=mxCreateNumericMatrix(4,numParticles, mxDOUBLE_CLASS,mxREAL);
         pozData=mxGetData(poz);
-        /*tmp=*/fread(pozData,sizeof(float),numParticles*4,f);
+        /*tmp=*/fread(pozData,sizeof(double),numParticles*4,f);
         //printf("fread: %d\n",tmp);
         mxSetField(retArray,i,"poz",poz);
     }

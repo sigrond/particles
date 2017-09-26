@@ -36,7 +36,7 @@ class ParamBase
             return m_name;
         }
 
-        virtual float GetFloatValue() = 0;
+        virtual double GetFloatValue() = 0;
         virtual int GetIntValue() = 0;
         virtual std::string GetValueString() = 0;
 
@@ -44,8 +44,8 @@ class ParamBase
         virtual void Increment() = 0;
         virtual void Decrement() = 0;
 
-        virtual float GetPercentage() = 0;
-        virtual void SetPercentage(float p) = 0;
+        virtual double GetPercentage() = 0;
+        virtual void SetPercentage(double p) = 0;
 
         virtual void Write(std::ostream &stream) = 0;
         virtual void Read(std::istream &stream) = 0;
@@ -94,9 +94,9 @@ template<class T> class Param : public ParamBase
             *m_ptr = value;
         }
 
-        float GetFloatValue()
+		double GetFloatValue()
         {
-            return (float) *m_ptr;
+            return (double) *m_ptr;
         }
         int GetIntValue()
         {
@@ -116,12 +116,12 @@ template<class T> class Param : public ParamBase
             m_precision = x;
         }
 
-        float GetPercentage()
+		double GetPercentage()
         {
-            return (*m_ptr - m_min) / (float)(m_max - m_min);
+            return (*m_ptr - m_min) / (double)(m_max - m_min);
         }
 
-        void SetPercentage(float p)
+        void SetPercentage(double p)
         {
             *m_ptr = (T)(m_min + p * (m_max - m_min));
         }
@@ -185,7 +185,7 @@ class ParamList : public ParamBase
         }
         ~ParamList() { }
 
-        float GetFloatValue()
+		double GetFloatValue()
         {
             return 0.0f;
         }
@@ -265,11 +265,11 @@ class ParamList : public ParamBase
 
         }
 
-        float GetPercentage()
+		double GetPercentage()
         {
             return 0.0f;
         }
-        void SetPercentage(float /*p*/) {}
+        void SetPercentage(double /*p*/) {}
 
         void Write(std::ostream &stream)
         {

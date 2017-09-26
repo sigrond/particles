@@ -144,12 +144,12 @@ extern "C"
      * \return float
      *
      */
-    float getSurfacePreasure()
+	double getSurfacePreasure()
     {
-        float tmpP;
-		float hostParams=0.0f;
-        checkCudaErrors(cudaMemcpyFromSymbol(&tmpP,surfacePreasure,sizeof(float)));
-		checkCudaErrors(cudaMemcpyToSymbol(surfacePreasure, &hostParams, sizeof(float)));
+		double tmpP;
+		double hostParams=0.0f;
+        checkCudaErrors(cudaMemcpyFromSymbol(&tmpP,surfacePreasure,sizeof(double)));
+		checkCudaErrors(cudaMemcpyToSymbol(surfacePreasure, &hostParams, sizeof(double)));
         return tmpP;
     }
 
@@ -159,9 +159,9 @@ extern "C"
      * \return void
      *
      */
-    void setGlobalDeltaTime(float dt)
+    void setGlobalDeltaTime(double dt)
     {
-        checkCudaErrors(cudaMemcpyToSymbol(globalDeltaTime, &dt, sizeof(float)));
+        checkCudaErrors(cudaMemcpyToSymbol(globalDeltaTime, &dt, sizeof(double)));
     }
 
     /** \brief Pobranie wartości globalDeltaTime, żeby wiedzieć jaki krok został wykonany
@@ -169,10 +169,10 @@ extern "C"
      * \return float
      *
      */
-    float getGlobalDeltaTime()
+	double getGlobalDeltaTime()
     {
-        float tmpP;
-        checkCudaErrors(cudaMemcpyFromSymbol(&tmpP,globalDeltaTime,sizeof(float)));
+		double tmpP;
+        checkCudaErrors(cudaMemcpyFromSymbol(&tmpP,globalDeltaTime,sizeof(double)));
         return tmpP;
     }
 
@@ -182,9 +182,9 @@ extern "C"
      * \return void
      *
      */
-    void setForcePtr(float* ptr)
+    void setForcePtr(double* ptr)
     {
-        checkCudaErrors(cudaMemcpyToSymbol(forcePtr, &ptr, sizeof(float*)));
+        checkCudaErrors(cudaMemcpyToSymbol(forcePtr, &ptr, sizeof(double*)));
     }
 
     //Round a / b to nearest higher integer value
@@ -210,10 +210,10 @@ extern "C"
      * \return void
      *
      */
-    void integrateSystem(float *pos,
-                         float *vel,
-                         float* force,
-                         float deltaTime,
+    void integrateSystem(double *pos,
+                         double *vel,
+                         double* force,
+                         double deltaTime,
                          uint numParticles)
     {
         thrust::device_ptr<float4> d_pos4((float4 *)pos);
@@ -228,7 +228,7 @@ extern "C"
 
     void calcHash(uint  *gridParticleHash,
                   uint  *gridParticleIndex,
-                  float *pos,
+                  double *pos,
                   int    numParticles)
     {
         uint numThreads, numBlocks;
@@ -249,12 +249,12 @@ extern "C"
 
     void reorderDataAndFindCellStart(uint  *cellStart,
                                      uint  *cellEnd,
-                                     float *sortedPos,
-                                     float *sortedVel,
+                                     double *sortedPos,
+                                     double *sortedVel,
                                      uint  *gridParticleHash,
                                      uint  *gridParticleIndex,
-                                     float *oldPos,
-                                     float *oldVel,
+                                     double *oldPos,
+                                     double *oldVel,
                                      uint   numParticles,
                                      uint   numCells)
     {
@@ -288,15 +288,15 @@ extern "C"
 #endif
     }
 
-    void collide(float *newVel,
-                 float *sortedPos,
-                 float *sortedVel,
+    void collide(double *newVel,
+                 double *sortedPos,
+                 double *sortedVel,
                  uint  *gridParticleIndex,
                  uint  *cellStart,
                  uint  *cellEnd,
                  uint   numParticles,
                  uint   numCells,
-				 float deltaTime)
+				 double deltaTime)
     {
 #if USE_TEX
         checkCudaErrors(cudaBindTexture(0, oldPosTex, sortedPos, numParticles*sizeof(float4)));

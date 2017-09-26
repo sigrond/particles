@@ -59,19 +59,19 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
                 if(dataStr.compare("particleRadius")==0)
                 {
                     std::getline(iss,dataStr,';');
-                    dstV[lastPos].particleRadius=(float)atof(dataStr.c_str());
+                    dstV[lastPos].particleRadius=(double)atof(dataStr.c_str());
                     pRadiusSet=true;
 #ifdef _DEBUG
-					std::clog<<"\tparticleRadius="<<(float)atof(dataStr.c_str())<<";\n";
+					std::clog<<"\tparticleRadius="<<(double)atof(dataStr.c_str())<<";\n";
 #endif
                 }
                 else if(dataStr.compare("particleMass")==0)
                 {
                     std::getline(iss,dataStr,';');
-                    dstV[lastPos].particleMass=(float)atof(dataStr.c_str());
+                    dstV[lastPos].particleMass=(double)atof(dataStr.c_str());
                     pMassSet=true;
 #ifdef _DEBUG
-					std::clog<<"\tparticleMass="<<(float)atof(dataStr.c_str())<<";\n";
+					std::clog<<"\tparticleMass="<<(double)atof(dataStr.c_str())<<";\n";
 #endif
                 }
                 else if(dataStr.compare("particleNoOfType")==0)
@@ -86,42 +86,42 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
                 else if(dataStr.compare("particleDensity")==0)
                 {
                     std::getline(iss,dataStr,';');
-                    dstV[lastPos].particleDensity=(float)atof(dataStr.c_str());
+                    dstV[lastPos].particleDensity=(double)atof(dataStr.c_str());
                     pDensitySet=true;
 #ifdef _DEBUG
-					std::clog<<"\tparticleDensity="<<(float)atof(dataStr.c_str())<<";\n";
+					std::clog<<"\tparticleDensity="<<(double)atof(dataStr.c_str())<<";\n";
 #endif
                 }
                 else if(dataStr.compare("particleCharge")==0)
                 {
                     std::getline(iss,dataStr,';');
-                    dstV[lastPos].particleCharge=(float)atof(dataStr.c_str());
+                    dstV[lastPos].particleCharge=(double)atof(dataStr.c_str());
 #ifdef _DEBUG
-					std::clog<<"\tparticleCharge="<<(float)atof(dataStr.c_str())<<";\n";
+					std::clog<<"\tparticleCharge="<<(double)atof(dataStr.c_str())<<";\n";
 #endif
                 }
                 else if(dataStr.compare("particleColorR")==0)
                 {
                     std::getline(iss,dataStr,';');
-                    dstV[lastPos].particleColorR=(float)atof(dataStr.c_str());
+                    dstV[lastPos].particleColorR=(double)atof(dataStr.c_str());
 #ifdef _DEBUG
-					std::clog<<"\tparticleColorR="<<(float)atof(dataStr.c_str())<<";\n";
+					std::clog<<"\tparticleColorR="<<(double)atof(dataStr.c_str())<<";\n";
 #endif
                 }
                 else if(dataStr.compare("particleColorG")==0)
                 {
                     std::getline(iss,dataStr,';');
-                    dstV[lastPos].particleColorG=(float)atof(dataStr.c_str());
+                    dstV[lastPos].particleColorG=(double)atof(dataStr.c_str());
 #ifdef _DEBUG
-					std::clog<<"\tparticleColorG="<<(float)atof(dataStr.c_str())<<";\n";
+					std::clog<<"\tparticleColorG="<<(double)atof(dataStr.c_str())<<";\n";
 #endif
                 }
                 else if(dataStr.compare("particleColorB")==0)
                 {
                     std::getline(iss,dataStr,';');
-                    dstV[lastPos].particleColorB=(float)atof(dataStr.c_str());
+                    dstV[lastPos].particleColorB=(double)atof(dataStr.c_str());
 #ifdef _DEBUG
-					std::clog<<"\tparticleColorB="<<(float)atof(dataStr.c_str())<<";\n";
+					std::clog<<"\tparticleColorB="<<(double)atof(dataStr.c_str())<<";\n";
 #endif
                 }
             }
@@ -145,7 +145,7 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
                 std::getline(iss,dataStr,',');
                 dataStr.erase(0,dataStr.find_first_not_of(" \f\n\r\t\v"));/**< ltrim */
                 dataStr.erase(dataStr.find_last_not_of(" \f\n\r\t\v")+1);/**< rtrim */
-                particleType::normalizedEpsilon.push_back((float)atof(dataStr.c_str()));
+                particleType::normalizedEpsilon.push_back((double)atof(dataStr.c_str()));
             }
 
             iss.clear();

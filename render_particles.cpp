@@ -53,7 +53,7 @@ ParticleRenderer::~ParticleRenderer()
     m_pos = 0;
 }
 
-void ParticleRenderer::setPositions(float *pos, int numParticles)
+void ParticleRenderer::setPositions(double *pos, int numParticles)
 {
     m_pos = pos;
     m_numParticles = numParticles;
@@ -76,7 +76,8 @@ void ParticleRenderer::_drawPoints()
 
             for (int i = 0; i < m_numParticles; ++i)
             {
-                glVertex3fv(&m_pos[k]);
+                //glVertex3fv(&m_pos[k]);
+				glVertex3f(m_pos[k], m_pos[k+1], m_pos[k+2]);
                 k += 4;
             }
         }
@@ -123,7 +124,8 @@ void ParticleRenderer::_drawPoints(int pFrom, int pTo)
 
             for (int i = pFrom; i < pTo; ++i)
             {
-                glVertex3fv(&m_pos[k]);
+                //glVertex3fv(&m_pos[k]);
+				glVertex3f(m_pos[k], m_pos[k + 1], m_pos[k + 2]);
                 k += 4;
             }
         }
