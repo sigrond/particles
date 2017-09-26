@@ -283,6 +283,7 @@ FILE* f = NULL;//wkaznik do otwartego wczytanego pliku
 float frame_nuber = 0;
 int numFrames = 0;
 bool saveStop = false;
+char* loadState = NULL;//nazwa pliku z zapisanym stanem
 
 const char *sSDKsample = "CUDA Particles Simulation";
 
@@ -585,14 +586,14 @@ void display()
 		{
 			if (frame_nuber + 1 != licznik)
 			{
-				licznik = frame_nuber;
-				fseek(f, (unsigned long long int)(sizeof(int) + ( sizeof(double) + sizeof(float) * psystem->getNumParticles() * 4 ) * frame_nuber), SEEK_SET);
+				licznik = (unsigned long long int)frame_nuber;
+				fseek(f, (unsigned long long int)((unsigned long long int)sizeof(int) + ((unsigned long long int)sizeof(double) + (unsigned long long int)sizeof(float) * (unsigned long long int)psystem->getNumParticles() * (unsigned long long int)4 ) * (unsigned long long int)frame_nuber), SEEK_SET);
 			}
 			double old_time = read_time;
 			fread(&read_time, sizeof(double), 1, f);
 			timestep = abs(old_time - read_time);
 			time_past = read_time;
-			frame_nuber = licznik;
+			frame_nuber = (float)licznik;
 			int co=fread(frame, sizeof(float), psystem->getNumParticles() * 4, f);
 			//printf("co: %d\n", co);
 			psystem->setArray(ParticleSystem::POSITION, frame, 0, psystem->getNumParticles());
@@ -642,9 +643,9 @@ void display()
 
 			f = fopen(std::string(save).append(".state").c_str(), "wb");
 			save = NULL;
-			fwrite((void*)&numParticles, sizeof(int), 1, f);//liczba cząstek
-			fwrite((void*)&bigRadius, sizeof(float), 1, f);//promień kropli
-			fwrite((void*)&time_past, sizeof(long double), 1, f);//zatrzymany czas
+			fwrite((void*)&numParticles, sizeof(int), 1, f);//liczba cząstek 4 bajty
+			fwrite((void*)&bigRadius, sizeof(float), 1, f);//promień kropli 4 bajty
+			fwrite((void*)&time_past, sizeof(long double), 1, f);//zatrzymany czas 8 bajtów
 			hPos = psystem->getArray(ParticleSystem::POSITION);
 			fwrite((void*)hPos, sizeof(float), 4 * numParticles, f);//pozycje cząstek
 			hVel = psystem->getArray(ParticleSystem::VELOCITY);
@@ -688,7 +689,7 @@ void display()
         glDisable(GL_DEPTH_TEST);
         glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ZERO); // invert color
         glEnable(GL_BLEND);
-        preasureGraph->render(0, glutGet(GLUT_WINDOW_HEIGHT)-50);
+        preasureGraph->render(0, (float)(glutGet(GLUT_WINDOW_HEIGHT)-50));
         glDisable(GL_BLEND);
         glEnable(GL_DEPTH_TEST);
 		glPopMatrix();
@@ -741,7 +742,7 @@ void display()
         glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glPushMatrix();
             //glColor3f(0.0, 0.1, 0.3);
-            glColor4f(0.2, 0.8, 1.0,0.5);
+            glColor4f(0.2f, 0.8f, 1.0f,0.5f);
             glBegin(GL_POLYGON);
                 glVertex3f( -20.0f*bigRadius0, -2.0f*bigRadius0, -20.0f*bigRadius0);
                 glVertex3f( -20.0f*bigRadius0,  -2.0f*bigRadius0, 20.0f*bigRadius0);
@@ -1310,6 +1311,11 @@ main(int argc, char **argv)
 			getCmdLineArgumentString(argc, (const char **)argv, "load", &load);
 		}
 
+		if (checkCmdLineFlag(argc, (const char **)argv, "loadState"))
+		{
+			getCmdLineArgumentString(argc, (const char **)argv, "loadState", &loadState);
+		}
+
 		if (checkCmdLineFlag(argc, (const char **) argv, "timestep"))
         {
             timestep = getCmdLineArgumentFloat(argc, (const char **) argv, "timestep");
@@ -1371,6 +1377,7 @@ main(int argc, char **argv)
 			printf("save -zapis do pliku\n");
 			printf("divider -krok zapisu do pliku\n");
 			printf("load -plik do odczytu\n");
+			printf("loadState -plik z zapisanym stanem symulacji\n");
 			printf("A -stała parowania kropli\n");
 			printf("particleTypesNum -ilosc rodzjow czastek\n");
 			printf("bQuality -liczba naturalna\n");
@@ -1455,6 +1462,47 @@ main(int argc, char **argv)
 		numFrames = (fileSize - sizeof(int)) / (numParticles * 4 * sizeof(float) + sizeof(double));
 		printf("numFrames: %d\n", numFrames);
 		frame = new float[numParticles * 4];
+	}
+
+	if (loadState)
+	{
+		printf("loadState: %s\n", loadState);
+		FILE* fLS = fopen(loadState, "rb");
+		int stateNumParticles = 0;
+		int co = 0;
+		co = fread(&stateNumParticles, sizeof(stateNumParticles), 1, fLS);//ilość cząstek 4 bajty
+		printf("stateNumParticles(%d): %d\n", (int)sizeof(stateNumParticles), stateNumParticles);
+		if (stateNumParticles != numParticles)
+		{
+			printf("Ustawiona liczba cząstek nie zgadza się z zapisaną w stanie!");
+		}
+		co = fread(&bigRadius, sizeof(bigRadius), 1, fLS);//promień kropli 4 bajty
+		printf("bigRadius(%d): %f\n", (int)sizeof(bigRadius), bigRadius);
+		co = fread(&time_past, sizeof(time_past), 1, fLS);//czas 8 bajtów
+		printf("time_past(%d): %f\n", (int)sizeof(time_past), time_past);
+		float* tPos = new float[numParticles * 4];
+		float* tVel = new float[numParticles * 4];
+		co = fread(tPos, sizeof(float), psystem->getNumParticles() * 4, fLS);
+		//printf("state Position bytes read: %d\n", co * sizeof(float));
+		co = fread(tVel, sizeof(float), psystem->getNumParticles() * 4, fLS);
+		//printf("state Velocity bytes read: %d\n", co * sizeof(float));
+		//printf("head: %d\n", ftell(fLS));
+		//fseek(fLS, 0, SEEK_END);
+		//printf("head: %d\n", ftell(fLS));
+		//psystem->reset(ParticleSystem::CONFIG_RANDOM);
+		psystem->setArray(ParticleSystem::POSITION, tPos, 0, psystem->getNumParticles());
+		/*printf("tPos:\n");
+		for (int i = 0; i < numParticles; i++)
+		{
+			printf("%3.2f,%3.2f,%3.2f;", tPos[i*4], tPos[i * 4+1], tPos[i * 4+1]);
+		}*/
+		psystem->setArray(ParticleSystem::VELOCITY, tVel, 0, psystem->getNumParticles());
+		//psystem->reset(ParticleSystem::CONFIG_RANDOM);
+		delete[] tPos;
+		delete[] tVel;
+		tPos = NULL;
+		tVel = NULL;
+		fclose(fLS);
 	}
 
 	initParams();

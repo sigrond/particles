@@ -57,12 +57,12 @@ void GLgraph::render(float xStartPos, float yStartPos)
     glBegin(GL_LINE_STRIP);
     glVertex2f(xStartPos, yStartPos);
     float x = xStartPos;
-	float width=glutGet(GLUT_WINDOW_WIDTH);
-	float hight=glutGet(GLUT_WINDOW_HEIGHT);
+	float width=(float)glutGet(GLUT_WINDOW_WIDTH);
+	float hight=(float)glutGet(GLUT_WINDOW_HEIGHT);
 	int pomniejszenie=1;
     for (int i=0; i<dataVectorPtr->size(); i++)
     {
-		pomniejszenie=(float)dataVectorPtr->size()/(float)width+1.2f;
+		pomniejszenie=(int)((float)dataVectorPtr->size()/(float)width+1.2f);
         x+=1.0f;//1000.0f/((float)dataVectorPtr->size());
         glVertex2f(x/(float)pomniejszenie, -(*dataVectorPtr)[i]*5.0f*hight+yStartPos);
     }

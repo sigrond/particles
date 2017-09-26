@@ -531,7 +531,7 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
                     m_hVel[i*4+2] = 0.0f;
                     if(typyCzastek.size()>0)
                     {
-                        m_hVel[i*4+3]=tmpType;//rand()%typyCzastek.size();
+                        m_hVel[i*4+3]=(float)tmpType;//rand()%typyCzastek.size();
                     }
                     else
                     {
@@ -580,6 +580,7 @@ void ParticleSystem::reset(ParticleConfig config)
     {
         default:
         case CONFIG_RANDOM:
+			printf("CONFIG_RANDOM\n");
             {
                 for (uint i=0; i < m_numParticles; /*i++*/)
                 {
@@ -639,7 +640,7 @@ void ParticleSystem::reset(ParticleConfig config)
                             m_hVel[v++] = 0.0f;
                             m_hVel[v++] = 0.0f;
                             m_hVel[v++] = 0.0f;
-                            m_hVel[v++] = tmpType;
+                            m_hVel[v++] = (float)tmpType;
 						}
                     }
                 }

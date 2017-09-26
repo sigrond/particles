@@ -1,0 +1,1 @@
+particles.exe -bigRadius0=2.0 -A=1.5 -timestep=0.000001 -loadState p.bin.state -save p2.bin i=10000 -divider=100
