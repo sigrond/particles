@@ -9,6 +9,11 @@
 <h1>Koncepcja modyfikacji zwiększającej ilość różnych cząstek</h1>
 <a href="readme3.txt">readme3</a>
 </br>
+<h2>License</h2>
+Due to NVIDIA EULA for CUDA Samples we are obliged to state that: 
+“This software contains source code
+provided by NVIDIA Corporation.”
+
 
 <h1>format save</h1>
 <section>
