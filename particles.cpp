@@ -55,42 +55,56 @@
  * - Odpychanie Coulombowskie. - (EN) Coulomb repulsion.
  * - Ilości różnych rodzajów cząstek wraz z ich promieniami i masami (lub gęstościami). - (EN) Quantity of different types of nanoparticles and their radius, mass or density.
  * - Szybkość parowania kropli. - (EN) Speed of droplet evaporation.
- * \section Opis_Ogólny Opis Ogólny
- * - Cząstki dzielone są na komórki według ich położenia.
+ * \section Opis_Ogólny Opis Ogólny - (EN) Description of general concepts in code
+ * - Cząstki dzielone są na komórki według ich położenia. -
+ * (EN) Particles are divided into cells by theirs positions.
  * (::calcHash, ::sortParticles, ::reorderDataAndFindCellStart)
  * - Dla każdej cząstki wyliczana jest siła jaka na nią zadziała.
  * Składa się ona ze zderzeń ze wszystkimi cząstkami w zasięgu,
- * muszą one być w tej samej komórce, albo w sąsiedniej. (::collide)
+ * muszą one być w tej samej komórce, albo w sąsiedniej. -
+ * (EN) For each particle force of interaction applied to it is calculated.
+ * Net force includes interactions with all particles in range.
+ * For particles to "see" each other they need to be in same or neighbor cell.
+ * (::collide)
  * - Prędkość jest wyliczana z poprzedniej prękości i sił.
- * Wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości.
+ * Wyliczana jest nowa pozycja na podstawie kroku czasu i prędkości. -
+ * (EN) Velocity is calculated based on previous velocity and forces.
+ * New position is calculated based on time step and velocity.
  * (::integrateSystem)
- * \section wzory_w_kodzie Wzory W Kodzie
- * - Zderzenie dwóch cząstek: ::collideSpheres w particles_kernel_impl.cuh
- * - Lepkość, grawitacja, wyliczanie nowej prędkości i pozycji: \b integrate_functor::operator()(Tuple t) integrate_functor w particles_kernel_impl.cuh
- * - Parowanie kropli: ::parowanieKropliWCzasie w particles.cpp
- * \section linki_do_fizyki Linki do fizyki
+ * \section wzory_w_kodzie Wzory W Kodzie - (EN) Formulas in code
+ * - Zderzenie dwóch cząstek -
+ * (EN) Two particles interaction.
+ * : ::collideSpheres w particles_kernel_impl.cuh
+ * - Lepkość, grawitacja, wyliczanie nowej prędkości i pozycji -
+ * (EN) Viscosity, gravity, calculation of new velocity and position.
+ * : \b integrate_functor::operator()(Tuple t) integrate_functor w particles_kernel_impl.cuh
+ * - Parowanie kropli -
+ * (EN) Droplet evaporation.
+ * : ::parowanieKropliWCzasie w particles.cpp
+ * \section linki_do_fizyki Linki do fizyki - (EN) Links to physics
  http://www.cchem.berkeley.edu/chem195/_l_j___force_short_8m.html
  http://phys.ubbcluj.ro/~tbeu/MD/C2_for.pdf
  http://www2.physics.umd.edu/~alaporta/Lennard-Jones.html
  http://www.fis.agh.edu.pl/~Burda//NEWS/Informacje%20dla%20wszystkich/CwiczenieAFM.pdf
  http://en.wikipedia.org/wiki/Lennard-Jones_potential#Alternative_expressions
  https://pl.wikibooks.org/wiki/Mechanika_teoretyczna/Mechanika_teoretyczna#Doskonale_spr.C4.99.C5.BCyste_zderzenie_dw.C3.B3ch_cz.C4.85stek
- * \section Repozytorium Repozytorium
+ * \section Repozytorium Repozytorium - (EN) Repository
  https://github.com/sigrond/particles
- * \subsection dokumentacja_repozytorium Dokumentacja Repozytorium
+ * \subsection dokumentacja_repozytorium Dokumentacja Repozytorium - (EN) Documentation
  http://sigrond.github.io/particles
  * \section READMEs READMEs
- * \subsection parametry_uruchamiania Parametry Uruchamiania
+ * \subsection parametry_uruchamiania Parametry Uruchamiania - (EN) Launch parameters
  * \verbinclude readme2.txt
- * \subsection oryginalny_readme Oryginalny Readme
+ * \subsection oryginalny_readme Oryginalny Readme  - (EN) Original Readme
  * \verbinclude readme1.txt
- * \subsection koncepcja_symulowania_roznych_czastek Koncepcja symulowania różnych cząstek
+ * \subsection koncepcja_symulowania_roznych_czastek Koncepcja symulowania różnych cząstek - (EN) Different particles types simulation concept
  * \verbinclude readme3.txt
- * \subsection rezerwa Opis formatu pliku konfiguracji typów cząstek
- * Niestety trzeba go napisać.
+ * \subsection rezerwa Opis formatu pliku konfiguracji typów cząstek - (EN) Description of configuration file format for particles types
+ * Niestety trzeba go napisać. - (EN) Just look at example file "particleType.cfg".
  * Domyślny plik "particleType.cfg".
  * \verbinclude particleType.cfg
- * Więcej można znaleźć w "particleTypesLoader.cpp" oraz "particleType.h"
+ * Więcej można znaleźć w "particleTypesLoader.cpp" oraz "particleType.h" -
+ * (EN) For more information on particles types look at "particleTypesLoader.cpp" and "particleType.h"
  * \sa particleTypesLoader::loadTypes
  * \n particleTypesLoader.cpp
  * \n particleType::normalizedEpsilon
