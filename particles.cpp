@@ -21,32 +21,40 @@
 */
 
 /** \file particles.cpp
- * \brief Główny plik projektu.
+ * \brief Główny plik projektu. - (EN) Projects main file
  * Zawiera main i funkcje sterujące całym programem.
+ * - (EN) Contains programs main function and other functions that steer the program
  */
 
 
-/** \mainpage Cząstki
+/** \mainpage Cząstki - (EN) Particles
  * \author Tomasz Jakubczyk
- * \section swtep Wstęp
+ * \section swtep Wstęp - (EN) Introduction
  * Program symuluje kroplę cieczy z nanocząstkami w środku (zwiesina) w pułapce.
- * W zawiesini może znajdować się kilka różnych rodzajów nanocząstek.
+ * W zawiesinie może znajdować się kilka różnych rodzajów nanocząstek.
  * Symulowane są odziaływania między nanocząstkami między sobą oraz z
  * napięciem powierzchniowym kropli, która paruje zwmniejszając swój promień.
  * Możliwe jest też opuszczenie kryształu, który pozostał po wyparowaniu cieczy
  * na płaską powierzchnię na dnie pułapki.
  * Obecnie zakłada się, że nanocząstki są sztywnymi kulami i wylicznay jest
  * potencjał Lennarda-Jonesa.
- * \subsection parametry Uwzględniane Parametry Symulacji
- * - Krok czasu obliczeń.
- * - Lepkość cieczy.
- * - Efektywna grawitacja.
- * - Napięcie powierzchniowe.
- * - Współczynnik proporcjonalny potencjału Lennarda-Jonesa.
- * - Współczynnik ruchów Browna.
- * - Odpychanie Coulombowskie.
- * - Ilości różnych rodzajów cząstek wraz z ich promieniami i masami (lub gęstościami).
- * - Szybkość parowania kropli.
+ * - (EN) Program simulates droplets of liquid with nanoparticles inside (suspension) suspended in electrodynamic trap.
+ * In suspension there might be a few different types of nanoparticles.
+ * Program simulates interactions between nanoparticles, liquid and droplets surface tension,
+ * the droplet evaporation is simulated as well by decreasing its radius.
+ * It is also possible to simulate dropping crystal formed from droplet evaporation
+ * into the flat surface at the bottom of the trap.
+ * Currently we assume that nanoparticles are rigid balls and Lennard-Jones potential is calculated.
+ * \subsection parametry Uwzględniane Parametry Symulacji - (EN) Accounted Simulation Parameters
+ * - Krok czasu obliczeń. - (EN) Numeric integration time step.
+ * - Lepkość cieczy. - (EN) Liquid viscosity.
+ * - Efektywna grawitacja. - (EN) Effective gravity.
+ * - Napięcie powierzchniowe. - (EN) Surface tension.
+ * - Współczynnik proporcjonalny potencjału Lennarda-Jonesa. - (EN) Proportional factor of Lennard-Jones potential.
+ * - Współczynnik ruchów Browna. - (EN) Brown motion factor. (to be majorly changed and improved)
+ * - Odpychanie Coulombowskie. - (EN) Coulomb repulsion.
+ * - Ilości różnych rodzajów cząstek wraz z ich promieniami i masami (lub gęstościami). - (EN) Quantity of different types of nanoparticles and their radius, mass or density.
+ * - Szybkość parowania kropli. - (EN) Speed of droplet evaporation.
  * \section Opis_Ogólny Opis Ogólny
  * - Cząstki dzielone są na komórki według ich położenia.
  * (::calcHash, ::sortParticles, ::reorderDataAndFindCellStart)
@@ -485,7 +493,7 @@ void runBenchmark(int iterations, char *exec_path)
 	psystem->dumpParticles(0, 20);
 #endif // MYDEBUG
 
-	
+
 
     cudaDeviceSynchronize();
     sdkStopTimer(&timer);
@@ -634,7 +642,7 @@ void display()
 			fprintf(f, "%Lf", time_past);//czas klatki
 			//checkCudaErrors(cudaFreeHost(hPos));
 			hPos = NULL;
-			
+
 			fclose(f);
 			f = NULL;
 			//bPause = true;
