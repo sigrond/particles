@@ -165,7 +165,7 @@ float camera_trans_lag[] = {0, 0, -3};
 float camera_rot_lag[] = {0, 0, 0};
 const float inertia = 0.1f;
 /** \var zoom
- * \brief powiększenie
+ * \brief powiększenie - (EN) view zoom
  */
 float zoom=1.0f;
 ParticleRenderer::DisplayMode displayMode = ParticleRenderer::PARTICLE_SPHERES;
@@ -188,11 +188,11 @@ int numIterations = 0; // run until exit
 
 // simulation parameters
 /** \var timestep
- * \brief krok czasu
+ * \brief krok czasu - (EN) time step of numeric integration
  */
 float timestep = 0.0f;//0.5f;
 /** \var damping
- * \brief lepkość
+ * \brief lepkość - (EN) viscosity
  */
 float damping = 0.99f;//0.08f;//global damping
 float gravity = 0.0f;//0.0003f;
@@ -200,20 +200,20 @@ int iterations = 1;
 int ballr = 10;
 
 /** \var boundaryDamping
- * \brief współczynnik oddziaływania z brzegami
+ * \brief współczynnik oddziaływania z brzegami - (EN) droplet surface boundary interaction factor
  */
 float boundaryDamping= 1.0f;
 /** \var particleMass
- * \brief masa cząstki
+ * \brief masa cząstki - (EN) mass of particle (if config file for multiple particles types not provided)
  */
 float particleMass=0.001f;
 bool boundaries=true;
 /** \var epsi
- * \brief epsilon do siły lenarda jonesa
+ * \brief epsilon do siły lenarda jonesa - (EN) epsylon factor in Lenard-Jones force
  */
 float epsi=0.01f;
 /** \var brown
- * \brief nasilenie ruchów browna
+ * \brief nasilenie ruchów browna - (EN) factor for Brown motion
  */
 float brown=0.0f;
 unsigned long long int brownQuality=10;
@@ -226,56 +226,60 @@ float collideShear = 0.1f;
 float collideAttraction = 0.05f;
 
 /** \var bigRadius
- * \brief promien duzej kuli w mikrometrach
+ * \brief promien duzej kuli w mikrometrach - (EN) droplet radius in micrometers
  */
 float bigRadius=10.0f;//promien duzej kuli
-float bigRadius0=bigRadius;//poczatkowy promien duzej kuli
+float bigRadius0=bigRadius;//poczatkowy promien duzej kuli - (EN) initial droplet radius size
 /** \var kurczenie
  * A r=r0-A*sqrt(t)
- * \brief parametr równania na parowanie kropli
+ * \brief parametr równania na parowanie kropli - (EN) A factor in droplet evaporation equation
  */
 float kurczenie=0.1f;//A r=r0-A*sqrt(t)
 #define A kurczenie
 /** \var licznik
- * \brief ilość kroków od początku symulacji
+ * \brief ilość kroków od początku symulacji - (EN) number of steps from the beginning of simulation
  */
 unsigned long long int licznik=0;
 /** \var time_past
- * \brief czas który upłynoł
+ * \brief czas który upłynoł - (EN) in simulation time past from the beginning of simulation
  */
 long double time_past=0.0;
 
 extern bool multiColor=false;
 
 /** \var typyCzastek
- * \brief tablica z typami cząstek
+ * \brief tablica z typami cząstek - (EN) array of particle types
  */
 std::vector<particleType> typyCzastek;
 
 /** \brief Zmienna logiczna stwierdzająca czy czas rysować w GL
  * została dodana, żeby móc zachować stały FPS w grafice i
- * dać więcej czasu na obliczenia CUDA.
+ * dać więcej czasu na obliczenia CUDA. -
+ * (EN) Logical value to determine if it is time to copy data from simulation
+ * to display it with steady rate of 30 new frames per second (FPS)
  */
 bool itsTimeToDraw=true;
 
-/** \brief Licznik czasu do utrzymywania stałego FPS.
+/** \brief Licznik czasu do utrzymywania stałego FPS. - (EN) time counter for keeping steady FPS.
  */
 long double timeFromLastDisplayedFrameIn_ms=0.0f;
 
 /** \brief Wartość ciśnienia wywieranego prze zcżastki na
- * powiercznię kropli. Znajduje się w pamięci po stronie host'a (CPU)
+ * powiercznię kropli. Znajduje się w pamięci po stronie host'a (CPU) -
+ * (EN) Value of pressure exerted by particles on droplet surface.
+ * Stored in host(CPU) memory (system RAM). It is updated form device(GPU) memory.
  */
 float hostSurfacePreasure=0.0f;
 
-/** \brief rysowacz wykresu
+/** \brief rysowacz wykresu - (EN) graph drawing
  */
 GLgraph* preasureGraph=NULL;
 
-/** \brief tablica ciśnienia
+/** \brief tablica ciśnienia - (EN) array of recorded pressures
  */
 std::vector<float> preasureVector;
 
-bool autoDeltaTime=true;/**< zmienny czy stały krok czasu */
+bool autoDeltaTime=true;/**< zmienny czy stały krok czasu - (EN) is time step automatically changing during simulation or not */
 
 unsigned int divider = 10;
 
@@ -299,13 +303,13 @@ unsigned int g_TotalErrors = 0;
 char        *g_refFile = NULL;
 
 char* save=NULL;
-char* load = NULL;//nazwa pliku do odczytu
-float* frame = NULL;//wskaznik do miejsca z wczytanymi z pliku pozycjami w danym kroku
-FILE* f = NULL;//wkaznik do otwartego wczytanego pliku
+char* load = NULL;//nazwa pliku do odczytu - (EN) name of file to read
+float* frame = NULL;//wskaznik do miejsca z wczytanymi z pliku pozycjami w danym kroku - (EN) pointer to loaded particles positions
+FILE* f = NULL;//wkaznik do otwartego wczytanego pliku - (EN) pointer to loading file
 float frame_nuber = 0;
 int numFrames = 0;
 bool saveStop = false;
-char* loadState = NULL;//nazwa pliku z zapisanym stanem
+char* loadState = NULL;//nazwa pliku z zapisanym stanem - (EN) name of file with saved simulation state
 
 const char *sSDKsample = "CUDA Particles Simulation";
 
@@ -315,10 +319,11 @@ extern "C" void copyArrayFromDevice(void *host, const void *device, unsigned int
 
 // initialize particle system
 /** \brief initialize particle system
- * ustawienia początkowe i utworzenie obiektu systemu cząstek
- * \param numParticles int ilość cząstek
- * \param gridSize uint3 wymiary gridu
- * \param bUseOpenGL bool czy jest GUI
+ * ustawienia początkowe i utworzenie obiektu systemu cząstek -
+ * (EN) initial simulation settings and creation of particle system object
+ * \param numParticles int ilość cząstek - (EN) number of particles
+ * \param gridSize uint3 wymiary gridu - (EN) size of grid
+ * \param bUseOpenGL bool czy jest GUI - (EN) is GUI used
  * \return void
  */
 void initParticleSystem(int numParticles, uint3 gridSize, bool bUseOpenGL)
@@ -388,7 +393,7 @@ long double tSF=0.0f;
 long double SF=boundaryDamping;
 bool koncowka_parowania=false;
 float time_to_end=0.0f;
-/** \brief sterowanie parowaniem kropli
+/** \brief sterowanie parowaniem kropli - (EN) droplet evaporation steering
  * \return void
  */
 void parowanieKropliWCzasie()
@@ -438,9 +443,9 @@ void parowanieKropliWCzasie()
 	psystem->setBigRadius(bigRadius);
 }
 
-/** \brief uruchomienie symulacji bez GUI z zapisem wyniku
- * \param iterations int ilość przebiegów do wykonania
- * \param exec_path char* ścieżka do aktualnego katalogu
+/** \brief uruchomienie symulacji bez GUI z zapisem wyniku - (EN) run simulation without GUI and save results
+ * \param iterations int ilość przebiegów do wykonania - (EN) number of iterations to do
+ * \param exec_path char* ścieżka do aktualnego katalogu - (EN) path to current directory
  * \return void
  */
 void runBenchmark(int iterations, char *exec_path)
@@ -533,7 +538,7 @@ void runBenchmark(int iterations, char *exec_path)
     }*/
 }
 
-/** \brief liczenie i wypisnie danych na pasku
+/** \brief liczenie i wypisnie danych na pasku - (EN) calculate and show status bar data
  * \return void
  */
 void computeFPS()
@@ -559,7 +564,7 @@ double read_time = 0;
 float *hPos = NULL;//wskaznik do miejsca na pobieranie danych z karty
 float *hVel = NULL;
 
-/** \brief funkcja odpowiadająca za symulację z włączonym GUI
+/** \brief funkcja odpowiadająca za symulację z włączonym GUI - (EN) function for simulation step with GUI on
  * \return void
  */
 void display()
