@@ -572,11 +572,11 @@ void display()
 	//system("pause");
     sdkStartTimer(&timer);
 
-	//otwarcie pliku do zapisu
+	//otwarcie pliku do zapisu - (EN) open file to write
 	if (save && f == NULL)
 	{
 		f = fopen(save, "wb");
-		//fprintf(f,"%d",psystem->getNumParticles());//iloœæ cz¹stek
+		//fprintf(f,"%d",psystem->getNumParticles());//iloœæ cz¹stek - (NE) number of particles
 		fwrite((void*)&numParticles, sizeof(int), 1, f);
 
 		//za pierwszym razem rezerwacja miejsca na pobrane pozycje
@@ -596,9 +596,9 @@ void display()
         psystem->setCollideAttraction(collideAttraction);
 		psystem->setBoundaryDamping(-boundaryDamping);
 		//psystem->setParticleMass(particleMass);
-		psystem->setEpsi(epsi);/**< mnożnik epsilonów */
+		psystem->setEpsi(epsi);/**< mnożnik epsilonów - (EN) Lenard-Jones epsylon multiplier for all particles types */
 		psystem->setBrown(brown);
-		psystem->setCalcSurfacePreasure(itsTimeToDraw);/**< czy chcemy policzyć i ściągnąć wartość ciśnienia na powierchni kropli */
+		psystem->setCalcSurfacePreasure(itsTimeToDraw);/**< czy chcemy policzyć i ściągnąć wartość ciśnienia na powierchni kropli - (EN) is coping pressure data from GPU needed */
 
 		if (!load || (load && itsTimeToDraw))
 		{
@@ -642,10 +642,10 @@ void display()
 		}
 		else if(!load)
 		{
-			psystem->update(timestep);/**< tu zachodzą właściwe obliczenia CUDA */
+			psystem->update(timestep);/**< tu zachodzą właściwe obliczenia CUDA - (EN) here actual CUDA calculations happens */
 		}
 
-		//zapis klatki do pliku
+		//zapis klatki do pliku - (EN) save 'frame' to file
 		if (save && f && licznik%divider == 0)
 		{
 			//checkCudaErrors(cudaMemcpy((void*)hPos, psystem->getCudaPosVBO(), sizeof(float) * 4 * numParticles, cudaMemcpyDeviceToHost));
@@ -655,10 +655,10 @@ void display()
 			printf("\b\b\b\b%3d%%", (int)((((float)licznik) / ((float)numIterations))*100.0f));
 		}
 
-		//koniec zapisu do pliku
+		//koniec zapisu do pliku - (EN) end of save to file
 		if (save && (licznik >= numIterations || saveStop))
 		{
-			fprintf(f, "%Lf", time_past);//czas klatki
+			fprintf(f, "%Lf", time_past);//czas klatki - (EN) time of frame
 			//checkCudaErrors(cudaFreeHost(hPos));
 			hPos = NULL;
 
@@ -670,13 +670,13 @@ void display()
 
 			f = fopen(std::string(save).append(".state").c_str(), "wb");
 			save = NULL;
-			fwrite((void*)&numParticles, sizeof(int), 1, f);//liczba cząstek 4 bajty
-			fwrite((void*)&bigRadius, sizeof(float), 1, f);//promień kropli 4 bajty
-			fwrite((void*)&time_past, sizeof(long double), 1, f);//zatrzymany czas 8 bajtów
+			fwrite((void*)&numParticles, sizeof(int), 1, f);//liczba cząstek 4 bajty - (EN) number of particles 4 bytes
+			fwrite((void*)&bigRadius, sizeof(float), 1, f);//promień kropli 4 bajty - (EN) droplet radius 4 bytes
+			fwrite((void*)&time_past, sizeof(long double), 1, f);//zatrzymany czas 8 bajtów - (EN) in simulation time 8 bytes
 			hPos = psystem->getArray(ParticleSystem::POSITION);
-			fwrite((void*)hPos, sizeof(float), 4 * numParticles, f);//pozycje cząstek
+			fwrite((void*)hPos, sizeof(float), 4 * numParticles, f);//pozycje cząstek - (EN) particles positions
 			hVel = psystem->getArray(ParticleSystem::VELOCITY);
-			fwrite((void*)hVel, sizeof(float), 4 * numParticles, f);//prędkości cząstek
+			fwrite((void*)hVel, sizeof(float), 4 * numParticles, f);//prędkości cząstek - (EN) particles velocities
 			fclose(f);
 			//psystem->dumpParticles(0, 64);
 			f = NULL;
@@ -763,7 +763,8 @@ void display()
         }
 
         /** Ten blok kodu rysuje półprzezroczysty kwadrat pod kroplą
-         * na wysokości ograniczenia dolnego.
+         * na wysokości ograniczenia dolnego. -
+         * (EN) this block of code draws translucent square under the droplet on height of lower boundary
          */
         glEnable (GL_BLEND);
         glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -792,8 +793,8 @@ void display()
 
         glutSwapBuffers();
         glutReportErrors();
-    }/**< koniec warunku itsTimeToDraw */
-	else if (load)//tu nie potrzbujemy mnustwa czasu na obliczenia
+    }/**< koniec warunku itsTimeToDraw - (EN) end of itsTimeToDraw if condition */
+	else if (load)//tu nie potrzbujemy mnustwa czasu na obliczenia - (EN) in this case extra time for calculation isn't necessary
 	{
 		glutPostRedisplay();
 	}
@@ -802,7 +803,7 @@ void display()
 
     long double timeTakenIn_ms=sdkGetAverageTimerValue(&timer);
     timeFromLastDisplayedFrameIn_ms+=timeTakenIn_ms;
-    if(timeFromLastDisplayedFrameIn_ms>=33.3333333333333333f)/**< to powinno utrzymać stały FPS */
+    if(timeFromLastDisplayedFrameIn_ms>=33.3333333333333333f)/**< to powinno utrzymać stały FPS - (EN) this should keep steady FPS */
     {
         itsTimeToDraw=true;
         timeFromLastDisplayedFrameIn_ms=0.0f;
@@ -812,7 +813,7 @@ void display()
         itsTimeToDraw=false;
     }
 	//system("pause");
-    computeFPS();/**< teraz nie jest to FPS, tylko chwilowa prędkość wykonywania programu */
+    computeFPS();/**< teraz nie jest to FPS, tylko chwilowa prędkość wykonywania programu - (EN) here FPS doesn't mean rate of displaying but rate of simulation steps */
 	//system("pause");
 }
 
@@ -821,7 +822,7 @@ inline float frand()
     return rand() / (float) RAND_MAX;
 }
 
-/** \brief wstawianie kuli cząstek na życzenie
+/** \brief wstawianie kuli cząstek na życzenie - (EN) insert ball of particles on demand
  * \return void
  */
 void addSphere()
@@ -858,7 +859,7 @@ void reshape(int w, int h)
     }
 }
 
-/** \brief obsługa zdarzeń myszy
+/** \brief obsługa zdarzeń myszy - (EN) mouse event handling
  * \param button int
  * \param state int
  * \param x int
@@ -1041,7 +1042,7 @@ void motion(int x, int y)
 }
 
 // commented out to remove unused parameter warnings in Linux
-/** \brief obsługa zdarzeń klawiszy i opcji z menu
+/** \brief obsługa zdarzeń klawiszy i opcji z menu - (EN) keys end menu events handling
  * \param key unsigned char
  * \param x int
  * \param y int
@@ -1483,7 +1484,8 @@ main(int argc, char **argv)
 		printf("numParticles: %d\n", tmpnumParticles);
 		if (numParticles != tmpnumParticles)
 		{
-			printf("Wczytane nieodpowiadajace sobie liczbą cząstek pliki konfiguracyjny i z zapisanymi danymi!");
+			printf("Wczytane nieodpowiadajace sobie liczbą cząstek pliki konfiguracyjny i z zapisanymi danymi!\n");
+			printf("Loaded numbers of particles in config file and in saved data do not match!\n");
 			//numParticles = numParticles > tmpnumParticles ? numParticles : tmpnumParticles;
 		}
 		numFrames = (fileSize - sizeof(int)) / (numParticles * 4 * sizeof(float) + sizeof(double));
@@ -1497,15 +1499,16 @@ main(int argc, char **argv)
 		FILE* fLS = fopen(loadState, "rb");
 		int stateNumParticles = 0;
 		int co = 0;
-		co = fread(&stateNumParticles, sizeof(stateNumParticles), 1, fLS);//ilość cząstek 4 bajty
+		co = fread(&stateNumParticles, sizeof(stateNumParticles), 1, fLS);//ilość cząstek 4 bajty - (EN) number of particles 4 bytes
 		printf("stateNumParticles(%d): %d\n", (int)sizeof(stateNumParticles), stateNumParticles);
 		if (stateNumParticles != numParticles)
 		{
-			printf("Ustawiona liczba cząstek nie zgadza się z zapisaną w stanie!");
+			printf("Ustawiona liczba cząstek nie zgadza się z zapisaną w stanie!\n");
+			printf("Number of particles set do not match one saved in state file!\n");
 		}
-		co = fread(&bigRadius, sizeof(bigRadius), 1, fLS);//promień kropli 4 bajty
+		co = fread(&bigRadius, sizeof(bigRadius), 1, fLS);//promień kropli 4 bajty - (EN) droplet radius 4 bytes
 		printf("bigRadius(%d): %f\n", (int)sizeof(bigRadius), bigRadius);
-		co = fread(&time_past, sizeof(time_past), 1, fLS);//czas 8 bajtów
+		co = fread(&time_past, sizeof(time_past), 1, fLS);//czas 8 bajtów - (EN) time 8 bytes
 		printf("time_past(%d): %f\n", (int)sizeof(time_past), time_past);
 		float* tPos = new float[numParticles * 4];
 		float* tVel = new float[numParticles * 4];
