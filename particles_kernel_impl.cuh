@@ -13,7 +13,7 @@
  * CUDA particle system kernel code.
  */
  /** \file particles_kernel_impl.cuh
-  * \brief Implementacje (definicje) funkcji odpowiadajÄ…cych za fizykÄ™.
+  * \brief Implementacje (definicje) funkcji odpowiadaj¹cych za fizykê. - (EN) Impoementations of functions responsible for physics
   *
   */
 
@@ -27,7 +27,7 @@
 #include "helper_math.h"
 #include "math_constants.h"
 #include "particles_kernel.cuh"
-#include <curand_kernel.h>/**< biblioteka zawierajÄ…ca funkcje generujÄ…ce liczby pseudolosowe i quasi-losowe na karcie */
+#include <curand_kernel.h>/**< biblioteka zawieraj¹ca funkcje generuj¹ce liczby pseudolosowe i quasi-losowe na karcie - (EN) CUDA library for random numbers */
 
 #if USE_TEX
 // textures for particle position and velocity
@@ -42,14 +42,14 @@ texture<uint, 1, cudaReadModeElementType> cellEndTex;
 // simulation parameters in constant memory
 __constant__ SimParams params;/**< simulation parameters in constant memory */
 
-__device__ float surfacePreasure;/**< wyliczane ciÅ›nienie czÄ…stek na powierzchni */
+__device__ float surfacePreasure;/**< wyliczane ciœnienie cz¹stek na powierzchni - (EN) calculated pressure of particles on droplet surface */
 
-__device__ float globalDeltaTime;/**< ustalany krok czasu dla symulacji */
+__device__ float globalDeltaTime;/**< ustalany krok czasu dla symulacji - (EN) set time step for simulation */
 
-__constant__ float4* forcePtr;/**< wskaÅºnik na tablicÄ™ siÅ‚ */
+__constant__ float4* forcePtr;/**< wskaŸnik na tablicê si³ - (EN) pointer to array of forces */
 
-/** \brief PrzeciÄ…Å¼ona funkcja atomicMin na obsÅ‚ugÄ™ float.
- * Zapewnia dostÄ™p do zmiennej jednemu wÄ…tkowi na raz.
+/** \brief Przeci¹¿ona funkcja atomicMin na obs³ugê float. - (EN) overloaded atomicMin function to use float
+ * Zapewnia dostêp do zmiennej jednemu w¹tkowi na raz. - (EN) only one thread can access in one moment (atomic operation)
  * \param address float*
  * \param val float
  * \return __device__  float
@@ -69,9 +69,10 @@ __device__ static float atomicMin(float* address, float val)
 
 /** \struct integrate_functor
  * \brief ta struktura inicjowana jest z krokiem delta_time dla danych
- * opisujÄ…cych prÄ™dkoÅ›Ä‡ i poÅ‚oÅ¼enie czÄ…stki, te dane siedzÄ… w wektorze thrust (w GPU)
- * jako para (tuple) float4 poÅ‚oÅ¼enia i prÄ™dkoÅ›ci
- *
+ * opisuj¹cych prêdkoœæ i po³o¿enie cz¹stki, te dane siedz¹ w wektorze thrust (w GPU)
+ * jako para (tuple) float4 po³o¿enia i prêdkoœci -
+ * (EN) structure is initialized with delta_time time step for data containing positions and velocities
+ * in thrust vector (on GPU) as tuples of float4
  */
 struct integrate_functor
 {
@@ -80,9 +81,10 @@ struct integrate_functor
     __host__ __device__
     integrate_functor(float delta_time) : deltaTime(delta_time) {}
 
-    /** \brief nowe poÅ‚oÅ¼enie
-     * \param t para poÅ‚oÅ¼enia i prÄ™dkoÅ›ci
-     * wylicza nowe poÅ‚oÅ¼enie i sprawdza czy poÅ‚oÅ¼enie nie jest za brzegiem
+    /** \brief nowe po³o¿enie - (EN) new position
+     * \param t para po³o¿enia i prêdkoœci - (EN) pair of position and velocity
+     * wylicza nowe po³o¿enie i sprawdza czy po³o¿enie nie jest za brzegiem -
+     * (EN) calculates new position and checks if it isn't outside of boundaries
      */
     template <typename Tuple>
     __device__
@@ -95,7 +97,7 @@ struct integrate_functor
         float3 vel = make_float3(velData.x, velData.y, velData.z);
         float3 force = make_float3(forceData.x, forceData.y, forceData.z);
 
-		if(params.brown!=0.0f)/**< ruchy Browna */
+		if(params.brown!=0.0f)/**< ruchy Browna - (EN) Brown motion \todo revise Brown motion */
         {
 			unsigned int seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x)+(unsigned int)floor((vel.x+vel.y+vel.z)*params.brownQuality);
 			curandState s;
@@ -146,7 +148,7 @@ struct integrate_functor
 #endif
 
 		//odbijanie sie od kuli
-		/**< odbijanie sie od kuli vel napiecie powierzchniowe */
+		/**< odbijanie sie od kuli vel napiecie powierzchniowe - (EN) surface tension */
 #if 1
 		float xk=pos.x*pos.x;
 		float yk=pos.y*pos.y;
@@ -172,9 +174,9 @@ struct integrate_functor
 		if(params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
 		{
             //force+=18.84955592f*params.viscosity*(vel+norm*params.surfaceVel)*params.particleRadius[(int)velData.w];
-			//vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone tÅ‚umienie w kierunku radialnym */
+			//vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone t³umienie w kierunku radialnym */
 
-			forceF1=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< siÅ‚a napiÄ™cia powierzchniowego */
+			forceF1=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< si³a napiêcia powierzchniowego - (EN) surface tension force */
 			force-=forceF1*norm;
 
 		}
@@ -186,7 +188,7 @@ struct integrate_functor
 		__syncthreads();
         if(params.calcSurfacePreasure && params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
         {
-            float momentum=forceF1*globalDeltaTime;/**< pÄ™d */
+            float momentum=forceF1*globalDeltaTime;/**< pêd - (EN) momentum */
             momentum=abs(momentum);
             atomicAdd(&surfacePreasure,momentum);
         }
@@ -195,23 +197,23 @@ struct integrate_functor
 //dolna plaszczyzna
 
 #if 1
-		if (pos.y < -2.0f*params.bigradius0 + params.particleRadius[(int)velData.w])/**< blat */
+		if (pos.y < -2.0f*params.bigradius0 + params.particleRadius[(int)velData.w])/**< blat - (EN) flat bottom of the trap */
         {
             pos.y = -2.0f*params.bigradius0 + params.particleRadius[(int)velData.w];
             vel.y = 0;
         }
 #endif
-		vel += params.gravity * globalDeltaTime;/**< grawitacja */
+		vel += params.gravity * globalDeltaTime;/**< grawitacja- (EN) gravity */
 		//vel *= params.globalDamping;/**< lepkosc */
-        pos += 0.5f * vel * globalDeltaTime;/**< przemieszczenie ze starÄ… prÄ™dkoÅ›ciÄ…*/
-		vel += force*(globalDeltaTime/params.particleMass[(int)velData.w]);/**< siÅ‚y oddziaÅ‚ywaÅ„ miÄ™dzy czÄ…steczkami */
+        pos += 0.5f * vel * globalDeltaTime;/**< przemieszczenie ze star¹ prêdkoœci¹ - (EN) change of position with old velocity */
+		vel += force*(globalDeltaTime/params.particleMass[(int)velData.w]);/**< si³y oddzia³ywañ miêdzy cz¹steczkami - (EN) particles interaction forces */
         // new position = old position + velocity * deltaTime
-        pos += 0.5f * vel * globalDeltaTime;/**< przemieszczenie z nowÄ… prÄ™dkoÅ›ciÄ…*/
+        pos += 0.5f * vel * globalDeltaTime;/**< przemieszczenie z now¹ prêdkoœci¹ - (EN) change of position with new velocity */
 
         // store new position and velocity
         thrust::get<0>(t) = make_float4(pos, posData.w);
         thrust::get<1>(t) = make_float4(vel, velData.w);
-        thrust::get<2>(t) = make_float4(0.0f);/**< zerowanie tablicy siÅ‚ na koniec kroku caÅ‚kowania */
+        thrust::get<2>(t) = make_float4(0.0f);/**< zerowanie tablicy si³ na koniec kroku ca³kowania - (EN) zero force array at the end of integration step */
     }
 };
 
@@ -399,12 +401,12 @@ float3 collideSpheres(float3 posA, float3 posB,
 		float q1q2=params.normalizedCharge[(int)velA.w]*params.normalizedCharge[(int)velB.w];
 		float a=!(velB.w<velA.w)?velA.w:velB.w;/**< min(x,y) */
 		float b= (velA.w<velB.w)?velB.w:velA.w - a;/**< max(x,y)-min(x,y) */
-		int epsilonIndex=(int)floor(a*(params.particleTypesNum-((a-1.0f)/2.0f))+b+0.5f);/**< wzÃ³r na index z zabezpieczeniem przeciwko niedokÅ‚adnoÅ›ci dziaÅ‚aÅ„ na float'ach */
+		int epsilonIndex=(int)floor(a*(params.particleTypesNum-((a-1.0f)/2.0f))+b+0.5f);/**< wzór na index z zabezpieczeniem przeciwko niedok³adnoœci dzia³añ na float'ach */
 		float epsilon=params.epsi*params.normalizeEpsilon[epsilonIndex];
 		float foreScalar=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
 		force=-foreScalar*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
 /////////////////////////////////////////////////////////////////////////////////
-/*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu	*/
+/*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu - (EN) here are forces formulas for particles in range	*/
 /////////////////////////////////////////////////////////////////////////////////
 		float3 relVel=make_float3(velB)*norm-make_float3(velA)*norm;
 		float relVelS=sqrt(relVel.x*relVel.x+relVel.y*relVel.y+relVel.z*relVel.z);
@@ -477,9 +479,9 @@ float3 collideCell(int3    gridPos,
     return force;
 }
 
-/** \brief wyliczenie wypadkowej siÅ‚y zderzeÅ„ jednej czÄ…stki ze wszystkimi w zasiÄ™gu
+/** \brief wyliczenie wypadkowej si³y zderzeñ jednej cz¹stki ze wszystkimi w zasiêgu - (EN) calculate interactions net force for one particle with all within range
  *
- * \param newVel float4* output: new velocit
+ * \param newVel float4* output: new velocity
  * \param float4 *oldPos input: sorted positions
  * \param float4 *oldVel input: sorted velocities
  * \param uint   *gridParticleIndex input: sorted particle indices
@@ -528,7 +530,7 @@ void collideD(float4 *newVel,               // output: new velocity
 
     // write new velocity back to original unsorted location
     uint originalIndex = gridParticleIndex[index];
-    //__syncthreads();/**< wyrÃ³wnanie globalDeltaTime */
+    //__syncthreads();/**< wyrównanie globalDeltaTime */
     //newVel[originalIndex] = make_float4(make_float3(vel) + force*(globalDeltaTime/params.particleMass[(int)vel.w]), vel.w);
     forcePtr[originalIndex]=make_float4(force, 0.0f);
 }
