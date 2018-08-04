@@ -124,6 +124,14 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 					std::clog<<"\tparticleColorB="<<(float)atof(dataStr.c_str())<<";\n";
 #endif
                 }
+				else if(dataStr.compare("surfaceTensionFactor")==0)
+                {
+                    std::getline(iss,dataStr,';');
+                    dstV[lastPos].surfaceTensionFactor=(float)atof(dataStr.c_str());
+#ifdef _DEBUG
+					std::clog<<"\surfaceTensionFactor="<<(float)atof(dataStr.c_str())<<";\n";
+#endif
+                }
             }
             dstV[lastPos].calcParams(pMassSet,pRadiusSet,pDensitySet);
             iss.clear();

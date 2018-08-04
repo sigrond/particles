@@ -78,6 +78,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
             m_params.particleRadius[i] = typyCzastek[i].particleRadius;
             m_params.particleMass[i]=typyCzastek[i].particleMass;
             m_params.normalizedCharge[i]=typyCzastek[i].particleCharge;
+			m_params.surfaceTensionFactor[i]=typyCzastek[i].surfaceTensionFactor;
         }
         m_params.particleTypesNum=iloscTypow;
         for(int i=0;i<particleType::normalizedEpsilon.size();i++)
@@ -92,6 +93,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
         m_params.particleTypesNum=1;
         m_params.normalizedCharge[0]=1.0f;
         m_params.normalizeEpsilon[0]=1.0f;
+		m_params.surfaceTensionFactor[0]=1.0f;
     }
 
     m_params.colliderPos = make_float3(-1.2f, -0.8f, 0.8f);

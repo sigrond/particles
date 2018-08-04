@@ -50,6 +50,7 @@ public:
      * \f[ O \left ( m \right ) = \frac{1}{2} n^{2} + \frac{1}{2} n \f]
      */
     static std::vector<float> normalizedEpsilon;
+	float surfaceTensionFactor;/**< \brief współczynnik napięcia powierzchniowego */
     /** \var particleNoOfType
      * \brief Ilość cząstek danego typu w symulacji
      */
@@ -66,7 +67,7 @@ public:
     static unsigned short typeCounter;/**< \brief licznik typów */
     particleType() :
         typeNumber(typeCounter), particleRadius(0.0f), particleMass(0.0f), particleNoOfType(0),
-        particleColorR(0), particleColorG(0), particleColorB(0)
+        particleColorR(0), particleColorG(0), particleColorB(0),surfaceTensionFactor(1.0f)
     {
         typeCounter++;
 #ifdef _DEBUG

@@ -176,7 +176,7 @@ struct integrate_functor
             //force+=18.84955592f*params.viscosity*(vel+norm*params.surfaceVel)*params.particleRadius[(int)velData.w];
 			//vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone t³umienie w kierunku radialnym */
 
-			forceF1=params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< si³a napiêcia powierzchniowego - (EN) surface tension force */
+			forceF1=params.surfaceTensionFactor[(int)velData.w]*params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< si³a napiêcia powierzchniowego - (EN) surface tension force */
 			force-=forceF1*norm;
 
 		}

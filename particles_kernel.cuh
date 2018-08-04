@@ -50,6 +50,8 @@ struct SimParams
 	float normalizedCharge[MAX_TYPE_NUM];
 
 	float normalizeEpsilon[MAX_EPSI_NUM];
+	
+	float surfaceTensionFactor[MAX_TYPE_NUM];
 
     uint3 gridSize;
     uint numCells;
