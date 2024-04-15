@@ -1,7 +1,8 @@
 /** \file particleTypesLoader.h
  * \author Tomasz Jakubczyk
  * \brief Zawiera klasę która ma wczytywać informacje
- * o typach cząstek z pliku
+ * o typach cząstek z pliku - (EN) Contains a class that 
+ * is to load information about particle types from a file
  */
 
 #pragma once
@@ -12,6 +13,7 @@
 
 /** \class particleTypesLoader
  * \brief Klasa ładowarki ustawień typów cząstek z pliku
+ * - (EN) Class of particle type settings loader from file
  */
 class particleTypesLoader
 {

@@ -196,6 +196,7 @@ float timestep = 0.0f;//0.5f;
  */
 float damping = 0.99f;//0.08f;//global damping
 float gravity = 0.0f;//0.0003f;
+float rotation = 0.0f;//droplet (random) rotation [Hz]
 int iterations = 1;
 int ballr = 10;
 
@@ -228,20 +229,20 @@ float collideAttraction = 0.05f;
 /** \var bigRadius
  * \brief promien duzej kuli w mikrometrach - (EN) droplet radius in micrometers
  */
-float bigRadius=10.0f;//promien duzej kuli
-float bigRadius0=bigRadius;//poczatkowy promien duzej kuli - (EN) initial droplet radius size
+float bigRadius=10.0f;//promien duzej kuli - (EN) large sphere radius
+float bigRadius0=bigRadius;//poczatkowy promien duzej kuli - (EN) initial droplet radius
 /** \var kurczenie
- * A r=r0-A*sqrt(t)
- * \brief parametr równania na parowanie kropli - (EN) A factor in droplet evaporation equation
+ * A: r=sqrt(r0^2-A*t)
+ * \brief szybkość parowania - parametr równania na parowanie kropli - (EN) evaporation rate - a factor in the droplet evaporation equation
  */
-float kurczenie=0.1f;//A r=r0-A*sqrt(t)
+float kurczenie=0.1f;//A: r=sqrt(r0^2-A*t)
 #define A kurczenie
 /** \var licznik
  * \brief ilość kroków od początku symulacji - (EN) number of steps from the beginning of simulation
  */
 unsigned long long int licznik=0;
 /** \var time_past
- * \brief czas który upłynoł - (EN) in simulation time past from the beginning of simulation
+ * \brief czas który upłynął - (EN) in the simulation, time past from its beginning
  */
 long double time_past=0.0;
 
@@ -264,14 +265,14 @@ bool itsTimeToDraw=true;
  */
 long double timeFromLastDisplayedFrameIn_ms=0.0f;
 
-/** \brief Wartość ciśnienia wywieranego prze zcżastki na
+/** \brief Wartość ciśnienia wywieranego przez cząstki na
  * powiercznię kropli. Znajduje się w pamięci po stronie host'a (CPU) -
- * (EN) Value of pressure exerted by particles on droplet surface.
+ * (EN) Value of pressure exerted by particles on the droplet surface.
  * Stored in host(CPU) memory (system RAM). It is updated form device(GPU) memory.
  */
 float hostSurfacePreasure=0.0f;
 
-/** \brief rysowacz wykresu - (EN) graph drawing
+/** \brief rysowacz wykresu ciśnienia - (EN) pressure graph drawing
  */
 GLgraph* preasureGraph=NULL;
 
@@ -303,13 +304,15 @@ unsigned int g_TotalErrors = 0;
 char        *g_refFile = NULL;
 
 char* save=NULL;
-char* load = NULL;//nazwa pliku do odczytu - (EN) name of file to read
+char* load = NULL;//nazwa pliku do odczytu - (EN) name of the file to read
 float* frame = NULL;//wskaznik do miejsca z wczytanymi z pliku pozycjami w danym kroku - (EN) pointer to loaded particles positions
 FILE* f = NULL;//wkaznik do otwartego wczytanego pliku - (EN) pointer to loading file
 float frame_nuber = 0;
 int numFrames = 0;
 bool saveStop = false;
 char* loadState = NULL;//nazwa pliku z zapisanym stanem - (EN) name of file with saved simulation state
+FILE* preasureFile=NULL;
+char tmpPreasureFileName[1024];
 
 const char *sSDKsample = "CUDA Particles Simulation";
 
@@ -322,7 +325,7 @@ extern "C" void copyArrayFromDevice(void *host, const void *device, unsigned int
  * ustawienia początkowe i utworzenie obiektu systemu cząstek -
  * (EN) initial simulation settings and creation of particle system object
  * \param numParticles int ilość cząstek - (EN) number of particles
- * \param gridSize uint3 wymiary gridu - (EN) size of grid
+ * \param gridSize uint3 wymiary gridu - (EN) size of the grid
  * \param bUseOpenGL bool czy jest GUI - (EN) is GUI used
  * \return void
  */
@@ -393,7 +396,7 @@ long double tSF=0.0f;
 long double SF=boundaryDamping;
 bool koncowka_parowania=false;
 float time_to_end=0.0f;
-/** \brief sterowanie parowaniem kropli - (EN) droplet evaporation steering
+/** \brief sterowanie parowaniem kropli - (EN) droplet evaporation control
  * \return void
  */
 void parowanieKropliWCzasie()
@@ -402,6 +405,7 @@ void parowanieKropliWCzasie()
 	licznik++;
 	time_past+=timestep;
 	//std::cout<<psystem->getMaxParticleRadius()*pow(psystem->getNumParticles(),0.3f)<<std::endl;
+	/*
 	if(bigRadius>(psystem->getMaxParticleRadius()*pow(psystem->getNumParticles(),0.3f))
 		&& bigRadius>0.0f && hostSurfacePreasure<0.01f)
 	{
@@ -430,10 +434,14 @@ void parowanieKropliWCzasie()
 		boundaryDamping=0.0f;
 		//timestep=0.0001f;
 	}
+	*/
+
+	SF=boundaryDamping;
+
 	if(bigRadius>0.0f)
 	{
-        psystem->setSurfaceVel((bigRadius-bigRadius0-A*sqrt(time_past))/timestep);
-        bigRadius=bigRadius0-A*sqrt(time_past);
+        psystem->setSurfaceVel(-1.0f/sqrt((4.0f*(bigRadius0*bigRadius0)/(A*A))-2.0f*time_past));
+        bigRadius=sqrt(bigRadius0*bigRadius0-A*time_past);
 	}
 	else
 	{
@@ -455,18 +463,23 @@ void runBenchmark(int iterations, char *exec_path)
     sdkStartTimer(&timer);
     psystem->setDamping(damping);
     psystem->setGravity(-gravity);
+	psystem->setRotation(rotation);
 	psystem->setBoundaryDamping(-boundaryDamping);
 	psystem->setParticleMass(particleMass);
 	psystem->setEpsi(epsi);
 	psystem->setBrown(brown);
-
+	
 	float *hPos=NULL;
 	FILE* f=NULL;
+	
 	if(save && f==NULL)
 	{
 		f=fopen(save,"wb");
 		//fprintf(f,"%d",psystem->getNumParticles());//iloœæ cz¹stek
 		fwrite((void*)&numParticles,sizeof(int),1,f);
+		strcpy(tmpPreasureFileName, save);
+		strcat(tmpPreasureFileName, ".p");
+		preasureFile=fopen(tmpPreasureFileName,"wb");
 	}
 
 	//printf("timestep: %f\n",timestep);
@@ -488,6 +501,9 @@ void runBenchmark(int iterations, char *exec_path)
 			fwrite((void*)&time_past,sizeof(long double),1,f);
 			fwrite((void*)hPos,sizeof(float),4*numParticles,f);
 			printf("\b\b\b\b%3d%%", (int)((((float)i)/((float)iterations))*100.0f));
+			
+			fwrite((void*)&time_past,sizeof(long double),1,preasureFile);
+			fwrite((void*)&hostSurfacePreasure,sizeof(float),1,preasureFile);
 		}
     }
 	//cudaDeviceSynchronize();
@@ -561,7 +577,7 @@ void computeFPS()
 }
 
 double read_time = 0;
-float *hPos = NULL;//wskaznik do miejsca na pobieranie danych z karty
+float *hPos = NULL;//wskaznik do miejsca na pobieranie danych z karty - (EN) pointer to the space for downlowading data from GPU
 float *hVel = NULL;
 
 /** \brief funkcja odpowiadająca za symulację z włączonym GUI - (EN) function for simulation step with GUI on
@@ -576,10 +592,14 @@ void display()
 	if (save && f == NULL)
 	{
 		f = fopen(save, "wb");
-		//fprintf(f,"%d",psystem->getNumParticles());//iloœæ cz¹stek - (NE) number of particles
+		//fprintf(f,"%d",psystem->getNumParticles());//ilość cząstek - (EN) number of particles
 		fwrite((void*)&numParticles, sizeof(int), 1, f);
+		
+		strcpy(tmpPreasureFileName, save);
+		strcat(tmpPreasureFileName, ".p");
+		preasureFile=fopen(tmpPreasureFileName,"wb");
 
-		//za pierwszym razem rezerwacja miejsca na pobrane pozycje
+		//za pierwszym razem rezerwacja miejsca na pobrane pozycje - (EN) at the 1st pass reservation of space for the downloaded positions
 		//checkCudaErrors(cudaMallocHost(&hPos, sizeof(float) * 4 * numParticles));
 		printf("progress: ....");
 	}
@@ -590,6 +610,7 @@ void display()
         psystem->setIterations(iterations);
         psystem->setDamping(damping);
         psystem->setGravity(-gravity);
+		psystem->setRotation(rotation);
         psystem->setCollideSpring(collideSpring);
         psystem->setCollideDamping(collideDamping);
         psystem->setCollideShear(collideShear);
@@ -653,6 +674,9 @@ void display()
 			fwrite((void*)&time_past, sizeof(long double), 1, f);
 			fwrite((void*)hPos, sizeof(float), 4 * numParticles, f);
 			printf("\b\b\b\b%3d%%", (int)((((float)licznik) / ((float)numIterations))*100.0f));
+			
+			fwrite((void*)&time_past,sizeof(long double),1,preasureFile);
+			fwrite((void*)&hostSurfacePreasure,sizeof(float),1,preasureFile);
 		}
 
 		//koniec zapisu do pliku - (EN) end of save to file
@@ -664,6 +688,8 @@ void display()
 
 			fclose(f);
 			f = NULL;
+			fclose(preasureFile);
+			preasureFile = NULL;
 			//bPause = true;
 			//printf("Simulation is paused...\n");
 			printf("Simulation with save to file has ended at iteration: %llu !\n", licznik);
@@ -794,7 +820,7 @@ void display()
         glutSwapBuffers();
         glutReportErrors();
     }/**< koniec warunku itsTimeToDraw - (EN) end of itsTimeToDraw if condition */
-	else if (load)//tu nie potrzbujemy mnustwa czasu na obliczenia - (EN) in this case extra time for calculation isn't necessary
+	else if (load)//tu nie potrzbujemy mnóstwa czasu na obliczenia - (EN) in this case extra time for calculation isn't necessary
 	{
 		glutPostRedisplay();
 	}
@@ -1224,6 +1250,7 @@ void initParams()
         params = new ParamListGL("misc");
         params->AddParam(new Param<float>("time step", timestep, 0.0f, 0.002f, 0.00001f, &timestep));
         params->AddParam(new Param<float>("liquid viscosity"  , damping , 0.0f, 1.0f, 0.00001f, &damping));
+		params->AddParam(new Param<float>("droplet rotation"  , rotation , 0.0f, 1.0f, 0.00001f, &rotation));
         params->AddParam(new Param<float>("effective gravity"  , gravity , 0.0f, 1.0f, 0.00001f, &gravity));
         //params->AddParam(new Param<float> ("A", A , 0.0f, 1.0f, 0.0001, &A));
 		params->AddParam(new Param<float>("surface tension"  , boundaryDamping , 0.0f, 2.0f, 0.00001f, &boundaryDamping));
@@ -1275,8 +1302,8 @@ main(int argc, char **argv)
 #ifdef _DEBUG
     std::cout<<"Debug Build!\n";
 #endif // _DEBUG
-    std::cout<<"Dokumentacja: http://sigrond.github.io/particles\n";
-	std::cout<<"Uwaga rozne typy czastek!\nKonfiguracja w particleType.cfg\n";
+    std::cout<<"Docs: http://sigrond.github.io/particles\n";
+	std::cout<<"Attention: multiple particle types!\nKonfiguration in particleType.cfg\n";
 	std::string plikKonfiguracyjny("particleType.cfg");
     particleTypesLoader pTLoader(plikKonfiguracyjny);
     pTLoader.loadTypes(typyCzastek);
@@ -1383,34 +1410,39 @@ main(int argc, char **argv)
 		{
 			brownQuality = getCmdLineArgumentInt(argc, (const char **) argv, "bQuality");
 		}
+		if (checkCmdLineFlag(argc, (const char **) argv, "rotation"))
+        {
+            rotation = getCmdLineArgumentFloat(argc, (const char **) argv, "rotation");
+        }
 		if (checkCmdLineFlag(argc, (const char **) argv, "help"))
         {
             printf("cmd line\n");
-            printf("particles -nazwaParametru=liczba\n");
+            printf("particles - ParameterName=value\n");
             printf("np:\n");
-            printf("particles -bigRadius0=0.1 \n");
-            printf("bigRadius0 -poczatkowy promien kropli\n");
-            printf("n -liczba czastek\n");
-            printf("grid -rozmiar gridu\n");
-            printf("file -nazwa pliku do porównania z wynikiem\n");
-            printf("timestep -krok czasu, jesli ustawiony to staly\n");
-            printf("benchmark -obliczenia bez GUI, pokazuje wydajnosc\n");
-            printf("i -liczba krokow\n");
-            printf("device -wybór GPU\n");
-            printf("epsi -epsilon w sile Lenarda-Jonesa\n");
-            printf("damping -lepkosc\n");
-            printf("boundaryDamping -napiecie powierchniowe\n");
-            printf("particleMass -masa czastki\n");
-            printf("gravity -grawitacja\n");
-			printf("save -zapis do pliku\n");
-			printf("divider -krok zapisu do pliku\n");
-			printf("load -plik do odczytu\n");
-			printf("loadState -plik z zapisanym stanem symulacji\n");
-			printf("A -stała parowania kropli\n");
-			printf("particleTypesNum -ilosc rodzjow czastek\n");
-			printf("bQuality -liczba naturalna\n");
-			printf("brown -mnożnik róchów Browna\n");
-			printf("multiColor -losowe kolory kulek\n");
+            printf("particles - bigRadius0=0.1 \n");
+            printf("bigRadius0 - initial drop;let radius\n");
+            printf("n - number of paricles\n");
+            printf("grid - grid size\n");
+            printf("file - file name to compare with the result\n");
+            printf("timestep - time step; if set then constant\n");
+            printf("benchmark - calculations without GUI, shows performance\n");
+            printf("i - number of steps\n");
+            printf("device - GPU choice\n");
+            printf("epsi - epsilon in Lenard-Jones force\n");
+            printf("damping - viscosity conforming to Stokes formula\n");
+            printf("boundaryDamping - surface tension\n");
+            printf("particleMass - particle mass\n");
+            printf("gravity - gravitation\n");
+			printf("save - saving to file\n");
+			printf("divider - step for saving to file\n");
+			printf("load - file to read\n");
+			printf("loadState - file with the simulation state recorded\n");
+			printf("A - evaporation rate\n");
+			printf("particleTypesNum - number of particle types\n");
+			printf("bQuality - natural number\n");
+			printf("brown - Brownian motion scaling factor\n");
+			printf("multiColor - particle color selected randomly\n");
+			printf("rotation - droplet (random) rotation frequency [Hz]\n");
             printf("help\n");
 
         }

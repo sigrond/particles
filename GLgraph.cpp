@@ -1,12 +1,13 @@
 /** \file GLgraph.cpp
  * \author Tomasz Jakubczyk
- * \brief Plik z metodami klasy GLgraph
+ * \brief Plik z metodami klasy GLgraph - (EN) GLgraph class methods file
  */
 #include "GLgraph.h"
 #include <GL/freeglut.h>
 
 /** \brief Metoda przypisuje klasie wskaźnik do wektora
- * na podstawie którego ma byc rysowany wykres.
+ * na podstawie którego ma byc rysowany wykres - (EN) The method assigns the class
+ * a pointer to a vector based on which the graph is to be drawn.
  * \param srcV std::vector<float>*
  * \return void
  *
@@ -41,7 +42,7 @@ inline void endWinCoords(void)
     glPopMatrix();
 }
 
-/** \brief Rysowanie wykresu
+/** \brief Rysowanie wykresu - (EN) drawing the graph
  *
  * \param xStartPos float
  * \param yStartPos float

@@ -1,3 +1,15 @@
+/** \file read_particle_bin.c
+ * \author Tomasz Jakubczyk
+ * \brief .mex, który czyta plik .bin zawierający położenia wszystkich cząstek zapisywane z zadanym krokiem
+ * i zwraca do Matlaba strukturę zawierającą kolumny "time" i "pos". Kolumna "pos" zawiera pozycje (X,Y,Z,1) wszystkich cząstek,
+ * czyli każde pole "pos" ma rozmiar 4xliczba cząstek (4ty wymiar wynika z przechowywania pozycji w GPU naturalnego
+ * ze względu na obroty w GL
+ * - (EN) .mex, which reads a .bin file containing the positions of all particles recorded with a preset step,
+ * and returns to Matlab a structure containing the "time" and "pos" columns. The "pos" column contains
+ * the positions (X,Y,Z,1) of all particles, i.e. each "pos" field has a size of 4x the number of particles
+ * (the 4th dimension is due to the storage of positions in the GPU natural for rotations with the GL 
+ */
+
 #include "mex.h"
 #include<stdio.h>
 #include<stdlib.h>

@@ -10,7 +10,8 @@
  */
  /** \file particleSystem.cpp
   * \brief Definicje (implementacje) metod klasy ParticleSystem
-  * oraz funkcji pomocniczych
+  * oraz funkcji pomocniczych - (EN) Definitions (implementations) of methods 
+  * of the ParticleSystem class and auxiliary functions
   */
 
 
@@ -73,7 +74,7 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
         for(int i=0;i<iloscTypow;i++)
         {
             /**
-            * promieñ w mikronach
+            * promień w mikronach - (EN) radius in microns
             */
             m_params.particleRadius[i] = typyCzastek[i].particleRadius;
             m_params.particleMass[i]=typyCzastek[i].particleMass;
@@ -102,7 +103,9 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 
     m_params.worldOrigin = make_float3(-1.0f, -1.0f, -1.0f);
     //    m_params.cellSize = make_float3(worldSize.x / m_gridSize.x, worldSize.y / m_gridSize.y, worldSize.z / m_gridSize.z);
-	/**< żeby zachować strukturę składającą się z identycznych sześcianów trzeba wybrać największy typ cząstek */
+	/**< żeby zachować strukturę składającą się z identycznych sześcianów trzeba wybrać największy typ cząstek 
+	* - (EN) in order to keep a structure composed of identical cubes, you have to choose the largest type of particles 
+	*/
 	float maxRadius=0.0f;
 	for(int i=0;i<m_params.particleTypesNum;i++)
 	{
@@ -122,8 +125,9 @@ ParticleSystem::ParticleSystem(uint numParticles, uint3 gridSize, bool bUseOpenG
 
     m_params.gravity = make_float3(0.0f, -0.0003f, 0.0f);
     m_params.globalDamping = 1.0f;
+	m_params.rotation = 0.0f;
 
-	m_params.bigradius=10.0f;//docelowo zmieny rozmiar zewnetrznej kuli
+	m_params.bigradius=10.0f;//docelowo zmienny rozmiar zewnetrznej kuli - (EN) eventually variable size of outer sphere
 	m_params.bigradius0=10.0f;
 	m_params.boundaries=true;
 	m_params.epsi=1.0f;
@@ -321,7 +325,7 @@ ParticleSystem::update(float deltaTime)
 
     if (m_bUseOpenGL)
     {
-        dPos = (float *) mapGLBufferObject(&m_cuda_posvbo_resource);/**< ta funkcja wpływa na prawa dostępu do zasobów */
+        dPos = (float *) mapGLBufferObject(&m_cuda_posvbo_resource);/**< ta funkcja wpływa na prawa dostępu do zasobów - (EN) this function affects access rights to resources */
     }
     else
     {
@@ -359,7 +363,7 @@ ParticleSystem::update(float deltaTime)
 
     if(m_params.autoDt)
     {
-        setGlobalDeltaTime(0.01f);/**< maksymalny krok czasu */
+        setGlobalDeltaTime(0.01f);/**< maksymalny krok czasu - (EN) maximal time step */
     }
 
     // process collisions
@@ -386,7 +390,7 @@ ParticleSystem::update(float deltaTime)
 
     if(itsTimeToDraw)
     {
-        hostSurfacePreasure=getSurfacePreasure();/**< pobranie ciśnienia */
+        hostSurfacePreasure=getSurfacePreasure();/**< pobranie ciśnienia - (EN) get pressure */
     }
 
     // note: do unmap at end here to avoid unnecessary graphics/CUDA context switch
@@ -546,20 +550,22 @@ ParticleSystem::initGrid(uint *size, float spacing, float jitter, uint numPartic
 }
 
 /** \fn void ParticleSystem::reset(ParticleConfig config)
- * \brief rozłożenie cząstek
- * \param config ParticleConfig Typ wyliczeniowy. Wybór sposobu rozłożenia cząstek.
+ * \brief rozłożenie cząstek - (EN) distribution of particles
+ * \param config ParticleConfig Typ wyliczeniowy. Wybór sposobu rozłożenia cząstek. - (EN) Enumeration type. Choice of particle distribution.
  * \return void
  */
 void ParticleSystem::reset(ParticleConfig config)
 {
 /** \todo należy dodać właściwe losowanie typu cząstki i uwzględnić przy sprawdzaniu położenia
  * rozmiar wylosowanego typu oraz rozmiary 'sąsiadujących' cząstek tak, żeby ze sobą nie kolidowały
+ * - (EN) add the correct randomisation of the type of particle and take into account, when checking the position, the size of the type drawn 
+ * and the sizes of 'neighbouring' particles so that they do not collide with each other -- maybe this is already OK - check
  */
 	//unsigned int tmpType=rand()%m_params.particleTypesNum;
 
     unsigned int tmpType=0;
-    unsigned int typeCounter=0;/**< ile cząstek już dodaliśmy */
-    unsigned int nextType=0;/**< po ilu dodanych cząstkach zaczyna się następny typ */
+    unsigned int typeCounter=0;/**< ile cząstek już dodaliśmy - (EN) how many particles we have already added */
+    unsigned int nextType=0;/**< po ilu dodanych cząstkach zaczyna się następny typ - (EN) after how many added particles the next type begins */
     if(!typyCzastek.empty())
     {
         nextType=typyCzastek[0].particleNoOfType;
@@ -593,7 +599,10 @@ void ParticleSystem::reset(ParticleConfig config)
                             break;
                         }
                         nextType+=typyCzastek[++tmpType].particleNoOfType;
-                        /**< \todo trzeba jeszcze uwzględnić rozmiar cząstki którą podejżewamy o przecinanie się z nową */
+                        /**< \todo trzeba jeszcze uwzględnić rozmiar cząstki którą podejrzewamy o przecinanie się 
+						* z nową - (EN) you still have to take into account the size of the particle you suspect 
+						* of intersecting with the new -- maybe this is already OK - check 
+						*/
                         tmpbrad=m_params.bigradius-m_params.particleRadius[tmpType];
                         tmprad=tmpbrad/2;
                         typyCzastek[tmpType].ofTypeParticleTrack.clear();
@@ -610,7 +619,7 @@ void ParticleSystem::reset(ParticleConfig config)
 					point[0]=tmpbrad*frand()-tmprad;
 					point[1]=tmpbrad*frand()-tmprad;
 					point[2]=tmpbrad*frand()-tmprad;
-                    /** \brief równomierne losowanie położeń metodą Monte Carlo
+                    /** \brief równomierne losowanie położeń metodą Monte Carlo - (EN) Monte Carlo uniform position sampling
                      * \param point[0]*point[0]+point[1]*point[1]+point[2]*point[2]<=tmpbrad*tmpbrad x^2+y^2+z^2<=R^2
                      */
 					if((point[0]*point[0]+point[1]*point[1]+point[2]*point[2])<(tmprad*tmprad))
@@ -635,7 +644,7 @@ void ParticleSystem::reset(ParticleConfig config)
                             m_hPos[p++] = 2 * (point[0] - 0.0f);
                             m_hPos[p++] = 2 * (point[1] - 0.0f);
                             m_hPos[p++] = 2 * (point[2] - 0.0f);
-                            m_hPos[p++] = 1.0f; /**< 1 postaci znormalizowanej macierzy do trasformacji GL */
+                            m_hPos[p++] = 1.0f; /**< 1 postaci znormalizowanej macierzy do trasformacji GL - (EN) 1 of the form of the standardised matrix for the GL trasformation*/
                             /*m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;
                             m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;
                             m_hVel[v++] = (rand() /( float ) RAND_MAX -0.5f)*m_params.brown;;*/
@@ -675,7 +684,9 @@ void
 ParticleSystem::addSphere(int start, float *pos, float *vel, int r, float spacing)
 {
 	/** \todo tutaj też trzeba losować typ odpowiednio, ale można zastosować uproszczenia
-	 * bo nie jest to domyślna metoda ustawiania cząstek w symulacji
+	 * bo nie jest to domyślna metoda ustawiania cząstek w symulacji - (EN) Here, too, 
+	 * the type has to be randomised accordingly, but simplifications can be applied as 
+	 * this is not the default method for placing particles in the simulation -- maybe this is already OK - check
 	*/
 	unsigned int tmpType=rand()%m_params.particleTypesNum;
     uint index = start;

@@ -1,5 +1,5 @@
 /** \file particleTypesLoader.cpp
- * \brief Definicje metod klasy particleTypesLoader
+ * \brief Definicje metod klasy particleTypesLoader - (EN) Method definitions of the particleTypesLoader class
  * \author Tomasz Jakubczyk
  */
 #include "particleTypesLoader.h"
@@ -9,14 +9,18 @@
 
 /** \todo przydała by się jakaś ładna implementacja ltrim, rtrim i
  * trim żeby łatwo usuwać nadmiarowe białe znaki
+ * - (EN) It would be useful to have a nice implementation of ltrim,
+ * rtrim and trim to easily remove redundant whitespace characters.
  */
 
 /** \brief Załaduje dane z pliku do wektora.
  * Plik będzie na nowo otwarty i przeczytany,
- * a wektor wyczyszczony i wypełniony od nowa
+ * a wektor wyczyszczony i wypełniony od nowa.
+ * - (EN) Loads data from a file into a vector.
+ * The file will be reopened and read, and the vector will be cleared and filled anew.
  * \param dstV std::vector<particleType>&
  * \return void
- * \todo Potrzebny jest opis struktury pliku
+ * \todo Potrzebny jest opis struktury pliku - (EN) A description of the file structure is needed
  */
 void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 {
@@ -36,9 +40,9 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
     {
         std::getline(configFile,dataStr,' ');
         dataStr.erase(0,dataStr.find_first_not_of(" \f\n\r\t\v"));/**< ltrim */
-        if(dataStr.compare("particleType")==0)/**< rozpoczęcie opisu typu cząstki */
-        {/**< nie przewiduję żeby było tu więcej białych znaków niz jedna spacja */
-            std::getline(configFile,dataStr,'{');/**< nazwa typu. parametry w {} */
+        if(dataStr.compare("particleType")==0)/**< rozpoczęcie opisu typu cząstki - (EN) start of particle type description */
+        {/**< nie przewiduję żeby było tu więcej białych znaków niż jedna spacja - (EN) I do not anticipate that there will be more whitespace characters than one space */
+            std::getline(configFile,dataStr,'{');/**< nazwa typu. parametry w {} - (EN) type name. parameters in {} */
             dataStr.erase(dataStr.find_last_not_of(" \f\n\r\t\v")+1);/**< rtrim */
             dstV.push_back(*(new particleType()));
             lastPos=dstV.size()-1;
@@ -51,9 +55,9 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
             pMassSet=false;
             pRadiusSet=false;
             pDensitySet=false;
-            while(iss.good())/**< wypełnianie parametrów */
+            while(iss.good())/**< wypełnianie parametrów - (EN) filling in the parameters */
             {
-                std::getline(iss,dataStr,'=');/**< wysypie się jeśli nie będzie '=' */
+                std::getline(iss,dataStr,'=');/**< wysypie się jeśli nie będzie '=' - (EN) will be blown up if there is no '=' */
                 dataStr.erase(0,dataStr.find_first_not_of(" \f\n\r\t\v"));/**< ltrim */
                 dataStr.erase(dataStr.find_last_not_of(" \f\n\r\t\v")+1);/**< rtrim */
                 if(dataStr.compare("particleRadius")==0)
@@ -139,16 +143,16 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 			std::clog<<"}\n";
 #endif
         }
-        if(dataStr.compare("normalizedEpsilon")==0)/**< specjalan skrucona tablica znormalizowanych epsilonów jak w particleType */
+        if(dataStr.compare("normalizedEpsilon")==0)/**< specjalna skrócona tablica znormalizowanych epsilonów jak w particleType - (EN) special abbreviated array of normalised epsilons as in particleType */
         {
-            std::getline(configFile,dataStr,'{');/**< nawias otwierający */
+            std::getline(configFile,dataStr,'{');/**< nawias otwierający - (EN) opening bracket */
 #ifdef _DEBUG
 			std::clog<<"normalizedEpsilon "<<dataStr<<"\n{\n";
 #endif
             std::getline(configFile,dataStr,'}');
             iss<<dataStr;
             particleType::normalizedEpsilon.clear();
-            while(iss.good())/**< wypełnianie parametrów */
+            while(iss.good())/**< wypełnianie parametrów - (EN) filling in the parameters */
             {
                 std::getline(iss,dataStr,',');
                 dataStr.erase(0,dataStr.find_first_not_of(" \f\n\r\t\v"));/**< ltrim */
@@ -169,7 +173,7 @@ void particleTypesLoader::loadTypes(std::vector<particleType> &dstV)
 #endif
 }
 
-/** \brief Zwraca sumę cząstek ze wszystkich podanych typów
+/** \brief Zwraca sumę cząstek ze wszystkich podanych typów - (EN) Returns the sum of particles of all specified types
  *
  * \return unsigned int
  *
