@@ -9,7 +9,7 @@
  *
  */
  /** \file particleSystem.cuh
-  * \brief Same deklaracje funkcji.
+  * \brief Same deklaracje funkcji. - (EN) The function declarations themselves.
   *
   */
 

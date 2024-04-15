@@ -1,10 +1,10 @@
 /** \file GLgraph.h
  * \author Tomasz Jakubczyk
- * \brief Plik nagłówkowy klasy GLgraph
+ * \brief Plik nagłówkowy klasy GLgraph - (EN) GLgraph class header file
  */
 
 #include<vector>
-/** \brief Klasa rysująca wykres
+/** \brief Klasa rysująca wykres - (EN) Class drawing a graph
  */
 class GLgraph
 {

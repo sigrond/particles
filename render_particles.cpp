@@ -12,6 +12,8 @@
  /** \file render_particles.cpp
   * \brief Zawiera implementacje funkcji związanych z wyświetlaniem cząstek w GL.
   * Generalnie metody klasy ParticleRenderer.
+  * - (EN) Contains implementations of functions related to the display of particles in GL.
+  * In general, the methods of the ParticleRenderer class.
   */
 
 
@@ -68,7 +70,7 @@ void ParticleRenderer::setVertexBuffer(unsigned int vbo, int numParticles, float
 
 void ParticleRenderer::_drawPoints()
 {
-    if (!m_vbo)/**< zarejestrowanie miejsc w pamięci gdzie są współżędne punktów */
+    if (!m_vbo)/**< zarejestrowanie miejsc w pamięci gdzie są współrzędne punktów - (EN) recording the locations in the memory where the coordinates of points are located */
     {
         glBegin(GL_POINTS);
         {
@@ -105,17 +107,21 @@ void ParticleRenderer::_drawPoints()
 
 /** \brief Funkcja odpowiedzialna za rysowanie cząstek.
  * Została utworzona na podstawie oryginalnej _drawPoints().
- * Rysuje tylko zadany fragment bufora współżędnych.
+ * Rysuje tylko zadany fragment bufora współrzędnych.
  * Dzieki tej funkcji można rysować grupy cząstek o różnych rozmiarach i kolorach.
+ * - (EN) The function responsible for drawing the particles. It was created
+ * on the basis of the original _drawPoints(). It draws only the specified fragment
+ * of the coordinate buffer. With this function, groups of particles of different sizes
+ * and colours can be drawn.
  * \author Tomasz Jakubczyk
- * \param pFrom int Numer pierwszej cząstki z zakresu do odrysowania.
- * \param pTo int Numer pierwszej cząstki poza zakresem do odrysowania.
+ * \param pFrom int Numer pierwszej cząstki z zakresu do odrysowania. - (EN) Number of the first particle in the range to be mapped.
+ * \param pTo int Numer pierwszej cząstki poza zakresem do odrysowania. - (EN) Number of first particle out of range to be mapped.
  * \return void
  *
  */
 void ParticleRenderer::_drawPoints(int pFrom, int pTo)
 {
-    if (!m_vbo)/**< zarejestrowanie miejsc w pamięci gdzie są współżędne punktów */
+    if (!m_vbo)/**< zarejestrowanie miejsc w pamięci gdzie są współrzędne punktów - (EN) recording the locations in the memory where the coordinates of points are located */
     {
         glBegin(GL_POINTS);
         {
@@ -135,14 +141,14 @@ void ParticleRenderer::_drawPoints(int pFrom, int pTo)
         glVertexPointer(4, GL_FLOAT, 0, 0);
         glEnableClientState(GL_VERTEX_ARRAY);
 
-        if (m_colorVBO && multiColor)/**< nie używamy bufora kolorów jeśli wszystkie cząstki z grupy mają być w jednym kolorze. */
+        if (m_colorVBO && multiColor)/**< nie używamy bufora kolorów jeśli wszystkie cząstki z grupy mają być w jednym kolorze. - (EN) we do not use the colour buffer if all the particles in a group are to be in one colour. */
         {
             glBindBufferARB(GL_ARRAY_BUFFER_ARB, m_colorVBO);
             glColorPointer(4, GL_FLOAT, 0, 0);
             glEnableClientState(GL_COLOR_ARRAY);
         }
 
-        glDrawArrays(GL_POINTS, pFrom, (pTo-pFrom));/**< rysowanie fragmentu bufora */
+        glDrawArrays(GL_POINTS, pFrom, (pTo-pFrom));/**< rysowanie fragmentu bufora - (EN) drawing a fragment of the buffer */
 
         glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -152,6 +158,8 @@ void ParticleRenderer::_drawPoints(int pFrom, int pTo)
 
 /** \brief Funkcja ustawiająca sposób rysowania i parametry oraz
  * wywołująca funkcję odrysowującą _drawPoints
+ * - (EN) Function that sets the drawing method and parameters
+ * and calls the _drawPoints drawing function
  * \param DisplayMode mode  = PARTICLE_POINTS
  * \return void
  *
@@ -181,16 +189,16 @@ void ParticleRenderer::display(DisplayMode mode /* = PARTICLE_POINTS */)
             glEnable(GL_DEPTH_TEST);
 
 			glUseProgram(m_program);
-            for(int i=0;i<typyCzastek.size();i++)/**< rysujemy cząstki grupami. Wszystkie cząstki z jednego typu za raz ze wspólnymi cechami (promień i kolor) */
+            for(int i=0;i<typyCzastek.size();i++)/**< rysujemy cząstki grupami. Wszystkie cząstki z jednego typu za raz ze wspólnymi cechami (promień i kolor) - (EN) draw the particles in groups. All particles of one type at a time with common features (radius and colour) */
             {
 
-                glUniform1f(glGetUniformLocation(m_program, "pointScale"), zoom*m_window_h / tanf(m_fov*0.5f*(float)M_PI/180.0f));/**< skalowanie rozmiaru cząstki do ekranu */
-                glUniform1f(glGetUniformLocation(m_program, "pointRadius"), typyCzastek[i].particleRadius);/**< nadanie grupie cząstek jednego promienia */
+                glUniform1f(glGetUniformLocation(m_program, "pointScale"), zoom*m_window_h / tanf(m_fov*0.5f*(float)M_PI/180.0f));/**< skalowanie rozmiaru cząstki do ekranu - (EN) scaling the particle size to the display size */
+                glUniform1f(glGetUniformLocation(m_program, "pointRadius"), typyCzastek[i].particleRadius);/**< nadanie grupie cząstek jednego promienia - (EN) giving a group of particles a single radius */
 
-                glColor3f(typyCzastek[i].particleColorR, typyCzastek[i].particleColorG, typyCzastek[i].particleColorB);/**< ustalenie jednego koloru dla grupy cząstek */
+                glColor3f(typyCzastek[i].particleColorR, typyCzastek[i].particleColorG, typyCzastek[i].particleColorB);/**< ustalenie jednego koloru dla grupy cząstek - EN) setting a single colour for a group of particles */
 
 				nextType+=typyCzastek[i].particleNoOfType;
-                _drawPoints(typeBegin, nextType);/**< wywołanie rysowania grupy cząstek */
+                _drawPoints(typeBegin, nextType);/**< wywołanie rysowania grupy cząstek - (EN) calling the drawing of a group of particles */
                 typeBegin=nextType;
 
 			}

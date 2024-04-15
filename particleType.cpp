@@ -1,6 +1,7 @@
 /** \file particleType.cpp
- * \brief Definicje metod klasy particleType.
- * Na razie zawiera tylko inicjalizacjê licznika obiektów (pole statyczne)
+ * \brief Definicje metod klasy particleType. - (EN) Method definitions of the particleType class.
+ * Na razie zawiera tylko inicjalizację licznika obiektów (pole statyczne)
+ * - (EN) For the time being, it only includes initialisation of the object counter (static field)
  * \author Tomasz Jakubczyk
  */
 
@@ -10,7 +11,7 @@ std::vector<float> particleType::normalizedEpsilon;
 
 unsigned short particleType::typeCounter=0;
 
-/** \brief Ustawienie nazwy typu cząstki
+/** \brief Ustawienie nazwy typu cząstki - (EN) Setting the name of the particle type
  *
  * \param name std::string
  * \return void
@@ -29,6 +30,13 @@ void particleType::setParticleName(std::string name)
 /** \brief Ta metoda ustala czy zostały ustawione parametry
  * potrzebne do symulacji. Jeśli brakuje i jest wstanie wyliczyć z innych
  * to wylicza. Podstawowo ma wyliczać masę z promienia i gęstości.
+ * - (EN) This method determines whether the parameters needed for the 
+ * simulation have been set. If they are missing and it is able to calculate 
+ * from others, it calculates. Basically, it has to calculate the mass from the 
+ * radius and density.
+ *
+ * units: micrometre, nanogram, second
+ *
  * \param pMassSet bool
  * \param pRadiusSet bool
  * \param pDensitySet bool

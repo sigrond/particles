@@ -9,7 +9,8 @@
  *
  */
   /** \file particles_kernel.cuh
-  * \brief Definicja struktury przechowującej parametry symulacji.
+  * \brief Definicja struktury przechowującej parametry symulacji. - (EN) Definition 
+  * of a structure storing simulation parameters.
   *
   */
 
@@ -34,6 +35,7 @@ typedef unsigned int uint;
 
 // simulation parameters
 /** \brief Struktura z parametrami symulacji przekazywanymi z host do device.
+ * - (EN) Structure with simulation parameters passed from host to device.
  */
 struct SimParams
 {
@@ -42,6 +44,7 @@ struct SimParams
 
     float3 gravity;
     float globalDamping;
+	float rotation;/**< droplet (random) rotation [Hz] */
 
     float particleRadius[MAX_TYPE_NUM];
 
@@ -64,12 +67,12 @@ struct SimParams
     float spring;
     float damping;
     float shear;
-    float attraction;/**< mnożnik sił Coulombowskich */
+    float attraction;/**< mnożnik sił Coulombowskich - (EN) Coulomb force multiplier */
     float boundaryDamping;
 
-	float bigradius;/**< promien duzej kuli w mikrometrach */
+	float bigradius;/**< promien dużej kuli w mikrometrach - (EN) radius of the large sphere in micrometres */
 	float bigradius0;
-	float epsi;/**< mnożnik epsilonów */
+	float epsi;/**< mnożnik epsilonów - (EN) the multiplier of epsilons */
 	bool boundaries;
 	float brown;
 
@@ -78,8 +81,8 @@ struct SimParams
 
 	bool calcSurfacePreasure;
 
-	float surfaceVel;/**< r0/(t+dt)-A/sqrt(t+dt) */
-	float viscosity;/**< 0,89 mPa·s */
+	float surfaceVel;/**< r0/(t+dt)-A/sqrt(t+dt) popraw - (EN) correct */
+	float viscosity;/**< 0,89 mPa·s sprawdź - (EN) check */
 
 	bool autoDt;
 };

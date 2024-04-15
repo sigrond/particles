@@ -10,6 +10,7 @@
  */
   /** \file particleSystem_cuda.cu
   * \brief Definicje (implementacje) funkcji odpowiedzialnych za przebieg symulacji.
+  * - (EN) Definitions (implementations) of the functions responsible for the simulation run.
   *
   */
 
@@ -40,7 +41,7 @@
 #include "thrust/iterator/zip_iterator.h"
 #include "thrust/sort.h"
 
-#include "particles_kernel_impl.cuh"	//w tym pliku sa impementacje obliczen
+#include "particles_kernel_impl.cuh"	//w tym pliku sa impementacje obliczen - (EN) The file contains implementation of calculations
 
 extern "C"
 {
@@ -127,9 +128,10 @@ extern "C"
         }
     }
 
-    /** \brief Kopiowanie parametrów symulacji z pamiêci RAM hosta do pamiêci device (karta graficzna)
-     *
-     * \param hostParams SimParams* Struktura z parametrami symulacji.
+    /** \brief Kopiowanie parametrów symulacji z pamięci RAM hosta do pamięci device (karta graficzna)
+     * - (EN) Copying simulation parameters from host RAM to device memory (graphics card)
+	 *
+     * \param hostParams SimParams* Struktura z parametrami symulacji. - (EN) Structure with simulation parameters.
      * \return void
      *
      */
@@ -140,7 +142,8 @@ extern "C"
     }
 
     /** \brief Funkcja pobiera z device wartość ciśnienia na
-     * powierchni kropli i zwraca (do host'a)
+     * powierchni kropli i zwraca (do host'a) - (EN) The function gets the value of 
+	 * the pressure on the surface of the droplet from the device and returns (to the host)
      * \return float
      *
      */
@@ -153,7 +156,8 @@ extern "C"
         return tmpP;
     }
 
-    /** \brief Ustawienie zmiennej globalnej globalDeltaTime w pamięci devic
+    /** \brief Ustawienie zmiennej globalnej globalDeltaTime w pamięci device - (EN) Setting 
+	 * the globalDeltaTime variable in device memory
      *
      * \param dt float
      * \return void
@@ -165,7 +169,8 @@ extern "C"
     }
 
     /** \brief Pobranie wartości globalDeltaTime, żeby wiedzieć jaki krok został wykonany
-     *
+     * - (EN) Retrieving the globalDeltaTime value to know what step was performed
+	 *
      * \return float
      *
      */
@@ -176,7 +181,8 @@ extern "C"
         return tmpP;
     }
 
-    /** \brief Zapisanie w stałej pamięci GPU adresu do tablicy sił
+    /** \brief Zapisanie w stałej pamięci GPU adresu do tablicy sił - (EN) Storing the address 
+	 * to the force array in permanent GPU memory
      *
      * \param ptr float*
      * \return void
@@ -200,7 +206,7 @@ extern "C"
         numBlocks = iDivUp(n, numThreads);
     }
 
-    /** \brief Całkowanie ruchu każdej cząstki
+    /** \brief Całkowanie ruchu każdej cząstki - (EN) Integration of the motion of each particle
      *
      * \param pos float*
      * \param vel float*
@@ -235,7 +241,7 @@ extern "C"
         computeGridSize(numParticles, 256, numBlocks, numThreads);
 
 ///////////////////////////////////////////////////////////////////////////
-/*	wywolanie watkow	*/
+/*	wywołanie wątkow - (EN) calling the threads	*/
 ///////////////////////////////////////////////////////////////////////////
         // execute the kernel
         calcHashD<<< numBlocks, numThreads >>>(gridParticleHash,
@@ -310,7 +316,7 @@ extern "C"
         computeGridSize(numParticles, 64, numBlocks, numThreads);
 
 ///////////////////////////////////////////////////////////////////////////
-/*	wywolanie watkow zderzen	*/
+/*	wywołanie wątkow zderzeń - (EN) calling the collision threads	*/
 ///////////////////////////////////////////////////////////////////////////
         // execute the kernel
         collideD<<< numBlocks, numThreads >>>((float4 *)newVel,

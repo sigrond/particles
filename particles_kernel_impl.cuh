@@ -94,15 +94,16 @@ struct integrate_functor
         volatile float4 velData = thrust::get<1>(t);
         volatile float4 forceData=thrust::get<2>(t);
         float3 pos = make_float3(posData.x, posData.y, posData.z);
+		float3 posxy = make_float3(posData.x, posData.y, 0.0f);
         float3 vel = make_float3(velData.x, velData.y, velData.z);
         float3 force = make_float3(forceData.x, forceData.y, forceData.z);
 
-		if(params.brown!=0.0f)/**< ruchy Browna - (EN) Brown motion \todo revise Brown motion */
+		if(params.brown!=0.0f)/**< ruchy Browna - (EN) Brownian motion \todo revise Brownian motion */
         {
 			unsigned int seed=threadIdx.x+(((gridDim.x*blockIdx.y)+blockIdx.x)*blockDim.x)+(unsigned int)floor((vel.x+vel.y+vel.z)*params.brownQuality);
 			curandState s;
 			curand_init(seed,0,0,&s);
-			skipahead((unsigned long long int)floor(vel.z*params.brownQuality+pos.x+pos.y+pos.z),&s);
+			skipahead((unsigned long long int)floor(vel.z*params.brownQuality+pos.x+pos.y+pos.z),&s); /** do sprawdzenia - (EN) to be checked*/
 			vel.x+=(curand_normal(&s))*params.brown;
 			skipahead((unsigned long long int)floor(vel.y*params.brownQuality),&s);
 			vel.y+=(curand_normal(&s))*params.brown;
@@ -148,7 +149,7 @@ struct integrate_functor
 #endif
 
 		//odbijanie sie od kuli
-		/**< odbijanie sie od kuli vel napiecie powierzchniowe - (EN) surface tension */
+		/**< odbijanie sie od kuli vel napiecie powierzchniowe - (EN) surface tension, or bouncing of paricles from the droplet surface */
 #if 1
 		float xk=pos.x*pos.x;
 		float yk=pos.y*pos.y;
@@ -174,7 +175,7 @@ struct integrate_functor
 		if(params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
 		{
             //force+=18.84955592f*params.viscosity*(vel+norm*params.surfaceVel)*params.particleRadius[(int)velData.w];
-			//vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone t³umienie w kierunku radialnym */
+			//vel+=vel*norm*0.1f*params.globalDamping;/**< na powierchni zmniejszone t³umienie w kierunku radialnym - (EN) on the surface reduced dumping in the radial direction*/
 
 			forceF1=params.surfaceTensionFactor[(int)velData.w]*params.boundaryDamping*(abs(r0-R)-(params.particleRadius[(int)velData.w]));/**< si³a napiêcia powierzchniowego - (EN) surface tension force */
 			force-=forceF1*norm;
@@ -184,7 +185,9 @@ struct integrate_functor
         {
             force+=18.84955592f*params.viscosity*vel*params.particleRadius[(int)velData.w];
         }*/
-		force-=18.84955592f*params.viscosity*params.globalDamping*vel*params.particleRadius[(int)velData.w];
+		force-=18.84955592f*params.viscosity*params.globalDamping*vel*params.particleRadius[(int)velData.w]; /** viscosity acts always: 6 pi eta v r */
+		//force+=params.particleMass[(int)velData.w]*relPos*params.rotation*params.rotation; /** centrifugal force [red/s]*/
+		force+=params.particleMass[(int)velData.w]*posxy*params.rotation*params.rotation;
 		__syncthreads();
         if(params.calcSurfacePreasure && params.boundaries && r0>R-params.particleRadius[(int)velData.w] && r0<R+params.particleRadius[(int)velData.w])
         {
@@ -197,7 +200,7 @@ struct integrate_functor
 //dolna plaszczyzna
 
 #if 1
-		if (pos.y < -2.0f*params.bigradius0 + params.particleRadius[(int)velData.w])/**< blat - (EN) flat bottom of the trap */
+		if (pos.y < -2.0f*params.bigradius0 + params.particleRadius[(int)velData.w])/**< blat - (EN) flat substrate */
         {
             pos.y = -2.0f*params.bigradius0 + params.particleRadius[(int)velData.w];
             vel.y = 0;
@@ -386,25 +389,25 @@ float3 collideSpheres(float3 posA, float3 posB,
     // calculate relative position
     float3 relPos = posB - posA;
 
-    float dist = length(relPos);
-    float collideDist = (radiusA + radiusB)*4.0f;//zasieg dzialania sil
+    float dist = length(relPos);/** scalar distance between the particles */
+    float collideDist = (radiusA + radiusB)*4.0f;//zasieg dzialania sil - (EN) forces' range
 
     float3 force = make_float3(0.0f);
 
     if (dist < collideDist)
     {
-        float3 norm = relPos / dist;
+        float3 norm = relPos / dist; /** orientation in space of the colliding pair */
 
-		float sigma=(params.particleRadius[(int)velA.w]+params.particleRadius[(int)velB.w])/(1.12246204f);
+		float sigma=(params.particleRadius[(int)velA.w]+params.particleRadius[(int)velB.w])/(1.12246204f);/** 'size' of the particle or ~collision distance */
 		float sd=sigma/dist;
 		sd*=sd*sd*sd*sd*sd;
 		float q1q2=params.normalizedCharge[(int)velA.w]*params.normalizedCharge[(int)velB.w];
 		float a=!(velB.w<velA.w)?velA.w:velB.w;/**< min(x,y) */
 		float b= (velA.w<velB.w)?velB.w:velA.w - a;/**< max(x,y)-min(x,y) */
-		int epsilonIndex=(int)floor(a*(params.particleTypesNum-((a-1.0f)/2.0f))+b+0.5f);/**< wzór na index z zabezpieczeniem przeciwko niedok³adnoœci dzia³añ na float'ach */
+		int epsilonIndex=(int)floor(a*(params.particleTypesNum-((a-1.0f)/2.0f))+b+0.5f);/**< wzór na index z zabezpieczeniem przeciwko niedok³adnoœci dzia³añ na float'ach - (EN) index formula with protection against inaccuracies of operations on floats*/
 		float epsilon=params.epsi*params.normalizeEpsilon[epsilonIndex];
-		float foreScalar=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist);
-		force=-foreScalar*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego
+		float foreScalar=48.0f*epsilon/dist*sd*(sd-0.5f)+attraction*q1q2/(dist*dist); /* 48=4*12, 12 comes from diffrenetiating the potential */
+		force=-foreScalar*norm; //jest dobrze :-) Uwaga na kierunek wektora normalnego - (EN) it is OK :-) Note the direction of the normal vector
 /////////////////////////////////////////////////////////////////////////////////
 /*	tu wpisywac rownania na sily dla czastek bedacywch w zasiegu - (EN) here are forces formulas for particles in range	*/
 /////////////////////////////////////////////////////////////////////////////////

@@ -10,7 +10,8 @@
  */
   /** \file particleSystem.h
   * \brief Definicja klasy ParticleSystem i części jej prostych metod.
-  *
+  * - (EN) Definition of the ParticleSystem class and some of its simpler methods.
+  * 
   */
 
 #ifndef __PARTICLESYSTEM_H__
@@ -25,6 +26,7 @@
 
 // Particle system class
 /** \brief Klasa odpowiadająca za parametry i ustawienie symulacji.
+ * - (EN) The class responsible for the parameters and setting of the simulation.
  */
 class ParticleSystem
 {
@@ -90,13 +92,18 @@ class ParticleSystem
         {
             m_params.gravity = make_float3(0.0f, x, 0.0f);
         }
+		void setRotation(float x)
+        {
+            m_params.rotation = x;
+        }
 
 		void setBoundaryDamping(float x)// ustawienie wsp napiêcia powierzchniowego
         {
             m_params.boundaryDamping = x;
         }
-		/** \brief ustawia masę cząstki
-		 * \todo jakoś poprawić bo rożne typy cząstek mają różne masy
+		/** \brief ustawia masę cząstki - (EN) sets the mass of the particle
+		 * \todo jakoś poprawić bo rożne typy cząstek mają różne masy - (EN) somehow 
+		 * improve because different types of particles have different masses -- check - maybe it's already been done
 		 */
 		void setParticleMass(float x)
 		{
@@ -124,11 +131,11 @@ class ParticleSystem
             m_params.attraction = x;
         }
 
-		void setBigRadius(float x)//ustawienie promienia duzej kuli
+		void setBigRadius(float x)//ustawienie promienia dużej kuli - (EN) setting the radius of the large sphere
 		{
 			m_params.bigradius=x;
 		}
-		void setBigRadius0(float x)//ustawienie promienia duzej kuli
+		void setBigRadius0(float x)//ustawienie początkowego promienia dużej kuli - (EN) setting the initial radius of the large sphere
 		{
 			m_params.bigradius0=x;
 		}
@@ -141,12 +148,12 @@ class ParticleSystem
 			m_params.brownQuality=x;
 		}
 
-		void setBoundaries(bool x)//ograniczenia zewnêtrzne
+		void setBoundaries(bool x)//ograniczenia zewnętrzne - (EN) external constraints
 		{
 			m_params.boundaries=x;
 		}
 
-		void setParticleTypesNum(int x)//ograniczenia zewnêtrzne
+		void setParticleTypesNum(int x)//ograniczenia zewnętrzne - (EN) external constraints
 		{
 			m_params.particleTypesNum=x;
 		}
@@ -157,7 +164,8 @@ class ParticleSystem
         }
 
         /** \brief ustawienie zmiennej logicznej czy chcemy
-         * policzyć i zwrócić ciśnienie powierzchniowe kropli
+         * policzyć i zwrócić ciśnienie powierzchniowe kropli - (EN) setting of the logical 
+		 * variable whether we want to calculate and return the surface pressure of the droplet
          * \param x bool
          * \return void
          *
@@ -167,7 +175,8 @@ class ParticleSystem
             m_params.calcSurfacePreasure=x;
         }
 
-        /** \brief ustawia chwilową prędkość zmniejszania się promienia kropli
+        /** \brief ustawia chwilową prędkość zmniejszania się promienia kropli - (EN) sets the 
+		 * instantaneous droplet radius decrease speed
          *
          * \param x float
          * \return void
@@ -178,15 +187,16 @@ class ParticleSystem
             m_params.surfaceVel=x;
         }
 
-		/** \brief pobiera promień cząstki
-		 * \todo poprawić z uwzględnieniem różnych typów cząstek
+		/** \brief pobiera promień cząstki - (EN) gets the radius of the particle
+		 * \todo poprawić z uwzględnieniem różnych typów cząstek - (EN) improve for multiple particle types 
+		 * -- check - maybe it's already been done 
 		 */
         float getParticleRadius()
         {
             return m_params.particleRadius[0];
         }
 
-        /** \brief Zwraca promień największej cząstki.
+        /** \brief Zwraca promień największej cząstki. - (EN) Returns the radius of the largest particle.
          *
          * \return float
          *
@@ -204,7 +214,7 @@ class ParticleSystem
             return tmpMax;
         }
 
-        /** \brief ustawia czy zmienny krok czasu, czy stały
+        /** \brief ustawia czy zmienny krok czasu, czy stały - (EN) sets whether the time step is variable or fixed
          *
          * \param x bool
          * \return void
